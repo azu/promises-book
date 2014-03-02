@@ -1,3 +1,13 @@
 === Promisesの書き方
 
 Promiseの基本的な書き方について解説します。
+
+
+==== XHRをpromiseでラップする
+
+以下のようなコードを例にPromiseについて考えていきます。
+
+[source,js]
+----
+include::src/xhr-promise.js[]
+----
