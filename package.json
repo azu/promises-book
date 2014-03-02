@@ -7,7 +7,8 @@
     },
     "main": "index.js",
     "scripts": {
-        "test": "mocha ./Ch**/test/*.js"
+        "test": "mocha ./Ch**/test/*.js",
+        "deploy": "./_travis/deploy-gh-pages.sh"
     },
     "author": "azu",
     "license": "MIT",

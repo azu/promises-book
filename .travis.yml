@@ -1,4 +1,9 @@
 language: node_js
 node_js:
-- '0.11'
 - '0.10'
+after_success:
+- npm run-script deploy
+env:
+  global:
+  - GH_REF: github.com/azu/Promises-book.git
+  - secure: kKkBxJ4vybrgd6joYy5fH2foB2sSz5tV40NTYTycYfHD1g3+7wZX+VKWjLW4iF08X/xy/6le2fRRs6QgC4J7HCZfbcUqW1PG/GusWHB/7Hi6y/uewlrMVFTcM8TF3YpHr+KdPLNL2WilUOFFQQOMy44/FSb6lHWW5krRmvtedm8=
