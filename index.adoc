@@ -1,6 +1,17 @@
-= Promises Book
+= Promises book
 :Author:      azu(@azu)
 :lang:        ja
 :icons:       font
+:numbered:
+:toc2:
+
+// 第一章
+include::Ch1_WhatsPromises/readme.adoc[]
+
+include::Ch1_WhatsPromises/what_is_promise.adoc[]
+
+include::Ch1_WhatsPromises/promise-overview.adoc[]
+
+// 用語集
 
 include::Glossary/readme.adoc[]
