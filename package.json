@@ -1,0 +1,20 @@
+{
+  "name": "Promises-book",
+  "description": "Promises book(japanese)",
+  "version": "0.0.1",
+  "repository": {
+    "url": "git://github.com/azu/Promises-book.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "tap test/*.js"
+  },
+  "author": "azu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/azu/Promises-book/issues"
+  },
+  "dependencies": {
+    "ypromise": "~0.2.3"
+  }
+}
