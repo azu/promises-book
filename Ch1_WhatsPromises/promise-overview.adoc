@@ -1,3 +1,75 @@
 === Promises Overview
 
-Promises APIの概要
+ES6 Promises で定義されているAPIはそこまで多くはありません。
+
+多く分けて以下の3種類になります。
+
+==== Constructor
+
+promiseオブジェクトを作成するには、
+Promiseコンストラクタを`new`でインスタンス化します。
+
+[source,javascript]
+new Promise(function(resolve, reject) {});
+
+==== Instance Method
+
+インスタンスとなるpromiseオブジェクトにはpromiseの値が *resolve(解決)* / *reject(棄却)* された時に呼ばれる
+コールバックを登録するため `promise.then()` というインスタンスメソッドがあります。
+
+[source,js]
+promise.then(onFulfilled, onRejected)
+
+resolve(解決)された時::
+    `onFulfilled` が呼ばれる
+reject(棄却)::
+    `onRejected`  が呼ばれる
+
+`onFulfilled`、`onRejected` どちらもオプショナルな引数となり、
+エラー処理だけを書きたい場合には `promise.then(undefined, onRejected)` と同じ意味である
+`promise.catch()`を使うことが出来ます。
+
+[source,js]
+promise.catch(onRejected)
+
+
+==== Static Method
+
+`Promise` というグローバルオブジェクトには幾つかの静的なメソッドが存在します。
+
+`Promise.all()` や `Promise.resolve()` などが該当し、Promiseを扱う上での補助メソッドが中心となっています。
+
+
+==== Promises workflow
+
+以下のようなサンプルコードを見てみましょう。
+
+[source,js]
+----
+include::src/promise-workflow.js[lines=3..-1]
+----
+<1> Promiseコンストラクタを`new`して、promiseオブジェクトを返します
+<2> <1>のpromiseに対して `.then` で値が返ってきた時のコールバックを設定します
+
+`asyncFunction` という関数 は promiseオブジェクトを返していて、
+そのpromiseオブジェクトに足しして `then` でresolveされた時のコールバックを、
+`catch` でエラーとなった場合のコールバックを設定しています。
+
+このpromiseオブジェクトはsetTimeoutで16ms後ぐらいにがresolveされるので、
+そのタイミングで `then` のコールバックが呼ばれて `'Async Hello world'` と出力されます。
+
+いまどきの環境では `catch` のコールバックは呼ばれる事はないですが、
+`setTimout`が存在しない環境などでは、例外がおき`catch`のコールバックが呼ばれると思います。
+
+もちろん、`promise.then(onFulfilled, onRejected)` というように、
+`catch` を使わずに `then` は以下のように2つのコールバックを設定することでもほぼ同様の動作になります。
+
+[source,js]
+----
+asyncFunction().then(function (value) {
+    console.log(value);
+}, function (error) {
+    console.log(error);
+});
+----
+

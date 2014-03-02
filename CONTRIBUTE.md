@@ -1,3 +1,9 @@
+## 実行環境
+
+PromisesはECMAScriptである事を元に進める。
+
+Promisesが実装されていない環境もあるため、[ypromise](https://github.com/yahoo/ypromise "ypromise")をPolyfillとして利用する。
+
 ## プロジェクト構造
 
 大きな区分けとして各チャプターごとにディレクトリを分けている。

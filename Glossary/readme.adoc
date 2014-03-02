@@ -7,3 +7,6 @@ Promise::
 ES6 Promises::
     http://people.mozilla.org/%7Ejorendorff/es6-draft.html#sec-operations-on-promise-objects[ECMAScript 6th Edition – DRAFT] を明示的に示すPromisesの事。
     明示的にECMAScript 6の事をいう場合にprefixとして _ES6_ をつける
+Thenable::
+    Promiseライクなオブジェクトの事。
+    `.then`というメソッドを持つオブジェクト。
