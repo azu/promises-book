@@ -42,3 +42,9 @@ Promisesが実装されていない環境もあるため、[ypromise](https://gi
 
 => 案がある場合は [Issues](https://github.com/azu/Promises-book/issues "Issues · azu/Promises-book")へ
 
+実行環境は基本的にNode.jsでテストするようになっているが、
+できるだけブラウザとNode.jsとで同じようなコードにする方針。
+(固有の箇所は環境を明示すればよい)
+
+`test/helper.js` にグローバル空間に `Promise` や XHRが入るようにしている。
+(そのためMochaを経由しない、サンプルコード単体だとちょっと動かない場合がある…)

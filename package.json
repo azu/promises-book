@@ -7,7 +7,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "test": "mocha ./Ch**/test/*.js --require tests/helper.js",
+    "test": "mocha ./Ch**/test/*.js",
     "deploy": "./_travis/deploy-gh-pages.sh"
   },
   "author": "azu",
