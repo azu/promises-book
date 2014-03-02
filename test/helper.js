@@ -4,5 +4,5 @@
  */
 "use strict";
 // Polyfill
-var Promise = require("ypromise");
-var XMLHttpRequest = require('w3c-xmlhttprequest').XMLHttpRequest;
+global.Promise = require("ypromise");
+global.XMLHttpRequest = require('w3c-xmlhttprequest').XMLHttpRequest;
