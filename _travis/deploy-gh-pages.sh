@@ -16,7 +16,7 @@ asciidoctor -a icons=font -a source-highlighter=pygments --backend html5 -o inde
  git config --global user.name "$GIT_NAME"
  git add --all .
  git commit -q -m "Travis build $TRAVIS_BUILD_NUMBER"
- git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" gh-pages /dev/null 2>&1
+ git push --force --quiet -u "https://${GH_TOKEN}@${GH_REF}" origin gh-pages > /dev/null 2>&1
 
  rm index.html
 )
