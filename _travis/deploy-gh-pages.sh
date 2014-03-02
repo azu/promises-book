@@ -15,7 +15,7 @@ asciidoctor -a icons=font -a source-highlighter=pygments --backend html5 -o inde
 
  git config --global user.email "travis@travis-ci.org"
  git config --global user.name "travis-ci"
- git add .
+ git add -A .
  git commit -m "Travis build $TRAVIS_BUILD_NUMBER"
  git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:gh-pages > /dev/null 2>&1
 )
