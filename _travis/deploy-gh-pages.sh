@@ -5,13 +5,15 @@ if [[ "$TRAVIS_PULL_REQUEST" == "true" ]]; then
     exit 0;
 fi
 
+git checkout -B gh-pages
+
 asciidoctor -a icons=font -a source-highlighter=pygments --backend html5 -o index.html index.adoc
 (
  lastCommit=$(git log --oneline | head -n 1)
  echo "=COMMIT="
  echo "MESSAGE :" $lastCommit
 
- git checkout -B gh-pages
+ ls -a
  git config --global user.email "travis@travis-ci.org"
  git config --global user.name "travis-ci"
  git add --all .
