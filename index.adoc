@@ -13,5 +13,4 @@ include::Ch1_WhatsPromises/what_is_promise.adoc[]
 include::Ch1_WhatsPromises/promise-overview.adoc[]
 
 // 用語集
-
 include::Glossary/readme.adoc[]

@@ -4,7 +4,7 @@ ES6 Promises で定義されているAPIはそこまで多くはありません�
 
 多く分けて以下の3種類になります。
 
-==== Constructor
+*Constructor*
 
 promiseオブジェクトを作成するには、
 Promiseコンストラクタを`new`でインスタンス化します。
@@ -12,7 +12,7 @@ Promiseコンストラクタを`new`でインスタンス化します。
 [source,javascript]
 new Promise(function(resolve, reject) {});
 
-==== Instance Method
+*Instance Method*
 
 インスタンスとなるpromiseオブジェクトにはpromiseの値が *resolve(解決)* / *reject(棄却)* された時に呼ばれる
 コールバックを登録するため `promise.then()` というインスタンスメソッドがあります。
@@ -33,7 +33,7 @@ reject(棄却)::
 promise.catch(onRejected)
 
 
-==== Static Method
+*Static Method*
 
 `Promise` というグローバルオブジェクトには幾つかの静的なメソッドが存在します。
 
@@ -46,7 +46,7 @@ promise.catch(onRejected)
 
 [source,js]
 ----
-include::src/promise-workflow.js[lines=3..-1]
+include::src/promise-workflow.js[]
 ----
 <1> Promiseコンストラクタを`new`して、promiseオブジェクトを返します
 <2> <1>のpromiseに対して `.then` で値が返ってきた時のコールバックを設定します

@@ -26,3 +26,19 @@ Promisesが実装されていない環境もあるため、[ypromise](https://gi
 サンプルコードは必ずテストコードが必要となる。
 
 `<1>` 等のアノテーションを使った説明用のコードは、そのままインラインで埋め込んでもよい。
+
+### 実行コード
+
+サンプルコードはできるだけ最小限で具体的かつ知名度の高いAPIを利用する。
+
+#### 非同期API
+
+非同期APIとしては下記を中心的に利用する
+
+* `setTimeout`
+* `XMLHTTPRequest`
+    * Polyfill : [ykzts/node-xmlhttprequest](https://github.com/ykzts/node-xmlhttprequest "ykzts/node-xmlhttprequest")
+* node の 何かモジュール
+
+=> 案がある場合は [Issues](https://github.com/azu/Promises-book/issues "Issues · azu/Promises-book")へ
+
