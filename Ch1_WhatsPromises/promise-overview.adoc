@@ -55,11 +55,11 @@ include::src/promise-workflow.js[]
 そのpromiseオブジェクトに足しして `then` でresolveされた時のコールバックを、
 `catch` でエラーとなった場合のコールバックを設定しています。
 
-このpromiseオブジェクトはsetTimeoutで16ms後ぐらいにがresolveされるので、
-そのタイミングで `then` のコールバックが呼ばれて `'Async Hello world'` と出力されます。
+このpromiseオブジェクトはsetTimeoutで16ms後にresolveされるので、
+そのタイミングで `then` のコールバックが呼ばれ `'Async Hello world'` と出力されます。
 
 いまどきの環境では `catch` のコールバックは呼ばれる事はないですが、
-`setTimout`が存在しない環境などでは、例外がおき`catch`のコールバックが呼ばれると思います。
+`setTimout`が存在しない環境などでは、例外が発生し`catch`のコールバックが呼ばれると思います。
 
 もちろん、`promise.then(onFulfilled, onRejected)` というように、
 `catch` を使わずに `then` は以下のように2つのコールバックを設定することでもほぼ同様の動作になります。
