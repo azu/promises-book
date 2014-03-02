@@ -1,0 +1,6 @@
+= Promises Book
+:Author:      azu(@azu)
+:lang:        ja
+:icons:       font
+
+include::Glossary/readme.adoc[]
