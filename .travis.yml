@@ -2,12 +2,12 @@ language: node_js
 node_js:
 - '0.10'
 before_install:
-  - gem --version
-  - gem install asciidoctor
-  - gem install pygments.rb
+- gem --version
+- gem install asciidoctor
+- gem install pygments.rb
 after_success:
 - npm run-script deploy
 env:
   global:
   - GH_REF: github.com/azu/Promises-book.git
-  - secure: kKkBxJ4vybrgd6joYy5fH2foB2sSz5tV40NTYTycYfHD1g3+7wZX+VKWjLW4iF08X/xy/6le2fRRs6QgC4J7HCZfbcUqW1PG/GusWHB/7Hi6y/uewlrMVFTcM8TF3YpHr+KdPLNL2WilUOFFQQOMy44/FSb6lHWW5krRmvtedm8=
+  - secure: pNtiVeWTe/kPWmERJURFoCVfzDVOc19IPbr9rK9CDJHo9aFtBPXkRwYzXfjlIwnzzkrAnfowxNNerHxYXuiNK7z+xNT9H79pmYtd1Qap9fNZCFNIFkdaArAXoq635VWmGRdArGiQGNM4Am+bZdsgG4dJR4DEsjx6dcisfyb8yso=
