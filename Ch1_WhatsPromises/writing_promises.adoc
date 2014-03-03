@@ -2,12 +2,43 @@
 
 Promiseの基本的な書き方について解説します。
 
+==== promiseオブジェクトを作る
 
-==== XHRをpromiseでラップする
+promiseオブジェクトを作る流れは以下のようになっています。
 
-以下のようなコードを例にPromiseについて考えていきます。
+. `new Promise(fn)` の返り値がpromiseオブジェクト
+. 引数となる関数fnには `resolve` と `reject` が渡る
+. `fn`には非同期等の何らかの処理を書く
+    * 処理結果が正常なら、`resolve(結果の値)` を呼ぶ
+    * 処理結果がエラーなら、`reject(Errorオブジェクト)` を呼ぶ
+
+実際にXHRでGETをするものをpromiseオブジェクトにしてみましょう。
 
 [source,js]
 ----
 include::src/xhr-promise.js[]
 ----
+
+XHRで200で値が取得できた場合のみ `resolve` として、
+それ以外はエラーであるとして `reject` しています。
+
+`resolve(req.response)` ではレスポンスの内容を引数に入れています。
+resolveの引数に入れる値には特に決まりはありませんが、コールバックと同様に次の処理へ渡したい値を入れるといいでしょう。
+(この値は`then`メソッドで受け取ることが出来ます)
+
+Node.jsをやっている人は、コールバックを書く時に `callback(error, response)` と第一引数にエラーオブジェクトを
+入れることがよくあると思いますが、Promisesでは役割がresolve/rejectで分担されているので、
+resolveにはresponseの値のみをいれるだけで問題ありません。
+
+
+次に、`reject` の方を見て行きましょう。
+
+XHRで`onerror`のイベントが呼ばれた場合はもちろんエラーなので`reject`を呼びます。
+ここで`reject`に渡している値に注目してみてください。
+
+エラーの場合は `reject(new Error(req.statusText));` というようにErrorオブジェクトとして渡している事がわかると思います。
+`reject` には値であれば何でも良いのですが、一般的にErrorオブジェクト(またはErrorオブジェクトを継承したもの)を渡すことになっています。
+
+`reject` に渡す値はrejectする理由を書いたErrorオブジェクトとなっています。
+今回は、ステータスコードが200以外であるならrejectするとしていたため、`reject`にはstatusTextを渡しています。
+(この値は`then`メソッドの第二引数 or `catch` メソッドで受け取ることが出来ます)
