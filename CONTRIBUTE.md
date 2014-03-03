@@ -46,5 +46,5 @@ Promisesが実装されていない環境もあるため、[ypromise](https://gi
 できるだけブラウザとNode.jsとで同じようなコードにする方針。
 (固有の箇所は環境を明示すればよい)
 
-`test/helper.js` にグローバル空間に `Promise` や XHRが入るようにしている。
+`test/test-helper.js` にグローバル空間に `Promise` や XHRが入るようにしている。
 (そのためMochaを経由しない、サンプルコード単体だとちょっと動かない場合がある…)

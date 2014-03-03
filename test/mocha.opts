@@ -1,1 +1,1 @@
---require test/helper.js
+--require test/test-helper.js test/node-helper.js
