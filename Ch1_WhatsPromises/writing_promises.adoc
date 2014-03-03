@@ -2,7 +2,7 @@
 
 Promiseの基本的な書き方について解説します。
 
-==== promiseオブジェクトを作る
+==== promiseオブジェクトの作成
 
 promiseオブジェクトを作る流れは以下のようになっています。
 
@@ -42,3 +42,26 @@ XHRで`onerror`のイベントが呼ばれた場合はもちろんエラーな�
 `reject` に渡す値はrejectする理由を書いたErrorオブジェクトとなっています。
 今回は、ステータスコードが200以外であるならrejectするとしていたため、`reject`にはstatusTextを渡しています。
 (この値は`then`メソッドの第二引数 or `catch` メソッドで受け取ることが出来ます)
+
+==== promiseオブジェクトに処理を書く
+
+先ほどの作成したpromiseオブジェクトを返す関数を実際に使ってみましょう
+
+[source,js]
+getURL("http://example.com/"); // => promiseオブジェクト
+
+<<Promises Overview>> でも簡単に紹介したようにpromiseオブジェクトは幾つかインスタンスを持っています。
+
+まずは、`getURL`で通信が成功して値が取得出来た場合の処理を書いてみましょう。
+
+通信が成功というのは、promiseオブジェクトがresolveされた時という事なので、
+`.then` メソッドをメソッドチェーンにして処理を書きます。
+
+[source,js]
+----
+var URL = "http://localhost:3000/?status=200&body=text";
+getURL(URL).then(function (value) {
+    console.log(value);// => XHRにより取得したresponseが入っている
+});
+----
+

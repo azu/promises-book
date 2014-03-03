@@ -8,7 +8,7 @@
     "main": "index.js",
     "scripts": {
         "test": "mocha ./Ch**/test/*.js",
-        "browser-test-start": "zuul --local 8080 --ui mocha-bdd -- test/test-helper.js Ch*/**/test/*.js",
+        "browser-test-start": "zuul --local 8080 --ui mocha-bdd -- test/test-helper.js Ch**/test/*.js",
         "deploy": "./_travis/deploy-gh-pages.sh"
     },
     "author": "azu",
