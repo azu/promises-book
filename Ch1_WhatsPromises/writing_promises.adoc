@@ -51,14 +51,23 @@ XHRで`onerror`のイベントが呼ばれた場合はもちろんエラーな�
 [source,js]
 getURL("http://example.com/"); // => promiseオブジェクト
 
-<<promises-overview>> でも簡単に紹介したようにpromiseオブジェクトは幾つかインスタンスを持っています。
+<<promises-overview>> でも簡単に紹介したようにpromiseオブジェクトは幾つかインスタンスを持っており、
+これを使いpromiseオブジェクトの状態に応じて一度だけ呼ばれるコールバックとなる関数を登録します。
+
+promiseオブジェクトに登録する処理は以下の2種類が主となります
+
+* promiseオブジェクトが **resolve** された時の処理(onFulfilled)
+* promiseオブジェクトが **reject** された時の処理(onRejected)
+
+[[promise-value-flow]]
+image::img/promise-onFulfilled_onRejected.png[promise-resolve-flow]
 
 まずは、`getURL`で通信が成功して値が取得出来た場合の処理を書いてみましょう。
 
 [NOTE]
 この場合の _通信が成功した_ というのは _promiseオブジェクトがresolveされた_ 時という事
 
-resolveされた時の処理は <<promise.then,`.then`>> メソッドに処理をする関数を渡すことで行えます。
+**resolve**された時の処理は、 <<promise.then,`.then`>> メソッドに処理をする関数を渡すことで行えます。
 
 [source,js]
 ----
@@ -72,7 +81,53 @@ getURL(URL).then(function onFulfilled(value){ // <1>
 <<getURL,getURL関数>> 内で `resolve(req.response);` によってpromiseオブジェクトが解決されると、
 値と共に`onFulfilled` 関数が呼ばれます。
 
-[[promise-value-flow]]
-image::img/promise-onFulfilled_onRejected.png[promise-resolve-flow]
+このままでは通信エラーが起きた場合などに何も処理がされないため、
+今度は、`getURL` で何らかの問題があってエラーが起きた場合の処理を書いてみましょう。
 
+[NOTE]
+この場合の _エラーが起きた_ というのは _promiseオブジェクトがrejectされた_ 時という事
 
+**reject**された時の処理は、<<promise.then,`.then`の第二引数>> または <<promise.catch,`.catch`>> メソッドに処理をする関数を渡す事で行えます。
+
+先ほどのソースに
+
+[source,js]
+----
+var URL = "http://localhost:3000/?status=500";
+getURL(URL).then(function onFulfilled(value){
+    console.log(value);
+}).catch(function onRejected(error){ // <1>
+    console.log(error);
+});
+----
+<1> 説明しやすくするためエラーが起きた時に呼ばれる関数に `onRejected` という名前を付けています
+
+promiseオブジェクトが何らかの理由で例外が起きた時、または明示的にrejectされた場合に、
+その理由(Errorオブジェクト)と共に <<promise.catch,`.catch`>> の処理が呼ばれます。
+
+<<promise.catch,`.catch`>>は`promise.then(undefined, onRejected)`のエイリアスであるため、
+同様の処理は以下のように書くことも出来ます。
+
+[source,js]
+----
+getURL(URL).then(onFulfilled, onRejected);// <1>
+----
+<1> onFulfilled, onRejected それぞれは先ほどと同じ関数
+
+基本的には、<<promise.catch,`.catch`>>を使いresolveとrejectそれぞれを別々に処理した方がよいと考えらますが、
+両者の違いについては <<promise-pattern>> で紹介します。^1
+
+1: 本質的な違いはありませんが、Syntax的な捉え方としての違い
+
+==== まとめ
+
+この章では以下のことについて簡単に紹介しました。
+
+* `new Promise` を使いpromiseオブジェクトの作成
+* <<promise.then,`.then`>> や <<promise.catch,`.catch`>> を使ったpromiseオブジェクトの処理
+
+Promisesの基本的な書き方はこれがベースとなり、
+他の多くの処理はこれを発展させたり、用意されたStatic Method等を利用したものになります。
+
+ここでは、同様の事はコールバック関数を渡す形でも出来るのに対してPromisesで書くメリットについては触れていませんでしたが、
+次の章では、Promiseのメリットであるエラーハンドリングの仕組みをコールバックベースの実装と比較しながら見て行きたいと思います。
