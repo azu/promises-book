@@ -14,6 +14,7 @@ promiseオブジェクトを作る流れは以下のようになっています�
 
 実際にXHRでGETをするものをpromiseオブジェクトにしてみましょう。
 
+[[getURL]]
 [source,js]
 ----
 include::src/xhr-promise.js[]
@@ -57,15 +58,21 @@ getURL("http://example.com/"); // => promiseオブジェクト
 [NOTE]
 この場合の _通信が成功した_ というのは _promiseオブジェクトがresolveされた_ 時という事
 
-resolveされた時の処理は `.then` メソッドに処理をする関数を渡すことで行えます。
+resolveされた時の処理は <<promise.then,`.then`>> メソッドに処理をする関数を渡すことで行えます。
 
 [source,js]
 ----
 var URL = "http://localhost:3000/?status=200&body=text";
-getURL(URL).then(function (value) {
-    console.log(value);// => XHRにより取得したresponseが入っている
+getURL(URL).then(function onFulfilled(value){ // <1>
+    console.log(value);
 });
 ----
+<1> 説明しやすくするためコールバック関数に `onFulfilled` という名前を付けています
 
+<<getURL,getURL関数>> 内で `resolve(req.response);` によってpromiseオブジェクトが解決されると、
+値と共に`onFulfilled` 関数が呼ばれます。
+
+[[promise-value-flow]]
+image::img/promise-onFulfilled_onRejected.png[promise-resolve-flow]
 
 

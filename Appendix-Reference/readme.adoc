@@ -1,3 +1,8 @@
 = Promises API Reference
 
-== Promise.prototype.then(onFulfilled, onRejected)
+[[promise.then]]
+[source,js]
+promise.then(onFulfilled, onRejected)
+
+promiseオブジェクトがresolve 又は rejectされた時に呼ばれるメソッド
+
