@@ -1,0 +1,3 @@
+= Promises API Reference
+
+== Promise.prototype.then(onFulfilled, onRejected)

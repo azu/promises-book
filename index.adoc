@@ -5,6 +5,8 @@
 :numbered:
 :toc2:
 
+// 各章はH1から始めているので、一つ下げる
+:leveloffset: 1
 // 第一章
 include::Ch1_WhatsPromises/readme.adoc[]
 
@@ -14,5 +16,7 @@ include::Ch1_WhatsPromises/promise-overview.adoc[]
 
 include::Ch1_WhatsPromises/writing_promises.adoc[]
 
+// リファレンス
+include::Appendix-Reference/readme.adoc[]
 // 用語集
-include::Glossary/readme.adoc[]
+include::Appendix-Glossary/readme.adoc[]

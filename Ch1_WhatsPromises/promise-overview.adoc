@@ -1,4 +1,4 @@
-=== Promises Overview
+== Promises Overview
 
 ES6 Promises で定義されているAPIはそこまで多くはありません。
 
@@ -40,7 +40,7 @@ promise.catch(onRejected)
 `Promise.all()` や `Promise.resolve()` などが該当し、Promiseを扱う上での補助メソッドが中心となっています。
 
 
-==== Promises workflow
+=== Promises workflow
 
 以下のようなサンプルコードを見てみましょう。
 
@@ -72,4 +72,3 @@ asyncFunction().then(function (value) {
     console.log(error);
 });
 ----
-
