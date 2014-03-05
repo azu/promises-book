@@ -9,7 +9,9 @@
 :leveloffset: 1
 // 第一章
 include::Ch1_WhatsPromises/readme.adoc[]
+
 // リファレンス
 include::Appendix-Reference/readme.adoc[]
+
 // 用語集
 include::Appendix-Glossary/readme.adoc[]
