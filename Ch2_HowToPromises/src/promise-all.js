@@ -1,17 +1,5 @@
 "use strict";
-// 配列の中身をそれぞれpromiseオブジェクトにした配列を返す
-function promisedMapping(ary) {
-    function timerPromisefy(value) {
-        return new Promise(function (resolve) {
-            setTimeout(function () {
-                resolve(value);// => returnする値
-            }, value);
-        });
-    }
-
-    return ary.map(timerPromisefy);
-}
-
+var promisedMapping = require("./promisedMapping");
 var promisedMap = promisedMapping([1, 2, 4, 8, 16, 32]);
 Promise.all(promisedMap).then(function (values) {
     function sum(values) {
@@ -23,5 +11,3 @@ Promise.all(promisedMap).then(function (values) {
     var totalValue = sum(values);
     console.log(totalValue); // => 1 + 2 + 4 + 8 + 16 + 32
 });
-
-module.exports = promisedMapping;

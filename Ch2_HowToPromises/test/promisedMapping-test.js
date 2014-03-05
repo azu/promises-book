@@ -4,7 +4,7 @@
  */
 "use strict";
 var assert = require("power-assert");
-var promisedMapping = require("../src/promise-all");
+var promisedMapping = require("../src/promisedMapping");
 describe("#promisedMapping", function () {
     context("When passing []", function () {
         it("should return []", function () {
