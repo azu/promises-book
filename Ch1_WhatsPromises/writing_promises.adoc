@@ -60,6 +60,7 @@ promiseオブジェクトに登録する処理は以下の2種類が主となり
 * promiseオブジェクトが **reject** された時の処理(onRejected)
 
 [[promise-value-flow]]
+.promise value flow
 image::img/promise-onFulfilled_onRejected.png[promise-resolve-flow]
 
 まずは、`getURL`で通信が成功して値が取得出来た場合の処理を書いてみましょう。

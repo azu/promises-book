@@ -9,13 +9,6 @@
 :leveloffset: 1
 // 第一章
 include::Ch1_WhatsPromises/readme.adoc[]
-
-include::Ch1_WhatsPromises/what_is_promise.adoc[]
-
-include::Ch1_WhatsPromises/promise-overview.adoc[]
-
-include::Ch1_WhatsPromises/writing_promises.adoc[]
-
 // リファレンス
 include::Appendix-Reference/readme.adoc[]
 // 用語集

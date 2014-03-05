@@ -1,3 +1,11 @@
 = Chapter.1 - Promisesとは何か
+:imagesdir: Ch1_WhatsPromises/
 
 Promisesとは何かを初めて簡単な概要の紹介です。
+
+
+include::what_is_promise.adoc[]
+
+include::promise-overview.adoc[]
+
+include::writing_promises.adoc[]
