@@ -7,7 +7,8 @@ fi
 
 git checkout -B gh-pages
 
-asciidoctor -a icons=font -a source-highlighter=pygments --backend html5 -o index.html index.adoc
+make html
+
 lastCommit=$(git log --oneline | head -n 1)
 echo "=COMMIT="
 echo "MESSAGE :" $lastCommit
