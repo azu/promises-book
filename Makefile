@@ -5,7 +5,7 @@ all: clean html
 
 html:
 	@echo "Generate HTML..."
-	@asciidoctor -a icons=font -a source-highlighter=pygments --backend html5 -o ${OUTPUT_FILE} ${SRC_FILE}
+	@asciidoctor -a icons=font -a source-highlighter=coderay --backend html5 -o ${OUTPUT_FILE} ${SRC_FILE}
 	@echo "Done! => ${OUTPUT_FILE}"
 
 clean:

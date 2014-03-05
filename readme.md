@@ -10,7 +10,10 @@ Asciidocを使い書かれています。
 
 ## Usage
 
-- [ ] Write usage instructions
+``` sh
+$ make html
+$ open index.html
+```
 
 ## Contributing
 
