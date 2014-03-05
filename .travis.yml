@@ -4,7 +4,7 @@ node_js:
 before_install:
 - gem --version
 - gem install asciidoctor
-- gem install pygments.rb
+- gem install coderay
 after_success:
 - npm run-script deploy
 env:
