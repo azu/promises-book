@@ -8,11 +8,10 @@ Asciidocを使い書かれています。
 
 [Asciidoctor](http://asciidoctor.org/ "Asciidoctor")でビルドすることが出来ます。
 
-## Usage
-
 ``` sh
-$ make html
-$ open index.html
+gem install asciidoctor coderay
+make html
+open index.html
 ```
 
 ## Contributing
