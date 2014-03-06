@@ -3,6 +3,7 @@
 ## What is Promises?
 
 - Promisesとは
+- Promises API の概要
 - Promisesの書き方
 
 ## How to use Promises?
