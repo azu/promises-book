@@ -1,5 +1,5 @@
 "use strict";
-var promisedMapping = require("./promisedMapping");
+var promisedMapping = require("./promised-mapping");
 var promisedMap = promisedMapping([1, 2, 4, 8, 16, 32]);
 Promise.all(promisedMap).then(function (values) {
     function sum(values) {

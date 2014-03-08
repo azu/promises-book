@@ -1,0 +1,20 @@
+== promiseと配列
+
+// TODO: Promiseのstateについて説明が先に合ったほうが楽
+
+先ほどの章では、promiseオブジェクトがresolve又はrejectされた時の処理は <<promise.then,`.then`>> と <<promise.catch,`.catch`>>を
+使うことで行える事を学びました。
+
+一つのpromiseオブジェクトなら、そのpromiseオブジェクトに対して処理を書けば良いですが、
+複数のpromiseオブジェクトに処理を書く場合はどうすればよいでしょうか?
+
+複数のpromiseオブジェクトをまとめた方が扱いやすいので、promiseオブジェクトを配列に入れて管理する場合に、
+その配列のpromiseオブジェクトが全てresolveされた時に何かを行いたい場合等にどうするかという話ですね。
+
+ちょっとイメージしにくいので、複数の非同期処理を行う以下のようなコードを見てみたいと思います。
+
+[[promised-mapping]]
+[source,js]
+----
+include::src/promised-mapping.js[]
+----

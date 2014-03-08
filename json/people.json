@@ -1,0 +1,32 @@
+[
+    {
+        "id": 0,
+        "age": 34,
+        "name": "Bernadette Dominguez",
+        "email": "bernadettedominguez@cubix.com"
+    },
+    {
+        "id": 1,
+        "age": 33,
+        "name": "Alisa Washington",
+        "email": "alisawashington@cubix.com"
+    },
+    {
+        "id": 2,
+        "age": 28,
+        "name": "Tami Forbes",
+        "email": "tamiforbes@cubix.com"
+    },
+    {
+        "id": 3,
+        "age": 28,
+        "name": "Tessa Stewart",
+        "email": "tessastewart@cubix.com"
+    },
+    {
+        "id": 4,
+        "age": 40,
+        "name": "Kay Collins",
+        "email": "kaycollins@cubix.com"
+    }
+]

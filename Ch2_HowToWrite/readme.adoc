@@ -1,0 +1,13 @@
+= Chapter.2 - Promisesの書き方
+:imagesdir: Ch2_HowToWrite/
+
+Promisesの用意されたメソッドについての書き方やエラーハンドリングについて学びます。
+
+- [ ] Promise.then
+- [ ] エラーハンドリングの基礎
+- [ ] Promise.all
+- [ ] Promise.race
+- [ ] Promise.resolve - プロミスを受ける関数
+
+
+include::promise-all.adoc[]

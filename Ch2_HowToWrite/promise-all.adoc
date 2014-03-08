@@ -1,0 +1,8 @@
+== Promise.all
+
+
+// XHR を例にしたい
+[source,js]
+----
+include::src/promise-all.js[]
+----

@@ -8,7 +8,6 @@ function promisedMapping(ary) {
             }, value);
         });
     }
-
     return ary.map(timerPromisefy);
 }
 

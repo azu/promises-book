@@ -10,6 +10,10 @@
 // 第一章
 include::Ch1_WhatsPromises/readme.adoc[]
 
+// 第二章
+include::Ch2_HowToWrite/readme.adoc[]
+
+
 // リファレンス
 include::Appendix-Reference/readme.adoc[]
 
