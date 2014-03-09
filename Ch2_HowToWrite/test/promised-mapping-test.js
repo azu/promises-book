@@ -21,6 +21,8 @@ describe("#promisedMapping", function () {
             Promise.all(promiseMap).then(function (values) {
                 assert.deepEqual(values, [1, 2, 4]);
                 done();
+            }).catch(function(error){
+                done();
             });
         });
     });

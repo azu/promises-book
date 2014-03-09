@@ -10,5 +10,4 @@ function promisedMapping(ary) {
     }
     return ary.map(timerPromisefy);
 }
-
 module.exports = promisedMapping;
