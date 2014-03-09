@@ -28,8 +28,8 @@
     "remove-use-strict": "0.0.4",
     "inlining-node-require": "0.0.4",
     "gulp": "~3.5.5",
-    "gulp-inlining-node-require": "0.0.1",
-    "gulp-remove-use-strict": "0.0.1",
+    "gulp-inlining-node-require": "0.0.2",
+    "gulp-remove-use-strict": "0.0.2",
     "gulp-rename": "~1.2.0"
   }
 }
