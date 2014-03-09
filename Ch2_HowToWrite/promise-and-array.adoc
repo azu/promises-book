@@ -16,5 +16,5 @@
 [[promised-mapping]]
 [source,js]
 ----
-include::src/promised-mapping.js[]
+include::embed/promised-mapping.js[]
 ----

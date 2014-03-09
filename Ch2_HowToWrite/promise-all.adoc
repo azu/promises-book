@@ -4,5 +4,5 @@
 // XHR を例にしたい
 [source,js]
 ----
-include::src/promise-all.js[]
+include::embed/promise-all.js[]
 ----
