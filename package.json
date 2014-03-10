@@ -25,7 +25,7 @@
     "mocha": "~1.17.1",
     "http-echo": "0.0.2",
     "nock": "~0.27.2",
-    "remove-use-strict": "0.0.4",
+    "remove-use-strict": "0.0.5",
     "inlining-node-require": "0.0.4",
     "gulp": "~3.5.5",
     "gulp-inlining-node-require": "0.0.2",
