@@ -109,6 +109,7 @@ promiseオブジェクトが何らかの理由で例外が起きた時、また�
 <<promise.catch,`.catch`>>は`promise.then(undefined, onRejected)`のエイリアスであるため、
 同様の処理は以下のように書くことも出来ます。
 
+[[catch-as-alias]]
 [source,js]
 ----
 getURL(URL).then(onFulfilled, onRejected);// <1>

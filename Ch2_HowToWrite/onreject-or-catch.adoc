@@ -1,0 +1,45 @@
+== then or catch?
+
+<<catch-as-alias,前の章>>で <<promise.catch,`.catch`>> は  `promise.then(undefined, onRejected)` であるという事を紹介しました。
+
+この書籍では基本的には、<<promise.catch,`.catch`>>を使い <<promise.then,`.then`>> とは分けてエラーハンドリングを書くようにしています。
+
+ここでは、<<promise.then,`.then`>> でまとめて指定した場合とどのような違いがでるかについて学んでいきましょう。
+
+=== エラー処理ができないonRejected
+
+次のようなコードを見ていきます。
+
+[source,js]
+----
+include::embed/then-throw-error.js[]
+----
+
+`Promise.resolve(42)` というのは下記のコードのシンタックスシュガーで、
+結果的にすぐに`resolve(42)`と解決されて、次のthenの`onFulfilled`に設定されたコールバックに`42`という値を渡します。
+
+[source,js]
+----
+new Promise(function(resolve){
+    resolve(42);
+});
+
+つまりこの場合は、`theError(42)` という感じで呼び出すことになります。
+
+このコード例では、(必ずしも悪いわけではないですが)良くないパターンの `badMain` と
+ちゃんとエラーハンドリングが行える `goodMain` があります。
+
+`badMain` がなぜ良くないかというと、<<promise.then,`.then`>> の第二引数にはエラー処理を書くことが出来ますが、
+そのエラー処理は第一引数の`onFulfilled`で指定した関数内で起きたエラーをキャッチする事は出来ません。
+
+つまり、この場合は `theError` でエラーがおきても、`onRejected` に指定した関数は呼ばれることなく、
+どこでエラーが発生したのかわからなくなってしまいます。
+
+それに対して、 `goodMain` は `onFulfilled` と `onRejected` (catch) がchainするように書かれています。
+この場合は `theError` でエラーが発生しても、次のchainである <<promise.catch,`.catch`>> が呼ばれるため、エラーハンドリングを行う事が出来ます。
+
+基本的に、<<promise.then,`.then`>> や <<promise.catch,`.catch`>> によるchainは、
+一つ前のpromiseオブジェクトに対しての処理を行うようになっています。
+
+この場合の `then` は `Promise.resolve(42)` に対する処理となり、
+`onFulfilled` で returnされた結果を元に新たにpromiseオブジェクトが作られます。
