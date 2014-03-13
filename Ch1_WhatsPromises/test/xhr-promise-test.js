@@ -6,7 +6,7 @@ describe('#getURL', function () {
             var getURL = require("../src/xhr-promise");
             var URL = "http://localhost:3000/?status=200&body=text";
             getURL(URL).then(function (value) {
-                assert(value === "text");
+                assert.equal(value , "text");
                 done();
             }).catch(done);
         });

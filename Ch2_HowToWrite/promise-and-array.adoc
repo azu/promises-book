@@ -16,7 +16,7 @@
 [[promised-mapping]]
 [source,js]
 ----
-include::embed/promised-mapping.js[]
+include::embed/embed-promised-mapping.js[]
 ----
 
 === コールバックで複数の非同期処理

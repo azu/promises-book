@@ -5,7 +5,7 @@ var http = require('http');
 describe("multiple-xhr", function () {
     it("should ", function (done) {
         require("../src/multiple-xhr")(function (value) {
-            console.log(value);
+            assert.deepEqual(value, "test");
             done();
         });
     });

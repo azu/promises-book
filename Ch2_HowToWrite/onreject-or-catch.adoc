@@ -12,7 +12,7 @@
 
 [source,js]
 ----
-include::embed/then-throw-error.js[]
+include::embed/embed-then-throw-error.js[]
 ----
 
 `Promise.resolve(42)` というのは下記のコードのシンタックスシュガーで、

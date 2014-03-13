@@ -17,7 +17,7 @@ promiseオブジェクトを作る流れは以下のようになっています�
 [[getURL]]
 [source,js]
 ----
-include::embed/xhr-promise.js[]
+include::embed/embed-xhr-promise.js[]
 ----
 
 XHRで200で値が取得できた場合のみ `resolve` として、

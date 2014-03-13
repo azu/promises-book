@@ -11,6 +11,7 @@ gulp.task("embed", function () {
             var paths = path.dirname.split("/");
             paths.pop();
             path.dirname = paths.join("/") + "/embed";
+            path.basename = "embed-" + path.basename;
         }))
         .pipe(gulp.dest("./"));
 });

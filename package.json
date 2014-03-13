@@ -11,6 +11,9 @@
     "browser-test-start": "zuul --local 8080 --ui mocha-bdd -- test/test-helper.js Ch**/test/*.js",
     "deploy": "./_travis/deploy-gh-pages.sh"
   },
+  "directories": {
+    "test": "test/"
+  },
   "author": "azu",
   "license": "MIT",
   "bugs": {
@@ -30,6 +33,7 @@
     "gulp": "~3.5.5",
     "gulp-inlining-node-require": "0.0.2",
     "gulp-remove-use-strict": "0.0.2",
-    "gulp-rename": "~1.2.0"
+    "gulp-rename": "~1.2.0",
+    "intelli-espower-loader": "0.0.2"
   }
 }

@@ -4,6 +4,6 @@ describe('#asyncFunction', function () {
         require("../src/promise-workflow")().then(function (value) {
             assert(value == 'Async Hello world');
             done();
-        });
+        }).catch(done);
     });
 });
