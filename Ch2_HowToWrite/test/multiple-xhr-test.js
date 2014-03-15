@@ -1,7 +1,6 @@
 "use strict";
 var assert = require("power-assert");
 var sinon = require("sinon");
-var http = require('http');
 var xhr = require("../src/multiple-xhr");
 describe("multiple-xhr", function () {
     before(function () {

@@ -25,7 +25,6 @@ function parse(callback, error, value) {
         } catch (e) {
             callback(e, value);
         }
-
     }
 }
 var request = {
@@ -39,6 +38,7 @@ var request = {
 function main(callback) {
     var results = [];
     request.comment(function (error, value) {
+        console.log(value);
         if (error) {
             return callback(error, value);
         }
@@ -52,3 +52,6 @@ function main(callback) {
         });
     });
 }
+
+module.exports.main = main;
+module.exports.request = request;
