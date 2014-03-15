@@ -1,23 +1,15 @@
 == promiseと配列
 
-// TODO: Promiseのstateについて説明が先に合ったほうが楽
-
-先ほどの章では、promiseオブジェクトがresolve又はrejectされた時の処理は <<promise.then,`.then`>> と <<promise.catch,`.catch`>>を
+先ほどの章では、promiseオブジェクトがresolve又はrejectされた時の処理は <<promise.then,`.then`>> と <<promise.catch,`.catch`>> を
 使うことで行える事を学びました。
 
 一つのpromiseオブジェクトなら、そのpromiseオブジェクトに対して処理を書けば良いですが、
 複数のpromiseオブジェクトに処理を書く場合はどうすればよいでしょうか?
 
-複数のpromiseオブジェクトをまとめた方が扱いやすいので、promiseオブジェクトを配列に入れて管理する場合に、
-その配列のpromiseオブジェクトが全てresolveされた時に何かを行いたい場合等にどうするかという話ですね。
+例えば、A->B->C という感じで複数のXHR(非同期処理)を行った後に、何かをしたいという事例を考えてみます。
 
-ちょっとイメージしにくいので、複数の非同期処理を行う以下のようなコードを見てみたいと思います。
-
-[[promised-mapping]]
-[source,js]
-----
-include::embed/embed-promised-mapping.js[]
-----
+ちょっとイメージしにくいので、
+まずは、通常のコールバックスタイルを使って複数のXHRを行う以下のようなコードを見てみます。
 
 === コールバックで複数の非同期処理
 
@@ -27,10 +19,70 @@ include::embed/embed-promised-mapping.js[]
 include::embed/embed-multiple-xhr-callback.js[]
 ----
 
+上記のコードを実際に実行して、XHRで取得した結果を得るには次のようになると思います。
+
+[source,js]
+----
+main(function(error, results){
+    console.log(results);
+});
+----
+
+このコールバックスタイルでは幾つかの要素が出てきます。
+
+* `JSON.parse` をそのまま使うと例外となるケースがあるためラップした`jsonParse`関数を使う
+* 複数のXHRをそのまま書くとネストが深くなるため、`allRequest`というrequest関数を実行するものを利用する
+* コールバック関数には `callback(error,value)` というNode.jsでよく見られる引数を渡す
+
+`jsonParse` 関数を使うときに `bind` を使うことで、部分適応を使って無名関数を減らすようにしています。
+
+[source,js]
+----
+jsonParse.bind(null, callback);
+// は以下のように置き換えるのと殆ど同じ
+function(error,value){
+    jsonParse(callback, error, value);
+}
+----
+
+コールバックスタイルで書いたものを見ると以下のような点が気になります。
+
+* 明示的な例外のハンドリングが必要
+* ネストを深くしないために、requestを扱う関数が必要
+* コールバックがたくさんでてくる
+
+次は、`promise.then` を使って同様の事をしてみたいと思います。
+
 === promise.thenのみで複数の非同期処理
 
+先に述べておきますが、`Promise.all` というこのような処理に適切なものがあるため、
+ワザと `.then`の部分をクドく書いています。
 
-エラーが起きた時の動作に違いがありますが、どちらも理解しにくく面倒な部分が多いことがわかります。
+<<promise.then,`.then`>> を使った場合は、コールバックスタイルと完全に同等というわけではないですが以下のように書けると思います。
 
-このような複数の非同期処理をまとめて扱う `Promise.all` と `Promise.race` について学んでいきましょう。
+[source,js]
+----
+include::embed/embed-multiple-xhr.js[]
+----
 
+上記のコードを実際に実行して、XHRで取得した結果を得るには次のようになると思います。
+
+[source,js]
+----
+main().then(function (value) {
+    console.log(value);
+}).catch(function(error){
+    console.log(error);
+});
+----
+
+<<xhr-callback, コールバックスタイル>>と比較してみると次の事がわかります。
+
+* `JSON.parse` をそのまま使っている
+* `main()` はpromiseオブジェクトを返している
+* エラーハンドリングは返ってきたpromiseオブジェクトに対して書いている
+
+先ほども述べたように mainの `then` の部分がクドく感じます。
+
+このような複数の非同期処理をまとめて扱う `Promise.all` と `Promise.race` というものがあるので、
+それについて学んで行きましょう。
