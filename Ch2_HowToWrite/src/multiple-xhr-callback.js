@@ -14,7 +14,7 @@ function getURLCallback(URL, callback) {
     };
     req.send();
 }
-
+// <1> JSONパースを安全に行う
 function jsonParse(callback, error, value) {
     if (error) {
         callback(error, value);
@@ -27,6 +27,7 @@ function jsonParse(callback, error, value) {
         }
     }
 }
+// <2> XHRを叩いてリクエスト
 var request = {
     comment: function getComment(callback) {
         return getURLCallback('http://azu.github.io/promises-book/json/comment.json', jsonParse.bind(null, callback));
@@ -35,22 +36,24 @@ var request = {
         return getURLCallback('http://azu.github.io/promises-book/json/people.json', jsonParse.bind(null, callback));
     }
 };
-function main(callback) {
-    function requester(requests, callback, results) {
-        if (requests.length === 0) {
-            return callback(null, results);
-        }
-        var req = requests.shift();
-        req(function (error, value) {
-            if (error) {
-                callback(error, value);
-            } else {
-                results.push(value);
-                requester(requests, callback, results);
-            }
-        });
+// <3> 複数のXHRリクエストを行い、全部終わったらcallbackを呼ぶ
+function allRequest(requests, callback, results) {
+    if (requests.length === 0) {
+        return callback(null, results);
     }
-    requester([request.comment, request.people], callback, []);
+    var req = requests.shift();
+    req(function (error, value) {
+        if (error) {
+            callback(error, value);
+        } else {
+            results.push(value);
+            allRequest(requests, callback, results);
+        }
+    });
+}
+
+function main(callback) {
+    allRequest([request.comment, request.people], callback, []);
 }
 
 module.exports.main = main;

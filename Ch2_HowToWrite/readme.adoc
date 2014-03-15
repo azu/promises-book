@@ -9,5 +9,5 @@ Promisesの用意されたメソッドについての書き方やエラーハン
 - [ ] Promise.race
 - [ ] Promise.resolve - プロミスを受ける関数
 
-
+include::promise-and-array.adoc[]
 include::promise-all.adoc[]

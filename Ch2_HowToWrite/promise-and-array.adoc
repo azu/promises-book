@@ -21,6 +21,12 @@ include::embed/embed-promised-mapping.js[]
 
 === コールバックで複数の非同期処理
 
+[[xhr-callback]]
+[source,js]
+----
+include::embed/embed-multiple-xhr-callback.js[]
+----
+
 === promise.thenのみで複数の非同期処理
 
 
