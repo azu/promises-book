@@ -36,16 +36,6 @@ var request = {
         return getURLCallback('http://azu.github.io/promises-book/json/people.json', parse.bind(null, callback));
     }
 };
-function compose(fnA, callback, results) {
-    var fn = fnA.shift();
-    if (typeof fn === "function") {
-        fn(function (error, value) {
-            compose(fnA, callback, [error, value]);
-        });
-    } else {
-        callback.apply(null, results);
-    }
-}
 function main(callback) {
     var results = [];
     request.comment(function (error, value) {
