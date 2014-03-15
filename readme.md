@@ -1,4 +1,4 @@
-# Promises Book [![Build Status](https://travis-ci.org/azu/Promises-book.png)](https://travis-ci.org/azu/Promises-book)
+# Promises Book [![Build Status](https://travis-ci.org/azu/promises-book.png)](https://travis-ci.org/azu/promises-book)
 
 Promisesについての薄い電子書籍です
 
