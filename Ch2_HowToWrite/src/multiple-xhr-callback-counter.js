@@ -15,7 +15,7 @@ function getURLCallback(URL, callback) {
     req.send();
 }
 
-function jsonParse(callback, error, value) {
+function parse(callback, error, value) {
     if (error) {
         callback(error, value);
     } else {
@@ -29,28 +29,34 @@ function jsonParse(callback, error, value) {
 }
 var request = {
     comment: function getComment(callback) {
-        return getURLCallback('http://azu.github.io/promises-book/json/comment.json', jsonParse.bind(null, callback));
+        return getURLCallback('http://azu.github.io/promises-book/json/comment.json', parse.bind(null, callback));
     },
     people: function getPeople(callback) {
-        return getURLCallback('http://azu.github.io/promises-book/json/people.json', jsonParse.bind(null, callback));
+        return getURLCallback('http://azu.github.io/promises-book/json/people.json', parse.bind(null, callback));
     }
 };
 function main(callback) {
-    function requester(requests, callback, results) {
-        if (requests.length === 0) {
-            return callback(null, results);
-        }
-        var req = requests.shift();
-        req(function (error, value) {
+    function requester(requests, callback) {
+        var results = [];
+        var requestLength = results.length;
+
+        function handler(error, value) {
             if (error) {
-                callback(error, value);
-            } else {
-                results.push(value);
-                requester(requests, callback, results);
+                return callback(error, value);
             }
-        });
+            results.push(value);
+            if (results.length === requestLength) {
+                callback(null, results);
+            }
+        }
+
+        for (var i = 0; i < requests.length; i++) {
+            var req = requests[i];
+            req(handler);
+        }
     }
-    requester([request.comment, request.people], callback, []);
+
+    requester([request.comment, request.people], callback);
 }
 
 module.exports.main = main;
