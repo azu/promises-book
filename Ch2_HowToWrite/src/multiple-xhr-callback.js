@@ -15,12 +15,27 @@ function getURLCallback(URL, callback) {
     req.send();
 }
 
-function getComment(callback) {
-    return getURL('http://azu.github.io/promises-book/json/comment.json', callback);
+function parse(callback, error, value) {
+    if (error) {
+        callback(error, value);
+    } else {
+        try {
+            var result = JSON.parse(value);
+            callback(null, result);
+        } catch (e) {
+            callback(e, value);
+        }
+
+    }
 }
-function getPeople(callback) {
-    return getURL('http://azu.github.io/promises-book/json/people.json', callback);
-}
+var request = {
+    comment: function getComment(callback) {
+        return getURLCallback('http://azu.github.io/promises-book/json/comment.json', parse.bind(null, callback));
+    },
+    people: function getPeople(callback) {
+        return getURLCallback('http://azu.github.io/promises-book/json/people.json', parse.bind(null, callback));
+    }
+};
 function compose(fnA, callback, results) {
     var fn = fnA.shift();
     if (typeof fn === "function") {
@@ -32,5 +47,18 @@ function compose(fnA, callback, results) {
     }
 }
 function main(callback) {
-    compose([getComment, getPeople], callback);
+    var results = [];
+    request.comment(function (error, value) {
+        if (error) {
+            return callback(error, value);
+        }
+        results.push(value);
+        request.people(function (error, value) {
+            if (error) {
+                return callback(error, value);
+            }
+            results.push(value);
+            callback(null, results);
+        });
+    });
 }

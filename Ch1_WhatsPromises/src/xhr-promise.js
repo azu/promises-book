@@ -16,4 +16,4 @@ function getURL(URL) {
         req.send();
     });
 }
-module.exports = getURL;
+module.exports.getURL = getURL;

@@ -1,24 +1,25 @@
 "use strict";
-var getURL = require("../../Ch1_WhatsPromises/src/xhr-promise");
-function getComment() {
-    return getURL("http://azu.github.io/promises-book/json/comment.json");
-}
-function getPeople() {
-    return getURL("http://azu.github.io/promises-book/json/people.json");
-}
-var results = [];
-function recordValue(value) {
-    results.push(value);
-}
-function main(callback) {
-    getComment().then(recordValue)
-        .then(getPeople)
-        .then(recordValue)
-        .then(function () {
-            callback(results);
-        }).catch(function (error) {
-            console.log(error);
-        });
+var getURL = require("../../Ch1_WhatsPromises/src/xhr-promise").getURL;
+var request = {
+    comment: function getComment() {
+        return getURL('http://azu.github.io/promises-book/json/comment.json').then(JSON.parse);
+    },
+    people: function getPeople() {
+        return getURL('http://azu.github.io/promises-book/json/people.json').then(JSON.parse);
+    }
+};
+function main() {
+    function recordValue(results, value) {
+        results.push(value);
+        return results;
+    }
+
+    var pushValue = recordValue.bind(null, []);
+    return request.comment()
+        .then(pushValue)
+        .then(request.people)
+        .then(pushValue);
 }
 
-module.exports = main;
+module.exports.main = main;
+module.exports.request = request;
