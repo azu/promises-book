@@ -1,8 +1,30 @@
 == Promise.all
 
+先ほどの複数のXHRの結果をまとめたものを取得する処理は、 <<Promise.all, `Promise.all`>> を使うと次のように書くことが出来ます。
 
-// XHR を例にしたい
+[source,js]
+----
+include::embed/embed-promise-all-xhr.js[]
+----
 
+実行方法は <<xhr-promise, 前回のもの>> と同じで以下のようにして実行出来ます。
+
+[source,js]
+----
+main().then(function (value) {
+    console.log(value);
+}).catch(function(error){
+    console.log(error);
+});
+----
+
+<<Promise.all, `Promise.all`>> を使うことで以下のような違いがあることがわかります。
+
+* mainの処理がスッキリしている
+* Promise.all は promiseオブジェクトの配列を扱っている
+
+<<Promise.all, `Promise.all`>> は 配列を受け取り、
+その配列に入っているpromiseオブジェクトが全てresolveされた時に、次の`.then`を呼び出します。
 
 
 [source,js]
