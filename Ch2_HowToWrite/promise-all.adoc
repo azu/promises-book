@@ -2,6 +2,9 @@
 
 
 // XHR を例にしたい
+
+
+
 [source,js]
 ----
 include::embed/embed-promise-all.js[]
