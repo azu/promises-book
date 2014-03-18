@@ -2,6 +2,8 @@
 
 Promisesについての薄い電子書籍です
 
+[http://azu.github.io/promises-book/](http://azu.github.io/promises-book/ "Promises book") から閲覧することが出来ます。
+
 ## Installation
 
 Asciidocを使い書かれています。
@@ -15,6 +17,8 @@ open index.html
 ```
 
 ## Contributing
+
+[CONTRIBUTE.md](CONTRIBUTE.md "CONTRIBUTE.md") も参考にして下さい
 
 1. Fork it!
 2. Create your feature branch: `git checkout -b my-new-feature`
