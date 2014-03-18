@@ -2,6 +2,12 @@
 
 先ほどの複数のXHRの結果をまとめたものを取得する処理は、 <<Promise.all, `Promise.all`>> を使うと次のように書くことが出来ます。
 
+<<Promise.all, `Promise.all`>> は 配列を受け取り、
+その配列に入っているpromiseオブジェクトが全てresolveされた時に、次の`.then`を呼び出します。
+
+下記の例では、promiseオブジェクトはXHRによる通信を抽象化したオブジェクトといえるので、
+全ての通信が完了(resolveまたはreject)された時に、次の`.then`が呼び出されます。
+
 [source,js]
 ----
 include::embed/embed-promise-all-xhr.js[]
@@ -23,11 +29,54 @@ main().then(function (value) {
 * mainの処理がスッキリしている
 * Promise.all は promiseオブジェクトの配列を扱っている
 
-<<Promise.all, `Promise.all`>> は 配列を受け取り、
-その配列に入っているpromiseオブジェクトが全てresolveされた時に、次の`.then`を呼び出します。
+[source,js]
+Promise.all([request.comment(), request.people()]);
 
+というように処理を書いた場合は、`request.comment()` と `request.people()` は同時に実行されますが、
+それぞれのpromiseの結果(resolve,rejectで渡される値)は、<<Promise.all, `Promise.all`>>に渡した配列の順番となります。
+
+つまり、この場合に次の`.then`に渡される結果の配列は [comment, people]の順番になることが保証されています。
 
 [source,js]
 ----
-include::embed/embed-promise-all.js[]
+main().then(function (results) {
+    results; // [comment, people]の順番
+}).
 ----
+
+<<Promise.all, `Promise.all`>> に渡したpromiseオブジェクトが同時に実行されてるのは、
+次のようなタイマーを使った例を見てみると分かりやすいです。
+
+[source,js]
+----
+include::embed/embed-promise-all-timer.js[]
+----
+
+`promisedMapping` 数値の配列を渡すと、
+数値をそのまま`setTimeout`に設定したpromiseオブジェクトの配列を返す関数です。
+
+[source,js]
+promisedMapping([1, 2, 4, 8, 16, 32]);
+
+この場合は、1,2,4,8,16,32 ms後にそれぞれresolveされるpromiseオブジェクトの配列を作って返します。
+
+つまり、このpromiseオブジェクトの配列がすべてresolveされるには最低でも32msかかることがわかります。
+実際に<<Promise.all, `Promise.all`>> で処理してみると 約32msかかってる事がわかると思います。
+
+この事から、<<Promise.all, `Promise.all`>> が一つづつ順番にやるわけではなく、
+渡されたpromiseオブジェクトの配列を並列に実行してるという事がわかると思います。
+
+[NOTE]
+仮に逐次的に行われていた場合は、
+1ms後 -> 2ms後 -> 4ms後 -> ... -> 32ms後 となるので、
+全て完了するまで64ms程度かかる計算になる
+
+[TIP]
+====
+逐次的に実行した場合は、 <<xhr-promise>> で紹介したような、
+`.then` を重ねていくような書き方が必要になる。
+
+多くのライブラリでは、同様の機能をするメソッドが用意されているが、以下のような感じで書くことが出来る
+
+- [ ] Promise.reduce 的な機能の紹介
+====

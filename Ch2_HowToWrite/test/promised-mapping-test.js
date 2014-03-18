@@ -15,14 +15,10 @@ describe("#promisedMapping", function () {
         var isPromiseInstance = function (promise) {
             assert(promise instanceof Promise);
         };
-        it("should return [p(1),p(2),p(4)]", function (done) {
+        it("should return [p(1),p(2),p(4)]", function () {
             var promiseMap = promisedMapping([1, 2, 4]);
-            promiseMap.forEach(isPromiseInstance);
-            Promise.all(promiseMap).then(function (values) {
+            return Promise.all(promiseMap).then(function (values) {
                 assert.deepEqual(values, [1, 2, 4]);
-                done();
-            }).catch(function(error){
-                done();
             });
         });
     });
