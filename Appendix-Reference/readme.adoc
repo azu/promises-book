@@ -6,3 +6,26 @@ promise.then(onFulfilled, onRejected)
 
 promiseオブジェクトがresolve 又は rejectされた時に呼ばれるメソッド
 
+[[promise.catch]]
+[source,js]
+promise.catch(onRejected)
+
+[[Promise.all]]
+[source,js]
+Promise.all(promiseArray)
+
+[[Promise.race]]
+[source,js]
+Promise.all(promiseArray)
+
+[[Promise.resolve]]
+[source,js]
+Promise.resolve(value)
+
+[[Promise.reject]]
+[source,js]
+Promise.rejct(value)
+
+
+
+

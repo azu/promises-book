@@ -40,7 +40,7 @@ Promise.all([request.comment(), request.people()]);
 [source,js]
 ----
 main().then(function (results) {
-    results; // [comment, people]の順番
+    console.log(results); // [comment, people]の順番
 }).
 ----
 
@@ -68,7 +68,7 @@ promisedMapping([1, 2, 4, 8, 16, 32]);
 
 [NOTE]
 仮に逐次的に行われていた場合は、
-1ms後 -> 2ms後 -> 4ms後 -> ... -> 32ms後 となるので、
+1ms待機 -> 2ms待機 -> 4ms待機 -> ... -> 32ms待機 となるので、
 全て完了するまで64ms程度かかる計算になる
 
 [TIP]
