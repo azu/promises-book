@@ -6,6 +6,8 @@
 :toc2:
 
 ++++
+<iframe src="http://ghbtns.com/github-btn.html?user=azu&repo=promises-book&type=fork&count=true&size=large"
+  allowtransparency="true" frameborder="0" scrolling="0" width="120" height="30"></iframe>
 <iframe src="http://ghbtns.com/github-btn.html?user=azu&repo=promises-book&type=watch&count=true&size=large"
   allowtransparency="true" frameborder="0" scrolling="0" width="170" height="30"></iframe>
 ++++
