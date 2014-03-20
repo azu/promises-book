@@ -6,6 +6,6 @@ Promisesとは何かを初めて簡単な概要の紹介です。
 
 include::what_is_promise.adoc[]
 
-include::promise-overview.adoc[]
+include::promise_overview.adoc[]
 
 include::writing_promises.adoc[]
