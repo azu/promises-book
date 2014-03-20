@@ -1,9 +1,15 @@
-= Promises book
+= Promises Book
 :Author:      azu(@azu)
 :lang:        ja
 :icons:       font
 :numbered:
 :toc2:
+
+++++
+<iframe src="http://ghbtns.com/github-btn.html?user=azu&repo=promises-book&type=watch&count=true&size=large"
+  allowtransparency="true" frameborder="0" scrolling="0" width="170" height="30"></iframe>
+++++
+
 
 // 各章はH1から始めているので、一つ下げる
 :leveloffset: 1
