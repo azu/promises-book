@@ -22,7 +22,7 @@ promise.then(onFulfilled, onRejected)
 
 resolve(解決)された時::
     `onFulfilled` が呼ばれる
-reject(棄却)::
+reject(棄却)された時::
     `onRejected`  が呼ばれる
 
 `onFulfilled`、`onRejected` どちらもオプショナルな引数となり、
@@ -72,3 +72,51 @@ asyncFunction().then(function (value) {
     console.log(error);
 });
 ----
+
+=== Promisesの状態 [[promise-states]]
+
+Promisesの処理の流れが簡単にわかった所で、少しPromisesの状態について整理したいと思います。
+
+`new Promise` でインスタンス化したpromiseオブジェクトには以下の3つの状態が存在します。
+
+"has-resolution" - Fulfilled::
+    resolve(解決)された時。この時 `onFulfilled` が呼ばれる
+"has-rejection"  - Rejected::
+    reject(棄却)された時。この時 `onRejected`  が呼ばれる
+"unresolved" - Pending::
+    resolveまたはrejectではない時。つまりpromiseオブジェクトが作成された初期状態等が該当する
+
+見方ですが、
+左が http://people.mozilla.org/~jorendorff/es6-draft.html#sec-promise-objects[ES6Promises]で定められている名前で、
+右が http://promises-aplus.github.io/promises-spec/[Promises/A+]で登場する状態の名前になっています。
+
+基本的にこの状態をプログラムで直接触る事はないため、名前自体は余り気にしなくても問題ないです。
+この文章では、 http://promises-aplus.github.io/promises-spec/[Promises/A+] の __Fulfilled__ 、__Rejected__ 、__Pending__
+を用いて解説していきます。
+
+[[INFO]]
+====
+http://people.mozilla.org/~jorendorff/es6-draft.html#sec-promise-objects[ECMAScript Language Specification ECMA-262 6th Edition – DRAFT] では `[[PromiseStatus]]` という内部定義によって状態が定められています。
+`[[PromiseStatus]]` にアクセスするユーザーAPIは用意されていないため、基本的には知る方法はありません。
+====
+
+3つの状態を見たところで、既にこの章で全ての状態が出てきていることがわかります。
+
+promiseオブジェクトの状態は、一度__Pending__から__Fulfilled__や__Rejected__になると、
+そのpromiseオブジェクトの状態はそれ以降変化することはなくなります。
+
+つまり、PromisesはEvent等とは違い、`.then` 等で登録した関数が呼ばれるのは1回限りという事が明確になっています。
+
+また、__Fulfilled__と__Rejected__のどちらかの状態であることを**Settled**(不変の)と表現することがあります。
+
+Settled::
+    resolve(解決) または reject(棄却) された時。
+
+__Pedding__と__Settled__が対となる関係であると考えると、Promisesの状態の種類がシンプルであることがわかると思います。
+
+[[INFO]]
+====
+https://speakerdeck.com/kerrick/javascript-promises-thinking-sync-in-an-async-world[JavaScript Promises - Thinking Sync in an Async World // Speaker Deck]
+というスライドではPromisesの状態遷移について分かりやすく書かれています。
+====
+
