@@ -23,6 +23,7 @@ include::embed/embed-then-throw-error.js[]
 new Promise(function(resolve){
     resolve(42);
 });
+----
 
 つまりこの場合は、`theError(42)` という感じで呼び出すことになります。
 
