@@ -14,3 +14,6 @@ include::promise-and-array.adoc[]
 
 // Promise.all
 include::promise-all.adoc[]
+
+// Promise.race
+include::promise-race.adoc[]

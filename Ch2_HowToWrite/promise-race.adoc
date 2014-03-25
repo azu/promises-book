@@ -1,0 +1,40 @@
+== Promise.race
+
+<<Promise.all, `Promise.all`>> と同様に複数のpromiseオブジェクトを扱う<<Promise.race, `Promise.race`>>を見てみましょう。
+
+使い方はPromise.allと同様で、promiseオブジェクトの配列を渡します。
+
+Promise.allが渡した全てのpromiseが解決状態になるまで次の処理を待ちましたが、
+Promise.raceは、どれか一つでもpromiseが解決状態になったら次の処理を実行します。
+
+Promise.allの時と同じタイマーを使った例を見てみましょう
+
+[source,js]
+----
+include::embed/embed-promise-race.js[]
+----
+
+上記のコードだと、1ms後、32ms後、64ms後、128ms後にそれぞれpromiseオブジェクトが解決されますが、
+一番最初に1msのものがresolveされた時点で、`.then` が呼ばれ、`value`に渡される値も`resolve(1)`なので、1となります。
+
+最初に解決したpromiseオブジェクト以外は、その時点で呼ばれるのかを見てみましょう
+
+[source,js]
+----
+include::embed/embed-promise-race-other.js[]
+----
+
+先ほどのコードに `console.log` をそれぞれ追加しただけの内容です。
+
+実行してみると、winnter/loser どちらの`setTimeout` の中身が実行されて `console.log` がそれぞれ出力されている事がわかります。
+
+つまり、<<Promise.race, `Promise.race`>>では、
+一番最初のpromiseがresolveしても他のpromiseがキャンセルされるわけでは無いという事がわかります。
+
+[NOTE]
+Promisesの仕様には、キャンセルという概念はありません。
+必ず、resolve or rejectによる状態の解決が起こることが前提となっています。
+つまり、状態が固定されてしまうかもしれない処理には不向きであると言えます。
+ライブラリによってはキャンセルを行う仕組みが用意されている場合があります。
+
+// TODO : 状態がpenddingで止まってしまう場合の処理はおかしいということを例示したい
