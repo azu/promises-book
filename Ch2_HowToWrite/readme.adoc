@@ -5,8 +5,8 @@ Promisesの用意されたメソッドについての書き方やエラーハン
 
 - [x] Promise.then
 - [ ] エラーハンドリングの基礎
-- [ ] Promise.all
-- [ ] Promise.race
+- [x] Promise.all
+- [s] Promise.race
 - [ ] Promise.resolve - プロミスを受ける関数
 
 // promise.then
