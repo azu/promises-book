@@ -16,7 +16,7 @@ Promise.all(promiseArray)
 
 [[Promise.race]]
 [source,js]
-Promise.all(promiseArray)
+Promise.race(promiseArray)
 
 [[Promise.resolve]]
 [source,js]
