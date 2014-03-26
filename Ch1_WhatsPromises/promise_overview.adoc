@@ -90,14 +90,14 @@ Promisesの処理の流れが簡単にわかった所で、少しPromisesの状�
 左が http://people.mozilla.org/~jorendorff/es6-draft.html#sec-promise-objects[ES6Promises]で定められている名前で、
 右が http://promises-aplus.github.io/promises-spec/[Promises/A+]で登場する状態の名前になっています。
 
+基本的にこの状態をプログラムで直接触る事はないため、名前自体は余り気にしなくても問題ないです。
+この文章では、 http://promises-aplus.github.io/promises-spec/[Promises/A+] の __Pending__、__Fulfilled__ 、__Rejected__
+を用いて解説していきます。
+
 [[promise-states]]
 .promise states
 image::img/promise-states.png[promise-states]
 
-
-基本的にこの状態をプログラムで直接触る事はないため、名前自体は余り気にしなくても問題ないです。
-この文章では、 http://promises-aplus.github.io/promises-spec/[Promises/A+] の __Pending__、__Fulfilled__ 、__Rejected__
-を用いて解説していきます。
 
 [[INFO]]
 ====
@@ -117,12 +117,13 @@ promiseオブジェクトの状態は、一度__Pending__から__Fulfilled__や_
 Settled::
     resolve(解決) または reject(棄却) された時。
 
-__Pedding__と__Settled__が対となる関係であると考えると、Promisesの状態の種類がシンプルであることがわかると思います。
+__Pedding__と__Settled__が対となる関係であると考えると、Promisesの状態の種類/遷移がシンプルであることがわかると思います。
+
+このpromiseオブジェクトの状態が変化した時に、一度だけ呼ばれる関数を登録するのが `.then` といったメソッドとなるわけです。
 
 [[INFO]]
 ====
 https://speakerdeck.com/kerrick/javascript-promises-thinking-sync-in-an-async-world[JavaScript Promises - Thinking Sync in an Async World // Speaker Deck]
 というスライドではPromisesの状態遷移について分かりやすく書かれています。
 ====
-
 
