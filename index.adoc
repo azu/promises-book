@@ -1,4 +1,4 @@
-= Promises Book
+= [WIP]Promises Book
 :Author:      azu(@azu)
 :lang:        ja
 :icons:       font
@@ -11,6 +11,9 @@
 <iframe src="http://ghbtns.com/github-btn.html?user=azu&repo=promises-book&type=watch&count=true&size=large"
   allowtransparency="true" frameborder="0" scrolling="0" width="170" height="30"></iframe>
 ++++
+
+[IMPORTANT]
+Working on the book. Contributingは https://github.com/azu/promises-book[Github] から
 
 
 // 各章はH1から始めているので、一つ下げる
