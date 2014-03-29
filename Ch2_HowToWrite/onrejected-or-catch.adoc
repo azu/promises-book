@@ -15,18 +15,6 @@
 include::embed/embed-then-throw-error.js[]
 ----
 
-`Promise.resolve(42)` というのは下記のコードのシンタックスシュガーで、
-結果的にすぐに`resolve(42)`と解決されて、次のthenの`onFulfilled`に設定されたコールバックに`42`という値を渡します。
-
-[source,js]
-----
-new Promise(function(resolve){
-    resolve(42);
-});
-----
-
-つまりこの場合は、`theError(42)` という感じで呼び出すことになります。
-
 このコード例では、(必ずしも悪いわけではないですが)良くないパターンの `badMain` と
 ちゃんとエラーハンドリングが行える `goodMain` があります。
 

@@ -3,11 +3,11 @@
 
 Promisesの用意されたメソッドについての書き方やエラーハンドリングについて学びます。
 
-- [x] Promise.then
+- [x] promise.then
 - [x] Promise.all
-- [s] Promise.race
+- [x] Promise.race
 - [ ] Promise.resolve - プロミスを受ける関数
-- [ ] エラーハンドリングの基礎
+- [x] エラーハンドリングの基礎
 
 // promise.then
 include::promise-and-array.adoc[]

@@ -1,0 +1,74 @@
+== new Promiseのショートカット
+
+一般に `new Promise()` を使う事でpromiseオブジェクトを生成しますが、
+それ以外にもpromiseオブジェクトを生成する方法があります。
+
+この節では、<<Promise.resolve, `Promise.resolve`>> と <<Promise.reject, `Promise.reject`>> について学びたいと思います。
+
+=== Promise.resolve
+
+<<Promise.resolve, `Promise.resolve(value)`>> という静的メソッドは、
+実は `new Promise()` のショートカットとなるメソッドです。
+
+例えば、 `Promise.resolve(42)` というのは下記のコードのシンタックスシュガーです。
+
+[source,js]
+----
+new Promise(function(resolve){
+    resolve(42);
+});
+----
+
+結果的にすぐに`resolve(42)`と解決されて、次のthenの`onFulfilled`に設定された関数に`42`という値を渡します。
+
+<<Promise.resolve, `Promise.resolve(value)`>>の返す値も同様にpromiseオブジェクトなので、
+以下のように `.then` を使った処理を書くことが出来ます。
+
+[source,js]
+----
+var promise = Promise.resolve(42);
+promise.then(function(value){
+    console.log(value);
+});
+----
+
+
+==== ユースケース
+
+<<Promise.resolve, `Promise.resolve(value)`>> はどういう時に使用するのかというと、
+promiseオブジェクトではない値を受け取る関数を書くときに等に利用できます。
+
+
+
+
+[INFO]
+======
+
+<<Promise.resolve, `Promise.resolve(value)`>> 等を使った場合、
+promiseオブジェクトがすぐにresolveされるので、`.then` に登録した関数も同期的に処理が行われるように錯覚してしまいます。
+
+しかし、実際には`.then`に登録した関数が呼ばれるのは、非同期のタイミングとなります。
+
+[source,js]
+----
+var promise = new Promise(function(resolve){
+    console.log("inner promise");// <1>
+    resolve(42);
+});
+promise.then(function(value){
+    console.log(value); // <3>
+});
+console.log("outer promise");// <2>
+----
+
+上記のコードは数値の順に呼ばれるため、出力結果は以下のようになります。
+
+----
+inner promise
+outer promise
+42
+----
+
+
+
+======
