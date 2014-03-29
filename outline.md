@@ -3,17 +3,18 @@
 ## What is Promises?
 
 - Promisesとは
-- Promises API の概要
-- Promisesの書き方
+- [x] Promises API の概要
+- [x] Promisesの書き方
 
 ## How to use Promises?
 
-- `Promise.all`
-- promiseオブジェクトを受ける関数を書いてみよう
-- コールバック関数をpromisefyしてみよう
-- Promisesのエラーハンドリング
-  - `then` でエラーが起きたらどうなるの?
-- Promisesのテストを書いてみよう
+- [x] `Promise.all`
+- [x] `Promise.race`
+- [x] `Promise.resolve`
+    - promiseオブジェクトを受ける関数を書いてみよう
+- [ ] Promisesのエラーハンドリング
+  - [x] `then` でエラーが起きたらどうなるの?
+- [ ] Promisesのテストを書いてみよう
 
 ## Advanced Promises
 
@@ -25,6 +26,18 @@
   - Deferredのエラーハンドリング?
 - Promises/Deferredのアンチパターン
 - [Revealing Constructor Pattern](http://domenic.me/2014/02/14/the-revealing-constructor-pattern/ "Revealing Constructor Pattern")って?
+
+## Reference
+
+* APIのリファレンス
+
+各文章からはAPIのリンクとして利用する
+
+## 用語集
+
+幾つかPromise(s?)な用語を意識してるので入れておく。
+
+ただしこれが正しいなんて保証はない…
 
 ### コラム
 
