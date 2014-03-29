@@ -10,8 +10,11 @@
 
 - [x] `Promise.all`
 - [x] `Promise.race`
-- [x] `Promise.resolve`
-    - promiseオブジェクトを受ける関数を書いてみよう
+- [ ] `Promise.resolve`
+    - [x] promiseオブジェクトを受ける関数を書いてみよう
+    - ユースケース
+- [ ] `Promise.reject`
+    - ユースケース?
 - [ ] Promisesのエラーハンドリング
   - [x] `then` でエラーが起きたらどうなるの?
 - [ ] Promisesのテストを書いてみよう
@@ -29,7 +32,7 @@
 
 ## Reference
 
-* APIのリファレンス
+- [ ] APIのリファレンス
 
 各文章からはAPIのリンクとして利用する
 
