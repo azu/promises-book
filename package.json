@@ -12,7 +12,7 @@
     "deploy": "./_travis/deploy-gh-pages.sh"
   },
   "directories": {
-    "test": "test/"
+    "test": "Ch*/test/"
   },
   "author": "azu",
   "license": "MIT",
@@ -24,17 +24,17 @@
     "w3c-xmlhttprequest": "~1.1.0"
   },
   "devDependencies": {
-    "power-assert": "~0.3.1",
-    "mocha": "~1.18.0",
-    "http-echo": "0.0.2",
-    "nock": "~0.27.2",
-    "remove-use-strict": "0.0.5",
-    "inlining-node-require": "0.0.5",
     "gulp": "~3.5.5",
     "gulp-inlining-node-require": "0.0.2",
     "gulp-remove-use-strict": "0.0.2",
     "gulp-rename": "~1.2.0",
-    "intelli-espower-loader": "0.0.2",
+    "http-echo": "0.0.2",
+    "inlining-node-require": "0.0.5",
+    "intelli-espower-loader": "0.0.5",
+    "mocha": "~1.18.0",
+    "nock": "~0.27.2",
+    "power-assert": "~0.3.1",
+    "remove-use-strict": "0.0.5",
     "sinon": "^1.9.0"
   }
 }

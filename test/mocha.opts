@@ -1,1 +1,1 @@
---require test/test-helper.js test/node-helper.js
+--require intelli-espower-loader test/test-helper.js test/node-helper.js
