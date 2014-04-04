@@ -1,5 +1,5 @@
 "use strict";
-function addDelay(promise, ms) {
+function addDelay(value, ms) {
     // promiseオブジェクトを受け取ることを前提とした関数
     function addDelayToPromise(promise, ms) {
         return new Promise(function (resolve) {
@@ -9,9 +9,9 @@ function addDelay(promise, ms) {
         });
     }
 
-    return Promise.resolve(promise).then(function (value) {
+    return Promise.resolve(value).then(function (promise) {
         // `value` は必ずpromiseオブジェクトとなる
-        return addDelayToPromise(value, ms);
+        return addDelayToPromise(promise, ms);
     });
 }
 module.exports.addDelay = addDelay;

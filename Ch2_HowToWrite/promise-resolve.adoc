@@ -26,8 +26,7 @@ new Promise(function(resolve){
 
 [source,js]
 ----
-var promise = Promise.resolve(42);
-promise.then(function(value){
+Promise.resolve(42).then(function(value){
     console.log(value);
 });
 ----
@@ -38,11 +37,40 @@ promise.then(function(value){
 <<Promise.resolve, `Promise.resolve(value)`>> はどういう時に使用するのかというと、
 promiseオブジェクトではない値を受け取る関数を書くときに等に利用できます。
 
+次のようなコードを見てみましょう。
+
+[source,js]
+----
+include::embed/embed-promise-resolve-use.js[]
+----
+
+`addDelay(value, ms)` は指定したms後に`value`の値がresolveされる関数です。
+
+簡単な実行例を見てみましょう
+
+[source,js]
+---
+addDelay("遅延してresolveされる値", 1).then(function (value) {
+    console.log(value);// => "遅延してresolveされる値"
+}).catch(function (error) {
+    console.error(error);
+});
 
 
+addDelay(Promise.resolve(42), 1).then(function (value) {
+    console.log(value); // => 42
+}).catch(function (error) {
+    console.error(error);
+});
+---
 
-[INFO]
-======
+//  TODO: `Promise.resolve` のもっといいユースケース
+
+`addDelay` は第一引数に値を渡しますが、この値が何であってもpromiseオブジェクトとして
+扱えるように内部でPromise.resolveしています。
+
+
+=== コラム: Promiseは常に非同期?
 
 <<Promise.resolve, `Promise.resolve(value)`>> 等を使った場合、
 promiseオブジェクトがすぐにresolveされるので、`.then` に登録した関数も同期的に処理が行われるように錯覚してしまいます。
@@ -61,13 +89,10 @@ promise.then(function(value){
 console.log("outer promise");// <2>
 ----
 
-上記のコードは数値の順に呼ばれるため、出力結果は以下のようになります。
+上記のコードは数値の順に呼ばれるため、出力結果は以下のように非同期で呼ばれていることがわかります。
 
 ----
 inner promise
 outer promise
 42
 ----
-
-======
-
