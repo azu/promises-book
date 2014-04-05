@@ -8,7 +8,7 @@
 === Promise.resolve
 
 <<Promise.resolve, `Promise.resolve(value)`>> という静的メソッドは、
-実は `new Promise()` のショートカットとなるメソッドです。
+`new Promise()` のショートカットとなるメソッドです。
 
 例えば、 `Promise.resolve(42)` というのは下記のコードのシンタックスシュガーです。
 
@@ -32,67 +32,25 @@ Promise.resolve(42).then(function(value){
 ----
 
 
-==== ユースケース
+=== ThenableとPromise.resolve
 
-<<Promise.resolve, `Promise.resolve(value)`>> はどういう時に使用するのかというと、
-promiseオブジェクトではない値を受け取る関数を書くときに等に利用できます。
+<<Promise.resolve,Promise.resolve>>は`new Promise()`のショートカットとして使う事が出来るのは、
+テストコードを書く際にも活用できますが、もう一つ大きな特徴を持っています。
 
-次のようなコードを見てみましょう。
+<<ES6 Promises>>には<<Thenable,Thenable>>という概念があり、
+thenableとは簡単にいえばpromiseっぽいオブジェクトの事を言います。
+`.length`を持つけど配列じゃないものをArray likeとかというのと同じような話となります。
 
-[source,js]
-----
-include::embed/embed-promise-resolve-use.js[]
-----
+<<Thenable,thenable>>の場合は`.then`というメソッドを持ってるオブジェクトのことを言います。
 
-`addDelay(value, ms)` は指定したms後に`value`の値がresolveされる関数です。
+////
 
-簡単な実行例を見てみましょう
-
-[source,js]
----
-addDelay("遅延してresolveされる値", 1).then(function (value) {
-    console.log(value);// => "遅延してresolveされる値"
-}).catch(function (error) {
-    console.error(error);
-});
-
-
-addDelay(Promise.resolve(42), 1).then(function (value) {
-    console.log(value); // => 42
-}).catch(function (error) {
-    console.error(error);
-});
----
-
-//  TODO: `Promise.resolve` のもっといいユースケース
-
-`addDelay` は第一引数に値を渡しますが、この値が何であってもpromiseオブジェクトとして
-扱えるように内部でPromise.resolveしています。
-
-
-=== コラム: Promiseは常に非同期?
-
-<<Promise.resolve, `Promise.resolve(value)`>> 等を使った場合、
-promiseオブジェクトがすぐにresolveされるので、`.then` に登録した関数も同期的に処理が行われるように錯覚してしまいます。
-
-しかし、実際には`.then`に登録した関数が呼ばれるのは、非同期のタイミングとなります。
+どういうものがthenableなのかというと、分かりやすい例では
+https://api.jquery.com/jQuery.ajax/[jQuery.ajax()]の返り値もthenableです。
 
 [source,js]
-----
-var promise = new Promise(function(resolve){
-    console.log("inner promise");// <1>
-    resolve(42);
-});
-promise.then(function(value){
-    console.log(value); // <3>
-});
-console.log("outer promise");// <2>
-----
+$.ajax('/json/comment.json');// => `.then`を持つオブジェクト
 
-上記のコードは数値の順に呼ばれるため、出力結果は以下のように非同期で呼ばれていることがわかります。
+////
 
-----
-inner promise
-outer promise
-42
-----
+このthenableなオブジェクトを<<Promise.resolve,Promise.resolve>>ではpromiseオブジェクトにすることが出来ます。

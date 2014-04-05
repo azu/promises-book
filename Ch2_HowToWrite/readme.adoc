@@ -22,5 +22,8 @@ include::promise-race.adoc[]
 // Promise.resolve
 include::promise-resolve.adoc[]
 
+// column
+include::column-promise-resolve.adoc[]
+
 // エラーハンドリング
 include::onrejected-or-catch.adoc[]

@@ -1,0 +1,26 @@
+== コラム: Promiseは常に非同期?
+
+<<Promise.resolve, `Promise.resolve(value)`>> 等を使った場合、
+promiseオブジェクトがすぐにresolveされるので、`.then` に登録した関数も同期的に処理が行われるように錯覚してしまいます。
+
+しかし、実際には`.then`に登録した関数が呼ばれるのは、非同期のタイミングとなります。
+
+[source,js]
+----
+var promise = new Promise(function(resolve){
+    console.log("inner promise");// <1>
+    resolve(42);
+});
+promise.then(function(value){
+    console.log(value); // <3>
+});
+console.log("outer promise");// <2>
+----
+
+上記のコードは数値の順に呼ばれるため、出力結果は以下のように非同期で呼ばれていることがわかります。
+
+----
+inner promise
+outer promise
+42
+----

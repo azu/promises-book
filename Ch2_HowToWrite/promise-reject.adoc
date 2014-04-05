@@ -1,0 +1,19 @@
+== Promise.reject
+
+<<Promise.reject, `Promise.reject(error)`>>は
+<<Promise.resolve, `Promise.resolve(value)`>> と同じ静的メソッドで`new Promise()`のショートカットとなるメソッドです。
+
+
+例えば、 `Promise.reject(new Error("エラー"))` というのは下記のコードのシンタックスシュガーです。
+
+[source,js]
+----
+new Promise(function(resolve,reject){
+    reject(new Error("エラー"));
+});
+----
+
+返り値のpromiseオブジェクトに対して、thenの`onRejected`に設定された関数にエラーオブジェクトが渡ります。
+
+<<Promise.resolve, `Promise.resolve(value)`>> との違いは resolveではなくrejectが呼ばれるという点だけで、
+他は全く同じアルゴリズムとなります。
