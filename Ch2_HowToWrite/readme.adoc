@@ -22,6 +22,9 @@ include::promise-race.adoc[]
 // Promise.resolve
 include::promise-resolve.adoc[]
 
+// Promise.reject
+include::promise-reject.adoc[]
+
 // column
 include::column-promise-resolve.adoc[]
 

@@ -15,5 +15,12 @@ new Promise(function(resolve,reject){
 
 返り値のpromiseオブジェクトに対して、thenの`onRejected`に設定された関数にエラーオブジェクトが渡ります。
 
-<<Promise.resolve, `Promise.resolve(value)`>> との違いは resolveではなくrejectが呼ばれるという点だけで、
-他は全く同じアルゴリズムとなります。
+[source,js]
+----
+Promise.reject(new Error("BOOM!")).catch(function(error){
+    console.log(error);
+});
+----
+
+<<Promise.resolve, `Promise.resolve(value)`>> との違いは resolveではなくrejectが呼ばれるという点で、
+テストコードやデバッグ、一貫性を保つために利用する機会などがあるかもしれません。
