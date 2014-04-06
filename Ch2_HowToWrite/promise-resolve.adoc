@@ -78,7 +78,7 @@ image::img/notification-dialog.png[Notificationの許可ダイアログ]
 Notificationのダイアログの選択肢はFirefoxだと永続かセッション限り等で4種類ありますが、
 最終的に`Notification.permission`に入ってくる値は許可("granted")か不許可("denied")の2種類です。
 
-許可ダイアログは`Notification.requestPermission`を実行するとひょうじされ、
+許可ダイアログは`Notification.requestPermission`を実行すると表示され、
 ユーザーが選択した内容が`status`に渡されます。
 
 [source,js]
