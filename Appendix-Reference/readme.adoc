@@ -20,6 +20,7 @@ Promise.race(promiseArray)
 
 [[Promise.resolve]]
 [source,js]
+Promise.resolve(thenable)
 Promise.resolve(value)
 
 [[Promise.reject]]
