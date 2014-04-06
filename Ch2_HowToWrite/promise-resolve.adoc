@@ -54,3 +54,184 @@ $.ajax('/json/comment.json');// => `.then`を持つオブジェクト
 ////
 
 このthenableなオブジェクトを<<Promise.resolve,Promise.resolve>>ではpromiseオブジェクトにすることが出来ます。
+
+==== Web Notificationsをthenableにする
+
+https://developer.mozilla.org/ja/docs/Web/API/notification[Web Notifications]という
+デスクトップ通知を行うAPIを例に考えてみます。
+
+Web Notifications APIについて詳しくは以下を参照して下さい。
+
+* https://developer.mozilla.org/ja/docs/WebAPI/Using_Web_Notifications[Web Notifications の使用 - WebAPI | MDN]
+* http://caniuse.com/notifications[Can I use Web Notifications]
+
+Web Notifications APIについて簡単に解説すると、以下のように`new Notification`をすることで通知メッセージが表示できます。
+
+[source,js]
+new Notification("Hi!");
+
+しかし、通知を行うためには、`new Notification`をする前にユーザーに許可を取る必要があります。
+
+.Notificationの許可ダイアログ
+image::img/notification-dialog.png[Notificationの許可ダイアログ]
+
+Notificationのダイアログの選択肢はFirefoxだと永続かセッション限り等で4種類ありますが、
+最終的に`Notification.permission`に入ってくる値は許可("granted")か不許可("denied")の2種類です。
+
+許可ダイアログは`Notification.requestPermission`を実行するとひょうじされ、
+ユーザーが選択した内容が`status`に渡されます。
+
+[source,js]
+----
+Notification.requestPermission(function (status) {
+    // statusに"granted" or "denied"が入る
+});
+----
+
+許可時("granted"):::
+ `new Notification`で通知を作成
+不許可時("denied"):::
+ 何もしない
+
+
+まとめると以下のようになります。
+
+* ユーザーに通知の許可を受け付ける非同期処理がある
+* 許可がある場合は`new Notification`で通知を表示できる
+** 既に許可済みのケース
+** その場で許可を貰うケース
+* 許可がない場合は何もしない
+
+いくつか許可のパターンが出ますが、シンプルにまとめると
+許可がある場合は`onFulfilled`、許可がない場合は`onRejected`と書くことができると思います。
+
+いきなりこれを`thenable`にするのは分かりにくいので、まずは今まで学んだPromiseを使って
+promiseオブジェクトを返すラッパー関数を書いてみましょう。
+
+==== Web Notification as Promise
+
+[source,js]
+[[notification-as-promise.js]]
+.notification-as-promise.js
+----
+include::embed/embed-notification-as-promise.js[]
+----
+
+これを使うと`"H!"`というメッセージを通知したい場合以下のように書くことが出来ます。
+
+[source,js]
+----
+notifyMessage("Hi!").then(function (notification) {
+    console.log(notification);// 通知のオブジェクト
+}).catch(function(error){
+    console.error(error);
+});
+----
+
+許可あるor許可された場合は`.then`が呼ばれ、ユーザーが許可しなかった場合は`.catch`が呼ばれます。
+
+上記の<<notification-as-promise.js>>は、とても便利そうですが実際に使うときに以下の問題点があります。
+
+* Promiseをサポートしてない(orグローバルに`Promise`のshimがない)環境では使えない
+
+<<notification-as-promise.js>>のようなPromiseスタイルで使えるライブラリを作る場合、
+ライブラリ作成者には以下のような選択肢があると思います。
+
+[[promise-library-choice]]
+* `Promise`があることを前提とする
+** 利用者に`Promise`があることを保証してもらう
+* ライブラリ自体に`Promise`の実装を入れてしまう
+** 例) https://github.com/mozilla/localForage[localForage]
+* コールバックでも使う事ができ、`Promise`でも使えるようにする
+** 利用者がどちらを使うかを選択出来るようにする
+
+<<notification-as-promise.js>>は`Promise`があることを前提としたような書き方です。
+
+本題に戻り<<Thenable,Thenable>>はここでいう"コールバックでも使う事ができ、`Promise`でも使えるようにする"という事を
+実現するのに役立つ概念です。
+
+=== Thenableでコールバックと両立する
+
+まずは先程のWeb Notification APIのラッパー関数をコールバックスタイルで書いてみましょう。
+
+[source,js]
+[[notification-callback.js]]
+.notification-callback.js
+----
+include::embed/embed-notification-callback.js[]
+----
+
+これを利用する場合は以下のような感じになります。
+
+[source,js]
+----
+// 第二引数は`Notification`に渡すオプションオブジェクト
+notifyMessage("message", {}, function (error, notification) {
+    if(error){
+        console.error(error);
+        return;
+    }
+    console.log(notification);// 通知のオブジェクト
+});
+----
+
+コールバックスタイルでは、許可がない場合は`error`に値が入り、
+許可がある場合は通知が行われて`notification`に値が入ってくるという感じにしました。
+
+[source,js]
+function (error, notification){}
+
+==== thenableを返すメソッドを追加する
+
+<<Thenable,thenable>>というのは`.then`というメソッドを持ってるオブジェクトのことを言いましたね。
+次に<<notification-callback.js>>に`thenable`を返すメソッドを追加してみましょう。
+
+[source,js]
+[[notification-thenable.js]]
+.notification-thenable.js
+----
+include::embed/embed-notification-thenable.js[]
+----
+
+<<notification-thenable.js>> には`notifyMessage.thenable`をというそのままのメソッドを追加してみました。
+返すオブジェクトには`then`というメソッドがあります。
+
+`then`メソッドの仮引数には`new Promise(function (resolve, reject){}`と同じように、
+解決した時に呼ぶ`resolve`と、棄却した時に呼ぶ`reject`が渡ります。
+
+`then`メソッドがやっている中身は<<notification-as-promise.js>>の`notifyMessageAsPromise`と同じですね。
+
+この`thenable`を使う場合は以下のように`Promise.resolve(thenable)`を使ってpromiseオブジェクトとして利用できます。
+
+[source,js]
+----
+Promise.resolve(notifyMessage.thenable("message")).then(function (notification) {
+    console.log(notification);// 通知のオブジェクト
+}).catch(function(error){
+    console.error(error);
+});
+----
+
+Thenableを使った<<notification-thenable.js>>とPromiseに依存した<<notification-as-promise.js>>は、
+非常に似た使い方ができることがわかります。
+
+<<notification-thenable.js>>には<<notification-as-promise.js>>とは次のような違いがあります。
+
+* ライブラリ側に`Promise`実装そのものはでてこない
+** 利用者が`Promise.resolve(thenable)`を使い`Promise`の実装を与える
+* Promiseとして使う時に`Promise.resolve(thenable)`と一枚挟む必要がある
+* コールバックスタイル(`notifyMessage()`)でも利用できる
+
+<<Thenable,thenable>>オブジェクトを利用することで、
+既存のコールバックスタイルとPromisesの親和性を高めることができる事が分かります。
+
+[INFO]
+====
+https://api.jquery.com/jQuery.ajax/[jQuery.ajax()]の返り値も`.then`というメソッドを持ったオブジェクト(http://api.jquery.com/category/deferred-object/[Deferred Object])です。
+しかし、このDeferred Objectは<<Promises/A+>>や<<ES6 Promises>>に則したものではないため、`Promise.resolve`では上手く扱えない場合があります。
+
+そのため、`.then`というメソッドを持っていた場合でも、必ずES6 Promisesとして使えるとは限らない事は知っておくべきでしょう。
+
+* http://domenic.me/2012/10/14/youre-missing-the-point-of-promises/[You&#39;re Missing the Point of Promises]
+* https://twitter.com/hirano_y_aa/status/398851806383452160[https://twitter.com/hirano_y_aa/status/398851806383452160]
+====

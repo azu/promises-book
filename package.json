@@ -24,16 +24,16 @@
     "w3c-xmlhttprequest": "~1.1.0"
   },
   "devDependencies": {
-    "gulp": "~3.5.5",
+    "gulp": "^3.6.0",
     "gulp-inlining-node-require": "0.0.2",
     "gulp-remove-use-strict": "0.0.2",
     "gulp-rename": "~1.2.0",
     "http-echo": "0.0.2",
-    "inlining-node-require": "0.0.5",
+    "inlining-node-require": "0.0.6",
     "intelli-espower-loader": "0.0.5",
     "mocha": "~1.18.0",
     "nock": "~0.27.2",
-    "power-assert": "~0.3.1",
+    "power-assert": "^0.4.1",
     "remove-use-strict": "0.0.5",
     "sinon": "^1.9.0"
   }

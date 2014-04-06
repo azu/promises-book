@@ -25,13 +25,19 @@ describe("notification-thenable", function () {
                 assert(notification instanceof MockNotification);
             });
         });
+        it("could as callback", function (done) {
+            notifyMessage("message", {}, function (error, notification) {
+                assert(notification instanceof MockNotification);
+                done();
+            });
+        });
     });
     context("when doesn't support Notification", function () {
         before(function () {
             global.Notification = null;
         });
         it("should catch error", function () {
-            return Promise.resolve(notifyMessage.thenable("message")).then(function (notification) {
+            return Promise.resolve(notifyMessage.thenable("message")).then(function () {
                 assert.fail(":(");
             }).catch(function (error) {
                 assert(error instanceof Error);
@@ -68,7 +74,7 @@ describe("notification-thenable", function () {
             delete MockNotification.requestPermission;
         });
         it("should catch error", function () {
-            return Promise.resolve(notifyMessage.thenable("message")).then(function (notification) {
+            return Promise.resolve(notifyMessage.thenable("message")).then(function () {
                 assert.fail(":(");
             }).catch(function (error) {
                 assert(error instanceof Error);
