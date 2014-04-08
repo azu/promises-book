@@ -10,14 +10,17 @@
 
 - [x] `Promise.all`
 - [x] `Promise.race`
-- [ ] `Promise.resolve`
-    - [x] promiseオブジェクトを受ける関数を書いてみよう
+- [x] `Promise.resolve`
+    - `thenable`について
     - ユースケース
-- [ ] `Promise.reject`
+- [x] `Promise.reject`
     - ユースケース?
 - [ ] Promisesのエラーハンドリング
   - [x] `then` でエラーが起きたらどうなるの?
 - [ ] Promisesのテストを書いてみよう
+  - [ ] Mochaでのテスト
+  - [ ] エラーハンドリングのテストへの影響
+  - [ ] Test as Promise
 
 ## Advanced Promises
 
