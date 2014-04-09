@@ -1,3 +1,4 @@
+[[thenとcatchの違い]]
 == then or catch?
 
 <<catch-as-alias,前の章>>で <<promise.catch,`.catch`>> は  `promise.then(undefined, onRejected)` であるという事を紹介しました。
@@ -30,7 +31,7 @@ include::embed/embed-then-throw-error.js[]
 <<promise.then,`.then`>> や <<promise.catch,`.catch`>> によるchainは、
 一つ前のpromiseオブジェクトに対しての処理を行なわれるため、このような違いが生まれます。
 
-[INFO]
+[[INFO]]
 ====
 `.then`や`.catch`はその場で**新しい**promiseオブジェクトを作って返します。
 promiseでのchainは毎回異なるpromiseオブジェクトに対して処理を行っています。
