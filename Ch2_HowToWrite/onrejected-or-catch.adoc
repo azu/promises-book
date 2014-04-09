@@ -32,10 +32,8 @@ include::embed/embed-then-throw-error.js[]
 `.then`や`.catch`によるchainは、それより前のpromiseオブジェクトに対しての処理を行なわれるため、このような違いが生まれます。
 
 [NOTE]
-====
 `.then`や`.catch`はその場で**新しい**promiseオブジェクトを作って返します。
 promiseでのchainは毎回異なるpromiseオブジェクトに対して処理を行っています。
-====
 
 [[then-catch-flow]]
 .Then Catch flow
