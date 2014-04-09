@@ -33,14 +33,14 @@ include::embed/embed-then-throw-error.js[]
 
 [NOTE]
 `.then`や`.catch`はその場で**新しい**promiseオブジェクトを作って返します。
-promiseでのchainは毎回異なるpromiseオブジェクトに対して処理を行っています。
+promiseではchainする度に異なるpromiseオブジェクトに対して処理を書くようになっています。
 
 [[then-catch-flow]]
 .Then Catch flow
 image::img/then_catch.png[Then Catch flow]
 
 この場合の `then` は `Promise.resolve(42)` に対する処理となり、
-その処理で指定された`onFulfilled`で例外が発生しても、同じ`thenで指定された`onRejected`はキャッチすることはありません。
+その処理で指定された`onFulfilled`で例外が発生しても、同じ`then`で指定された`onRejected`はキャッチすることはありません。
 
 この`then`で発生した例外をキャッチ出来るのは、次のchainで書かれた`catch`となります。
 
