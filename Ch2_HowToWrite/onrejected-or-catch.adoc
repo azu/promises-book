@@ -56,11 +56,11 @@ Promise.resolve(42).then(throwError).then(null, onRejected);
 
 ここでは次のような事について学びました。
 
-* `promise.then(onFulfilled, onRejected)` において
+. `promise.then(onFulfilled, onRejected)` において
     * `onFulfilled` で例外がおきても、この`onRejected`はキャッチできない
-* `promise.then(onFulfilled).catch(onRejected)`とした場合
+. `promise.then(onFulfilled).catch(onRejected)`とした場合
     * `then`で発生した例外を`.catch`でキャッチできる
-* <<promise.then,`.then`>>と<<promise.catch,`.catch`>>に本質的な意味の違いはない
+. <<promise.then,`.then`>>と<<promise.catch,`.catch`>>に本質的な意味の違いはない
     * 使い分けると意図が明確になる
 
 `badMain`のような書き方をすると、意図とは異なりエラーハンドリングができないケースが存在することは覚えておきましょう。
