@@ -40,7 +40,7 @@ promiseではchainする度に異なるpromiseオブジェクトに対して処�
 image::img/then_catch.png[Then Catch flow]
 
 この場合の `then` は `Promise.resolve(42)` に対する処理となり、
-その処理で指定された`onFulfilled`で例外が発生しても、同じ`then`で指定された`onRejected`はキャッチすることはありません。
+`onFulfilled`で例外が発生しても、同じ`then`で指定された`onRejected`はキャッチすることはありません。
 
 この`then`で発生した例外をキャッチ出来るのは、次のchainで書かれた`catch`となります。
 
