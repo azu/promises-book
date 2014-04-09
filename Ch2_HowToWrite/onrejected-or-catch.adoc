@@ -41,10 +41,26 @@ promiseでのchainは毎回異なるpromiseオブジェクトに対して処理�
 .Then Catch flow
 image::img/then_catch.png[Then Catch flow]
 
-この図のようなchainになっている場合、`then`で発生した例外をキャッチ出来るのは、
-次のchainで書かれた`catch`となります。
-
 この場合の `then` は `Promise.resolve(42)` に対する処理となり、
-その処理で指定された`onFulfilled`で例外が発生しても、同じthenで指定された`onRejected`はキャッチすることはありません。
+その処理で指定された`onFulfilled`で例外が発生しても、同じ`thenで指定された`onRejected`はキャッチすることはありません。
 
-そのため、`badMain`のような書き方をすると意図とは違ってエラーハンドリングができないケースが存在することは覚えておきましょう。
+この`then`で発生した例外をキャッチ出来るのは、次のchainで書かれた`catch`となります。
+
+もちろん`.catch`は`.then`のエイリアスなので、下記のように`.then`を使っても問題はありませんが、
+`.catch`を使ったほうが意図が明確で分かりやすいでしょう。
+
+[source,js]
+Promise.resolve(42).then(throwError).then(null, onRejected);
+
+=== まとめ
+
+ここでは次のような事について学びました。
+
+* `promise.then(onFulfilled, onRejected)` において
+    * `onFulfilled` で例外がおきても、この`onRejected`はキャッチできない
+* `promise.then(onFulfilled).catch(onRejected)`とした場合
+    * `then`で発生した例外を`.catch`でキャッチできる
+* <<promise.then,`.then`>>と<<promise.catch,`.catch`>>に本質的な意味の違いはない
+    * 使い分けると意図が明確になる
+
+`badMain`のような書き方をすると、意図とは異なりエラーハンドリングができないケースが存在することは覚えておきましょう。
