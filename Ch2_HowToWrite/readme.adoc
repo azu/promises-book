@@ -1,7 +1,7 @@
 = Chapter.2 - Promisesの書き方
 :imagesdir: Ch2_HowToWrite/
 
-Promisesの用意されたメソッドについての書き方やエラーハンドリングについて学びます。
+この章では、Promisesのメソッドについて用途や使い方、エラーハンドリングについて学びます。
 
 // promise.then
 include::promise-and-array.adoc[]
