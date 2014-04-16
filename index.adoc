@@ -24,6 +24,9 @@ include::Ch1_WhatsPromises/readme.adoc[]
 // 第二章
 include::Ch2_HowToWrite/readme.adoc[]
 
+// 第三章
+include::Ch3_Testing/readme.adoc[]
+
 
 // リファレンス
 include::Appendix-Reference/readme.adoc[]
