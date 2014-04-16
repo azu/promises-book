@@ -1,0 +1,141 @@
+== 基本的なテスト
+
+ES6 Promisesのメソッド等についてひと通り学ぶことができたため、
+実際にPromiseを使った処理を書いていくことは出来ると思います。
+
+そうした時に、次にどうすればいいのか悩むのがPromiseのテストの書き方です。
+
+ここではまず、 http://visionmedia.github.io/mocha/[Mocha]を使った基本的なPromiseのテストの書き方について学んでいきましょう。
+
+=== Mochaとは
+
+ここでは、 http://visionmedia.github.io/mocha/[Mocha]自体については詳しく解説しませんが、
+MochaはNode.js製のテストフレームワークツールです。
+
+MochaはBDD,TDD,exportsのどれかのスタイルを選択でき、テストに使うアサーションメソッドも任意のライブラリと組わせて利用します。
+つまり、Mocha自体はテスト実行時の枠だけを提供しており、他は利用者が選択するというものになっています。
+
+Mochaを選んだ理由としては、以下の点で選択しました。
+
+* 著名なテストフレームワークであること
+* Node.jsとブラウザ どちらのテストもサポートしている
+* "Promisesのテスト"をサポートしている
+
+最後の_"Promisesのテスト"をサポートしている_とはどういうことなのかについては後ほど解説します。
+
+また、アサーションライブラリには、 https://github.com/twada/power-assert[power-assert]を利用しますが、
+アサーション自体はNode.jsの`assert`モジュールと全く同じであるため、今回はあまり気にしなくても問題ありません。
+
+まずは、コールバック関数のテストと同じような形でテストを書いてみましょう。
+
+=== コールバックスタイルのテスト
+
+<<promise-is-always-async,コラム: Promiseは常に非同期?>>で確認したように、
+Promiseでは`then`で登録した関数が呼ばれるタイミングは常に非同期となります。
+
+まずはコールバックスタイルと同じようにPromiseのテストを書いてみましょう。
+
+[source,js]
+.basic-test.js
+----
+include::test/basic-test.js[]
+----
+
+Mochaは`it`の仮引数に`done`という感じで指定してあげると、
+`done()`が呼ばれるまでテストケースが終了しなくなることで非同期のテストをサポートしています。
+
+次のコールバックスタイルのテストは以下のような流れになっています。
+
+[source,js]
+[[callback-style-test]]
+----
+it("should use `done` for test", function (done) {
+    // <1>
+    setTimeout(function () {
+        assert(true);
+        // <2>
+        done();
+    }, 0);
+});
+----
+<1> コールバックを指定した非同期処理
+<2> `done`が呼ぶ事でこのテストケースの終了を宣言
+
+よく見かける形の書き方ですね。
+
+次に、Promiseのテストの方を見てみましょう。
+
+[source,js]
+----
+it("should use `done` for test?", function (done) {
+    var promise = Promise.resolve(1);
+    // <1>
+    promise.then(function (value) {
+        assert(value === 1);
+        <2>
+        done();
+    });
+});
+----
+<1> promiseオブジェクトに対してresolveされた時の処理
+<2> `done`が呼ぶ事でこのテストケースの終了を宣言
+
+<<Promise.resolve, `Promise.resolve`>> はpromiseオブジェクトを返し、
+そのpromiseオブジェクトはresolveされます。
+
+<<promise-is-always-async,コラム: Promiseは常に非同期?>> でも出てきたように、
+promiseオブジェクトは常に非同期で処理されるため、テストも非同期に対応した書き方が必要となります。
+
+これで、Promiseのテストもできてるように見えますが、
+上記のテストコードでは`assert`が失敗した場合に問題が発生します。
+
+[source,js]
+[[promise-assert-fail]]
+----
+it("should use `done` for test?", function (done) {
+    var promise = Promise.resolve();
+    promise.then(function (value) {
+        assert(false);
+        done();
+    });
+});
+----
+
+<<promise-assert-fail,`assert`が失敗してる例>>、この場合「テストは失敗する」と思うかもしれませんが、
+実際にはテストが終わることがなくタイムアウトします。
+
+.promise test timeout
+image::img/promise-test-timout.png[promise test timeout]
+
+`assert`が失敗した場合は通常はエラーをthrowするため、
+テストフレームワークがそれをキャッチすることで、テストが失敗したと判断します。
+
+しかし、Promiseの場合は`.then`の中で行われた処理でエラーが発生しても、
+Promiseがそれをキャッチしてしまい、テストフレームワークまでエラーがthrowされません。
+
+<<promise-assert-fail,`assert`が失敗してる例>>を改善して、
+`assert`が失敗した場合にちゃんとテストが失敗となるようにしてみましょう。
+
+[source,js]
+[[promise-assert-fail-fixed]]
+----
+it("should use `done` for test?", function (done) {
+    var promise = Promise.resolve();
+    promise.then(function (value) {
+        assert(false);
+    }).then(done, done);
+});
+----
+
+<<promise-assert-fail-fixed,ちゃんとテストが失敗する例>>では、必ず`done`が呼ばれるようにするため、
+最後に`.then(done, done);`を追加しています。
+
+`assert`がパスした場合は単純に`done()`が呼ばれ、`assert`が失敗した場合は`done(error)`が呼ばれます。
+これでようやく<<callback-style-test,コールバックスタイルのテスト>>と同等のPromiseのテストを書くことができました。
+
+Promiseのテストは普通のコールバックのテストと少し違いますが書くことができました。
+
+しかし、`assert`が失敗した時のために`.then(done, done);`というものを付ける必要があります。
+毎回やるにはつけ忘れてしまうこともあるため、あまりテストしやすいとは言えないかもしれません。
+
+次に、最初にmochaを使う理由に上げた"Promisesのテスト"をサポートしているという事がどういう機能なのかを学んでいきましょう。

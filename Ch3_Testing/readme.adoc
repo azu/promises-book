@@ -1,0 +1,7 @@
+= Chapter.3 - Promisesのテスト
+:imagesdir: ChX_Testing/
+
+この章ではPromisesのテストの書き方について学んで行きます。
+
+// Promiseの基本的なテスト
+include::promise-and-array.adoc[]
