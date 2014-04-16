@@ -4,4 +4,4 @@
 この章ではPromisesのテストの書き方について学んで行きます。
 
 // Promiseの基本的なテスト
-include::promise-and-array.adoc[]
+include::basic_tests.adoc[]
