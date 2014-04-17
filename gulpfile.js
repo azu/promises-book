@@ -1,10 +1,10 @@
 "use strict";
 var gulp = require("gulp");
-var rename = require("gulp-rename")
+var rename = require("gulp-rename");
 var inlining = require("gulp-inlining-node-require");
 var removeUseString = require("gulp-remove-use-strict");
 gulp.task("embed", function () {
-    gulp.src("./Ch*/src/*.js", {base: './'})
+    return gulp.src("./Ch*/src/*.js", {base: './'})
         .pipe(inlining())
         .pipe(removeUseString())
         .pipe(rename(function (path) {
