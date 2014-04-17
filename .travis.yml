@@ -1,9 +1,10 @@
 language: node_js
 rvm:
-  - 2.1.0
+  - 2.0.0
 node_js:
-  - '0.10'
+  - 0.10
 before_install:
+  - ruby --version
   - gem --version
   - gem install asciidoctor
   - gem install coderay
