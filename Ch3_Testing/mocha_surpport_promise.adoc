@@ -117,4 +117,3 @@ image::../Ch2_HowToWrite/img/then_catch.png[Then Catch flow]
 === `catch`によるテストの改善
 
 * 常に`then`を使う
-* `catch` -> `then` とする

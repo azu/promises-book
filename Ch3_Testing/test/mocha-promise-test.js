@@ -12,12 +12,12 @@ describe("Promise Test", function () {
     }
 
     function mayBeRejected() {
-        return Promise.resolve();
+        return Promise.reject(new Error("woo"));
     }
 
     it("should bad pattern", function () {
-        return mayBeRejected().catch(function (error) {
-            assert.deepEqual(error.message === "woo");
-        }).then(throwError);
+            return mayBeRejected().then(throwError, function (error) {
+            assert(error.message === "woo");
+        });
     });
 });
