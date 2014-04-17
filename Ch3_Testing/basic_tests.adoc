@@ -50,16 +50,12 @@ Mochaは`it`の仮引数に`done`という感じで指定してあげると、
 [[callback-style-test]]
 ----
 it("should use `done` for test", function (done) {
-    // <1>
     setTimeout(function () {
         assert(true);
-        // <2>
-        done();
+        done();// <1>
     }, 0);
 });
 ----
-<1> コールバックを指定した非同期処理
-<2> `done`が呼ぶ事でこのテストケースの終了を宣言
 
 よく見かける形の書き方ですね。
 
@@ -72,16 +68,12 @@ it("should use `done` for test", function (done) {
 ----
 it("should use `done` for test?", function (done) {
     var promise = Promise.resolve(1);
-    // <1>
     promise.then(function (value) {
         assert(value === 1);
-        <2>
         done();
     });
 });
 ----
-<1> promiseオブジェクトに対してresolveされた時の処理
-<2> `done`を呼ぶ事でこのテストケースの終了を宣言
 
 <<Promise.resolve, `Promise.resolve`>> はpromiseオブジェクトを返し、
 そのpromiseオブジェクトはresolveされます。
