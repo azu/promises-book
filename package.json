@@ -30,10 +30,10 @@
     "gulp-rename": "~1.2.0",
     "http-echo": "0.0.2",
     "inlining-node-require": "0.0.6",
-    "intelli-espower-loader": "0.0.5",
+    "intelli-espower-loader": "0.0.7",
     "mocha": "~1.18.0",
-    "nock": "~0.27.2",
-    "power-assert": "^0.4.1",
+    "nock": "^0.28.2",
+    "power-assert": "^0.6.1",
     "remove-use-strict": "0.0.5",
     "sinon": "^1.9.0"
   }
