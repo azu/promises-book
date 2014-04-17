@@ -94,12 +94,11 @@ Promisesの処理の流れが簡単にわかった所で、少しPromisesの状�
 この文章では、 http://promises-aplus.github.io/promises-spec/[Promises/A+] の __Pending__、__Fulfilled__ 、__Rejected__
 を用いて解説していきます。
 
-[[promise-states]]
 .promise states
 image::img/promise-states.png[promise-states]
 
 
-[[INFO]]
+[NOTE]
 ====
 http://people.mozilla.org/~jorendorff/es6-draft.html#sec-promise-objects[ECMAScript Language Specification ECMA-262 6th Edition – DRAFT] では `[[PromiseStatus]]` という内部定義によって状態が定められています。
 `[[PromiseStatus]]` にアクセスするユーザーAPIは用意されていないため、基本的には知る方法はありません。
@@ -121,7 +120,7 @@ __Pedding__と__Settled__が対となる関係であると考えると、Promise
 
 このpromiseオブジェクトの状態が変化した時に、一度だけ呼ばれる関数を登録するのが `.then` といったメソッドとなるわけです。
 
-[[INFO]]
+[NOTE]
 ====
 https://speakerdeck.com/kerrick/javascript-promises-thinking-sync-in-an-async-world[JavaScript Promises - Thinking Sync in an Async World // Speaker Deck]
 というスライドではPromisesの状態遷移について分かりやすく書かれています。

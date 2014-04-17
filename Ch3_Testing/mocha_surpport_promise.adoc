@@ -36,7 +36,7 @@ it("should be fail", function () {
 
 これにより`.then(done, done);`というような本質的にはテストに関係ない記述を省くことが出来るようになりました。
 
-[[INFO]]
+[NOTE]
 ====
 http://efcl.info/2014/0314/res3708/[MochaがPromisesのテストをサポートしました | Web scratch] という記事でも
 MochaのPromiseサポートについて書かれています。
