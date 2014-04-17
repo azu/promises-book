@@ -63,6 +63,9 @@ it("should use `done` for test", function (done) {
 
 よく見かける形の書き方ですね。
 
+[[done-promise-test]]
+=== `done`を使ったPromiseのテスト
+
 次に、Promiseのテストの方を見てみましょう。
 
 [source,js]
@@ -78,7 +81,7 @@ it("should use `done` for test?", function (done) {
 });
 ----
 <1> promiseオブジェクトに対してresolveされた時の処理
-<2> `done`が呼ぶ事でこのテストケースの終了を宣言
+<2> `done`を呼ぶ事でこのテストケースの終了を宣言
 
 <<Promise.resolve, `Promise.resolve`>> はpromiseオブジェクトを返し、
 そのpromiseオブジェクトはresolveされます。

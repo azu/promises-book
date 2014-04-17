@@ -1,2 +1,120 @@
 == MochaのPromisesサポート
 
+MochaがサポートしてるPromiseのテストとは何かについて学んでいきましょう。
+
+公式サイトの http://visionmedia.github.io/mocha/#asynchronous-code[Asynchronous code]にもその概要が書かれています。
+
+> Alternately, instead of using the done() callback, you can return a promise. This is useful if the APIs you are testing return promises instead of taking callbacks:
+
+Promiseのテストの場合は`done()`の代わりに、promiseオブジェクトをreturnすることでできると書いてあります。
+
+実際にどういう風に書くかの例を見て行きたいと思います。
+
+[source,js]
+.mocha-promise-test.js
+----
+include::test/mocha-promise-test.js[]
+----
+
+<<promise-assert-fail-fixed,先ほどの`done`を使った例>>をMochaのPromiseテストの形式に変更しました。
+
+変更点としては以下の2箇所です
+
+* `done` そのものを取り除いた
+* テストしたい`assert`が登録されてるpromiseオブジェクトを返すようにした
+
+この書き方をした場合は、`assert`が失敗した場合はもちろんテストが失敗します。
+
+[source,js]
+----
+it("should be fail", function () {
+    return Promise.resolve().then(function () {
+        assert(false);// => テストが失敗する
+    });
+});
+----
+
+これにより`.then(done, done);`というような本質的にはテストに関係ない記述を省くことが出来るようになりました。
+
+[[INFO]]
+====
+http://efcl.info/2014/0314/res3708/[MochaがPromisesのテストをサポートしました | Web scratch] という記事でも
+MochaのPromiseサポートについて書かれています。
+====
+
+=== `catch`によるテスト
+
+MochaがPromiseのテストをサポートしているため、これでよいと思われるかもしれませんが、
+この書き方にも意図しない結果になる例外が存在します。
+
+例えば、以下はある条件だとrejectされるコードがあり、
+そのエラーメッセージをテストしたいという目的のコードを簡略化したものです。
+
+[source,js]
+[[mocha-rejected-promise-test]]
+----
+function mayBeRejected(){ // <1>
+    return Promise.reject(new Error("woo"));
+}
+it("is bad pattern", function () {
+    return mayBeRejected().catch(function (error) {
+        assert(error.message === "woo");
+    });
+});
+----
+<1> この関数が返すpromiseオブジェクトをテストしたい
+
+この場合は、`Promise.reject`は`onRejected`に登録された関数を呼ぶため、
+テストはパスしますね。
+
+このテストで、問題になるのは`mayBeRejected()`で返されたpromiseオブジェクトがresolveされた場合に、
+必ずテストがパスしてしまうという問題が発生します。
+
+[source,js]
+----
+function mayBeRejected(){ // <1>
+    return Promise.resolve();
+}
+it("is bad pattern", function () {
+    return mayBeRejected().catch(function (error) {
+        assert(error.message === "woo");
+    });
+});
+----
+<1> 返されるpromiseオブジェクトはresolveする
+
+この場合、`catch`で登録した`onRejected`の関数はそもそも呼ばれないため、
+このテストが必ずパスしてしまいます。
+
+これを解消しようとして、`.catch`の前に`.then`を入れて、
+`.then`が呼ばれたらテストが失敗にしたいと考えるかもしれません。
+
+[source,js]
+----
+function throwError(value) { // <1>
+    throw new Error(value);
+}
+function mayBeRejected(){
+    return Promise.resolve();
+}
+it("should bad pattern", function () {
+    return mayBeRejected().then(throwError).catch(function (error) {
+        assert.deepEqual(error.message === "woo");
+    });
+});
+----
+<1> 呼ぶことでテストを失敗にしたい
+
+しかし、この書き方だと<<then-or-catch,then or catch>>で紹介したように、
+`throwError`で投げられたエラーが`catch`されてしまいます。
+
+.Then Catch flow
+image::../Ch2_HowToWrite/img/then_catch.png[Then Catch flow]
+
+つまり、`.catch`に渡ってくるErrorオブジェクトは`AssertionError`となり、
+意図したものとは違うものが渡ってきてしまい、テストとして正しくなくなってしまいます。
+
+=== `catch`によるテストの改善
+
+* 常に`then`を使う
+* `catch` -> `then` とする
