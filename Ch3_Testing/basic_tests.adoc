@@ -7,6 +7,10 @@ ES6 Promisesのメソッド等についてひと通り学ぶことができた�
 
 ここではまず、 http://visionmedia.github.io/mocha/[Mocha]を使った基本的なPromiseのテストの書き方について学んでいきましょう。
 
+またこの章でのテストコードはNode.js環境で実行することを前提としています。
+
+- [ ] この書籍のソースコードへのリンク
+
 === Mochaとは
 
 ここでは、 http://visionmedia.github.io/mocha/[Mocha]自体については詳しく解説しませんが、

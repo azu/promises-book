@@ -50,6 +50,13 @@ MochaがPromiseのテストをサポートしているため、これでよい�
 例えば、以下はある条件だとrejectされるコードがあり、
 そのエラーメッセージをテストしたいという目的のコードを簡略化したものです。
 
+このテストの目的
+
+`mayBeRejected()`がresolveした場合::
+    テストを失敗させる
+`mayBeRejected()`がrejectした場合::
+    `assert`でErrorオブジェクトをチェックする
+
 [source,js]
 [[mocha-rejected-promise-test]]
 ----
@@ -67,8 +74,8 @@ it("is bad pattern", function () {
 この場合は、`Promise.reject`は`onRejected`に登録された関数を呼ぶため、
 テストはパスしますね。
 
-このテストで、問題になるのは`mayBeRejected()`で返されたpromiseオブジェクトがresolveされた場合に、
-必ずテストがパスしてしまうという問題が発生します。
+このテストで問題になるのは`mayBeRejected()`で返されたpromiseオブジェクトが
+**resolveされた場合**に、必ずテストがパスしてしまうという問題が発生します。
 
 [source,js]
 ----
@@ -84,10 +91,10 @@ it("is bad pattern", function () {
 <1> 返されるpromiseオブジェクトはresolveする
 
 この場合、`catch`で登録した`onRejected`の関数はそもそも呼ばれないため、
-このテストが必ずパスしてしまいます。
+`assert`がひとつも呼ばれることなくテストが必ずパスしてしまいます。
 
 これを解消しようとして、`.catch`の前に`.then`を入れて、
-`.then`が呼ばれたらテストが失敗にしたいと考えるかもしれません。
+`.then`が呼ばれたらテストを失敗にしたいと考えるかもしれません。
 
 [source,js]
 ----
@@ -103,17 +110,64 @@ it("should bad pattern", function () {
     });
 });
 ----
-<1> 呼ぶことでテストを失敗にしたい
+<1> throwすることでテストを失敗にしたい
 
-しかし、この書き方だと<<then-or-catch,then or catch>>で紹介したように、
+しかし、この書き方だと<<then-or-catch,then or catch?>>で紹介したように、
 `throwError`で投げられたエラーが`catch`されてしまいます。
 
 .Then Catch flow
 image::../Ch2_HowToWrite/img/then_catch.png[Then Catch flow]
 
-つまり、`.catch`に渡ってくるErrorオブジェクトは`AssertionError`となり、
-意図したものとは違うものが渡ってきてしまい、テストとして正しくなくなってしまいます。
+`then` -> `catch` となり、`catch`に渡ってくるErrorオブジェクトは`AssertionError`となり、
+意図したものとは違うものが渡ってきてしまいます。
 
 === `catch`によるテストの改善
 
-* 常に`then`を使う
+<<mocha-rejected-promise-test,上記のエラーをテスト>>したい場合は、どうすればよいでしょうか?
+
+先ほどとは逆に `catch` -> `then` とした場合は、以下のように意図した挙動になります。
+
+resolveした場合::
+    意図した通りテストが失敗する
+rejectした場合::
+    `assert`でテストを行える
+
+[source,js]
+----
+function mayBeRejected() {
+    return Promise.resolve();
+}
+it("catch -> then", function () {
+    return mayBeRejected().catch(function (error) {
+        assert(error.message === "woo");
+    }).then(throwError);// <1>
+});
+----
+<1> resolveされた場合はテストは失敗する
+
+このコードをよく見てみると、`.then(onFulfilled, onRejected)` の一つにまとめられることに気付きます。
+
+[source,js]
+----
+function mayBeRejected() {
+    return Promise.resolve();
+}
+it("catch -> then", function () {
+    return mayBeRejected().then(throwError, function (error) {
+        assert(error.message === "woo");
+    });
+});
+----
+
+<<then-or-catch,then or catch?>>の時は、エラーの見逃しを避けるため、
+`.then(onFulfilled, onRejected)`の第二引数ではなく、`then` -> `catch`と分けることを推奨していました。
+
+しかし、テストの場合はPromiseの強力なエラーハンドリングが逆にテストの邪魔をしてしまいます。
+そのため`.then(onFulfilled, onRejected)`というように指定すると、より簡潔にテストを書くことが出来ます。
+
+=== まとめ
+
+* 通常のコードは`then` -> `catch`と分けた方がよい
+** エラーハンドリングのため。<<then-or-catch,then or catch?>>を参照
+* テストコードは`then`にまとめた方がよい
+** エラーがMochaに届くようにエラーハンドリングは行わない
