@@ -6,7 +6,6 @@
 :icons:       font
 :numbered:
 :toc2:
-:appversion: 1.0.0
 
 ifeval::["{backend}" == "html5"]
 ++++
