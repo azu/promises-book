@@ -138,8 +138,6 @@ it("should use `done` for test?", function (done) {
 `assert`がパスした場合は単純に`done()`が呼ばれ、`assert`が失敗した場合は`done(error)`が呼ばれます。
 これでようやく<<callback-style-test,コールバックスタイルのテスト>>と同等のPromiseのテストを書くことができました。
 
-Promiseのテストは普通のコールバックのテストと少し違いますが書くことができました。
-
 しかし、`assert`が失敗した時のために`.then(done, done);`というものを付ける必要があります。
 毎回やるにはつけ忘れてしまうこともあるため、あまりテストしやすいとは言えないかもしれません。
 
