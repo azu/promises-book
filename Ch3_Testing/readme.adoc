@@ -7,4 +7,4 @@
 include::basic_tests.adoc[]
 
 // MochaとPromise
-include::mocha_surpport_promise.adoc[]
+include::mocha_support_promise.adoc[]
