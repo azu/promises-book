@@ -8,7 +8,7 @@ var shouldFulfilled = require("promise-test-helper").shouldFulfilled;
 var shouldRejected = require("promise-test-helper").shouldRejected;
 describe("test", function () {
     it("is easy", function () {
-        var promise = Promise.resolve(new Error("human error"));
+        var promise = Promise.reject(new Error("human error"));
         return shouldRejected(promise).catch(function (error) {
             assert(error.message === "human error");
         });
