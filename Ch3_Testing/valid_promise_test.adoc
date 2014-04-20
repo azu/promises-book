@@ -1,1 +1,9 @@
 == 意図したテストを書くには
+
+https://github.com/azu/promise-test-helper[azu/promise-test-helper]
+
+- [ ] Promiseサポート
+- [ ] onFulfilledかonRejectedかを明示
+- [ ] テストフレームワークに依存
+- [ ] `done`を使うか、return promiseをするかはスタイル
+- [ ] coffeeだと`done`の方がいい
