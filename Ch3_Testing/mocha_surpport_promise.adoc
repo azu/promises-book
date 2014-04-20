@@ -42,7 +42,7 @@ http://efcl.info/2014/0314/res3708/[MochaがPromisesのテストをサポート�
 MochaのPromiseサポートについて書かれています。
 ====
 
-=== `catch`によるテスト
+=== 意図しないテスト結果
 
 MochaがPromiseのテストをサポートしているため、これでよいと思われるかもしれませんが、
 この書き方にも意図しない結果になる例外が存在します。
@@ -98,14 +98,14 @@ it("is bad pattern", function () {
 
 [source,js]
 ----
-function throwError(value) { // <1>
-    throw new Error(value);
+function failTest() { // <1>
+    throw new Error("Expected promise to be rejected but it was fulfilled");
 }
 function mayBeRejected(){
     return Promise.resolve();
 }
 it("should bad pattern", function () {
-    return mayBeRejected().then(throwError).catch(function (error) {
+    return mayBeRejected().then(failTest).catch(function (error) {
         assert.deepEqual(error.message === "woo");
     });
 });
@@ -113,7 +113,7 @@ it("should bad pattern", function () {
 <1> throwすることでテストを失敗にしたい
 
 しかし、この書き方だと<<then-or-catch,then or catch?>>で紹介したように、
-`throwError`で投げられたエラーが`catch`されてしまいます。
+`failTest`で投げられたエラーが`catch`されてしまいます。
 
 .Then Catch flow
 image::../Ch2_HowToWrite/img/then_catch.png[Then Catch flow]
@@ -121,9 +121,12 @@ image::../Ch2_HowToWrite/img/then_catch.png[Then Catch flow]
 `then` -> `catch` となり、`catch`に渡ってくるErrorオブジェクトは`AssertionError`となり、
 意図したものとは違うものが渡ってきてしまいます。
 
-=== `catch`によるテストの改善
+つまり、onRejectedになること**だけ**を期待して書かれたテストは、onFulfilledの状態になってしまうと
+常にテストがパスしてしまうという問題を持っていることが分かります。
 
-<<mocha-rejected-promise-test,上記のエラーをテスト>>したい場合は、どうすればよいでしょうか?
+=== 両状態の明示して意図しないテストを改善
+
+<<mocha-rejected-promise-test,上記のエラーオブジェクトをテスト>>したい場合は、どうすればよいでしょうか?
 
 先ほどとは逆に `catch` -> `then` とした場合は、以下のように意図した挙動になります。
 
@@ -140,7 +143,7 @@ function mayBeRejected() {
 it("catch -> then", function () {
     return mayBeRejected().catch(function (error) {
         assert(error.message === "woo");
-    }).then(throwError);// <1>
+    }).then(failTest);// <1>
 });
 ----
 <1> resolveされた場合はテストは失敗する
@@ -153,21 +156,44 @@ function mayBeRejected() {
     return Promise.resolve();
 }
 it("catch -> then", function () {
-    return mayBeRejected().then(throwError, function (error) {
+    return mayBeRejected().then(failTest, function (error) {
         assert(error.message === "woo");
     });
 });
 ----
 
+つまり、onFulfilled、onRejected 両方の状態についてどうなるかを明示する必要があるわけです。
+
+.Promise onRejected test
+image::img/promise-test.png[Promise onRejected test]
+
+
 <<then-or-catch,then or catch?>>の時は、エラーの見逃しを避けるため、
 `.then(onFulfilled, onRejected)`の第二引数ではなく、`then` -> `catch`と分けることを推奨していました。
 
 しかし、テストの場合はPromiseの強力なエラーハンドリングが逆にテストの邪魔をしてしまいます。
-そのため`.then(onFulfilled, onRejected)`というように指定すると、より簡潔にテストを書くことが出来ます。
+そのため`.then(onFulfilled, onRejected)`というように指定事でより簡潔にテストを書くことが出来ました。
 
 === まとめ
 
+MochaのPromiseサポートについてと意図しない挙動となる場合について紹介しました。
+
 * 通常のコードは`then` -> `catch`と分けた方がよい
 ** エラーハンドリングのため。<<then-or-catch,then or catch?>>を参照
-* テストコードは`then`にまとめた方がよい
-** エラーがMochaに届くようにエラーハンドリングは行わない
+* テストコードは`then`にまとめた方がよい?
+** アサーションエラーがテストフレームワークに届くようにするため。
+
+`.then(onFulfilled, onRejected)`を使うことで、
+promiseオブジェクトがonFulfilled、onRejectedどちらの状況になることを明示してテストすることが出来ます。
+
+しかし、onRejectedのテストであることを明示するために、以下のように書くのはあまり直感的ではないと思います。
+
+[source,js]
+----
+promise.then(failTest, function(error){
+    // assertでerrorをテストする
+}
+----
+
+次は、Promiseのテストを手助けするヘルパー関数を定義して、
+もう少し分かりやすいテストを書くにはするべきかについて見て行きましょう。

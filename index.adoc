@@ -21,7 +21,7 @@ ifeval::["{backend}" == "html5"]
 endif::[]
 
 [IMPORTANT]
-Working on the book {appversion}. Contributingは https://github.com/azu/promises-book[Github] から
+Working on the book. Contributingは https://github.com/azu/promises-book[Github] から
 
 
 // 各章はH1から始めているので、一つ下げる
