@@ -1,5 +1,5 @@
 = Chapter.3 - Promisesのテスト
-:imagesdir: ChX_Testing/
+:imagesdir: Ch3_Testing/
 
 この章ではPromisesのテストの書き方について学んで行きます。
 
