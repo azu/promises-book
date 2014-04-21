@@ -6,6 +6,10 @@
 if (!global.Promise) {
     global.Promise = require("ypromise");
 }
+
+global.shouldFulfilled = require("promise-test-helper").shouldFulfilled;
+global.shouldRejected = require("promise-test-helper").shouldRejected;
+
 if (global.mocha) {
     global.mocha.checkLeaks = false;
 }
