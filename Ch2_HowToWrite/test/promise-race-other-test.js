@@ -25,7 +25,7 @@ describe("promise-race-other", function () {
                 done();
             });
 
-        Promise.race([winnerPromise, loserPromise]).then(function (value) {
+        Promise.race([winnerPromise, loserPromise]).then(function () {
             assert(count === [winnerPromise, loserPromise].length);
         });
     });

@@ -12,12 +12,9 @@ describe("#promisedMapping", function () {
         });
     });
     context("When passing [1,2,4]", function () {
-        var isPromiseInstance = function (promise) {
-            assert(promise instanceof Promise);
-        };
         it("should return [p(1),p(2),p(4)]", function () {
             var promiseMap = promisedMapping([1, 2, 4]);
-            return Promise.all(promiseMap).then(function (values) {
+            return shouldFulfilled(Promise.all(promiseMap)).then(function (values) {
                 assert.deepEqual(values, [1, 2, 4]);
             });
         });

@@ -10,21 +10,17 @@ describe("addDelay", function () {
             done();
         });
         it("could handling promitive value", function () {
-            return addDelay("value", 1).then(function (value) {
+            return shouldFulfilled(addDelay("value", 1)).then(function (value) {
                 assert(value === "value");
-            }).catch(function (error) {
-                assert.fail(error);
-            });
+            })
         });
         it("could handling function as value", function () {
             var fn = function () {
                 return "result";
             };
-            return addDelay(fn, 1).then(function (value) {
+            return shouldFulfilled(addDelay(fn, 1)).then(function (value) {
                 assert(value === fn);
                 assert(fn() === "result");
-            }).catch(function (error) {
-                assert.fail(error);
             });
         });
     });
@@ -32,10 +28,8 @@ describe("addDelay", function () {
         it("should add delay for promise's resolve", function () {
             var expectedValue = "解決";
             var promise = Promise.resolve(expectedValue);
-            return addDelay(promise, 1).then(function (value) {
+            return shouldFulfilled(addDelay(promise, 1)).then(function (value) {
                 assert(value === expectedValue);
-            }).catch(function (error) {
-                assert.fail(error);
             });
         });
     });

@@ -21,7 +21,8 @@ describe("notification-thenable", function () {
             delete MockNotification.permission;
         });
         it("should return Notification", function () {
-            return Promise.resolve(notifyMessage.thenable("message")).then(function (notification) {
+            var promise = Promise.resolve(notifyMessage.thenable("message"));
+            return shouldFulfilled(promise).then(function (notification) {
                 assert(notification instanceof MockNotification);
             });
         });
@@ -37,9 +38,8 @@ describe("notification-thenable", function () {
             global.Notification = null;
         });
         it("should catch error", function () {
-            return Promise.resolve(notifyMessage.thenable("message")).then(function () {
-                assert.fail(":(");
-            }).catch(function (error) {
+            var promise = Promise.resolve(notifyMessage.thenable("message"));
+            return shouldRejected(promise).catch(function (error) {
                 assert(error instanceof Error);
                 assert(error.message === "doesn't support Notification API");
             });
@@ -56,10 +56,10 @@ describe("notification-thenable", function () {
             delete MockNotification.requestPermission;
         });
         it("should return Notification", function () {
-            return Promise.resolve(notifyMessage.thenable("message")).then(
-                function (notification) {
-                    assert(notification instanceof MockNotification);
-                });
+            var promise = Promise.resolve(notifyMessage.thenable("message"));
+            return shouldFulfilled(promise).then(function (notification) {
+                assert(notification instanceof MockNotification);
+            });
         });
     });
 
@@ -74,9 +74,8 @@ describe("notification-thenable", function () {
             delete MockNotification.requestPermission;
         });
         it("should catch error", function () {
-            return Promise.resolve(notifyMessage.thenable("message")).then(function () {
-                assert.fail(":(");
-            }).catch(function (error) {
+            var promise = Promise.resolve(notifyMessage.thenable("message"));
+            return shouldRejected(promise).catch(function (error) {
                 assert(error instanceof Error);
                 assert(error.message === "user denied");
             });

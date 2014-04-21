@@ -16,7 +16,7 @@ describe("promise-all-xhr", function () {
         done();
     });
     it("should passing result of request callback", function () {
-        return xhr.main().then(function (value) {
+        return shouldFulfilled(xhr.main()).then(function (value) {
             assert.deepEqual(value, [1, 2]);
         })
     });

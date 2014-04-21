@@ -21,7 +21,7 @@ describe("notification-as-promise", function () {
             delete MockNotification.permission;
         });
         it("should return Notification", function () {
-            return notifyMessage("message").then(function (notification) {
+            return shouldFulfilled(notifyMessage("message")).then(function (notification) {
                 assert(notification instanceof MockNotification);
             });
         });
@@ -37,10 +37,9 @@ describe("notification-as-promise", function () {
             delete MockNotification.requestPermission;
         });
         it("should return Notification", function () {
-            return notifyMessage("message").then(
-                function (notification) {
-                    assert(notification instanceof MockNotification);
-                });
+            return shouldFulfilled(notifyMessage("message")).then(function (notification) {
+                assert(notification instanceof MockNotification);
+            });
         });
     });
 
@@ -55,9 +54,7 @@ describe("notification-as-promise", function () {
             delete MockNotification.requestPermission;
         });
         it("should return Notification", function () {
-            return notifyMessage("message").then(function () {
-                assert.fail(":(");
-            }).catch(function (error) {
+            return shouldRejected(notifyMessage("message")).catch(function (error) {
                 assert(error instanceof Error);
                 assert(error.message === "user denied");
             });

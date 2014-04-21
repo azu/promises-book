@@ -11,11 +11,10 @@ describe("multiple-xhr", function () {
         xhr.request.comment.restore();
         done();
     });
-    it("should passing result of request callback", function (done) {
-        xhr.main().then(function (value) {
+    it("should passing result of request callback", function () {
+        return shouldFulfilled(xhr.main()).then(function (value) {
             assert.deepEqual(value, [1, 2]);
-            done();
-        }).catch(done);
+        });
     });
 });
 
