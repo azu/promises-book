@@ -8,3 +8,6 @@ include::basic_tests.adoc[]
 
 // MochaとPromise
 include::mocha_support_promise.adoc[]
+
+// 意図したテストを書くには
+include::control_tests.adoc[]
