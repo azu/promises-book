@@ -110,7 +110,7 @@ it("should use `done` for test?", function (done) {
 実際にはテストが終わることがなくタイムアウトします。
 
 .promise test timeout
-image::img/promise-test-timout.png[promise test timeout]
+image::img/promise-test-timeout.png[promise test timeout]
 
 `assert`が失敗した場合は通常はエラーをthrowするため、
 テストフレームワークがそれをキャッチすることで、テストが失敗したと判断します。
