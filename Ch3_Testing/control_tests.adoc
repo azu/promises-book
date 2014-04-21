@@ -92,7 +92,7 @@ include::embed/embed-shouldFulfilled-test.js[]
 
 <<shouldRejected.js>>と基本は同じで、返すオブジェクトの`catch`が`then`になって中身が逆転しただけですね。
 
-== まとめ
+=== まとめ
 
 Promisesで意図したテストを書くためにはどうするか、またそれを補助するヘルパー関数について学びました。
 
