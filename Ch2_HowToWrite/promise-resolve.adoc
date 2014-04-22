@@ -121,7 +121,7 @@ include::embed/embed-notification-as-promise.js[]
 
 [source,js]
 ----
-notifyMessage("Hi!").then(function (notification) {
+notifyMessageAsPromise("Hi!").then(function (notification) {
     console.log(notification);// 通知のオブジェクト
 }).catch(function(error){
     console.error(error);
