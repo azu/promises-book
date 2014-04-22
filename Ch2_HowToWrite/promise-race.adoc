@@ -2,10 +2,10 @@
 
 <<Promise.all, `Promise.all`>> と同様に複数のpromiseオブジェクトを扱う<<Promise.race, `Promise.race`>>を見てみましょう。
 
-使い方はPromise.allと同様で、promiseオブジェクトの配列を渡します。
+使い方はPromise.allと同様で、promiseオブジェクトの配列を引数に渡します。
 
-Promise.allが渡した全てのpromiseが解決状態になるまで次の処理を待ちましたが、
-Promise.raceは、どれか一つでもpromiseが解決状態になったら次の処理を実行します。
+`Promise.all`は、渡した全てのpromiseが解決状態になるまで次の処理を待ちましたが、
+`Promise.race`は、どれか一つでもpromiseが解決状態になったら次の処理を実行します。
 
 Promise.allの時と同じタイマーを使った例を見てみましょう
 
@@ -15,7 +15,7 @@ include::embed/embed-promise-race.js[]
 ----
 
 上記のコードだと、1ms後、32ms後、64ms後、128ms後にそれぞれpromiseオブジェクトが解決されますが、
-一番最初に1msのものがresolveされた時点で、`.then` が呼ばれ、`value`に渡される値も`resolve(1)`なので、1となります。
+一番最初に1msのものがresolveされた時点で、`.then` が呼ばれ、`resolve(1)`なので`value`に渡される値も1となります。
 
 最初に解決したpromiseオブジェクト以外は、その時点で呼ばれるのかを見てみましょう
 
