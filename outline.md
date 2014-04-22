@@ -15,12 +15,14 @@
     - ユースケース
 - [x] `Promise.reject`
     - ユースケース?
-- [ ] Promisesのエラーハンドリング
+- [x] Promisesのエラーハンドリング
   - [x] `then` でエラーが起きたらどうなるの?
-- [ ] Promisesのテストを書いてみよう
-  - [ ] Mochaでのテスト
-  - [ ] エラーハンドリングのテストへの影響
-  - [ ] Test as Promise
+
+
+## Promise Test
+- [x] Mochaでのテスト
+- [x] エラーハンドリングのテストへの影響
+- [x] Test as Promise
 
 ## Advanced Promises
 
