@@ -1,0 +1,6 @@
+== DeferredとPromise
+
+- [ ] Deferredとは何か、Promiseとの関係を定義
+- [ ] Promiseの上にDeferredを実装
+- [ ] Deferredを使った`getURL`の実装
+- [ ] 見た目の違い、エラーハンドリングの違い
