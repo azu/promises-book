@@ -1,5 +1,6 @@
+"use strict";
 var assert = require('power-assert');
-var getURL = require("../src/xhr-promise").getURL;
+var getURL = require("../src/xhr-deferred").getURL;
 
 require("http-echo");
 describe('#getURL', function () {
@@ -19,4 +20,5 @@ describe('#getURL', function () {
             });
         });
     });
+
 });
