@@ -3,7 +3,7 @@ var assert = require('power-assert');
 var getURL = require("../src/xhr-deferred").getURL;
 
 require("http-echo");
-describe('#getURL', function () {
+describe('#cancelableXHR', function () {
     describe("when get data", function () {
         it("should resolve with value", function () {
             var URL = "http://localhost:3000/?status=200&body=text";
