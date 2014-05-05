@@ -1,6 +1,121 @@
 == DeferredとPromise
 
-- [ ] Deferredとは何か、Promiseとの関係を定義
-- [ ] Promiseの上にDeferredを実装
-- [ ] Deferredを使った`getURL`の実装
-- [ ] 見た目の違い、エラーハンドリングの違い
+このセクションではDeferredとPromiseの関係について簡潔に学んでいきます。
+
+=== Deferredとは何か
+
+Deferredという単語はPromiseと同じコンテキストで聞いた事があるかもしれません。
+
+有名な所だと http://api.jquery.com/category/deferred-object/[jQuery.Deferred] や http://cho45.stfuawsc.com/jsdeferred/[JSDeferred] 等があげられるでしょう。
+
+DeferredはPromisesと違い、共通の仕様があるわけではなく、各ライブラリがそのような目的な実装をそう呼んでいるため、
+今回は http://api.jquery.com/category/deferred-object/[jQuery.Deferred] を中心にして話を進めます。
+
+=== DeferredとPromiseの関係
+
+DeferredとPromiseの関係を簡単に書くと以下のようになります。
+
+- Deferred は Promiseを持っている
+- Deferred は Promiseの状態を操作する特権的なメソッドを持っている
+
+.DeferredとPromise
+image::img/deferred-promise.png[DeferredとPromise]
+
+この関係を見れば分かると思いますが、DeferredとPromiseは比べるような関係ではなく、
+DeferredがPromiseの上に成り立っていて、DeferredがPromiseを操作するメソッドを持っています。
+
+[NOTE]
+jQuery.Deferredの構造を簡略化したものです。もちろんPromiseを持たないDeferredの実装もあります。
+
+図だけだと分かりにくいので、実際にPromiseを使ってDeferredを実装してみましょう。
+
+=== Deferred top on Promise
+
+Promiseの上にDeferredを実装した例です。
+
+[source,js]
+[[deferred.js]]
+.deferred.js
+----
+include::embed/embed-deferred.js[]
+----
+
+以前Promiseを使って実装した<<xhr-promise.js,`getURL`>>をこのDeferredで実装しなおしてみます。
+
+[source,js]
+[[xhr-deferred.js]]
+.xhr-deferred.js
+----
+include::embed/embed-xhr-deferred.js[]
+----
+
+Promiseの状態を操作する特権的なメソッドというのは、
+promiseオブジェクトの状態をresolve、rejectすることができるメソッドで、
+通常のPromiseだとコンストラクタで渡した関数の中でしか操作する事が出来ません。
+
+Promiseで実装したものと見比べていきたいと思います。
+
+[source,js]
+.xhr-promise.js
+----
+include::../Ch1_WhatsPromises/embed/embed-xhr-promise.js[]
+----
+
+2つの`getURL`を見比べて見ると以下のような違いがある事が分かります。
+
+* Deferred の場合は全体がPromiseで囲まれていない
+** 関数で囲んでないため、1段ネストが減っている
+** 逆にPromiseでのエラーハンドリングは行われていない
+
+逆に以下の部分は同じ事やっています。
+
+* 全体的な処理の流れ
+** `resolve`、`reject`を呼ぶタイミング
+* 関数はpromiseオブジェクトを返す
+
+このDeferredはPromiseを持っているため、大きな流れは同じですが、
+Deferredには特権的なメソッドを持っていることや自分で流れを制御する裁量が大きいことが分かります。
+
+例えば、Promiseの場合はコンストラクタの中に処理を書くことが通例なので、
+`resolve`、`reject`を呼ぶタイミングが大体みて分かります。
+
+[source,js]
+----
+new Promise(function (resolve, reject){
+    // この中に解決する処理を書く
+}
+----
+
+一方Deferredの場合は、関数的なまとまりはないのでdeferredオブジェクトを作ったところから、
+任意のタイミングで`resolve`、`reject`を呼ぶ感じになります。
+
+[source,js]
+----
+var deferred = new Deferred();
+
+// どこかのタイミングでdeferred.resolve or deferred.rejectを呼ぶ
+----
+
+このように小さな`Deferred`の実装ですがPromiseとの違いが出ていることが分かります。
+
+これは、Promiseが値を抽象化したオブジェクトなのに対して、
+Deferredはまだ処理が終わってないという状態や操作を抽象化したオブジェクトである違いがでているのかもしれません。
+
+言い換えると、
+Promiseはこの値は将来的に正常な値(onFulfilled)か異常な値(onRejected)が入るというものを予約したオブジェクトなのに対して、
+
+Deferredはまだ処理が終わってないという事を表すオブジェクトで、
+処理が終わった時の結果を取得する機構(Promise)に加えて処理を進める機構をもったもとといえるかもしれません。
+
+より詳しくDeferredについて知りたい人は、jQuery.DeferredやDeferredの元となったTwisted、また以下を参照するといいでしょう。
+
+* http://blog.mediumequalsmessage.com/promise-deferred-objects-in-javascript-pt1-theory-and-semantics[Promise &amp; Deferred objects in JavaScript Pt.1: Theory and Semantics.]
+* http://skitazaki.appspot.com/translation/twisted-intro-ja/index.html[Twisted 入門 — Twisted Intro]
+* https://github.com/petkaantonov/bluebird/wiki/Promise-anti-patterns#the-deferred-anti-pattern[Promise anti patterns · petkaantonov/bluebird Wiki]
+* https://github.com/kriskowal/q/wiki/Coming-from-jQuery[Coming from jQuery · kriskowal/q Wiki]
+
+[NOTE]
+====
+DeferredはPythonの https://twistedmatrix.com/trac/[Twisted] というフレームワークが最初に定義した概念です。
+JavaScriptへは http://mochi.github.io/mochikit/doc/html/MochiKit/Async.html[MochiKit.Async] 、 http://dojotoolkit.org/reference-guide/1.9/dojo/Deferred.html[dojo/Deferred] 等のライブラリがその概念を持ってきたと言われています。
+====

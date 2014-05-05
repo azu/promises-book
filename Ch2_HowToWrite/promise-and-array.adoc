@@ -61,8 +61,8 @@ function(error,value){
 
 <<promise.then,`.then`>> を使った場合は、コールバックスタイルと完全に同等というわけではないですが以下のように書けると思います。
 
-[[xhr-promise]]
 [source,js]
+[[multiple-xhr.js]]
 ----
 include::embed/embed-multiple-xhr.js[]
 ----
