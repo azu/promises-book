@@ -26,6 +26,7 @@ Working on the book. Contributingは https://github.com/azu/promises-book[Github
 
 // 各章はH1から始めているので、一つ下げる
 :leveloffset: 1
+
 // 第一章
 include::Ch1_WhatsPromises/readme.adoc[]
 
@@ -34,6 +35,9 @@ include::Ch2_HowToWrite/readme.adoc[]
 
 // 第三章
 include::Ch3_Testing/readme.adoc[]
+
+// 第四章
+include::Ch4_AdvancedPromises/readme.adoc[]
 
 
 // リファレンス
