@@ -2,7 +2,7 @@
 function getURL(URL) {
     return new Promise(function (resolve, reject) {
         var req = new XMLHttpRequest();
-        req.open('GET', URL, false);
+        req.open('GET', URL, true);
         req.onload = function () {
             if (req.status == 200) {
                 resolve(req.response);

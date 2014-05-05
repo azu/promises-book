@@ -1,7 +1,7 @@
 "use strict";
 function getURLCallback(URL, callback) {
     var req = new XMLHttpRequest();
-    req.open('GET', URL, false);
+    req.open('GET', URL, true);
     req.onload = function () {
         if (req.status == 200) {
             callback(null, req.response);
