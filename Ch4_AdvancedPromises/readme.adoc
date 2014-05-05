@@ -1,4 +1,4 @@
-= Advanced
+= Chapter.4 - Advanced
 :imagesdir: Ch4_AdvancedPromises/
 
 この章では、これまでに学んだことの応用や発展した内容について学んでいきます。
