@@ -38,3 +38,42 @@ delayPromise(100).then(function () {
 
 ここでは**promiseオブジェクト**であるという事が重要になってくるので覚えておいて下さい。
 
+=== Promise.raceでタイムアウト
+
+`Promise.race`について簡単に振り返ると、
+以下のようにどれか一つでもpromiseオブジェクトが解決状態になったら次の処理を実行する静的メソッドでした。
+
+[source,js]
+----
+include::../Ch2_HowToWrite/embed/embed-promise-race-other.js[]
+----
+
+先ほどの<<delayPromise.js,delayPromise>>と別のpromiseオブジェクトを、
+`Promise.race`によって競争させることで簡単にタイムアウトが実装出来ます。
+
+[source,js]
+[[simple-timeoutPromise.js]]
+.simple-timeoutPromise.js
+----
+include::embed/embed-simple-timeoutPromise.js[]
+----
+
+`timeoutPromise(比較対象のpromise, ms)` はタイムアウト処理を入れたい
+promiseオブジェクトとタイムアウトの時間を受け取り、`Promise.race`により競争させたpromiseオブジェクトを返します。
+
+`timeoutPromise` を使うことで以下のようにタイムアウト処理を書くことが出来るようになります。
+
+[source,js]
+----
+var taskPromise = new Promise(function(resolve){
+    // 何かの処理
+    var result = "...";
+    resolve(result);
+});
+timeoutPromise(taskPromise, 1000).then(function(value){
+    // taskPromiseが時間内に終わった
+}).catch(function(error){
+    // タイムアウトになってしまった
+});
+----
+
