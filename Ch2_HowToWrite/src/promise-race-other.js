@@ -14,5 +14,5 @@ var loserPromise = new Promise(function (resolve) {
 
 // 一番最初のものがresolveされた時点で終了
 Promise.race([winnerPromise, loserPromise]).then(function (value) {
-    console.log(value); // => 1
+    console.log(value); // => 'this is winner'
 });
