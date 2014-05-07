@@ -223,7 +223,18 @@ xhrPromise.catch(function (error) {
 cancelableXHR.abortPromise(xhrPromise);// <2>
 ----
 <1> XHRをラップしたpromiseオブジェクトを作成
-<2> 1で作成したpromiseオブジェクトのリクエストを停止する
+<2> 1で作成したpromiseオブジェクトのリクエストをキャンセル
 
 
 === まとめ
+
+ここでは以下のような事について学びました。
+
+* 一定時間後に解決されるdelayPromise
+* delayPromiseとPromise.raceを使ったタイムアウトの実装
+* XHRのpromiseのリクエストのキャンセル
+* モジュール化によるpromiseオブジェクトと操作の分離
+
+Promisesは処理のフローを制御する力に優れているため、それを
+最大限活かすためには一つの関数でやり過ぎないで処理を小さく分けること等、今までの
+JavaScriptで言われているような事をより意識していいのかもしれません。
