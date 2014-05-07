@@ -174,9 +174,56 @@ include::embed/embed-delay-race-cancel.js[]
 include::embed/embed-delay-race-cancel-play.js[]
 ----
 
-[TIP]
-通常の開発の場合は繰り返し使えるように、それぞれファイルに分割して定義しておくといいですね。
+これで、一定時間後に解決されるpromiseを使ったタイムアウト処理が実現できました。
 
+[NOTE]
+通常の開発の場合は繰り返し使えるように、それぞれファイルに分割して定義しておくといいですね。
 
 === promiseと操作メソッド
 
+先ほどの<<delay-race-cancel.js,`cancelableXHR`>>はpromiseオブジェクトと操作のメソッドが
+一緒になったオブジェクトを返すようにしていたため少し分かりくかったかもしれません。
+
+一つの関数は一つの値(promiseオブジェクト)を返すほうが見通しがいいと思いますが、
+`cancelableXHR`の中で生成した`req`は外から参照できないので、特定のメソッド(先ほどのケースは`abort`)からは触れるようにする必要があります。
+
+返すpromiseオブジェクト自体を拡張して`abort`出来るようにするという手段もあると思いますが、
+promiseオブジェクトは値を抽象化したオブジェクトであるため、何でも操作用のメソッドをつけていくと複雑になってしまうかもしれません。
+
+一つの関数で全てやろうとしてるのがそもそも良くないので、
+ひとつの関数で何でもやるのは止めて、以下のように関数に分離していくというのが妥当な気がします。
+
+* XHRを行うpromiseオブジェクトを返す
+* promiseオブジェクトを渡したら該当するXHRを止める
+
+これらの処理をまとめたモジュールを作れば今後の拡張がしやすいですし、
+一つの関数がやることも小さくて済むので見通しも良くなると思います。
+
+モジュールの作り方は色々作法(AMD,CommonJS,ES6 module etc..)があるので
+ここでは、先ほどの`cancelableXHR`をNode.jsのモジュールとして作りなおしてみます。
+
+[source,js]
+[[cancelableXHR.js]]
+.cancelableXHR.js
+----
+include::lib/cancelableXHR.js[]
+----
+
+使い方もシンプルに`createXHRPromise`でXHRのpromiseオブジェクトを作成して、
+そのXHRを`abort`したい場合は`abortPromise(promise)`にpromiseオブジェクトを渡すという感じで利用できるようになります。
+
+[source,js]
+----
+var cancelableXHR = require("./cancelableXHR");
+
+var xhrPromise = cancelableXHR.createXHRPromise('http://httpbin.org/get');// <1>
+xhrPromise.catch(function (error) {
+    // abort されたエラーが呼ばれる
+});
+cancelableXHR.abortPromise(xhrPromise);// <2>
+----
+<1> XHRをラップしたpromiseオブジェクトを作成
+<2> 1で作成したpromiseオブジェクトのリクエストを停止する
+
+
+=== まとめ
