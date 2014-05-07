@@ -144,8 +144,8 @@ http://speakingjs.com/es5/ch28.html[Chapter 28. Subclassing Built-ins] で詳�
 
 XHRのキャンセル自体は、`XMLHttpRequest` オブジェクトの `abort()` メソッドを呼ぶだけなので難しくないですね。
 
-`abort()` メソッドを外から呼べるようにするために、今までのセクションででてきた<<xhr-promise.js,`getURL`>>を少し拡張して、
-XHRを包んだpromiseオブジェクトと一緒にそのXHRを中止するメソッドを持つオブジェクトを返すようにしています。
+`abort()` メソッドを外から呼べるようにするために、今までのセクションにもでてきた<<xhr-promise.js,`getURL`>>を少し拡張して、
+XHRを包んだpromiseオブジェクトと共にそのXHRを中止するメソッドを持つオブジェクトを返すようにしています。
 
 [source,js]
 [[delay-race-cancel.js]]
@@ -174,8 +174,9 @@ include::embed/embed-delay-race-cancel.js[]
 include::embed/embed-delay-race-cancel-play.js[]
 ----
 
+[TIP]
+通常の開発の場合は繰り返し使えるように、それぞれファイルに分割して定義しておくといいですね。
 
-[NOTE]
-通常の開発の場合は繰り返し使えるようにそれぞれファイルに分割して定義しておくといいですね。
 
+=== promiseと操作メソッド
 
