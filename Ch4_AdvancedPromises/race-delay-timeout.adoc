@@ -77,3 +77,57 @@ timeoutPromise(taskPromise, 1000).then(function(value){
 });
 ----
 
+タイムアウトになった場合はエラーが呼ばれるように出来ましたが、
+しかし、このままでは通常のエラーとタイムアウトによるエラーの区別がつかなくなってしまいます。
+
+そこで`Error`オブジェクトのサブクラスを作り`TimeoutError`を定義したいと思います。
+
+=== カスタムErrorオブジェクト
+
+`Error` オブジェクトはECMAScriptのビルトインオブジェクトです。
+
+ECMAScript5では完璧に`Error`を継承したものを作るのは不可能ですが(スタックトレース周り等)、
+今回は通常のErrorとは区別を付けたいという目的なら、それを満たせる`TimeoutError`オブジェクトを作成出来ます。
+
+[NOTE]
+====
+ECMAScript6では`class`構文を使うことで内部的にも正確に継承を行うことが出来ます。
+
+[source,js]
+----
+class MyError extends Error{
+    // Errorを継承したオブジェクト
+}
+----
+====
+
+
+`error instanceof TimeoutError` というように利用できる`TimeoutError`を定義すると
+以下のようになります。
+
+[source,js]
+[[TimeoutError.js]]
+.TimeoutError.js
+----
+include::embed/embed-TimeoutError.js[]
+----
+
+`TimeoutError`というコンストラクタ関数を定義して、このコンストラクタにErrorをprototype継承させています。
+
+使い方は通常の`Error`オブジェクトと同じで以下のように`throw`するなどして利用できます。
+
+[source,js]
+----
+var timeoutError = new TimeoutError("timeout!")
+timeoutError instanceof TimeoutError;// true
+----
+
+この`TimeoutError`を使えば、タイムアウトによるErrorオブジェクトなのか、他の原因のErrorオブジェクトなのかが容易に判定できるようになります。
+
+[NOTE]
+====
+今回紹介したビルトインオブジェクトを継承したオブジェクトの作成方法については
+http://speakingjs.com/es5/ch28.html[Chapter 28. Subclassing Built-ins] で詳しく紹介されています。
+また、 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error[Error - JavaScript | MDN] にもErrorについて書かれています。
+====
+
