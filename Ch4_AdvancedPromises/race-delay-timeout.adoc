@@ -86,7 +86,7 @@ timeoutPromise(taskPromise, 1000).then(function(value){
 
 `Error` オブジェクトはECMAScriptのビルトインオブジェクトです。
 
-ECMAScript5では完璧に`Error`を継承したものを作るのは不可能ですが(スタックトレース周り等)、
+ECMAScript5では完璧に`Error`を継承したものを作る事は不可能ですが(スタックトレース周り等)、
 今回は通常のErrorとは区別を付けたいという目的なら、それを満たせる`TimeoutError`オブジェクトを作成出来ます。
 
 [NOTE]
@@ -119,7 +119,14 @@ include::embed/embed-TimeoutError.js[]
 [source,js]
 ----
 var timeoutError = new TimeoutError("timeout!")
-timeoutError instanceof TimeoutError;// true
+var promise = new Promise(function(){
+    throw timeoutError;
+})
+
+promise.catch(function(error){
+    error instanceof TimeoutError;// true
+});
+
 ----
 
 この`TimeoutError`を使えば、タイムアウトによるErrorオブジェクトなのか、他の原因のErrorオブジェクトなのかが容易に判定できるようになります。
@@ -128,6 +135,47 @@ timeoutError instanceof TimeoutError;// true
 ====
 今回紹介したビルトインオブジェクトを継承したオブジェクトの作成方法については
 http://speakingjs.com/es5/ch28.html[Chapter 28. Subclassing Built-ins] で詳しく紹介されています。
-また、 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error[Error - JavaScript | MDN] にもErrorについて書かれています。
+また、 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error[Error - JavaScript | MDN] にもErrorオブジェクトについて書かれています。
 ====
+
+=== タイムアウトによるXHRのキャンセル
+
+ここまでくれば、どのようにPromiseを使ったXHRのキャンセルを実装するか見えてくるかもしれません。
+
+XHRのキャンセル自体は、`XMLHttpRequest` オブジェクトの `abort()` メソッドを呼ぶだけなので難しくないですね。
+
+`abort()` メソッドを外から呼べるようにするために、今までのセクションででてきた<<xhr-promise.js,`getURL`>>を少し拡張して、
+XHRを包んだpromiseオブジェクトと一緒にそのXHRを中止するメソッドを持つオブジェクトを返すようにしています。
+
+[source,js]
+[[delay-race-cancel.js]]
+.delay-race-cancel.js
+----
+include::embed/embed-delay-race-cancel.js[]
+----
+
+これで必要な要素は揃ったので後は、Promiseを使った処理のフローに並べていくだけです。
+大まかな流れとしては以下のようになります。
+
+. `cancelableXHR`を使いXHRのpromiseオブジェクトと中止を呼び出すメソッドを取得する
+. `timeoutPromise`を使いXHRのpromiseとタイムアウト用のpromiseを`Promise.race`で競争させる
+* XHRが時間内に取得出来た場合
+.. 通常のpromiseと同様に`then`で中身を取得する
+* タイムアウトとなった場合は
+.. `throw TimeoutError`されるので`catch`する
+.. catchしたエラーオブジェクトが`TimeoutError`のものだったら`abort`を呼び出してXHRをキャンセルする
+
+これらの要素を全てまとめると以下のようになります。
+
+[source,js]
+[[delay-race-cancel-play.js]]
+.delay-race-cancel-play.js
+----
+include::embed/embed-delay-race-cancel-play.js[]
+----
+
+
+[NOTE]
+通常の開発の場合は繰り返し使えるようにそれぞれファイルに分割して定義しておくといいですね。
+
 
