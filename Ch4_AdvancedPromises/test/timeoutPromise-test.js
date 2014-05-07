@@ -20,6 +20,5 @@ describe("timeoutPromise", function () {
         return shouldRejected(timeoutPromise(taskPromise, 1)).catch(function (value) {
             assert(value instanceof TimeoutError);
         });
-
     });
 });
