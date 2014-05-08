@@ -5,7 +5,7 @@ function getURL(URL) {
     var req = new XMLHttpRequest();
     req.open('GET', URL, true);
     req.onload = function () {
-        if (req.status == 200 || req.status == 304) {
+        if (req.status == 200) {
             deferred.resolve(req.response);
         } else {
             deferred.reject(new Error(req.statusText));

@@ -4,7 +4,7 @@ var rename = require("gulp-rename");
 var inlining = require("gulp-inlining-node-require");
 var removeUseString = require("gulp-remove-use-strict");
 gulp.task("embed", function () {
-    return gulp.src(["./Ch*/src/*.js", "./Ch3_Testing/test/*.js"], {base: './'})
+    return gulp.src(["./Ch*/src/*.js","./Ch*/lib/*.js", "./Ch3_Testing/test/*.js"], {base: './'})
         .pipe(inlining())
         .pipe(removeUseString())
         .pipe(rename(function (path) {
