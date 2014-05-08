@@ -1,4 +1,4 @@
-== コラム: `then`は常に新しいpromiseオブジェクトを返す
+== コラム: thenは常に新しいpromiseオブジェクトを返す
 
 先ほどの<<then-or-catch,then or catch?>>でも出てきましたが、
 `.then` 等は新しいpromiseオブジェクトを作って返すという話でした。
