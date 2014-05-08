@@ -1,8 +1,5 @@
 == コラム: thenは常に新しいpromiseオブジェクトを返す
 
-先ほどの<<then-or-catch,then or catch?>>でも出てきましたが、
-`.then` 等は新しいpromiseオブジェクトを作って返すという話でした。
-
 `aPromise.then(...).catch(...)` は一見すると、全て最初の`aPromise`オブジェクトに
 メソッドチェーンで処理を書いてるように見えます。
 
