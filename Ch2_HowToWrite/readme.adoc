@@ -12,13 +12,16 @@ include::promise-all.adoc[]
 // Promise.race
 include::promise-race.adoc[]
 
+// コラム: `then`は常に新しいpromiseオブジェクトを返す
+include::then-return-new-promise.adoc[]
+
 // Promise.resolve
 include::promise-resolve.adoc[]
 
 // Promise.reject
 include::promise-reject.adoc[]
 
-// column
+// コラム: Promiseは常に非同期?
 include::column-promise-resolve.adoc[]
 
 // エラーハンドリング
