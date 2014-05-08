@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ "$TRAVIS_BRANCH" != "master" ] && ; then
+if [ "$TRAVIS_BRANCH" != "master" ] ; then
     echo "This is a ${TRAVIS_BRANCH} branch. No deployment will be done.";
     exit 0;
 fi
