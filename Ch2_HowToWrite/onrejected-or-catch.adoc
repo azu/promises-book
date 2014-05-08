@@ -28,14 +28,17 @@ include::embed/embed-then-throw-error.js[]
 つまり、この場合、 `theError` でエラーがおきても、`onRejected` に指定した関数は呼ばれることなく、
 どこでエラーが発生したのかわからなくなってしまいます。
 
-それに対して、 `goodMain` は `theError`->`onRejected`がchainするように書かれています。
+それに対して、 `goodMain` は `theError`->`onRejected`となるように書かれています。
 この場合は `theError` でエラーが発生しても、次のchainである`.catch`が呼ばれるため、エラーハンドリングを行う事が出来ます。
 
-`.then`や`.catch`によるchainは、それより前のpromiseオブジェクトに対しての処理を行なわれるため、このような違いが生まれます。
+`.then`のonRejectedが扱う処理は、その(またはそれ以前の)promiseオブジェクトに対してであって、
+`.then`に書かれたonFulfilledは対象ではないためこのような違いが生まれます。
 
 [NOTE]
+====
 `.then`や`.catch`はその場で**新しい**promiseオブジェクトを作って返します。
-promiseではchainする度に異なるpromiseオブジェクトに対して処理を書くようになっています。
+Promiseではchainする度に異なるpromiseオブジェクトに対して処理を書くようになっています。
+====
 
 [[then-catch-flow]]
 .Then Catch flow
