@@ -43,8 +43,8 @@ Fulfilled or Rejected どちらの状態になって欲しいかを明示する�
 まずは、先ほどの`.then`の例を元にonRejectedを期待してテスト出来る
 `shouldRejected`というヘルパー関数を作ってみたいと思います。
 
-[[shouldRejected.js]]
-.shouldRejected.js
+[[shouldRejected-test.js]]
+.shouldRejected-test.js
 [source,js]
 ----
 include::embed/embed-shouldRejected-test.js[]
@@ -85,7 +85,7 @@ image::img/promise-test.png[Promise onRejected test]
 同様に、promiseオブジェクトがFulfilledになることを期待する`shouldFulfilled`も書いてみましょう。
 
 [[shouldFulfilled.js]]
-.shouldFulfilled.js
+.shouldFulfilled-test.js
 [source,js]
 ----
 include::embed/embed-shouldFulfilled-test.js[]

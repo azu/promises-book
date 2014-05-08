@@ -11,7 +11,9 @@ Promiseのテストの場合は`done()`の代わりに、promiseオブジェク�
 
 実際にどういう風に書くかの例を見て行きたいと思います。
 
+
 [source,js]
+[[mocha-promise-test.js]]
 .mocha-promise-test.js
 ----
 include::test/mocha-promise-test.js[]

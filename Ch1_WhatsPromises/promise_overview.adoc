@@ -45,6 +45,8 @@ promise.catch(onRejected)
 以下のようなサンプルコードを見てみましょう。
 
 [source,js]
+[[promise-workflow.js]]
+.promise-workflow.js
 ----
 include::embed/embed-promise-workflow.js[]
 ----
