@@ -13,8 +13,9 @@
 
 === コールバックで複数の非同期処理
 
-[[xhr-callback]]
 [source,js]
+[[multiple-xhr-callback.js]]
+.multiple-xhr-callback.js
 ----
 include::embed/embed-multiple-xhr-callback.js[]
 ----
@@ -78,7 +79,7 @@ main().then(function (value) {
 });
 ----
 
-<<xhr-callback, コールバックスタイル>>と比較してみると次の事がわかります。
+<<multiple-xhr-callback.js, コールバックスタイル>>と比較してみると次の事がわかります。
 
 * `JSON.parse` をそのまま使っている
 * `main()` はpromiseオブジェクトを返している

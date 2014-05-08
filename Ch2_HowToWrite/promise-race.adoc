@@ -11,6 +11,8 @@
 Promise.allの時と同じタイマーを使った例を見てみましょう
 
 [source,js]
+[[promise-race.js]]
+.promise-race.js
 ----
 include::embed/embed-promise-race.js[]
 ----
@@ -21,9 +23,12 @@ include::embed/embed-promise-race.js[]
 最初に解決したpromiseオブジェクト以外は、その時点で呼ばれるのかを見てみましょう
 
 [source,js]
+[[promise-race-other.js]]
+.promise-race-other.js
 ----
 include::embed/embed-promise-race-other.js[]
 ----
+
 
 先ほどのコードに `console.log` をそれぞれ追加しただけの内容です。
 

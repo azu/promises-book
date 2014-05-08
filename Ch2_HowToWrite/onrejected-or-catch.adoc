@@ -13,6 +13,8 @@
 次のようなコードを見ていきます。
 
 [source,js]
+[[then-throw-error.js]]
+.then-throw-error.js
 ----
 include::embed/embed-then-throw-error.js[]
 ----

@@ -9,6 +9,8 @@
 全ての通信が完了(resolveまたはreject)された時に、次の`.then`が呼び出されます。
 
 [source,js]
+[[promise-all-xhr.js]]
+.promise-all-xhr.js
 ----
 include::embed/embed-promise-all-xhr.js[]
 ----
@@ -48,6 +50,8 @@ main().then(function (results) {
 次のようなタイマーを使った例を見てみると分かりやすいです。
 
 [source,js]
+[[promise-all-timer.js]]
+.promise-all-timer.js
 ----
 include::embed/embed-promise-all-timer.js[]
 ----

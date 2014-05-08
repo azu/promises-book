@@ -15,6 +15,7 @@ promiseオブジェクトを作る流れは以下のようになっています�
 実際にXHRでGETをするものをpromiseオブジェクトにしてみましょう。
 
 [[xhr-promise.js]]
+.xhr-promise.js
 [source,js]
 ----
 include::embed/embed-xhr-promise.js[]
