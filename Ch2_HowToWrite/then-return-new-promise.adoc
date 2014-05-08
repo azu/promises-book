@@ -1,2 +1,39 @@
 == コラム: `then`は常に新しいpromiseオブジェクトを返す
 
+先ほどの<<then-or-catch,then or catch?>>でも出てきましたが、
+`.then` 等は新しいpromiseオブジェクトを作って返すという話でした。
+
+`aPromise.then(...).catch(...)` は一見すると、全て最初の`aPromise`オブジェクトに
+メソッドチェーンで処理を書いてるように見えます。
+
+しかし、実際には`then`でまた別のpromiseオブジェクト、`catch`でまた別のpromiseオブジェクトを返しています。
+
+本当に新しいオブジェクトを返してるのか確認してみましょう。
+
+[source,js]
+----
+var aPromise = new Promise(function (resolve) {
+    resolve(100);
+});
+var thenPromise = aPromise.then(function (value) {
+    console.log(value);
+});
+var catchPromise = thenPromise.catch(function (error) {
+    console.error(error);
+});
+console.info(aPromise !== thenPromise); // => true
+console.info(thenPromise !== catchPromise);// => true
+----
+
+`===` 厳密比較演算子によって比較するとそれぞれが別々のオブジェクトなので、
+本当に`then`や`catch`は別のpromiseオブジェクトを返していることが分かりました。
+
+image::img/then_catch.png[Then Catch flow]
+
+この挙動はPromise全般に当てはまるため、`Promise.all`や`Promise.race`も
+引数で受け取ったものとは別のpromiseオブジェクトを作って返しています。
+
+この仕組みはPromiseを使うにあたってはそこまで意識しなくても問題は無いのですが、
+Promiseを拡張する時などは意識しないと、いつのまにか触ってるpromiseオブジェクトが
+別のものであったという事が起こりえると思います。
+
