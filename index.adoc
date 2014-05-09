@@ -20,12 +20,22 @@ ifeval::["{backend}" == "html5"]
 ++++
 endif::[]
 
+
+
 [IMPORTANT]
 =====
 *この書籍はまだ作業中です！*
 
 Working on the book. Contributingは https://github.com/azu/promises-book[Github] から
 =====
+
+[IMPORTANT]
+=====
+この書籍の進行状況は https://github.com/azu/promises-book/issues?state=open[Issues · azu/promises-book] や以下から確認できます。
+
+image::https://badges.gitter.im/azu/promises-book.png[Gitter, link="https://gitter.im/azu/promises-book"]
+=====
+
 
 // 各章はH1から始めているので、一つ下げる
 :leveloffset: 1
