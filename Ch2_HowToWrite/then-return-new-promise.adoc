@@ -78,7 +78,7 @@ bPromise.then(function (value) {
 1の書き方により発生するアンチパターンとしては以下のようなものが有名です
 
 [source,js]
-. ✘ `then`の間違った使い方
+.✘ `then`の間違った使い方
 ----
 function anAsyncCall() {
     var promise = Promise.resolve();
@@ -97,7 +97,7 @@ function anAsyncCall() {
 2のようにpromise chainがつなげるようにするべきなので、次のように修正することが出来ます。
 
 [source,js]
-. `then`したものを返す
+.`then`で作成したオブジェクトを返す
 ----
 function anAsyncCall() {
     var promise = Promise.resolve();
