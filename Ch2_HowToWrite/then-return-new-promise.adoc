@@ -34,3 +34,4 @@ image::img/then_catch.png[Then Catch flow]
 Promiseを拡張する時などは意識しないと、いつのまにか触ってるpromiseオブジェクトが
 別のものであったという事が起こりえると思います。
 
+`then`は新しいオブジェクトを作って返すということが分かれば、

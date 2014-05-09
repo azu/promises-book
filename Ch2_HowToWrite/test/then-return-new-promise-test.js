@@ -14,4 +14,29 @@ describe("promise.then ", function () {
         assert(aPromise !== thenPromise);
         assert(thenPromise !== catchPromise);
     });
+    it("diferrence then then", function (done) {
+        var aPromise = new Promise(function (resolve) {
+            resolve(100);
+        });
+        aPromise.then(function (value) {
+            return value * 2;
+        });
+        aPromise.then(function (value) {
+            return value * 2;
+        });
+        aPromise.then(function (value) {
+            assert(value === 100);
+        }).then(done, done);
+
+        var bPromise = new Promise(function (resolve) {
+            resolve(100);
+        });
+        bPromise.then(function (value) {
+            return value * 2;
+        }).then(function (value) {
+            return value * 2;
+        }).then(function (value) {
+            assert(value === 100 * 4);
+        });
+    });
 });
