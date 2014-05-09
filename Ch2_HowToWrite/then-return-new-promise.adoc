@@ -34,4 +34,80 @@ image::img/then_catch.png[Then Catch flow]
 Promiseを拡張する時などは意識しないと、いつのまにか触ってるpromiseオブジェクトが
 別のものであったという事が起こりえると思います。
 
-`then`は新しいオブジェクトを作って返すということが分かれば、
+`then`は新しいオブジェクトを作って返すということがわかっていれば、
+次の`then`の使い方では意味が異なる事に気づくでしょう。
+
+[source,js]
+----
+<1>
+var aPromise = new Promise(function (resolve) {
+    resolve(100);
+});
+aPromise.then(function (value) {
+    return value * 2;
+});
+aPromise.then(function (value) {
+    return value * 2;
+});
+aPromise.then(function (value) {
+    console.log(value); // => 100
+})
+
+// vs
+
+<2>
+var bPromise = new Promise(function (resolve) {
+    resolve(100);
+});
+bPromise.then(function (value) {
+    return value * 2;
+}).then(function (value) {
+    return value * 2;
+}).then(function (value) {
+    console.log(value); // => 100 * 2 * 2
+});
+----
+<1> それぞれの`then`は同時に呼び出される
+<2> `then`はpromise chain通り順番に呼び出される
+
+1のpromiseをメソッドチェーン的に繋げない書き方はあまりすべきではありませんが、
+このような書き方をした場合、それぞれの`then`はほぼ同時に呼ばれ、また`value`に渡る値も全て同じ`100`となります。
+
+2はメソッドチェーン的につなげて書くことにより、resolve -> then -> then -> then と書いた順番にキチンと実行され、
+それぞれの`value`に渡る値は、一つ前のpromiseオブジェクトで`return`された値が渡ってくるようになります。
+
+1の書き方により発生するアンチパターンとしては以下のようなものが有名です
+
+[source,js]
+. ✘ `then`の間違った使い方
+----
+function anAsyncCall() {
+    var promise = Promise.resolve();
+    promise.then(function() {
+        // 何かの処理
+        return newVar;
+    });
+    return promise;
+}
+----
+
+このように書いてしまうと、`promise.then`の中で例外が発生するとその例外を取得する方法がなくなり、
+また、何かの値を返していてもそれを受け取る方法が無くなってしまいます。
+
+これは`promise.then`によって新たに作られたpromiseオブジェクトを返すようにすることで、
+2のようにpromise chainがつなげるようにするべきなので、次のように修正することが出来ます。
+
+[source,js]
+. `then`したものを返す
+----
+function anAsyncCall() {
+    var promise = Promise.resolve();
+    return promise.then(function() {
+        // 何かの処理
+        return newVar;
+    });
+}
+----
+
+これらのアンチパターンについて、詳しくは
+http://taoofcode.net/promise-anti-patterns/[Promise Anti-patterns] を参照して下さい。
