@@ -24,6 +24,7 @@
     "w3c-xmlhttprequest": "~1.1.0"
   },
   "devDependencies": {
+    "fs-extra": "^0.8.1",
     "gulp": "^3.6.0",
     "gulp-inlining-node-require": "0.0.3",
     "gulp-remove-use-strict": "0.0.2",
