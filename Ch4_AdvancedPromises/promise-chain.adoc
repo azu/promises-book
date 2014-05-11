@@ -173,7 +173,32 @@ Node.jsのStreamについて詳しくは以下を参照して下さい。
 
 JavaScriptでは動的にメソッドを定義することもできるため、
 自動的にPromise版を生成できないかということを考えると思います。
+(もちろん静的に定義する方が扱いやすいですが)
 
+そのような仕組みは<<ES6Promises>>にはありませんが、
+著名なサードパーティのPromise実装である https://github.com/petkaantonov/bluebird/[bluebird] などには
+https://github.com/petkaantonov/bluebird/blob/master/API.md#promisification[Promisification] という機能が用意されています。
+
+これを利用すると以下のように、その場でpromise版のメソッドを追加して利用できるようになります。
+
+[source,js]
+----
+var fs = Promise.promisifyAll(require("fs"));
+
+fs.readFileAsync("myfile.js", "utf8").then(function(contents){
+    console.log(contents);
+}).catch(function(e){
+    console.error(e.stack);
+});
+----
+
+==== ArrayのPromiseラッパー
+
+先ほどの https://github.com/petkaantonov/bluebird/blob/master/API.md#promisification[Promisification] が何をやっているのか少しイメージしにくいので、
+次のような`Array`のPromise版を使えるメソッドを動的に定義する例を考えてみましょう。
+
+JavaScriptにはネイティブにもDOMやString等メソッドチェーンが行える機能が多くあります。
+`Array`もその一つで`map`や`filter`等の高階関数を受け取って処理はメソッドチェーンが利用しやすい機能です。
 
 [source,js]
 [[array-promise-chain.js]]
@@ -181,3 +206,30 @@ JavaScriptでは動的にメソッドを定義することもできるため、
 ----
 include::src/array-promise-chain.js[]
 ----
+
+ネイティブのArrayと`ArrayAsPromise`を使った場合の違いは
+上記のコードのテストを見てみるのが分かりやすいでしょう。
+
+[source,js]
+[[array-promise-chain-test.js]]
+.array-promise-chain-test.js
+----
+include::test/array-promise-chain-test.js[]
+----
+
+`ArrayAsPromise` でもArrayのメソッドを利用できているのが分かります。
+先ほどと同じように、ネイティブのArrayは同期処理で、`ArrayAsPromise` は非同期処理という違いがあります。
+
+`ArrayAsPromise` の実装見て気づくと思いますが、`Array.prototype`のメソッドを全て実装しています。
+しかし、`array.indexOf`など`Array.prototype`には配列を返さないものもあるため、全てをメソッドチェーンにするのは少し不自然なケースがあると思います。
+
+ここで大事なのが、同じ値を受けるインターフェースを持っているAPIはこのような手段で
+Promise版のAPIを自動的に作成できるなどの汎用性が高まるので、そのような点を意識してみるとまた違った使い方が見つかるかもしれません。
+
+[NOTE]
+====
+先ほどの https://github.com/petkaantonov/bluebird/blob/master/API.md#promisification[Promisification] は
+Node.jsのCoreモジュールの非同期処理には `function(error,result){}` というように第一引数に`error`が来るというルールを利用して、
+自動的にPromiseでラップしたメソッドを生成しています
+====
+

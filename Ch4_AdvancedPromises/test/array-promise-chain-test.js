@@ -13,14 +13,14 @@ describe("array-promise-chain", function () {
     beforeEach(function () {
         this.array = [1, 2, 3, 4, 5];
     });
-    context("When native array", function () {
+    describe("Native array", function () {
         it("can method chain", function () {
             var result = this.array.filter(isEven).map(double);
             assert.deepEqual(result, [4, 8]);
         });
     });
     describe("ArrayAsPromise", function () {
-        it("can", function (done) {
+        it("can promise chain", function (done) {
             var array = new ArrayAsPromise(this.array);
             array.filter(isEven).map(double).then(function (value) {
                 assert.deepEqual(value, [4, 8]);
