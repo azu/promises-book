@@ -1,3 +1,4 @@
+[[ch2-promise-reject]]
 == Promise.reject
 
 <<Promise.reject, `Promise.reject(error)`>>は

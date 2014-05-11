@@ -1,3 +1,4 @@
+[[promise-glossary]]
 = 用語集
 
 Promises::

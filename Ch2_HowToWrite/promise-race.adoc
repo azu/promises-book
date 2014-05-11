@@ -1,4 +1,4 @@
-[[promise-race]]
+[[ch2-promise-race]]
 == Promise.race
 
 <<Promise.all, `Promise.all`>> と同様に複数のpromiseオブジェクトを扱う<<Promise.race, `Promise.race`>>を見てみましょう。

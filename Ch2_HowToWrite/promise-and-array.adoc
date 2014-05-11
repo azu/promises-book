@@ -1,3 +1,4 @@
+[[ch2-promise-and-array]]
 == promiseと配列
 
 先ほどの章では、promiseオブジェクトがresolve又はrejectされた時の処理は <<promise.then,`.then`>> と <<promise.catch,`.catch`>> を

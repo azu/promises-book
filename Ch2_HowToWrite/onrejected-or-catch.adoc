@@ -1,5 +1,4 @@
 [[then-or-catch]]
-
 == then or catch?
 
 <<catch-as-alias,前の章>>で <<promise.catch,`.catch`>> は  `promise.then(undefined, onRejected)` であるという事を紹介しました。

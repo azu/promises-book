@@ -1,3 +1,4 @@
+[[how-to-write-promise]]
 == Promisesの書き方
 
 Promiseの基本的な書き方について解説します。
@@ -52,7 +53,7 @@ XHRで`onerror`のイベントが呼ばれた場合はもちろんエラーな�
 [source,js]
 getURL("http://example.com/"); // => promiseオブジェクト
 
-<<promises-overview>> でも簡単に紹介したようにpromiseオブジェクトは幾つかインスタンスを持っており、
+<<promises-overview,Promises Overview>> でも簡単に紹介したようにpromiseオブジェクトは幾つかインスタンスを持っており、
 これを使いpromiseオブジェクトの状態に応じて一度だけ呼ばれるコールバックとなる関数を登録します。
 
 promiseオブジェクトに登録する処理は以下の2種類が主となります
@@ -80,7 +81,7 @@ getURL(URL).then(function onFulfilled(value){ // <1>
 ----
 <1> 説明しやすくするためコールバック関数に `onFulfilled` という名前を付けています
 
-<<getURL,getURL関数>> 内で `resolve(req.response);` によってpromiseオブジェクトが解決されると、
+<<xhr-promise.js,getURL関数>> 内で `resolve(req.response);` によってpromiseオブジェクトが解決されると、
 値と共に`onFulfilled` 関数が呼ばれます。
 
 このままでは通信エラーが起きた場合などに何も処理がされないため、

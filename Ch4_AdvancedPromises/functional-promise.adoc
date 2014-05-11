@@ -1,3 +1,4 @@
+[[functional-promise]]
 == 高階関数とpromise
 
 Promiseで複数の処理を扱うときには次のような流れに乗るとスムーズに書けます。
