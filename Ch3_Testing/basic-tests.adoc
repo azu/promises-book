@@ -1,4 +1,4 @@
-[[basic-test]]
+[[basic-tests]]
 == 基本的なテスト
 
 ES6 Promisesのメソッド等についてひと通り学ぶことができたため、
