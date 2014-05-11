@@ -1,0 +1,257 @@
+== Promiseとメソッドチェーン
+
+Promiseは`then`や`catch`等のメソッドを繋げて書いていきます。
+これはDOMやjQuery等でよくみられるメソッドチェーンとよく似ています。
+
+一般的なメソッドチェーンは`this`を返すことで、メソッドを繋げて書けるようになっています。
+
+[NOTE]
+====
+メソッドチェーンの作り方については http://taiju.hatenablog.com/entry/20100307/1267962826[メソッドチェーンの作り方 - あと味] などを参照するといいでしょう。
+====
+
+一方、Promiseは<<then-return-new-promise, 毎回新しいpromiseオブジェクトを返す>>ようになっていますが、
+一般的なメソッドチェーンと見た目は全く同じです。
+
+このセクションでは、一般的なメソッドチェーンで書かれたものを
+インターフェースはそのままで内部的にはPromiseで処理されるようにする方法について学んでいきたいと思います。
+
+=== fsのメソッドチェーン
+
+以下のようなNode.jsの http://nodejs.org/api/fs.html[fs]モジュールを例にしてみたいと思います。
+
+また、今回の例は見た目のわかりやすさを重視しているため、
+現実的にはあまり有用なケースとは言えないかもしれません。
+
+[source,js]
+[[fs-method-chain.js]]
+.fs-method-chain.js
+----
+include::src/fs-method-chain.js[]
+----
+
+このモジュールは以下のようにread -> transform -> writeという流れを
+メソッドチェーンで表現することができます。
+
+[source,js]
+----
+var File = require("./fs-method-chain");
+var inputFilePath = "input.txt",
+    outputFilePath = "output.txt";
+File.read(inputFilePath)
+    .transform(function (content) {
+        return ">>" + content;
+    })
+    .write(outputFilePath);
+----
+
+`transform` は引数で受け取った値を変更する関数を渡して処理するメソッドです。
+この場合は、readで読み込んだ内容の先頭に`>>`という文字列を追加しているだけです。
+
+=== Promiseによるfsのメソッドチェーン
+
+次に先ほどの<<fs-method-chain.js,メソッドチェーン>>をインターフェースはそのまま維持して
+内部的にPromiseを使った処理にしてみたいと思います。
+
+[source,js]
+[[fs-promise-chain.js]]
+.fs-promise-chain.js
+----
+include::src/fs-promise-chain.js[]
+----
+
+内部に持ってるpromiseオブジェクトに対するエイリアスとして
+`then`と`catch`を持たせていますが、それ以外のインターフェースは全く同じで使い方となっています。
+
+そのため、先ほどのコードで`require`するモジュールを変更しただけで動作します。
+
+[source,js]
+----
+var File = require("./fs-promise-chain");
+var inputFilePath = "input.txt",
+    outputFilePath = "output.txt";
+File.read(inputFilePath)
+    .transform(function (content) {
+        return ">>" + content;
+    })
+    .write(outputFilePath);
+----
+
+`File.prototype.then` というメソッドは、
+`this.promise.then` が返す新しいpromiseオブジェクトを`this.promise`に対して代入しています。
+
+これはどういうことなのかというと、以下のように擬似的に展開してみると分かりやすいでしょう。
+
+[source,js]
+----
+var File = require("./fs-promise-chain");
+File.read(inputFilePath)
+    .transform(function (content) {
+        return ">>" + content;
+    })
+    .write(outputFilePath);
+// => 擬似的に以下のような流れに展開できる
+promise.then(function read(){
+        return fs.readFileSync(filePath, "utf-8");
+    }).then(function transform(content) {
+         return ">>" + content;
+    }).then(function write(){
+        return fs.writeFileSync(filePath, data);
+    });
+----
+
+`promise = promise.then(...)` という書き方は一見すると、上書きしているようにみえるため、
+それまでのpromiseのchainが途切れてしまうと思うかもしれません。
+
+イメージとしては `promise = addPromiseChain(promise, fn);` のような感じになっていて、
+既存のpromiseオブジェクトに対して新たな処理を**追加**したpromiseオブジェクトを作って返すため、
+自分で逐次的処理する機構を実装しなくても問題ないわけです。
+
+=== 両者の違い
+
+==== 同期と非同期
+
+<<fs-method-chain.js>>と<<fs-promise-chain.js,Promise版>>の違いを見ていくと、
+そもそも両者には同期的、非同期的という大きな違いがあります。
+
+<<fs-method-chain.js>> のようなメソッドチェーンでもキュー等の処理を実装すれば、
+非同期的なほぼ同様のメソッドチェーンを実装出来ますが、複雑になるため今回は単純な同期的なメソッドチェーンにしました。
+
+Promise版は<<promise-is-always-async,コラム: Promiseは常に非同期?>>で紹介したように
+常に非同期処理となるため、promiseを使ったメソッドチェーンも非同期となっています。
+
+==== エラーハンドリング
+
+<<fs-method-chain.js>>にはエラーハンドリングの処理は入っていないですが、
+同期処理であるため全体を`try-catch`で囲む事で行えます。
+
+<<fs-promise-chain.js,Promise版>> では内部で利用するpromiseオブジェクトの
+`then`と`catch`へのエイリアスを用意してあるため、通常のpromiseと同じように`catch`によってエラーハンドリングが行えます。
+
+[source,js]
+.fs-promise-chainでのエラーハンドリング
+----
+var File = require("./fs-promise-chain");
+File.read(inputFilePath)
+    .transform(function (content) {
+        return ">>" + content;
+    })
+    .write(outputFilePath)
+    .catch(function(error){
+        console.error(error);
+    });
+----
+
+<<fs-method-chain.js>>に非同期処理が加えたものを自力で実装する場合、
+エラーハンドリングが大きな問題となるため、非同期処理にしたい時は
+Promiseを使うと比較的簡単に実装できると言えるかもしれません。
+
+=== Promise以外での非同期処理
+
+このメソッドチェーンと非同期処理を見てNode.jsに慣れている方は http://nodejs.org/api/stream.html[Stream] が思い浮かぶと思います。
+
+http://nodejs.org/api/stream.html[Stream] を使うと、
+`this.lastValue`のような値を保持する必要がなくなる事や大きなファイルの扱いが改善したり、
+上記の例に比べるとより高速に処理できる可能性が高いと思います。
+
+[source,js]
+.streamによるread->transform->write
+----
+readableStream.pipe(transformStream).pipe(writableStream);
+----
+
+そのため、非同期処理には常にPromiseが最適という訳ではなく、
+目的と状況にあった実装をしていくことを考えていくべきでしょう。
+
+NOTE: Node.jsのStreamはEventをベースにしている技術
+
+Node.jsのStreamについて詳しくは以下を参照して下さい。
+
+* http://jxck.hatenablog.com/entry/20111204/1322966453[Node.js の Stream API で「データの流れ」を扱う方法 - Block Rockin’ Codes]
+* http://www.slideshare.net/shigeki_ohtsu/stream2-kihon[Stream2の基本]
+* http://www.slideshare.net/shigeki_ohtsu/node-v012tng12[Node-v0.12の新機能について]
+
+=== Promiseラッパー
+
+話を戻して<<fs-method-chain.js>>と<<fs-promise-chain.js,Promise版>>の両者を比べると、
+内部的にもかなり似ていて、同期版のものがそのまま非同期版でも使えるような気がします。
+
+JavaScriptでは動的にメソッドを定義することもできるため、
+自動的にPromise版を生成できないかということを考えると思います。
+(もちろん静的に定義する方が扱いやすいですが)
+
+そのような仕組みは<<es6-promises,ES6 Promises>>にはありませんが、
+著名なサードパーティのPromise実装である https://github.com/petkaantonov/bluebird/[bluebird] などには
+https://github.com/petkaantonov/bluebird/blob/master/API.md#promisification[Promisification] という機能が用意されています。
+
+これを利用すると以下のように、その場でpromise版のメソッドを追加して利用できるようになります。
+
+[source,js]
+----
+var fs = Promise.promisifyAll(require("fs"));
+
+fs.readFileAsync("myfile.js", "utf8").then(function(contents){
+    console.log(contents);
+}).catch(function(e){
+    console.error(e.stack);
+});
+----
+
+==== ArrayのPromiseラッパー
+
+先ほどの https://github.com/petkaantonov/bluebird/blob/master/API.md#promisification[Promisification] が何をやっているのか少しイメージしにくいので、
+次のようなネイティブ`Array`のPromise版を使えるメソッドを動的に定義する例を考えてみましょう。
+
+JavaScriptにはネイティブにもDOMやString等メソッドチェーンが行える機能が多くあります。
+`Array`もその一つで`map`や`filter`等の高階関数を受け取って処理はメソッドチェーンが利用しやすい機能です。
+
+[source,js]
+[[array-promise-chain.js]]
+.array-promise-chain.js
+----
+include::src/array-promise-chain.js[]
+----
+
+ネイティブのArrayと`ArrayAsPromise`を使った場合の違いは
+<<array-promise-chain.js,上記のコード>>のテストを見てみるのが分かりやすいでしょう。
+
+[source,js]
+[[array-promise-chain-test.js]]
+.array-promise-chain-test.js
+----
+include::test/array-promise-chain-test.js[]
+----
+
+`ArrayAsPromise` でもArrayのメソッドを利用できているのが分かります。
+先ほどと同じように、ネイティブのArrayは同期処理で、`ArrayAsPromise` は非同期処理という違いがあります。
+
+`ArrayAsPromise` の実装見て気づくと思いますが、`Array.prototype`のメソッドを全て実装しています。
+しかし、`array.indexOf`など`Array.prototype`には配列を返さないものもあるため、全てをメソッドチェーンにするのは不自然なケースがあると思います。
+
+ここで大事なのが、同じ値を受けるインターフェースを持っているAPIはこのような手段でPromise版のAPIを自動的に作成できるという点です。
+このようなAPIの規則性を意識してみるとまた違った使い方が見つかるかもしれません。
+
+[NOTE]
+====
+先ほどの https://github.com/petkaantonov/bluebird/blob/master/API.md#promisification[Promisification] は
+Node.jsのCoreモジュールの非同期処理には `function(error,result){}` というように第一引数に`error`が来るというルールを利用して、
+自動的にPromiseでラップしたメソッドを生成しています
+====
+
+=== まとめ
+
+このセクションでは以下のことについて学びました。
+
+* Promise版のメソッドチェーンの実装
+* Promiseが常に非同期の最善の手段ではない
+* Promisification
+* 統一的なインターフェースの再利用
+
+<<es6-promises,ES6 Promises>>はCoreとなる機能しか用意されていません。
+そのため、自分でPromiseを使った既存の機能のラッパー的な実装をする事があるかもしれません。
+
+しかし、何度もコールバックを呼ぶEventのような処理がPromiseには不向きなように、
+Promiseが常に最適な非同期処理という訳ではありません。
+
+その機能にPromiseを使うのが最適なのかを考える事はこの書籍の目的でもあるため、
+何でもPromiseにするというわけではなく、その目的にPromiseが合うのかどうかを考えてみるのもいいと思います。

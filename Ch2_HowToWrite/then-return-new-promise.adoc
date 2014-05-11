@@ -1,3 +1,4 @@
+[[then-return-new-promise]]
 == コラム: thenは常に新しいpromiseオブジェクトを返す
 
 `aPromise.then(...).catch(...)` は一見すると、全て最初の`aPromise`オブジェクトに
