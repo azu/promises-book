@@ -3,6 +3,12 @@ OUTPUT_FILE=index.html
 
 all: clean html
 
+test-all:
+	@npm test
+	@make html
+	@gulp lint-html
+
+
 html:
 	@echo "Generate HTML..."
 	@gulp embed

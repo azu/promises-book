@@ -9,6 +9,8 @@ before_install:
   - gem install asciidoctor
   - gem install coderay
   - npm install -g gulp
+script:
+  - make test-all
 after_success:
   - npm run-script deploy
 env:
