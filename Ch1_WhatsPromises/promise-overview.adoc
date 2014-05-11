@@ -1,3 +1,4 @@
+[[promises-overview]]
 == Promises Overview
 
 ES6 Promises で定義されているAPIはそこまで多くはありません。

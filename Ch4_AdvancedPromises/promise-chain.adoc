@@ -1,3 +1,4 @@
+[[promise-and-method-chain]]
 == Promiseとメソッドチェーン
 
 Promiseは`then`や`catch`等のメソッドを繋げて書いていきます。

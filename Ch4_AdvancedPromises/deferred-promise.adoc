@@ -1,3 +1,4 @@
+[[deferred-and-promise]]
 == DeferredとPromise
 
 このセクションではDeferredとPromiseの関係について簡潔に学んでいきます。

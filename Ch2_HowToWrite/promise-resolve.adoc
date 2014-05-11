@@ -1,3 +1,4 @@
+[[ch2-promise-resolve]]
 == Promise.resolve
 
 一般に `new Promise()` を使う事でpromiseオブジェクトを生成しますが、

@@ -1,6 +1,7 @@
+[[race-delay-timeout]]
 == Promise.raceとdelayによるXHRのキャンセル
 
-このセクションでは<<promise-race,2章>>で紹介した<<Promise.race,`Promise.race`>>のユースケースとして、
+このセクションでは<<ch2-promise-race,2章>>で紹介した<<Promise.race,`Promise.race`>>のユースケースとして、
 Promise.raceを使ったタイムアウトの実装を学んでいきます。
 
 もちろんXHRは https://developer.mozilla.org/ja/docs/XMLHttpRequest/Synchronous_and_Asynchronous_Requests[timeout] プロパティを持っているので、

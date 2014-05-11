@@ -1,3 +1,4 @@
+[[promise-api-reference]]
 = Promises API Reference
 
 [[promise.then]]

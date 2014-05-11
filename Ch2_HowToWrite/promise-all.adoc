@@ -1,3 +1,4 @@
+[[ch2-promise-all]]
 == Promise.all
 
 先ほどの複数のXHRの結果をまとめたものを取得する処理は、 <<Promise.all, `Promise.all`>> を使うと次のように書くことが出来ます。

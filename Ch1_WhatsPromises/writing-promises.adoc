@@ -1,3 +1,4 @@
+[[how-to-write-promise]]
 == Promisesの書き方
 
 Promiseの基本的な書き方について解説します。

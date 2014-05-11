@@ -4,10 +4,10 @@
 この章ではPromisesのテストの書き方について学んで行きます。
 
 // Promiseの基本的なテスト
-include::basic_tests.adoc[]
+include::basic-tests.adoc[]
 
 // MochaとPromise
-include::mocha_support_promise.adoc[]
+include::mocha-promise.adoc[]
 
 // 意図したテストを書くには
-include::control_tests.adoc[]
+include::controlable-tests.adoc[]

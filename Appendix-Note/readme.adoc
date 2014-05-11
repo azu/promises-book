@@ -1,3 +1,4 @@
+[[editor-note]]
 = Editor's Note
 
 == Asciidoc
