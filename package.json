@@ -24,6 +24,8 @@
     "w3c-xmlhttprequest": "~1.1.0"
   },
   "devDependencies": {
+    "cheerio": "^0.16.0",
+    "css.escape": "^0.2.0",
     "fs-extra": "^0.8.1",
     "gulp": "^3.6.0",
     "gulp-inlining-node-require": "0.0.3",
@@ -33,7 +35,7 @@
     "inlining-node-require": "0.0.8",
     "intelli-espower-loader": "0.0.7",
     "mocha": "~1.18.0",
-    "nock": "^0.29.0",
+    "nock": "^0.30.0",
     "power-assert": "^0.6.1",
     "promise-test-helper": "0.0.4",
     "remove-use-strict": "0.0.5",
