@@ -55,7 +55,7 @@ File.read(inputFilePath)
 include::src/fs-promise-chain.js[]
 ----
 
-ある方が自然な気がするので、内部に持ってるpromiseオブジェクトに対するエイリアスとして
+内部に持ってるpromiseオブジェクトに対するエイリアスとして
 `then`と`catch`を持たせていますが、それ以外のインターフェースは全く同じで
 使い方も先ほどのコードで`require`するモジュールを変更しただけで動作しています。
 
@@ -69,4 +69,115 @@ File.read(inputFilePath)
         return ">>" + content;
     })
     .write(outputFilePath);
+----
+
+`File.prototype.then` というメソッドは、
+`this.promise.then` が返す新しいpromiseオブジェクトを`this.promise`に対して代入しています。
+
+これはどういうことなのかというと、以下のように擬似的に展開してみると分かりやすいでしょう。
+
+[source,js]
+----
+var File = require("./fs-promise-chain");
+File.read(inputFilePath)
+    .transform(function (content) {
+        return ">>" + content;
+    })
+    .write(outputFilePath);
+// => 擬似的に以下のような流れに展開できる
+promise.then(function read(){
+        return fs.readFileSync(filePath, "utf-8");
+    }).then(function transform(content) {
+         return ">>" + content;
+    }).then(function write(){
+        return fs.writeFileSync(filePath, data);
+    });
+----
+
+`promise = promise.then(...)` という書き方は一見すると、
+上書きにみえるためそれまでのpromiseのchainがなくなるよう感じしてしまいます。
+
+イメージとしては `promise = addPromiseChain(promise, fn);` のような感じになっていて、
+既存のpromiseオブジェクトに対して新たな処理を**追加**したpromiseオブジェクトを作って返すため、
+自分でsequenceのような処理を実装しなくても問題ないわけです。
+
+=== 両者の違い
+
+==== 同期と非同期
+
+<<fs-method-chain.js>>と<<fs-promise-chain.js,Promise版>>の違いを見ていくと、
+そもそも両者には同期的、非同期的という大きな違いがあります。
+
+<<fs-method-chain.js>> のようなメソッドチェーンでもキュー等の処理を実装すれば、
+非同期的なほぼ同様のメソッドチェーンを実装出来ますが、複雑になるため今回は単純な同期的なメソッドチェーンにしました。
+
+Promise版は<<promise-is-always-async,コラム: Promiseは常に非同期?>>で紹介したように
+常に非同期処理となるため、promiseを使ったメソッドチェーンも非同期となっています。
+
+==== エラーハンドリング
+
+<<fs-method-chain.js>>にはエラーハンドリングの処理は入っていないですが、
+同期処理であるため全体を`try-catch`で囲む事で行えます。
+
+<<fs-promise-chain.js,Promise版>> では内部で利用するpromiseオブジェクトの
+`then`と`catch`へのエイリアスを用意してあるため、通常のpromiseと同じように`catch`によってエラーハンドリングが行えます。
+
+[source,js]
+.fs-promise-chainでのエラーハンドリング
+----
+var File = require("./fs-promise-chain");
+File.read(inputFilePath)
+    .transform(function (content) {
+        return ">>" + content;
+    })
+    .write(outputFilePath)
+    .catch(function(error){
+        console.error(error);
+    });
+----
+
+<<fs-method-chain.js>>に非同期処理が加えたものを自力で実装する場合、
+エラーハンドリングが大きな問題となるため、簡単に非同期処理にしたい時は
+Promiseを使うと比較的簡単に実装できると言えるかもしれません。
+
+=== Promise以外での非同期処理
+
+このメソッドチェーンと非同期処理を見てNode.jsに慣れている方は http://nodejs.org/api/stream.html[Stream] が思い浮かぶかもしれません。
+
+http://nodejs.org/api/stream.html[Stream] を使うと、
+`this.lastValue`のような値を保持する変数を保つ必要がなくなる事や
+大きなファイルの扱いが改善したり、
+上記の例に比べるとより高速に処理できる可能性が高いと思います。
+
+[source,js]
+.streamによるread->transform->write
+----
+readableStream.pipe(transformStream).pipe(writableStream);
+----
+
+そのため、非同期処理には常にPromiseが最適という話ではないため、
+目的と状況にあった実装をしていくことを考えていくべきでしょう。
+
+NOTE: Node.jsのStreamはEventをベースにしている技術
+
+Node.jsのStreamについて詳しくは以下を参照して下さい。
+
+* http://jxck.hatenablog.com/entry/20111204/1322966453[Node.js の Stream API で「データの流れ」を扱う方法 - Block Rockin’ Codes]
+* http://www.slideshare.net/shigeki_ohtsu/stream2-kihon[Stream2の基本]
+* http://www.slideshare.net/shigeki_ohtsu/node-v012tng12[Node-v0.12の新機能について]
+
+=== Promiseラッパー
+
+話を戻して<<fs-method-chain.js>>と<<fs-promise-chain.js,Promise版>>の両者を比べると、
+内部的にもかなり似ていて、同期版のものがそのまま非同期版でも使えるような気がします。
+
+JavaScriptでは動的にメソッドを定義することもできるため、
+自動的にPromise版を生成できないかということを考えると思います。
+
+
+[source,js]
+[[array-promise-chain.js]]
+.array-promise-chain.js
+----
+include::src/array-promise-chain.js[]
 ----
