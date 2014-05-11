@@ -3,7 +3,7 @@ var fs = require("fs");
 function File() {
     this.lastValue = null;
 }
-// Generic method for File.prototype.read
+// Static method for File.prototype.read
 File.read = function FileRead(filePath) {
     var file = new File();
     return file.read(filePath);

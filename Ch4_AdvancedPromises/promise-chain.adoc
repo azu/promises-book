@@ -15,6 +15,9 @@ Promiseは`then`や`catch`等のメソッドを繋げて書いていきます。
 
 以下のようなNode.jsの`fs`モジュールを例にしてみたいと思います。
 
+また、今回の例は見た目のわかりやすさを重視しているため、
+現実的にはあまり有用なケースとは言えないかもしれません。
+
 [source,js]
 [[fs-method-chain.js]]
 .fs-method-chain.js
@@ -22,8 +25,12 @@ Promiseは`then`や`catch`等のメソッドを繋げて書いていきます。
 include::src/fs-method-chain.js[]
 ----
 
+このモジュールは以下のようにread -> transform -> writeという流れを
+メソッドチェーンで表現することができます。
+
 [source,js]
 ----
+var File = require("./fs-method-chain");
 var inputFilePath = "input.txt",
     outputFilePath = "output.txt";
 File.read(inputFilePath)
@@ -33,3 +40,33 @@ File.read(inputFilePath)
     .write(outputFilePath);
 ----
 
+`transform` は引数で受け取った値を変更して次のメソッドに渡すようにする機能です。
+この場合は、readで読み込んだ内容の先頭に`>>` という文字列を追加しているだけです。
+
+=== Promiseによるfsのメソッドチェーン
+
+次に先ほどの<<fs-method-chain.js,メソッドチェーン>>をインターフェースはそのままで
+内部的にPromiseを使った処理にしてみたいと思います。
+
+[source,js]
+[[fs-promise-chain.js]]
+.fs-promise-chain.js
+----
+include::src/fs-promise-chain.js[]
+----
+
+ある方が自然な気がするので、内部に持ってるpromiseオブジェクトに対するエイリアスとして
+`then`と`catch`を持たせていますが、それ以外のインターフェースは全く同じで
+使い方も先ほどのコードで`require`するモジュールを変更しただけで動作しています。
+
+[source,js]
+----
+var File = require("./fs-promise-chain");
+var inputFilePath = "input.txt",
+    outputFilePath = "output.txt";
+File.read(inputFilePath)
+    .transform(function (content) {
+        return ">>" + content;
+    })
+    .write(outputFilePath);
+----

@@ -3,17 +3,14 @@ var fs = require("fs");
 function File() {
     this.promise = Promise.resolve();
 }
-// Generic method for File.prototype.read
+// Static method for File.prototype.read
 File.read = function (filePath) {
     var file = new File();
     return file.read(filePath);
 };
 
-File.prototype.then = function (fn) {
-    var that = this;
-    this.promise = this.promise.then(function (value) {
-        return fn.call(that, value)
-    });
+File.prototype.then = function (onFulfilled, onRejected) {
+    this.promise = this.promise.then(onFulfilled, onRejected);
     return this;
 };
 File.prototype["catch"] = function (onRejected) {
