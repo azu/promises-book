@@ -84,14 +84,14 @@ image::img/promise-test.png[Promise onRejected test]
 
 同様に、promiseオブジェクトがFulfilledになることを期待する`shouldFulfilled`も書いてみましょう。
 
-[[shouldFulfilled.js]]
+[[shouldFulfilled-test.js]]
 .shouldFulfilled-test.js
 [source,js]
 ----
 include::embed/embed-shouldFulfilled-test.js[]
 ----
 
-<<shouldRejected.js>>と基本は同じで、返すオブジェクトの`catch`が`then`になって中身が逆転しただけですね。
+<<shouldRejected-test.js>>と基本は同じで、返すオブジェクトの`catch`が`then`になって中身が逆転しただけですね。
 
 === まとめ
 
@@ -99,7 +99,7 @@ Promisesで意図したテストを書くためにはどうするか、またそ
 
 今回書いた`shouldFulfilled`と`shouldRejected`をライブラリ化したものは https://github.com/azu/promise-test-helper[azu/promise-test-helper] にあります。
 
-また、今回のヘルパー関数は<<mocha_support_promise,MochaのPromiseサポート>>を前提とした書き方なので、
+また、今回のヘルパー関数は<<mocha-promise,MochaのPromiseサポート>>を前提とした書き方なので、
 <<done-promise-test,`done`を使ったテスト>>は利用しにくいと思います。
 
 テストフレームワークのPromiseサポートを使うか、`done`のようにコールバックスタイルのテストを使うかは、
