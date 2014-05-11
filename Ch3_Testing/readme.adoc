@@ -1,3 +1,4 @@
+[[chapter3-promise-testing]]
 = Chapter.3 - Promisesのテスト
 :imagesdir: Ch3_Testing/
 

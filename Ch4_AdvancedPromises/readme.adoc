@@ -1,3 +1,4 @@
+[[chapter4-advanced-promise]]
 = Chapter.4 - Advanced
 :imagesdir: Ch4_AdvancedPromises/
 

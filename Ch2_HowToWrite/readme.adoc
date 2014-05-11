@@ -1,3 +1,4 @@
+[[chapter2-how-to-write-promise]]
 = Chapter.2 - Promisesの書き方
 :imagesdir: Ch2_HowToWrite/
 

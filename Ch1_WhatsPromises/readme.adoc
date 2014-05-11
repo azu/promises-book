@@ -1,3 +1,4 @@
+[[chapter1-what-is-promise]]
 = Chapter.1 - Promisesとは何か
 :imagesdir: Ch1_WhatsPromises/
 
