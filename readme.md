@@ -30,7 +30,7 @@ open index.html
 
 ## License
 
-プログラムのコードはMITライセンスで利用できます。
+プログラムコードはMITライセンスで利用できます。
 
 文章については<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial</a>で利用できます。
 

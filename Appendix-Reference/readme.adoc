@@ -3,30 +3,68 @@
 
 [[promise.then]]
 [source,js]
-promise.then(onFulfilled, onRejected)
+promise.then(<onFulfilled>, <onRejected>);
 
-promiseオブジェクトがresolve 又は rejectされた時に呼ばれるメソッド
+promiseオブジェクトに対してonFulfilledとonRejectedのハンドラを定義する。
+このハンドラはpromiseがresolve 又は rejectされた時にそれぞれ呼ばれる。
+
+このメソッドは新たなpromiseオブジェクトを作成して返す。
+
+* 定義されたハンドラ内で返した値は、新たなpromiseオブジェクトのonFulfilledに対して渡される。
+* 定義されたハンドラ内で例外が発生した場合は、新たなpromiseオブジェクトのonRejectedに対して渡される。
 
 [[promise.catch]]
 [source,js]
-promise.catch(onRejected)
+promise.catch(onRejected);
 
-[[Promise.all]]
-[source,js]
-Promise.all(promiseArray)
+`promise.then(undefined, onRejected)` と同等の意味を持つシンタックスシュガー。
 
-[[Promise.race]]
-[source,js]
-Promise.race(promiseArray)
 
 [[Promise.resolve]]
 [source,js]
-Promise.resolve(thenable)
-Promise.resolve(value)
+Promise.resolve(promise);
+Promise.resolve(thenable);
+Promise.resolve(value);
+
+受け取った値でresolveされたpromiseオブジェクトを返す。
+
+3種類の値を受け取る事ができ、いづれもpromiseオブジェクトを返す。
+
+promiseオブジェクトを受け取った場合::
+そのpromiseオブジェクトをそのまま返す
+thenableなオブジェクトを受け取った場合::
+`then`を持つオブジェクトを受け取り、新たなpromiseオブジェクトにして返す
+値(オブジェクトやnull等も含む)を受け取った場合::
+その値がresolveされる新たなpromiseオブジェクトを作り返す
+
 
 [[Promise.reject]]
 [source,js]
 Promise.rejct(value)
+
+
+
+[[Promise.all]]
+[source,js]
+Promise.all(promiseArray);
+
+新たなpromiseオブジェクトを作成して返す。
+渡されたpromiseオブジェクトの配列が全てresolveされた時に、
+新たなpromiseオブジェクトはその値でresolveされる。
+
+どれかの値がrejectされた場合は、その時点で新たなpromiseオブジェクトはrejectされる。
+
+渡された配列の値はそれぞれ`Promise.resolve`にラップされるため、
+promiseオブジェクト以外が混じっている場合も扱える。
+
+[[Promise.race]]
+[source,js]
+Promise.race(promiseArray);
+
+新たなpromiseオブジェクトを作成して返す。
+渡されたpromiseオブジェクトの配列のうち、一番最初にresolve または rejectされた時に、
+新たなpromiseオブジェクトはその値でresolveされる。
+
 
 
 
