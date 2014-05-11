@@ -3,6 +3,12 @@ var fs = require("fs");
 function File() {
     this.promise = Promise.resolve();
 }
+// Generic method for File.prototype.read
+File.read = function (filePath) {
+    var file = new File();
+    return file.read(filePath);
+};
+
 File.prototype.then = function (fn) {
     var that = this;
     this.promise = this.promise.then(function (value) {
@@ -28,7 +34,3 @@ File.prototype.write = function (filePath) {
     });
 };
 module.exports = File;
-module.exports.readAsPromise = function (filePath) {
-    var file = new File();
-    return file.read(filePath);
-};

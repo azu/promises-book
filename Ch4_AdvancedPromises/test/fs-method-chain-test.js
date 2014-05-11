@@ -1,8 +1,12 @@
 "use strict";
 var assert = require("power-assert");
 var fs = require("fs-extra");
-var File = require("../src/fs-promise-chain");
-describe("File-Promised", function () {
+var File = require("../src/fs-method-chain");
+File.prototype.then = function (fn) {
+    fn.call(this, this.lastValue);
+    return this;
+};
+describe("File", function () {
     var fixtureDir = __dirname + "/__fixtures";
     var inputFilePath = fixtureDir + "/input.txt";
     beforeEach(function () {
@@ -13,12 +17,11 @@ describe("File-Promised", function () {
     });
     describe("read", function () {
         context("when not found", function () {
-            it("should reject", function (done) {
+            it("should reject", function () {
                 File.read(inputFilePath)
                     .then(function (content) {
                         assert(content === "INPUT INPUT");
-                        done();
-                    }).catch(done);
+                    });
             });
         });
         context("when found file", function () {
@@ -26,38 +29,36 @@ describe("File-Promised", function () {
                 var file = File.read(inputFilePath);
                 assert(file instanceof File);
             });
-            it("should passing value to then", function (done) {
+            it("should passing value to then", function () {
                 File.read(inputFilePath)
                     .then(function (content) {
                         assert(content === "INPUT INPUT");
-                        done();
-                    }).catch(done);
+                    })
             });
         });
     });
     describe("transform", function () {
-        it("could as promise chain", function (done) {
+        it("could as promise chain", function () {
             File.read(inputFilePath)
                 .transform(function (content) {
                     return ">>" + content;
                 })
                 .then(function (content) {
                     assert(content === ">>INPUT INPUT");
-                    done();
-                })
-                .catch(done);
+                });
         });
     });
     describe("write", function () {
-        it("could as promise chain", function (done) {
-            var writeFilePath = fixtureDir + "/output.txt";
+        it("could as promise chain", function () {
+            var outputFilePath = fixtureDir + "/output.txt";
             File.read(inputFilePath)
-                .write(writeFilePath)
-                .then(function (content) {
-                    assert(fs.existsSync(writeFilePath));
-                    done();
+                .transform(function (content) {
+                    return ">>" + content;
                 })
-                .catch(done);
+                .write(outputFilePath)
+                .then(function () {
+                    assert(fs.existsSync(outputFilePath));
+                });
         });
     });
 });

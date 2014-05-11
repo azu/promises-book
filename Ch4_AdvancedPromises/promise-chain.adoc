@@ -13,3 +13,23 @@ Promiseは`then`や`catch`等のメソッドを繋げて書いていきます。
 
 === fsのメソッドチェーン
 
+以下のようなNode.jsの`fs`モジュールを例にしてみたいと思います。
+
+[source,js]
+[[fs-method-chain.js]]
+.fs-method-chain.js
+----
+include::src/fs-method-chain.js[]
+----
+
+[source,js]
+----
+var inputFilePath = "input.txt",
+    outputFilePath = "output.txt";
+File.read(inputFilePath)
+    .transform(function (content) {
+        return ">>" + content;
+    })
+    .write(outputFilePath);
+----
+
