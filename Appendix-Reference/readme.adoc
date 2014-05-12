@@ -24,24 +24,33 @@ promise.catch(onRejected);
 [source,js]
 Promise.resolve(promise);
 Promise.resolve(thenable);
-Promise.resolve(value);
+Promise.resolve(object);
 
-受け取った値でresolveされたpromiseオブジェクトを返す。
+受け取った値に応じたpromiseオブジェクトを返す。
 
-3種類の値を受け取る事ができ、いづれもpromiseオブジェクトを返す。
+どの場合でもpromiseオブジェクトを返すが、大きく分けて以下の3種類となる。
 
 promiseオブジェクトを受け取った場合::
 そのpromiseオブジェクトをそのまま返す
 thenableなオブジェクトを受け取った場合::
 `then`を持つオブジェクトを受け取り、新たなpromiseオブジェクトにして返す
-値(オブジェクトやnull等も含む)を受け取った場合::
+その他の値(オブジェクトやnull等も含む)を受け取った場合::
 その値がresolveされる新たなpromiseオブジェクトを作り返す
-
 
 [[Promise.reject]]
 [source,js]
-Promise.rejct(value)
+Promise.rejct(object)
 
+受け取った値でrejectされた新たなpromiseオブジェクトを返す。
+Promise.rejctに渡す値は`Error`オブジェクトとすべきである。
+
+また、Promise.resolveとは異なり、promiseオブジェクトを渡した場合も常に新たなpromiseオブジェクトを作成する。
+
+[source,js]
+----
+var r = Promise.reject(new Error("error"));
+r === Promise.reject(r);// false
+----
 
 
 [[Promise.all]]
