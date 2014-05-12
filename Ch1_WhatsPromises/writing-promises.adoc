@@ -67,19 +67,18 @@ image::img/promise-onFulfilled_onRejected.png[promise-resolve-flow]
 
 まずは、`getURL`で通信が成功して値が取得出来た場合の処理を書いてみましょう。
 
-[NOTE]
-この場合の _通信が成功した_ というのは _promiseオブジェクトがresolveされた_ 時という事
+この場合の _通信が成功した_ というのは _promiseオブジェクトがresolveされた_ 時という事ですね。
 
 **resolve**された時の処理は、 <<promise.then,`.then`>> メソッドに処理をする関数を渡すことで行えます。
 
 [source,js]
 ----
-var URL = "http://localhost:3000/?status=200&body=text";
+var URL = "http://httpbin.org/get";
 getURL(URL).then(function onFulfilled(value){ // <1>
     console.log(value);
 });
 ----
-<1> 説明しやすくするためコールバック関数に `onFulfilled` という名前を付けています
+<1> 分かりやすくするため関数に `onFulfilled` という名前を付けています
 
 <<xhr-promise.js,getURL関数>> 内で `resolve(req.response);` によってpromiseオブジェクトが解決されると、
 値と共に`onFulfilled` 関数が呼ばれます。
@@ -87,23 +86,24 @@ getURL(URL).then(function onFulfilled(value){ // <1>
 このままでは通信エラーが起きた場合などに何も処理がされないため、
 今度は、`getURL` で何らかの問題があってエラーが起きた場合の処理を書いてみましょう。
 
-[NOTE]
-この場合の _エラーが起きた_ というのは _promiseオブジェクトがrejectされた_ 時という事
+この場合の _エラーが起きた_ というのは _promiseオブジェクトがrejectされた_ 時という事ですね。
 
 **reject**された時の処理は、<<promise.then,`.then`の第二引数>> または <<promise.catch,`.catch`>> メソッドに処理をする関数を渡す事で行えます。
 
-先ほどのソースに
+先ほどのソースにrejectされた場合の処理を追加してみましょう。
 
 [source,js]
 ----
-var URL = "http://localhost:3000/?status=500";
+var URL = "http://httpbin.org/status/500"; // <1>
 getURL(URL).then(function onFulfilled(value){
     console.log(value);
-}).catch(function onRejected(error){ // <1>
+}).catch(function onRejected(error){ // <2>
     console.log(error);
 });
 ----
-<1> 説明しやすくするためエラーが起きた時に呼ばれる関数に `onRejected` という名前を付けています
+<1> サーバはステータスコード500のレスポンスを返す
+<2> 分かりやすくするため関数 `onRejected` という名前を付けています
+
 
 promiseオブジェクトが何らかの理由で例外が起きた時、または明示的にrejectされた場合に、
 その理由(Errorオブジェクト)と共に <<promise.catch,`.catch`>> の処理が呼ばれます。
@@ -129,7 +129,7 @@ getURL(URL).then(onFulfilled, onRejected);// <1>
 * <<promise.then,`.then`>> や <<promise.catch,`.catch`>> を使ったpromiseオブジェクトの処理
 
 Promisesの基本的な書き方はこれがベースとなり、
-他の多くの処理はこれを発展させたり、用意されたStatic Method等を利用したものになります。
+他の多くの処理はこれを発展させたり、用意された静的メソッドを利用したものになります。
 
 ここでは、同様の事はコールバック関数を渡す形でも出来るのに対してPromisesで書くメリットについては触れていませんでしたが、
 次の章では、Promiseのメリットであるエラーハンドリングの仕組みをコールバックベースの実装と比較しながら見て行きたいと思います。
