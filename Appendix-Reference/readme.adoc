@@ -3,12 +3,27 @@
 
 [[promise.then]]
 [source,js]
+----
 promise.then(<onFulfilled>, <onRejected>);
+----
 
-promiseオブジェクトに対してonFulfilledとonRejectedのハンドラを定義する。
+[source,js]
+.thenコード例
+----
+var promise = new Promise(resolve, reject){
+    resolve();
+}
+promise.then(function (value) {
+    console.log(value);
+}, function (error) {
+    console.log(error);
+});
+----
+
+promiseオブジェクトに対してonFulfilledとonRejectedのハンドラを定義し、
+新たなpromiseオブジェクトを作成して返す。
+
 このハンドラはpromiseがresolve 又は rejectされた時にそれぞれ呼ばれる。
-
-このメソッドは新たなpromiseオブジェクトを作成して返す。
 
 * 定義されたハンドラ内で返した値は、新たなpromiseオブジェクトのonFulfilledに対して渡される。
 * 定義されたハンドラ内で例外が発生した場合は、新たなpromiseオブジェクトのonRejectedに対して渡される。
@@ -17,14 +32,45 @@ promiseオブジェクトに対してonFulfilledとonRejectedのハンドラを�
 [source,js]
 promise.catch(onRejected);
 
-`promise.then(undefined, onRejected)` と同等の意味を持つシンタックスシュガー。
+[source,js]
+.catchのコード例
+----
+var promise = new Promise(resolve, reject){
+    reject();
+}
+promise.then(function (value) {
+    console.log(value);
+}).catch(function (error) {
+    console.error(error);
+});
+----
 
+`promise.then(undefined, onRejected)` と同等の意味を持つシンタックスシュガー。
 
 [[Promise.resolve]]
 [source,js]
+----
 Promise.resolve(promise);
 Promise.resolve(thenable);
 Promise.resolve(object);
+----
+
+[source,js]
+.Promise.resolveのコード例
+----
+var taskName = "task 1"
+asyncTask(taskName).then(function (value) {
+    console.log(value);
+}).catch(function (error) {
+    console.error(error);
+});
+function asyncTask(name){
+    return Promise.resolve(name).then(function(value){
+        return "Done! "+ value;
+    });
+}
+----
+
 
 受け取った値に応じたpromiseオブジェクトを返す。
 
@@ -41,7 +87,14 @@ thenableなオブジェクトを受け取った場合::
 [source,js]
 Promise.rejct(object)
 
+[source,js]
+.Promise.rejectのコード例
+----
+var failureStub = sinon.stub(xhr, "request").returns(Promise.reject(new Error("bad!")));
+----
+
 受け取った値でrejectされた新たなpromiseオブジェクトを返す。
+
 Promise.rejctに渡す値は`Error`オブジェクトとすべきである。
 
 また、Promise.resolveとは異なり、promiseオブジェクトを渡した場合も常に新たなpromiseオブジェクトを作成する。
@@ -57,22 +110,49 @@ r === Promise.reject(r);// false
 [source,js]
 Promise.all(promiseArray);
 
+[source,js]
+.Promise.allのコード例
+----
+var p1 = Promise.resolve(1),
+    p2 = Promise.resolve(2),
+    p3 = Promise.resolve(3);
+Promise.all([p1, p2, p3]).then(function (results) {
+    console.log(results);  // [1, 2, 3]
+});
+----
+
+
 新たなpromiseオブジェクトを作成して返す。
+
 渡されたpromiseオブジェクトの配列が全てresolveされた時に、
 新たなpromiseオブジェクトはその値でresolveされる。
 
 どれかの値がrejectされた場合は、その時点で新たなpromiseオブジェクトはrejectされる。
 
 渡された配列の値はそれぞれ`Promise.resolve`にラップされるため、
-promiseオブジェクト以外が混じっている場合も扱える。
+promiseオブジェクト以外が混在している場合も扱える。
 
 [[Promise.race]]
 [source,js]
 Promise.race(promiseArray);
 
+[source,js]
+.Promise.raceのコード例
+----
+var p1 = Promise.resolve(1),
+    p2 = Promise.resolve(2),
+    p3 = Promise.resolve(3);
+Promise.race([p1, p2, p3]).then(function (value) {
+    console.log(value);  // 1
+});
+----
+
 新たなpromiseオブジェクトを作成して返す。
-渡されたpromiseオブジェクトの配列のうち、一番最初にresolve または rejectされた時に、
-新たなpromiseオブジェクトはその値でresolveされる。
+
+渡されたpromiseオブジェクトの配列のうち、
+一番最初にresolve または rejectされたpromiseにより、
+新たなpromiseオブジェクトはその値でresolve または rejectされる。
+
 
 
 
