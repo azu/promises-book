@@ -2,6 +2,7 @@
 = Promises API Reference
 
 [[promise.then]]
+== promise.then
 [source,js]
 ----
 promise.then(<onFulfilled>, <onRejected>);
@@ -23,12 +24,13 @@ promise.then(function (value) {
 promiseオブジェクトに対してonFulfilledとonRejectedのハンドラを定義し、
 新たなpromiseオブジェクトを作成して返す。
 
-このハンドラはpromiseがresolve 又は rejectされた時にそれぞれ呼ばれる。
+このハンドラはpromiseがresolve または rejectされた時にそれぞれ呼ばれる。
 
 * 定義されたハンドラ内で返した値は、新たなpromiseオブジェクトのonFulfilledに対して渡される。
 * 定義されたハンドラ内で例外が発生した場合は、新たなpromiseオブジェクトのonRejectedに対して渡される。
 
 [[promise.catch]]
+== promise.catch
 [source,js]
 promise.catch(onRejected);
 
@@ -48,6 +50,7 @@ promise.then(function (value) {
 `promise.then(undefined, onRejected)` と同等の意味を持つシンタックスシュガー。
 
 [[Promise.resolve]]
+== Promise.resolve
 [source,js]
 ----
 Promise.resolve(promise);
@@ -77,13 +80,14 @@ function asyncTask(name){
 どの場合でもpromiseオブジェクトを返すが、大きく分けて以下の3種類となる。
 
 promiseオブジェクトを受け取った場合::
-そのpromiseオブジェクトをそのまま返す
+受け取ったpromiseオブジェクトをそのまま返す
 thenableなオブジェクトを受け取った場合::
-`then`を持つオブジェクトを受け取り、新たなpromiseオブジェクトにして返す
+`then`を持つオブジェクトを新たなpromiseオブジェクトにして返す
 その他の値(オブジェクトやnull等も含む)を受け取った場合::
-その値がresolveされる新たなpromiseオブジェクトを作り返す
+その値でresolveされる新たなpromiseオブジェクトを作り返す
 
 [[Promise.reject]]
+== Promise.reject
 [source,js]
 Promise.rejct(object)
 
@@ -107,6 +111,7 @@ r === Promise.reject(r);// false
 
 
 [[Promise.all]]
+== Promise.all
 [source,js]
 Promise.all(promiseArray);
 
@@ -133,6 +138,7 @@ Promise.all([p1, p2, p3]).then(function (results) {
 promiseオブジェクト以外が混在している場合も扱える。
 
 [[Promise.race]]
+== Promise.race
 [source,js]
 Promise.race(promiseArray);
 
