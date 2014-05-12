@@ -107,12 +107,12 @@ http://people.mozilla.org/~jorendorff/es6-draft.html#sec-promise-objects[ECMAScr
 `[[PromiseStatus]]` にアクセスするユーザーAPIは用意されていないため、基本的には知る方法はありません。
 ====
 
-3つの状態を見たところで、既にこの章で全ての状態が出てきていることがわかります。
+3つの状態を見たところで、既にこの章で全ての状態が出てきていることが分かります。
 
 promiseオブジェクトの状態は、一度__Pending__から__Fulfilled__や__Rejected__になると、
 そのpromiseオブジェクトの状態はそれ以降変化することはなくなります。
 
-つまり、PromisesはEvent等とは違い、`.then` 等で登録した関数が呼ばれるのは1回限りという事が明確になっています。
+つまり、PromisesはEvent等とは違い、`.then` で登録した関数が呼ばれるのは1回限りという事が明確になっています。
 
 また、__Fulfilled__と__Rejected__のどちらかの状態であることを**Settled**(不変の)と表現することがあります。
 
