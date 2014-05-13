@@ -1,11 +1,14 @@
 = [WIP] Promises Book
-:Author:      azu(@azu)
+:Author:      azu
 :keywords:    JavaScript,ECMAScript,Promises,日本語
+:revnumber:   {bookversion}
 :source:      https://github.com/azu/Promises-book
 :lang:        ja
 :icons:       font
 :numbered:
 :toc2:
+
+// {bookversion} passing from outside
 
 ifeval::["{backend}" == "html5"]
 ++++
