@@ -1,0 +1,6 @@
+[[not-throw-use-reject]]
+== throwしないで、rejectしよう
+
+Promiseのresolverや、`then`で実行される関数は基本的に、
+`try...catch`で囲まれてるような状態なので、その中で`throw`をしてもプログラムは終了しません。
+
