@@ -1,6 +1,37 @@
 [[not-throw-use-reject]]
 == throwしないで、rejectしよう
 
-Promiseのresolverや、`then`で実行される関数は基本的に、
+Promiseコンストラクタや、`then`で実行される関数は基本的に、
 `try...catch`で囲まれてるような状態なので、その中で`throw`をしてもプログラムは終了しません。
+
+`throw`による例外が発生した場合は自動的に`try...catch`され、そのpromiseオブジェクトはrejectedとなります。
+
+[source,js]
+----
+var promise = new Promise(function(resolve ,reject){
+    throw new Error("message");
+});
+promise.catch(function(error){
+    console.error(error);// => "message"
+})
+----
+
+このように書いても動作的には問題ありませんが、<<promise-states,promiseオブジェクトの状態>>をrejectedにしたい場合は
+`reject`という与えられた関数を呼び出すのが一般的です。
+
+先ほどのコードは以下のように書くことが出来ます。
+
+[source,js]
+----
+var promise = new Promise(function(resolve ,reject){
+    reject(new Error("message"));
+});
+promise.catch(function(error){
+    console.error(error);// => "message"
+})
+----
+
+`throw`が`reject`に変わったと考えれば、`reject`にはErrorオブジェクト渡すべきであるということが分かりやすいかもしれません。
+
+=== thenでもrejectする
 
