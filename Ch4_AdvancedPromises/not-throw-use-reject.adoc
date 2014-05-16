@@ -58,9 +58,6 @@ var promise = new Promise(function(resolve ,reject){
 本来デバッグとは関係ない場所でbreakしてしまうため、
 Promiseの中で`throw`している箇所があると、この機能が殆ど使い物にならなくなってしまうでしょう。
 
-[NOTE]
-またパフォーマンス的にも通常の関数呼び出し(reject)と`try...catch`するコストの差が出てくるかもしれません。
-
 === thenでもrejectする
 
 Promiseコンストラクタの中では`reject`という関数そのものがあるので、
@@ -145,7 +142,7 @@ promise.then(function () {
 
 このセクションでは、以下のことについて学びました。
 
-* `throw` ではなくて`reject`した方が安全
+* `throw`ではなくて`reject`した方が安全
 * `then`の中でもrejectする方法
 
 中々使いどころが多くはないかもしれませんが、安易に`throw`してしまうよりはいい事が多いので、
