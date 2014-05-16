@@ -4,6 +4,9 @@
 
 この章では、これまでに学んだことの応用や発展した内容について学んでいきます。
 
+// not-throw-use-reject.adoc
+include::not-throw-use-reject.adoc[]
+
 // Deferred
 include::deferred-promise.adoc[]
 
