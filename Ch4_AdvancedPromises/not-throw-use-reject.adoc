@@ -35,13 +35,13 @@ promise.catch(function(error){
 
 === なぜrejectした方がいいのか
 
-そもそも、promiseオブジェクトをRejectedにしたい場合に、
+そもそも、promiseオブジェクトの状態をRejectedにしたい場合に、
 何故`throw`ではなく`reject`した方がいいのでしょうか?
 
 ひとつは`throw`が意図したものか、それとも本当に**例外**なのか区別が難しくなってしまうことにあります。
 
-例えば、Chrome等の開発者ツールには例外が発生した時に自動でbreakし、
-デバッガーが起動する機能が用意されています。
+例えば、Chrome等の開発者ツールには例外が発生した時に、
+デバッガーが自動でbreakする機能が用意されています。
 
 .Pause On Caught Exceptions
 image::img/chrome_on_caught_exception.png[Pause On Caught Exceptions]
@@ -56,7 +56,7 @@ var promise = new Promise(function(resolve ,reject){
 ----
 
 本来デバッグとは関係ない場所でbreakしてしまうため、
-Promiseの中で`throw`してしまうとこの機能が殆ど使い物にならなくなってしまうでしょう。
+Promiseの中で`throw`している箇所があると、この機能が殆ど使い物にならなくなってしまうでしょう。
 
 [NOTE]
 またパフォーマンス的にも通常の関数呼び出し(reject)と`try...catch`するコストの差が出てくるかもしれません。
@@ -113,7 +113,7 @@ promise.then(function () {
 ----
 <1> 次に呼び出されるthenのコールバックはpromiseオブジェクトの状態によって決定される
 
-つまり、この`retPromise`がRejectedになった場合はonRejectedが呼び出されるので、
+つまり、この`retPromise`がRejectedになった場合は、`onRejected`が呼び出されるので、
 `throw`を使わなくても`then`の中でrejectすることが出来ます。
 
 [source,js]
