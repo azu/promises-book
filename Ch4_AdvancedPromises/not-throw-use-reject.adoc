@@ -38,7 +38,28 @@ promise.catch(function(error){
 そもそも、promiseオブジェクトをRejectedにしたい場合に、
 何故`throw`ではなく`reject`した方がいいのでしょうか?
 
+ひとつは`throw`が意図したものか、それとも本当に**例外**なのか区別が難しくなってしまうことにあります。
 
+例えば、Chrome等の開発者ツールには例外が発生した時に自動でbreakし、
+デバッガーが起動する機能が用意されています。
+
+.Pause On Caught Exceptions
+image::img/chrome_on_caught_exception.png[Pause On Caught Exceptions]
+
+この機能を有効にしていた場合、以下のように`throw`するとbreakしてしまいます。
+
+[source,js]
+----
+var promise = new Promise(function(resolve ,reject){
+    throw new Error("message");
+});
+----
+
+本来デバッグとは関係ない場所でbreakしてしまうため、
+Promiseの中で`throw`してしまうとこの機能が殆ど使い物にならなくなってしまうでしょう。
+
+[NOTE]
+またパフォーマンス的にも通常の関数呼び出し(reject)と`try...catch`するコストの差が出てくるかもしれません。
 
 === thenでもrejectする
 
@@ -98,13 +119,14 @@ promise.then(function () {
 [source,js]
 ----
 "use strict";
+var onRejected = console.error.bind(console);
 var promise = Promise.resolve();
 promise.then(function () {
     var retPromise = new Promise(function (resolve, reject) {
        reject(new Error("this promise is rejected"));
     });
     return retPromise;
-}).then(onFulfilled, onRejected);
+}).catch(onRejected);
 ----
 
 これは、<<Promise.reject>> を使うことでもっと簡潔に書くことが出来ます。
@@ -112,6 +134,7 @@ promise.then(function () {
 [source,js]
 ----
 "use strict";
+var onRejected = console.error.bind(console);
 var promise = Promise.resolve();
 promise.then(function () {
     return Promise.reject(new Error("this promise is rejected"));
@@ -122,11 +145,11 @@ promise.then(function () {
 
 このセクションでは、以下のことについて学びました。
 
-* `throw` ではなくてrejectした方が安全
+* `throw` ではなくて`reject`した方が安全
 * `then`の中でもrejectする方法
 
 中々使いどころが多くはないかもしれませんが、安易に`throw`してしまうよりはいい事が多いので、
 覚えておくといいでしょう。
 
-これを利用した実用的な例としては、
+これを利用した具体的な例としては、
 <<race-delay-timeout,Promise.raceとdelayによるXHRのキャンセル>> で解説しています。
