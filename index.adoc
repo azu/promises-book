@@ -5,6 +5,7 @@
 :source:      https://github.com/azu/Promises-book
 :lang:        ja
 :icons:       font
+:docinfo1:
 :numbered:
 :toc2:
 
