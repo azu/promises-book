@@ -65,7 +65,7 @@ Promiseコンストラクタの中では`reject`という関数そのものが�
 
 では、次のような`then`の中でrejectしたい場合はどうすればいいでしょうか?
 
-[souce,js]
+[source,js]
 ----
 var promise = Promise.resolve();
 promise.then(function (value) {
