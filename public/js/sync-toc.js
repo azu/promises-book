@@ -8,9 +8,11 @@ function TOCHighlighter(sections, tocAList, headerNames, highlightClassName) {
     this.highlightClassName = highlightClassName || "sc-current-element";
 }
 TOCHighlighter.prototype.updateCurrentTOC = function () {
-    var currentTOCElement = this.currentTOCElements().pop();
+    var currentTOCElements = this.currentTOCElements();
     var isCurrentTOC = function (element) {
-        return currentTOCElement === element;
+        return currentTOCElements.some(function (toc) {
+            return toc === element;
+        });
     };
 
     this.tocAList.forEach(function (element) {
