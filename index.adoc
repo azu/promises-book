@@ -8,6 +8,7 @@
 :docinfo1:
 :numbered:
 :toc2:
+:sectanchors:
 
 // {bookversion} passing from outside
 
