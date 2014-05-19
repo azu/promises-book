@@ -1,1 +1,14 @@
+[[promise-done]]
 == Promise.prototype.done とは何か?
+
+既存のPromise実装ライブラリを利用したことがある人は、
+`then` の代わりに使う `done` というメソッドを見たことがあるかもしれません。
+
+それらのライブラリでは `Promise.prototype.done` というような実装が存在し、
+使い方は`then`と同じですが、promiseオブジェクトを返さないようになっています。
+
+`Promise.prototype.done` は、<<es6-promises,ES6 Promises>>や<<promises-aplus,Promises/A+>>の仕様には
+存在していない記述ですが、多くのライブラリが実装しています。
+
+このセクションでは、`Promise.prototype.done`とは何か?
+また何故このようなメソッドが多くのライブラリで実装されているかについて学んでいきましょう。
