@@ -29,6 +29,18 @@ include::embed/embed-promise-done-example.js[]
 
 実装については後で解説しますが、まずは`then`を使った場合と`done`を使ったものを比較してみます。
 
+[source,js]
+.thenを使った場合コード
+----
+var promise = Promise.resolve();
+promise.then(function () {
+    JSON.parse("this is not json");
+}).catch(function (error) {
+    console.error(error);// => "SyntaxError: JSON.parse: unexpected keyword at line 1 column 1 of the JSON data"
+});
+----
+
+
 比べて見ると以下のような違いがあることが分かります。
 
 * `done` はpromiseオブジェクトを返さない
@@ -48,9 +60,10 @@ Promise chainの最後に書くべきメソッドというのはわかると思�
 === 沈黙したエラー
 
 Promiseには強力なエラーハンドリング機能がありますが、
+(デバッグツールが上手く働かない場合に)
 この機能がヒューマンエラーをより複雑なものにしてしまう一面があります。
 
-つぎのような、promiseを返す関数を考えてみましょう。
+次のような、promiseオブジェクトを返す関数を考えてみましょう。
 
 [source,js]
 [[json-promise.js]]
@@ -61,3 +74,72 @@ include::embed/embed-json-promise.js[]
 
 渡された値を`JSON.parse`してpromiseオブジェクトを返す関数ですね。
 
+以下のように使うことができ、`JSON.parse`はパースに失敗すると例外を投げるので、
+それを`catch`することが出来ます。
+
+[source,js]
+----
+var string = "jsonではない文字列";
+JSONPromise(string).then(function (object) {
+    console.log(object);
+}).catch(function(error){
+    // => JSON.parseで例外が発生した時
+});
+----
+
+ちゃんと`catch`していれば何も問題がないのですが、その処理を忘れてしまうというミスを
+した時にどこでエラーが発生してるのかわからなくなるというヒューマンエラーを助長させる面があります。
+
+[source,js]
+.catchによるエラーハンドリングを忘れてしまった場合
+----
+var string = "jsonではない文字列";
+JSONPromise(string).then(function (object) {
+    console.log(object);
+}); // <1>
+----
+<1> 例外が投げられても何も処理されない
+
+`JSON.parse`のような分かりやすい例の場合はまだ良いですが、
+メソッドをtypoしたことによるSyntax Errorなどはより深刻な問題となりやすいです。
+
+[source,js]
+.typoによるエラー
+----
+var string = "{}";
+JSONPromise(string).then(function (object) {
+    conosle.log(object);// <1>
+});
+----
+<1> conosle というtypoがある
+
+この場合は、`console`を`conosle`とtypoしているため、以下のようなエラーが発生するはずです。
+
+> ReferenceError: conosle is not defined
+
+しかし、Promiseではtry-catchされるため、エラーが握りつぶされてしまうという現象が発生しやすくなります。
+毎回、正しく`catch`の処理を書くことが出来る場合は何も問題ありませんが、
+Promiseの実装によってはこのようなミスが検知しにくくなるケースがあることを知っておくべきでしょう。
+
+このようなエラーの握りつぶしは__unhandled rejection__と言われることがあります。
+Rejectedされた時の処理がないというそのままの意味ですね。
+
+[NOTE]
+====
+このunhandled rejectionが検知しにくい問題はPromiseの実装に依存します。
+例えば、 https://github.com/yahoo/ypromise[ypromise] はunhandled rejectionがある場合は、そのことをコンソールに表示します。
+
+> Promise rejected but no error handlers were registered to it
+
+また、 https://github.com/petkaantonov/bluebird[Bluebird] の場合も、
+明らかに人間のミスにみえるReferenceErrorの場合などはそのままコンソールにエラーを表示してくれます。
+
+> "Possibly unhandled ReferenceError. conosle is not defined
+
+ネイティブのPromiseの場合も同様にこの問題への対処としてGC-based unhandled rejection trackingというものが
+搭載されつつあります。
+
+つまり、promiseオブジェクトがガーベッジコレクションによって回収されるときに、
+それがunhandled rejectionであるなら、エラー表示をするという仕組みがベースとなっているようです。
+
+====
