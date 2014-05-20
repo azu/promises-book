@@ -1,4 +1,4 @@
-= [WIP] Promises Book
+= [WIP] JavaScript Promiseの本
 :Author:      azu
 :keywords:    JavaScript,ECMAScript,Promises,日本語
 :revnumber:   {bookversion}
@@ -23,7 +23,6 @@ ifeval::["{backend}" == "html5"]
   allowtransparency="true" frameborder="0" scrolling="0" width="170" height="30"></iframe>
 ++++
 endif::[]
-
 
 
 [IMPORTANT]
