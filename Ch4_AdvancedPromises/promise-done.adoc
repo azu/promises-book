@@ -44,3 +44,20 @@ Promise chainの最後に書くべきメソッドというのはわかると思�
 
 何故このようなPromiseの機能とは相反するメソッドが、多くのライブラリで実装されいるかについては
 次のようなPromiseの失敗例を見ていくと分かるかもしれません。
+
+=== 沈黙したエラー
+
+Promiseには強力なエラーハンドリング機能がありますが、
+この機能がヒューマンエラーをより複雑なものにしてしまう一面があります。
+
+つぎのような、promiseを返す関数を考えてみましょう。
+
+[source,js]
+[[json-promise.js]]
+.json-promise.js
+----
+include::embed/embed-json-promise.js[]
+----
+
+渡された値を`JSON.parse`してpromiseオブジェクトを返す関数ですね。
+
