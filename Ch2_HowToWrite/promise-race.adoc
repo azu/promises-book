@@ -8,14 +8,15 @@
 `Promise.all`は、渡した全てのpromiseが解決状態になるまで次の処理を待ちましたが、
 `Promise.race`は、どれか一つでもpromiseが解決状態になったら次の処理を実行します。
 
-Promise.allの時と同じタイマーを使った例を見てみましょう
+Promise.allの時と同じく、タイマーを使った`Promise.race`の例を見てみましょう
 
 [source,js]
-[[promise-race.js]]
-.promise-race.js
+[[promise-race-timer.js]]
+.promise-race-timer.js
 ----
-include::embed/embed-promise-race.js[]
+include::embed/embed-promise-race-timer.js[]
 ----
+
 
 上記のコードだと、1ms後、32ms後、64ms後、128ms後にそれぞれpromiseオブジェクトが解決されますが、
 一番最初に1msのものがresolveされた時点で、`.then` が呼ばれ、`resolve(1)`なので`value`に渡される値も1となります。
@@ -30,12 +31,12 @@ include::embed/embed-promise-race-other.js[]
 ----
 
 
-先ほどのコードに `console.log` をそれぞれ追加しただけの内容です。
+先ほどのコードに `console.log` をそれぞれ追加しただけの内容となっています。
 
 実行してみると、winnter/loser どちらの`setTimeout` の中身が実行されて `console.log` がそれぞれ出力されている事がわかります。
 
 つまり、<<Promise.race, `Promise.race`>>では、
-一番最初のpromiseがresolveしても他のpromiseがキャンセルされるわけでは無いという事がわかります。
+一番最初のpromiseオブジェクトがFulfilledとなっても、他のpromiseがキャンセルされるわけでは無いという事がわかります。
 
 [NOTE]
 Promisesの仕様には、キャンセルという概念はありません。
