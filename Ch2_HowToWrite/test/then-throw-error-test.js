@@ -20,6 +20,6 @@ describe("#goodMain", function () {
         });
         timeID = setTimeout(function () {
             assert.fail("doesn't call");
-        }, 10000);
+        }, 5000);
     });
 });
