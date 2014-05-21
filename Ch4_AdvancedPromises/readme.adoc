@@ -13,5 +13,8 @@ include::deferred-promise.adoc[]
 // delay cancel promise
 include::race-delay-timeout.adoc[]
 
+// Promise.prototype.done
+include::promise-done.adoc[]
+
 // promsie-chain
 include::promise-chain.adoc[]
