@@ -12,13 +12,14 @@ describe("#badMain", function () {
 });
 describe("#goodMain", function () {
     it("can't handling error", function (done) {
+        var timeID = null;
         require("../src/then-throw-error").goodMain(function (value) {
             assert(value instanceof Error);
+            clearTimeout(timeID);
             done();
         });
-        setTimeout(function () {
+        timeID = setTimeout(function () {
             assert.fail("doesn't call");
-        }, 100);
-
+        }, 10000);
     });
 });
