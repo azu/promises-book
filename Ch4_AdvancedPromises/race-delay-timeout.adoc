@@ -53,10 +53,10 @@ include::../Ch2_HowToWrite/embed/embed-promise-race-other.js[]
 `Promise.race`によって競争させることで簡単にタイムアウトが実装出来ます。
 
 [source,js]
-[[simple-timeoutPromise.js]]
-.simple-timeoutPromise.js
+[[simple-timeout-promise.js]]
+.simple-timeout-promise.js
 ----
-include::embed/embed-simple-timeoutPromise.js[]
+include::embed/embed-simple-timeout-promise.js[]
 ----
 
 `timeoutPromise(比較対象のpromise, ms)` はタイムアウト処理を入れたい
