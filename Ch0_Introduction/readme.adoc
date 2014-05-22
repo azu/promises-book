@@ -14,9 +14,8 @@ JavaScriptにおけるPromiseについて学ぶことを目的とした書籍で
 この書籍では、先程も述べたように<<es6-promises,ES6 Promises>>、
 つまりJavaScriptの標準仕様をベースとしたPromiseについて書かれています。
 
-そのため、FirefoxやChromeなど先行実装しているブラウザでは、ライブラリを使うこと無く
-利用できる機能であり、またES6 Promisesは元が<<promises-aplus,Promises/A+>>というコニュニティベースの仕様であるため、
-既存の実装ライブラリがあります。
+そのため、FirefoxやChromeなど先行実装しているブラウザでは、ライブラリを使うこと無く利用できる機能であり、
+またES6 Promisesは元が<<promises-aplus,Promises/A+>>というコニュニティベースの仕様であるため、多くの実装ライブラリがあります。
 
 ブラウザネイティブの機能 または ライブラリを使うことで今すぐ利用できるPromiseについて
 基本的なAPIから学び、何が得意で何が不得意なのかを知り、Promiseを活用したJavaScriptを書けるようになることを目的としています。
