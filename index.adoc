@@ -45,7 +45,7 @@ image::https://badges.gitter.im/azu/promises-book.png[Gitter, link="https://gitt
 // 各章はH1から始めているので、一つ下げる
 :leveloffset: 1
 
-// 前書き
+// はじめに
 include::Ch0_Introduction/readme.adoc[]
 
 // 第一章

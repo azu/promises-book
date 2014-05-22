@@ -4,7 +4,6 @@
 
 Promisesとは何かの簡単な概要の紹介です。
 
-
 include::what-is-promise.adoc[]
 
 include::promise-overview.adoc[]
