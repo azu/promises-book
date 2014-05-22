@@ -2,7 +2,7 @@
 
 == 書籍の目的
 
-この書籍は現在策定中の<<es6-promises,ECMAScript 6 Promises>>という仕様を中心として、
+この書籍は現在策定中の<<es6-promises,ECMAScript 6 Promises>>という仕様を中心にし、
 JavaScriptにおけるPromiseについて学ぶことを目的とした書籍です。
 
 この書籍を読むことで学べる事として次の3つを目標としてあります。
@@ -33,17 +33,17 @@ JavaScriptにおけるPromiseについて学ぶことを目的とした書籍で
 
 のいずれかの書籍を読んだ事があれば十分読み解くことが出来る内容だと思います。
 
-または、JavaScriptでウェブアプリケーションを書いた事がある、
-Node.js でコマンドラインアプリやサーバサイドを書いた事があれば、
+または、JavaScriptでウェブアプリケーションを書いたことがある、
+Node.js でコマンドラインアプリやサーバサイドを書いたことがあれば、
 どこかで書いたことがあるような内容が出てくるかもしれません。
 
-一部セクションではNode.js環境でのコードがでてくるため、Node.jsについて軽くでも知っておくとより理解がし易いと思います。
+一部セクションではNode.js環境での話となるため、Node.jsについて軽くでも知っておくとより理解がし易いと思います。
 
 == 本書のソースコード/ライセンス
 
-この書籍に登場するサンプルのソースコード また
-この書籍は http://asciidoctor.org/[AsciiDoc] という形式で書かれていますが、その文章のソースコードは全ては
-Githubから取得することができます。
+この書籍に登場するサンプルのソースコード また その文章のソースコードは全てはGithubから取得することができます。
+
+この書籍は http://asciidoctor.org/[AsciiDoc] という形式で書かれています。
 
 - https://github.com/azu/promises-book[azu/promises-book] image:https://travis-ci.org/azu/promises-book.svg?branch=master["Build Status", link="https://travis-ci.org/azu/promises-book"]
 
@@ -64,5 +64,5 @@ Githubから取得することができます。
 Twitterでのハッシュタグは icon:twitter[2x, link=https://twitter.com/search?q=%23Promise%E6%9C%AC] https://twitter.com/search?q=%23Promise%E6%9C%AC[#Promise本]
 なので、こちらを利用するでもいいでしょう。
 
-この書籍は読める権利と同時に、編集をする権利があるため、
+この書籍は読める権利と同時に編集する権利があるため、
 Githubで https://github.com/azu/promises-book/pulls[Pull Requests] も歓迎しています。
