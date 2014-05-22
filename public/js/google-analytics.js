@@ -13,7 +13,11 @@
 ga('create', 'UA-2184335-14', 'azu.github.io');
 ga('send', 'pageview');
 window.addEventListener("hashchange", function hashChange() {
+    var hash = location.hash;
+    var header = document.querySelector(hash);
+    var title = header.textContent || header.innerText;
     ga('send', 'pageview', {
-        'page': location.pathname + location.search + location.hash
+        'page': location.pathname + location.search + location.hash,
+        'title': title
     });
 }, false);
