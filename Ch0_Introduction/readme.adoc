@@ -62,7 +62,7 @@ Node.js でコマンドラインアプリやサーバサイドを書いたこと
 * image:https://badges.gitter.im/azu/promises-book.png["Gitter", link="https://gitter.im/azu/promises-book"]
 
 Twitterでのハッシュタグは icon:twitter[2x, link=https://twitter.com/search?q=%23Promise%E6%9C%AC] https://twitter.com/search?q=%23Promise%E6%9C%AC[#Promise本]
-なので、こちらを利用するでもいいでしょう。
+なので、こちらを利用するのもいいでしょう。
 
 この書籍は読める権利と同時に編集する権利があるため、
 Githubで https://github.com/azu/promises-book/pulls[Pull Requests] も歓迎しています。
