@@ -1,0 +1,67 @@
+= はじめに
+
+== 書籍の目的
+
+この書籍は現在策定中の<<es6-promises,ECMAScript 6 Promises>>という仕様を中心にし、
+JavaScriptにおけるPromiseについて学ぶことを目的とした書籍です。
+
+この書籍を読むことで学べる事として次の3つを目標としてあります。
+
+- Promiseについて学び、パターンやテストを扱えるようになる事
+- Promiseの向き不向きについて学び、何でもPromiseで解決するべきではないと知ること
+- ES6 Promiseを元に基本をよく学び、より発展した形を自分で形成できるようになること
+
+この書籍では、先程も述べたように<<es6-promises,ES6 Promises>>、
+つまりJavaScriptの標準仕様をベースとしたPromiseについて書かれています。
+
+そのため、FirefoxやChromeなど先行実装しているブラウザでは、ライブラリを使うこと無く利用できる機能であり、
+またES6 Promisesは元が<<promises-aplus,Promises/A+>>というコニュニティベースの仕様であるため、多くの実装ライブラリがあります。
+
+ブラウザネイティブの機能 または ライブラリを使うことで今すぐ利用できるPromiseについて
+基本的なAPIから学び、何が得意で何が不得意なのかを知り、Promiseを活用したJavaScriptを書けるようになることを目的としています。
+
+== 本書を読むにあたって
+
+この書籍ではJavaScriptの基本的な機能について既に学習していることを前提にしています。
+
+- http://www.oreilly.co.jp/books/9784873113913/[JavaScript: The Good Parts]
+- http://www.oreilly.co.jp/books/9784873114880/[JavaScriptパターン]
+- http://www.oreilly.co.jp/books/9784873115733/[JavaScript 第6版] - 十分すぎます
+- http://gihyo.jp/book/2011/978-4-7741-4813-7?ard=1400715177[パーフェクトJavaScript]
+- http://books.shoeisha.co.jp/book/b107881.html[Effective JavaScript]
+
+のいずれかの書籍を読んだ事があれば十分読み解くことが出来る内容だと思います。
+
+または、JavaScriptでウェブアプリケーションを書いたことがある、
+Node.js でコマンドラインアプリやサーバサイドを書いたことがあれば、
+どこかで書いたことがあるような内容が出てくるかもしれません。
+
+一部セクションではNode.js環境での話となるため、Node.jsについて軽くでも知っておくとより理解がし易いと思います。
+
+== 本書のソースコード/ライセンス
+
+この書籍に登場するサンプルのソースコード また その文章のソースコードは全てはGithubから取得することができます。
+
+この書籍は http://asciidoctor.org/[AsciiDoc] という形式で書かれています。
+
+- https://github.com/azu/promises-book[azu/promises-book] image:https://travis-ci.org/azu/promises-book.svg?branch=master["Build Status", link="https://travis-ci.org/azu/promises-book"]
+
+またリポジトリには書籍中に出てくるサンプルコードのテストも含まれています。
+
+ソースコードのライセンスはMITライセンスで、文章はCC-BY-NCで利用することができます。
+
+== 意見や疑問点
+
+意見や疑問点がある場合はGithubに直接Issueとして立てる事が出来ます。
+
+* https://github.com/azu/promises-book/issues?state=open[Issues · azu/promises-book]
+
+また、Githubアカウントを利用した https://gitter.im/azu/promises-book[チャットサービス] に書いていくのもよいでしょう。
+
+* image:https://badges.gitter.im/azu/promises-book.png["Gitter", link="https://gitter.im/azu/promises-book"]
+
+Twitterでのハッシュタグは icon:twitter[2x, link=https://twitter.com/search?q=%23Promise%E6%9C%AC] https://twitter.com/search?q=%23Promise%E6%9C%AC[#Promise本]
+なので、こちらを利用するでもいいでしょう。
+
+この書籍は読める権利と同時に編集する権利があるため、
+Githubで https://github.com/azu/promises-book/pulls[Pull Requests] も歓迎しています。
