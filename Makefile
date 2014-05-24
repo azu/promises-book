@@ -18,5 +18,14 @@ html:
 	-o ${OUTPUT_FILE} ${SRC_FILE}
 	@echo "Done! => ${OUTPUT_FILE}"
 
+pdf:
+	@echo "Generate HTML..."
+	@gulp embed
+	@echo "Building asciidoc"
+	@asciidoctor -a bookversion=`node ./_tools/cli-book-version.js` \
+	-a icons=font -a source-highlighter=coderay --backend docbook \
+	-o index.xml ${SRC_FILE}
+	@echo "Done!"
+
 clean:
 	@rm -f {OUTPUT_FILE}

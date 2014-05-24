@@ -5,8 +5,8 @@
 
 使い方はPromise.allと同様で、promiseオブジェクトの配列を引数に渡します。
 
-`Promise.all`は、渡した全てのpromiseが解決状態になるまで次の処理を待ちましたが、
-`Promise.race`は、どれか一つでもpromiseが解決状態になったら次の処理を実行します。
+`Promise.all`は、渡した全てのpromiseがFulFilled または Rejectedになるまで次の処理を待ちましたが、
+`Promise.race`は、どれか一つでもpromiseがFulFilled または Rejectedになったら次の処理を実行します。
 
 Promise.allの時と同じく、タイマーを使った`Promise.race`の例を見てみましょう
 
@@ -18,10 +18,10 @@ include::embed/embed-promise-race-timer.js[]
 ----
 
 
-上記のコードだと、1ms後、32ms後、64ms後、128ms後にそれぞれpromiseオブジェクトが解決されますが、
+上記のコードだと、1ms後、32ms後、64ms後、128ms後にそれぞれpromiseオブジェクトがFulFilledとなりますが、
 一番最初に1msのものがresolveされた時点で、`.then` が呼ばれ、`resolve(1)`なので`value`に渡される値も1となります。
 
-最初に解決したpromiseオブジェクト以外は、その時点で呼ばれるのかを見てみましょう
+最初にFulFilledとなったpromiseオブジェクト以外は、その時点で呼ばれるのかを見てみましょう
 
 [source,js]
 [[promise-race-other.js]]
