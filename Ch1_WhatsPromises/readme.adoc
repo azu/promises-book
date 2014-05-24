@@ -1,8 +1,8 @@
 [[chapter1-what-is-promise]]
-= Chapter.1 - Promisesとは何か
+= Chapter.1 - Promiseとは何か
 :imagesdir: Ch1_WhatsPromises/
 
-Promisesとは何かの簡単な概要の紹介です。
+Promiseとは何かの簡単な概要の紹介です。
 
 include::what-is-promise.adoc[]
 

@@ -173,4 +173,4 @@ Thenableを使った<<notification-thenable.js>>とPromiseに依存した<<notif
 * コールバックスタイル(`notifyMessage()`)でも利用できる
 
 <<Thenable,thenable>>オブジェクトを利用することで、
-既存のコールバックスタイルとPromisesの親和性を高めることができる事が分かります。
+既存のコールバックスタイルとPromiseの親和性を高めることができる事が分かります。

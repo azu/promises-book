@@ -39,7 +39,7 @@ include::embed/embed-promise-race-other.js[]
 一番最初のpromiseオブジェクトがFulfilledとなっても、他のpromiseがキャンセルされるわけでは無いという事がわかります。
 
 [NOTE]
-Promisesの仕様には、キャンセルという概念はありません。
+<<es6-promises,ES6 Promises>>の仕様には、キャンセルという概念はありません。
 必ず、resolve or rejectによる状態の解決が起こることが前提となっています。
 つまり、<<promise-states,状態>>が固定されてしまうかもしれない処理には不向きであると言えます。
 ライブラリによってはキャンセルを行う仕組みが用意されている場合があります。

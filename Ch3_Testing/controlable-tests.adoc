@@ -95,7 +95,7 @@ include::embed/embed-shouldFulfilled-test.js[]
 
 === まとめ
 
-Promisesで意図したテストを書くためにはどうするか、またそれを補助するヘルパー関数について学びました。
+Promiseで意図したテストを書くためにはどうするか、またそれを補助するヘルパー関数について学びました。
 
 今回書いた`shouldFulfilled`と`shouldRejected`をライブラリ化したものは https://github.com/azu/promise-test-helper[azu/promise-test-helper] にあります。
 

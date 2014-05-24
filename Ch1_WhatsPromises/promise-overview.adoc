@@ -41,7 +41,7 @@ promise.catch(onRejected)
 `Promise.all()` や `Promise.resolve()` などが該当し、Promiseを扱う上での補助メソッドが中心となっています。
 
 
-=== Promises workflow
+=== Promise workflow
 
 以下のようなサンプルコードを見てみましょう。
 
@@ -76,9 +76,9 @@ asyncFunction().then(function (value) {
 });
 ----
 
-=== Promisesの状態 [[promise-states]]
+=== Promiseの状態 [[promise-states]]
 
-Promisesの処理の流れが簡単にわかった所で、少しPromisesの状態について整理したいと思います。
+Promiseの処理の流れが簡単にわかった所で、少しPromiseの状態について整理したいと思います。
 
 `new Promise` でインスタンス化したpromiseオブジェクトには以下の3つの状態が存在します。
 
@@ -112,20 +112,20 @@ http://people.mozilla.org/~jorendorff/es6-draft.html#sec-promise-objects[ECMAScr
 promiseオブジェクトの状態は、一度__Pending__から__Fulfilled__や__Rejected__になると、
 そのpromiseオブジェクトの状態はそれ以降変化することはなくなります。
 
-つまり、PromisesはEvent等とは違い、`.then` で登録した関数が呼ばれるのは1回限りという事が明確になっています。
+つまり、PromiseはEvent等とは違い、`.then` で登録した関数が呼ばれるのは1回限りという事が明確になっています。
 
 また、__Fulfilled__と__Rejected__のどちらかの状態であることを**Settled**(不変の)と表現することがあります。
 
 Settled::
     resolve(解決) または reject(棄却) された時。
 
-__Pedding__と__Settled__が対となる関係であると考えると、Promisesの状態の種類/遷移がシンプルであることがわかると思います。
+__Pedding__と__Settled__が対となる関係であると考えると、Promiseの状態の種類/遷移がシンプルであることがわかると思います。
 
 このpromiseオブジェクトの状態が変化した時に、一度だけ呼ばれる関数を登録するのが `.then` といったメソッドとなるわけです。
 
 [NOTE]
 ====
 https://speakerdeck.com/kerrick/javascript-promises-thinking-sync-in-an-async-world[JavaScript Promises - Thinking Sync in an Async World // Speaker Deck]
-というスライドではPromisesの状態遷移について分かりやすく書かれています。
+というスライドではPromiseの状態遷移について分かりやすく書かれています。
 ====
 

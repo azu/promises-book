@@ -1,5 +1,5 @@
 [[mocha-promise]]
-== MochaのPromisesサポート
+== MochaのPromiseサポート
 
 MochaがサポートしてるPromiseのテストとは何かについて学んでいきましょう。
 

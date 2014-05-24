@@ -1,5 +1,5 @@
 [[what-is-promise]]
-== What Is Promises
+== What Is Promise
 
 - [ ] プロミスとはどういう概念なのかー
 - [ ] Promisesはどうやってできた? <= これはコラムとかで良さそう

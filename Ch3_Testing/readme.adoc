@@ -1,8 +1,8 @@
 [[chapter3-promise-testing]]
-= Chapter.3 - Promisesのテスト
+= Chapter.3 - Promiseのテスト
 :imagesdir: Ch3_Testing/
 
-この章ではPromisesのテストの書き方について学んで行きます。
+この章ではPromiseのテストの書き方について学んで行きます。
 
 // Promiseの基本的なテスト
 include::basic-tests.adoc[]

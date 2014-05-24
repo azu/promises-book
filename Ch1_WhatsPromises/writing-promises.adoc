@@ -1,5 +1,5 @@
 [[how-to-write-promise]]
-== Promisesの書き方
+== Promiseの書き方
 
 Promiseの基本的な書き方について解説します。
 
@@ -30,7 +30,7 @@ resolveの引数に入れる値には特に決まりはありませんが、コ�
 (この値は`then`メソッドで受け取ることが出来ます)
 
 Node.jsをやっている人は、コールバックを書く時に `callback(error, response)` と第一引数にエラーオブジェクトを
-入れることがよくあると思いますが、Promisesでは役割がresolve/rejectで分担されているので、
+入れることがよくあると思いますが、Promiseでは役割がresolve/rejectで分担されているので、
 resolveにはresponseの値のみをいれるだけで問題ありません。
 
 
@@ -128,8 +128,8 @@ getURL(URL).then(onFulfilled, onRejected);// <1>
 * `new Promise` を使いpromiseオブジェクトの作成
 * <<promise.then,`.then`>> や <<promise.catch,`.catch`>> を使ったpromiseオブジェクトの処理
 
-Promisesの基本的な書き方はこれがベースとなり、
+Promiseの基本的な書き方はこれがベースとなり、
 他の多くの処理はこれを発展させたり、用意された静的メソッドを利用したものになります。
 
-ここでは、同様の事はコールバック関数を渡す形でも出来るのに対してPromisesで書くメリットについては触れていませんでしたが、
+ここでは、同様の事はコールバック関数を渡す形でも出来るのに対してPromiseで書くメリットについては触れていませんでしたが、
 次の章では、Promiseのメリットであるエラーハンドリングの仕組みをコールバックベースの実装と比較しながら見て行きたいと思います。

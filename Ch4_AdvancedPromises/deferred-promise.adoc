@@ -8,7 +8,7 @@
 Deferredという単語はPromiseと同じコンテキストで聞いた事があるかもしれません。
 有名な所だと http://api.jquery.com/category/deferred-object/[jQuery.Deferred] や http://cho45.stfuawsc.com/jsdeferred/[JSDeferred] 等があげられるでしょう。
 
-DeferredはPromisesと違い、共通の仕様があるわけではなく、各ライブラリがそのような目的の実装をそう呼んでいます。
+DeferredはPromiseと違い、共通の仕様があるわけではなく、各ライブラリがそのような目的の実装をそう呼んでいます。
 
 今回は http://api.jquery.com/category/deferred-object/[jQuery.Deferred] を中心にして話を進めます。
 
