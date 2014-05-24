@@ -1,0 +1,3 @@
+[[ch2-promise-catch]]
+== Promise#catch
+

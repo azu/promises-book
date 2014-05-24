@@ -7,6 +7,8 @@
 // Promise#then
 include::promise-then.adoc[]
 
+// Promise#catch
+include::promise-catch.adoc[]
 
 // Promise#then と コールバック
 include::promise-and-array.adoc[]
