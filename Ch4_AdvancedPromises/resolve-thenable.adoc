@@ -1,11 +1,11 @@
 [[resolve-thenable]]
-=== Promise.resolveとThenable
+== Promise.resolveとThenable
 
 <<ch2-promise-resolve,Promise.resolve>>にて、`Promise.resolve`の大きな特徴の一つとしてthenableなオブジェクトを変換する機能について紹介しました。
 
 このセクションでは、thenableなオブジェクトからpromiseオブジェクトに変換してどのように利用するかについて学びたいと思います。
 
-==== Web Notificationsをthenableにする
+=== Web Notificationsをthenableにする
 
 https://developer.mozilla.org/ja/docs/Web/API/notification[Web Notifications]という
 デスクトップ通知を行うAPIを例に考えてみます。
@@ -58,7 +58,7 @@ Notification.requestPermission(function (status) {
 いきなりこれを`thenable`にするのは分かりにくいので、まずは今まで学んだPromiseを使って
 promiseオブジェクトを返すラッパー関数を書いてみましょう。
 
-==== Web Notification as Promise
+=== Web Notification as Promise
 
 [source,js]
 [[notification-as-promise.js]]
@@ -100,7 +100,7 @@ notifyMessageAsPromise("Hi!").then(function (notification) {
 本題に戻り<<Thenable,Thenable>>はここでいう"コールバックでも使う事ができ、`Promise`でも使えるようにする"という事を
 実現するのに役立つ概念です。
 
-=== Thenableでコールバックと両立する
+== Thenableでコールバックと両立する
 
 まずは先程のWeb Notification APIのラッパー関数をコールバックスタイルで書いてみましょう。
 
@@ -131,7 +131,7 @@ notifyMessage("message", {}, function (error, notification) {
 [source,js]
 function (error, notification){}
 
-==== thenableを返すメソッドを追加する
+=== thenableを返すメソッドを追加する
 
 <<Thenable,thenable>>というのは`.then`というメソッドを持ってるオブジェクトのことを言いましたね。
 次に<<notification-callback.js>>に`thenable`を返すメソッドを追加してみましょう。
