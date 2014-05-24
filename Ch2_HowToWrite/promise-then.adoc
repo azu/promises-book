@@ -21,7 +21,62 @@ aPromise.then(function taskA(value){
 `then`で登録するコールバック関数をそれぞれtaskというものにした時に、
 taskA -> task B という流れをPromiseのメソッドチェーンを使って書くことが出来ます。
 
-Promiseのメソッドチェーンだと長いので、今後は**promise chain**と呼びますが、
-これがPromiseが非同期処理の流れを書きやすい一因とも言えます。
+Promiseのメソッドチェーンだと長いので、今後は<<promise-chain,promise chain>>と呼びますが、
+このpromise chainがPromiseが非同期処理の流れを書きやすい理由の一つといえるかもしれません。
 
 このセクションでは、`then` を使ったpromise chainの挙動と流れについて学んでいきましょう。
+
+=== promise chain
+
+第一章の例だと、<<promise-chain,promise chain>>は
+then -> catch というシンプルな例でしたが、このpromise chainをもっとつなげた場合に、
+それぞれのpromiseオブジェクトに登録された onFulfilledとonRejectedがどのようによばれるのかを見て行きましょう。
+
+[NOTE]
+promise chain - すなわちメソッドチェーンが短い事は良いことです。
+この例では説明のために長いメソッドチェーンを用います。
+
+次のようなpromise chainを見てみましょう。
+
+[source,js]
+[[promise-then-catch-flow.js]]
+.promise-then-catch-flow.js
+----
+include::src/promise-then-catch-flow.js[]
+----
+
+このようなpromise chainをつなげた場合、
+それぞれの処理の流れは以下のように図で表せます。
+
+[[promise-then-catch-flow.png]]
+.promise-then-catch-flow.jsの図
+image::img/promise-then-catch-flow.png[promise-then-catch-flow]
+
+<<promise-then-catch-flow.js,上記のコード>>では`then`は第二引数(onRejected)を使っていないため、
+以下のように読み替えても問題ありません。
+
+`then`::
+    onFulfilledの処理を登録
+`catch`::
+    onRejectedの処理を登録
+
+<<promise-then-catch-flow.png,図>>の方に注目してもらうと、
+__Task A__ と __Task B__ それぞれから __onRejected__ への線が出ていることが分かります。
+
+これは、__Task A__ または __Task B__ の処理にて、以下のどちらかが起きた場合に
+
+* 例外が発生した時
+* Rejectedなpromiseオブジェクトがreturnされた時
+
+__onRejected__ が呼ばれるという事を示しています。
+
+<<how-to-write-promise,第一章>>でPromiseの処理は常に`try-catch`されているようなものなので、
+例外が起きた場合もキャッチして、`catch`で登録された`onRejected`の処理を呼ぶことは学びましたね。
+
+もう一つの __Rejectedなpromiseオブジェクトがreturnされた時__ については、
+`throw`を使わずにpromise chain中に`onRejected`を呼ぶ方法です。
+
+これについては、ここでは必要ない内容なので詳しくは、 第4章の <<not-throw-use-reject, throwしないで、rejectしよう>> にて解説しています。
+
+もう少し具体的に、__Task A__ -> __onRejected__ となる例を見てみます。
+
