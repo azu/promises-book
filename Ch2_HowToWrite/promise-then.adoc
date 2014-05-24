@@ -89,7 +89,7 @@ __Task A__ の処理中に例外が発生した場合、
 TaskA -> onRejected -> FinalTask という流れで処理が行われます。
 
 .Task Aで例外が発生した時の図
-image::img/promise-taska-rejected-flow.png[promise-taska-rejected-flow]
+image::img/promise-taska-rejected-flow.png[promise-taska-rejected-flopush
 
 コードにしてみると以下のようになります。
 
@@ -132,7 +132,6 @@ include::src/promise-then-passing-value.js[]
 . `increment`では渡された値に+1した値を`return`している
 . この値(2)が次の`doubleUp`に渡される
 . 最後に`output`が出力する
-
 
 .promise-then-passing-value.jsの図
 image::img/promise-then-passing-value.png[promise-then-passing-value]
