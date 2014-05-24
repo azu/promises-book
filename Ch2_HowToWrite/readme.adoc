@@ -10,11 +10,17 @@ include::promise-resolve.adoc[]
 // Promise.reject
 include::promise-reject.adoc[]
 
+// コラム: Promiseは常に非同期?
+include::column-promise-resolve.adoc[]
+
 // Promise#then
 include::promise-then.adoc[]
 
 // Promise#catch
 include::promise-catch.adoc[]
+
+// コラム: `then`は常に新しいpromiseオブジェクトを返す
+include::then-return-new-promise.adoc[]
 
 // Promise#then と コールバック
 include::promise-and-array.adoc[]
@@ -24,12 +30,6 @@ include::promise-all.adoc[]
 
 // Promise.race
 include::promise-race.adoc[]
-
-// コラム: `then`は常に新しいpromiseオブジェクトを返す
-include::then-return-new-promise.adoc[]
-
-// コラム: Promiseは常に非同期?
-include::column-promise-resolve.adoc[]
 
 // エラーハンドリング
 include::onrejected-or-catch.adoc[]
