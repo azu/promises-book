@@ -14,7 +14,7 @@
 
 image:https://ci.testling.com/azu/promise-catch-error.png["Build Status", link="https://ci.testling.com/azu/promise-catch-error"]
 
-このバッジは以下のコードが、https://github.com/jakearchibald/es6-promise[polyfill] を用いた状態でそれぞれのブラウザで正しく実行できているかを示したものです。
+このバッジは以下のコードが、 https://github.com/jakearchibald/es6-promise[polyfill] を用いた状態でそれぞれのブラウザで正しく実行できているかを示したものです。
 
 [NOTE]
 ====
@@ -31,15 +31,16 @@ promise.catch(function (error) {
 });
 ----
 
-このコードをそれぞれのブラウザで実行させると、IE8以下では実行する段階で **識別子がありません** というような、
-Syntax Errorになってしまいます。
+このコードをそれぞれのブラウザで実行させると、IE8以下では実行する段階で **識別子がありません** というSyntax Errorになってしまいます。
 
-これはどういう事かというと、`catch`という単語はECMAScriptにおける http://mothereff.in/js-properties#catch[予約語]です。
+これはどういう事かというと、`catch`という単語はECMAScriptにおける http://mothereff.in/js-properties#catch[予約語] であることが関係します。
 
-ECMAScript 3では予約語はプロパティの名前に使うことが出来ませんでしたが、現在のブラウザが実装済みであるECMAScript 5では、
-予約語を http://es5.github.io/#x7.6[IdentifierName]、つまりプロパティ名に利用することが出来るようになっています。
+ECMAScript 3では予約語はプロパティの名前に使うことが出来ませんでした。
+IE8以下はECMAScript 3の実装であるため、`catch`というプロパティである、`promise.catch()`という書き方が出来ないため、
+**識別子がありません**というエラーを起こしてしまう訳です。
 
-IE8以下はECMAScript 3の実装であるため、`catch`というプロパティである、`promise.catch()`という書き方が出来ません。
+一方、現在のブラウザが実装済みであるECMAScript 5以降では、
+予約語を http://es5.github.io/#x7.6[IdentifierName] 、つまりプロパティ名に利用することが可能となっています。
 
 [NOTE]
 ====
@@ -51,7 +52,7 @@ ECMAScript5でも予約語は http://es5.github.io/#x7.6[Identifier] 、つま�
 このECMAScript 3の予約語の問題を回避した書き方も存在します。
 
 https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Property_Accessors#Dot_notation[ドット表記法]
-はプロパティ名が有効な識別子(ECMAScript 3の場合は予約語が有効ではなかった)でないといけませんが、
+はプロパティ名が有効な識別子(ECMAScript 3の場合は予約語が使えない)でないといけませんが、
 https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Property_Accessors#Bracket_notation[ブラケット表記法]
 は有効な識別子ではなくても利用できます。
 
