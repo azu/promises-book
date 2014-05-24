@@ -22,7 +22,7 @@ promiseオブジェクトを作る流れは以下のようになっています�
 include::embed/embed-xhr-promise.js[]
 ----
 
-XHRで200で値が取得できた場合のみ `resolve` として、
+XHRでステータスコードが200の場合のみ `resolve` して、
 それ以外はエラーであるとして `reject` しています。
 
 `resolve(req.response)` ではレスポンスの内容を引数に入れています。
