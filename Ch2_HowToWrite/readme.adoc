@@ -2,25 +2,7 @@
 = Chapter.2 - Promisesの書き方
 :imagesdir: Ch2_HowToWrite/
 
-この章では、Promisesのメソッドについて用途や使い方、エラーハンドリングについて学びます。
-
-// Promise#then
-include::promise-then.adoc[]
-
-// Promise#catch
-include::promise-catch.adoc[]
-
-// Promise#then と コールバック
-include::promise-and-array.adoc[]
-
-// Promise.all
-include::promise-all.adoc[]
-
-// Promise.race
-include::promise-race.adoc[]
-
-// コラム: `then`は常に新しいpromiseオブジェクトを返す
-include::then-return-new-promise.adoc[]
+この章では、Promiseのメソッドの使い方、エラーハンドリングについて学びます。
 
 // Promise.resolve
 include::promise-resolve.adoc[]
@@ -30,6 +12,24 @@ include::promise-reject.adoc[]
 
 // コラム: Promiseは常に非同期?
 include::column-promise-resolve.adoc[]
+
+// Promise#then
+include::promise-then.adoc[]
+
+// Promise#catch
+include::promise-catch.adoc[]
+
+// コラム: `then`は常に新しいpromiseオブジェクトを返す
+include::then-return-new-promise.adoc[]
+
+// Promise#then と コールバック
+include::promise-and-array.adoc[]
+
+// Promise.all
+include::promise-all.adoc[]
+
+// Promise.race
+include::promise-race.adoc[]
 
 // エラーハンドリング
 include::onrejected-or-catch.adoc[]
