@@ -30,7 +30,7 @@ Promiseのメソッドチェーンだと長いので、今後は<<promise-chain,
 
 第一章の例だと、<<promise-chain,promise chain>>は
 then -> catch というシンプルな例でしたが、このpromise chainをもっとつなげた場合に、
-それぞれのpromiseオブジェクトに登録された onFulfilledとonRejectedがどのようによばれるのかを見て行きましょう。
+それぞれのpromiseオブジェクトに登録された onFulfilledとonRejectedがどのように呼ばれるかを見て行きましょう。
 
 [NOTE]
 promise chain - すなわちメソッドチェーンが短い事は良いことです。
@@ -77,6 +77,9 @@ __onRejected__ が呼ばれるという事を示しています。
 `throw`を使わずにpromise chain中に`onRejected`を呼ぶ方法です。
 
 これについては、ここでは必要ない内容なので詳しくは、 第4章の <<not-throw-use-reject, throwしないで、rejectしよう>> にて解説しています。
+
+また、__onRejected__ と __Final Task__ には`catch`のpromise chainがこれより後ろにありません。
+つまり、この処理中に例外が起きた場合はキャッチすることができないことに気をつけましょう。
 
 もう少し具体的に、__Task A__ -> __onRejected__ となる例を見てみます。
 
@@ -135,7 +138,7 @@ include::src/promise-then-passing-value.js[]
 image::img/promise-then-passing-value.png[promise-then-passing-value]
 
 この`return`する値は数字や文字列だけではなく、
-オブジェクトやpromiseオブジェクトを`return`することが出来ます。
+オブジェクトやpromiseオブジェクトも`return`することが出来ます。
 
 returnした値は `Promise.resolve(returnされた値);` のような処理されるため、
 何をreturnしても最終的にはpromiseオブジェクトが返されるとおぼえておくとよいでしょう。
@@ -143,3 +146,4 @@ returnした値は `Promise.resolve(returnされた値);` のような処理さ�
 [NOTE]
 これについて詳しくは <<then-return-new-promise,thenは常に新しいpromiseオブジェクトを返す>> にて、
 よくある間違いと共に紹介しています。
+
