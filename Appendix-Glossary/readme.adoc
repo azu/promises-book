@@ -16,3 +16,7 @@ Promises/A+::
 Thenable::
     Promiseライクなオブジェクトの事。
     `.then`というメソッドを持つオブジェクト。
+[[promise-chain]]
+promise chain::
+    promiseオブジェクトを`then`や`catch`のメソッドチェーンでつなげたもの。
+    この用語は書籍中のものであり、<<es6-promises,ES6 Promises>>で定められた用語ではありません。
