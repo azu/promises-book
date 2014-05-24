@@ -4,6 +4,9 @@
 
 この章では、これまでに学んだことの応用や発展した内容について学んでいきます。
 
+// Promise.resolveとthenable
+include::resolve-thenable.adoc[]
+
 // not-throw-use-reject.adoc
 include::not-throw-use-reject.adoc[]
 
