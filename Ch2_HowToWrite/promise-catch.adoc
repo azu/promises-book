@@ -1,3 +1,10 @@
 [[ch2-promise-catch]]
 == Promise#catch
 
+<<ch2-promise.then, 先ほどのPromise#then>>についてでも`Promise#catch`は既に使っていましたね。
+
+改めて説明すると<<promise.catch,Promise#catch>>は`promise.then(undefined, onRejected);`のエイリアスとなるメソッドです。
+つまり、promiseオブジェクトがRejectedとなった時に呼ばれる関数を登録するためのメソッドです。
+
+<<promise.then,Promise#then>>と<<promise.catch,Promise#catch>>の使い分けについては、
+<<then-or-catch,then or catch?>>で紹介しています。
