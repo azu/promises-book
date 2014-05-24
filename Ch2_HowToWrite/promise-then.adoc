@@ -1,5 +1,5 @@
 [[ch2-promise.then]]
-== promise.then
+== Promise#then
 
 先ほどの章でPromiseの基本となるインスタンスメソッドである`then`と`catch`の使い方を説明しました。
 

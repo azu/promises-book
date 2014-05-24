@@ -2,7 +2,7 @@
 = Promises API Reference
 
 [[promise.then]]
-== promise.then
+== Promise#then
 [source,js]
 ----
 promise.then(<onFulfilled>, <onRejected>);
@@ -30,7 +30,7 @@ promiseオブジェクトに対してonFulfilledとonRejectedのハンドラを�
 * 定義されたハンドラ内で例外が発生した場合は、新たなpromiseオブジェクトのonRejectedに対して渡される。
 
 [[promise.catch]]
-== promise.catch
+== Promise#catch
 [source,js]
 promise.catch(onRejected);
 
