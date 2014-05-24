@@ -1,11 +1,10 @@
 [[ch2-promise-and-array]]
 == Promiseと配列
 
-先ほどの章では、promiseオブジェクトがresolve又はrejectされた時の処理は <<promise.then,`.then`>> と <<promise.catch,`.catch`>> を
-使うことで行える事を学びました。
+ここまでで、promiseオブジェクトが FulFilled または Rejected となった時の処理は <<promise.then,`.then`>> と <<promise.catch,`.catch`>> で登録出来る事を学びました。
 
 一つのpromiseオブジェクトなら、そのpromiseオブジェクトに対して処理を書けば良いですが、
-複数のpromiseオブジェクトに処理を書く場合はどうすればよいでしょうか?
+複数のpromiseオブジェクトが全てFulFilledとなった時の処理を書く場合はどうすればよいでしょうか?
 
 例えば、A->B->C という感じで複数のXHR(非同期処理)を行った後に、何かをしたいという事例を考えてみます。
 
