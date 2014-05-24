@@ -1,7 +1,9 @@
 [[resolve-thenable]]
 === Promise.resolveとThenable
 
-<<Promise.resolve,Promise.resolve>>の大きな特徴の一つとして紹介した、thenableについてのより詳しい紹介
+<<ch2-promise-resolve,Promise.resolve>>にて、`Promise.resolve`の大きな特徴の一つとしてthenableなオブジェクトを変換する機能について紹介しました。
+
+このセクションでは、thenableなオブジェクトからpromiseオブジェクトに変換してどのように利用するかについて学びたいと思います。
 
 ==== Web Notificationsをthenableにする
 
