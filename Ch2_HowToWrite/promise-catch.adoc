@@ -59,7 +59,7 @@ https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Propert
 つまり、先ほどのコードは以下のように書き換えれば、IE8以下でも実行することが出来ます。(もちろんpolyfillは必要です)
 
 [source,js]
-.Promise#catchの識別子エラーの開始
+.Promise#catchの識別子エラーの回避
 ----
 var promise = Promise.reject(new Error("message"));
 promise["catch"](function (error) {
