@@ -4,9 +4,9 @@
  */
 "use strict";
 var assert = require("power-assert");
-var notifyMessage = require("../src/notification-as-promise").notifyMessageAsPromise;
-var MockNotification = require("./mock-notification").MockNotification;
-describe("notification-as-promise", function () {
+var notifyMessage = require("../src/notification-thenable").notifyMessage;
+var MockNotification = require("./../../Ch2_HowToWrite/test/mock-notification").MockNotification;
+describe("notification-thenable", function () {
     beforeEach(function () {
         global.Notification = MockNotification;
     });
@@ -21,8 +21,27 @@ describe("notification-as-promise", function () {
             delete MockNotification.permission;
         });
         it("should return Notification", function () {
-            return shouldFulfilled(notifyMessage("message")).then(function (notification) {
+            var promise = Promise.resolve(notifyMessage.thenable("message"));
+            return shouldFulfilled(promise).then(function (notification) {
                 assert(notification instanceof MockNotification);
+            });
+        });
+        it("could as callback", function (done) {
+            notifyMessage("message", {}, function (error, notification) {
+                assert(notification instanceof MockNotification);
+                done();
+            });
+        });
+    });
+    context("when doesn't support Notification", function () {
+        before(function () {
+            global.Notification = null;
+        });
+        it("should catch error", function () {
+            var promise = Promise.resolve(notifyMessage.thenable("message"));
+            return shouldRejected(promise).catch(function (error) {
+                assert(error instanceof Error);
+                assert(error.message === "doesn't support Notification API");
             });
         });
     });
@@ -37,7 +56,8 @@ describe("notification-as-promise", function () {
             delete MockNotification.requestPermission;
         });
         it("should return Notification", function () {
-            return shouldFulfilled(notifyMessage("message")).then(function (notification) {
+            var promise = Promise.resolve(notifyMessage.thenable("message"));
+            return shouldFulfilled(promise).then(function (notification) {
                 assert(notification instanceof MockNotification);
             });
         });
@@ -53,8 +73,9 @@ describe("notification-as-promise", function () {
             delete MockNotification.permission;
             delete MockNotification.requestPermission;
         });
-        it("should return Notification", function () {
-            return shouldRejected(notifyMessage("message")).catch(function (error) {
+        it("should catch error", function () {
+            var promise = Promise.resolve(notifyMessage.thenable("message"));
+            return shouldRejected(promise).catch(function (error) {
                 assert(error instanceof Error);
                 assert(error.message === "user denied");
             });
