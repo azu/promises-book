@@ -11,7 +11,7 @@
 <<Promise.resolve, `Promise.resolve(value)`>> という静的メソッドは、
 `new Promise()` のショートカットとなるメソッドです。
 
-例えば、 `Promise.resolve(42)` というのは下記のコードのシンタックスシュガーです。
+例えば、 `Promise.resolve(42);` というのは下記のコードのシンタックスシュガーです。
 
 [source,js]
 ----
@@ -20,10 +20,10 @@ new Promise(function(resolve){
 });
 ----
 
-結果的にすぐに`resolve(42)`と解決されて、次のthenの`onFulfilled`に設定された関数に`42`という値を渡します。
+結果的にすぐに`resolve(42);`と解決されて、次のthenの`onFulfilled`に設定された関数に`42`という値を渡します。
 
-`Promise.resolve(value)`の返す値も同様にpromiseオブジェクトなので、
-以下のように `.then` を使った処理を書くことが出来ます。
+`Promise.resolve(value);` で返ってくる値も同様にpromiseオブジェクトなので、
+以下のように続けて `.then` を使った処理を書くことが出来ます。
 
 [source,js]
 ----
@@ -32,6 +32,8 @@ Promise.resolve(42).then(function(value){
 });
 ----
 
+<<Promise.resolve,Promise.resolve>>は`new Promise()`のショートカットとして、
+promiseオブジェクトの初期化時やテストコードを書く際にも活用できますが、もう一つ大きな特徴を持っています。
 
 === ThenableとPromise.resolve
 
@@ -231,7 +233,7 @@ Thenableを使った<<notification-thenable.js>>とPromiseに依存した<<notif
 ====
 https://api.jquery.com/jQuery.ajax/[jQuery.ajax()]の返り値も`.then`というメソッドを持ったオブジェクト(http://api.jquery.com/category/deferred-object/[Deferred Object])です。
 
-しかし、このDeferred Objectは<<promises-aplus,Promises/A+>>や<<es6-promises,ES6 Promises>>に則したものではないため、`Promise.resolve`では上手く扱えない場合があります。
+しかし、このDeferred Objectは<<promises-aplus,Promises/A+>>や<<es6-promises,ES6 Promises>>に準拠したものではないため、`Promise.resolve`では上手く扱えない場合があります。
 
 そのため、`.then`というメソッドを持っていた場合でも、必ずES6 Promisesとして使えるとは限らない事は知っておくべきでしょう。
 
