@@ -80,3 +80,30 @@ __onRejected__ が呼ばれるという事を示しています。
 
 もう少し具体的に、__Task A__ -> __onRejected__ となる例を見てみます。
 
+==== Task Aで例外が発生したケース
+
+__Task A__ の処理中に例外が発生した場合、
+TaskA -> onRejected -> FinalTask という流れで処理が行われます。
+
+.Task Aで例外が発生した時の図
+image::img/promise-taska-rejected-flow.png[promise-taska-rejected-flow]
+
+コードにしてみると以下のようになります。
+
+[source,js]
+[[promise-then-taska-throw.js]]
+.promise-then-taska-throw.js
+----
+include::src/promise-then-taska-throw.js[]
+----
+
+実行してみると、__Task B__ が呼ばれていない事がわかるでしょう。
+
+[NOTE]
+====
+例では説明のためにtaskAで`throw`して例外を発生させています。
+しかし、実際に明示的にonRejectedを呼びたい場合は、Rejectedなpromiseオブジェクトを返すべきでしょう。
+それぞれの違いについては <<not-throw-use-reject, throwしないで、rejectしよう>> で解説しています。
+====
+
+=== promise chainでの値渡し
