@@ -107,3 +107,39 @@ include::src/promise-then-taska-throw.js[]
 ====
 
 === promise chainでの値渡し
+
+先ほどの例ではそれぞのTaskが独立していて、ただ呼ばれているだけでした。
+
+この時に、Task AがTask Bへ値を渡したい時はどうすれば良いでしょうか?
+
+答えはものすごく単純でTask Aの処理で`return`した値がTask Bが呼ばれるときに引数に設定されます。
+
+実際に例を見てみましょう。
+
+[source,js]
+[[promise-then-passing-value.js]]
+.promise-then-passing-value.js
+----
+include::src/promise-then-passing-value.js[]
+----
+
+スタートは`Promise.resolve(1);`で、この処理は以下のような流れてpromise chainが処理されていきます。
+
+. `Promise.resolve(1);` から 1 が `increment`に渡される
+. `increment`では渡された値に+1した値を`return`している
+. この値(2)が次の`doubleUp`に渡される
+. 最後に`output`が出力する
+
+
+.promise-then-passing-value.jsの図
+image::img/promise-then-passing-value.png[promise-then-passing-value]
+
+この`return`する値は数字や文字列だけではなく、
+オブジェクトやpromiseオブジェクトを`return`することが出来ます。
+
+returnした値は `Promise.resolve(returnされた値);` のような処理されるため、
+何をreturnしても最終的にはpromiseオブジェクトが返されるとおぼえておくとよいでしょう。
+
+[NOTE]
+これについて詳しくは <<then-return-new-promise,thenは常に新しいpromiseオブジェクトを返す>> にて、
+よくある間違いと共に紹介しています。
