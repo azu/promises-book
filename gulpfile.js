@@ -24,7 +24,8 @@ gulp.task("lint-html", function (callback) {
     global.Promise = require("ypromise");
     var File = require("./Ch4_AdvancedPromises/src/promise-chain/fs-promise-chain");
     var checkHTML = require("./test/html/missing-internal-link").checkInternalLinks;
-    File.read("index.html").then(function (contents) {
+
+    var htmlPromise = File.read("index.html").then(function (contents) {
         var errors = checkHTML(contents);
         if (errors.length > 0) {
             errors.forEach(function (error) {
@@ -33,7 +34,11 @@ gulp.task("lint-html", function (callback) {
             return callback(new Error("Found lint error"));
         }
         callback();
-    }).catch(callback);
+    });
+    var asciidocPromise = require("./test/inline-script/inline-script-tester")
+        .checkInlineScript("./");
+    Promise.all([htmlPromise, asciidocPromise])
+        .catch(callback);
 });
 gulp.on('err', function (error) {
     process.exit(1);

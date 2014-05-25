@@ -84,7 +84,7 @@ Deferredには特権的なメソッドを持っていることや自分で流れ
 ----
 new Promise(function (resolve, reject){
     // この中に解決する処理を書く
-}
+});
 ----
 
 一方Deferredの場合は、関数的なまとまりはないのでdeferredオブジェクトを作ったところから、

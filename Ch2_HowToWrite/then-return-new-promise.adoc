@@ -39,7 +39,7 @@ image::img/then_catch.png[Then Catch flow]
 
 [source,js]
 ----
-<1>
+// <1>
 var aPromise = new Promise(function (resolve) {
     resolve(100);
 });
@@ -55,7 +55,7 @@ aPromise.then(function (value) {
 
 // vs
 
-<2>
+// <2>
 var bPromise = new Promise(function (resolve) {
     resolve(100);
 });

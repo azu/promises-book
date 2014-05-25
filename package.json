@@ -25,6 +25,8 @@
   "devDependencies": {
     "cheerio": "^0.16.0",
     "espower-loader": "^0.7.0",
+    "esprima": "^1.2.2",
+    "esprima-fb": "^4001.1.0-dev-harmony-fb",
     "fs-extra": "^0.8.1",
     "gulp": "^3.6.2",
     "gulp-inlining-node-require": "0.0.3",
@@ -37,6 +39,8 @@
     "nock": "^0.31.1",
     "power-assert": "^0.7.2",
     "promise-test-helper": "0.0.4",
+    "q": "^1.0.1",
+    "q-io": "^1.11.0",
     "remove-use-strict": "0.0.5",
     "sinon": "^1.9.0"
   }

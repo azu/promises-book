@@ -55,7 +55,7 @@ Mochaは`it`の仮引数に`done`という感じで指定してあげると、
 [[callback-style-test]]
 ----
 it("should use `done` for test", function (done) {
-    <1>
+    // <1>
     setTimeout(function () {
         assert(true);
         done();// <2>
