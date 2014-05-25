@@ -34,6 +34,10 @@ gulp.task("lint-html", function (callback) {
         }
         callback();
     }).catch(callback);
+
+    require("./test/inline-script/inline-script-tester")
+        .checkInlineScript("./")
+        .catch(callback);
 });
 gulp.on('err', function (error) {
     process.exit(1);

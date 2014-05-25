@@ -5,7 +5,7 @@
 == Promise#then
 [source,js]
 ----
-promise.then(<onFulfilled>, <onRejected>);
+promise.then(onFulfilled, onRejected);
 ----
 
 [source,js]
