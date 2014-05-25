@@ -5,6 +5,19 @@
 
 == Testing
 
+=== サンプルコードのテスト
+
+- サンプルコードにテストコードが必要
+- サンプルコードを埋め込み用のコードに変換して、外部ファイル読み込みで書籍に入れる
+
+=== 出力したHTMLのテスト
+
+- https://github.com/azu/promises-book/issues/25
+
+=== Asciidocにインラインコードのテスト
+
+- https://github.com/azu/promises-book/issues/52
+
 == Resources
 
 https://github.com/w3ctag/promises-guide[w3ctag/promises-guide]::
