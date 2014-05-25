@@ -13,9 +13,7 @@ html:
 	@echo "Generate HTML..."
 	@gulp embed
 	@echo "Building asciidoc"
-	@asciidoctor -a bookversion=`node ./_tools/cli-book-version.js` \
-	-a icons=font -a source-highlighter=coderay --backend html5 \
-	-o ${OUTPUT_FILE} ${SRC_FILE}
+	@./_tools/build.sh
 	@echo "Done! => ${OUTPUT_FILE}"
 
 pdf:
