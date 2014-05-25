@@ -61,7 +61,7 @@ module.exports.checkInlineScript = function checkInlineScript(rootPath) {
         });
         return Q.all(promises).then(function (results) {
             var filteredResults = results.filter(function (errors) {
-                return Array.isArray(errors);
+                return Array.isArray(errors) && errors.length > 0;
             });
 
             if (filteredResults.length > 0) {

@@ -37,9 +37,8 @@ gulp.task("lint-html", function (callback) {
     });
     var asciidocPromise = require("./test/inline-script/inline-script-tester")
         .checkInlineScript("./");
-    Promise.all([htmlPromise, asciidocPromise]).catch(function(error){
-        callback(error);
-    });
+    Promise.all([htmlPromise, asciidocPromise])
+        .catch(callback);
 });
 gulp.on('err', function (error) {
     process.exit(1);
