@@ -27,6 +27,18 @@ function parseContents(content, filePath) {
     }
 }
 
+function printResults(results) {
+    results.forEach(function (errors) {
+        errors.forEach(function (error) {
+            console.error(">> filePath : " + pather.resolve(error.filePath) + "\n"
+                    + "----\n" + error.fileContent.trim() + "\n----\n",
+                error,
+                "\n\n"
+            );
+        });
+    });
+}
+
 module.exports.checkInlineScript = function checkInlineScript(rootPath) {
     var asciidocPromises = FS.listTree(rootPath, function isAsciiDoc(filePath, stat) {
         if (stat.isDirectory()) {
@@ -52,25 +64,10 @@ module.exports.checkInlineScript = function checkInlineScript(rootPath) {
                 return Array.isArray(errors);
             });
 
-            function printResults(results) {
-                results.forEach(function (errors) {
-                    errors.forEach(function (error) {
-                        console.error(">> filePath : " + pather.resolve(error.filePath) + "\n"
-                                + "----\n" + error.fileContent.trim() + "\n----\n",
-                            error,
-                            "\n\n"
-                        );
-                    });
-                });
-            }
-
             if (filteredResults.length > 0) {
                 printResults(filteredResults);
                 return Q.reject("Found parse error count :" + filteredResults.length);
             }
         });
-    }).catch(function (error) {
-        console.error(error);
     });
-
 };
