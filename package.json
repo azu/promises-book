@@ -24,7 +24,6 @@
   },
   "devDependencies": {
     "cheerio": "^0.16.0",
-    "css.escape": "^0.2.0",
     "espower-loader": "^0.7.0",
     "fs-extra": "^0.8.1",
     "gulp": "^3.6.2",
