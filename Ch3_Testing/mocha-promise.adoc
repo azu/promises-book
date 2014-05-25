@@ -195,7 +195,7 @@ promiseオブジェクトがonFulfilled、onRejectedどちらの状況になる�
 ----
 promise.then(failTest, function(error){
     // assertでerrorをテストする
-}
+});
 ----
 
 次は、Promiseのテストを手助けするヘルパー関数を定義して、

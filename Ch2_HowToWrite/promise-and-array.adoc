@@ -42,7 +42,7 @@ main(function(error, results){
 ----
 jsonParse.bind(null, callback);
 // は以下のように置き換えるのと殆ど同じ
-function(error,value){
+function bindJSONParse(error, value){
     jsonParse(callback, error, value);
 }
 ----

@@ -22,8 +22,8 @@
 ----
 promise.then(failTest, function(error){
     // assertでerrorをテストする
-    assert(error insteadof Error);
-}
+    assert(error instanceof Error);
+});
 ----
 
 === どちらの状態になるかを明示する
@@ -67,9 +67,9 @@ include::embed/embed-shouldRejected-test.js[]
 ----
 promise.then(failTest, function(error){
     // assertでerrorをテストする
-}
+});
 // => 内部で殆ど同様の事をしている
-return promise.then(function () {
+promise.then(function () {
     throw new Error('Expected promise to be rejected but it was fulfilled');
 }, function (reason) {
     fn.call(promise, reason);

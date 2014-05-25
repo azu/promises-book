@@ -11,9 +11,9 @@ promise.then(onFulfilled, onRejected);
 [source,js]
 .thenコード例
 ----
-var promise = new Promise(resolve, reject){
+var promise = new Promise(function(resolve, reject){
     resolve();
-}
+});
 promise.then(function (value) {
     console.log(value);
 }, function (error) {
@@ -37,9 +37,9 @@ promise.catch(onRejected);
 [source,js]
 .catchのコード例
 ----
-var promise = new Promise(resolve, reject){
-    reject();
-}
+var promise = new Promise(function(resolve, reject){
+    resolve();
+});
 promise.then(function (value) {
     console.log(value);
 }).catch(function (error) {

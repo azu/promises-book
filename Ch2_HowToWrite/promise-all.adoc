@@ -44,7 +44,7 @@ Promise.all([request.comment(), request.people()]);
 ----
 main().then(function (results) {
     console.log(results); // [comment, people]の順番
-}).
+});
 ----
 
 <<Promise.all, `Promise.all`>> に渡したpromiseオブジェクトが同時に実行されてるのは、
