@@ -14,9 +14,13 @@
 
 - https://github.com/azu/promises-book/issues/25
 
-=== Asciidocにインラインコードのテスト
+=== Asciidoc上のインラインコードテスト
 
 - https://github.com/azu/promises-book/issues/52
+
+=== Asciidoctorのビルドテスト
+
+- https://github.com/azu/promises-book/issues/54
 
 == Resources
 
