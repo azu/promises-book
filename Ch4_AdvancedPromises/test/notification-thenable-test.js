@@ -4,7 +4,7 @@
  */
 "use strict";
 var assert = require("power-assert");
-var notifyMessage = require("../src/notification-thenable").notifyMessage;
+var notifyMessage = require("../src/notifications/notification-thenable").notifyMessage;
 var MockNotification = require("./mock/mock-notification").MockNotification;
 describe("notification-thenable", function () {
     beforeEach(function () {

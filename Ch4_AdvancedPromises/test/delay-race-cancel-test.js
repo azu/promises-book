@@ -1,6 +1,6 @@
 "use strict";
 var assert = require("power-assert");
-var cancelableXHR = require("../src/delay-race-cancel").cancelableXHR;
+var cancelableXHR = require("../src/race-delay-timeout/delay-race-cancel").cancelableXHR;
 var TimeoutError = require("../lib/TimeoutError").TimeoutError;
 var timeoutPromise = require("../lib/timeoutPromise").timeoutPromise;
 var delayPromise = require("../lib/delayPromise").delayPromise;

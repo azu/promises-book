@@ -28,7 +28,7 @@ Promiseは`then`や`catch`等のメソッドを繋げて書いていきます。
 [[fs-method-chain.js]]
 .fs-method-chain.js
 ----
-include::src/fs-method-chain.js[]
+include::src/promise-chain/fs-method-chain.js[]
 ----
 
 このモジュールは以下のようにread -> transform -> writeという流れを
@@ -58,7 +58,7 @@ File.read(inputFilePath)
 [[fs-promise-chain.js]]
 .fs-promise-chain.js
 ----
-include::src/fs-promise-chain.js[]
+include::src/promise-chain/fs-promise-chain.js[]
 ----
 
 内部に持ってるpromiseオブジェクトに対するエイリアスとして
@@ -210,7 +210,7 @@ JavaScriptにはネイティブにもDOMやString等メソッドチェーンが�
 [[array-promise-chain.js]]
 .array-promise-chain.js
 ----
-include::src/array-promise-chain.js[]
+include::src/promise-chain/array-promise-chain.js[]
 ----
 
 ネイティブのArrayと`ArrayAsPromise`を使った場合の違いは

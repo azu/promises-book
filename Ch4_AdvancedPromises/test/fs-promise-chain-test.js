@@ -1,7 +1,7 @@
 "use strict";
 var assert = require("power-assert");
 var fs = require("fs-extra");
-var File = require("../src/fs-promise-chain");
+var File = require("../src/promise-chain/fs-promise-chain");
 describe("File-Promised", function () {
     var fixtureDir = __dirname + "/__fixtures";
     var inputFilePath = fixtureDir + "/input.txt";

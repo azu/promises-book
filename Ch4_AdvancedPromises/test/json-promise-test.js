@@ -1,6 +1,6 @@
 "use strict";
 var assert = require("power-assert");
-var JSONPromise = require("../src/json-promise").JSONPromise;
+var JSONPromise = require("../lib/json-promise").JSONPromise;
 describe("json-promise", function () {
     context("When json string", function () {
         it("should return object", function () {

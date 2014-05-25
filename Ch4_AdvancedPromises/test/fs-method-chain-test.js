@@ -1,7 +1,7 @@
 "use strict";
 var assert = require("power-assert");
 var fs = require("fs-extra");
-var File = require("../src/fs-method-chain");
+var File = require("../src/promise-chain/fs-method-chain");
 File.prototype.then = function (fn) {
     fn.call(this, this.lastValue);
     return this;

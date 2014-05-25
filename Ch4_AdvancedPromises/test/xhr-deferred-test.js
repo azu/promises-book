@@ -1,6 +1,6 @@
 "use strict";
 var assert = require('power-assert');
-var getURL = require("../src/xhr-deferred").getURL;
+var getURL = require("../src/deferred/xhr-deferred").getURL;
 
 require("http-echo");
 describe('#cancelableXHR', function () {

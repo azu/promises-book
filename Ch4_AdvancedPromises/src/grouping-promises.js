@@ -1,5 +1,5 @@
 "use strict";
-var Deferred = require("./deferred").Deferred;
+var Deferred = require("./deferred/deferred").Deferred;
 function getXHRTimeout(URL) {
     var deferred = new Deferred();
     var req = new XMLHttpRequest();
