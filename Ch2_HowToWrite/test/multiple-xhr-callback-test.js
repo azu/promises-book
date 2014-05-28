@@ -3,7 +3,7 @@ var assert = require("power-assert");
 var sinon = require("sinon");
 var xhr = require("../src/multiple-xhr-callback");
 describe("multiple-xhr-callback", function () {
-    before(function () {
+    beforeEach(function () {
         sinon.stub(xhr.request, "comment", function (callback) {
             callback(null, 1);
         });
@@ -11,8 +11,9 @@ describe("multiple-xhr-callback", function () {
             callback(null, 2);
         })
     });
-    after(function (done) {
+    afterEach(function (done) {
         xhr.request.comment.restore();
+        xhr.request.people.restore();
         done();
     });
     it("should passing result of request callback", function (done) {
