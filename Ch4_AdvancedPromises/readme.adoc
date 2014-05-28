@@ -7,6 +7,9 @@
 // Promise.resolveとthenable
 include::resolve-thenable.adoc[]
 
+// Promise sequnence
+include::promise-sequence.adoc[]
+
 // not-throw-use-reject.adoc
 include::not-throw-use-reject.adoc[]
 

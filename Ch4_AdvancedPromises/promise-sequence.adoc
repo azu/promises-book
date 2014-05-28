@@ -1,0 +1,3 @@
+[[promise-sequence]]
+== Promiseによる逐次処理
+
