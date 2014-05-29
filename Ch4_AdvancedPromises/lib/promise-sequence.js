@@ -1,12 +1,14 @@
 "use strict";
-function sequenceTasks(promises) {
-    var results = [];
-    var pushResult = Array.prototype.push.bind(results);
-    return promises.reduce(function (prevPromise, promisedIdentity) {
-        return prevPromise.then(promisedIdentity).then(pushResult);
-    }, Promise.resolve()).then(function () {
+function sequenceTasks(tasks) {
+    function recordValue(results, value) {
+        results.push(value);
         return results;
-    });
+    }
+
+    var pushValue = recordValue.bind(null, []);
+    return tasks.reduce(function (promise, task) {
+        return promise.then(task).then(pushValue);
+    }, Promise.resolve());
 }
 
 module.exports.sequenceTasks = sequenceTasks;
