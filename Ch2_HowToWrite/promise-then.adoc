@@ -89,7 +89,7 @@ __Task A__ の処理中に例外が発生した場合、
 TaskA -> onRejected -> FinalTask という流れで処理が行われます。
 
 .Task Aで例外が発生した時の図
-image::img/promise-taska-rejected-flow.png[promise-taska-rejected-flopush
+image::img/promise-taska-rejected-flow.png[]
 
 コードにしてみると以下のようになります。
 
