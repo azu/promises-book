@@ -165,7 +165,7 @@ include::lib/promise-prototype-done.js[]
 setTimeoutの中でthrowをすることで、外へそのまま例外を投げることを利用しています。
 
 [source,js]
-.setTimeoutのコールバック内ではの例外
+.setTimeoutのコールバック内の例外
 ----
 try{
     setTimeout(function callback() {
