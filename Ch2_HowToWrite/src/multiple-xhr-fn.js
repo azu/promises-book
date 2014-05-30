@@ -10,18 +10,8 @@ var request = {
 };
 
 function main() {
-    function recordValue(results, value) {
-        results.push(value);
-        return results;
-    }
-
-    function pushPromise(pushValue, promise) {
-        return promise.then(function (value) {
-            return pushValue(value);
-        });
-    }
-
-    var pushValue = recordValue.bind(null, []);
+    var results = [];
+    var pushValue = Array.prototype.push.bind(results);
     var favValue = fn.bind(null, pushValue);
     return favValue(request.comment())
         .then(favValue(request.people()));

@@ -1,8 +1,8 @@
 "use strict";
 var assert = require("power-assert");
-var sequence = require("../lib/promise-sequence").sequencePromises;
+var sequence = require("../lib/promise-sequence").sequenceTasks;
 describe("promise-sequence", function () {
-    it("should sequence promises", function () {
+    it("should sequence tasks", function () {
         var promisedIdentity = [1, 2, 4, 8, 16, 32].map(function (value) {
             return function identify() {
                 return new Promise(function (resolve) {
