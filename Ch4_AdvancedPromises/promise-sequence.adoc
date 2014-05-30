@@ -63,7 +63,7 @@ include::embed/embed-promise-reduce-xhr.js[]
 
 reduceの中で`return`したものが、次のループで`promise`に入ります。
 つまり、`then`を使って作成した新たなpromiseオブジェクトを返すことで、
-forループの場合と同じように<<promise.chain, Promise chain>>を繋げることが出来ます。
+forループの場合と同じように<<promise-chain, Promise chain>>を繋げることが出来ます。
 
 [NOTE]
 =====
