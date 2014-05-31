@@ -41,6 +41,7 @@
     "promise-test-helper": "0.0.4",
     "q": "^1.0.1",
     "q-io": "^1.11.0",
+    "rel-to-abs": "^0.1.0",
     "remove-use-strict": "0.0.5",
     "sinon": "^1.9.0"
   }
