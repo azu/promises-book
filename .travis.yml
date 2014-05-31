@@ -19,6 +19,9 @@ env:
   - GH_REF: github.com/azu/Promises-book.git
   - secure: pNtiVeWTe/kPWmERJURFoCVfzDVOc19IPbr9rK9CDJHo9aFtBPXkRwYzXfjlIwnzzkrAnfowxNNerHxYXuiNK7z+xNT9H79pmYtd1Qap9fNZCFNIFkdaArAXoq635VWmGRdArGiQGNM4Am+bZdsgG4dJR4DEsjx6dcisfyb8yso=
   - secure: Ne82o6v7wWwNQzd/2rKacyDgFgxLP822KPxxSZe/7/8gklbGMXOtDAhyW+5PgixOs7s3Vzknqw6dSTOPMY2c436F1ZJb6lMGcL6BPVSGmIXSYGm6C5SZIDTrp7QDarTAGCNiHlHFGySEhbz9R5CjPWF24kQfT/QdszZr7OokJYA=
+branches:
+  except:
+    - preview-html
 notifications:
   webhooks:
     urls:
