@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 declare currentDir=$(cd $(dirname $0);pwd)
 

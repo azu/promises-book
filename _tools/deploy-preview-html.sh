@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 echo "=COMMIT="
 echo "MESSAGE :" $lastCommit
