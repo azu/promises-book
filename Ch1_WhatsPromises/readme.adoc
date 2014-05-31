@@ -1,6 +1,6 @@
 [[chapter1-what-is-promise]]
 = Chapter.1 - Promiseとは何か
-:imagesdir: Ch1_WhatsPromises/
+:imagesdir: Ch1_WhatsPromises
 
 Promiseとは何かの簡単な概要の紹介です。
 
