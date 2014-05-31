@@ -1,6 +1,6 @@
 [[chapter3-promise-testing]]
 = Chapter.3 - Promiseのテスト
-:imagesdir: Ch3_Testing/
+:imagesdir: Ch3_Testing
 
 この章ではPromiseのテストの書き方について学んで行きます。
 
