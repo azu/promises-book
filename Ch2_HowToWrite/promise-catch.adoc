@@ -49,7 +49,7 @@ ECMAScript5でも予約語は http://es5.github.io/#x7.6[Identifier] 、つま�
 プロパティの場合は `object.for` と `for`文の区別はできるので、少し考えてみると自然な動作ですね。
 ====
 
-このECMAScript 3の予約語の問題を回避した書き方も存在します。
+このECMAScript 3の予約語の問題を回避する書き方も存在します。
 
 https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Property_Accessors#Dot_notation[ドット表記法]
 はプロパティ名が有効な識別子(ECMAScript 3の場合は予約語が使えない)でないといけませんが、
