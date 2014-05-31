@@ -1,8 +1,10 @@
 #!/bin/sh
 
+declare currentDir=$(cd $(dirname $0);pwd)
+
 if [ "$TRAVIS_BRANCH" != "master" ] ; then
     echo "This is a ${TRAVIS_BRANCH} branch. No deployment will be done.";
-    ./deploy-preview-html.sh
+    ${currentDir}/deploy-preview-html.sh
     exit 0;
 fi
 
