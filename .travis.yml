@@ -1,26 +1,28 @@
 language: node_js
 rvm:
-  - 2.0.0
+- 2.0.0
 node_js:
-  - 0.10
+- 0.1
 before_install:
-  - ruby --version
-  - gem --version
-  - gem install asciidoctor
-  - gem install coderay
-  - npm install -g gulp
+- ruby --version
+- gem --version
+- gem install asciidoctor
+- gem install coderay
+- npm install -g gulp
 script:
-  - make test-all
+- make test-all
 after_success:
-  - npm run-script deploy
+- "./_tools/setup-git.sh"
+- npm run-script deploy
 env:
   global:
   - GH_REF: github.com/azu/Promises-book.git
   - secure: pNtiVeWTe/kPWmERJURFoCVfzDVOc19IPbr9rK9CDJHo9aFtBPXkRwYzXfjlIwnzzkrAnfowxNNerHxYXuiNK7z+xNT9H79pmYtd1Qap9fNZCFNIFkdaArAXoq635VWmGRdArGiQGNM4Am+bZdsgG4dJR4DEsjx6dcisfyb8yso=
+  - secure: Ne82o6v7wWwNQzd/2rKacyDgFgxLP822KPxxSZe/7/8gklbGMXOtDAhyW+5PgixOs7s3Vzknqw6dSTOPMY2c436F1ZJb6lMGcL6BPVSGmIXSYGm6C5SZIDTrp7QDarTAGCNiHlHFGySEhbz9R5CjPWF24kQfT/QdszZr7OokJYA=
 notifications:
   webhooks:
     urls:
-      - https://webhooks.gitter.im/e/02e67e9b440eddb4a3da
+    - https://webhooks.gitter.im/e/02e67e9b440eddb4a3da
     on_success: change
     on_failure: always
     on_start: false
