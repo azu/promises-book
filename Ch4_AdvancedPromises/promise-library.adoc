@@ -75,8 +75,7 @@ https://github.com/petkaantonov/bluebird[petkaantonov/bluebird]::
     Promise互換に加えて、キャンセル出来るPromiseや進行度を取得出来るPromise、エラーハンドリングの拡張検出等、
     多くの拡張を持っており、またパフォーマンスにも気を配った実装がされているライブラリです。
 
-https://github.com/kriskowal/q[kriskowal/q] と https://github.com/petkaantonov/bluebird[petkaantonov/bluebird] どちらのライブラリも、
-APIリファレンスが充実しているのも特徴的です。
+Q と Bluebird どちらのライブラリも、APIリファレンスが充実しているのも特徴的です。
 
 * https://github.com/kriskowal/q/wiki/API-Reference[API Reference · kriskowal/q Wiki]
 
@@ -89,3 +88,14 @@ BluebirdではPromiseを使った豊富な実装例に加えて、エラーが�
 https://github.com/petkaantonov/bluebird/wiki/Promise-anti-patterns[Promiseのアンチパターン] について等書かれています。
 
 どちらのドキュメントも優れているため、このライブラリを使ってない場合でも読んでおくと参考になる事が多いと思います。
+
+=== まとめ
+
+このセクションではPromiseのライブラリとしてPolyfillと拡張ライブラリに分けて紹介しました。
+
+Promiseのライブラリは多種多様であるため、どれを使用するかは好みの問題といえるでしょう。
+
+しかし、PromiseはPromises/A+ または ES6 Promisesという共通のインターフェースを持っているため、
+そのライブラリで書かれているコードや独自の拡張などは、他のライブラリを利用している時でも参考になるケースは多いでしょう。
+
+そのようなPromiseという共通の概念を学び、応用できるようになるのがこの書籍の目的でもあります。
