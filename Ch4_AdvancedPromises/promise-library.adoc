@@ -1,0 +1,100 @@
+== Promiseのライブラリ
+
+このセクションでは、ブラウザが実装しているPromiseではなく、サードパーティにより作られた
+Promise互換のライブラリについて紹介してきたいと思います。
+
+=== なぜライブラリが必要か?
+
+なぜライブラリが必要か?という疑問に関する多くの答えとしては、
+その実行環境で「<<es6-promises,ES6 Promises>>が実装されていないから」というのがまず出てくるでしょう。
+
+ifeval::["{backend}" == "html5"]
+++++
+<iframe src="http://caniuse.com/promises/embed/agents=desktop" width="100%" height="350px"></iframe>
+++++
+endif::[]
+
+Promiseのライブラリを探すときに、一つ目印になる言葉として<<promises-aplus, Promises/A+互換>>というのが
+一つの目印になると思います。
+
+<<promises-aplus, Promises/A+>>というのは<<es6-promises,ES6 Promises>>の前身となったもので、
+Promiseの`then`について取り決めたコミュニティベースの仕様です。
+
+Promises/A+互換と書かれていた場合は`then`についての動作は互換性があり、
+多くの場合はそれに加えて`Promise.all`や`catch`等と同様の機能が実装されています。
+
+そのため、この書籍で紹介した機能についてはメソッド名が異なるかもしれませんが殆ど同様に使えます。
+
+また、`then`というメソッドに互換性があるという事は、<<Thenable,Thenable>>であるということなので、
+<<Promise.resolve,Promise.resolve>>を使い、ES6のPromiseで定められたpromiseオブジェクトに変換することが出来ます。
+
+[NOTE]
+====
+ES6のPromiseで定められたpromiseオブジェクトというのは、
+`catch`というメソッドが使えたり、`Promise.all`で扱う際に問題が起こらないということです。
+====
+
+=== Polyfillとライブラリ
+
+ここでは、大きくわけて2種類のライブラリを紹介したいと思います。
+
+一つはPolyfillと呼ばれるもので、まだPromiseが実装されていない環境に対して、
+同じ機能を互換性を持たせるための実装ライブラリです。
+
+もう一つは、<<promises-aplus, Promises/A+互換>>に加えて、独自の拡張をもったライブラリです。
+
+[NOTE]
+Promiseのライブラリが星の数ほどあるので、ここでは紹介するのは極々一部です。
+
+==== Polyfill
+
+Polyfillライブラリは読み込む事で、IE10等まだPromiseが実装されていないブラウザ等でも、
+この書籍で紹介されている事がそのまま実行できるようになるライブラリです。
+
+https://github.com/jakearchibald/es6-promise[jakearchibald/es6-promise]::
+    ES6 Promiseと互換性を持ったPolyfillライブラリです。
+    https://github.com/tildeio/rsvp.js[RSVP.js] という Promises/A+互換ライブラリがベースとなっており、
+    これのサブセットとしてES6 PromisesのAPIだけが実装されているライブラリです。
+https://github.com/yahoo/ypromise[yahoo/ypromise]::
+    http://yuilibrary.com/[YUI] の一部としても利用されているES6 Promiseと互換性を持ったPolyfillライブラリです。
+    この書籍ではこのPolyfillを読み込み、サンプルコードを動かしています。
+
+==== Promise拡張ライブラリ
+
+Promise拡張ライブラリといっても、ES6 Promiseを拡張したライブラリではなく、
+Promiseを仕様どおりに実装したものに加えて、仕様にはない独自のメソッド等を提供してくれるライブラリです。
+
+Promise拡張ライブラリは本当に沢山あるのですが、以下の2つが著名なライブラリです。
+
+https://github.com/kriskowal/q[kriskowal/q]::
+    `Q`と呼ばれるPromisesやDeferredsを実装したライブラリです。
+    2009年から開発されており、Node.js向けのファイルIOのAPIを提供する https://github.com/kriskowal/q-io[Q-IO] 等、
+    多くのパターンが用意されているライブラリです。
+https://github.com/petkaantonov/bluebird[petkaantonov/bluebird]::
+    Promise互換に加えて、キャンセル出来るPromiseや進行度を取得出来るPromise、エラーハンドリングの拡張検出等、
+    多くの拡張を持っており、またパフォーマンスにも気を配った実装がされているライブラリです。
+
+Q と Bluebird どちらのライブラリも、APIリファレンスが充実しているのも特徴的です。
+
+* https://github.com/kriskowal/q/wiki/API-Reference[API Reference · kriskowal/q Wiki]
+
+QのドキュメントにはjQueryが持つDeferredの仕組みとどのように違うか、移行する場合の対応メソッドについても
+https://github.com/kriskowal/q/wiki/Coming-from-jQuery[Coming from jQuery] にまとめられています。
+
+* https://github.com/petkaantonov/bluebird/blob/master/API.md[bluebird/API.md at master · petkaantonov/bluebird]
+
+BluebirdではPromiseを使った豊富な実装例に加えて、エラーが起きた時の対処法や
+https://github.com/petkaantonov/bluebird/wiki/Promise-anti-patterns[Promiseのアンチパターン] について書かれています。
+
+どちらのドキュメントも優れているため、このライブラリを使ってない場合でも読んでおくと参考になる事が多いと思います。
+
+=== まとめ
+
+このセクションではPromiseのライブラリとしてPolyfillと拡張ライブラリにわけて紹介しました。
+
+Promiseのライブラリは多種多様であるため、どれを使用するかは好みの問題といえるでしょう。
+
+しかし、PromiseはPromises/A+ または ES6 Promisesという共通のインターフェースを持っているため、
+そのライブラリで書かれているコードや独自の拡張などは、他のライブラリを利用している時でも参考になるケースは多いでしょう。
+
+そのようなPromiseという共通の概念を学び、応用できるようになるのがこの書籍の目的の一つです。

@@ -4,6 +4,10 @@
 
 この章では、これまでに学んだことの応用や発展した内容について学んでいきます。
 
+// promiseとレビュー
+include::promise-library.adoc[]
+
+
 // Promise.resolveとthenable
 include::resolve-thenable.adoc[]
 
