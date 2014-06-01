@@ -22,6 +22,31 @@
 
 - https://github.com/azu/promises-book/issues/54
 
+== Review
+
+=== プレビュー
+
+masterへマージされたものは、Travis CIで自動的にビルドして`gh-pages`ブランチにpushされる。
+
+- https://github.com/azu/promises-book/blob/master/_tools/deploy-gh-pages.sh[promises-book/_tools/deploy-gh-pages.sh at master · azu/promises-book]
+
+pull-requests中のコミットは、`preview-html`ブランチに生成済みのHTMLがpushされる。
+
+pushされた一時プレビュー用のURLをGitterに対して通知してpull-request時のプレビューが出来るようになってる。
+
+image::img/preview-html.png[preview-html.png]
+
+- https://github.com/azu/promises-book/blob/master/_tools/deploy-preview-html.sh[promises-book/_tools/deploy-preview-html.sh at master · azu/promises-book]
+
+=== 依存関係の可視化
+
+- https://github.com/azu/visualize-promises-book[azu/visualize-promises-book]
+
+セクション毎にテーマを分けてる事が多いけど、それを俯瞰的にどうやってみるかを模索するために、
+セクション同士の依存関係を可視化するものを作成した。
+
+
+
 == Resources
 
 https://github.com/w3ctag/promises-guide[w3ctag/promises-guide]::
