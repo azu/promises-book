@@ -18,20 +18,20 @@ Promiseのライブラリを探すときに、一つ目印になる言葉とし�
 一つの目印になると思います。
 
 <<promises-aplus, Promises/A+>>というのは<<es6-promises,ES6 Promises>>の前身となったもので、
-Promiseの`then`について取り決めたコミュニケーションベースの仕様です。
+Promiseの`then`について取り決めたコミュニティベースの仕様です。
 
 Promises/A+互換と書かれていた場合は`then`についての動作は互換性があり、
-多くの場合はそれに加えて、`Promise.all`や`catch`等のメソッドも実装されています。
+多くの場合はそれに加えて`Promise.all`や`catch`等と同様の機能が実装されています。
 
 そのため、この書籍で紹介した機能についてはメソッド名が異なるかもしれませんが殆ど同様に使えます。
 
-また、`then`というメソッドに互換性があるという事は、<<Thenable,Thenable>>であるので、
+また、`then`というメソッドに互換性があるという事は、<<Thenable,Thenable>>であるということなので、
 <<Promise.resolve,Promise.resolve>>を使い、ES6のPromiseで定められたpromiseオブジェクトに変換することが出来ます。
 
 [NOTE]
 ====
 ES6のPromiseで定められたpromiseオブジェクトというのは、
-`catch`というメソッドが使えたり、`Promise.all`で暑かった際に問題が起こらないということです。
+`catch`というメソッドが使えたり、`Promise.all`で扱う際に問題が起こらないということです。
 ====
 
 === Polyfillとライブラリ
@@ -39,31 +39,30 @@ ES6のPromiseで定められたpromiseオブジェクトというのは、
 ここでは、大きくわけて2種類のライブラリを紹介したいと思います。
 
 一つはPolyfillと呼ばれるもので、まだPromiseが実装されていない環境に対して、
-同じ機能を互換性を持って実装するためのライブラリです。
+同じ機能を互換性を持たせるための実装ライブラリです。
 
-もう一つは、<<promises-aplus, Promises/A+互換>>に加えて、
-独自の拡張をもったライブラリです。
+もう一つは、<<promises-aplus, Promises/A+互換>>に加えて、独自の拡張をもったライブラリです。
 
 [NOTE]
 Promiseのライブラリが星の数ほどあるので、ここでは紹介するのは極々一部です。
 
 ==== Polyfill
 
-Polyfillライブラリは、読み込むとIE10などまだPromiseが実装されていないブラウザ等でも、
+Polyfillライブラリは読み込む事で、IE10等まだPromiseが実装されていないブラウザ等でも、
 この書籍で紹介されている事がそのまま実行できるようになるライブラリです。
 
 https://github.com/jakearchibald/es6-promise[jakearchibald/es6-promise]::
     ES6 Promiseと互換性を持ったPolyfillライブラリです。
     https://github.com/tildeio/rsvp.js[RSVP.js] という Promises/A+互換ライブラリがベースとなっており、
-    これのサブセットとしてES6 PromisesのAPIが実装されているライブラリです。
+    これのサブセットとしてES6 PromisesのAPIだけが実装されているライブラリです。
 https://github.com/yahoo/ypromise[yahoo/ypromise]::
     http://yuilibrary.com/[YUI] の一部としても利用されているES6 Promiseと互換性を持ったPolyfillライブラリです。
-    この書籍ではこのPolyfillを読み込みサンプルコードを動かしています。
+    この書籍ではこのPolyfillを読み込み、サンプルコードを動かしています。
 
 ==== Promise拡張ライブラリ
 
 Promise拡張ライブラリといっても、ES6 Promiseを拡張したライブラリではなく、
-Promiseを実装した上に仕様にはない独自のメソッド等を提供してくれるライブラリです。
+Promiseを仕様どおりに実装したものに加えて、仕様にはない独自のメソッド等を提供してくれるライブラリです。
 
 Promise拡張ライブラリは本当に沢山あるのですが、以下の2つが著名なライブラリです。
 
@@ -79,19 +78,19 @@ Q と Bluebird どちらのライブラリも、APIリファレンスが充実�
 
 * https://github.com/kriskowal/q/wiki/API-Reference[API Reference · kriskowal/q Wiki]
 
-QのドキュメントにはjQueryがもつDeferredの仕組みとどのように違うか、移行する場合の対応メソッド等についても
+QのドキュメントにはjQueryが持つDeferredの仕組みとどのように違うか、移行する場合の対応メソッドについても
 https://github.com/kriskowal/q/wiki/Coming-from-jQuery[Coming from jQuery] にまとめられています。
 
 * https://github.com/petkaantonov/bluebird/blob/master/API.md[bluebird/API.md at master · petkaantonov/bluebird]
 
 BluebirdではPromiseを使った豊富な実装例に加えて、エラーが起きた時の対処法や
-https://github.com/petkaantonov/bluebird/wiki/Promise-anti-patterns[Promiseのアンチパターン] について等書かれています。
+https://github.com/petkaantonov/bluebird/wiki/Promise-anti-patterns[Promiseのアンチパターン] について書かれています。
 
 どちらのドキュメントも優れているため、このライブラリを使ってない場合でも読んでおくと参考になる事が多いと思います。
 
 === まとめ
 
-このセクションではPromiseのライブラリとしてPolyfillと拡張ライブラリに分けて紹介しました。
+このセクションではPromiseのライブラリとしてPolyfillと拡張ライブラリにわけて紹介しました。
 
 Promiseのライブラリは多種多様であるため、どれを使用するかは好みの問題といえるでしょう。
 
