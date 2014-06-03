@@ -22,8 +22,13 @@ li > a.sc-current-element:before {
     right: 0;
     border: 0;
 }
+@media only screen {
+    .github-ribbon{
+        display: none;
+    }
+}
 @media only screen and (min-width: 768px) {
     .github-ribbon{
-        display: hidden;
+        display: block;
     }
 }
