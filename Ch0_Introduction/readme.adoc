@@ -27,7 +27,7 @@ JavaScriptにおけるPromiseについて学ぶことを目的とした書籍で
 
 - http://www.oreilly.co.jp/books/9784873113913/[JavaScript: The Good Parts]
 - http://www.oreilly.co.jp/books/9784873114880/[JavaScriptパターン]
-- http://www.oreilly.co.jp/books/9784873115733/[JavaScript 第6版] - 十分すぎます
+- http://www.oreilly.co.jp/books/9784873115733/[JavaScript 第6版]
 - http://gihyo.jp/book/2011/978-4-7741-4813-7?ard=1400715177[パーフェクトJavaScript]
 - http://books.shoeisha.co.jp/book/b107881.html[Effective JavaScript]
 
