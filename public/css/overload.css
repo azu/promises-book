@@ -14,3 +14,16 @@ li > a.sc-current-element:before {
     transition-property: background-color, color;
     transition-duration: 0.3s;
 }
+
+.github-ribbon {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    right: 0;
+    border: 0;
+}
+@media only screen and (min-width: 768px) {
+    .github-ribbon{
+        display: hidden;
+    }
+}
