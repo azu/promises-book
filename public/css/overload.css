@@ -24,7 +24,7 @@ li > a.sc-current-element:before {
 }
 
 /* 幅が狭いと横にスクロール出来てしまう問題 */
-.article a {
+.article a, .article code {
     word-wrap: break-word;
 }
 
