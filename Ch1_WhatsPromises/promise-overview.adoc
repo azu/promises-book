@@ -1,7 +1,7 @@
 [[promises-overview]]
 == Promises Overview
 
-ES6 Promises で定義されているAPIはそこまで多くはありません。
+<<es6-promises,ES6 Promises>>の仕様で定義されているAPIはそこまで多くはありません。
 
 多く分けて以下の3種類になります。
 
@@ -10,16 +10,22 @@ ES6 Promises で定義されているAPIはそこまで多くはありません�
 promiseオブジェクトを作成するには、
 Promiseコンストラクタを`new`でインスタンス化します。
 
-[source,javascript]
-new Promise(function(resolve, reject) {});
+[source,js]
+----
+var promise = new Promise(function(resolve, reject) {
+    // 非同期の処理
+});
+----
 
 *Instance Method*
 
-インスタンスとなるpromiseオブジェクトにはpromiseの値が *resolve(解決)* / *reject(棄却)* された時に呼ばれる
+newによって生成されたpromiseオブジェクトにはpromiseの値が *resolve(解決)* / *reject(棄却)* された時に呼ばれる
 コールバックを登録するため `promise.then()` というインスタンスメソッドがあります。
 
 [source,js]
+----
 promise.then(onFulfilled, onRejected)
+----
 
 resolve(解決)された時::
     `onFulfilled` が呼ばれる

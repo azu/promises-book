@@ -2,7 +2,7 @@
 = Chapter.1 - Promiseとは何か
 :imagesdir: Ch1_WhatsPromises
 
-Promiseとは何かの簡単な概要の紹介です。
+この章では、JavaScriptにおけるPromiseについて簡単に紹介していきます。
 
 include::what-is-promise.adoc[]
 

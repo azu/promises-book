@@ -1,7 +1,7 @@
 [[what-is-promise]]
 == What Is Promise
 
-まずPromiseとはそもそも何でしょう?
+まずPromiseとはそもそもどのようなものでしょうか?
 
 Promiseは非同期処理を抽象化したオブジェクトとそれを操作する仕組みの事をいいます。
 詳しくはこれから学んでいくとして、PromiseはJavaScriptで発見された概念ではありません。
