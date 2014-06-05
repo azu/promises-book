@@ -57,6 +57,16 @@ Promisesが実装されていない環境もあるため、[ypromise](https://gi
 
 > [表記の統一 · Issue #41 · azu/promises-book](https://github.com/azu/promises-book/issues/41 "表記の統一 · Issue #41 · azu/promises-book") で議論された
 
+### Promise or Promises?
+
+❌ Promises
+
+Promiseという機能について言う時は大文字の単数を使う。
+
+例外としてES6 PromisesやPromises/A+の仕様について言及する際はsをつけてもよい。
+
+小文字で始まるpromiseはpromiseオブジェクトのみにする。
+
 ### resolve,reject / FulFilled,Rejected の表現
 
 方針を決めたのでメモる(CONTRIBUTE.mdに入れておくべきかな)
