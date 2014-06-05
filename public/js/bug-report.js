@@ -37,18 +37,19 @@ BugReporter.prototype.report = function () {
 };
 window.addEventListener("load", function (event) {
 
-    function quoteText(text){
-        return text.split("\n").map(function(line){
+    function quoteText(text) {
+        return text.split("\n").map(function (line) {
             return "> " + line;
         }).join("\n");
     }
+
     var reportElement = document.createElement("button");
     reportElement.textContent = "バグ報告";
     reportElement.setAttribute("style", "position:fixed; right:0;bottom:0;");
-    reportElement.addEventListener("click", function (event) {
+    var clickEvent = ("ontouchstart" in window) ? "touchend" : "click";
+    reportElement.addEventListener(clickEvent, function (event) {
         var bug = new BugReporter();
         var selectedText = bug.getSelectedText().trim();
-        console.log(selectedText);
         var body = 'URL : ' + bug.getURLs() + "\n";
         if (selectedText && selectedText.length > 0) {
             body += "\n" + quoteText(selectedText) + "\n";
