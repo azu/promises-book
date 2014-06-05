@@ -7,13 +7,16 @@
 
 *Constructor*
 
-promiseオブジェクトを作成するには、
-Promiseコンストラクタを`new`でインスタンス化します。
+Promiseは`XMLHttpRequest`のように、コンストラクタ関数である`Promise`からインスタンスとなる
+promiseオブジェクトを作成して利用します。
+
+promiseオブジェクトを作成するには、`Promise`コンストラクタを`new`でインスタンス化します。
 
 [source,js]
 ----
 var promise = new Promise(function(resolve, reject) {
     // 非同期の処理
+    // resolve または rejectを呼ぶ
 });
 ----
 
@@ -86,7 +89,7 @@ asyncFunction().then(function (value) {
 
 === Promiseの状態 [[promise-states]]
 
-Promiseの処理の流れが簡単にわかった所で、少しPromiseの状態について整理したいと思います。
+Promiseの処理の流れが少しわかった所で、少しPromiseの状態について整理したいと思います。
 
 `new Promise` でインスタンス化したpromiseオブジェクトには以下の3つの状態が存在します。
 
