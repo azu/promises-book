@@ -100,7 +100,7 @@ Promiseの処理の流れが少しわかった所で、少しPromiseの状態に
 "unresolved" - Pending::
     resolveまたはrejectではない時。つまりpromiseオブジェクトが作成された初期状態等が該当する
 
-見方ですが、
+読み方ですが、
 左が<<es6-promises,ES6 Promises>>の仕様で定められている名前で、
 右が<<promises-aplus, Promises/A+>>で登場する状態の名前になっています。
 

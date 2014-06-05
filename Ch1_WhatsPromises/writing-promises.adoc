@@ -8,12 +8,16 @@ Promiseの基本的な書き方について解説します。
 promiseオブジェクトを作る流れは以下のようになっています。
 
 . `new Promise(fn)` の返り値がpromiseオブジェクト
-. 引数となる関数fnには `resolve` と `reject` が渡る
 . `fn`には非同期等の何らかの処理を書く
     * 処理結果が正常なら、`resolve(結果の値)` を呼ぶ
     * 処理結果がエラーなら、`reject(Errorオブジェクト)` を呼ぶ
 
-実際にXHRでGETをするものをpromiseオブジェクトにしてみましょう。
+
+この流れに沿ってものを実際に書いてみましょう。
+
+非同期処理であるXMLHttpRequest(XHR)を使いデータを取得するものをPromiseで書いていきます。
+
+==== XHRのpromiseオブジェクトを作る
 
 [[xhr-promise.js]]
 .xhr-promise.js
@@ -22,7 +26,7 @@ promiseオブジェクトを作る流れは以下のようになっています�
 include::embed/embed-xhr-promise.js[]
 ----
 
-XHRでステータスコードが200の場合のみ `resolve` して、
+XHRでの取得結果のステータスコードが200の場合のみ `resolve` - つまり取得に成功、
 それ以外はエラーであるとして `reject` しています。
 
 `resolve(req.response)` ではレスポンスの内容を引数に入れています。
@@ -39,11 +43,11 @@ resolveにはresponseの値のみをいれるだけで問題ありません。
 XHRで`onerror`のイベントが呼ばれた場合はもちろんエラーなので`reject`を呼びます。
 ここで`reject`に渡している値に注目してみてください。
 
-エラーの場合は `reject(new Error(req.statusText));` というようにErrorオブジェクトとして渡している事がわかると思います。
-`reject` には値であれば何でも良いのですが、一般的にErrorオブジェクト(またはErrorオブジェクトを継承したもの)を渡すことになっています。
+エラーの場合は `reject(new Error(req.statusText));` というように、Errorオブジェクトを作成して渡している事がわかると思います。
+`reject` に渡す値に制限はありませんが、一般的にErrorオブジェクト(またはErrorオブジェクトを継承したもの)を渡すことになっています。
 
-`reject` に渡す値はrejectする理由を書いたErrorオブジェクトとなっています。
-今回は、ステータスコードが200以外であるならrejectするとしていたため、`reject`にはstatusTextを渡しています。
+`reject` に渡す値は、rejectする理由を書いたErrorオブジェクトとなっています。
+今回は、ステータスコードが200以外であるならrejectするとしていたため、`reject`にはstatusTextを入れています。
 (この値は`then`メソッドの第二引数 or `catch` メソッドで受け取ることが出来ます)
 
 === promiseオブジェクトに処理を書く
@@ -51,7 +55,7 @@ XHRで`onerror`のイベントが呼ばれた場合はもちろんエラーな�
 先ほどの作成したpromiseオブジェクトを返す関数を実際に使ってみましょう
 
 [source,js]
-getURL("http://example.com/"); // => promiseオブジェクト
+getURL("http://example.com/"); // => promiseオブジェクトが返ってくる
 
 <<promises-overview,Promises Overview>> でも簡単に紹介したようにpromiseオブジェクトは幾つかインスタンスを持っており、
 これを使いpromiseオブジェクトの状態に応じて一度だけ呼ばれるコールバックとなる関数を登録します。
@@ -67,9 +71,10 @@ image::img/promise-onFulfilled_onRejected.png[promise-resolve-flow]
 
 まずは、`getURL`で通信が成功して値が取得出来た場合の処理を書いてみましょう。
 
-この場合の _通信が成功した_ というのは _promiseオブジェクトがresolveされた_ 時という事ですね。
+この場合の _通信が成功した_ というのは、
+resolveされたことにより_promiseオブジェクトがFulFilledの状態になった_ 時という事ですね。
 
-**resolve**された時の処理は、 <<promise.then,`.then`>> メソッドに処理をする関数を渡すことで行えます。
+**resolve**された時の処理は、 <<promise.then,`.then`>> メソッドに呼ばれたい関数を渡すことで行えます。
 
 [source,js]
 ----
@@ -86,9 +91,10 @@ getURL(URL).then(function onFulfilled(value){ // <1>
 このままでは通信エラーが起きた場合などに何も処理がされないため、
 今度は、`getURL` で何らかの問題があってエラーが起きた場合の処理を書いてみましょう。
 
-この場合の _エラーが起きた_ というのは _promiseオブジェクトがrejectされた_ 時という事ですね。
+この場合の _エラーが起きた_ というのは、
+rejectされたことより_promiseオブジェクトがRejectedの状態になった_時という事ですね。
 
-**reject**された時の処理は、<<promise.then,`.then`の第二引数>> または <<promise.catch,`.catch`>> メソッドに処理をする関数を渡す事で行えます。
+**reject**された時の処理は、<<promise.then,`.then`の第二引数>> または <<promise.catch,`.catch`>> メソッドに呼ばれたい関数を渡す事で行えます。
 
 先ほどのソースにrejectされた場合の処理を追加してみましょう。
 
@@ -105,7 +111,7 @@ getURL(URL).then(function onFulfilled(value){
 <2> 分かりやすくするため関数 `onRejected` という名前を付けています
 
 
-promiseオブジェクトが何らかの理由で例外が起きた時、または明示的にrejectされた場合に、
+`getURL`の処理中が何らかの理由で例外が起きた場合 または明示的にrejectされた場合に、
 その理由(Errorオブジェクト)と共に <<promise.catch,`.catch`>> の処理が呼ばれます。
 
 <<promise.catch,`.catch`>>は`promise.then(undefined, onRejected)`のエイリアスであるため、
@@ -128,8 +134,8 @@ getURL(URL).then(onFulfilled, onRejected);// <1>
 * `new Promise` を使いpromiseオブジェクトの作成
 * <<promise.then,`.then`>> や <<promise.catch,`.catch`>> を使ったpromiseオブジェクトの処理
 
-Promiseの基本的な書き方はこれがベースとなり、
+Promiseの基本的な書き方について学びました。
 他の多くの処理はこれを発展させたり、用意された静的メソッドを利用したものになります。
 
-ここでは、同様の事はコールバック関数を渡す形でも出来るのに対してPromiseで書くメリットについては触れていませんでしたが、
+ここでは、同様の事はコールバック関数を渡す形でも出来るのに対してPromiseで書くメリットについては触れていませんでした。
 次の章では、Promiseのメリットであるエラーハンドリングの仕組みをコールバックベースの実装と比較しながら見て行きたいと思います。
