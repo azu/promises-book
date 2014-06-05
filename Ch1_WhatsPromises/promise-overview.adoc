@@ -19,7 +19,7 @@ var promise = new Promise(function(resolve, reject) {
 
 *Instance Method*
 
-newによって生成されたpromiseオブジェクトにはpromiseの値が *resolve(解決)* / *reject(棄却)* された時に呼ばれる
+newによって生成されたpromiseオブジェクトにはpromiseの値を *resolve(成功)* / *reject(棄却)* した時に呼ばれる
 コールバックを登録するため `promise.then()` というインスタンスメソッドがあります。
 
 [source,js]
@@ -27,13 +27,15 @@ newによって生成されたpromiseオブジェクトにはpromiseの値が *r
 promise.then(onFulfilled, onRejected)
 ----
 
-resolve(解決)された時::
+resolve(成功)した時::
     `onFulfilled` が呼ばれる
-reject(棄却)された時::
+reject(失敗)した時::
     `onRejected`  が呼ばれる
 
-`onFulfilled`、`onRejected` どちらもオプショナルな引数となり、
-エラー処理だけを書きたい場合には `promise.then(undefined, onRejected)` と同じ意味である
+`onFulfilled`、`onRejected` どちらもオプショナルな引数となっています。
+
+そのため、`promise.then` では成功時と失敗時の処理を登録することが出来ます。
+また、エラー処理だけを書きたい場合には `promise.then(undefined, onRejected)` と同じ意味である
 `promise.catch()`を使うことが出来ます。
 
 [source,js]
@@ -61,13 +63,13 @@ include::embed/embed-promise-workflow.js[]
 <2> <1>のpromiseに対して `.then` で値が返ってきた時のコールバックを設定します
 
 `asyncFunction` という関数 は promiseオブジェクトを返していて、
-そのpromiseオブジェクトに足しして `then` でresolveされた時のコールバックを、
+そのpromiseオブジェクトに足しして `then` でresolveした時のコールバックを、
 `catch` でエラーとなった場合のコールバックを設定しています。
 
 このpromiseオブジェクトはsetTimeoutで16ms後にresolveされるので、
 そのタイミングで `then` のコールバックが呼ばれ `'Async Hello world'` と出力されます。
 
-いまどきの環境では `catch` のコールバックは呼ばれる事はないですが、
+この場合 `catch` のコールバックは呼ばれる事はないですが、
 `setTimout`が存在しない環境などでは、例外が発生し`catch`のコールバックが呼ばれると思います。
 
 もちろん、`promise.then(onFulfilled, onRejected)` というように、
@@ -89,9 +91,9 @@ Promiseの処理の流れが簡単にわかった所で、少しPromiseの状態
 `new Promise` でインスタンス化したpromiseオブジェクトには以下の3つの状態が存在します。
 
 "has-resolution" - Fulfilled::
-    resolve(解決)された時。この時 `onFulfilled` が呼ばれる
+    resolve(成功)した時。この時 `onFulfilled` が呼ばれる
 "has-rejection"  - Rejected::
-    reject(棄却)された時。この時 `onRejected`  が呼ばれる
+    reject(失敗)した時。この時 `onRejected`  が呼ばれる
 "unresolved" - Pending::
     resolveまたはrejectではない時。つまりpromiseオブジェクトが作成された初期状態等が該当する
 
@@ -123,7 +125,7 @@ promiseオブジェクトの状態は、一度__Pending__から__Fulfilled__や_
 また、__Fulfilled__と__Rejected__のどちらかの状態であることを**Settled**(不変の)と表現することがあります。
 
 Settled::
-    resolve(解決) または reject(棄却) された時。
+    resolve(成功) または reject(失敗) した時。
 
 __Pedding__と__Settled__が対となる関係であると考えると、Promiseの状態の種類/遷移がシンプルであることがわかると思います。
 
