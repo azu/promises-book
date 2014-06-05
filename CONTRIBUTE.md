@@ -50,3 +50,34 @@ Promisesが実装されていない環境もあるため、[ypromise](https://gi
 
 `test/test-helper.js` にグローバル空間に `Promise` や XHRが入るようにしている。
 (そのためMochaを経由しない場合、Node環境ではサンプルコード単体が動かない場合がある…)
+
+## 文章の表現
+
+文章の表現を出来る限り統一したいため、まよいそうな表現については方針を決めている
+
+> [表記の統一 · Issue #41 · azu/promises-book](https://github.com/azu/promises-book/issues/41 "表記の統一 · Issue #41 · azu/promises-book") で議論された
+
+### resolve,reject / FulFilled,Rejected の表現
+
+方針を決めたのでメモる(CONTRIBUTE.mdに入れておくべきかな)
+
+#### resolve と reject の注釈
+
+* それぞれの用語の日本語の対応は resolve = **成功時** 、 reject =  **失敗時** とする。
+* resolveした時 ≠ 解決した時 としない(解決という言葉紛らわしいので避けるべき)
+
+#### promiseオブジェクトが主語の場合
+
+* "promiseオブジェクトがFulFilled または Rejectedとなった時" と表記する
+* 必ず大文字で **FulFilled** とする
+
+#### resolve,reject / FulFilled,Rejected の使い分け
+
+* "処理が成功した時" or "処理が失敗した時" という表現を使う場合、曖昧さが残らないように気をつける
+    * 例えば、"処理が成功した場合は`onFulfilled`が呼ばれますが" というようにその結果についても触れる
+* `new Promise` の処理について述べるなら、"resolveした時" と書いてもよい。
+    * "resolveされた時" とは書かない
+* `then`でのメソッドチェーン等、`new Promise`と直接関係ないケースの場合にはFulFilled,Rejectedを使う
+
+例) `Promise.race`は、promiseオブジェクトがどれか一つでもFulFilled または Rejectedになったら次の処理を実行します。
+
