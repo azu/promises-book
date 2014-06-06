@@ -19,7 +19,8 @@ include::embed/embed-promise-race-timer.js[]
 
 
 上記のコードだと、1ms後、32ms後、64ms後、128ms後にそれぞれpromiseオブジェクトがFulFilledとなりますが、
-一番最初に1msのものがresolveされた時点で、`.then` が呼ばれ、`resolve(1)`なので`value`に渡される値も1となります。
+一番最初に1msのものがFulFilledとなった時点で、`.then` が呼ばれます。
+また、`resolve(1)`が呼ばれるため`value`に渡される値も1となります。
 
 最初にFulFilledとなったpromiseオブジェクト以外は、その時点で呼ばれるのかを見てみましょう
 
