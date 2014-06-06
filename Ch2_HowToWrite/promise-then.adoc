@@ -126,7 +126,7 @@ include::src/promise-then-taska-throw.js[]
 include::src/promise-then-passing-value.js[]
 ----
 
-スタートは`Promise.resolve(1);`で、この処理は以下のような流れてpromise chainが処理されていきます。
+スタートは`Promise.resolve(1);`で、この処理は以下のような流れでpromise chainが処理されていきます。
 
 . `Promise.resolve(1);` から 1 が `increment`に渡される
 . `increment`では渡された値に+1した値を`return`している
