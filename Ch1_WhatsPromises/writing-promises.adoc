@@ -57,7 +57,7 @@ XHRで`onerror`のイベントが呼ばれた場合はもちろんエラーな�
 [source,js]
 getURL("http://example.com/"); // => promiseオブジェクトが返ってくる
 
-<<promises-overview,Promises Overview>> でも簡単に紹介したようにpromiseオブジェクトは幾つかインスタンスを持っており、
+<<promises-overview,Promises Overview>> でも簡単に紹介したようにpromiseオブジェクトは幾つかインスタンスメソッドを持っており、
 これを使いpromiseオブジェクトの状態に応じて一度だけ呼ばれるコールバックとなる関数を登録します。
 
 promiseオブジェクトに登録する処理は以下の2種類が主となります
