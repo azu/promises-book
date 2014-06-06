@@ -57,7 +57,7 @@ main().then(function (results) {
 include::embed/embed-promise-all-timer.js[]
 ----
 
-`promisedMapping` 数値の配列を渡すと、
+`promisedMapping` に数値の配列を渡すと、
 数値をそのまま`setTimeout`に設定したpromiseオブジェクトの配列を返す関数です。
 
 [source,js]
