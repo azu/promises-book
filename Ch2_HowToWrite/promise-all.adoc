@@ -1,13 +1,14 @@
 [[ch2-promise-all]]
 == Promise.all
 
-先ほどの複数のXHRの結果をまとめたものを取得する処理は、 <<Promise.all, `Promise.all`>> を使うと次のように書くことが出来ます。
-
-<<Promise.all, `Promise.all`>> は 配列を受け取り、
+<<Promise.all, `Promise.all`>> は promiseオブジェクトの配列を受け取り、
 その配列に入っているpromiseオブジェクトが全てresolveされた時に、次の`.then`を呼び出します。
 
-下記の例では、promiseオブジェクトはXHRによる通信を抽象化したオブジェクトといえるので、
-全ての通信が完了(resolveまたはreject)された時に、次の`.then`が呼び出されます。
+先ほどの複数のXHRの結果をまとめて取得する処理は、 <<Promise.all, `Promise.all`>> を使うとシンプルに書くことができます。
+
+先ほどの例の`getURL`はXHRによる通信を抽象化したpromiseオブジェクトを返しています。
+`Promise.all`に通信を抽象化したpromiseオブジェクトの配列を渡すことで、
+全ての通信が完了(FulFilledまたRejected)した時に、次の`.then`が呼び出すこと事が出来ます。
 
 [source,js]
 [[promise-all-xhr.js]]
