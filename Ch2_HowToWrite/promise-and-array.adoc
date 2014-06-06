@@ -87,5 +87,6 @@ main().then(function (value) {
 
 先ほども述べたように mainの `then` の部分がクドく感じます。
 
-このような複数の非同期処理をまとめて扱う `Promise.all` と `Promise.race` という静的メソッドについて
-学んでいきましょう。
+Promiseでは、このような複数の非同期処理をまとめて扱う `Promise.all` と `Promise.race` という静的メソッドが用意されています。
+
+次のセクションではそれらについて学んでいきましょう。
