@@ -100,7 +100,7 @@ Promiseで意図したテストを書くためにはどうするか、またそ�
 
 [NOTE]
 ====
-今回書いた`shouldFulfilled`と`shouldRejected`をライブラリ化して利用できるようになっています。
+今回書いた`shouldFulfilled`と`shouldRejected`はライブラリとして利用できるようになっています。
 
 https://github.com/azu/promise-test-helper[azu/promise-test-helper] からダウンロードすることが出来ます。
 ====
