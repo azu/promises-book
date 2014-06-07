@@ -16,8 +16,7 @@ ifeval::["{backend}" == "html5"]
 ++++
 endif::[]
 
-Promiseのライブラリを探すときに、一つ目印になる言葉として<<promises-aplus, Promises/A+互換>>というのが
-一つの目印になると思います。
+Promiseのライブラリを探すときに、一つ目印になる言葉として<<promises-aplus, Promises/A+互換>>という単語 があります。
 
 <<promises-aplus, Promises/A+>>というのは<<es6-promises,ES6 Promises>>の前身となったもので、
 Promiseの`then`について取り決めたコミュニティベースの仕様です。
@@ -63,20 +62,19 @@ https://github.com/yahoo/ypromise[yahoo/ypromise]::
 
 ==== Promise拡張ライブラリ
 
-Promise拡張ライブラリといっても、ES6 Promiseを拡張したライブラリではなく、
-Promiseを仕様どおりに実装したものに加えて、仕様にはない独自のメソッド等を提供してくれるライブラリです。
+Promiseを仕様どおりに実装したものに、加えて独自のメソッド等を提供してくれるライブラリです。
 
-Promise拡張ライブラリは本当に沢山あるのですが、以下の2つが著名なライブラリです。
+Promise拡張ライブラリは本当に沢山あるのですが、以下の2つが著名なライブラリを紹介します。
 
 https://github.com/kriskowal/q[kriskowal/q]::
     `Q`と呼ばれるPromisesやDeferredsを実装したライブラリです。
     2009年から開発されており、Node.js向けのファイルIOのAPIを提供する https://github.com/kriskowal/q-io[Q-IO] 等、
-    多くのパターンが用意されているライブラリです。
+    多くの状況で使える機能が用意されているライブラリです。
 https://github.com/petkaantonov/bluebird[petkaantonov/bluebird]::
     Promise互換に加えて、キャンセル出来るPromiseや進行度を取得出来るPromise、エラーハンドリングの拡張検出等、
     多くの拡張を持っており、またパフォーマンスにも気を配った実装がされているライブラリです。
 
-Q と Bluebird どちらのライブラリも、APIリファレンスが充実しているのも特徴的です。
+Q と Bluebird どちらのライブラリもブラウザでも動作する他、APIリファレンスが充実しているのも特徴的です。
 
 * https://github.com/kriskowal/q/wiki/API-Reference[API Reference · kriskowal/q Wiki]
 
@@ -92,11 +90,11 @@ https://github.com/petkaantonov/bluebird/wiki/Promise-anti-patterns[Promiseの�
 
 === まとめ
 
-このセクションではPromiseのライブラリとしてPolyfillと拡張ライブラリにわけて紹介しました。
+このセクションではPromiseのライブラリとしてPolyfillと拡張ライブラリを紹介しました。
 
 Promiseのライブラリは多種多様であるため、どれを使用するかは好みの問題といえるでしょう。
 
 しかし、PromiseはPromises/A+ または ES6 Promisesという共通のインターフェースを持っているため、
 そのライブラリで書かれているコードや独自の拡張などは、他のライブラリを利用している時でも参考になるケースは多いでしょう。
 
-そのようなPromiseという共通の概念を学び、応用できるようになるのがこの書籍の目的の一つです。
+そのようなPromiseの共通の概念を学び、応用できるようになるのがこの書籍の目的の一つです。
