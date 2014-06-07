@@ -124,7 +124,7 @@ getURL(URL).then(onFulfilled, onRejected);// <1>
 ----
 <1> onFulfilled, onRejected それぞれは先ほどと同じ関数
 
-基本的には、<<promise.catch,`.catch`>>を使いresolveとrejectそれぞれを別々に処理した方がよいと考えらますが、
+基本的には、<<promise.catch,`.catch`>>を使いresolveとrejectそれぞれを別々に処理した方がよいと考えられますが、
 両者の違いについては <<then-or-catch,thenとcatchの違い>> で紹介します。
 
 ==== まとめ
