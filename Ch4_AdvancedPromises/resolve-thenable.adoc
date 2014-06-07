@@ -1,7 +1,7 @@
 [[resolve-thenable]]
 == Promise.resolveとThenable
 
-<<ch2-promise-resolve,Promise.resolve>>にて、`Promise.resolve`の大きな特徴の一つとしてthenableなオブジェクトを変換する機能について紹介しました。
+<<ch2-promise-resolve,第二章のPromise.resolve>>にて、`Promise.resolve`の大きな特徴の一つとしてthenableなオブジェクトを変換する機能について紹介しました。
 
 このセクションでは、thenableなオブジェクトからpromiseオブジェクトに変換してどのように利用するかについて学びたいと思います。
 
@@ -25,11 +25,17 @@ new Notification("Hi!");
 .Notificationの許可ダイアログ
 image::img/notification-dialog.png[Notificationの許可ダイアログ]
 
-Notificationのダイアログの選択肢はFirefoxだと永続かセッション限り等で4種類ありますが、
-最終的に`Notification.permission`に入ってくる値は許可("granted")か不許可("denied")の2種類です。
+この許可ダイアログで選択した結果は、`Notification.permission`に入りますが、
+値は許可("granted")か不許可("denied")の2種類です。
 
-許可ダイアログは`Notification.requestPermission`を実行すると表示され、
-ユーザーが選択した内容が`status`に渡されます。
+[NOTE]
+Notificationのダイアログの選択肢は、
+Firefoxだと許可、不許可にく淡得て __永続__ か __セッション限り__ の組み合わせがありますが、値自体は同じです。
+
+許可ダイアログは`Notification.requestPermission()`を実行すると表示され、
+ユーザーが選択した結果がコールバック関数の`status`に渡されます。
+
+コールバックを受け付けることから分かるように、この許可、不許可は非同期的に行われます。
 
 [source,js]
 ----
@@ -38,13 +44,7 @@ Notification.requestPermission(function (status) {
 });
 ----
 
-許可時("granted"):::
- `new Notification`で通知を作成
-不許可時("denied"):::
- 何もしない
-
-
-まとめると以下のようになります。
+通知を行うまでの流れをまとめると以下のようになります。
 
 * ユーザーに通知の許可を受け付ける非同期処理がある
 * 許可がある場合は`new Notification`で通知を表示できる
@@ -52,11 +52,23 @@ Notification.requestPermission(function (status) {
 ** その場で許可を貰うケース
 * 許可がない場合は何もしない
 
-いくつか許可のパターンが出ますが、シンプルにまとめると
-許可がある場合は`onFulfilled`、許可がない場合は`onRejected`と書くことができると思います。
 
-いきなりこれを`thenable`にするのは分かりにくいので、まずは今まで学んだPromiseを使って
-promiseオブジェクトを返すラッパー関数を書いてみましょう。
+いくつかのパターンが出ますが、最終的には許可か不許可になるので、以下の2パターンにまとめることが出来ます。
+
+許可時("granted"):::
+    `new Notification`で通知を作成
+不許可時("denied"):::
+    何もしない
+
+この2パターンはどこかで見たことがありますね。
+そう、PromiseのFulfilled または Rejected となった時の動作で書くことが出来そうな気がします。
+
+resolve(成功)した時 == 許可時("granted")::
+    `onFulfilled` が呼ばれる
+reject(失敗)した時 == 不許可時("denied")::
+    `onRejected`  が呼ばれる
+
+まずは今まで学んだPromiseを使って、このWeb Notifications APIのラッパー関数を書いてみましょう。
 
 === Web Notification as Promise
 
@@ -78,29 +90,50 @@ notifyMessageAsPromise("Hi!").then(function (notification) {
 });
 ----
 
-許可あるor許可された場合は`.then`が呼ばれ、ユーザーが許可しなかった場合は`.catch`が呼ばれます。
+許可されている場合は`.then`が呼ばれ、
+不許可となった場合は`.catch`が呼ばれます。
+
+[NOTE]
+====
+ブラウザはWeb Notifications APIの状態をサイトごとに許可状態を記憶できるため、
+実際には以下の4つのパターンが存在します。
+
+既に許可されている::
+    `.then`が呼ばれる
+許可ダイアログがでて許可された::
+    `.then`が呼ばれる
+既に不許可となっている::
+    `.catch`が呼ばれる
+許可ダイアログででて不許可された::
+    `.catch`が呼ばれる
+
+つまり、Web Notifications APIをそのまま扱うと、4つのパターンについて書かないといけませんが、
+それを2パターンにできるラッパーを書くと扱いやすくなります。
+====
 
 上記の<<notification-as-promise.js>>は、とても便利そうですが実際に使うときに以下の問題点があります。
 
-* Promiseをサポートしてない(orグローバルに`Promise`のshimがない)環境では使えない
+* Promiseをサポートしてない(or グローバルに`Promise`のPolyfillがない)環境では使えない
 
 <<notification-as-promise.js>>のようなPromiseスタイルで使えるライブラリを作る場合、
 ライブラリ作成者には以下のような選択肢があると思います。
 
 [[promise-library-choice]]
-* `Promise`があることを前提とする
-** 利用者に`Promise`があることを保証してもらう
-* ライブラリ自体に`Promise`の実装を入れてしまう
-** 例) https://github.com/mozilla/localForage[localForage]
-* コールバックでも使う事ができ、`Promise`でも使えるようにする
-** 利用者がどちらを使うかを選択出来るようにする
+Promiseが使える環境を前提とする::
+* 利用者に`Promise`があることを保証してもらう
+* Promiseをサポートしてない環境では動かないことにする
+ライブラリ自体に`Promise`の実装を入れてしまう::
+* ライブラリ自体にPromiseの実装を取り込む
+* 例) https://github.com/mozilla/localForage[localForage]
+コールバックでも使う事ができ、`Promise`でも使えるようにする::
+* 利用者がどちらを使うかを選択出来るようにする
 
 <<notification-as-promise.js>>は`Promise`があることを前提としたような書き方です。
 
 本題に戻り<<Thenable,Thenable>>はここでいう"コールバックでも使う事ができ、`Promise`でも使えるようにする"という事を
 実現するのに役立つ概念です。
 
-== Thenableでコールバックと両立する
+=== Thenableでコールバックと両立する
 
 まずは先程のWeb Notification APIのラッパー関数をコールバックスタイルで書いてみましょう。
 
@@ -165,7 +198,7 @@ Promise.resolve(notifyMessage.thenable("message")).then(function (notification) 
 Thenableを使った<<notification-thenable.js>>とPromiseに依存した<<notification-as-promise.js>>は、
 非常に似た使い方ができることがわかります。
 
-<<notification-thenable.js>>には<<notification-as-promise.js>>とは次のような違いがあります。
+<<notification-thenable.js>>には<<notification-as-promise.js>>と比べた時に、次のような違いがあります。
 
 * ライブラリ側に`Promise`実装そのものはでてこない
 ** 利用者が`Promise.resolve(thenable)`を使い`Promise`の実装を与える
@@ -174,3 +207,4 @@ Thenableを使った<<notification-thenable.js>>とPromiseに依存した<<notif
 
 <<Thenable,thenable>>オブジェクトを利用することで、
 既存のコールバックスタイルとPromiseの親和性を高めることができる事が分かります。
+
