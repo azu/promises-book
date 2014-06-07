@@ -101,7 +101,7 @@ notifyMessage("Hi!", {}, function (error, notification) {
 [source,js]
 .コールバック関数はエラーとnotificationオブジェクトを受け取る
 ----
-function (error, notification){
+function callback(error, notification){
 
 }
 ----
