@@ -72,7 +72,7 @@ Promiseで書けそうな目処が見えた所で、まずはコールバック�
 
 === Web Notification ラッパー
 
-まずは先程のWeb Notification APIのラッパー関数をコールバックスタイルで書くと次のように書くことが出来ます。
+まずは先ほどのWeb Notification APIのラッパー関数をコールバックスタイルで書くと次のように書くことが出来ます。
 
 [source,js]
 [[notification-callback.js]]
