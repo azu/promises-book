@@ -219,7 +219,7 @@ Thenableを使った<<notification-thenable.js>>とPromiseに依存した<<notif
 
 === まとめ
 
-このセクションでは<<Thenable,Thenable>>とは何かやThenableを`Promise.resolve(thenable)`を使って、
+このセクションではThenableとは何かやThenableを`Promise.resolve(thenable)`を使って、
 promiseオブジェクトとして利用する方法について学びました。
 
 Callback -- Thenable -- Promise
