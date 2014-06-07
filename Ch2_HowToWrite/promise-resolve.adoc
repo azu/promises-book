@@ -88,12 +88,12 @@ https://api.jquery.com/jQuery.ajax/[jQuery.ajax()]の返り値も`.then`とい�
 * https://twitter.com/hirano_y_aa/status/398851806383452160[https://twitter.com/hirano_y_aa/status/398851806383452160]
 ====
 
-多くの場合は、多種多様なPromiseの実装ライブラリがある中でそれらの違いを意識せず使えるように、
-共通の挙動である`then`だけを利用して、他の機能は自分自分のPromiseにあるものを利用できるように変換するという意味合いが強いと思います。
+`Promise.resolve`は共通の挙動である`then`だけを利用して、
+様々なライブラリ間でのpromiseオブジェクトを相互に変換して使える仕組みを持っている事になります。
 
-このthenableを変換する機能は、以前は`Promise.cast`という名前であった事からも想像できるかもしれません。
+このthenableを変換する機能は、以前は`Promise.cast`という名前であった事からもその挙動が想像できるかもしれません。
 
-ThenableについてはPromiseを使ったライブラリを書くときなどには知っておくべきですが、
+ThenableについてはPromiseを使ったライブラリを書くとき等には知っておくべきですが、
 通常の利用だとそこまで使う機会がないものかもしれません。
 
 [NOTE]
