@@ -63,12 +63,10 @@ image::img/promise-then-catch-flow.png[promise-then-catch-flow]
 <<promise-then-catch-flow.png,図>>の方に注目してもらうと、
 __Task A__ と __Task B__ それぞれから __onRejected__ への線が出ていることが分かります。
 
-これは、__Task A__ または __Task B__ の処理にて、以下のどちらかが起きた場合に
+これは、__Task A__ または __Task B__ の処理にて、次のような場合に __onRejected__ が呼ばれるという事を示しています。
 
 * 例外が発生した時
 * Rejectedなpromiseオブジェクトがreturnされた時
-
-__onRejected__ が呼ばれるという事を示しています。
 
 <<how-to-write-promise,第一章>>でPromiseの処理は常に`try-catch`されているようなものなので、
 例外が起きた場合もキャッチして、`catch`で登録された`onRejected`の処理を呼ぶことは学びましたね。
