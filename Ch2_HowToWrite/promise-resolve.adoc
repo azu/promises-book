@@ -42,7 +42,7 @@ promiseオブジェクトの初期化時やテストコードを書く際にも�
 <<es6-promises,ES6 Promises>>には<<Thenable,Thenable>>という概念があり、簡単にいえばpromiseっぽいオブジェクトの事を言います。
 
 `.length`を持っているが配列ではないものをArray likeというのと同じで、
-thenableの場合は`.then`というメソッドを持ってるオブジェクトのことを言います。
+thenableの場合は`.then`というメソッドを持ってるオブジェクト(かつpromiseオブジェクトではない)を言います。
 
 thenableなオブジェクトが持つ`then`は、Promiseの持つ`then`と同じような挙動を期待していて、
 thenableなオブジェクトが持つ元々の`then`を上手く利用できるようにしつつpromiseオブジェクトに変換するという仕組みです。
