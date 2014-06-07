@@ -38,9 +38,9 @@ TOCHighlighter.prototype.currentHeaders = function () {
         return element != null && element.hasAttribute("id");
     };
     var elements = this.sections.map(function (element) {
-        return this.contentInElement(element, wScrollTop).pop();
+        return this.contentInElement(element, wScrollTop)
     }, this);
-    return elements.filter(isHeaderElement);
+    return Array.prototype.concat.apply([], elements).filter(isHeaderElement);
 };
 TOCHighlighter.prototype.contentInElement = function (element, wScrollTop) {
     var originY = element.offsetTop,
