@@ -4,7 +4,7 @@
  */
 "use strict";
 var assert = require("power-assert");
-var notifyMessage = require("../src/notifications/notification-thenable").notifyMessage;
+var notifyMessageAsThenable = require("../src/notifications/notification-thenable").notifyMessageAsThenable;
 var MockNotification = require("./mock/mock-notification").MockNotification;
 describe("notification-thenable", function () {
     beforeEach(function () {
@@ -21,15 +21,9 @@ describe("notification-thenable", function () {
             delete MockNotification.permission;
         });
         it("should return Notification", function () {
-            var promise = Promise.resolve(notifyMessage.thenable("message"));
+            var promise = Promise.resolve(notifyMessageAsThenable("message"));
             return shouldFulfilled(promise).then(function (notification) {
                 assert(notification instanceof MockNotification);
-            });
-        });
-        it("could as callback", function (done) {
-            notifyMessage("message", {}, function (error, notification) {
-                assert(notification instanceof MockNotification);
-                done();
             });
         });
     });
@@ -38,7 +32,7 @@ describe("notification-thenable", function () {
             global.Notification = null;
         });
         it("should catch error", function () {
-            var promise = Promise.resolve(notifyMessage.thenable("message"));
+            var promise = Promise.resolve(notifyMessageAsThenable("message"));
             return shouldRejected(promise).catch(function (error) {
                 assert(error instanceof Error);
                 assert(error.message === "doesn't support Notification API");
@@ -56,7 +50,7 @@ describe("notification-thenable", function () {
             delete MockNotification.requestPermission;
         });
         it("should return Notification", function () {
-            var promise = Promise.resolve(notifyMessage.thenable("message"));
+            var promise = Promise.resolve(notifyMessageAsThenable("message"));
             return shouldFulfilled(promise).then(function (notification) {
                 assert(notification instanceof MockNotification);
             });
@@ -74,7 +68,7 @@ describe("notification-thenable", function () {
             delete MockNotification.requestPermission;
         });
         it("should catch error", function () {
-            var promise = Promise.resolve(notifyMessage.thenable("message"));
+            var promise = Promise.resolve(notifyMessageAsThenable("message"));
             return shouldRejected(promise).catch(function (error) {
                 assert(error instanceof Error);
                 assert(error.message === "user denied");

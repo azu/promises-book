@@ -1,7 +1,7 @@
 "use strict";
 var notifyMessage = require("./notification-callback").notifyMessage;
 // `thenable` を返す
-notifyMessage.thenable = function (message, options) {
+function notifyMessageAsThenable(message, options) {
     return {
         "then": function (resolve, reject) {
             notifyMessage(message, options, function (error, notification) {
@@ -13,6 +13,5 @@ notifyMessage.thenable = function (message, options) {
             });
         }
     };
-};
-
-module.exports.notifyMessage = notifyMessage;
+}
+module.exports.notifyMessageAsThenable = notifyMessageAsThenable;

@@ -30,7 +30,7 @@ image::img/notification-dialog.png[Notificationの許可ダイアログ]
 
 [NOTE]
 Notificationのダイアログの選択肢は、
-Firefoxだと許可、不許可にく淡得て __永続__ か __セッション限り__ の組み合わせがありますが、値自体は同じです。
+Firefoxだと許可、不許可に加えて __永続__ か __セッション限り__ の組み合わせがありますが、値自体は同じです。
 
 許可ダイアログは`Notification.requestPermission()`を実行すると表示され、
 ユーザーが選択した結果がコールバック関数の`status`に渡されます。
@@ -68,9 +68,50 @@ resolve(成功)した時 == 許可時("granted")::
 reject(失敗)した時 == 不許可時("denied")::
     `onRejected`  が呼ばれる
 
-まずは今まで学んだPromiseを使って、このWeb Notifications APIのラッパー関数を書いてみましょう。
+Promiseで書けそうな目処が見えた所で、まずはコールバック関数で書いてみましょう。
+
+=== Web Notification ラッパー
+
+まずは先程のWeb Notification APIのラッパー関数をコールバックスタイルで書くと次のように書くことが出来ます。
+
+[source,js]
+[[notification-callback.js]]
+.notification-callback.js
+----
+include::embed/embed-notification-callback.js[]
+----
+
+これを利用する場合は以下のような感じになります。
+
+[source,js]
+----
+// 第二引数は`Notification`に渡すオプションオブジェクト
+notifyMessage("Hi!", {}, function (error, notification) {
+    if(error){
+        console.error(error);
+        return;
+    }
+    console.log(notification);// 通知のオブジェクト
+});
+----
+
+コールバックスタイルでは、許可がない場合は`error`に値が入り、
+許可がある場合は通知が行われて`notification`に値が入ってくるという感じにしました。
+
+[source,js]
+.コールバック関数はエラーとnotificationオブジェクトを受け取る
+----
+function (error, notification){
+
+}
+----
+
+次に、このコールバックスタイルの関数をPromiseとして使える関数を書いてみたいと思います。
 
 === Web Notification as Promise
+
+先ほどのコールバックスタイルの`notifyMessage`とは別に、
+promiseオブジェクトを返す`notifyMessageAsPromise`を定義してみます。
 
 [source,js]
 [[notification-as-promise.js]]
@@ -111,12 +152,11 @@ notifyMessageAsPromise("Hi!").then(function (notification) {
 それを2パターンにできるラッパーを書くと扱いやすくなります。
 ====
 
-上記の<<notification-as-promise.js>>は、とても便利そうですが実際に使うときに以下の問題点があります。
-
-* Promiseをサポートしてない(or グローバルに`Promise`のPolyfillがない)環境では使えない
+上記の<<notification-as-promise.js>>は、とても便利そうですが実際に使うときには
+**Promiseをサポートしてない環境では使えない**という問題点があります。
 
 <<notification-as-promise.js>>のようなPromiseスタイルで使えるライブラリを作る場合、
-ライブラリ作成者には以下のような選択肢があると思います。
+ライブラリ作成者には以下の選択肢があると思います。
 
 [[promise-library-choice]]
 Promiseが使える環境を前提とする::
@@ -125,49 +165,19 @@ Promiseが使える環境を前提とする::
 ライブラリ自体に`Promise`の実装を入れてしまう::
 * ライブラリ自体にPromiseの実装を取り込む
 * 例) https://github.com/mozilla/localForage[localForage]
-コールバックでも使う事ができ、`Promise`でも使えるようにする::
+コールバックでも`Promise`でも使えるようにする::
 * 利用者がどちらを使うかを選択出来るようにする
+* Thenableを返せるようにする
 
 <<notification-as-promise.js>>は`Promise`があることを前提としたような書き方です。
 
-本題に戻り<<Thenable,Thenable>>はここでいう"コールバックでも使う事ができ、`Promise`でも使えるようにする"という事を
+本題に戻り<<Thenable,Thenable>>はここでいう**コールバックでも`Promise`でも使えるようにする**という事を
 実現するのに役立つ概念です。
 
-=== Thenableでコールバックと両立する
-
-まずは先程のWeb Notification APIのラッパー関数をコールバックスタイルで書いてみましょう。
-
-[source,js]
-[[notification-callback.js]]
-.notification-callback.js
-----
-include::embed/embed-notification-callback.js[]
-----
-
-これを利用する場合は以下のような感じになります。
-
-[source,js]
-----
-// 第二引数は`Notification`に渡すオプションオブジェクト
-notifyMessage("message", {}, function (error, notification) {
-    if(error){
-        console.error(error);
-        return;
-    }
-    console.log(notification);// 通知のオブジェクト
-});
-----
-
-コールバックスタイルでは、許可がない場合は`error`に値が入り、
-許可がある場合は通知が行われて`notification`に値が入ってくるという感じにしました。
-
-[source,js]
-function (error, notification){}
-
-=== thenableを返すメソッドを追加する
+=== Web Notifications As Thanable
 
 <<Thenable,thenable>>というのは`.then`というメソッドを持ってるオブジェクトのことを言いましたね。
-次に<<notification-callback.js>>に`thenable`を返すメソッドを追加してみましょう。
+次は<<notification-callback.js>>に`thenable`を返すメソッドを追加してみましょう。
 
 [source,js]
 [[notification-thenable.js]]
@@ -176,10 +186,10 @@ function (error, notification){}
 include::embed/embed-notification-thenable.js[]
 ----
 
-<<notification-thenable.js>> には`notifyMessage.thenable`をというそのままのメソッドを追加してみました。
+<<notification-thenable.js>> には`notifyMessageAsThenable`をというそのままのメソッドを追加してみました。
 返すオブジェクトには`then`というメソッドがあります。
 
-`then`メソッドの仮引数には`new Promise(function (resolve, reject){}`と同じように、
+`then`メソッドの仮引数には`new Promise(function (resolve, reject){})`と同じように、
 解決した時に呼ぶ`resolve`と、棄却した時に呼ぶ`reject`が渡ります。
 
 `then`メソッドがやっている中身は<<notification-as-promise.js>>の`notifyMessageAsPromise`と同じですね。
@@ -203,8 +213,75 @@ Thenableを使った<<notification-thenable.js>>とPromiseに依存した<<notif
 * ライブラリ側に`Promise`実装そのものはでてこない
 ** 利用者が`Promise.resolve(thenable)`を使い`Promise`の実装を与える
 * Promiseとして使う時に`Promise.resolve(thenable)`と一枚挟む必要がある
-* コールバックスタイル(`notifyMessage()`)でも利用できる
 
-<<Thenable,thenable>>オブジェクトを利用することで、
-既存のコールバックスタイルとPromiseの親和性を高めることができる事が分かります。
+<<Thenable,Thenable>>オブジェクトを利用することで、
+既存のコールバックスタイルとPromiseスタイルの中間的な実装をすることができました。
 
+=== まとめ
+
+このセクションでは<<Thenable,Thenable>>とは何かやThenableを`Promise.resolve(thenable)`を使って、
+promiseオブジェクトとして利用する方法について学びました。
+
+Callback -- Thenable -- Promise
+
+Thanableスタイルは、コールバックスタイルとPromiseスタイルの中間的な表現で、
+ライブラリが公開するAPIとしては中途半端なためあまり見かけることがないと思います。
+
+Thanable自体は`Promise`という機能に依存してはいませんが、Promise以外からの利用方法は特にないため、
+間接的にはPromiseに依存しています。
+
+また、使うためには利用者が`Promise.resolve(thenable)`について理解している必要があるため、
+ライブラリの公開APIとしては難しい部分があります。
+Thanable自体は公開APIより、内部的に使われてるケースが多いでしょう。
+
+[NOTE]
+====
+非同期処理を行うライブラリを書く際には、まずはコールバックスタイルの関数を書いて公開APIとすることをオススメします。
+
+Node.jsのCore moduleがこの方法をとっているように、ライブラリが提供するのは基本となるコールバックスタイル関数としたほうが、
+利用者がPromiseやGenerator等の好きな方法で実装ができるためです。
+
+最初からPromiseで利用することを目的としたライブラリや、その機能がPromiseに依存している場合は、
+promiseオブジェクトを返す関数を公開APIとしても問題ないと思います。
+====
+
+==== Thenableの使われているところ
+
+では、どのような場面でThenableは使われてるのでしょうか?
+
+恐らく、一番多く使われている所は<<promise-library,Promiseのライブラリ>>間での相互変換でしょう。
+
+例えば、 QライブラリのPromiseのインスタンスであるQ promiseオブジェクトは、
+<<es6-promises,ES6 Promises>>のpromiseオブジェクトが持っていないメソッドを持っています。
+Q promiseオブジェクトには `promise.finally(callback)` や `promise.nodeify(callback)`などのメソッドが用意されてます。
+
+ES6 PromisesのpromiseオブジェクトをQ promiseオブジェクトに変換するときに使われるのが、
+まさにこのThenableです。
+
+[source,js]
+.thenableを使ってQ promiseオブジェクトにする
+----
+var Q = require("Q");
+// このpromiseオブジェクトはES6のもの
+var promise = new Promise(function(resolve){
+    resolve(1);
+});
+// Q promiseオブジェクトに変換する
+Q(promise).then(function(value){
+    console.log(value);
+}).finally(function(){ // <1>
+    console.log("finally");
+});
+----
+<1> Q promiseオブジェクトとなったため`finally`が利用できる
+
+最初に作成したpromiseオブジェクトは`then`というメソッドを持っているので、もちろんThenableです。
+`Q(thenable)` とすることでThenableなオブジェクトをQ promiseオブジェクトへと変換することが出来ます。
+
+これは、`Promise.resolve(thenable)`と同じ仕組みといえるので、もちろん逆も可能です。
+
+このように、Promiseライブラリはそれぞれ独自に拡張したpromiseオブジェクトを持っていますが、
+Thenableという共通の概念を使うことでライブラリ間(もちろんネイティブPromiseも含めて)で相互にpromiseオブジェクトを変換することが出来ます。
+
+このようにThenableが使われる所の多くはライブラリレベルのAPIであるため、
+あまり目にする機会はないかもしれませんが、この概念はPromiseでも大事な概念であるため知っておくとよいでしょう。
