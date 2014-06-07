@@ -66,7 +66,7 @@ include::embed/embed-promise-workflow.js[]
 <2> <1>のpromiseに対して `.then` で値が返ってきた時のコールバックを設定します
 
 `asyncFunction` という関数 は promiseオブジェクトを返していて、
-そのpromiseオブジェクトに足しして `then` でresolveした時のコールバックを、
+そのpromiseオブジェクトに対して `then` でresolveした時のコールバックを、
 `catch` でエラーとなった場合のコールバックを設定しています。
 
 このpromiseオブジェクトはsetTimeoutで16ms後にresolveされるので、
