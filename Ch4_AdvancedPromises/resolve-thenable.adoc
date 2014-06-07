@@ -81,7 +81,7 @@ Promiseで書けそうな目処が見えた所で、まずはコールバック�
 include::embed/embed-notification-callback.js[]
 ----
 
-これを利用する場合は以下のような感じになります。
+これを利用する場合は以下のように書くことができます
 
 [source,js]
 ----
@@ -153,7 +153,7 @@ notifyMessageAsPromise("Hi!").then(function (notification) {
 ====
 
 上記の<<notification-as-promise.js>>は、とても便利そうですが実際に使うときには
-**Promiseをサポートしてない環境では使えない**という問題点があります。
+**Promiseをサポートしてない環境では使えない**という問題があります。
 
 <<notification-as-promise.js>>のようなPromiseスタイルで使えるライブラリを作る場合、
 ライブラリ作成者には以下の選択肢があると思います。
