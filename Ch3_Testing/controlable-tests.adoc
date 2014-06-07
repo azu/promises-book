@@ -3,20 +3,23 @@
 
 ここでいう意図したテストとは以下のような定義で進めます。
 
-あるpromiseオブジェクトをテスト対象として::
-* onFulfilledされることを期待したテストを書いた時
-** onRejectedされた場合は**Fail**
+あるpromiseオブジェクトをテスト対象として
+
+* Fulfilledされることを期待したテストを書いた時
+** Rejectedとなった場合は**Fail**
 ** assertionの結果が一致しなかった場合は**Fail**
-* onRejectedされることを期待したテストを書いた時
-** onFulfilledされた場合は**Fail**
+* Rejectedされることを期待したテストを書いた時
+** Fulfilledとなった場合は**Fail**
 ** assertionの結果が一致しなかった場合は**Fail**
+
+上記のケース(Fail)に該当しなければテストがパスするという事ですね。
 
 つまり、ひとつのテストケースにおいて以下のことを書く必要があります。
 
 * Fulfilled or Rejected どちらを期待するか
 * assertionで渡された値のチェック
 
-以下のコードはRejectedを期待したテストとなっていますね。
+先ほどの`.then`を使ったコードはRejectedを期待したテストとなっていますね。
 
 [source,js]
 ----
@@ -32,7 +35,8 @@ promise.then(failTest, function(error){
 Fulfilled or Rejected どちらの状態になって欲しいかを明示する必要があります。
 
 しかし、`.then`だと引数は省略可能なので、テストが落ちる条件を入れ忘れる可能性もあります。
-そこで、状態を明示できるヘルパー関数を定義してみましょう。
+
+そこで、promiseオブジェクトに期待する状態を明示できるヘルパー関数を定義してみましょう。
 
 [NOTE]
 ====
@@ -55,29 +59,26 @@ include::embed/embed-shouldRejected-test.js[]
 この`catch`にはonRejectedで書くものと全く同じ使い方ができるので、
 `catch`の中にassertionによるテストを書けるようになっています。
 
-`shouldRejected`で囲む以外は通常のpromiseの処理と似た感じになるので以下のようになります。
+`shouldRejected`で囲む以外は、通常のpromiseの処理と似た感じになるので以下のようになります。
 
 . `shouldRejected` にテスト対象のpromiseオブジェクトを渡す
 . 返ってきたオブジェクトの`catch`メソッドでonRejectedの処理を書く
 . onRejectedにassertionによるテストを書く
 
-内部で`then`を使った場合と同様に、onFulfilledが呼ばれた場合はエラーをthrowしてテストが失敗する用になっています。
+`shouldRejected`使った場合、Fulfilledが呼ばれるとエラーをthrowしてテストが失敗するようになっています。
 
 [source,js]
 ----
 promise.then(failTest, function(error){
-    // assertでerrorをテストする
+    assert(error.message === 'human error');
 });
-// => 内部で殆ど同様の事をしている
-promise.then(function () {
-    throw new Error('Expected promise to be rejected but it was fulfilled');
-}, function (reason) {
-    fn.call(promise, reason);
+// == ほぼ同様の意味
+shouldRejected(promise).catch(function (error) {
+    assert(error.message === 'human error');
 });
 ----
 
-`shouldRejected`のようなヘルパー関数を使うことで、
-promiseオブジェクトがFulfilledになった場合はテストが失敗するためテストが意図したものとなります。
+`shouldRejected`のようなヘルパー関数を使うことで、テストコードが少し直感的になりましたね。
 
 .Promise onRejected test
 image::img/promise-test.png[Promise onRejected test]
@@ -97,7 +98,12 @@ include::embed/embed-shouldFulfilled-test.js[]
 
 Promiseで意図したテストを書くためにはどうするか、またそれを補助するヘルパー関数について学びました。
 
-今回書いた`shouldFulfilled`と`shouldRejected`をライブラリ化したものは https://github.com/azu/promise-test-helper[azu/promise-test-helper] にあります。
+[NOTE]
+====
+今回書いた`shouldFulfilled`と`shouldRejected`をライブラリ化して利用できるようになっています。
+
+https://github.com/azu/promise-test-helper[azu/promise-test-helper] からダウンロードすることが出来ます。
+====
 
 また、今回のヘルパー関数は<<mocha-promise,MochaのPromiseサポート>>を前提とした書き方なので、
 <<done-promise-test,`done`を使ったテスト>>は利用しにくいと思います。
