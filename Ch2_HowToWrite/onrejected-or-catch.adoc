@@ -11,7 +11,7 @@
 
 次のようなコードを見ていきます。
 
-[source,js]
+[source,javascript]
 [[then-throw-error.js]]
 .then-throw-error.js
 ----
@@ -51,7 +51,7 @@ image::img/then_catch.png[Then Catch flow]
 もちろん`.catch`は`.then`のエイリアスなので、下記のように`.then`を使っても問題はありませんが、
 `.catch`を使ったほうが意図が明確で分かりやすいでしょう。
 
-[source,js]
+[source,javascript]
 Promise.resolve(42).then(throwError).then(null, onRejected);
 
 === まとめ

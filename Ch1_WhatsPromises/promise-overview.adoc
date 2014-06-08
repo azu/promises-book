@@ -12,7 +12,7 @@ promiseオブジェクトを作成して利用します。
 
 promiseオブジェクトを作成するには、`Promise`コンストラクタを`new`でインスタンス化します。
 
-[source,js]
+[source,javascript]
 ----
 var promise = new Promise(function(resolve, reject) {
     // 非同期の処理
@@ -25,7 +25,7 @@ var promise = new Promise(function(resolve, reject) {
 newによって生成されたpromiseオブジェクトにはpromiseの値を *resolve(成功)* / *reject(棄却)* した時に呼ばれる
 コールバックを登録するため `promise.then()` というインスタンスメソッドがあります。
 
-[source,js]
+[source,javascript]
 ----
 promise.then(onFulfilled, onRejected)
 ----
@@ -41,7 +41,7 @@ reject(失敗)した時::
 また、エラー処理だけを書きたい場合には `promise.then(undefined, onRejected)` と同じ意味である
 `promise.catch()`を使うことが出来ます。
 
-[source,js]
+[source,javascript]
 promise.catch(onRejected)
 
 
@@ -56,7 +56,7 @@ promise.catch(onRejected)
 
 以下のようなサンプルコードを見てみましょう。
 
-[source,js]
+[source,javascript]
 [[promise-workflow.js]]
 .promise-workflow.js
 ----
@@ -78,7 +78,7 @@ include::embed/embed-promise-workflow.js[]
 もちろん、`promise.then(onFulfilled, onRejected)` というように、
 `catch` を使わずに `then` は以下のように2つのコールバックを設定することでもほぼ同様の動作になります。
 
-[source,js]
+[source,javascript]
 ----
 asyncFunction().then(function (value) {
     console.log(value);

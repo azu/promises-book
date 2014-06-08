@@ -13,7 +13,7 @@
 
 === コールバックで複数の非同期処理
 
-[source,js]
+[source,javascript]
 [[multiple-xhr-callback.js]]
 .multiple-xhr-callback.js
 ----
@@ -22,7 +22,7 @@ include::embed/embed-multiple-xhr-callback.js[]
 
 上記のコードを実際に実行して、XHRで取得した結果を得るには次のようになると思います。
 
-[source,js]
+[source,javascript]
 ----
 main(function(error, results){
     console.log(results);
@@ -38,7 +38,7 @@ main(function(error, results){
 `jsonParse` 関数を使うときに `bind` を使うことで、部分適応を使って無名関数を減らすようにしています。
 (コールバックスタイルでも関数の処理などをちゃんと分離すれば、無名関数の使用も減らせると思います)
 
-[source,js]
+[source,javascript]
 ----
 jsonParse.bind(null, callback);
 // は以下のように置き換えるのと殆ど同じ
@@ -62,7 +62,7 @@ function bindJSONParse(error, value){
 
 <<promise.then,`.then`>> を使った場合は、コールバックスタイルと完全に同等というわけではないですが以下のように書けると思います。
 
-[source,js]
+[source,javascript]
 [[multiple-xhr.js]]
 ----
 include::embed/embed-multiple-xhr.js[]
@@ -70,7 +70,7 @@ include::embed/embed-multiple-xhr.js[]
 
 上記のコードを実際に実行して、XHRで取得した結果を得るには次のようになると思います。
 
-[source,js]
+[source,javascript]
 ----
 main().then(function (value) {
     console.log(value);

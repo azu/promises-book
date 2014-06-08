@@ -17,7 +17,7 @@ Web Notifications APIについて詳しくは以下を参照して下さい。
 
 Web Notifications APIについて簡単に解説すると、以下のように`new Notification`をすることで通知メッセージが表示できます。
 
-[source,js]
+[source,javascript]
 new Notification("Hi!");
 
 しかし、通知を行うためには、`new Notification`をする前にユーザーに許可を取る必要があります。
@@ -37,7 +37,7 @@ Firefoxだと許可、不許可に加えて __永続__ か __セッション限�
 
 コールバックを受け付けることから分かるように、この許可、不許可は非同期的に行われます。
 
-[source,js]
+[source,javascript]
 ----
 Notification.requestPermission(function (status) {
     // statusに"granted" or "denied"が入る
@@ -74,7 +74,7 @@ Promiseで書けそうな目処が見えた所で、まずはコールバック�
 
 まずは先ほどのWeb Notification APIのラッパー関数をコールバックスタイルで書くと次のように書くことが出来ます。
 
-[source,js]
+[source,javascript]
 [[notification-callback.js]]
 .notification-callback.js
 ----
@@ -83,7 +83,7 @@ include::embed/embed-notification-callback.js[]
 
 これを利用する場合は以下のように書くことができます
 
-[source,js]
+[source,javascript]
 ----
 // 第二引数は`Notification`に渡すオプションオブジェクト
 notifyMessage("Hi!", {}, function (error, notification) {
@@ -98,7 +98,7 @@ notifyMessage("Hi!", {}, function (error, notification) {
 コールバックスタイルでは、許可がない場合は`error`に値が入り、
 許可がある場合は通知が行われて`notification`に値が入ってくるという感じにしました。
 
-[source,js]
+[source,javascript]
 .コールバック関数はエラーとnotificationオブジェクトを受け取る
 ----
 function callback(error, notification){
@@ -113,7 +113,7 @@ function callback(error, notification){
 先ほどのコールバックスタイルの`notifyMessage`とは別に、
 promiseオブジェクトを返す`notifyMessageAsPromise`を定義してみます。
 
-[source,js]
+[source,javascript]
 [[notification-as-promise.js]]
 .notification-as-promise.js
 ----
@@ -122,7 +122,7 @@ include::embed/embed-notification-as-promise.js[]
 
 これを使うと`"H!"`というメッセージを通知したい場合以下のように書くことが出来ます。
 
-[source,js]
+[source,javascript]
 ----
 notifyMessageAsPromise("Hi!").then(function (notification) {
     console.log(notification);// 通知のオブジェクト
@@ -179,7 +179,7 @@ Promiseが使える環境を前提とする::
 <<Thenable,thenable>>というのは`.then`というメソッドを持ってるオブジェクトのことを言いましたね。
 次は<<notification-callback.js>>に`thenable`を返すメソッドを追加してみましょう。
 
-[source,js]
+[source,javascript]
 [[notification-thenable.js]]
 .notification-thenable.js
 ----
@@ -196,7 +196,7 @@ include::embed/embed-notification-thenable.js[]
 
 この`thenable`を使う場合は以下のように`Promise.resolve(thenable)`を使ってpromiseオブジェクトとして利用できます。
 
-[source,js]
+[source,javascript]
 ----
 Promise.resolve(notifyMessage.thenable("message")).then(function (notification) {
     console.log(notification);// 通知のオブジェクト
@@ -258,7 +258,7 @@ Q promiseオブジェクトには `promise.finally(callback)` や `promise.nodei
 ES6 PromisesのpromiseオブジェクトをQ promiseオブジェクトに変換するときに使われるのが、
 まさにこのThenableです。
 
-[source,js]
+[source,javascript]
 .thenableを使ってQ promiseオブジェクトにする
 ----
 var Q = require("Q");

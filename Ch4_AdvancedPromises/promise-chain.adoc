@@ -24,7 +24,7 @@ Promiseは`then`や`catch`等のメソッドを繋げて書いていきます。
 また、今回の例は見た目のわかりやすさを重視しているため、
 現実的にはあまり有用なケースとは言えないかもしれません。
 
-[source,js]
+[source,javascript]
 [[fs-method-chain.js]]
 .fs-method-chain.js
 ----
@@ -34,7 +34,7 @@ include::src/promise-chain/fs-method-chain.js[]
 このモジュールは以下のようにread -> transform -> writeという流れを
 メソッドチェーンで表現することができます。
 
-[source,js]
+[source,javascript]
 ----
 var File = require("./fs-method-chain");
 var inputFilePath = "input.txt",
@@ -54,7 +54,7 @@ File.read(inputFilePath)
 次に先ほどの<<fs-method-chain.js,メソッドチェーン>>をインターフェースはそのまま維持して
 内部的にPromiseを使った処理にしてみたいと思います。
 
-[source,js]
+[source,javascript]
 [[fs-promise-chain.js]]
 .fs-promise-chain.js
 ----
@@ -66,7 +66,7 @@ include::src/promise-chain/fs-promise-chain.js[]
 
 そのため、先ほどのコードで`require`するモジュールを変更しただけで動作します。
 
-[source,js]
+[source,javascript]
 ----
 var File = require("./fs-promise-chain");
 var inputFilePath = "input.txt",
@@ -83,7 +83,7 @@ File.read(inputFilePath)
 
 これはどういうことなのかというと、以下のように擬似的に展開してみると分かりやすいでしょう。
 
-[source,js]
+[source,javascript]
 ----
 var File = require("./fs-promise-chain");
 File.read(inputFilePath)
@@ -129,7 +129,7 @@ Promise版は<<promise-is-always-async,コラム: Promiseは常に非同期?>>�
 <<fs-promise-chain.js,Promise版>> では内部で利用するpromiseオブジェクトの
 `then`と`catch`へのエイリアスを用意してあるため、通常のpromiseと同じように`catch`によってエラーハンドリングが行えます。
 
-[source,js]
+[source,javascript]
 .fs-promise-chainでのエラーハンドリング
 ----
 var File = require("./fs-promise-chain");
@@ -155,7 +155,7 @@ http://nodejs.org/api/stream.html[Stream] を使うと、
 `this.lastValue`のような値を保持する必要がなくなる事や大きなファイルの扱いが改善したり、
 上記の例に比べるとより高速に処理できる可能性が高いと思います。
 
-[source,js]
+[source,javascript]
 .streamによるread->transform->write
 ----
 readableStream.pipe(transformStream).pipe(writableStream);
@@ -187,7 +187,7 @@ https://github.com/petkaantonov/bluebird/blob/master/API.md#promisification[Prom
 
 これを利用すると以下のように、その場でpromise版のメソッドを追加して利用できるようになります。
 
-[source,js]
+[source,javascript]
 ----
 var fs = Promise.promisifyAll(require("fs"));
 
@@ -206,7 +206,7 @@ fs.readFileAsync("myfile.js", "utf8").then(function(contents){
 JavaScriptにはネイティブにもDOMやString等メソッドチェーンが行える機能が多くあります。
 `Array`もその一つで`map`や`filter`等の高階関数を受け取って処理はメソッドチェーンが利用しやすい機能です。
 
-[source,js]
+[source,javascript]
 [[array-promise-chain.js]]
 .array-promise-chain.js
 ----
@@ -216,7 +216,7 @@ include::src/promise-chain/array-promise-chain.js[]
 ネイティブのArrayと`ArrayAsPromise`を使った場合の違いは
 <<array-promise-chain.js,上記のコード>>のテストを見てみるのが分かりやすいでしょう。
 
-[source,js]
+[source,javascript]
 [[array-promise-chain-test.js]]
 .array-promise-chain-test.js
 ----

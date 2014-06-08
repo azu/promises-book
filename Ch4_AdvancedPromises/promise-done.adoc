@@ -17,7 +17,7 @@
 
 実際にdoneを使ったコードを見てみると`done`の挙動が分かりやすいと思います。
 
-[source,js]
+[source,javascript]
 [[promise-done-example.js]]
 .promise-done-example.js
 ----
@@ -29,7 +29,7 @@ include::embed/embed-promise-done-example.js[]
 
 実装については後で解説しますが、まずは`then`を使った場合と`done`を使ったものを比較してみます。
 
-[source,js]
+[source,javascript]
 .thenを使った場合
 ----
 var promise = Promise.resolve();
@@ -67,7 +67,7 @@ Promiseには強力なエラーハンドリング機能がありますが、
 
 次のような、promiseオブジェクトを返す関数を考えてみましょう。
 
-[source,js]
+[source,javascript]
 [[json-promise.js]]
 .json-promise.js
 ----
@@ -79,7 +79,7 @@ include::embed/embed-json-promise.js[]
 以下のように使うことができ、`JSON.parse`はパースに失敗すると例外を投げるので、
 それを`catch`することが出来ます。
 
-[source,js]
+[source,javascript]
 ----
 var string = "jsonではない文字列";
 JSONPromise(string).then(function (object) {
@@ -92,7 +92,7 @@ JSONPromise(string).then(function (object) {
 ちゃんと`catch`していれば何も問題がないのですが、その処理を忘れてしまうというミスを
 した時にどこでエラーが発生してるのかわからなくなるというヒューマンエラーを助長させる面があります。
 
-[source,js]
+[source,javascript]
 .catchによるエラーハンドリングを忘れてしまった場合
 ----
 var string = "jsonではない文字列";
@@ -105,7 +105,7 @@ JSONPromise(string).then(function (object) {
 `JSON.parse`のような分かりやすい例の場合はまだ良いですが、
 メソッドをtypoしたことによるSyntax Errorなどはより深刻な問題となりやすいです。
 
-[source,js]
+[source,javascript]
 .typoによるエラー
 ----
 var string = "{}";
@@ -155,7 +155,7 @@ Promiseにおける `done` は先程のエラーの握りつぶしを避ける�
 `done`はPromiseの上に実装することが出来るので、
 `Promise.prototype.done`というPromiseのprototype拡張として実装してみましょう。
 
-[source,js]
+[source,javascript]
 [[promise-prototype-done.js]]
 .promise-prototype-done.js
 ----
@@ -164,7 +164,7 @@ include::lib/promise-prototype-done.js[]
 
 setTimeoutの中でthrowをすることで、外へそのまま例外を投げることを利用しています。
 
-[source,js]
+[source,javascript]
 .setTimeoutのコールバック内での例外
 ----
 try{

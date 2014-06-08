@@ -6,7 +6,7 @@ promiseオブジェクトがすぐにresolveされるので、`.then` に登録�
 
 しかし、実際には`.then`に登録した関数が呼ばれるのは、非同期となります。
 
-[source,js]
+[source,javascript]
 ----
 var promise = new Promise(function(resolve){
     console.log("inner promise");// <1>

@@ -42,7 +42,7 @@ Promiseでは`then`で登録した関数が呼ばれるタイミングは常に�
 
 まずはコールバックスタイルと同じようにPromiseのテストを書いてみましょう。
 
-[source,js]
+[source,javascript]
 .basic-test.js
 ----
 include::test/basic-test.js[]
@@ -53,7 +53,7 @@ Mochaは`it`の仮引数に`done`という感じで指定してあげると、
 
 Mochaでの非同期テストは以下のような流れになっています。
 
-[source,js]
+[source,javascript]
 [[callback-style-test]]
 ----
 it("should use `done` for test", function (done) {
@@ -74,7 +74,7 @@ it("should use `done` for test", function (done) {
 
 次に、Promiseのテストの方を見てみましょう。
 
-[source,js]
+[source,javascript]
 ----
 it("should use `done` for test?", function (done) {
     var promise = Promise.resolve(1);// <1>
@@ -97,7 +97,7 @@ promiseオブジェクトは常に非同期で処理されるため、テスト�
 
 しかし、先ほどのテストコードでは`assert`が失敗した場合に問題が発生します。
 
-[source,js]
+[source,javascript]
 [[promise-assert-fail]]
 .間違ったテストの書き方
 ----
@@ -125,7 +125,7 @@ Promiseがそれをキャッチしてしまい、テストフレームワーク�
 <<promise-assert-fail,`assert`が失敗してる例>>を改善して、
 `assert`が失敗した場合にちゃんとテストが失敗となるようにしてみましょう。
 
-[source,js]
+[source,javascript]
 [[promise-assert-fail-fixed]]
 .ちゃんとテストが失敗する例
 ----

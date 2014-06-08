@@ -12,7 +12,7 @@ Promiseのテストの場合はコールバックとして`done()`を呼ぶ代�
 では、実際にどのように書くかの例を見て行きたいと思います。
 
 
-[source,js]
+[source,javascript]
 [[mocha-promise-test.js]]
 .mocha-promise-test.js
 ----
@@ -28,7 +28,7 @@ include::test/mocha-promise-test.js[]
 
 この書き方をした場合、`assert`が失敗した場合はもちろんテストが失敗します。
 
-[source,js]
+[source,javascript]
 ----
 it("should be fail", function () {
     return Promise.resolve().then(function () {
@@ -52,7 +52,7 @@ MochaがPromiseのテストをサポートしているため、この書き方�
 
 例えば、以下はある条件だとRejectedなpromiseオブジェクトを返す`mayBeRejected()`のテストコードです。
 
-[source,js]
+[source,javascript]
 [[mocha-rejected-promise-test]]
 .エラーオブジェクトをテストしたい
 ----
@@ -81,7 +81,7 @@ it("is bad pattern", function () {
 このテストで問題になるのは`mayBeRejected()`で返されたpromiseオブジェクトが
 **FulFilledとなった場合**に、必ずテストがパスしてしまうという問題が発生します。
 
-[source,js]
+[source,javascript]
 ----
 function mayBeRejected(){ // <1>
     return Promise.resolve();
@@ -100,7 +100,7 @@ it("is bad pattern", function () {
 これを解消しようとして、`.catch`の前に`.then`を入れて、
 `.then`が呼ばれたらテストを失敗にしたいと考えるかもしれません。
 
-[source,js]
+[source,javascript]
 ----
 function failTest() { // <1>
     throw new Error("Expected promise to be rejected but it was fulfilled");
@@ -142,7 +142,7 @@ Rejectedとなった場合::
 
 つまり、Fulfilled、Rejected 両方の状態について、テストがどうなってほしいかを明示する必要があるわけです。
 
-[source,js]
+[source,javascript]
 ----
 function mayBeRejected() {
     return Promise.resolve();
@@ -182,7 +182,7 @@ promiseオブジェクトがFulfilled、Rejectedどちらの状態になるこ�
 
 しかし、Rejectedのテストであることを明示するために、以下のように書くのはあまり直感的ではないと思います。
 
-[source,js]
+[source,javascript]
 ----
 promise.then(failTest, function(error){
     // assertでerrorをテストする

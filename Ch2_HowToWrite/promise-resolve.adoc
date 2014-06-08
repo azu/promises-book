@@ -13,7 +13,7 @@
 
 例えば、 `Promise.resolve(42);` というのは下記のコードのシンタックスシュガーです。
 
-[source,js]
+[source,javascript]
 ----
 new Promise(function(resolve){
     resolve(42);
@@ -25,7 +25,7 @@ new Promise(function(resolve){
 `Promise.resolve(value);` で返ってくる値も同様にpromiseオブジェクトなので、
 以下のように続けて `.then` を使った処理を書くことが出来ます。
 
-[source,js]
+[source,javascript]
 ----
 Promise.resolve(42).then(function(value){
     console.log(value);
@@ -53,7 +53,7 @@ https://api.jquery.com/jQuery.ajax/[jQuery.ajax()]の返り値もthenableです�
 `jQuery.ajax()`の返り値は http://api.jquery.com/jQuery.ajax/#jqXHR[jqXHR Object] というもので、
 このオブジェクトは`.then`というメソッドを持っているためです。
 
-[source,js]
+[source,javascript]
 $.ajax('/json/comment.json');// => `.then`を持つオブジェクト
 
 このthenableなオブジェクトを`Promise.resolve`ではpromiseオブジェクトにすることが出来ます。
@@ -61,7 +61,7 @@ $.ajax('/json/comment.json');// => `.then`を持つオブジェクト
 promiseオブジェクトにすることができれば、`then`や`catch`といった、
 <<es6-promises,ES6 Promises>>が持つ機能をそのまま利用することが出来るようになります。
 
-[source,js]
+[source,javascript]
 .thenableをpromiseオブジェクトにする
 ----
 var promise = Promise.resolve($.ajax('/json/comment.json'));// => promiseオブジェクト

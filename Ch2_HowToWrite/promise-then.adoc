@@ -6,7 +6,7 @@
 その中で`.then().catch()`とメソッドチェーンで繋げて書いていたことからもわかるように、
 Promiseではいくらでもメソッドチェーンを繋げて処理を書いていくことが出来ます。
 
-[source,js]
+[source,javascript]
 .promiseはメソッドチェーンで繋げて書ける
 ----
 aPromise.then(function taskA(value){
@@ -38,7 +38,7 @@ promise chain - すなわちメソッドチェーンが短い事は良いこと�
 
 次のようなpromise chainを見てみましょう。
 
-[source,js]
+[source,javascript]
 [[promise-then-catch-flow.js]]
 .promise-then-catch-flow.js
 ----
@@ -91,7 +91,7 @@ image::img/promise-taska-rejected-flow.png[]
 
 コードにしてみると以下のようになります。
 
-[source,js]
+[source,javascript]
 [[promise-then-taska-throw.js]]
 .promise-then-taska-throw.js
 ----
@@ -117,7 +117,7 @@ include::src/promise-then-taska-throw.js[]
 
 実際に例を見てみましょう。
 
-[source,js]
+[source,javascript]
 [[promise-then-passing-value.js]]
 .promise-then-passing-value.js
 ----

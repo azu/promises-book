@@ -7,7 +7,7 @@
 
 例えば、 `Promise.reject(new Error("エラー"))` というのは下記のコードのシンタックスシュガーです。
 
-[source,js]
+[source,javascript]
 ----
 new Promise(function(resolve,reject){
     reject(new Error("エラー"));
@@ -16,7 +16,7 @@ new Promise(function(resolve,reject){
 
 返り値のpromiseオブジェクトに対して、thenの`onRejected`に設定された関数にエラーオブジェクトが渡ります。
 
-[source,js]
+[source,javascript]
 ----
 Promise.reject(new Error("BOOM!")).catch(function(error){
     console.log(error);

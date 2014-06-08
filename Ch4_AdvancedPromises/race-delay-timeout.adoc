@@ -16,7 +16,7 @@ Promise.raceを使ったタイムアウトの実装を学んでいきます。
 
 まずは単純に`setTimeout`をPromiseでラップした関数を作ってみましょう。
 
-[source,js]
+[source,javascript]
 [[delayPromise.js]]
 .delayPromise.js
 ----
@@ -26,7 +26,7 @@ include::embed/embed-delayPromise.js[]
 `delayPromise(ms)` は引数で指定したミリ秒後にonFulfilledを呼ぶpromiseオブジェクトを返すので、
 通常の`setTimeout`を直接使ったものと比較すると以下のように書けるだけの違いです。
 
-[source,js]
+[source,javascript]
 ----
 setTimeout(function () {
     alert("100ms 経ったよ!");
@@ -44,7 +44,7 @@ delayPromise(100).then(function () {
 `Promise.race`について簡単に振り返ると、
 以下のようにどれか一つでもpromiseオブジェクトが解決状態になったら次の処理を実行する静的メソッドでした。
 
-[source,js]
+[source,javascript]
 ----
 include::../Ch2_HowToWrite/embed/embed-promise-race-other.js[]
 ----
@@ -52,7 +52,7 @@ include::../Ch2_HowToWrite/embed/embed-promise-race-other.js[]
 先ほどの<<delayPromise.js,delayPromise>>と別のpromiseオブジェクトを、
 `Promise.race`によって競争させることで簡単にタイムアウトが実装出来ます。
 
-[source,js]
+[source,javascript]
 [[simple-timeout-promise.js]]
 .simple-timeout-promise.js
 ----
@@ -64,7 +64,7 @@ promiseオブジェクトとタイムアウトの時間を受け取り、`Promis
 
 `timeoutPromise` を使うことで以下のようにタイムアウト処理を書くことが出来るようになります。
 
-[source,js]
+[source,javascript]
 ----
 var taskPromise = new Promise(function(resolve){
     // 何らかの処理
@@ -95,7 +95,7 @@ ECMAScript5では完璧に`Error`を継承したものを作る事は不可能�
 ====
 ECMAScript6では`class`構文を使うことで内部的にも正確に継承を行うことが出来ます。
 
-[source,js]
+[source,javascript]
 ----
 class MyError extends Error{
     // Errorを継承したオブジェクト
@@ -107,7 +107,7 @@ class MyError extends Error{
 `error instanceof TimeoutError` というように利用できる`TimeoutError`を定義すると
 以下のようになります。
 
-[source,js]
+[source,javascript]
 [[TimeoutError.js]]
 .TimeoutError.js
 ----
@@ -118,7 +118,7 @@ include::embed/embed-TimeoutError.js[]
 
 使い方は通常の`Error`オブジェクトと同じで以下のように`throw`するなどして利用できます。
 
-[source,js]
+[source,javascript]
 ----
 var timeoutError = new TimeoutError("timeout!")
 var promise = new Promise(function(){
@@ -149,7 +149,7 @@ XHRのキャンセル自体は`XMLHttpRequest`オブジェクトの `abort()` �
 `abort()` メソッドを外から呼べるようにするために、今までのセクションにもでてきた<<xhr-promise.js,`getURL`>>を少し拡張して、
 XHRを包んだpromiseオブジェクトと共にそのXHRを中止するメソッドを持つオブジェクトを返すようにしています。
 
-[source,js]
+[source,javascript]
 [[delay-race-cancel.js]]
 .delay-race-cancel.js
 ----
@@ -169,7 +169,7 @@ include::embed/embed-delay-race-cancel.js[]
 
 これらの要素を全てまとめると次のように書けます。
 
-[source,js]
+[source,javascript]
 [[delay-race-cancel-play.js]]
 .delay-race-cancel-play.js
 ----
@@ -204,7 +204,7 @@ promiseオブジェクトは値を抽象化したオブジェクトであるた�
 モジュールの作り方は色々作法(AMD,CommonJS,ES6 module etc..)があるので
 ここでは、先ほどの`cancelableXHR`をNode.jsのモジュールとして作りなおしてみます。
 
-[source,js]
+[source,javascript]
 [[cancelableXHR.js]]
 .cancelableXHR.js
 ----
@@ -214,7 +214,7 @@ include::lib/cancelableXHR.js[]
 使い方もシンプルに`createXHRPromise`でXHRのpromiseオブジェクトを作成して、
 そのXHRを`abort`したい場合は`abortPromise(promise)`にpromiseオブジェクトを渡すという感じで利用できるようになります。
 
-[source,js]
+[source,javascript]
 ----
 var cancelableXHR = require("./cancelableXHR");
 

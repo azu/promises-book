@@ -13,7 +13,7 @@ Promiseは非同期処理を抽象化したオブジェクトとそれを操作�
 
 一方、JavaScriptにおける非同期処理といえば、コールバックを利用する場合が多いと思います。
 
-[source,js]
+[source,javascript]
 .コールバックを使った非同期処理の一例
 ----
 getAsync("fileA.txt", function(error, result){// <1>
@@ -33,7 +33,7 @@ Node.js等JavaScriptでのコールバック関数の第一引数には`Error`�
 Promiseでは、このような非同期に対するオブジェクトとルールを仕様化して、
 統一的なインターフェースで書くようになっており、それ以外の書き方は出来ないようになっています。
 
-[source,js]
+[source,javascript]
 .Promiseを使った非同期処理の一例
 ----
 var promise = getAsyncPromise("fileA.txt"); // <1>

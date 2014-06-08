@@ -8,7 +8,7 @@
 
 本当に新しいpromiseオブジェクトを返しているのか確認してみましょう。
 
-[source,js]
+[source,javascript]
 ----
 var aPromise = new Promise(function (resolve) {
     resolve(100);
@@ -37,7 +37,7 @@ image::img/then_catch.png[Then Catch flow]
 また、`then`は新しいオブジェクトを作って返すということがわかっていれば、
 次の`then`の使い方では意味が異なる事に気づくでしょう。
 
-[source,js]
+[source,javascript]
 ----
 // <1>
 var aPromise = new Promise(function (resolve) {
@@ -78,7 +78,7 @@ bPromise.then(function (value) {
 
 1の書き方により発生するアンチパターンとしては以下のようなものが有名です。
 
-[source,js]
+[source,javascript]
 .✘ `then`の間違った使い方
 ----
 function anAsyncCall() {
@@ -97,7 +97,7 @@ function anAsyncCall() {
 これは`promise.then`によって新たに作られたpromiseオブジェクトを返すようにすることで、
 2のようにpromise chainがつなげるようにするべきなので、次のように修正することが出来ます。
 
-[source,js]
+[source,javascript]
 .`then`で作成したオブジェクトを返す
 ----
 function anAsyncCall() {

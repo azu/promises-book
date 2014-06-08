@@ -6,7 +6,7 @@ Promiseコンストラクタや、`then`で実行される関数は基本的に�
 
 Promiseの中で`throw`による例外が発生した場合は自動的に`try...catch`され、そのpromiseオブジェクトはRejectedとなります。
 
-[source,js]
+[source,javascript]
 ----
 var promise = new Promise(function(resolve ,reject){
     throw new Error("message");
@@ -21,7 +21,7 @@ promise.catch(function(error){
 
 先ほどのコードは以下のように書くことが出来ます。
 
-[source,js]
+[source,javascript]
 ----
 var promise = new Promise(function(resolve ,reject){
     reject(new Error("message"));
@@ -48,7 +48,7 @@ image::img/chrome_on_caught_exception.png[Pause On Caught Exceptions]
 
 この機能を有効にしていた場合、以下のように`throw`するとbreakしてしまいます。
 
-[source,js]
+[source,javascript]
 ----
 var promise = new Promise(function(resolve ,reject){
     throw new Error("message");
@@ -65,7 +65,7 @@ Promiseコンストラクタの中では`reject`という関数そのものが�
 
 では、次のような`then`の中でrejectしたい場合はどうすればいいでしょうか?
 
-[source,js]
+[source,javascript]
 ----
 var promise = Promise.resolve();
 promise.then(function (value) {
@@ -97,7 +97,7 @@ Promiseを使ったタイムアウト処理の実装については <<race-delay
 以下のように書いた場合、`then` に登録するコールバック関数で返すpromiseオブジェクトの状態によって、
 次の`then`に登録されたonFulfilled、onRejectedどちらが呼ばれるかを決めることが出来ます。
 
-[source,js]
+[source,javascript]
 ----
 "use strict";
 var promise = Promise.resolve();
@@ -113,7 +113,7 @@ promise.then(function () {
 つまり、この`retPromise`がRejectedになった場合は、`onRejected`が呼び出されるので、
 `throw`を使わなくても`then`の中でrejectすることが出来ます。
 
-[source,js]
+[source,javascript]
 ----
 "use strict";
 var onRejected = console.error.bind(console);
@@ -128,7 +128,7 @@ promise.then(function () {
 
 これは、<<Promise.reject>> を使うことでもっと簡潔に書くことが出来ます。
 
-[source,js]
+[source,javascript]
 ----
 "use strict";
 var onRejected = console.error.bind(console);

@@ -10,16 +10,21 @@
 `Promise.all`に通信を抽象化したpromiseオブジェクトの配列を渡すことで、
 全ての通信が完了(FulFilledまたRejected)した時に、次の`.then`が呼び出すこと事が出来ます。
 
-[source,js]
+[source,javascript]
 [[promise-all-xhr.js]]
 .promise-all-xhr.js
 ----
 include::embed/embed-promise-all-xhr.js[]
+main().then(function (value) {
+    console.log(value);
+}).catch(function(error){
+    console.log(error);
+});
 ----
 
 実行方法は <<xhr-promise.js, 前回のもの>> と同じで以下のようにして実行出来ます。
 
-[source,js]
+[source,javascript]
 ----
 main().then(function (value) {
     console.log(value);
@@ -33,7 +38,7 @@ main().then(function (value) {
 * mainの処理がスッキリしている
 * Promise.all は promiseオブジェクトの配列を扱っている
 
-[source,js]
+[source,javascript]
 Promise.all([request.comment(), request.people()]);
 
 というように処理を書いた場合は、`request.comment()` と `request.people()` は同時に実行されますが、
@@ -41,7 +46,7 @@ Promise.all([request.comment(), request.people()]);
 
 つまり、この場合に次の`.then`に渡される結果の配列は [comment, people]の順番になることが保証されています。
 
-[source,js]
+[source,javascript]
 ----
 main().then(function (results) {
     console.log(results); // [comment, people]の順番
@@ -51,7 +56,7 @@ main().then(function (results) {
 <<Promise.all, `Promise.all`>> に渡したpromiseオブジェクトが同時に実行されてるのは、
 次のようなタイマーを使った例を見てみると分かりやすいです。
 
-[source,js]
+[source,javascript]
 [[promise-all-timer.js]]
 .promise-all-timer.js
 ----
@@ -61,7 +66,7 @@ include::embed/embed-promise-all-timer.js[]
 `promisedMapping` に数値の配列を渡すと、
 数値をそのまま`setTimeout`に設定したpromiseオブジェクトの配列を返す関数です。
 
-[source,js]
+[source,javascript]
 promisedMapping([1, 2, 4, 8, 16, 32]);
 
 この場合は、1,2,4,8,16,32 ms後にそれぞれresolveされるpromiseオブジェクトの配列を作って返します。

@@ -21,7 +21,7 @@
 
 先ほどの`.then`を使ったコードはRejectedを期待したテストとなっていますね。
 
-[source,js]
+[source,javascript]
 ----
 promise.then(failTest, function(error){
     // assertでerrorをテストする
@@ -49,7 +49,7 @@ Fulfilled or Rejected どちらの状態になって欲しいかを明示する�
 
 [[shouldRejected-test.js]]
 .shouldRejected-test.js
-[source,js]
+[source,javascript]
 ----
 include::embed/embed-shouldRejected-test.js[]
 ----
@@ -67,7 +67,7 @@ include::embed/embed-shouldRejected-test.js[]
 
 `shouldRejected`使った場合、Fulfilledが呼ばれるとエラーをthrowしてテストが失敗するようになっています。
 
-[source,js]
+[source,javascript]
 ----
 promise.then(failTest, function(error){
     assert(error.message === 'human error');
@@ -87,7 +87,7 @@ image::img/promise-test.png[Promise onRejected test]
 
 [[shouldFulfilled-test.js]]
 .shouldFulfilled-test.js
-[source,js]
+[source,javascript]
 ----
 include::embed/embed-shouldFulfilled-test.js[]
 ----

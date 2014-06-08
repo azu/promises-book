@@ -3,12 +3,12 @@
 
 [[promise.then]]
 == Promise#then
-[source,js]
+[source,javascript]
 ----
 promise.then(onFulfilled, onRejected);
 ----
 
-[source,js]
+[source,javascript]
 .thenコード例
 ----
 var promise = new Promise(function(resolve, reject){
@@ -31,10 +31,10 @@ promiseオブジェクトに対してonFulfilledとonRejectedのハンドラを�
 
 [[promise.catch]]
 == Promise#catch
-[source,js]
+[source,javascript]
 promise.catch(onRejected);
 
-[source,js]
+[source,javascript]
 .catchのコード例
 ----
 var promise = new Promise(function(resolve, reject){
@@ -51,14 +51,14 @@ promise.then(function (value) {
 
 [[Promise.resolve]]
 == Promise.resolve
-[source,js]
+[source,javascript]
 ----
 Promise.resolve(promise);
 Promise.resolve(thenable);
 Promise.resolve(object);
 ----
 
-[source,js]
+[source,javascript]
 .Promise.resolveのコード例
 ----
 var taskName = "task 1"
@@ -88,10 +88,10 @@ thenableなオブジェクトを受け取った場合::
 
 [[Promise.reject]]
 == Promise.reject
-[source,js]
+[source,javascript]
 Promise.rejct(object)
 
-[source,js]
+[source,javascript]
 .Promise.rejectのコード例
 ----
 var failureStub = sinon.stub(xhr, "request").returns(Promise.reject(new Error("bad!")));
@@ -103,7 +103,7 @@ Promise.rejctに渡す値は`Error`オブジェクトとすべきである。
 
 また、Promise.resolveとは異なり、promiseオブジェクトを渡した場合も常に新たなpromiseオブジェクトを作成する。
 
-[source,js]
+[source,javascript]
 ----
 var r = Promise.reject(new Error("error"));
 r === Promise.reject(r);// false
@@ -112,10 +112,10 @@ r === Promise.reject(r);// false
 
 [[Promise.all]]
 == Promise.all
-[source,js]
+[source,javascript]
 Promise.all(promiseArray);
 
-[source,js]
+[source,javascript]
 .Promise.allのコード例
 ----
 var p1 = Promise.resolve(1),
@@ -139,10 +139,10 @@ promiseオブジェクト以外が混在している場合も扱える。
 
 [[Promise.race]]
 == Promise.race
-[source,js]
+[source,javascript]
 Promise.race(promiseArray);
 
-[source,js]
+[source,javascript]
 .Promise.raceのコード例
 ----
 var p1 = Promise.resolve(1),

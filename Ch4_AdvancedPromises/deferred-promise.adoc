@@ -34,7 +34,7 @@ jQuery.Deferredの構造を簡略化したものです。もちろんPromiseを�
 
 Promiseの上にDeferredを実装した例です。
 
-[source,js]
+[source,javascript]
 [[deferred.js]]
 .deferred.js
 ----
@@ -43,7 +43,7 @@ include::embed/embed-deferred.js[]
 
 以前Promiseを使って実装した<<xhr-promise.js,`getURL`>>をこのDeferredで実装しなおしてみます。
 
-[source,js]
+[source,javascript]
 [[xhr-deferred.js]]
 .xhr-deferred.js
 ----
@@ -56,7 +56,7 @@ promiseオブジェクトの状態をresolve、rejectすることができるメ
 
 Promiseで実装したものと見比べていきたいと思います。
 
-[source,js]
+[source,javascript]
 .xhr-promise.js
 ----
 include::../Ch1_WhatsPromises/embed/embed-xhr-promise.js[]
@@ -80,7 +80,7 @@ Deferredには特権的なメソッドを持っていることや自分で流れ
 例えば、Promiseの場合はコンストラクタの中に処理を書くことが通例なので、
 `resolve`、`reject`を呼ぶタイミングが大体みて分かります。
 
-[source,js]
+[source,javascript]
 ----
 new Promise(function (resolve, reject){
     // この中に解決する処理を書く
@@ -90,7 +90,7 @@ new Promise(function (resolve, reject){
 一方Deferredの場合は、関数的なまとまりはないのでdeferredオブジェクトを作ったところから、
 任意のタイミングで`resolve`、`reject`を呼ぶ感じになります。
 
-[source,js]
+[source,javascript]
 ----
 var deferred = new Deferred();
 

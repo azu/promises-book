@@ -21,7 +21,7 @@ promiseオブジェクトを作る流れは以下のようになっています�
 
 [[xhr-promise.js]]
 .xhr-promise.js
-[source,js]
+[source,javascript]
 ----
 include::embed/embed-xhr-promise.js[]
 ----
@@ -54,7 +54,7 @@ XHRで`onerror`のイベントが呼ばれた場合はもちろんエラーな�
 
 先ほどの作成したpromiseオブジェクトを返す関数を実際に使ってみましょう
 
-[source,js]
+[source,javascript]
 getURL("http://example.com/"); // => promiseオブジェクトが返ってくる
 
 <<promises-overview,Promises Overview>> でも簡単に紹介したようにpromiseオブジェクトは幾つかインスタンスメソッドを持っており、
@@ -76,7 +76,7 @@ resolveされたことにより_promiseオブジェクトがFulFilledの状態�
 
 **resolve**された時の処理は、 <<promise.then,`.then`>> メソッドに呼ばれたい関数を渡すことで行えます。
 
-[source,js]
+[source,javascript]
 ----
 var URL = "http://httpbin.org/get";
 getURL(URL).then(function onFulfilled(value){ // <1>
@@ -98,7 +98,7 @@ rejectされたことより_promiseオブジェクトがRejectedの状態にな�
 
 先ほどのソースにrejectされた場合の処理を追加してみましょう。
 
-[source,js]
+[source,javascript]
 ----
 var URL = "http://httpbin.org/status/500"; // <1>
 getURL(URL).then(function onFulfilled(value){
@@ -118,7 +118,7 @@ getURL(URL).then(function onFulfilled(value){
 同様の処理は以下のように書くことも出来ます。
 
 [[catch-as-alias]]
-[source,js]
+[source,javascript]
 ----
 getURL(URL).then(onFulfilled, onRejected);// <1>
 ----
