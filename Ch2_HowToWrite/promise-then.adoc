@@ -109,7 +109,7 @@ include::src/promise-then-taska-throw.js[]
 
 === promise chainでの値渡し
 
-先ほどの例ではそれぞのTaskが独立していて、ただ呼ばれているだけでした。
+先ほどの例ではそれぞれのTaskが独立していて、ただ呼ばれているだけでした。
 
 この時に、Task AがTask Bへ値を渡したい時はどうすれば良いでしょうか?
 
