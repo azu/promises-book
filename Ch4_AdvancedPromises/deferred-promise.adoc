@@ -20,7 +20,7 @@ DeferredとPromiseの関係を簡単に書くと以下のようになります�
 - Deferred は Promiseの状態を操作する特権的なメソッドを持っている
 
 .DeferredとPromise
-image::img/deferred-promise.png[DeferredとPromise]
+image::img/deferred-and-promise.png[DeferredとPromise]
 
 この関係を見れば分かると思いますが、DeferredとPromiseは比べるような関係ではなく、
 DeferredがPromiseの上に成り立っていて、DeferredがPromiseを操作するメソッドを持っています。
