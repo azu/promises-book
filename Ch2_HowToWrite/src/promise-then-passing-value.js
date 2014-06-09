@@ -1,5 +1,4 @@
 "use strict";
-"use strict";
 function doubleUp(value) {
     return value * 2
 }
