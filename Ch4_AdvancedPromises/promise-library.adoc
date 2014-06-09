@@ -79,7 +79,7 @@ Q と Bluebird どちらのライブラリもブラウザでも動作する他�
 
 * https://github.com/kriskowal/q/wiki/API-Reference[API Reference · kriskowal/q Wiki]
 
-QのドキュメントにはjQueryが持つDeferredの仕組みとどのように違うか、移行する場合の対応メソッドについても
+QのドキュメントにはjQueryが持つDeferredの仕組みとどのように違うのか、移行する場合の対応メソッドについても
 https://github.com/kriskowal/q/wiki/Coming-from-jQuery[Coming from jQuery] にまとめられています。
 
 * https://github.com/petkaantonov/bluebird/blob/master/API.md[bluebird/API.md at master · petkaantonov/bluebird]
