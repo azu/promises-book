@@ -174,7 +174,7 @@ Promiseが使える環境を前提とする::
 本題に戻り<<Thenable,Thenable>>はここでいう**コールバックでも`Promise`でも使えるようにする**という事を
 実現するのに役立つ概念です。
 
-=== Web Notifications As Thanable
+=== Web Notifications As Thenable
 
 <<Thenable,thenable>>というのは`.then`というメソッドを持ってるオブジェクトのことを言いましたね。
 次は<<notification-callback.js>>に`thenable`を返すメソッドを追加してみましょう。
@@ -224,15 +224,15 @@ promiseオブジェクトとして利用する方法について学びました�
 
 Callback -- Thenable -- Promise
 
-Thanableスタイルは、コールバックスタイルとPromiseスタイルの中間的な表現で、
+Thenableスタイルは、コールバックスタイルとPromiseスタイルの中間的な表現で、
 ライブラリが公開するAPIとしては中途半端なためあまり見かけることがないと思います。
 
-Thanable自体は`Promise`という機能に依存してはいませんが、Promise以外からの利用方法は特にないため、
+Thenable自体は`Promise`という機能に依存してはいませんが、Promise以外からの利用方法は特にないため、
 間接的にはPromiseに依存しています。
 
 また、使うためには利用者が`Promise.resolve(thenable)`について理解している必要があるため、
 ライブラリの公開APIとしては難しい部分があります。
-Thanable自体は公開APIより、内部的に使われてるケースが多いでしょう。
+Thenable自体は公開APIより、内部的に使われてるケースが多いでしょう。
 
 [NOTE]
 ====
@@ -284,4 +284,4 @@ Q(promise).then(function(value){
 Thenableという共通の概念を使うことでライブラリ間(もちろんネイティブPromiseも含めて)で相互にpromiseオブジェクトを変換することが出来ます。
 
 このようにThenableが使われる所の多くはライブラリ内部の実装であるため、あまり目にする機会はないかもしれません。
-しかしこのThanableはPromiseでも大事な概念であるため知っておくとよいでしょう。
+しかしこのThenableはPromiseでも大事な概念であるため知っておくとよいでしょう。
