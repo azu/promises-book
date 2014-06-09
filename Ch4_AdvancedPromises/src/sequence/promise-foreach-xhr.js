@@ -14,7 +14,7 @@ function main() {
         return results;
     }
 
-    // [] は記録する初期値を部分適応してる
+    // [] は記録する初期値を部分適用してる
     var pushValue = recordValue.bind(null, []);
     // promiseオブジェクトを返す関数の配列
     var tasks = [request.comment, request.people];

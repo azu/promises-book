@@ -13,7 +13,7 @@ function main() {
         results.push(value);
         return results;
     }
-    // [] は記録する初期値を部分適応してる
+    // [] は記録する初期値を部分適用してる
     var pushValue = recordValue.bind(null, []);
     return request.comment()
         .then(pushValue)
