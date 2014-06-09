@@ -24,11 +24,11 @@ include::embed/embed-then-throw-error.js[]
 `badMain` がなぜ良くないかというと、`.then`の第二引数にはエラー処理を書くことが出来ますが、
 そのエラー処理は第一引数の`onFulfilled`で指定した関数内で起きたエラーをキャッチする事は出来ません。
 
-つまり、この場合、 `theError` でエラーがおきても、`onRejected` に指定した関数は呼ばれることなく、
+つまり、この場合、 `throwError` でエラーがおきても、`onRejected` に指定した関数は呼ばれることなく、
 どこでエラーが発生したのかわからなくなってしまいます。
 
-それに対して、 `goodMain` は `theError`->`onRejected`となるように書かれています。
-この場合は `theError` でエラーが発生しても、次のchainである`.catch`が呼ばれるため、エラーハンドリングを行う事が出来ます。
+それに対して、 `goodMain` は `throwError`->`onRejected`となるように書かれています。
+この場合は `throwError` でエラーが発生しても、次のchainである`.catch`が呼ばれるため、エラーハンドリングを行う事が出来ます。
 
 `.then`のonRejectedが扱う処理は、その(またはそれ以前の)promiseオブジェクトに対してであって、
 `.then`に書かれたonFulfilledは対象ではないためこのような違いが生まれます。
