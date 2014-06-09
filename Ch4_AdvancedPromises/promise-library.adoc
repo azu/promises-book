@@ -65,7 +65,7 @@ https://github.com/yahoo/ypromise[yahoo/ypromise]::
 
 Promiseを仕様どおりに実装したものに、加えて独自のメソッド等を提供してくれるライブラリです。
 
-Promise拡張ライブラリは本当に沢山あるのですが、以下の2つが著名なライブラリを紹介します。
+Promise拡張ライブラリは本当に沢山ありますが、以下の2つの著名なライブラリを紹介します。
 
 https://github.com/kriskowal/q[kriskowal/q]::
     `Q`と呼ばれるPromisesやDeferredsを実装したライブラリです。
