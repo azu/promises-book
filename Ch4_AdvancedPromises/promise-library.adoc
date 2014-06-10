@@ -17,7 +17,7 @@ ifeval::["{backend}" == "html5"]
 ++++
 endif::[]
 
-Promiseのライブラリを探すときに、一つ目印になる言葉として<<promises-aplus, Promises/A+互換>>という単語 があります。
+Promiseのライブラリを探すときに、一つ目印になる言葉として<<promises-aplus, Promises/A+互換>>があります。
 
 <<promises-aplus, Promises/A+>>というのは<<es6-promises,ES6 Promises>>の前身となったもので、
 Promiseの`then`について取り決めたコミュニティベースの仕様です。
@@ -40,9 +40,7 @@ ES6のPromiseで定められたpromiseオブジェクトというのは、
 
 ここでは、大きくわけて2種類のライブラリを紹介したいと思います。
 
-一つはPolyfillと呼ばれるもので、まだPromiseが実装されていない環境に対して、
-同じ機能を互換性を持たせるための実装ライブラリです。
-
+一つはPolyfillと呼ばれる種類のライブラリで、
 もう一つは、<<promises-aplus, Promises/A+互換>>に加えて、独自の拡張をもったライブラリです。
 
 [NOTE]
@@ -51,7 +49,10 @@ Promiseのライブラリが星の数ほどあるので、ここでは紹介す�
 ==== Polyfill
 
 Polyfillライブラリは読み込む事で、IE10等まだPromiseが実装されていないブラウザ等でも、
-この書籍で紹介されている事がそのまま実行できるようになるライブラリです。
+Promiseと同等の機能を同じメソッド名で提供してくれるライブラリのことです。
+
+つまり、Polyfillを読みこめばこの書籍で紹介しているコードは、
+Promiseがサポートされてない環境でも実行出来るようになります。
 
 https://github.com/jakearchibald/es6-promise[jakearchibald/es6-promise]::
     ES6 Promiseと互換性を持ったPolyfillライブラリです。
