@@ -64,10 +64,10 @@ include::embed/embed-promise-all-timer.js[]
 ----
 
 `promisedMapping` に数値の配列を渡すと、
-数値をそのまま`setTimeout`に設定したpromiseオブジェクトの配列を返す関数です。
+数値をそのまま`setTimeout`に設定したpromiseオブジェクトの配列が返されます。
 
 [source,javascript]
-promisedMapping([1, 2, 4, 8, 16, 32]);
+promisedMapping([1, 2, 4, 8, 16, 32]); // => promiseオブジェクトの配列
 
 この場合は、1,2,4,8,16,32 ms後にそれぞれresolveされるpromiseオブジェクトの配列を作って返します。
 
