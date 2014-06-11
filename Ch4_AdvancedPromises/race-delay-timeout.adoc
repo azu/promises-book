@@ -189,7 +189,7 @@ include::embed/embed-delay-race-cancel-play.js[]
 === promiseと操作メソッド
 
 先ほどの<<delay-race-cancel.js,`cancelableXHR`>>はpromiseオブジェクトと操作のメソッドが
-一緒になったオブジェクトを返すようにしていたため少し分かりくかったかもしれません。
+一緒になったオブジェクトを返すようにしていたため少し分かりにくかったかもしれません。
 
 一つの関数は一つの値(promiseオブジェクト)を返すほうが見通しがいいと思いますが、
 `cancelableXHR`の中で生成した`req`は外から参照できないので、特定のメソッド(先ほどのケースは`abort`)からは触れるようにする必要があります。
