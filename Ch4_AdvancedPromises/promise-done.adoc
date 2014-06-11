@@ -179,7 +179,7 @@ try{
 
 [NOTE]
 ====
-なぜ非同期の`callback`内での例外をキャッチ出来ないのかは以下が参考なります。
+なぜ非同期の`callback`内での例外をキャッチ出来ないのかは以下が参考になります。
 
 - http://techblog.yahoo.co.jp/programming/javascript_error/[JavaScriptと非同期のエラー処理 - Yahoo! JAPAN Tech Blog]
 ====
