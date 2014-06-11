@@ -31,7 +31,7 @@ promise.catch(function(error){
 })
 ----
 
-`throw`が`reject`に変わったと考えれば、`reject`にはErrorオブジェクト渡すべきであるということが分かりやすいかもしれません。
+`throw`が`reject`に変わったと考えれば、`reject`にはErrorオブジェクトを渡すべきであるということが分かりやすいかもしれません。
 
 === なぜrejectした方がいいのか
 
