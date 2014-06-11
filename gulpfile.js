@@ -4,6 +4,26 @@ var path = require("path");
 var rename = require("gulp-rename");
 var inlining = require("gulp-inlining-node-require");
 var removeUseString = require("gulp-remove-use-strict");
+var browserify = require('browserify');
+var minifyify = require("minifyify");
+var source = require('vinyl-source-stream');
+var sourceFile = "./public/js/index.js";
+gulp.task("build-js", function () {
+    return browserify(sourceFile)
+        .bundle()
+        .pipe(source("app.js"))
+        .pipe(gulp.dest("./public/js/"));
+});
+gulp.task("build-min-js", function () {
+    return browserify(sourceFile)
+        .plugin('minifyify', {
+            map: 'app.min.js.map',
+            output: './public/js/app.min.js.map'
+        })
+        .bundle()
+        .pipe(source("app.js"))
+        .pipe(gulp.dest("./public/js/"));
+});
 gulp.task("embed", function () {
     return gulp.src(["./Ch*/src/**/*.js", "./Ch*/lib/*.js", "./Ch3_Testing/test/*.js"], {base: './'})
         .pipe(inlining())

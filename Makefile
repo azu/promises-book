@@ -12,6 +12,7 @@ test-all:
 html:
 	@echo "Generate HTML..."
 	@gulp embed
+	@gulp build-js
 	@echo "Building asciidoc"
 	@./_tools/build.sh
 	@echo "Done! => ${OUTPUT_FILE}"

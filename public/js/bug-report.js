@@ -1,4 +1,11 @@
 "use strict";
+var TOCHighlighter = require("./sync-toc");
+function quoteText(text) {
+    return text.split("\n").map(function (line) {
+        return "> " + line;
+    }).join("\n");
+}
+
 function BugReporter() {
     var highLightLevel = ["h1", "h2", "h3"];
     var sections = document.querySelectorAll(".sect2");
@@ -30,19 +37,14 @@ BugReporter.prototype.setBody = function (body) {
     this.github_issue_body = body;
 };
 BugReporter.prototype.report = function () {
-    var url = this.github_issue_point + "?title=" + encodeURIComponent(this.github_issue_title)
+    var url = this.github_issue_point
+        + "?title=" + encodeURIComponent(this.github_issue_title)
         + "&body=" + encodeURIComponent(this.github_issue_body)
         + "&labels=" + encodeURIComponent(this.github_issue_labels);
     window.open(url, "_blank");
 };
-window.addEventListener("load", function (event) {
-
-    function quoteText(text) {
-        return text.split("\n").map(function (line) {
-            return "> " + line;
-        }).join("\n");
-    }
-
+module.exports = BugReporter;
+module.exports.initilize = function () {
     var reportElement = document.createElement("button");
     reportElement.textContent = "バグ報告";
     reportElement.setAttribute("style", "position:fixed; right:0;bottom:0;");
@@ -58,5 +60,4 @@ window.addEventListener("load", function (event) {
         bug.report();
     });
     document.body.appendChild(reportElement);
-});
-
+};

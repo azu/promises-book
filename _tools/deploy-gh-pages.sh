@@ -16,6 +16,7 @@ fi
 git checkout -B gh-pages
 
 make html
+gulp build-min-js
 
 lastCommit=$(git log --oneline | head -n 1)
 echo "=COMMIT="
