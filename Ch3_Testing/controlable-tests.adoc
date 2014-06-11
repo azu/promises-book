@@ -65,7 +65,7 @@ include::embed/embed-shouldRejected-test.js[]
 . 返ってきたオブジェクトの`catch`メソッドでonRejectedの処理を書く
 . onRejectedにassertionによるテストを書く
 
-`shouldRejected`使った場合、Fulfilledが呼ばれるとエラーをthrowしてテストが失敗するようになっています。
+`shouldRejected`を使った場合、Fulfilledが呼ばれるとエラーをthrowしてテストが失敗するようになっています。
 
 [source,javascript]
 ----
