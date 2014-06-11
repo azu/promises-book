@@ -9,7 +9,7 @@ Promiseの中で`throw`による例外が発生した場合は自動的に`try..
 [role="executable"]
 [source,javascript]
 ----
-var promise = new Promise(function(resolve ,reject){
+var promise = new Promise(function(resolve, reject){
     throw new Error("message");
 });
 promise.catch(function(error){
@@ -25,7 +25,7 @@ promise.catch(function(error){
 [role="executable"]
 [source,javascript]
 ----
-var promise = new Promise(function(resolve ,reject){
+var promise = new Promise(function(resolve, reject){
     reject(new Error("message"));
 });
 promise.catch(function(error){
@@ -52,7 +52,7 @@ image::img/chrome_on_caught_exception.png[Pause On Caught Exceptions]
 
 [source,javascript]
 ----
-var promise = new Promise(function(resolve ,reject){
+var promise = new Promise(function(resolve, reject){
     throw new Error("message");
 });
 ----
