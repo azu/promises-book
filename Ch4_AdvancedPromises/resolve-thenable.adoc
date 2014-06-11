@@ -145,7 +145,7 @@ notifyMessageAsPromise("Hi!").then(function (notification) {
     `.then`が呼ばれる
 既に不許可となっている::
     `.catch`が呼ばれる
-許可ダイアログででて不許可された::
+許可ダイアログが出て不許可となった::
     `.catch`が呼ばれる
 
 つまり、Web Notifications APIをそのまま扱うと、4つのパターンについて書かないといけませんが、
