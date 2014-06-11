@@ -60,7 +60,8 @@ TOCHighlighter.prototype.findAllChildHeader = function (parent) {
     }
     return [];
 };
-window.addEventListener("load", function onLoad() {
+module.exports = TOCHighlighter;
+module.exports.initilize = function initilize() {
     var highLightLevel = ["h1", "h2", "h3"];
     var chapters = document.querySelectorAll(".sect1");
     var sections = document.querySelectorAll(".sect2");
@@ -78,4 +79,4 @@ window.addEventListener("load", function onLoad() {
     }
 
     window.addEventListener("scroll", onScroll);
-});
+};
