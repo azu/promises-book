@@ -127,7 +127,7 @@ include::embed/embed-TimeoutError.js[]
 ----
 var promise = new Promise(function(){
     throw TimeoutError("timeout");
-})
+});
 
 promise.catch(function(error){
     console.log(error instanceof TimeoutError);// true
