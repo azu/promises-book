@@ -3,7 +3,15 @@
  * LICENSE : MIT
  */
 "use strict";
-window.onload = function () {
-    var CodeBlock = require("./interactive-editor");
-    var code = new CodeBlock(document.querySelector("#content > div:nth-child(4) > div > div:nth-child(2) > div:nth-child(4) > div:nth-child(7) > div.content"));
+function windowOnload() {
+    var consoleUI = require("codemirror-console-ui");
+    var codeBlocks = document.querySelectorAll("div.listingblock");
+    for (var i = 0; i < codeBlocks.length; i++) {
+        var codeBlock = codeBlocks[i];
+        var code = codeBlock.getElementsByTagName("code")[0];
+        if (code) {
+            consoleUI(codeBlock, code.textContent);
+        }
+    }
 }
+window.addEventListener("load", windowOnload);

@@ -44,3 +44,7 @@ li > a.sc-current-element:before {
         display: block;
     }
 }
+/* codemirror */
+.CodeMirror.cm-s-default{
+    line-height: 1.2;
+}

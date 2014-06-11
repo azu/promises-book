@@ -30,7 +30,8 @@ BugReporter.prototype.setBody = function (body) {
     this.github_issue_body = body;
 };
 BugReporter.prototype.report = function () {
-    var url = this.github_issue_point + "?title=" + encodeURIComponent(this.github_issue_title)
+    var url = this.github_issue_point
+        + "?title=" + encodeURIComponent(this.github_issue_title)
         + "&body=" + encodeURIComponent(this.github_issue_body)
         + "&labels=" + encodeURIComponent(this.github_issue_labels);
     window.open(url, "_blank");
