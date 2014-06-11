@@ -12,6 +12,8 @@ Asciidocを使い書かれています。
 
 ``` sh
 gem install asciidoctor coderay
+npm install -g gulp
+npm install
 make html
 open index.html
 ```
