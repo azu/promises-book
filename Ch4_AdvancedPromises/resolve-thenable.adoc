@@ -186,7 +186,7 @@ Promiseが使える環境を前提とする::
 include::embed/embed-notification-thenable.js[]
 ----
 
-<<notification-thenable.js>> には`notifyMessageAsThenable`をというそのままのメソッドを追加してみました。
+<<notification-thenable.js>> には`notifyMessageAsThenable`というそのままのメソッドを追加してみました。
 返すオブジェクトには`then`というメソッドがあります。
 
 `then`メソッドの仮引数には`new Promise(function (resolve, reject){})`と同じように、
