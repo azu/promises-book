@@ -8,4 +8,9 @@ function windowOnload() {
     require("./sync-toc").initilize();
     require("./bug-report").initilize();
 }
-window.addEventListener("DOMContentLoaded", windowOnload);
+var readyState = document.readyState;
+if (readyState == "interactive" || readyState === 'complete') {
+    windowOnload();
+} else {
+    window.addEventListener("DOMContentLoaded", windowOnload);
+}
