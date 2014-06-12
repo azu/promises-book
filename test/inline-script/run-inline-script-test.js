@@ -5,5 +5,7 @@
 "use strict";
 var checkInlineScript = require("./inline-script-tester").checkInlineScript;
 checkInlineScript("../../").catch(function (error) {
-//    console.log(error);
+    if(error) {
+        console.error(error);
+    }
 });
