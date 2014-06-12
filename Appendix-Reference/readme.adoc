@@ -92,7 +92,7 @@ thenableなオブジェクトを受け取った場合::
 [[Promise.reject]]
 == Promise.reject
 [source,javascript]
-Promise.rejct(object)
+Promise.reject(object)
 
 [source,javascript]
 .Promise.rejectのコード例
@@ -102,7 +102,7 @@ var failureStub = sinon.stub(xhr, "request").returns(Promise.reject(new Error("b
 
 受け取った値でrejectされた新たなpromiseオブジェクトを返す。
 
-Promise.rejctに渡す値は`Error`オブジェクトとすべきである。
+Promise.rejectに渡す値は`Error`オブジェクトとすべきである。
 
 また、Promise.resolveとは異なり、promiseオブジェクトを渡した場合も常に新たなpromiseオブジェクトを作成する。
 
