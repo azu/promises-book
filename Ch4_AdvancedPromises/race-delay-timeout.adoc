@@ -64,17 +64,22 @@ promiseオブジェクトとタイムアウトの時間を受け取り、`Promis
 
 `timeoutPromise` を使うことで以下のようにタイムアウト処理を書くことが出来るようになります。
 
+[role="executable"]
 [source,javascript]
 ----
+include::embed/embed-simple-timeout-promise.js[]
+// 実行例
 var taskPromise = new Promise(function(resolve){
     // 何らかの処理
-    var result = "...";
-    resolve(result);
+    var delay = Math.random() * 2000;
+    setTimeout(function(){
+        resolve(delay + "ms");
+    }, delay);
 });
 timeoutPromise(taskPromise, 1000).then(function(value){
-    // taskPromiseが時間内に終わった
+    console.log("taskPromiseが時間内に終わった : " + value);
 }).catch(function(error){
-    // タイムアウトになってしまった
+    console.log("タイムアウトになってしまった", error);
 });
 ----
 
@@ -120,13 +125,12 @@ include::embed/embed-TimeoutError.js[]
 
 [source,javascript]
 ----
-var timeoutError = new TimeoutError("timeout!")
 var promise = new Promise(function(){
-    throw timeoutError;
+    throw TimeoutError("timeout");
 })
 
 promise.catch(function(error){
-    error instanceof TimeoutError;// true
+    console.log(error instanceof TimeoutError);// true
 });
 
 ----
@@ -169,6 +173,7 @@ include::embed/embed-delay-race-cancel.js[]
 
 これらの要素を全てまとめると次のように書けます。
 
+[role="executable"]
 [source,javascript]
 [[delay-race-cancel-play.js]]
 .delay-race-cancel-play.js

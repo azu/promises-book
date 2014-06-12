@@ -43,11 +43,17 @@ include::embed/embed-deferred.js[]
 
 以前Promiseを使って実装した<<xhr-promise.js,`getURL`>>をこのDeferredで実装しなおしてみます。
 
+[role="executable"]
 [source,javascript]
 [[xhr-deferred.js]]
 .xhr-deferred.js
 ----
 include::embed/embed-xhr-deferred.js[]
+// 実行例
+var URL = "http://httpbin.org/get";
+getURL(URL).then(function onFulfilled(value){
+    console.log(value);
+}).catch(console.error.bind(console));
 ----
 
 Promiseの状態を操作する特権的なメソッドというのは、
@@ -56,10 +62,16 @@ promiseオブジェクトの状態をresolve、rejectすることができるメ
 
 Promiseで実装したものと見比べていきたいと思います。
 
+[role="executable"]
 [source,javascript]
 .xhr-promise.js
 ----
 include::../Ch1_WhatsPromises/embed/embed-xhr-promise.js[]
+// 実行例
+var URL = "http://httpbin.org/get";
+getURL(URL).then(function onFulfilled(value){
+    console.log(value);
+}).catch(console.error.bind(console));
 ----
 
 2つの`getURL`を見比べて見ると以下のような違いがある事が分かります。

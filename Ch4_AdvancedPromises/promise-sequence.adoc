@@ -16,9 +16,16 @@ Aの処理 が終わったら Bの処理 というような逐次的な処理を
 
 <<multiple-xhr.js,thenを連ねた書き方>>では以下のような書き方でしたね。
 
+[role="executable"]
 [source,javascript]
 ----
 include::../Ch2_HowToWrite/embed/embed-multiple-xhr.js[]
+// 実行例
+main().then(function (value) {
+    console.log(value);
+}).catch(function(error){
+    console.error(error);
+});
 ----
 
 この書き方だと、`request`の数が増える分`then`を書かないといけなくなってしまいます。
@@ -26,11 +33,18 @@ include::../Ch2_HowToWrite/embed/embed-multiple-xhr.js[]
 そこで、処理を配列にまとめて、forループで処理していければ、数が増えた場合も問題無いですね。
 まずはforループを使って先ほどと同じ処理を書いてみたいと思います。
 
+[role="executable"]
 [source,javascript]
 [[promise-foreach-xhr.js]]
 .promise-foreach-xhr.js
 ----
 include::embed/embed-promise-foreach-xhr.js[]
+// 実行例
+main().then(function (value) {
+    console.log(value);
+}).catch(function(error){
+    console.error(error);
+});
 ----
 
 forループで書く場合、<<then-return-new-promise,コラム: thenは常に新しいpromiseオブジェクトを返す
@@ -48,11 +62,18 @@ forループで書く場合、<<then-return-new-promise,コラム: thenは常に
 
 `Array.prototype.reduce` を使って書き直すと以下のようになります。
 
+[role="executable"]
 [source,javascript]
 [[promise-reduce-xhr.js]]
 .promise-reduce-xhr.js
 ----
 include::embed/embed-promise-reduce-xhr.js[]
+// 実行例
+main().then(function (value) {
+    console.log(value);
+}).catch(function(error){
+    console.error(error);
+});
 ----
 
 `main`以外の処理はforループのものと同様です。
@@ -111,20 +132,17 @@ promiseオブジェクトを作った段階で既にXHRが実行されている�
 
 最後に、`sequenceTasks`を使って最初の例を書き換えると以下のようになります。
 
+[role="executable"]
 [source,javascript]
 [[promise-sequence-xhr.js]]
 .promise-sequence-xhr.js
 ----
 include::embed/embed-promise-sequence-xhr.js[]
-----
-
-
-[source,javascript]
-----
+// 実行例
 main().then(function (value) {
     console.log(value);
 }).catch(function(error){
-    console.log(error);
+    console.error(error);
 });
 ----
 

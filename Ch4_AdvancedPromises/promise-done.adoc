@@ -17,6 +17,7 @@
 
 実際にdoneを使ったコードを見てみると`done`の挙動が分かりやすいと思います。
 
+[role="executable"]
 [source,javascript]
 [[promise-done-example.js]]
 .promise-done-example.js
@@ -29,6 +30,7 @@ include::embed/embed-promise-done-example.js[]
 
 実装については後で解説しますが、まずは`then`を使った場合と`done`を使ったものを比較してみます。
 
+[role="executable"]
 [source,javascript]
 .thenを使った場合
 ----
@@ -36,7 +38,7 @@ var promise = Promise.resolve();
 promise.then(function () {
     JSON.parse("this is not json");
 }).catch(function (error) {
-    console.error(error);// => "SyntaxError: JSON.parse: unexpected keyword at line 1 column 1 of the JSON data"
+    console.error(error);// => "SyntaxError: JSON.parse"
 });
 ----
 
@@ -79,13 +81,17 @@ include::embed/embed-json-promise.js[]
 以下のように使うことができ、`JSON.parse`はパースに失敗すると例外を投げるので、
 それを`catch`することが出来ます。
 
+[role="executable"]
 [source,javascript]
 ----
+include::embed/embed-json-promise.js[]
+// 実行例
 var string = "jsonではない文字列";
 JSONPromise(string).then(function (object) {
     console.log(object);
 }).catch(function(error){
     // => JSON.parseで例外が発生した時
+    console.error(error);
 });
 ----
 
@@ -162,7 +168,8 @@ Promiseにおける `done` は先程のエラーの握りつぶしを避ける�
 include::lib/promise-prototype-done.js[]
 ----
 
-setTimeoutの中でthrowをすることで、外へそのまま例外を投げることを利用しています。
+どのようにPromiseの外へ例外を投げているかというと、
+setTimeoutの中でthrowをすることで、外へそのまま例外を投げられることを利用しています。
 
 [source,javascript]
 .setTimeoutのコールバック内での例外

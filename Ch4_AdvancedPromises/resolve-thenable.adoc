@@ -37,10 +37,12 @@ Firefoxだと許可、不許可に加えて __永続__ か __セッション限�
 
 コールバックを受け付けることから分かるように、この許可、不許可は非同期的に行われます。
 
+[role="executable"]
 [source,javascript]
 ----
 Notification.requestPermission(function (status) {
     // statusに"granted" or "denied"が入る
+    console.log(status);
 });
 ----
 
@@ -74,22 +76,17 @@ Promiseで書けそうな目処が見えた所で、まずはコールバック�
 
 まずは先ほどのWeb Notification APIのラッパー関数をコールバックスタイルで書くと次のように書くことが出来ます。
 
+[role="executable"]
 [source,javascript]
 [[notification-callback.js]]
 .notification-callback.js
 ----
 include::embed/embed-notification-callback.js[]
-----
-
-これを利用する場合は以下のように書くことができます
-
-[source,javascript]
-----
+// 実行例
 // 第二引数は`Notification`に渡すオプションオブジェクト
 notifyMessage("Hi!", {}, function (error, notification) {
     if(error){
-        console.error(error);
-        return;
+        return console.error(error);
     }
     console.log(notification);// 通知のオブジェクト
 });
@@ -113,23 +110,21 @@ function callback(error, notification){
 先ほどのコールバックスタイルの`notifyMessage`とは別に、
 promiseオブジェクトを返す`notifyMessageAsPromise`を定義してみます。
 
+[role="executable"]
 [source,javascript]
 [[notification-as-promise.js]]
 .notification-as-promise.js
 ----
 include::embed/embed-notification-as-promise.js[]
-----
-
-これを使うと`"H!"`というメッセージを通知したい場合以下のように書くことが出来ます。
-
-[source,javascript]
-----
+// 実行例
 notifyMessageAsPromise("Hi!").then(function (notification) {
     console.log(notification);// 通知のオブジェクト
 }).catch(function(error){
     console.error(error);
 });
 ----
+
+上記の実行例では、許可がある場合`"H!"`という通知が表示されます。
 
 許可されている場合は`.then`が呼ばれ、
 不許可となった場合は`.catch`が呼ばれます。
@@ -179,11 +174,18 @@ Promiseが使える環境を前提とする::
 <<Thenable,thenable>>というのは`.then`というメソッドを持ってるオブジェクトのことを言いましたね。
 次は<<notification-callback.js>>に`thenable`を返すメソッドを追加してみましょう。
 
+[role="executable"]
 [source,javascript]
 [[notification-thenable.js]]
 .notification-thenable.js
 ----
 include::embed/embed-notification-thenable.js[]
+// 実行例
+Promise.resolve(notifyMessage.thenable("message")).then(function (notification) {
+    console.log(notification);// 通知のオブジェクト
+}).catch(function(error){
+    console.error(error);
+});
 ----
 
 <<notification-thenable.js>> には`notifyMessageAsThenable`というそのままのメソッドを追加してみました。
@@ -194,7 +196,8 @@ include::embed/embed-notification-thenable.js[]
 
 `then`メソッドがやっている中身は<<notification-as-promise.js>>の`notifyMessageAsPromise`と同じですね。
 
-この`thenable`を使う場合は以下のように`Promise.resolve(thenable)`を使ってpromiseオブジェクトとして利用できます。
+この`thenable`を`Promise.resolve(thenable)`を使いpromiseオブジェクトにしてから、
+Promiseとして利用していることが分かりますね。
 
 [source,javascript]
 ----
