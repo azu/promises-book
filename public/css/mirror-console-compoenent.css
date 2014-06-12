@@ -1,48 +1,71 @@
 @charset "UTF-8";
 .CodeMirror.cm-s-default {
-  border-bottom: #000 solid 1px; }
+    border-bottom: #000 solid 1px;
+}
 
 .CodeMirror {
-  font-size: 16px; }
+    font-size: 16px;
+}
+
+.mirror-console-attach-button-wrapper{
+    margin-bottom: 0.5em;
+}
+.executable {
+    margin-bottom: 0;
+}
 
 .mirror-console-command {
-  margin-left: 15px; }
+    margin-left: 15px;
+}
 
 .mirror-console-wrapper {
-  background-color: #f7f7f7;
-  outline: #000000 solid 1px; }
+    background-color: #f7f7f7;
+    outline: #000000 solid 1px;
+}
 
 .mirror-console-button {
-  font-size: 1.1em;
-  display: inline-block;
-  margin: 0.75em 0.25em;
-  font-size: 0.9em;
-  border: 0px none;
-  border-radius: 3px;
-  padding: 0.25em 1em;
-  color: white; }
-  .mirror-console-button.mirror-console-run {
-    background-color: #5cb85c; }
-  .mirror-console-button.mirror-console-clear {
-    background-color: #999999; }
-  .mirror-console-button.mirror-console-exit {
-    background-color: red; }
+    font-size: 1.1em;
+    display: inline-block;
+    margin: 0.75em 0.25em;
+    font-size: 0.9em;
+    border: 0px none;
+    border-radius: 3px;
+    padding: 0.25em 1em;
+    color: white;
+}
+
+.mirror-console-button.mirror-console-run {
+    background-color: #5cb85c;
+}
+
+.mirror-console-button.mirror-console-clear {
+    background-color: #999999;
+}
+
+.mirror-console-button.mirror-console-exit {
+    background-color: red;
+}
 
 /* console */
 .mirror-console-log-row {
-  border-left: solid 10px #999;
-  line-height: 1.5; }
+    border-left: solid 10px #999;
+    line-height: 1.5;
+}
 
 .mirror-console-log-normal::before {
-  content: "▶";
-  color: #ddd;
-  margin-left: -2px; }
+    content: "▶";
+    color: #ddd;
+    margin-left: -2px;
+}
 
 .mirror-console-log-error::before {
-  content: "✘"; }
+    content: "✘";
+}
 
 .mirror-console-log-info::before {
-  content: "ℹ"; }
+    content: "ℹ";
+}
 
 .mirror-console-log-warn::before {
-  content: "⚠"; }
+    content: "⚠";
+}
