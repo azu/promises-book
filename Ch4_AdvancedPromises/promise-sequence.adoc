@@ -113,7 +113,7 @@ sequenceTasks(tasks);
 
 === 逐次処理を行う関数を定義する
 
-基本的には、<<promise-reduce-xhr.js,reduceを使ったやり方>>を関数として切り離せればいいだけですね。
+基本的には、<<promise-reduce-xhr.js,reduceを使ったやり方>>を関数として切り離せばいいだけですね。
 
 [source,javascript]
 [[promise-sequence.js]]
