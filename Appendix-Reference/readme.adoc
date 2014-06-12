@@ -8,16 +8,17 @@
 promise.then(onFulfilled, onRejected);
 ----
 
+[role="executable"]
 [source,javascript]
 .thenコード例
 ----
 var promise = new Promise(function(resolve, reject){
-    resolve();
+    resolve("thenに渡す値");
 });
 promise.then(function (value) {
     console.log(value);
 }, function (error) {
-    console.log(error);
+    console.error(error);
 });
 ----
 
@@ -34,11 +35,12 @@ promiseオブジェクトに対してonFulfilledとonRejectedのハンドラを�
 [source,javascript]
 promise.catch(onRejected);
 
+[role="executable"]
 [source,javascript]
 .catchのコード例
 ----
 var promise = new Promise(function(resolve, reject){
-    resolve();
+    resolve("thenに渡す値");
 });
 promise.then(function (value) {
     console.log(value);
@@ -58,6 +60,7 @@ Promise.resolve(thenable);
 Promise.resolve(object);
 ----
 
+[role="executable"]
 [source,javascript]
 .Promise.resolveのコード例
 ----
@@ -103,10 +106,11 @@ Promise.rejctに渡す値は`Error`オブジェクトとすべきである。
 
 また、Promise.resolveとは異なり、promiseオブジェクトを渡した場合も常に新たなpromiseオブジェクトを作成する。
 
+[role="executable"]
 [source,javascript]
 ----
 var r = Promise.reject(new Error("error"));
-r === Promise.reject(r);// false
+console.log(r === Promise.reject(r));// false
 ----
 
 
@@ -115,6 +119,7 @@ r === Promise.reject(r);// false
 [source,javascript]
 Promise.all(promiseArray);
 
+[role="executable"]
 [source,javascript]
 .Promise.allのコード例
 ----
@@ -142,6 +147,7 @@ promiseオブジェクト以外が混在している場合も扱える。
 [source,javascript]
 Promise.race(promiseArray);
 
+[role="executable"]
 [source,javascript]
 .Promise.raceのコード例
 ----

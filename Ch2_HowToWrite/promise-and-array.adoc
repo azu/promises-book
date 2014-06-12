@@ -13,18 +13,17 @@
 
 === コールバックで複数の非同期処理
 
+[role="executable"]
 [source,javascript]
 [[multiple-xhr-callback.js]]
 .multiple-xhr-callback.js
 ----
 include::embed/embed-multiple-xhr-callback.js[]
-----
-
-上記のコードを実際に実行して、XHRで取得した結果を得るには次のようになると思います。
-
-[source,javascript]
-----
+// 実行例
 main(function(error, results){
+    if(error){
+        return console.error(error);
+    }
     console.log(results);
 });
 ----
@@ -62,20 +61,17 @@ function bindJSONParse(error, value){
 
 <<promise.then,`.then`>> を使った場合は、コールバックスタイルと完全に同等というわけではないですが以下のように書けると思います。
 
+[role="executable"]
 [source,javascript]
 [[multiple-xhr.js]]
+.multiple-xhr.js
 ----
 include::embed/embed-multiple-xhr.js[]
-----
-
-上記のコードを実際に実行して、XHRで取得した結果を得るには次のようになると思います。
-
-[source,javascript]
-----
+// 実行例
 main().then(function (value) {
     console.log(value);
 }).catch(function(error){
-    console.log(error);
+    console.error(error);
 });
 ----
 

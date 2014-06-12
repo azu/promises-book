@@ -6,6 +6,7 @@ Promiseコンストラクタや、`then`で実行される関数は基本的に�
 
 Promiseの中で`throw`による例外が発生した場合は自動的に`try...catch`され、そのpromiseオブジェクトはRejectedとなります。
 
+[role="executable"]
 [source,javascript]
 ----
 var promise = new Promise(function(resolve ,reject){
@@ -13,7 +14,7 @@ var promise = new Promise(function(resolve ,reject){
 });
 promise.catch(function(error){
     console.error(error);// => "message"
-})
+});
 ----
 
 このように書いても動作的には問題ありませんが、<<promise-states,promiseオブジェクトの状態>>をRejectedにしたい場合は
@@ -21,6 +22,7 @@ promise.catch(function(error){
 
 先ほどのコードは以下のように書くことが出来ます。
 
+[role="executable"]
 [source,javascript]
 ----
 var promise = new Promise(function(resolve ,reject){
@@ -113,6 +115,7 @@ promise.then(function () {
 つまり、この`retPromise`がRejectedになった場合は、`onRejected`が呼び出されるので、
 `throw`を使わなくても`then`の中でrejectすることが出来ます。
 
+[role="executable"]
 [source,javascript]
 ----
 "use strict";
@@ -128,6 +131,7 @@ promise.then(function () {
 
 これは、<<Promise.reject>> を使うことでもっと簡潔に書くことが出来ます。
 
+[role="executable"]
 [source,javascript]
 ----
 "use strict";

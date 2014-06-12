@@ -10,6 +10,7 @@
 
 Promise.allの時と同じく、タイマーを使った`Promise.race`の例を見てみましょう
 
+[role="executable"]
 [source,javascript]
 [[promise-race-timer.js]]
 .promise-race-timer.js
@@ -24,6 +25,7 @@ include::embed/embed-promise-race-timer.js[]
 
 最初にFulFilledとなったpromiseオブジェクト以外は、その時点で呼ばれるのかを見てみましょう
 
+[role="executable"]
 [source,javascript]
 [[promise-race-other.js]]
 .promise-race-other.js

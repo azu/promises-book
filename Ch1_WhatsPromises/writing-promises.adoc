@@ -19,13 +19,24 @@ promiseオブジェクトを作る流れは以下のようになっています�
 
 ==== XHRのpromiseオブジェクトを作る
 
+まずは、XHRをPromise使って包んだような`getURL`という関数を作ります。
+
+[role="executable"]
 [[xhr-promise.js]]
 .xhr-promise.js
 [source,javascript]
 ----
 include::embed/embed-xhr-promise.js[]
+// 実行例
+var URL = "http://httpbin.org/status/500";
+getURL(URL).then(function onFulfilled(value){
+    console.log(value);
+}).catch(function onRejected(error){
+    console.error(error);
+});
 ----
 
+この`getURL`では、
 XHRでの取得結果のステータスコードが200の場合のみ `resolve` - つまり取得に成功、
 それ以外はエラーであるとして `reject` しています。
 
@@ -104,7 +115,7 @@ var URL = "http://httpbin.org/status/500"; // <1>
 getURL(URL).then(function onFulfilled(value){
     console.log(value);
 }).catch(function onRejected(error){ // <2>
-    console.log(error);
+    console.error(error);
 });
 ----
 <1> サーバはステータスコード500のレスポンスを返す

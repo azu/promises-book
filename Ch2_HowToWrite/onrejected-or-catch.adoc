@@ -11,11 +11,19 @@
 
 次のようなコードを見ていきます。
 
+[role="executable"]
 [source,javascript]
 [[then-throw-error.js]]
 .then-throw-error.js
 ----
 include::embed/embed-then-throw-error.js[]
+// 実行例
+badMain(function(){
+    console.log("BAD");
+});
+goodMain(function(){
+    console.log("GOOD");
+});
 ----
 
 このコード例では、(必ずしも悪いわけではないですが)良くないパターンの `badMain` と
