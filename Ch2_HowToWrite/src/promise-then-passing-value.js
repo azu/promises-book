@@ -1,6 +1,6 @@
 "use strict";
 function doubleUp(value) {
-    return value * 2
+    return value * 2;
 }
 function increment(value) {
     return value + 1;
