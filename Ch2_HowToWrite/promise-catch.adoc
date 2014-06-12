@@ -12,7 +12,7 @@
 
 === IE8以下での問題
 
-image:https://ci.testling.com/azu/promise-catch-error.png["Build Status", link="https://ci.testling.com/azu/promise-catch-error"]
+image:img/promise-catch-error.png["Build Status", link="https://ci.testling.com/azu/promise-catch-error"]
 
 このバッジは以下のコードが、 https://github.com/jakearchibald/es6-promise[polyfill] を用いた状態でそれぞれのブラウザで正しく実行できているかを示したものです。
 
