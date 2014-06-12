@@ -226,7 +226,7 @@ include::test/array-promise-chain-test.js[]
 `ArrayAsPromise` でもArrayのメソッドを利用できているのが分かります。
 先ほどと同じように、ネイティブのArrayは同期処理で、`ArrayAsPromise` は非同期処理という違いがあります。
 
-`ArrayAsPromise` の実装見て気づくと思いますが、`Array.prototype`のメソッドを全て実装しています。
+`ArrayAsPromise` の実装を見て気づくと思いますが、`Array.prototype`のメソッドを全て実装しています。
 しかし、`array.indexOf`など`Array.prototype`には配列を返さないものもあるため、全てをメソッドチェーンにするのは不自然なケースがあると思います。
 
 ここで大事なのが、同じ値を受けるインターフェースを持っているAPIはこのような手段でPromise版のAPIを自動的に作成できるという点です。
