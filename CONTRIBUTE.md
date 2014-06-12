@@ -69,8 +69,6 @@ Promiseという機能について言う時は大文字の単数を使う。
 
 ### resolve,reject / FulFilled,Rejected の表現
 
-方針を決めたのでメモる(CONTRIBUTE.mdに入れておくべきかな)
-
 #### resolve と reject の注釈
 
 * それぞれの用語の日本語の対応は resolve = **成功時** 、 reject =  **失敗時** とする。
