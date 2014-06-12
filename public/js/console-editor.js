@@ -9,12 +9,13 @@ module.exports.initilize = function () {
     consoleUI.setUserContext({
         Promise: Promise
     });
-    var codeBlocks = document.querySelectorAll("div.listingblock");
+    var codeBlocks = document.querySelectorAll(".executable");
     for (var i = 0; i < codeBlocks.length; i++) {
         var codeBlock = codeBlocks[i];
         var code = codeBlock.getElementsByTagName("code")[0];
-        if (code) {
-            consoleUI(codeBlock, code.textContent);
+        if (!code) {
+            continue
         }
+        consoleUI(codeBlock, code.textContent);
     }
 }
