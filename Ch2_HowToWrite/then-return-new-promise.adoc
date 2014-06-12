@@ -8,6 +8,7 @@
 
 本当に新しいpromiseオブジェクトを返しているのか確認してみましょう。
 
+[role="executable"]
 [source,javascript]
 ----
 var aPromise = new Promise(function (resolve) {
@@ -19,8 +20,8 @@ var thenPromise = aPromise.then(function (value) {
 var catchPromise = thenPromise.catch(function (error) {
     console.error(error);
 });
-console.info(aPromise !== thenPromise); // => true
-console.info(thenPromise !== catchPromise);// => true
+console.log(aPromise !== thenPromise); // => true
+console.log(thenPromise !== catchPromise);// => true
 ----
 
 `===` 厳密比較演算子によって比較するとそれぞれが別々のオブジェクトなので、
@@ -37,9 +38,10 @@ image::img/then_catch.png[Then Catch flow]
 また、`then`は新しいオブジェクトを作って返すということがわかっていれば、
 次の`then`の使い方では意味が異なる事に気づくでしょう。
 
+[role="executable"]
 [source,javascript]
 ----
-// <1>
+// 1: それぞれの`then`は同時に呼び出される
 var aPromise = new Promise(function (resolve) {
     resolve(100);
 });
@@ -50,12 +52,12 @@ aPromise.then(function (value) {
     return value * 2;
 });
 aPromise.then(function (value) {
-    console.log(value); // => 100
+    console.log("1: " + value); // => 100
 })
 
 // vs
 
-// <2>
+// 2: `then`はpromise chain通り順番に呼び出される
 var bPromise = new Promise(function (resolve) {
     resolve(100);
 });
@@ -64,11 +66,9 @@ bPromise.then(function (value) {
 }).then(function (value) {
     return value * 2;
 }).then(function (value) {
-    console.log(value); // => 100 * 2 * 2
+    console.log("2: " + value); // => 100 * 2 * 2
 });
 ----
-<1> それぞれの`then`は同時に呼び出される
-<2> `then`はpromise chain通り順番に呼び出される
 
 1のpromiseをメソッドチェーン的に繋げない書き方はあまりすべきではありませんが、
 このような書き方をした場合、それぞれの`then`はほぼ同時に呼ばれ、また`value`に渡る値も全て同じ`100`となります。

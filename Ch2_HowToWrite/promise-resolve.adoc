@@ -25,6 +25,7 @@ new Promise(function(resolve){
 `Promise.resolve(value);` で返ってくる値も同様にpromiseオブジェクトなので、
 以下のように続けて `.then` を使った処理を書くことが出来ます。
 
+[role="executable"]
 [source,javascript]
 ----
 Promise.resolve(42).then(function(value){

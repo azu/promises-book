@@ -10,11 +10,13 @@
 `Promise.all`に通信を抽象化したpromiseオブジェクトの配列を渡すことで、
 全ての通信が完了(FulFilledまたRejected)した時に、次の`.then`が呼び出すこと事が出来ます。
 
+[role="executable"]
 [source,javascript]
 [[promise-all-xhr.js]]
 .promise-all-xhr.js
 ----
 include::embed/embed-promise-all-xhr.js[]
+// 実行例
 main().then(function (value) {
     console.log(value);
 }).catch(function(error){
@@ -22,17 +24,7 @@ main().then(function (value) {
 });
 ----
 
-実行方法は <<xhr-promise.js, 前回のもの>> と同じで以下のようにして実行出来ます。
-
-[source,javascript]
-----
-main().then(function (value) {
-    console.log(value);
-}).catch(function(error){
-    console.log(error);
-});
-----
-
+実行方法は <<xhr-promise.js, 前回のもの>> と同じですね。
 <<Promise.all, `Promise.all`>> を使うことで以下のような違いがあることがわかります。
 
 * mainの処理がスッキリしている
@@ -56,6 +48,7 @@ main().then(function (results) {
 <<Promise.all, `Promise.all`>> に渡したpromiseオブジェクトが同時に実行されてるのは、
 次のようなタイマーを使った例を見てみると分かりやすいです。
 
+[role="executable"]
 [source,javascript]
 [[promise-all-timer.js]]
 .promise-all-timer.js

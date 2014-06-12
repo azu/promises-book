@@ -22,6 +22,7 @@ polyfillとはその機能が実装されていないブラウザでも、その
 この例では https://github.com/jakearchibald/es6-promise[jakearchibald/es6-promise] を利用しています。
 ====
 
+[role="executable"]
 [source,javascript]
 .Promise#catchの実行結果
 ----
@@ -58,6 +59,7 @@ https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Propert
 
 つまり、先ほどのコードは以下のように書き換えれば、IE8以下でも実行することが出来ます。(もちろんpolyfillは必要です)
 
+[role="executable"]
 [source,javascript]
 .Promise#catchの識別子エラーの回避
 ----
@@ -69,6 +71,7 @@ promise["catch"](function (error) {
 
 もしくは単純に`catch`を使わずに、`then`を使うことでも回避できます。
 
+[role="executable"]
 [source,javascript]
 .Promise#catchではなくPromise#thenを使う
 ----

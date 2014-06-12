@@ -16,10 +16,11 @@ new Promise(function(resolve,reject){
 
 返り値のpromiseオブジェクトに対して、thenの`onRejected`に設定された関数にエラーオブジェクトが渡ります。
 
+[role="executable"]
 [source,javascript]
 ----
 Promise.reject(new Error("BOOM!")).catch(function(error){
-    console.log(error);
+    console.error(error);
 });
 ----
 
