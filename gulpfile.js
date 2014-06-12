@@ -18,7 +18,10 @@ gulp.task("build-min-js", function () {
     return browserify(sourceFile)
         .plugin('minifyify', {
             map: 'app.min.js.map',
-            output: './public/js/app.min.js.map'
+            output: './public/js/app.min.js.map',
+            compressPath: function (p) {
+                return path.relative('./', p);
+            }
         })
         .bundle()
         .pipe(source("app.js"))
