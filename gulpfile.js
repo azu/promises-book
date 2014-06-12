@@ -30,7 +30,9 @@ gulp.task("build-min-js", function () {
 gulp.task("embed", function () {
     return gulp.src(["./Ch*/src/**/*.js", "./Ch*/lib/*.js", "./Ch3_Testing/test/*.js"], {base: './'})
         .pipe(inlining())
-        .pipe(removeUseString())
+        .pipe(removeUseString({
+            force :true
+        }))
         .pipe(rename(function (filePath) {
             var filePathBySplit = filePath.dirname.split(path.sep);
             filePathBySplit.pop();
