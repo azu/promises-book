@@ -8,4 +8,4 @@ function windowOnload() {
     require("./sync-toc").initilize();
     require("./bug-report").initilize();
 }
-window.addEventListener("load", windowOnload);
+window.addEventListener("DOMContentLoaded", windowOnload);
