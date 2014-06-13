@@ -96,8 +96,8 @@ Promiseを使ったタイムアウト処理の実装については <<race-delay
 
 // TODO 仕様的な解説 - PromiseReactionTask
 
-以下のように書いた場合、`then` に登録するコールバック関数で返すpromiseオブジェクトの状態によって、
-次の`then`に登録されたonFulfilled、onRejectedどちらが呼ばれるかを決めることが出来ます。
+以下のように書いた場合、最初の`then`で返したpromiseオブジェクトの状態によって、
+次の`then`に登録されたonFulfilledとonRejectedのうち、どちらが呼ばれるかを決めることが出来ます。
 
 [source,javascript]
 ----
