@@ -1,8 +1,13 @@
 "use strict";
-var promisedMapping = require("./promised-mapping");
-var promisedMap = promisedMapping([1, 2, 4, 8, 16, 32]);
+var timerPromisefy = require("../lib/timer-promisefy").timerPromisefy;
 var startDate = Date.now();
-Promise.all(promisedMap).then(function (values) {
+// 全てがresolveされたら終了
+Promise.all([
+    timerPromisefy(1),
+    timerPromisefy(32),
+    timerPromisefy(64),
+    timerPromisefy(128)
+]).then(function (values) {
     console.log(Date.now() - startDate + "ms");// 約32ms
     console.log(values); // [1, 2, 4, 8, 16, 32]
 });

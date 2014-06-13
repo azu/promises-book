@@ -1,8 +1,12 @@
 "use strict";
-var promisedMapping = require("./promised-mapping");
-var promisedMap = promisedMapping([1, 32, 64, 128]);
-// 一番最初のものがresolveされた時点で終了
-Promise.race(promisedMap).then(function (value) {
+var timerPromisefy = require("../lib/timer-promisefy").timerPromisefy;
+// 一つでもresolve または reject した時点で終了
+Promise.race([
+    timerPromisefy(1),
+    timerPromisefy(32),
+    timerPromisefy(64),
+    timerPromisefy(128)
+]).then(function (value) {
     console.log(value); // => 1
 });
 
