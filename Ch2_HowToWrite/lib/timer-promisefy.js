@@ -1,5 +1,5 @@
 "use strict";
-// `delay`ミリ秒後にresolveされるpromiseを返す
+// `delay`ミリ秒後にresolveする
 function timerPromisefy(delay) {
     return new Promise(function (resolve) {
         setTimeout(function () {
