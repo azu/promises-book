@@ -54,6 +54,54 @@ Node.js でコマンドラインアプリやサーバサイドを書いたこと
 [NOTE]
 この部分には文章についての補足が書かれています。
 
+ifeval::["{backend}" == "html5"]
+== 推奨ブラウザ
+
+この書籍を読むにあたっての推奨ブラウザとしてはネイティブでPromiseをサポートしているブラウザとなっています。
+
+Firefoxは29から、Chromeは35から<<es6-promises,ES6 Promises>>をサポートしています。
+
+また、推奨環境ではありませんがiOSなどのモバイル端末でも閲覧は可能です。
+
+ifeval::["{backend}" == "html5"]
+++++
+<div class="iframe-wrapper" style="width: 100%; height: 350px; overflow: auto; -webkit-overflow-scrolling: touch;">
+<iframe src="http://caniuse.com/promises/embed/agents=desktop" width="100%" height="350px"></iframe>
+</div>
+++++
+endif::[]
+
+== サンプルコードの実行
+
+このサイトでは、Promiseの<<promise-polyfill,Polyfillライブラリ>>を読み込んでいるため、
+Promiseをサポートしていないブラウザでもサンプルコードを実行することが出来ます。
+
+また、以下のように実行出来るサンプルコードには実行ボタンが表示されています。
+
+[role="executable"]
+[source,javascript]
+----
+var promise = new Promise(function(resolve){
+    resolve(42);
+});
+promise.then(function(value){
+    console.log(value);
+}).catch(function(error){
+    console.error(error);
+});
+----
+
++++<button class="mirror-console-button mirror-console-run">実行</button>+++ ボタンを押すことで、
+サンプルコードがエディタとなりコードを実行する事が出来ます。
+
++++<button class="mirror-console-button mirror-console-clear">ログをクリア</button>+++ボタンでは実行結果の`console.log`の内容をクリア出来ます。
+
++++<button class="mirror-console-button mirror-console-exit">終了</button>+++ボタンではエディタモードを終了します。
+
+気になるコードはその場で書き換えて実行することができるため、理解するための補助として使って下さい。
+
+endif::[]
+
 == 本書のソースコード/ライセンス
 
 この書籍に登場するサンプルのソースコード また その文章のソースコードは全てはGithubから取得することができます。

@@ -47,6 +47,7 @@ ES6のPromiseで定められたpromiseオブジェクトというのは、
 [NOTE]
 Promiseのライブラリが星の数ほどあるので、ここでは紹介するのは極々一部です。
 
+[[promise-polyfill]]
 ==== Polyfill
 
 Polyfillライブラリは読み込む事で、IE10等まだPromiseが実装されていないブラウザ等でも、
