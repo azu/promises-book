@@ -152,7 +152,7 @@ Promiseを使うと比較的簡単に実装できると言えるかもしれま�
 このメソッドチェーンと非同期処理を見てNode.jsに慣れている方は http://nodejs.org/api/stream.html[Stream] が思い浮かぶと思います。
 
 http://nodejs.org/api/stream.html[Stream] を使うと、
-`this.lastValue`のような値を保持する必要がなくなる事や大きなファイルの扱いが改善したり、
+`this.lastValue`のような値を保持する必要がなくなる事や大きなファイルの扱いが改善したりする事で、
 上記の例に比べるとより高速に処理できる可能性が高いと思います。
 
 [source,javascript]
