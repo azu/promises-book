@@ -70,7 +70,7 @@ resolve(成功)した時 == 許可時("granted")::
 reject(失敗)した時 == 不許可時("denied")::
     `onRejected`  が呼ばれる
 
-Promiseで書けそうな目処が見えた所で、まずはコールバック関数で書いてみましょう。
+Promiseで書けそうな目処が見えた所で、まずはコールバックスタイルで書いてみましょう。
 
 === Web Notification ラッパー
 
