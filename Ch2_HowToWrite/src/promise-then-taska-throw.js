@@ -1,4 +1,3 @@
-"use strict";
 function taskA() {
     console.log("Task A");
     throw new Error("throw Error @ Task A")
