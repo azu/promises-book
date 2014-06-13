@@ -204,7 +204,7 @@ fs.readFileAsync("myfile.js", "utf8").then(function(contents){
 次のようなネイティブ`Array`のPromise版を使えるメソッドを動的に定義する例を考えてみましょう。
 
 JavaScriptにはネイティブにもDOMやString等メソッドチェーンが行える機能が多くあります。
-`Array`もその一つで`map`や`filter`等の高階関数を受け取って処理はメソッドチェーンが利用しやすい機能です。
+`Array`もその一つで、`map`や`filter`等のメソッドは配列を返すため、メソッドチェーンが利用しやすい機能です
 
 [source,javascript]
 [[array-promise-chain.js]]
