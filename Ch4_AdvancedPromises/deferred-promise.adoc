@@ -119,7 +119,7 @@ Promiseはこの値は将来的に正常な値(FulFilled)か異常な値(Rejecte
 Deferredはまだ処理が終わってないという事を表すオブジェクトで、
 処理が終わった時の結果を取得する機構(Promise)に加えて処理を進める機構をもったものといえるかもしれません。
 
-より詳しくDeferredについて知りたい人は、jQuery.DeferredやDeferredの元となったTwisted、また以下を参照するといいでしょう。
+より詳しくDeferredについて知りたい人は以下を参照するといいでしょう。
 
 * http://blog.mediumequalsmessage.com/promise-deferred-objects-in-javascript-pt1-theory-and-semantics[Promise &amp; Deferred objects in JavaScript Pt.1: Theory and Semantics.]
 * http://skitazaki.appspot.com/translation/twisted-intro-ja/index.html[Twisted 入門 — Twisted Intro]
