@@ -1,6 +1,6 @@
 "use strict";
 var timerPromisefy = require("../lib/timer-promisefy").timerPromisefy;
-// 一つでもresolve または reject された時点で終了
+// 一つでもresolve または reject した時点で終了
 Promise.race([
     timerPromisefy(1),
     timerPromisefy(32),
