@@ -4,6 +4,8 @@ Promisesについての薄い電子書籍です
 
 [http://azu.github.io/promises-book/](http://azu.github.io/promises-book/ "Promises book") から閲覧することが出来ます。
 
+[http://azu.github.io/promises-book/javascript-promise-book.pdf](http://azu.github.io/promises-book/javascript-promise-book.pdf) からPDF版をダウンロードすることが出来ます。
+
 ## Installation
 
 この書籍はAsciidocフォーマットで書かれています。
