@@ -16,7 +16,7 @@ ga('send', 'pageview');
 window.onload = function () {
     var downloadButton = document.getElementById("download-pdf");
     downloadButton.onClick = function (event) {
-        ga('send', 'event', 'Downloads', 'click', '/javascript-promise-book.pdf', {
+        ga('send', 'event', 'button', 'click', '/javascript-promise-book.pdf', {
             hitCallback: function () {
                 location.href = downloadButton.href;
             }
