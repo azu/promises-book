@@ -17,7 +17,9 @@ git checkout -B gh-pages
 
 make html
 gulp build-min-js
+
 make pdf
+
 lastCommit=$(git log --oneline | head -n 1)
 echo "=COMMIT="
 echo "MESSAGE :" $lastCommit
