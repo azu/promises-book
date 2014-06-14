@@ -15,9 +15,13 @@ ga('send', 'pageview');
 
 (function () {
     var downloadButton = document.getElementById("download-pdf");
-    downloadButton.onClick = function(){
-        ga('send', 'event', 'Downloads', 'click', '/javascript-promise-book.pdf');
-
+    downloadButton.onClick = function (event) {
+        ga('send', 'event', 'Downloads', 'click', '/javascript-promise-book.pdf', {
+            hitCallback: function () {
+                location.href = downloadButton.href;
+            }
+        });
+        event.preventDefault();
     }
 })();
 window.addEventListener("hashchange", function hashChange() {
