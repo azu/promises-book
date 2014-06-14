@@ -3,6 +3,7 @@ rvm:
 - 2.0.0
 node_js:
 - 0.1
+cache: apt
 before_install:
 - java -version
 - ruby --version
@@ -10,6 +11,7 @@ before_install:
 - gem install asciidoctor
 - gem install coderay
 - npm install -g gulp
+- sudo apt-get install ttf-vlgothic
 script:
 - make test-all
 after_success:
