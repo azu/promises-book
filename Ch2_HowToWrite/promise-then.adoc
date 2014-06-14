@@ -141,9 +141,13 @@ image::img/promise-then-passing-value.png[promise-then-passing-value]
 オブジェクトやpromiseオブジェクトも`return`することが出来ます。
 
 returnした値は `Promise.resolve(returnされた値);` のような処理されるため、
-何をreturnしても最終的にはpromiseオブジェクトが返されるとおぼえておくとよいでしょう。
+何をreturnしても最終的には新しいpromiseオブジェクトを返します。
 
 [NOTE]
 これについて詳しくは <<then-return-new-promise,thenは常に新しいpromiseオブジェクトを返す>> にて、
 よくある間違いと共に紹介しています。
+
+つまり、 `Promise#then` は単にコールバックとなる関数を登録するだけではなく、
+受け取った値を変化させて別のpromiseオブジェクトを生成する という機能も持っていることを覚えておくといいでしょう。
+
 

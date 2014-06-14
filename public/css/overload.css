@@ -23,6 +23,10 @@ li > a.sc-current-element:before {
     border: 0;
 }
 
+.download-area {
+    margin: 5px 0;
+}
+
 .download-button {
     font-size: 1.1em;
     display: inline-block;
@@ -38,6 +42,7 @@ li > a.sc-current-element:before {
 .download-button.pdf {
     background-color: #5cb85c;
 }
+
 .download-button.source-code {
     background-color: #1FA5CD;
 }
@@ -45,10 +50,12 @@ li > a.sc-current-element:before {
 .download-button:hover {
     color: white;
 }
-.download-button.pdf:hover{
+
+.download-button.pdf:hover {
     background-color: #4c974c;
 }
-.download-button.source-code:hover{
+
+.download-button.source-code:hover {
     background-color: #2090b9;
 }
 
