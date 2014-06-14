@@ -38,6 +38,9 @@ open index.pdf
 
 ### Epubのビルド
 
+まだ完成度高くないため品質はよくありません。
+[HTML版](http://azu.github.io/promises-book/)はスマートフォン等画面が小さくても見られるようになっているためこちらの利用を推奨します。
+
 ``` sh
 gem install specific_install
 gem specific_install -l https://github.com/opendevise/asciidoctor-epub3
