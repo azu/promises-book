@@ -6,9 +6,11 @@ Promisesについての薄い電子書籍です
 
 ## Installation
 
-Asciidocを使い書かれています。
+この書籍はAsciidocフォーマットで書かれています。
 
 [Asciidoctor](http://asciidoctor.org/ "Asciidoctor")でビルドすることが出来ます。
+
+### HTMLのビルド
 
 ``` sh
 gem install asciidoctor coderay
@@ -16,6 +18,22 @@ npm install -g gulp
 npm install
 make html
 open index.html
+```
+
+### PDFのビルド
+
+フォルトには[VL Gothic Font Family](http://vlgothic.dicey.org/ "VL Gothic Font Family")を使っています。
+[VL Gothic Font Family](http://vlgothic.dicey.org/download.html "VL Gothic Font Family")からダウンロードしてインストールする必要があります。
+
+必要なもの
+
+* [VL Gothic Font Family](http://vlgothic.dicey.org/ "VL Gothic Font Family")
+* Java
+
+``` sh
+git submodule update --init
+make pdf
+open index.pdf
 ```
 
 ## Contributing
