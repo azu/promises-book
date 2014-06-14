@@ -12,6 +12,14 @@
 
 ga('create', 'UA-2184335-14', 'azu.github.io');
 ga('send', 'pageview');
+
+(function () {
+    var downloadButton = document.getElementById("download-pdf");
+    downloadButton.onClick = function(){
+        ga('send', 'event', 'Downloads', 'click', '/javascript-promise-book.pdf');
+
+    }
+})();
 window.addEventListener("hashchange", function hashChange() {
     var hash = location.hash;
     var header = document.querySelector(hash);

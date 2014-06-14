@@ -21,7 +21,7 @@ icon:twitter[2x, link=https://twitter.com/search?q=%23Promise%E6%9C%AC] ハッ�
 
 ++++
 <div class="download-area">
-<a class="download-button pdf" href="http://azu.github.io/promises-book/javascript-promise-book.pdf" download="[azu]javascript-promise-book">PDF版をダウンロード</a> <a class="download-button source-code" href="https://github.com/azu/promises-book/">ソースコードをダウンロード</a>
+<a class="download-button pdf" id="download-pdf" href="http://azu.github.io/promises-book/javascript-promise-book.pdf" download="[azu]javascript-promise-book">PDF版をダウンロード</a> <a class="download-button source-code" href="https://github.com/azu/promises-book/">ソースコードをダウンロード</a>
 </div>
 ++++
 
