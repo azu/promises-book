@@ -36,11 +36,21 @@ make pdf
 open index.pdf
 ```
 
+### Epubのビルド
+
+``` sh
+gem install specific_install
+gem specific_install -l https://github.com/opendevise/asciidoctor-epub3
+asciidoctor-epub3 -D output index.adoc
+```
+
 ## Contributing
 
-[![Gitter chat](https://badges.gitter.im/azu/promises-book.png)](https://gitter.im/azu/promises-book) に意見等どうぞ。
+Pull RequestやIssue等お気軽にどうぞ。
 
-[CONTRIBUTE.md](CONTRIBUTE.md "CONTRIBUTE.md") も参考にして下さい
+[![Gitter chat](https://badges.gitter.im/azu/promises-book.png)](https://gitter.im/azu/promises-book) に書き込むだけでも問題ないです。
+
+Pull Requestする場合は [CONTRIBUTE.md](CONTRIBUTE.md "CONTRIBUTE.md") も参考にして下さい。
 
 1. Fork it!
 2. Create your feature branch: `git checkout -b my-new-feature`
