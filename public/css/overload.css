@@ -23,6 +23,35 @@ li > a.sc-current-element:before {
     border: 0;
 }
 
+.download-button {
+    font-size: 1.1em;
+    display: inline-block;
+    margin: 0.75em 0.25em;
+    border: 0px none;
+    border-radius: 3px;
+    padding: 0.75em 1em;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.download-button.pdf {
+    background-color: #5cb85c;
+}
+.download-button.source-code {
+    background-color: #1FA5CD;
+}
+
+.download-button:hover {
+    color: white;
+}
+.download-button.pdf:hover{
+    background-color: #4c974c;
+}
+.download-button.source-code:hover{
+    background-color: #2090b9;
+}
+
 /* 幅が狭いと横にスクロール出来てしまう問題 */
 .article a, .article code {
     word-wrap: break-word;
@@ -44,7 +73,8 @@ li > a.sc-current-element:before {
         display: block;
     }
 }
+
 /* codemirror */
-.CodeMirror.cm-s-default{
+.CodeMirror.cm-s-default {
     line-height: 1.2;
 }

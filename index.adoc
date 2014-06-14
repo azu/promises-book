@@ -17,6 +17,10 @@ ifeval::["{backend}" == "html5"]
 </div>
 ++++
 
+++++
+<a class="download-button pdf" href="http://azu.github.io/promises-book/javascript-promise-book.pdf" download="[azu]javascript-promise-book">PDF版をダウンロード</a> <a class="download-button source-code" href="https://github.com/azu/promises-book/">ソースコードをダウンロード</a>
+++++
+
 icon:twitter[2x, link=https://twitter.com/search?q=%23Promise%E6%9C%AC] ハッシュタグは https://twitter.com/search?q=%23Promise%E6%9C%AC[#Promise本]
 
 ++++
@@ -25,6 +29,8 @@ icon:twitter[2x, link=https://twitter.com/search?q=%23Promise%E6%9C%AC] ハッ�
 <iframe src="http://ghbtns.com/github-btn.html?user=azu&repo=promises-book&type=watch&count=true&size=large"
   allowtransparency="true" frameborder="0" scrolling="0" width="170" height="30"></iframe>
 ++++
+
+
 endif::[]
 
 
