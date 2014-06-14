@@ -4,6 +4,7 @@ rvm:
 node_js:
 - 0.1
 before_install:
+- java -version
 - ruby --version
 - gem --version
 - gem install asciidoctor
