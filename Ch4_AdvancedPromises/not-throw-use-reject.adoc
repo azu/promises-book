@@ -90,13 +90,13 @@ Promiseを使ったタイムアウト処理の実装については <<race-delay
 ここで少し`then`の挙動について思い出してみましょう。
 
 `then` に登録するコールバック関数では値を`return`することができます。
-この時returnした値は次のpromiseオブジェクト、つまり次の`then`や`catch`のコールバックに渡されます。
+この時returnした値が、次の`then`や`catch`のコールバックに渡されます。
 
 また、returnするものはプリミティブな値に限らずオブジェクト、そしてpromiseオブジェクトも返す事が出来ます。
 
 // TODO 仕様的な解説 - PromiseReactionTask
 
-以下のように書いた場合、最初の`then`で返したpromiseオブジェクトの状態によって、
+この時、returnしたものがpromiseオブジェクトである場合、そのpromiseオブジェクトの状態によって、
 次の`then`に登録されたonFulfilledとonRejectedのうち、どちらが呼ばれるかを決めることが出来ます。
 
 [source,javascript]
