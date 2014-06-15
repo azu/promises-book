@@ -26,6 +26,34 @@ CommonJSのキレイなコードの結合をするためのツール。
 __inlining-node-require__ で結合した際に重複することや表示用コードではスペース的に余計なものとなる。
 __remove-use-strict__ は不必要な`"use strict"`を取り除くことができるツール。
 
+=== サンプルコード実行エディタ
+
+Webで公開する書籍のメリットとして、その場でコードの実行結果が見られることが大きい。
+書籍やウェブでの連載でもJSFiddle等のコード公開へのリンクを貼ったものが増えてきている。
+
+そのため、サンプルコードがその場で実行できるのはメリットでありつつ、必要不可欠なものである。
+
+日本語に対応したJavaScriptのコードエディタとしては http://codemirror.net/[CodeMirror] が良くできているため、
+CodeMirrorをベースにコードの実行機能を付加するモジュールを作成した。
+
+- https://github.com/azu/codemirror-console[azu/codemirror-console]
+- https://github.com/azu/codemirror-console-ui[azu/codemirror-console-ui]
+
+__codemirror-console__ はCodeMirrorに書かれているコードを実行出来るモジュール。
+単純にコードをevalするだけでは、グロールスコープを汚染してしまうため、
+コードを実行する時にiframeを作り、その中でコードを実行している。
+
+http://nodejs.org/api/vm.html[Nodeのvmモジュール]と似た考え方を持つ https://github.com/amasad/context-eval/[context-eval]を利用した。
+これにより単純に実行するだけではなく、`cosnole`を独自のものとすり替えて実行することができるようになっている。
+
+__codemirror-console-ui__は__codemirror-console__のUIを提供するモジュール。
+
+__codemirror-console__は実行する機能のみであるため、UIは別モジュールとして作成した。
+
+image::img/javascript-console-editor.png[コンソールエディタの図]
+
+
+
 == Testing
 
 === サンプルコードのテスト
