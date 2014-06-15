@@ -2,8 +2,10 @@
   "name": "Promises-book",
   "description": "Promises book(japanese).",
   "version": "0.1.1",
+  "homepage": "https://github.com/azu/promises-book/",
   "repository": {
-    "url": "git://github.com/azu/Promises-book.git"
+    "type": "git",
+    "url": "https://github.com/azu/promises-book.git"
   },
   "main": "index.js",
   "scripts": {
@@ -16,7 +18,7 @@
   "author": "azu",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/azu/Promises-book/issues"
+    "url": "https://github.com/azu/promises-book/issues"
   },
   "dependencies": {
     "codemirror": "^4.2.0",
