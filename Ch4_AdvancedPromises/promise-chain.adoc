@@ -201,7 +201,7 @@ fs.readFileAsync("myfile.js", "utf8").then(function(contents){
 ==== ArrayのPromiseラッパー
 
 先ほどの https://github.com/petkaantonov/bluebird/blob/master/API.md#promisification[Promisification] が何をやっているのか少しイメージしにくいので、
-次のようなネイティブ`Array`のPromise版を使えるメソッドを動的に定義する例を考えてみましょう。
+次のようなネイティブ`Array`のPromise版となるメソッドを動的に定義する例を考えてみましょう。
 
 JavaScriptにはネイティブにもDOMやString等メソッドチェーンが行える機能が多くあります。
 `Array`もその一つで、`map`や`filter`等のメソッドは配列を返すため、メソッドチェーンが利用しやすい機能です
