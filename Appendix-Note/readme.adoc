@@ -3,6 +3,29 @@
 
 == Asciidoc
 
+=== 表示用JavaScriptの生成
+
+書籍のサンプルコードは外部ファイルにしたかった。
+しかし、そのまま読み込む使い方だと、サンプルコードのモジュール化が難しくなってしまった。
+モジュール化が上手くできないとテストを書くことが難しくなる。
+そこで、サンプルコード(`src`)と表示用コード(`embed`)にわけることにした。
+
+そのために、サンプルコードから表示用コードを生成するモジュールを書いた
+
+- https://github.com/azu/inlining-node-require[azu/inlining-node-require]
+- https://github.com/azu/remove-use-strict[azu/remove-use-strict]
+
+__inlining-node-require__ はBrowserify等の既存のモジュールビルドツールではできない
+CommonJSのキレイなコードの結合をするためのツール。
+
+[NOTE]
+ただし、あらゆるパターンに対応することはできないため、
+ある程度の制限を持った書き方が必要になる。
+
+サンプルコードは`"use strict"`を使ったコードとなっているが、
+__inlining-node-require__ で結合した際に重複することや表示用コードではスペース的に余計なものとなる。
+__remove-use-strict__ は不必要な`"use strict"`を取り除くことができるツール。
+
 == Testing
 
 === サンプルコードのテスト
