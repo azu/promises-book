@@ -15,12 +15,16 @@
 - https://github.com/azu/inlining-node-require[azu/inlining-node-require]
 - https://github.com/azu/remove-use-strict[azu/remove-use-strict]
 
-__inlining-node-require__ はBrowserify等の既存のモジュールビルドツールではできない
-CommonJSのコードのキレイに結合をするためのツール。
+Browserify等の既存のモジュールビルドツールでは`require`のエミュレートをするコードが入るため、
+結合したコードがあまりキレイではない。
+
+__inlining-node-require__ はCommonJSのコードを見た目そのままに結合をするためのツール。
 
 [NOTE]
-ただし、あらゆるパターンに対応することはできないため、
-ある程度の制限を持った書き方が必要になる。
+====
+__inlining-node-require__ は見た目はキレイに結合するが、
+あらゆるパターンに対応することはできないため、ある程度の制限を持った書き方が必要になる。
+====
 
 サンプルコードは`"use strict"`を使ったコードとなっているが、
 __inlining-node-require__ で結合した際に重複することや表示用コードではスペース的に余計なものとなる。
