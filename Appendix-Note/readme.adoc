@@ -67,8 +67,31 @@ image::img/javascript-console-editor.png[コンソールエディタの図]
 
 === サンプルコードのテスト
 
-- サンプルコードにテストコードが必要
-- サンプルコードを埋め込み用のコードに変換して、外部ファイル読み込みで書籍に入れる
+サンプルコードはNode.js上で動くものとして作り、一般的な手法でテストを書いた。
+サンプルコードから表示用コードを自動的に生成するが、表示用コードはブラウザで実行を前提としている。
+そのためNode.jsに限定された内容以外は、どちらの環境でも動く書き方が必要となった。
+
+多くはDOM APIがその対象だが、具体的には`XMLHttpRequest`や`Notification`等が該当する。
+
+==== XHR
+
+Node.jsには`XMLHttpRequest`がないため、`XMLHttpRequest`と同じインターフェイスを持った
+HTTP通信ライブラリが必要となる。
+
+この書籍では https://github.com/ykzts/node-xmlhttprequest[w3c-xmlhttprequest] を使い、
+Node.jsでも`XMLHttpRequest`と同じインターフェイスで通信をするコードを書くことができた。
+
+[NOTE]
+====
+`XMLHttpRequest` と同じインターフェイスをNode.jsに提供するライブラリには以下のようなものがある。
+
+* https://github.com/ykzts/node-xmlhttprequest[ykzts/node-xmlhttprequest]
+* https://github.com/driverdan/node-XMLHttpRequest[driverdan/node-XMLHttpRequest]
+* https://github.com/pwnall/node-xhr2[pwnall/node-xhr2]
+
+どのライブラリも`XMLHttpRequest`の全ての機能が使えるわけではないため、
+用途に合わせたものを選ぶ必要がある。
+====
 
 === 出力したHTMLのテスト
 
