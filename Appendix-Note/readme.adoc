@@ -26,7 +26,7 @@ CommonJSのキレイなコードの結合をするためのツール。
 __inlining-node-require__ で結合した際に重複することや表示用コードではスペース的に余計なものとなる。
 __remove-use-strict__ は不必要な`"use strict"`を取り除くことができるツール。
 
-=== サンプルコード実行エディタ
+=== サンプルコードの実行エディタ
 
 Webで公開する書籍のメリットとして、その場でコードの実行結果が見られることが大きい。
 書籍やウェブでの連載でもJSFiddle等のコード公開へのリンクを貼ったものが増えてきている。
@@ -51,7 +51,6 @@ __codemirror-console-ui__は__codemirror-console__のUIを提供するモジュ�
 __codemirror-console__は実行する機能のみであるため、UIは別モジュールとして作成した。
 
 image::img/javascript-console-editor.png[コンソールエディタの図]
-
 
 
 == Testing
