@@ -52,6 +52,8 @@ __codemirror-console__は実行する機能のみであるため、UIは別モ�
 
 image::img/javascript-console-editor.png[コンソールエディタの図]
 
+- https://github.com/azu/promises-book/issues/18
+- https://github.com/azu/promises-book/pull/121
 
 == Testing
 
