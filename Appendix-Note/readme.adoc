@@ -16,7 +16,7 @@
 - https://github.com/azu/remove-use-strict[azu/remove-use-strict]
 
 __inlining-node-require__ はBrowserify等の既存のモジュールビルドツールではできない
-CommonJSのキレイなコードの結合をするためのツール。
+CommonJSのコードのキレイに結合をするためのツール。
 
 [NOTE]
 ただし、あらゆるパターンに対応することはできないため、
