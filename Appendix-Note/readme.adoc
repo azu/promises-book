@@ -67,11 +67,17 @@ image::img/javascript-console-editor.png[コンソールエディタの図]
 
 === サンプルコードのテスト
 
-サンプルコードはNode.js上で動くものとして作り、一般的な手法でテストを書いた。
-サンプルコードから表示用コードを自動的に生成するが、表示用コードはブラウザで実行を前提としている。
-そのためNode.jsに限定された内容以外は、どちらの環境でも動く書き方が必要となった。
+サンプルコードはNode.js上で動くものとして作り、Node.jsで動くテストを書いた。
 
-多くはDOM APIがその対象だが、具体的には`XMLHttpRequest`や`Notification`等が該当する。
+<<es6-promises,ES6 Promises>>はDOMではなくECMAScriptの仕様であるため、
+ブラウザが実行環境ではなくてもよいという考えと、実行の手軽さからNode.js上で動くものとして書いていった。
+
+しかし一部を除いて、表示用コードはブラウザでの表示と実行を前提としている。
+サンプルコードから表示用コードを自動的に生成しているが、
+これはモジュールに関する事のみを解決するため、サンプルコードはどちらの環境でも動く書き方が必要となった。
+
+Node.js上でもブラウザと同様の機能がテスト出来るようにするためのPolyfillやモックが必要となった。
+DOM APIが中心となり、具体的には`XMLHttpRequest`や`Notification`等が該当する。
 
 ==== XHR
 
@@ -92,6 +98,24 @@ Node.jsでも`XMLHttpRequest`と同じインターフェイスで通信をする
 どのライブラリも`XMLHttpRequest`の全ての機能が使えるわけではないため、
 用途に合わせたものを選ぶ必要がある。
 ====
+
+このライブラリをテスト実行前に、`global`に追加することで最小限の拡張で、
+ブラウザとNode.jsで同様のコードを動かせるようにした。
+
+[source,javascript]
+----
+global.XMLHttpRequest = require('w3c-xmlhttprequest').XMLHttpRequest;
+----
+
+[NOTE]
+====
+詳細は以下で紹介されている
+
+* http://azu.github.io/slide/hasakurajs/[Test Runner Tips]
+====
+
+==== Web Notifications API
+
 
 === 出力したHTMLのテスト
 
