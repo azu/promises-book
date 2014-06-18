@@ -94,5 +94,6 @@ MacBook Proの上にThinkPad Bluetooth keyboardを載せて使えば、
 Github Issueを使った執筆のワークフローについては
 http://azu.github.io/slide/udonjs/github-issue.html[一人で使えるGithub Issue] にまとめています。
 
-2014年3月2日に書き始めて、2014年6月2日に全ての章が書けてリファクタリングに入ったので、
+2014年3月2日に書き始めて、2014年6月2日に全ての章が書き終わり、リファクタリングに入ったので、
 大体目標を達成できたように思えます。
+
