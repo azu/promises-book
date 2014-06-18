@@ -116,16 +116,42 @@ global.XMLHttpRequest = require('w3c-xmlhttprequest').XMLHttpRequest;
 
 ==== Web Notifications API
 
+テスト出来るようにすることが目的であるため、機能まで持ってくる必要性はなかった。
+そのため、Web Notifications APIではNoticationのモックオブジェクトを作成し、
+テストをおこなえるようにした。
 
 === 出力したHTMLのテスト
+
+Asciidocでは `<<id>>` という記法で内部リンクを貼ることができるが、
+この内部リンク先をリファクタリング時に変更してしまうことがあった。
+
+そのため、生成したHTMLから内部リンクを取得して、移動先となる要素が
+確かに存在するのかをテストするスクリプトを走らせている。
 
 - https://github.com/azu/promises-book/issues/25
 
 === Asciidoc上のインラインコードテスト
 
+この書籍中のコードには大きく分けて2種類ある。
+ひとつは外部ファイルとして書いてテストも書いているサンプルコード。
+もう一つは直接Asciidocのファイルに書いているインラインコードである。
+
+外部ファイルのサンプルコードはテストしているため動作に問題ないことを保証できるが、
+インラインコードは直接書くため実行して確認せず間違ったコードを書いてしまいがちだった。
+
+そのため、Asciidocのファイルをパースして、インラインコードを抽出し、
+そのコードが http://esprima.org/[Esprima]といったJavaScriptパーサでパース出来るかを検証できるようにした。
+
+これにより、JavaScriptの文法として間違っているもはパースエラーとなるため、
+インラインに書いたコードのミスを検出するのに役だった。
+
 - https://github.com/azu/promises-book/issues/52
 
 === Asciidoctorのビルドテスト
+
+この書籍はAsciidoc形式で書き、asciidoctorによりビルドしている。
+リソースが欠損しててもエラーではなくWARNINGとなるため、
+ビルドするときにWARNINGが発生したらCIが落ちるようにした。
 
 - https://github.com/azu/promises-book/issues/54
 
