@@ -20,3 +20,21 @@ Thenable::
 promise chain::
     promiseオブジェクトを`then`や`catch`のメソッドチェーンでつなげたもの。
     この用語は書籍中のものであり、<<es6-promises,ES6 Promises>>で定められた用語ではありません。
+
+[[resouce-link]]
+= 参考サイト
+
+https://github.com/w3ctag/promises-guide[w3ctag/promises-guide]::
+    Promisesのガイド - 概念的な説明はここから得たものが多い
+
+https://github.com/domenic/promises-unwrapping[domenic/promises-unwrapping]::
+    ES6 Promisesの仕様リポジトリ - issueを検索して得た経緯や情報も多い
+
+http://people.mozilla.org/~jorendorff/es6-draft.html#sec-promise-objects[ECMAScript Language Specification ECMA-262 6th Edition – DRAFT]::
+    ES6 Promisesの仕様書 - 仕様書として参照する場合はこちらを優先した
+
+http://www.html5rocks.com/en/tutorials/es6/promises/?redirect_from_locale=ja[JavaScript Promises: There and back again - HTML5 Rocks]::
+    Promisesについての記事 - 完成度がとても高くサンプルコードやリファレンス等を参考にした
+
+http://d.hatena.ne.jp/jovi0608/20140319/1395199285[Node.jsにPromiseが再びやって来た！ - ぼちぼち日記]::
+    Node.jsとPromiseの記事 - __thenable__について参考にした
