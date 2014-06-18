@@ -1,2 +1,11 @@
 [[editor-note]]
 = Editor's Note
+
+// 始めた理由
+include::beggining-story.adoc[]
+
+// ツールやCI
+include::tooling-ci.adoc[]
+
+// おわりに
+include::ending.adoc[]
