@@ -7,7 +7,7 @@ JavaScript Promiseの本 を書き始めた理由や、どのように書いて�
 本編とは直接関係のないおまけの内容となっています。
 
 // 始めた理由
-include::beggining-story.adoc[]
+include::beginning-story.adoc[]
 
 // ツールやCI
 include::tooling-ci.adoc[]
