@@ -1,7 +1,7 @@
 [[editor-note]]
 = Editor's Note
 
-== Asciidoc
+== HTML/Asciidoc
 
 === 表示用JavaScriptの生成
 
@@ -117,8 +117,9 @@ global.XMLHttpRequest = require('w3c-xmlhttprequest').XMLHttpRequest;
 ==== Web Notifications API
 
 テスト出来るようにすることが目的であるため、機能まで持ってくる必要性はなかった。
-そのため、Web Notifications APIではNoticationのモックオブジェクトを作成し、
-テストをおこなえるようにした。
+そのため、Web Notifications APIではNoticationのモックオブジェクトを作成し、テストを行った。
+
+- https://github.com/azu/promises-book/blob/master/Ch4_AdvancedPromises/test/mock/mock-notification.js[mock-notification.js]
 
 === 出力したHTMLのテスト
 
@@ -142,16 +143,16 @@ Asciidocでは `<<id>>` という記法で内部リンクを貼ることがで�
 そのため、Asciidocのファイルをパースして、インラインコードを抽出し、
 そのコードが http://esprima.org/[Esprima]といったJavaScriptパーサでパース出来るかを検証できるようにした。
 
-これにより、JavaScriptの文法として間違っているもはパースエラーとなるため、
-インラインに書いたコードのミスを検出するのに役だった。
+これによりJavaScriptの文法として間違っているもはパースエラーとなるため、
+インラインに書いたコードのミスを検出するのに役立った。
 
 - https://github.com/azu/promises-book/issues/52
 
 === Asciidoctorのビルドテスト
 
 この書籍はAsciidoc形式で書き、asciidoctorによりビルドしている。
-リソースが欠損しててもエラーではなくWARNINGとなるため、
-ビルドするときにWARNINGが発生したらCIが落ちるようにした。
+
+リソースが欠損しててもエラーではなくWARNINGとなるため、ビルドするときにWARNINGが発生したらCIが落ちるようにした。
 
 - https://github.com/azu/promises-book/issues/54
 
@@ -159,13 +160,14 @@ Asciidocでは `<<id>>` という記法で内部リンクを貼ることがで�
 
 === プレビュー
 
-masterへマージされたものは、Travis CIで自動的にビルドして`gh-pages`ブランチにpushされる。
+masterへマージされたものは、Travis CIで自動的にビルドして`gh-pages`ブランチにpushする。
+これによりmasterへのコミットやpull-requestsをマージしたら自動的に http://azu.github.io/promises-book/ にて見られるようにしていた。
 
 - https://github.com/azu/promises-book/blob/master/_tools/deploy-gh-pages.sh[promises-book/_tools/deploy-gh-pages.sh at master · azu/promises-book]
 
-pull-requests中のコミットは、`preview-html`ブランチに生成済みのHTMLがpushされる。
+pull-requestsのコミットに対しては、そのコミットごとに`preview-html`ブランチに生成済みのHTMLがpushされる。
 
-pushされた一時プレビュー用のURLをGitterに対して通知してpull-request時のプレビューが出来るようになってる。
+pushされた一時プレビュー用のURLをGitterに対して通知して、pull-request時のHTMLがプレビュー出来るようになっている。
 
 image::img/preview-html.png[preview-html.png]
 
@@ -181,7 +183,7 @@ image::img/preview-html.png[preview-html.png]
 === Lint
 
 https://gist.github.com/inao/f55e8232e150aee918b9[WEB+DB PRESS用語統一ルール] の辞書を使うために、
-辞書のパーサーを書いた
+辞書のパーサーを書いた。
 
 - https://github.com/azu/wzeditor-word-rules-parser[azu/wzeditor-word-rules-parser]
 - http://efcl.info/2014/0616/res3931/[WEB+DB PRESS用語統一ルール(WZEditor)のパーサを書いた | Web scratch]
