@@ -1,6 +1,11 @@
 [[editor-note]]
 = Editor's Note
 
+JavaScript Promiseの本 を書き始めた理由や、どのように書いていったか、
+またこの書籍はどのような仕組みで作られているかなどについて紹介していきます。
+
+本編とは直接関係のないおまけの内容となっています。
+
 // 始めた理由
 include::beggining-story.adoc[]
 

@@ -12,7 +12,7 @@
 モジュール化が上手くできないとテストを書くことが難しくなる。
 そこで、サンプルコード(`src`)と表示用コード(`embed`)にわけることにした。
 
-そのために、サンプルコードから表示用コードを生成するモジュールを書いた
+そのために、サンプルコードから表示用コードを生成するモジュールを書いた。
 
 - https://github.com/azu/inlining-node-require[azu/inlining-node-require]
 - https://github.com/azu/remove-use-strict[azu/remove-use-strict]
