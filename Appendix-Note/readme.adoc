@@ -11,6 +11,3 @@ include::beginning-story.adoc[]
 
 // ツールやCI
 include::tooling-ci.adoc[]
-
-// おわりに
-include::ending.adoc[]
