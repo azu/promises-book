@@ -21,7 +21,7 @@ pdf:
 	@echo "Generate PDF..."
 	@gulp embed
 	@echo "Building asciidoc"
-	@asciidoctor -a bookversion=`node ./_tools/cli-book-version.js` \
+	@asciidoctor -a lang=en -a bookversion=`node ./_tools/cli-book-version.js` \
 	-a icons=font -a source-highlighter=coderay --backend docbook \
 	-o javascript-promise-book.xml ${SRC_FILE}
 	@./_tools/build_pdf.sh javascript-promise-book.xml
@@ -31,7 +31,7 @@ note-pdf:
 	@echo "Generate PDF..."
 	@gulp embed
 	@echo "Building asciidoc"
-	@asciidoctor -a icons=font -a source-highlighter=coderay --backend docbook \
+	@asciidoctor -a lang=en -a icons=font -a source-highlighter=coderay --backend docbook \
 	-o javascript-promise-omake.xml Appendix-Note/readme.adoc
 	@./_tools/build_pdf.sh javascript-promise-omake.xml
 	@echo "Done!"

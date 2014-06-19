@@ -1,9 +1,11 @@
 = [WIP] JavaScript Promiseの本
-:Author:      azu
+azu
+:author:      azu
+:authorinitials: azu
 :keywords:    JavaScript,ECMAScript,Promises,日本語
 :revnumber:   {bookversion}
-:source:      https://github.com/azu/Promises-book
-:lang:        en
+:source:      https://github.com/azu/promises-book
+:lang:        ja
 :icons:       font
 :docinfo1:
 :toc2:
