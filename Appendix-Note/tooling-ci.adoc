@@ -86,7 +86,7 @@ DOM APIが中心となり、具体的には`XMLHttpRequest`や`Notification`等�
 Node.jsには`XMLHttpRequest`がないため、`XMLHttpRequest`と同じインターフェイスを持った
 HTTP通信ライブラリが必要となる。
 
-この書籍では https://github.com/ykzts/node-xmlhttprequest[w3c-xmlhttprequest] を使い、
+この書籍では w3c-xmlhttprequest を使い、
 Node.jsでも`XMLHttpRequest`と同じインターフェイスで通信をするコードを書くことができた。
 
 [NOTE]
@@ -101,7 +101,7 @@ Node.jsでも`XMLHttpRequest`と同じインターフェイスで通信をする
 用途に合わせたものを選ぶ必要がある。
 ====
 
-このライブラリをテスト実行前に、`global`に追加することで最小限の拡張で、
+このライブラリをテスト実行前に、`global`に追加することで、
 ブラウザとNode.jsで同様のコードを動かせるようにした。
 
 [source,javascript]
@@ -145,7 +145,7 @@ Asciidocでは `<<id>>` という記法で内部リンクを貼ることがで�
 そのため、Asciidocのファイルをパースして、インラインコードを抽出し、
 そのコードが http://esprima.org/[Esprima]といったJavaScriptパーサでパース出来るかを検証できるようにした。
 
-これによりJavaScriptの文法として間違っているもはパースエラーとなるため、
+これによりJavaScriptの文法として間違っているものはパースエラーとなるため、
 インラインに書いたコードのミスを検出するのに役立った。
 
 - https://github.com/azu/promises-book/issues/52
@@ -154,7 +154,7 @@ Asciidocでは `<<id>>` という記法で内部リンクを貼ることがで�
 
 この書籍はAsciidoc形式で書き、asciidoctorによりビルドしている。
 
-リソースが欠損しててもエラーではなくWARNINGとなるため、ビルドするときにWARNINGが発生したらCIが落ちるようにした。
+Asciidoctorではリソースが欠損しててもエラーではなくWARNINGとなるため、ビルドするときにWARNINGが発生したらCIが落ちるようにした。
 
 - https://github.com/azu/promises-book/issues/54
 
@@ -179,7 +179,7 @@ image::img/preview-html.png[preview-html.png]
 
 - https://github.com/azu/visualize-promises-book[azu/visualize-promises-book]
 
-セクション毎にテーマを分けてる事が多いけど、それを俯瞰的にどうやってみるかを模索するために、
+セクション毎にテーマを分けてる事が多いが、それを俯瞰的にどうやってみるかを模索するために、
 セクション同士の依存関係を可視化するものを作成した。
 
 === Lint
