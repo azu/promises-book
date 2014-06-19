@@ -120,9 +120,11 @@ endif::[]
 
 * https://github.com/azu/promises-book/issues?state=open[Issues · azu/promises-book]
 
-また、Githubアカウントを利用した https://gitter.im/azu/promises-book[チャットサービス] に書いていくのもよいでしょう。
+また、この書籍についての https://gitter.im/azu/promises-book[チャットページ] に書いていくのもいいでしょう。
 
+ifeval::["{backend}" == "html5"]
 * image:https://badges.gitter.im/azu/promises-book.png["Gitter", link="https://gitter.im/azu/promises-book"]
+endif::[]
 
 Twitterでのハッシュタグは icon:twitter[2x, link=https://twitter.com/search?q=%23Promise%E6%9C%AC] https://twitter.com/search?q=%23Promise%E6%9C%AC[#Promise本]
 なので、こちらを利用するのもいいでしょう。
