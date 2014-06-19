@@ -3,7 +3,7 @@
 :keywords:    JavaScript,ECMAScript,Promises,日本語
 :revnumber:   {bookversion}
 :source:      https://github.com/azu/Promises-book
-:lang:        ja
+:lang:        en
 :icons:       font
 :docinfo1:
 :toc2:
