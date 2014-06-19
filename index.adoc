@@ -8,6 +8,7 @@ azu
 :lang:        ja
 :icons:       font
 :docinfo1:
+:numbered!:
 :toc2:
 
 // {bookversion} passing from outside
@@ -58,7 +59,6 @@ image::https://badges.gitter.im/azu/promises-book.png[Gitter, link="https://gitt
 // 各章はH1から始めているので、一つ下げる
 :leveloffset: 1
 
-:numbered!:
 // はじめに
 include::Ch0_Introduction/readme.adoc[]
 
