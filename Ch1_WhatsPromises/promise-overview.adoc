@@ -1,5 +1,5 @@
 [[promises-overview]]
-== Promises Overview
+== Promise Overview
 
 <<es6-promises,ES6 Promises>>の仕様で定義されているAPIはそこまで多くはありません。
 
