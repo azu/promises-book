@@ -1,5 +1,6 @@
 [[editor-note]]
-= Editor's Note
+= おまけ: Editor's Note
+:imagesdir: Appendix-Note
 
 JavaScript Promiseの本 を書き始めた理由や、どのように書いていったか、
 またこの書籍はどのような仕組みで作られているかなどについて紹介していきます。

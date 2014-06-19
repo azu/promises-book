@@ -20,7 +20,7 @@
 Browserify等の既存のモジュールビルドツールでは`require`のエミュレートをするコードが入るため、
 結合したコードがあまりキレイではない。
 
-__inlining-node-require__ はCommonJSのコードを見た目そのままに結合をするためのツール。
+そこで作成したのが __inlining-node-require__ でCommonJSのコードを見た目そのままに結合をすることができる。
 
 [NOTE]
 ====
@@ -123,7 +123,7 @@ global.XMLHttpRequest = require('w3c-xmlhttprequest').XMLHttpRequest;
 
 - https://github.com/azu/promises-book/blob/master/Ch4_AdvancedPromises/test/mock/mock-notification.js[mock-notification.js]
 
-=== 出力したHTMLのテスト
+==== 出力したHTMLのテスト
 
 Asciidocでは `<<id>>` という記法で内部リンクを貼ることができるが、
 この内部リンク先をリファクタリング時に変更してしまうことがあった。
