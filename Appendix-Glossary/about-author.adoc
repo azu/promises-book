@@ -2,7 +2,7 @@
 = 著者について
 
 image:img/simple320_320.png[azu,32,32]
-https://github.com/azu/[azu]
+**https://github.com/azu/[azu]**
 
 ブラウザ、JavaScriptの最新技術を常に追いかけている。
 
