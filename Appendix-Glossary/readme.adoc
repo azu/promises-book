@@ -1,6 +1,8 @@
+:imagesdir: Appendix-Glossary
+
 // 用語集
 include::glossary.adoc[]
 // リソースリンク
 include::glossary.adoc[]
-// 著者
+// 著者について
 include::about-author.adoc[]
