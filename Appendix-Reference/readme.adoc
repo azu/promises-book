@@ -164,9 +164,3 @@ Promise.race([p1, p2, p3]).then(function (value) {
 渡されたpromiseオブジェクトの配列のうち、
 一番最初にresolve または rejectされたpromiseにより、
 新たなpromiseオブジェクトはその値でresolve または rejectされる。
-
-
-
-
-
-
