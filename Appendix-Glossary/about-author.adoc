@@ -1,0 +1,8 @@
+[[about-author]]
+= 著者について
+
+image::https://github.com/azu/slide/raw/master/offline_study/simple320_320.png[azu]
+
+https://github.com/azu/[azu] - ブラウザ、JavaScriptの最新技術を常に追いかけている。
+目的を手段にしてしまうことを得意としている(この書籍もそうだ)。
+http://efcl.info/[Web Scratch] や http://jser.info/[JSer.info] といったサイトを運営している。

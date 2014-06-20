@@ -2,3 +2,5 @@
 include::glossary.adoc[]
 // リソースリンク
 include::glossary.adoc[]
+// 著者
+include::about-author.adoc[]
