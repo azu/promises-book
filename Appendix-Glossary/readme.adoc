@@ -3,6 +3,6 @@
 // 用語集
 include::glossary.adoc[]
 // リソースリンク
-include::glossary.adoc[]
+include::resource-link.adoc[]
 // 著者について
 include::about-author.adoc[]
