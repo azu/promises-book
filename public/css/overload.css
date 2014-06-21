@@ -23,8 +23,11 @@ li > a.sc-current-element:before {
     border: 0;
 }
 
+.social-button-wrapper{
+    margin-bottom:1.25em;
+}
 .download-area {
-    margin: 5px 0;
+    margin-bottom:1.25em;
 }
 
 .download-button {
