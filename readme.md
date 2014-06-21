@@ -35,7 +35,7 @@ open index.html
 ``` sh
 git submodule update --init
 make pdf
-open index.pdf
+open javascript-promise-book.pdf
 ```
 
 ### Epubのビルド
