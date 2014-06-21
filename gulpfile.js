@@ -8,30 +8,31 @@ var browserify = require('browserify');
 var minifyify = require("minifyify");
 var source = require('vinyl-source-stream');
 var sourceFile = "./public/js/index.js";
+var destDir = "./public/js/build/";
 gulp.task("build-js", function () {
     return browserify(sourceFile)
         .bundle()
         .pipe(source("app.js"))
-        .pipe(gulp.dest("./public/js/"));
+        .pipe(gulp.dest(destDir));
 });
 gulp.task("build-min-js", function () {
     return browserify(sourceFile)
         .plugin('minifyify', {
             map: 'app.min.js.map',
-            output: './public/js/app.min.js.map',
+            output: destDir + 'app.min.js.map',
             compressPath: function (p) {
                 return path.relative('./', p);
             }
         })
         .bundle()
         .pipe(source("app.js"))
-        .pipe(gulp.dest("./public/js/"));
+        .pipe(gulp.dest(destDir));
 });
 gulp.task("embed", function () {
     return gulp.src(["./Ch*/src/**/*.js", "./Ch*/lib/*.js", "./Ch3_Testing/test/*.js"], {base: './'})
         .pipe(inlining())
         .pipe(removeUseString({
-            force :true
+            force: true
         }))
         .pipe(rename(function (filePath) {
             var filePathBySplit = filePath.dirname.split(path.sep);
