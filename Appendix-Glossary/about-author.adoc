@@ -9,3 +9,21 @@ image:img/simple320_320.png[azu,32,32]
 目的を手段にしてしまうことを得意としている(この書籍もその結果できた)。
 
 http://efcl.info/[Web Scratch] や http://jser.info/[JSer.info] といったサイトを運営している。
+
+[[omake-message]]
+== 著者へのメッセージ/おまけ
+
+以下の https://gumroad.com/l/javascript-promise[おまけ.pdf] では、
+この書籍を書き始めた理由や、どのように書いていったか、テストなどについて書かれています。
+
+- image:../public/img/gumroad-green.svg[おまけをダウンロード, link="https://gumroad.com/l/javascript-promise"] https://gumroad.com/l/javascript-promise[JavaScript Promiseの本のおまけ]
+
+Gumroadから無料 または 好きな値段でダウンロードすることが出来ます。
+
+ダウンロードする際に作者へのメッセージも書けるので、
+メッセージを残すついでにダウンロードして行ってください。
+
+問題の指摘などがありましたら、GithubやGitterに書いてくださると解決出来ます。
+
+* https://github.com/azu/promises-book/issues?state=open[Issues · azu/promises-book]
+* https://gitter.im/azu/promises-book[azu/promises-book - Gitter]
