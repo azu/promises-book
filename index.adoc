@@ -2,7 +2,8 @@
 azu
 :author:      azu
 :authorinitials: azu
-:keywords:    JavaScript,ECMAScript,Promises,日本語
+:keywords:    JavaScript, ECMAScript, Promise, 日本語, 使い方, チュートリアル, リファレンス
+:description: JavaScript Promiseの使い方やテスト、応用について解説したドキュメントです。
 :revnumber:   {bookversion}
 :source:      https://github.com/azu/promises-book
 :lang:        ja
@@ -22,6 +23,8 @@ ifeval::["{backend}" == "html5"]
 
 icon:twitter[2x, link=https://twitter.com/search?q=%23Promise%E6%9C%AC] ハッシュタグは https://twitter.com/search?q=%23Promise%E6%9C%AC[#Promise本]
 
+icon:rss[2x, link=https://github.com/azu/promises-book/releases.atom] 更新情報は https://github.com/azu/promises-book/releases.atom[RSS] から購読出来ます
+
 ++++
 <iframe src="http://ghbtns.com/github-btn.html?user=azu&repo=promises-book&type=watch&count=true"
   allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe>
@@ -34,9 +37,16 @@ icon:twitter[2x, link=https://twitter.com/search?q=%23Promise%E6%9C%AC] ハッ�
 
 ++++
 <div class="download-area">
-<a class="download-button pdf" id="download-pdf" href="http://azu.github.io/promises-book/javascript-promise-book.pdf" download="javascript-promise-book.pdf">PDF版をダウンロード</a> <a class="download-button source-code" href="https://github.com/azu/promises-book/">ソースコードをダウンロード</a>
+<a class="download-button pdf" id="download-pdf" href="http://azu.github.io/promises-book/javascript-promise-book.pdf" download="javascript-promise-book.pdf">PDF版をダウンロード</a>
+<a class="download-button source-code" href="https://github.com/azu/promises-book/">ソースコードをダウンロード</a>
 </div>
 ++++
+
+この電子書籍の作り方に興味がある方は、
+以下から https://gumroad.com/l/javascript-promise[おまけ] をダウンロードすることが出来ます。
+
+image:./public/img/gumroad-green.svg[おまけをダウンロード, link="https://gumroad.com/l/javascript-promise"] から https://gumroad.com/l/javascript-promise[ダウンロード] ::
+    書き始めた理由や、どのように書いていったか、どのような仕組みで動いているかなどについて書かれています。
 
 endif::[]
 
