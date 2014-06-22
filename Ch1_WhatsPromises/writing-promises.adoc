@@ -28,7 +28,7 @@ promiseオブジェクトを作る流れは以下のようになっています�
 ----
 include::embed/embed-xhr-promise.js[]
 // 実行例
-var URL = "http://httpbin.org/status/500";
+var URL = "http://httpbin.org/get";
 getURL(URL).then(function onFulfilled(value){
     console.log(value);
 }).catch(function onRejected(error){
@@ -142,7 +142,7 @@ getURL(URL).then(onFulfilled, onRejected);// <1>
 
 この章では以下のことについて簡単に紹介しました。
 
-* `new Promise` を使いpromiseオブジェクトの作成
+* `new Promise` を使ったpromiseオブジェクトの作成
 * <<promise.then,`.then`>> や <<promise.catch,`.catch`>> を使ったpromiseオブジェクトの処理
 
 Promiseの基本的な書き方について学びました。
