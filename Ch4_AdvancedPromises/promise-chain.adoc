@@ -19,7 +19,7 @@ Promiseは`then`や`catch`等のメソッドを繋げて書いていきます。
 
 === fsのメソッドチェーン
 
-以下のようなNode.jsの http://nodejs.org/api/fs.html[fs]モジュールを例にしてみたいと思います。
+以下のような http://nodejs.org/api/fs.html[Node.jsのfs]モジュールを例にしてみたいと思います。
 
 また、今回の例は見た目のわかりやすさを重視しているため、
 現実的にはあまり有用なケースとは言えないかもしれません。
