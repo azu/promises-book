@@ -23,6 +23,7 @@
 .promise-done-example.js
 ----
 include::embed/embed-promise-done-example.js[]
+// => ブラウザの開発ツールのコンソールを開いてみましょう
 ----
 
 最初に述べたように、`Promise.prototype.done`は仕様としては存在しないため、
@@ -222,3 +223,17 @@ try{
 
 その時でも何でもやり過ぎると、せっかく非同期処理をPromiseでまとめても複雑化してしまう場合があるため、
 統一感を持たせるというのは抽象的なオブジェクトであるPromiseにおいては大事な部分と言えるかもしれません。
+
+
+[NOTE]
+====
+http://blog.getify.com/promises-part-4/[Promises: The Extension Problem (part 4) | getiblog] では、
+Promiseの拡張を書く手法について書かれています。
+
+* `Promise.prototype` を拡張する方法
+* Wrapper/Delegate を使った抽象レイヤーを作る方法
+
+また、Delegateを利用した方法については、 http://speakingjs.com/es5/ch28.html[Chapter 28. Subclassing Built-ins] にて
+詳しく解説されています。
+
+====
