@@ -8,6 +8,6 @@ Promise.all([
     timerPromisefy(64),
     timerPromisefy(128)
 ]).then(function (values) {
-    console.log(Date.now() - startDate + "ms");// 約32ms
-    console.log(values); // [1, 2, 4, 8, 16, 32]
+    console.log(Date.now() - startDate + "ms");// 約128ms
+    console.log(values); // [1,32,64,128]
 });
