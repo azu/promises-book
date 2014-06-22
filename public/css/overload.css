@@ -23,18 +23,19 @@ li > a.sc-current-element:before {
     border: 0;
 }
 
-.social-button-wrapper{
-    margin-bottom:1.25em;
+.social-button-wrapper {
+    margin-bottom: 1.25em;
 }
+
 .download-area {
-    margin-bottom:1.25em;
+    margin-bottom: 1.25em;
 }
 
 .download-button {
     font-size: 1.1em;
     display: inline-block;
     margin: 0.75em 0.25em;
-    border: 0px none;
+    border: 0 none;
     border-radius: 3px;
     padding: 0.75em 1em;
     color: white;
@@ -60,6 +61,12 @@ li > a.sc-current-element:before {
 
 .download-button.source-code:hover {
     background-color: #2090b9;
+}
+
+.tutorial-area {
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    margin: 5px 1px 1.25em 0;
+    border: 1px solid rgba(81, 203, 238, 1);
 }
 
 /* 幅が狭いと横にスクロール出来てしまう問題 */

@@ -91,13 +91,15 @@ promise.then(function(value){
 });
 ----
 
-+++<button class="mirror-console-button mirror-console-run">実行</button>+++ ボタンを押すことで、
-サンプルコードがエディタとなりコードを実行する事が出来ます。
-
-+++<button class="mirror-console-button mirror-console-clear">ログをクリア</button>+++ボタンでは実行結果の`console.log`の内容をクリア出来ます。
-
-+++<button class="mirror-console-button mirror-console-exit">終了</button>+++ボタンではエディタモードを終了します。
-
+++++
+<div class="tutorial-area">
+<button class="mirror-console-button mirror-console-run">実行</button> ボタンを押すことで、
+サンプルコードがエディタとなりコードを実行する事が出来ます。<br />
+<button class="mirror-console-button mirror-console-clear">ログをクリア</button>ボタンでは実行結果の`console.log`の内容をクリア出来ます。
+<br />
+<button class="mirror-console-button mirror-console-exit">終了</button>ボタンではエディタモードを終了します。
+</div>
+++++
 気になるコードはその場で書き換えて実行することができるため、理解するための補助として使って下さい。
 
 endif::[]
