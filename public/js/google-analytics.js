@@ -23,7 +23,7 @@ window.onload = function () {
         });
         event.preventDefault();
     }
-}
+};
 window.addEventListener("hashchange", function hashChange() {
     var hash = location.hash;
     var header = document.querySelector(hash);
