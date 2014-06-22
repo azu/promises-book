@@ -101,7 +101,6 @@ Promiseを使ったタイムアウト処理の実装については <<race-delay
 
 [source,javascript]
 ----
-"use strict";
 var promise = Promise.resolve();
 promise.then(function () {
     var retPromise = new Promise(function (resolve, reject) {
@@ -118,7 +117,6 @@ promise.then(function () {
 [role="executable"]
 [source,javascript]
 ----
-"use strict";
 var onRejected = console.error.bind(console);
 var promise = Promise.resolve();
 promise.then(function () {
@@ -134,7 +132,6 @@ promise.then(function () {
 [role="executable"]
 [source,javascript]
 ----
-"use strict";
 var onRejected = console.error.bind(console);
 var promise = Promise.resolve();
 promise.then(function () {
