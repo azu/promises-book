@@ -69,6 +69,10 @@ li > a.sc-current-element:before {
     border: 1px solid rgba(81, 203, 238, 1);
 }
 
+.mirror-console-wrapper {
+    margin: 0 0 1.25em 0;
+}
+
 /* 幅が狭いと横にスクロール出来てしまう問題 */
 .article a, .article code {
     word-wrap: break-word;
