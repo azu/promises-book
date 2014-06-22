@@ -10,7 +10,7 @@ Deferredという単語はPromiseと同じコンテキストで聞いた事が�
 
 DeferredはPromiseと違い、共通の仕様があるわけではなく、各ライブラリがそのような目的の実装をそう呼んでいます。
 
-今回は http://api.jquery.com/category/deferred-object/[jQuery.Deferred] を中心にして話を進めます。
+今回は http://api.jquery.com/category/deferred-object/[jQuery.Deferred] のようなDeferredの実装を中心にして話を進めます。
 
 === DeferredとPromiseの関係
 
