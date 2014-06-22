@@ -1,4 +1,4 @@
-= [WIP] JavaScript Promiseの本
+= JavaScript Promiseの本
 azu
 :author:      azu
 :authorinitials: azu
@@ -54,22 +54,6 @@ icon:rss[2x, link=https://github.com/azu/promises-book/releases.atom] 更新情�
 - 書き始めた理由や、どのように書いていったか、どのような仕組みで動いているかなどについて書かれています。
 
 endif::[]
-
-
-[IMPORTANT]
-=====
-*この書籍はまだ作業中です！*
-
-Working on the book. Contributingは https://github.com/azu/promises-book[Github] から
-=====
-
-[IMPORTANT]
-=====
-この書籍の進行状況は https://github.com/azu/promises-book/issues?state=open[Issues · azu/promises-book] や以下から確認できます。
-
-image::https://badges.gitter.im/azu/promises-book.png[Gitter, link="https://gitter.im/azu/promises-book"]
-=====
-
 
 // 各章はH1から始めているので、一つ下げる
 :leveloffset: 1
