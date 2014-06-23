@@ -57,11 +57,11 @@ Promiseと同等の機能を同じメソッド名で提供してくれるライ�
 Promiseがサポートされてない環境でも実行出来るようになります。
 
 https://github.com/jakearchibald/es6-promise[jakearchibald/es6-promise]::
-    ES6 Promiseと互換性を持ったPolyfillライブラリです。
+    ES6 Promisesと互換性を持ったPolyfillライブラリです。
     https://github.com/tildeio/rsvp.js[RSVP.js] という Promises/A+互換ライブラリがベースとなっており、
     これのサブセットとしてES6 PromisesのAPIだけが実装されているライブラリです。
 https://github.com/yahoo/ypromise[yahoo/ypromise]::
-    http://yuilibrary.com/[YUI] の一部としても利用されているES6 Promiseと互換性を持ったPolyfillライブラリです。
+    http://yuilibrary.com/[YUI] の一部としても利用されているES6 Promisesと互換性を持ったPolyfillライブラリです。
     この書籍ではこのPolyfillを読み込み、サンプルコードを動かしています。
 
 ==== Promise拡張ライブラリ
