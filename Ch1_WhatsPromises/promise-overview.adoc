@@ -74,10 +74,10 @@ include::embed/embed-promise-workflow.js[]
 そのタイミングで `then` のコールバックが呼ばれ `'Async Hello world'` と出力されます。
 
 この場合 `catch` のコールバックは呼ばれる事はないですが、
-`setTimout`が存在しない環境などでは、例外が発生し`catch`のコールバックが呼ばれると思います。
+`setTimout`が存在しない環境などでは、例外が発生し`catch`で登録したコールバック関数が呼ばれると思います。
 
 もちろん、`promise.then(onFulfilled, onRejected)` というように、
-`catch` を使わずに `then` は以下のように2つのコールバックを設定することでもほぼ同様の動作になります。
+`catch` を使わずに `then` を使い、以下のように2つのコールバック関数を設定することでもほぼ同様の動作になります。
 
 [source,javascript]
 ----
