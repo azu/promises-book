@@ -10,7 +10,7 @@ JavaScriptにおけるPromiseについて学ぶことを目的とした書籍で
 
 - Promiseについて学び、パターンやテストを扱えるようになる事
 - Promiseの向き不向きについて学び、何でもPromiseで解決するべきではないと知る事
-- ES6 Promiseを元に基本をよく学び、より発展した形を自分で形成できるようになる事
+- ES6 Promisesを元に基本をよく学び、より発展した形を自分で形成できるようになる事
 
 この書籍では、先程も述べたように<<es6-promises,ES6 Promises>>、
 つまりJavaScriptの標準仕様をベースとしたPromiseについて書かれています。
