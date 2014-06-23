@@ -52,6 +52,7 @@ icon:rss[2x, link=https://github.com/azu/promises-book/releases.atom] 更新情�
 
 - image:./public/img/gumroad-green.svg[おまけをダウンロード, link="https://gumroad.com/l/javascript-promise"] https://gumroad.com/l/javascript-promise[おまけをダウンロード]
 - 書き始めた理由や、どのように書いていったか、どのような仕組みで動いているかなどについて書かれています。
+- Gumroadで購入者が0円から任意の値段を決めてダウンロードすることが出来ます
 
 '''
 
