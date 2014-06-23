@@ -65,8 +65,11 @@ li > a.sc-current-element:before {
 
 .tutorial-area {
     box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    font-size: 0.9em;
     margin: 5px 1px 1.25em 0;
-    border: 1px solid rgba(81, 203, 238, 1);
+    padding: 0 0 0 0.5em;
+    border-top: 1px solid rgba(81, 203, 238, 1);
+    border-bottom: 1px solid rgba(81, 203, 238, 1);
 }
 
 .mirror-console-wrapper {
