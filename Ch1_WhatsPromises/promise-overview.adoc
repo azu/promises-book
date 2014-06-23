@@ -23,7 +23,7 @@ var promise = new Promise(function(resolve, reject) {
 *Instance Method*
 
 newによって生成されたpromiseオブジェクトにはpromiseの値を *resolve*(成功) / *reject*(失敗) した時に呼ばれる
-コールバックを登録するため `promise.then()` というインスタンスメソッドがあります。
+コールバック関数を登録するため `promise.then()` というインスタンスメソッドがあります。
 
 [source,javascript]
 ----
@@ -37,9 +37,9 @@ reject(失敗)した時::
 
 `onFulfilled`、`onRejected` どちらもオプショナルな引数となっています。
 
-そのため、`promise.then` では成功時と失敗時の処理を登録することが出来ます。
+`promise.then` では成功時と失敗時の処理を同時に登録することが出来ます。
 また、エラー処理だけを書きたい場合には `promise.then(undefined, onRejected)` と同じ意味である
-`promise.catch()`を使うことが出来ます。
+`promise.catch(onRejected)`を使うことが出来ます。
 
 [source,javascript]
 promise.catch(onRejected)
@@ -64,7 +64,7 @@ promise.catch(onRejected)
 include::embed/embed-promise-workflow.js[]
 ----
 <1> Promiseコンストラクタを`new`して、promiseオブジェクトを返します
-<2> <1>のpromiseに対して `.then` で値が返ってきた時のコールバックを設定します
+<2> <1>のpromiseオブジェクトに対して `.then` で値が返ってきた時のコールバックを設定します
 
 `asyncFunction` という関数 は promiseオブジェクトを返していて、
 そのpromiseオブジェクトに対して `then` でresolveした時のコールバックを、
