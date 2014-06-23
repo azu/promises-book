@@ -95,7 +95,7 @@ function anAsyncCall() {
 また、何かの値を返していてもそれを受け取る方法が無くなってしまいます。
 
 これは`promise.then`によって新たに作られたpromiseオブジェクトを返すようにすることで、
-2のようにpromise chainがつなげるようにするべきなので、次のように修正することが出来ます。
+2のようにpromise chainをつなげるようにするべきなので、次のように修正することが出来ます。
 
 [source,javascript]
 .`then`で作成したオブジェクトを返す

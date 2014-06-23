@@ -196,7 +196,7 @@ try{
 つまり、`done`は「ここでPromise chainは終了して、例外が起きた場合はそのままpromiseの外へ投げ直す」という処理になっています。
 
 実装や環境がしっかり対応していれば、__unhandled rejection__の検知はできるため、必ずしも`done`が必要というわけではなく、
-また今回の<<promise-prototype-done.js,`Promise.prototype.done`>>のように、`done`は既存のPromiseの上に実装することができため、
+また今回の<<promise-prototype-done.js,`Promise.prototype.done`>>のように、`done`は既存のPromiseの上に実装することができるため、
 <<es6-promises,ES6 Promises>>の仕様そのものには入らなかったと言えるかもしれません。
 
 [NOTE]

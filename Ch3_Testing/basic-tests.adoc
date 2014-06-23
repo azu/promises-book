@@ -19,7 +19,7 @@
 ここでは、 http://visionmedia.github.io/mocha/[Mocha]自体については詳しく解説しませんが、
 MochaはNode.js製のテストフレームワークツールです。
 
-MochaはBDD,TDD,exportsのどれかのスタイルを選択でき、テストに使うアサーションメソッドも任意のライブラリと組わせて利用します。
+MochaはBDD,TDD,exportsのどれかのスタイルを選択でき、テストに使うアサーションメソッドも任意のライブラリと組み合わせて利用します。
 つまり、Mocha自体はテスト実行時の枠だけを提供しており、他は利用者が選択するというものになっています。
 
 Mochaを選んだ理由としては、以下の点で選択しました。
@@ -113,7 +113,7 @@ it("should use `done` for test?", function (done) {
 このテストは`assert`が失敗しているため、「テストは失敗する」と思うかもしれませんが、
 実際にはテストが終わることがなくタイムアウトします。
 
-.テストが終わることないためタイムアウトするまでそこで止まる
+.テストが終わることがないためタイムアウトするまでそこで止まる
 image::img/promise-test-timeout.png[promise test timeout]
 
 `assert`が失敗した場合は通常はエラーをthrowし、

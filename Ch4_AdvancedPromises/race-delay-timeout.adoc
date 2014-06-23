@@ -94,7 +94,7 @@ timeoutPromise(taskPromise, 1000).then(function(value){
 `Error` オブジェクトはECMAScriptのビルトインオブジェクトです。
 
 ECMAScript5では完璧に`Error`を継承したものを作る事は不可能ですが(スタックトレース周り等)、
-今回は通常のErrorとは区別を付けたいという目的なので、それを満たせる`TimeoutError`オブジェクトを作成出来ます。
+今回は通常のErrorとは区別を付けたいという目的なので、それを満たせる`TimeoutError`オブジェクトを作成します。
 
 [NOTE]
 ====

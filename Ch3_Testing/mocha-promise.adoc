@@ -76,7 +76,7 @@ it("is bad pattern", function () {
     `assert`でErrorオブジェクトをチェックする
 
 
-上記のテストコードでは、Rejectedとなって`onRejected`に登録された関数を呼ばれるためテストはパスしますね。
+上記のテストコードでは、Rejectedとなって`onRejected`に登録された関数が呼ばれるためテストはパスしますね。
 
 このテストで問題になるのは`mayBeRejected()`で返されたpromiseオブジェクトが
 **FulFilledとなった場合**に、必ずテストがパスしてしまうという問題が発生します。
@@ -130,7 +130,7 @@ image::../Ch2_HowToWrite/img/then_catch.png[Then Catch flow]
 
 === 両状態を明示して意図しないテストを改善
 
-<<mocha-rejected-promise-test,上記のエラーオブジェクトをテスト>>を書く場合、
+<<mocha-rejected-promise-test,上記のエラーオブジェクトのテスト>>を書く場合、
 どのようにすれば意図せず通ってしまうテストを無くす事が出来るでしょうか?
 
 一番単純な方法としては、以下のようにそれぞれの状態の場合にどうなるのかをテストコードに書く方法です。
@@ -174,11 +174,11 @@ MochaのPromiseサポートについてと意図しない挙動となる場合�
 
 * 通常のコードは`then` -> `catch`と分けた方がよい
 ** エラーハンドリングのため。<<then-or-catch,then or catch?>>を参照
-* テストコードは`then`にまとめた方がよい?
+* テストコードは`then`にまとめた方がよい
 ** アサーションエラーがテストフレームワークに届くようにするため。
 
 `.then(onFulfilled, onRejected)`を使うことで、
-promiseオブジェクトがFulfilled、Rejectedどちらの状態になることを明示してテストする必要があります。
+promiseオブジェクトがFulfilled、Rejectedどちらの状態になるかを明示してテストする必要があります。
 
 しかし、Rejectedのテストであることを明示するために、以下のように書くのはあまり直感的ではないと思います。
 
