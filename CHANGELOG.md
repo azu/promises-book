@@ -1,3 +1,28 @@
+## 1.0.0 (2014-06-23)
+
+
+#### Bug Fixes
+
+* **glossary:** fix link to resource-link ([9c9d3d30](https://github.com/azu/promises-book/commit/9c9d3d30beb712b9311f8b0b5d81ac2cf379eac3))
+
+
+#### New and Edit
+
+* **beginning-story:**
+  * WIP pull-requestを使い出した理由についてを追加 ([a99796ea](https://github.com/azu/promises-book/commit/a99796ea23e81f9b6dba9375fc6068ce853d8187), closes [#160](https://github.com/azu/promises-book/issues/160))
+  * 好き勝手書いて行った時に発生した問題点 ([c0d2ef9c](https://github.com/azu/promises-book/commit/c0d2ef9cd352c2c98bd10692e3bbd7cef9bceed9), closes [#160](https://github.com/azu/promises-book/issues/160))
+  * 移動中に執筆する作業するメリット・デメリット ([10eded5a](https://github.com/azu/promises-book/commit/10eded5a3b4a538af9e5d488ef1e7b9962dc308f), closes [#160](https://github.com/azu/promises-book/issues/160))
+  * どこから書き始めたかについてを追加 ([a9c74fcd](https://github.com/azu/promises-book/commit/a9c74fcdc061bc2392d2c98399cf783ef387a1a4), closes [#160](https://github.com/azu/promises-book/issues/160))
+  * 書籍を書き始めた理由を追加 ([12734f21](https://github.com/azu/promises-book/commit/12734f217b325c992162148e430efd66b9ca708d), closes [#160](https://github.com/azu/promises-book/issues/160))
+
+
+#### Features
+
+* **about-author:** 作者へのメッセージとgumroadへのリンクを追加した ([6387e6ac](https://github.com/azu/promises-book/commit/6387e6ac6c9cc6e4808ded6b8938918b64c4e125))
+* **beginning-story:** おまけのPDFを生成出来るように ([38de54a2](https://github.com/azu/promises-book/commit/38de54a278d23682eb1ee57e6f05b176e807b64f))
+* **index:** add Horizontal Rules or page break ([aced9ca4](https://github.com/azu/promises-book/commit/aced9ca47a8f6cf1c6dbd0182b8929a9fa3b4bd9))
+
+
 ### 0.2.1 (2014-06-15)
 
 
