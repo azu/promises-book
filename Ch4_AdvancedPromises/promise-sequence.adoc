@@ -54,7 +54,7 @@ forループで書く場合、<<then-return-new-promise,コラム: thenは常に
 そのため、`promise = promise.then(task).then(pushValue);`というのは`promise`という変数に上書きするというよりは、
 そのpromiseオブジェクトに処理を追加していくような処理になっています。
 
-しかし、この書き方だと一時変数として`promise`が必要で、処理の内容的もあまりスッキリしません。
+しかし、この書き方だと一時変数として`promise`が必要で、処理の内容的にもあまりスッキリしません。
 
 このループの書き方は`Array.prototype.reduce`を使うともっとスマートに書くことが出来ます。
 

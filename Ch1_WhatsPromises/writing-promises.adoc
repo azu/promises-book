@@ -13,13 +13,13 @@ promiseオブジェクトを作る流れは以下のようになっています�
     * 処理結果がエラーなら、`reject(Errorオブジェクト)` を呼ぶ
 
 
-この流れに沿ってものを実際に書いてみましょう。
+この流れに沿っているものを実際に書いてみましょう。
 
 非同期処理であるXMLHttpRequest(XHR)を使いデータを取得するものをPromiseで書いていきます。
 
 ==== XHRのpromiseオブジェクトを作る
 
-まずは、XHRをPromise使って包んだような`getURL`という関数を作ります。
+まずは、XHRをPromiseを使って包んだような`getURL`という関数を作ります。
 
 [role="executable"]
 [[xhr-promise.js]]
@@ -122,7 +122,7 @@ getURL(URL).then(function onFulfilled(value){
 <2> 分かりやすくするため関数 `onRejected` という名前を付けています
 
 
-`getURL`の処理中が何らかの理由で例外が起きた場合 または明示的にrejectされた場合に、
+`getURL`の処理中に何らかの理由で例外が起きた場合、または明示的にrejectされた場合に、
 その理由(Errorオブジェクト)と共に <<promise.catch,`.catch`>> の処理が呼ばれます。
 
 <<promise.catch,`.catch`>>は`promise.then(undefined, onRejected)`のエイリアスであるため、

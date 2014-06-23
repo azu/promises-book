@@ -23,7 +23,7 @@ Gumroadから無料 または 好きな値段でダウンロードすること�
 ダウンロードする際に作者へのメッセージも書けるので、
 メッセージを残すついでにダウンロードして行ってください。
 
-問題の指摘などがありましたら、GithubやGitterに書いてくださると解決出来ます。
+問題の指摘などがありましたら、GitHubやGitterに書いてくださると解決出来ます。
 
 * https://github.com/azu/promises-book/issues?state=open[Issues · azu/promises-book]
 * https://gitter.im/azu/promises-book[azu/promises-book - Gitter]

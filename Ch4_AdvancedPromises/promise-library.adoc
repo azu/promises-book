@@ -45,7 +45,7 @@ ES6のPromiseで定められたpromiseオブジェクトというのは、
 もう一つは、<<promises-aplus, Promises/A+互換>>に加えて、独自の拡張をもったライブラリです。
 
 [NOTE]
-Promiseのライブラリが星の数ほどあるので、ここでは紹介するのは極々一部です。
+Promiseのライブラリは星の数ほどあるので、ここで紹介するのは極々一部です。
 
 [[promise-polyfill]]
 ==== Polyfill
@@ -57,16 +57,16 @@ Promiseと同等の機能を同じメソッド名で提供してくれるライ�
 Promiseがサポートされてない環境でも実行出来るようになります。
 
 https://github.com/jakearchibald/es6-promise[jakearchibald/es6-promise]::
-    ES6 Promiseと互換性を持ったPolyfillライブラリです。
+    ES6 Promisesと互換性を持ったPolyfillライブラリです。
     https://github.com/tildeio/rsvp.js[RSVP.js] という Promises/A+互換ライブラリがベースとなっており、
     これのサブセットとしてES6 PromisesのAPIだけが実装されているライブラリです。
 https://github.com/yahoo/ypromise[yahoo/ypromise]::
-    http://yuilibrary.com/[YUI] の一部としても利用されているES6 Promiseと互換性を持ったPolyfillライブラリです。
+    http://yuilibrary.com/[YUI] の一部としても利用されているES6 Promisesと互換性を持ったPolyfillライブラリです。
     この書籍ではこのPolyfillを読み込み、サンプルコードを動かしています。
 
 ==== Promise拡張ライブラリ
 
-Promiseを仕様どおりに実装したものに、加えて独自のメソッド等を提供してくれるライブラリです。
+Promiseを仕様どおりに実装したものに加えて独自のメソッド等を提供してくれるライブラリです。
 
 Promise拡張ライブラリは本当に沢山ありますが、以下の2つの著名なライブラリを紹介します。
 

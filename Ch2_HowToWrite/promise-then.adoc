@@ -140,7 +140,7 @@ image::img/promise-then-passing-value.png[promise-then-passing-value]
 この`return`する値は数字や文字列だけではなく、
 オブジェクトやpromiseオブジェクトも`return`することが出来ます。
 
-returnした値は `Promise.resolve(returnされた値);` のような処理されるため、
+returnした値は `Promise.resolve(returnされた値);` のように処理されるため、
 何をreturnしても最終的には新しいpromiseオブジェクトを返します。
 
 [NOTE]
