@@ -106,7 +106,7 @@ endif::[]
 
 == 本書のソースコード/ライセンス
 
-この書籍に登場するサンプルのソースコード また その文章のソースコードは全てGithubから取得することができます。
+この書籍に登場するサンプルのソースコード また その文章のソースコードは全てGitHubから取得することができます。
 
 この書籍は http://asciidoctor.org/[AsciiDoc] という形式で書かれています。
 
@@ -118,7 +118,7 @@ endif::[]
 
 == 意見や疑問点
 
-意見や疑問点がある場合はGithubに直接Issueとして立てる事が出来ます。
+意見や疑問点がある場合はGitHubに直接Issueとして立てる事が出来ます。
 
 * https://github.com/azu/promises-book/issues?state=open[Issues · azu/promises-book]
 
@@ -132,4 +132,4 @@ Twitterでのハッシュタグは icon:twitter[2x, link=https://twitter.com/sea
 なので、こちらを利用するのもいいでしょう。
 
 この書籍は読める権利と同時に編集する権利があるため、
-Githubで https://github.com/azu/promises-book/pulls[Pull Requests] も歓迎しています。
+GitHubで https://github.com/azu/promises-book/pulls[Pull Requests] も歓迎しています。
