@@ -1,3 +1,12 @@
+### 1.0.1 (2014-06-23)
+
+
+#### Bug Fixes
+
+* **glossary:** 余計なコメントが表示されていたのを修正 ([e01c9c0d](https://github.com/azu/promises-book/commit/e01c9c0de8ab584aa503105ad64e8eefcc17966e))
+* **promise-overview:** 細かい言葉の抜けを修正 ([7b978fbc](https://github.com/azu/promises-book/commit/7b978fbc642de276c3d05b7842ba7b523d5ae9bd))
+
+
 ## 1.0.0 (2014-06-23)
 
 
