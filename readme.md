@@ -6,6 +6,10 @@ Promisesについての薄い電子書籍です
 
 [http://azu.github.io/promises-book/javascript-promise-book.pdf](http://azu.github.io/promises-book/javascript-promise-book.pdf) からPDF版をダウンロードすることが出来ます。
 
+[https://gumroad.com/l/javascript-promise](https://gumroad.com/l/javascript-promise "JavaScript Promiseの本 付録") からおまけのPDFを無料また任意の値段でダウンロードすることが出来ます。
+
+寄付などがしたい方は、[こちら](https://gumroad.com/l/javascript-promise "JavaScript Promiseの本 付録")を代用して下さい。
+
 ## Installation
 
 この書籍はAsciidocフォーマットで書かれています。
