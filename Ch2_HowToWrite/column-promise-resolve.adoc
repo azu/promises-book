@@ -106,7 +106,7 @@ include::embed/embed-onready-as-promise.js[]
 ----
 
 Promiseは常に非同期で実行されることが保証されているため、
-`setTimeout`のような明示的に非同期処理をするコードがないことがわかると思います。
+`setTimeout`のような明示的に非同期処理にするためのコードが不要となることが分かります。
 
 
 ////
