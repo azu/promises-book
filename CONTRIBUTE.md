@@ -16,6 +16,8 @@ Promisesが実装されていない環境もあるため、[ypromise](https://gi
 
 * src/
     * サンプルコードのソースが入る
+* lib/
+    * サンプルコードで共通に使うライブラリ的な役割のコードが入る
 * test/
     * サンプルコードのテストコードが入る
 * img/
@@ -27,11 +29,14 @@ Promisesが実装されていない環境もあるため、[ypromise](https://gi
 
 サンプルコードは必ずテストコードが必要となる。(読者がコピペして実行するようなコードにはテストを書くべきである)
 
-`<1>` 等のアノテーションを使った説明用のコードは、そのままインラインで埋め込んでもよい。
 
-### 実行コード
+### サンプルコード
 
 サンプルコードはできるだけ最小限で具体的かつ知名度の高いAPIを利用する。
+
+`<1>` 等のアノテーションを使った説明用のコードは、そのままインラインで埋め込んでもよい。
+
+できうる限り、インラインで直接書かないで、外部ファイルとして置いたものを読み込んで使用する。
 
 #### 非同期API
 
@@ -45,7 +50,7 @@ Promisesが実装されていない環境もあるため、[ypromise](https://gi
 => 案がある場合は [Issues](https://github.com/azu/Promises-book/issues "Issues · azu/Promises-book")へ
 
 実行環境は基本的にNode.jsでテストするようになっているが、
-できるだけブラウザとNode.jsとで同じようなコードにする方針。
+できるだけブラウザとNode.jsで同じようなコードにする方針
 (固有の箇所は環境を明示すればよい)
 
 `test/test-helper.js` にグローバル空間に `Promise` や XHRが入るようにしている。
@@ -59,7 +64,7 @@ Promisesが実装されていない環境もあるため、[ypromise](https://gi
 
 ### Promise or Promises?
 
-❌ Promises
+:negative_squared_cross_mark: Promises
 
 Promiseという機能について言う時は大文字の単数を使う。
 
@@ -88,4 +93,18 @@ Promiseという機能について言う時は大文字の単数を使う。
 * `then`でのメソッドチェーン等、`new Promise`と直接関係ないケースの場合にはFulFilled,Rejectedを使う
 
 例) `Promise.race`は、promiseオブジェクトがどれか一つでもFulFilled または Rejectedになったら次の処理を実行します。
+
+
+## Gitのコミットメッセージ
+
+コミットメッセージのルールは以下のルールに基本的には従う。
+
+* [conventional-changelog/CONVENTIONS.md at master · ajoslin/conventional-changelog](https://github.com/ajoslin/conventional-changelog/blob/master/CONVENTIONS.md "conventional-changelog/CONVENTIONS.md at master · ajoslin/conventional-changelog") 
+
+[CHANGELOG.md](CHANGELOG.md) を自動生成するために設けているルールである。
+
+`feat`, `write`, `fix`, `docs` という属性がCHANGELOGの対象になっている。
+
+pull-requestの場合は、マージ時にコミットメッセージを入れられるため、それぞれのコミットで細かく気にする必要はない。
+(わからない場合はとりあえず`chore`を使うか、ルール外のコミットメッセージをいれてもよい)
 
