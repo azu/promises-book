@@ -37,11 +37,68 @@ JavaScriptは上から実行されていくため、まず最初に`<1>`が実�
 プログラム的には同期的にコールバック関数に`42`を渡して呼び出す事はできますね。
 
 しかし、Promiseでは`promise.then`の時点でpromiseの状態が決まっていても、
-そこで登録したコールバック関数は非同期で呼び出されることが定義されています。
+そこで登録したコールバック関数は非同期で呼び出される仕様になっています。
 
 それは何故でしょうか?
 
-=== 同期と非同期の混在
+=== 同期と非同期の混在の問題
+
+もう少し一般的な問題として考えみましょう。
+
+これは、コールバック関数を受け取る関数が、
+状況によって同期処理になるのか非同期処理になるのかが変わるのと同じ問題です。
+
+次のような、`onReady(fn)` 関数を見てみましょう。
+
+[role="executable"]
+[source,javascript]
+[[mixed-onready.js]]
+.mixed-onready.js
+----
+include::embed/embed-mixed-onready.js[]
+----
+
+これは、`onReady(fn)`が呼ばれるまでにDOMが読み終わってるかで、
+コンソールに出てくるメッセージの順番が変わってしまいます。
+
+この問題の対処として常に非同期で呼び出すようにすることです。
+
+[role="executable"]
+[source,javascript]
+[[async-onready.js]]
+.async-onready.js
+----
+include::embed/embed-async-onready.js[]
+----
+
+この問題については、 http://effectivejs.com/[Effective JavaScript] の
+**項目67 非同期コールバックを同期的に呼び出してはいけない** で紹介されています。
+
+[quote, David Herman, Effective JavaScript]
+____
+- 非同期コールバックは（たとえデータが即座に利用できても）決して同期的に使ってはならない。
+- 非同期コールバックを同期的に呼び出すと、処理の期待されたシーケンスが乱され、
+コードの実行順序に予期しない変動がしょうじるかもしれない。
+- 非同期コールバックを同期的に呼び出すと、スタックオーバーフローや例外処理の間違いが発生するかもしれない。
+- 非同期コールバックを次回に実行されるようスケジューリングするには、`setTimeout`のような非同期APIを使う。
+____
+
+先ほどの`promise.then`も同様のケースであり、この同期と非同期処理の混在の問題がおきないようにするため、
+**Promiseは常に非同期** で処理されるという事が仕様で定められているわけです。
+
+最後に、この`onReady`をPromiseを使って定義すると以下のようになります。
+
+[role="executable"]
+[source,javascript]
+[[onready-as-promise.js]]
+.onready-as-promise.js
+----
+include::embed/embed-onready-as-promise.js[]
+----
+
+Promiseは常に非同期で実行されることが保証されているため、
+`setTimeout`のような明示的に非同期処理をするコードがないことがわかると思います。
+
 
 ////
 つまり、先ほどのコードは擬似的には以下のように展開出来ます。
