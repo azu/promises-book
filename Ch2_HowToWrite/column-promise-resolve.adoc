@@ -9,7 +9,7 @@ promiseオブジェクトがすぐにresolveされるので、`.then` に登録�
 [role="executable"]
 [source,javascript]
 ----
-var promise = new Promise(function(resolve){
+var promise = new Promise(function taskA(resolve){
     console.log("inner promise");// <1>
     resolve(42);
 });
@@ -19,7 +19,7 @@ promise.then(function(value){
 console.log("outer promise");// <2>
 ----
 
-上記のコードは数値の順に呼ばれるため、出力結果は以下のように非同期で呼ばれていることがわかります。
+上記のコードを実行すると以下の順に呼ばれていることが分かります。
 
 ----
 inner promise
@@ -27,4 +27,61 @@ outer promise
 42
 ----
 
+JavaScriptは上から実行されていくため、まず最初に`<1>`が実行されますね。
+この時`taskA`の中に非同期処理はなく、すぐに`resolve(42);`としていることが分かります。
+
+そのため、この`promise`オブジェクトは`<3>`の`promise.then`でコールバック関数を登録する時点で、
+`42`という値にFulFilledされています。
+
+`promise.then`を行う時点でFulFilledされているため、
+プログラム的には同期的にコールバック関数に`42`を渡して呼び出す事はできますね。
+
+しかし、Promiseでは`promise.then`の時点でpromiseの状態が決まっていても、
+そこで登録したコールバック関数は非同期で呼び出されることが定義されています。
+
+それは何故でしょうか?
+
+=== 同期と非同期の混在
+
+////
+つまり、先ほどのコードは擬似的には以下のように展開出来ます。
+
+[role="executable"]
+[source,javascript]
+----
+var promise = new Promise(function taskA(resolve){
+    console.log("inner promise");// <1>
+    resolve(42);
+});
+promise.then(function(arg){
+    setTimeout(function(value){
+       console.log(value); // <3>
+   }.bind(this, arg), 0);
+});
+console.log("outer promise");// <2>
+----
+
+`promise.then`で登録したコールバック関数は常に非同期的に呼び出されているわけです。
+
+[NOTE]
+====
+実際にはこのような`setTimeout`や`setImmediate`を使ったような明示的な非同期処理は、
+コードとして書く必要はありません。
+仕様的には、`promise.then`はコールバック関数を`EnqueueTask`する、
+つまりキューに入れると表現されています。
+====
+
+仮に、Promiseが同期的にコールバック関数を呼び出す仕様になっているとします。
+
+> `promise.then`の時点でpromiseの状態が決まっていたら、同期的にコールバック関数を呼び出す
+
+その場合、実行結果は以下のようになっているはずですね。
+
+----
+inner promise
+42
+outer promise
+----
+
 つまり、Promiseは常に非同期で処理が行われているという事になります。
+////
