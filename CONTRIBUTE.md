@@ -8,7 +8,7 @@ Promisesが実装されていない環境もあるため、[ypromise](https://gi
 
 大きな区分けとして各チャプターごとにディレクトリを分けている。
 
-それぞれのディレクトリにサンプルコードのソース、テスト、画像等リソースを配置する
+それぞれのディレクトリにサンプルコードのソース、テスト、画像等リソースを加える。
 
 できるだけ、一つのasciidocファイル単体でも見られる形にする。
 
@@ -45,7 +45,7 @@ Promisesが実装されていない環境もあるため、[ypromise](https://gi
 * `setTimeout`
 * `XMLHTTPRequest`
     * Polyfill : [ykzts/node-xmlhttprequest](https://github.com/ykzts/node-xmlhttprequest "ykzts/node-xmlhttprequest")
-* node の Coreモジュール
+* node の 何かモジュール
 
 => 案がある場合は [Issues](https://github.com/azu/Promises-book/issues "Issues · azu/Promises-book")へ
 
