@@ -1,3 +1,18 @@
+## 1.1.0 (2014-06-25)
+
+
+#### Bug Fixes
+
+* **then-return-new-promise:** all/race初出に説明を補足 ([6c77be9c](https://github.com/azu/promises-book/commit/6c77be9c6a534844c48db5a4a980f789c3f9c792))
+
+
+#### New and Edit
+
+* **column-promise-resolve:**
+  * 同期と非同期の混在の問題についてを追加 ([de5f8208](https://github.com/azu/promises-book/commit/de5f82082909484155d8aa94005b676a9f65c2e2))
+  * 非同期で実行されているコードの解説を追加 ([ea8ca5d6](https://github.com/azu/promises-book/commit/ea8ca5d6f38ae8fde5d9f1b4e4b7521c1b261e63))
+
+
 ## 1.2.0 (2014-06-25)
 
 
