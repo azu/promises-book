@@ -1,4 +1,4 @@
-# Promises Book [![Build Status](https://travis-ci.org/azu/promises-book.png)](https://travis-ci.org/azu/promises-book) [![Gitter chat](https://badges.gitter.im/azu/promises-book.png)](https://gitter.im/azu/promises-book)
+# Promises Book [![Build Status](https://travis-ci.org/azu/promises-book.svg)](https://travis-ci.org/azu/promises-book) [![Gitter chat](https://badges.gitter.im/azu/promises-book.png)](https://gitter.im/azu/promises-book)
 
 Promisesについての薄い電子書籍です
 
