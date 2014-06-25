@@ -20,21 +20,21 @@ endif::[]
 Promiseのライブラリを探すときに、一つ目印になる言葉として<<promises-aplus, Promises/A+互換>>があります。
 
 <<promises-aplus, Promises/A+>>というのは<<es6-promises,ES6 Promises>>の前身となったもので、
-Promiseの`then`について取り決めたコミュニティベースの仕様です。
+Promiseの `then` について取り決めたコミュニティベースの仕様です。
 
-Promises/A+互換と書かれていた場合は`then`についての動作は互換性があり、
-多くの場合はそれに加えて`Promise.all`や`catch`等と同様の機能が実装されています。
+Promises/A+互換と書かれていた場合は `then` についての動作は互換性があり、
+多くの場合はそれに加えて `Promise.all` や `catch` 等と同様の機能が実装されています。
 
-しかし、Promises/A+は`Promise#then`についてのみの仕様となっているため、
+しかし、Promises/A+は `Promise#then` についてのみの仕様となっているため、
 他の機能は実装されていても名前が異なる場合があります。
 
-また、`then`というメソッドに互換性があるという事は、<<Thenable,Thenable>>であるということなので、
+また、`then` というメソッドに互換性があるという事は、<<Thenable,Thenable>>であるということなので、
 <<Promise.resolve,Promise.resolve>>を使い、ES6のPromiseで定められたpromiseオブジェクトに変換することが出来ます。
 
 [NOTE]
 ====
 ES6のPromiseで定められたpromiseオブジェクトというのは、
-`catch`というメソッドが使えたり、`Promise.all`で扱う際に問題が起こらないということです。
+`catch` というメソッドが使えたり、`Promise.all` で扱う際に問題が起こらないということです。
 ====
 
 === Polyfillとライブラリ
@@ -71,7 +71,7 @@ Promiseを仕様どおりに実装したものに加えて独自のメソッド�
 Promise拡張ライブラリは本当に沢山ありますが、以下の2つの著名なライブラリを紹介します。
 
 https://github.com/kriskowal/q[kriskowal/q]::
-    `Q`と呼ばれるPromisesやDeferredsを実装したライブラリです。
+    `Q` と呼ばれるPromisesやDeferredsを実装したライブラリです。
     2009年から開発されており、Node.js向けのファイルIOのAPIを提供する https://github.com/kriskowal/q-io[Q-IO] 等、
     多くの状況で使える機能が用意されているライブラリです。
 https://github.com/petkaantonov/bluebird[petkaantonov/bluebird]::

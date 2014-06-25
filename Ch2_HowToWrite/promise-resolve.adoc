@@ -20,7 +20,7 @@ new Promise(function(resolve){
 });
 ----
 
-結果的にすぐに`resolve(42);`と解決されて、次のthenの`onFulfilled`に設定された関数に`42`という値を渡します。
+結果的にすぐに `resolve(42);` と解決されて、次のthenの `onFulfilled` に設定された関数に `42` という値を渡します。
 
 `Promise.resolve(value);` で返ってくる値も同様にpromiseオブジェクトなので、
 以下のように続けて `.then` を使った処理を書くことが出来ます。
@@ -33,33 +33,33 @@ Promise.resolve(42).then(function(value){
 });
 ----
 
-<<Promise.resolve,Promise.resolve>>は`new Promise()`のショートカットとして、
+<<Promise.resolve,Promise.resolve>>は `new Promise()` のショートカットとして、
 promiseオブジェクトの初期化時やテストコードを書く際にも活用できます。
 
 === Thenable
 
-もう一つ`Promise.resolve`の大きな特徴として、<<Thenable,thenable>>なオブジェクトをpromiseオブジェクトに変換するという機能があります。
+もう一つ `Promise.resolve` の大きな特徴として、<<Thenable,thenable>>なオブジェクトをpromiseオブジェクトに変換するという機能があります。
 
 <<es6-promises,ES6 Promises>>には<<Thenable,Thenable>>という概念があり、簡単にいえばpromiseっぽいオブジェクトの事を言います。
 
-`.length`を持っているが配列ではないものをArray likeというのと同じで、
-thenableの場合は`.then`というメソッドを持ってるオブジェクトを言います。
+`.length` を持っているが配列ではないものをArray likeというのと同じで、
+thenableの場合は `.then` というメソッドを持ってるオブジェクトを言います。
 
-thenableなオブジェクトが持つ`then`は、Promiseの持つ`then`と同じような挙動を期待していて、
-thenableなオブジェクトが持つ元々の`then`を上手く利用できるようにしpromiseオブジェクトに変換するという仕組みです。
+thenableなオブジェクトが持つ `then` は、Promiseの持つ `then` と同じような挙動を期待していて、
+thenableなオブジェクトが持つ元々の `then` を上手く利用できるようにしpromiseオブジェクトに変換するという仕組みです。
 
 どういうものがthenableなのかというと、分かりやすい例では
 https://api.jquery.com/jQuery.ajax/[jQuery.ajax()]の返り値もthenableです。
 
-`jQuery.ajax()`の返り値は http://api.jquery.com/jQuery.ajax/#jqXHR[jqXHR Object] というもので、
-このオブジェクトは`.then`というメソッドを持っているためです。
+`jQuery.ajax()` の返り値は http://api.jquery.com/jQuery.ajax/#jqXHR[jqXHR Object] というもので、
+このオブジェクトは `.then` というメソッドを持っているためです。
 
 [source,javascript]
-$.ajax('/json/comment.json');// => `.then`を持つオブジェクト
+$.ajax('/json/comment.json');// => `.then` を持つオブジェクト
 
-このthenableなオブジェクトを`Promise.resolve`ではpromiseオブジェクトにすることが出来ます。
+このthenableなオブジェクトを `Promise.resolve` ではpromiseオブジェクトにすることが出来ます。
 
-promiseオブジェクトにすることができれば、`then`や`catch`といった、
+promiseオブジェクトにすることができれば、`then` や `catch` といった、
 <<es6-promises,ES6 Promises>>が持つ機能をそのまま利用することが出来るようになります。
 
 [source,javascript]
@@ -74,25 +74,25 @@ promise.then(function(value){
 [WARNING]
 .jQueryとthenable
 ====
-https://api.jquery.com/jQuery.ajax/[jQuery.ajax()]の返り値も`.then`というメソッドを持った http://api.jquery.com/jQuery.ajax/#jqXHR[jqXHR Object]で、
+https://api.jquery.com/jQuery.ajax/[jQuery.ajax()]の返り値も `.then` というメソッドを持った http://api.jquery.com/jQuery.ajax/#jqXHR[jqXHR Object]で、
 このオブジェクトは http://api.jquery.com/category/deferred-object/[Deferred Object] のメソッドやプロパティ等を継承しています。
 
 しかし、このDeferred Objectは<<promises-aplus,Promises/A+>>や<<es6-promises,ES6 Promises>>に準拠したものではないため、
 変換できたように見えて一部欠損してしまう情報がでてしまうという問題があります。
 
-この問題はjQueryの http://api.jquery.com/category/deferred-object/[Deferred Object] の`then`の挙動が違うために発生します。
+この問題はjQueryの http://api.jquery.com/category/deferred-object/[Deferred Object] の `then` の挙動が違うために発生します。
 
-そのため、`.then`というメソッドを持っていた場合でも、必ずES6 Promisesとして使えるとは限らない事は知っておくべきでしょう。
+そのため、`.then` というメソッドを持っていた場合でも、必ずES6 Promisesとして使えるとは限らない事は知っておくべきでしょう。
 
 * http://www.html5rocks.com/en/tutorials/es6/promises/#toc-lib-compatibility[JavaScript Promises: There and back again - HTML5 Rocks]
 * http://domenic.me/2012/10/14/youre-missing-the-point-of-promises/[You&#39;re Missing the Point of Promises]
 * https://twitter.com/hirano_y_aa/status/398851806383452160[https://twitter.com/hirano_y_aa/status/398851806383452160]
 ====
 
-`Promise.resolve`は共通の挙動である`then`だけを利用して、
+`Promise.resolve` は共通の挙動である `then` だけを利用して、
 様々なライブラリ間でのpromiseオブジェクトを相互に変換して使える仕組みを持っている事になります。
 
-このthenableを変換する機能は、以前は`Promise.cast`という名前であった事からもその挙動が想像できるかもしれません。
+このthenableを変換する機能は、以前は `Promise.cast` という名前であった事からもその挙動が想像できるかもしれません。
 
 ThenableについてはPromiseを使ったライブラリを書くとき等には知っておくべきですが、
 通常の利用だとそこまで使う機会がないものかもしれません。
@@ -105,4 +105,4 @@ ThenableとPromise.resolveの具体的な例を交えたものは
 
 `Promise.resolve` を簡単にまとめると、「渡した値でFulfilledされるpromiseオブジェクトを返すメソッド」と考えるのがいいでしょう。
 
-また、Promiseの多くの処理は内部的に`Promise.resolve`のアルゴリズムを使って値をpromiseオブジェクトに変換しています。
+また、Promiseの多くの処理は内部的に `Promise.resolve` のアルゴリズムを使って値をpromiseオブジェクトに変換しています。

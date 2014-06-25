@@ -47,7 +47,7 @@ Node.js でコマンドラインアプリやサーバサイドを書いたこと
 * Promiseに関する用語は<<promise-glossary,用語集>>を参照する。
 ** 大体、初回に出てきた際にはリンクを貼っています。
 * インスタンスメソッドを instance#method という表記で示す。
-** 例えば、`Promise#then` という表記は、Promiseのインスタンスオブジェクトの`then`というメソッドを示しています。
+** 例えば、`Promise#then` という表記は、Promiseのインスタンスオブジェクトの `then` というメソッドを示しています。
 * オブジェクトメソッドを object.method という表記で示す。
 ** これはJavaScriptの意味そのままで、`Promise.all` なら静的メソッドの事を示しています。
 
@@ -95,7 +95,7 @@ promise.then(function(value){
 <div class="tutorial-area">
 <button class="mirror-console-button mirror-console-run">実行</button> ボタンを押すことで、
 サンプルコードがエディタとなりコードを実行する事が出来ます。<br />
-<button class="mirror-console-button mirror-console-clear">ログをクリア</button>ボタンでは実行結果の`console.log`の内容をクリア出来ます。
+<button class="mirror-console-button mirror-console-clear">ログをクリア</button>ボタンでは実行結果の `console.log` の内容をクリア出来ます。
 <br />
 <button class="mirror-console-button mirror-console-exit">終了</button>ボタンではエディタモードを終了します。
 </div>

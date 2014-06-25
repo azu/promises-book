@@ -1,10 +1,10 @@
 [[promise-and-method-chain]]
 == Promiseとメソッドチェーン
 
-Promiseは`then`や`catch`等のメソッドを繋げて書いていきます。
+Promiseは `then` や `catch` 等のメソッドを繋げて書いていきます。
 これはDOMやjQuery等でよくみられるメソッドチェーンとよく似ています。
 
-一般的なメソッドチェーンは`this`を返すことで、メソッドを繋げて書けるようになっています。
+一般的なメソッドチェーンは `this` を返すことで、メソッドを繋げて書けるようになっています。
 
 [NOTE]
 ====
@@ -47,7 +47,7 @@ File.read(inputFilePath)
 ----
 
 `transform` は引数で受け取った値を変更する関数を渡して処理するメソッドです。
-この場合は、readで読み込んだ内容の先頭に`>>`という文字列を追加しているだけです。
+この場合は、readで読み込んだ内容の先頭に `>>` という文字列を追加しているだけです。
 
 === Promiseによるfsのメソッドチェーン
 
@@ -62,9 +62,9 @@ include::src/promise-chain/fs-promise-chain.js[]
 ----
 
 内部に持ってるpromiseオブジェクトに対するエイリアスとして
-`then`と`catch`を持たせていますが、それ以外のインターフェースは全く同じ使い方となっています。
+`then` と `catch` を持たせていますが、それ以外のインターフェースは全く同じ使い方となっています。
 
-そのため、先ほどのコードで`require`するモジュールを変更しただけで動作します。
+そのため、先ほどのコードで `require` するモジュールを変更しただけで動作します。
 
 [source,javascript]
 ----
@@ -79,7 +79,7 @@ File.read(inputFilePath)
 ----
 
 `File.prototype.then` というメソッドは、
-`this.promise.then` が返す新しいpromiseオブジェクトを`this.promise`に対して代入しています。
+`this.promise.then` が返す新しいpromiseオブジェクトを `this.promise` に対して代入しています。
 
 これはどういうことなのかというと、以下のように擬似的に展開してみると分かりやすいでしょう。
 
@@ -124,10 +124,10 @@ Promise版は<<promise-is-always-async,コラム: Promiseは常に非同期?>>�
 ==== エラーハンドリング
 
 <<fs-method-chain.js>>にはエラーハンドリングの処理は入っていないですが、
-同期処理であるため全体を`try-catch`で囲む事で行えます。
+同期処理であるため全体を `try-catch` で囲む事で行えます。
 
 <<fs-promise-chain.js,Promise版>> では内部で利用するpromiseオブジェクトの
-`then`と`catch`へのエイリアスを用意してあるため、通常のpromiseと同じように`catch`によってエラーハンドリングが行えます。
+`then` と `catch` へのエイリアスを用意してあるため、通常のpromiseと同じように `catch` によってエラーハンドリングが行えます。
 
 [source,javascript]
 .fs-promise-chainでのエラーハンドリング
@@ -152,7 +152,7 @@ Promiseを使うと比較的簡単に実装できると言えるかもしれま�
 このメソッドチェーンと非同期処理を見てNode.jsに慣れている方は http://nodejs.org/api/stream.html[Stream] が思い浮かぶと思います。
 
 http://nodejs.org/api/stream.html[Stream] を使うと、
-`this.lastValue`のような値を保持する必要がなくなる事や大きなファイルの扱いが改善されます。
+`this.lastValue` のような値を保持する必要がなくなる事や大きなファイルの扱いが改善されます。
 また、Promiseを使った例に比べるとより高速に処理できる可能性が高いと思います。
 
 [source,javascript]
@@ -201,10 +201,10 @@ fs.readFileAsync("myfile.js", "utf8").then(function(contents){
 ==== ArrayのPromiseラッパー
 
 先ほどの https://github.com/petkaantonov/bluebird/blob/master/API.md#promisification[Promisification] が何をやっているのか少しイメージしにくいので、
-次のようなネイティブ`Array`のPromise版となるメソッドを動的に定義する例を考えてみましょう。
+次のようなネイティブ `Array` のPromise版となるメソッドを動的に定義する例を考えてみましょう。
 
 JavaScriptにはネイティブにもDOMやString等メソッドチェーンが行える機能が多くあります。
-`Array`もその一つで、`map`や`filter`等のメソッドは配列を返すため、メソッドチェーンが利用しやすい機能です
+`Array` もその一つで、`map` や `filter` 等のメソッドは配列を返すため、メソッドチェーンが利用しやすい機能です
 
 [source,javascript]
 [[array-promise-chain.js]]
@@ -213,7 +213,7 @@ JavaScriptにはネイティブにもDOMやString等メソッドチェーンが�
 include::src/promise-chain/array-promise-chain.js[]
 ----
 
-ネイティブのArrayと`ArrayAsPromise`を使った場合の違いは
+ネイティブのArrayと `ArrayAsPromise` を使った場合の違いは
 <<array-promise-chain.js,上記のコード>>のテストを見てみるのが分かりやすいでしょう。
 
 [source,javascript]
@@ -226,8 +226,8 @@ include::test/array-promise-chain-test.js[]
 `ArrayAsPromise` でもArrayのメソッドを利用できているのが分かります。
 先ほどと同じように、ネイティブのArrayは同期処理で、`ArrayAsPromise` は非同期処理という違いがあります。
 
-`ArrayAsPromise` の実装を見て気づくと思いますが、`Array.prototype`のメソッドを全て実装しています。
-しかし、`array.indexOf`など`Array.prototype`には配列を返さないものもあるため、全てをメソッドチェーンにするのは不自然なケースがあると思います。
+`ArrayAsPromise` の実装を見て気づくと思いますが、`Array.prototype` のメソッドを全て実装しています。
+しかし、`array.indexOf` など `Array.prototype` には配列を返さないものもあるため、全てをメソッドチェーンにするのは不自然なケースがあると思います。
 
 ここで大事なのが、同じ値を受けるインターフェースを持っているAPIはこのような手段でPromise版のAPIを自動的に作成できるという点です。
 このようなAPIの規則性を意識してみるとまた違った使い方が見つかるかもしれません。
@@ -235,7 +235,7 @@ include::test/array-promise-chain-test.js[]
 [NOTE]
 ====
 先ほどの https://github.com/petkaantonov/bluebird/blob/master/API.md#promisification[Promisification] は
-Node.jsのCoreモジュールの非同期処理には `function(error,result){}` というように第一引数に`error`が来るというルールを利用して、
+Node.jsのCoreモジュールの非同期処理には `function(error,result){}` というように第一引数に `error` が来るというルールを利用して、
 自動的にPromiseでラップしたメソッドを生成しています
 ====
 

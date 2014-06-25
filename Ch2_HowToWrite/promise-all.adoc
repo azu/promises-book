@@ -2,13 +2,13 @@
 == Promise.all
 
 <<Promise.all, `Promise.all`>> は promiseオブジェクトの配列を受け取り、
-その配列に入っているpromiseオブジェクトが全てresolveされた時に、次の`.then`を呼び出します。
+その配列に入っているpromiseオブジェクトが全てresolveされた時に、次の `.then` を呼び出します。
 
 先ほどの複数のXHRの結果をまとめて取得する処理は、 <<Promise.all, `Promise.all`>> を使うとシンプルに書くことができます。
 
-先ほどの例の`getURL`はXHRによる通信を抽象化したpromiseオブジェクトを返しています。
-`Promise.all`に通信を抽象化したpromiseオブジェクトの配列を渡すことで、
-全ての通信が完了(FulFilledまたRejected)した時に、次の`.then`が呼び出すこと事が出来ます。
+先ほどの例の `getURL` はXHRによる通信を抽象化したpromiseオブジェクトを返しています。
+`Promise.all` に通信を抽象化したpromiseオブジェクトの配列を渡すことで、
+全ての通信が完了(FulFilledまたRejected)した時に、次の `.then` が呼び出すこと事が出来ます。
 
 [role="executable"]
 [source,javascript]
@@ -36,7 +36,7 @@ Promise.all([request.comment(), request.people()]);
 というように処理を書いた場合は、`request.comment()` と `request.people()` は同時に実行されますが、
 それぞれのpromiseの結果(resolve,rejectで渡される値)は、<<Promise.all, `Promise.all`>>に渡した配列の順番となります。
 
-つまり、この場合に次の`.then`に渡される結果の配列は [comment, people]の順番になることが保証されています。
+つまり、この場合に次の `.then` に渡される結果の配列は [comment, people]の順番になることが保証されています。
 
 [source,javascript]
 ----
@@ -59,7 +59,7 @@ include::embed/embed-promise-all-timer.js[]
 `timerPromisefy` は引数で指定したミリ秒後に、その指定した値でFulFilledとなる
 promiseオブジェクトを返してくれます。
 
-`Promise.all`に渡してるのは、それを複数作り配列にしたものですね。
+`Promise.all` に渡してるのは、それを複数作り配列にしたものですね。
 
 [source,javascript]
 ----
@@ -71,7 +71,7 @@ var promises = [
 ];
 ----
 
-この場合は、1, 32, 64, 128 ミリ秒後にそれぞれ`resolve`されます。
+この場合は、1, 32, 64, 128 ミリ秒後にそれぞれ `resolve` されます。
 
 つまり、このpromiseオブジェクトの配列がすべてresolveされるには、最低でも128msかかることがわかります。
 実際に<<Promise.all, `Promise.all`>> で処理してみると 約128msかかる事がわかります。

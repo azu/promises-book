@@ -1,9 +1,9 @@
 [[ch2-promise-catch]]
 == Promise#catch
 
-<<ch2-promise.then, 先ほどのPromise#then>>についてでも`Promise#catch`は既に使っていましたね。
+<<ch2-promise.then, 先ほどのPromise#then>>についてでも `Promise#catch` は既に使っていましたね。
 
-改めて説明すると<<promise.catch,Promise#catch>>は`promise.then(undefined, onRejected);`のエイリアスとなるメソッドです。
+改めて説明すると<<promise.catch,Promise#catch>>は `promise.then(undefined, onRejected);` のエイリアスとなるメソッドです。
 つまり、promiseオブジェクトがRejectedとなった時に呼ばれる関数を登録するためのメソッドです。
 
 [NOTE]
@@ -34,10 +34,10 @@ promise.catch(function (error) {
 
 このコードをそれぞれのブラウザで実行させると、IE8以下では実行する段階で **識別子がありません** というSyntax Errorになってしまいます。
 
-これはどういう事かというと、`catch`という単語はECMAScriptにおける http://mothereff.in/js-properties#catch[予約語] であることが関係します。
+これはどういう事かというと、`catch` という単語はECMAScriptにおける http://mothereff.in/js-properties#catch[予約語] であることが関係します。
 
 ECMAScript 3では予約語はプロパティの名前に使うことが出来ませんでした。
-IE8以下はECMAScript 3の実装であるため、`catch`というプロパティを使う`promise.catch()`という書き方が出来ないため、
+IE8以下はECMAScript 3の実装であるため、`catch` というプロパティを使う `promise.catch()` という書き方が出来ないため、
 **識別子がありません**というエラーを起こしてしまう訳です。
 
 一方、現在のブラウザが実装済みであるECMAScript 5以降では、
@@ -46,8 +46,8 @@ IE8以下はECMAScript 3の実装であるため、`catch`というプロパテ�
 [NOTE]
 ====
 ECMAScript5でも予約語は http://es5.github.io/#x7.6[Identifier] 、つまり変数名、関数名には利用することが出来ません。
-`for`という変数が定義できてしまうと`for`文との区別ができなくなってしまいます。
-プロパティの場合は `object.for` と `for`文の区別はできるので、少し考えてみると自然な動作ですね。
+`for` という変数が定義できてしまうと `for` 文との区別ができなくなってしまいます。
+プロパティの場合は `object.for` と `for` 文の区別はできるので、少し考えてみると自然な動作ですね。
 ====
 
 このECMAScript 3の予約語の問題を回避する書き方も存在します。
@@ -69,7 +69,7 @@ promise["catch"](function (error) {
 });
 ----
 
-もしくは単純に`catch`を使わずに、`then`を使うことでも回避できます。
+もしくは単純に `catch` を使わずに、`then` を使うことでも回避できます。
 
 [role="executable"]
 [source,javascript]
@@ -81,6 +81,6 @@ promise.then(undefined, function (error) {
 });
 ----
 
-`catch`という識別子が問題となっているため、ライブラリによっては`caught`等の名前が違うだけのメソッドを用意しているケースがあります。
+`catch` という識別子が問題となっているため、ライブラリによっては `caught` 等の名前が違うだけのメソッドを用意しているケースがあります。
 
-サポートブラウザにIE8以下を含める時は、この`catch`の問題に気をつけるといいでしょう。
+サポートブラウザにIE8以下を含める時は、この `catch` の問題に気をつけるといいでしょう。

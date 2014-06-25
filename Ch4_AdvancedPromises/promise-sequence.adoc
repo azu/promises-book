@@ -28,7 +28,7 @@ main().then(function (value) {
 });
 ----
 
-この書き方だと、`request`の数が増える分`then`を書かないといけなくなってしまいます。
+この書き方だと、`request` の数が増える分 `then` を書かないといけなくなってしまいます。
 
 そこで、処理を配列にまとめて、forループで処理していければ、数が増えた場合も問題無いですね。
 まずはforループを使って先ほどと同じ処理を書いてみたいと思います。
@@ -51,12 +51,12 @@ forループで書く場合、<<then-return-new-promise,コラム: thenは常に
 >>や<<promise-and-method-chain,Promiseとメソッドチェーン>>で学んだように、
 <<promise.then, Promise#then>> は新しいpromiseオブジェクトを返しています。
 
-そのため、`promise = promise.then(task).then(pushValue);`というのは`promise`という変数に上書きするというよりは、
+そのため、`promise = promise.then(task).then(pushValue);` というのは `promise` という変数に上書きするというよりは、
 そのpromiseオブジェクトに処理を追加していくような処理になっています。
 
-しかし、この書き方だと一時変数として`promise`が必要で、処理の内容的にもあまりスッキリしません。
+しかし、この書き方だと一時変数として `promise` が必要で、処理の内容的にもあまりスッキリしません。
 
-このループの書き方は`Array.prototype.reduce`を使うともっとスマートに書くことが出来ます。
+このループの書き方は `Array.prototype.reduce` を使うともっとスマートに書くことが出来ます。
 
 === Promise chainとreduce
 
@@ -76,14 +76,14 @@ main().then(function (value) {
 });
 ----
 
-`main`以外の処理はforループのものと同様です。
+`main` 以外の処理はforループのものと同様です。
 
-`Array.prototype.reduce`は第二引数に初期値を入れることができます。
-つまりこの場合、最初の`promise`には`Promise.resolve()`が入り、
-そのときの`task`は`request.comment`となります。
+`Array.prototype.reduce` は第二引数に初期値を入れることができます。
+つまりこの場合、最初の `promise` には `Promise.resolve()` が入り、
+そのときの `task` は `request.comment` となります。
 
-reduceの中で`return`したものが、次のループで`promise`に入ります。
-つまり、`then`を使って作成した新たなpromiseオブジェクトを返すことで、
+reduceの中で `return` したものが、次のループで `promise` に入ります。
+つまり、`then` を使って作成した新たなpromiseオブジェクトを返すことで、
 forループの場合と同じように<<promise-chain, Promise chain>>を繋げることが出来ます。
 
 [NOTE]
@@ -94,16 +94,16 @@ forループの場合と同じように<<promise-chain, Promise chain>>を繋げ
 * http://glide.so/azu/6919649[azu / Array.prototype.reduce Dance - Glide]
 =====
 
-forループと異なる点は、一時変数としての`promise`が不要になることに伴い、
-`promise = promise.then(task).then(pushValue);`という不格好な書き方がなくなる点が大きな違いだと思います。
+forループと異なる点は、一時変数としての `promise` が不要になることに伴い、
+`promise = promise.then(task).then(pushValue);` という不格好な書き方がなくなる点が大きな違いだと思います。
 
-`Array.prototype.reduce`とPromiseの逐次処理は相性が良いので覚えておくといいのですが、
+`Array.prototype.reduce` とPromiseの逐次処理は相性が良いので覚えておくといいのですが、
 初めて見た時にどういう動作をするのかがまだ分かりにくいという問題があります。
 
 そこで、処理するTaskとなる関数の配列を受け取って逐次処理を行う
-`sequenceTasks`というものを作ってみます。
+`sequenceTasks` というものを作ってみます。
 
-以下のように書くことができれば、`tasks`が順番に処理されていく事が関数名から見てわかるようになります。
+以下のように書くことができれば、`tasks` が順番に処理されていく事が関数名から見てわかるようになります。
 
 [source,javascript]
 ----
@@ -122,15 +122,15 @@ sequenceTasks(tasks);
 include::embed/embed-promise-sequence.js[]
 ----
 
-一つ注意点として、`Promise.all`等と違い、引数に受け取るのは関数の配列です。
+一つ注意点として、`Promise.all` 等と違い、引数に受け取るのは関数の配列です。
 
 何故、渡すのがpromiseオブジェクトの配列ではないのかというと、
 promiseオブジェクトを作った段階で既にXHRが実行されている状態なので、
 それを逐次処理しても意図とは異なる動作になるためです。
 
-そのため`sequenceTasks`では関数(promiseオブジェクトを返す)の配列を引数に受け取ります。
+そのため `sequenceTasks` では関数(promiseオブジェクトを返す)の配列を引数に受け取ります。
 
-最後に、`sequenceTasks`を使って最初の例を書き換えると以下のようになります。
+最後に、`sequenceTasks` を使って最初の例を書き換えると以下のようになります。
 
 [role="executable"]
 [source,javascript]
@@ -146,7 +146,7 @@ main().then(function (value) {
 });
 ----
 
-`main()`の中がかなりスッキリしたことが分かります。
+`main()` の中がかなりスッキリしたことが分かります。
 
 このようにPromiseでは、逐次処理という事をするのに色々な書き方が出来ると思います。
 
@@ -155,7 +155,7 @@ main().then(function (value) {
 * <<promise-reduce-xhr.js, reduceを使った書き方>>
 * <<promise-sequence.js, 逐次処理する関数を分けた書き方>>
 
-しかし、これはJavaScriptで配列を扱うのにforループや`forEach`等、色々やり方があるのと本質的には違いはありません。
+しかし、これはJavaScriptで配列を扱うのにforループや `forEach` 等、色々やり方があるのと本質的には違いはありません。
 そのため、Promiseを扱う場合も処理をまとめられるところは小さく関数に分けて、実装していくのがいいと言えるでしょう。
 
 === まとめ
@@ -170,7 +170,7 @@ Promiseで書くとPromise chainを繋げすぎて縦に長い処理を書いて
 
 そんな時は基本に振り返り、処理を関数に分けることで全体の見通しを良くすることは大切です。
 
-また、Promiseのコンストラクタ関数や`then`等は高階関数なので、
+また、Promiseのコンストラクタ関数や `then` 等は高階関数なので、
 処理を関数に分けておくと組み合わせが行い易いという副次的な効果もあるため、意識してみるといいかもしれません。
 
 [NOTE]
