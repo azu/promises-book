@@ -23,7 +23,7 @@ include::race-delay-timeout.adoc[]
 // Promise.prototype.done
 include::promise-done.adoc[]
 
-// promsie-chain
+// promise-chain
 include::promise-chain.adoc[]
 
 // Promise sequence
