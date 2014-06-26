@@ -26,5 +26,5 @@ include::promise-done.adoc[]
 // promsie-chain
 include::promise-chain.adoc[]
 
-// Promise sequnence
+// Promise sequence
 include::promise-sequence.adoc[]
