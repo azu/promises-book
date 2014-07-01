@@ -59,7 +59,7 @@ Pull RequestやIssue等お気軽にどうぞ。
 
 [![Gitter chat](https://badges.gitter.im/azu/promises-book.png)](https://gitter.im/azu/promises-book) に書き込むだけでも問題ないです。
 
-Pull Requestする場合は [CONTRIBUTE.md](CONTRIBUTE.md "CONTRIBUTE.md") も参考にして下さい。
+Pull Requestする場合は [CONTRIBUTING.md](CONTRIBUTING.md "CONTRIBUTING.md") も参考にして下さい。
 
 1. Fork it!
 2. Create your feature branch: `git checkout -b my-new-feature`
