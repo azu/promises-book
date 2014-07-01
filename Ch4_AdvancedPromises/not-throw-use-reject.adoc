@@ -1,10 +1,10 @@
 [[not-throw-use-reject]]
 == throwしないで、rejectしよう
 
-Promiseコンストラクタや、`then`で実行される関数は基本的に、
-`try...catch`で囲まれてるような状態なので、その中で`throw`をしてもプログラムは終了しません。
+Promiseコンストラクタや、`then` で実行される関数は基本的に、
+`try...catch` で囲まれてるような状態なので、その中で `throw` をしてもプログラムは終了しません。
 
-Promiseの中で`throw`による例外が発生した場合は自動的に`try...catch`され、そのpromiseオブジェクトはRejectedとなります。
+Promiseの中で `throw` による例外が発生した場合は自動的に `try...catch` され、そのpromiseオブジェクトはRejectedとなります。
 
 [role="executable"]
 [source,javascript]
@@ -18,7 +18,7 @@ promise.catch(function(error){
 ----
 
 このように書いても動作的には問題ありませんが、<<promise-states,promiseオブジェクトの状態>>をRejectedにしたい場合は
-`reject`という与えられた関数を呼び出すのが一般的です。
+`reject` という与えられた関数を呼び出すのが一般的です。
 
 先ほどのコードは以下のように書くことが出来ます。
 
@@ -33,14 +33,14 @@ promise.catch(function(error){
 })
 ----
 
-`throw`が`reject`に変わったと考えれば、`reject`にはErrorオブジェクトを渡すべきであるということが分かりやすいかもしれません。
+`throw` が `reject` に変わったと考えれば、`reject` にはErrorオブジェクトを渡すべきであるということが分かりやすいかもしれません。
 
 === なぜrejectした方がいいのか
 
 そもそも、promiseオブジェクトの状態をRejectedにしたい場合に、
-何故`throw`ではなく`reject`した方がいいのでしょうか?
+何故 `throw` ではなく `reject` した方がいいのでしょうか?
 
-ひとつは`throw`が意図したものか、それとも本当に**例外**なのか区別が難しくなってしまうことにあります。
+ひとつは `throw` が意図したものか、それとも本当に**例外**なのか区別が難しくなってしまうことにあります。
 
 例えば、Chrome等の開発者ツールには例外が発生した時に、
 デバッガーが自動でbreakする機能が用意されています。
@@ -48,7 +48,7 @@ promise.catch(function(error){
 .Pause On Caught Exceptions
 image::img/chrome_on_caught_exception.png[Pause On Caught Exceptions]
 
-この機能を有効にしていた場合、以下のように`throw`するとbreakしてしまいます。
+この機能を有効にしていた場合、以下のように `throw` するとbreakしてしまいます。
 
 [source,javascript]
 ----
@@ -58,14 +58,14 @@ var promise = new Promise(function(resolve, reject){
 ----
 
 本来デバッグとは関係ない場所でbreakしてしまうため、
-Promiseの中で`throw`している箇所があると、この機能が殆ど使い物にならなくなってしまうでしょう。
+Promiseの中で `throw` している箇所があると、この機能が殆ど使い物にならなくなってしまうでしょう。
 
 === thenでもrejectする
 
-Promiseコンストラクタの中では`reject`という関数そのものがあるので、
-`throw`を使わないでpromiseオブジェクトをRejectedにするのは簡単でした。
+Promiseコンストラクタの中では `reject` という関数そのものがあるので、
+`throw` を使わないでpromiseオブジェクトをRejectedにするのは簡単でした。
 
-では、次のような`then`の中でrejectしたい場合はどうすればいいでしょうか?
+では、次のような `then` の中でrejectしたい場合はどうすればいいでしょうか?
 
 [source,javascript]
 ----
@@ -81,23 +81,23 @@ promise.then(function (value) {
 });
 ----
 
-いわゆるタイムアウト処理ですが、`then`の中で`reject`を呼びたいと思った場合に、
+いわゆるタイムアウト処理ですが、`then` の中で `reject` を呼びたいと思った場合に、
 コールバック関数に渡ってくるのは一つ前のpromiseオブジェクトの返した値だけなので困ってしまいます。
 
 [NOTE]
 Promiseを使ったタイムアウト処理の実装については <<race-delay-timeout,Promise.raceとdelayによるXHRのキャンセル>> にて詳しく解説しています。
 
-ここで少し`then`の挙動について思い出してみましょう。
+ここで少し `then` の挙動について思い出してみましょう。
 
-`then` に登録するコールバック関数では値を`return`することができます。
-この時returnした値が、次の`then`や`catch`のコールバックに渡されます。
+`then` に登録するコールバック関数では値を `return` することができます。
+この時returnした値が、次の `then` や `catch` のコールバックに渡されます。
 
 また、returnするものはプリミティブな値に限らずオブジェクト、そしてpromiseオブジェクトも返す事が出来ます。
 
 // TODO 仕様的な解説 - PromiseReactionTask
 
 この時、returnしたものがpromiseオブジェクトである場合、そのpromiseオブジェクトの状態によって、
-次の`then`に登録されたonFulfilledとonRejectedのうち、どちらが呼ばれるかを決めることが出来ます。
+次の `then` に登録されたonFulfilledとonRejectedのうち、どちらが呼ばれるかを決めることが出来ます。
 
 [source,javascript]
 ----
@@ -111,8 +111,8 @@ promise.then(function () {
 ----
 <1> 次に呼び出されるthenのコールバックはpromiseオブジェクトの状態によって決定される
 
-つまり、この`retPromise`がRejectedになった場合は、`onRejected`が呼び出されるので、
-`throw`を使わなくても`then`の中でrejectすることが出来ます。
+つまり、この `retPromise` がRejectedになった場合は、`onRejected` が呼び出されるので、
+`throw` を使わなくても `then` の中でrejectすることが出来ます。
 
 [role="executable"]
 [source,javascript]
@@ -143,10 +143,10 @@ promise.then(function () {
 
 このセクションでは、以下のことについて学びました。
 
-* `throw`ではなくて`reject`した方が安全
-* `then`の中でもrejectする方法
+* `throw` ではなくて `reject` した方が安全
+* `then` の中でもrejectする方法
 
-中々使いどころが多くはないかもしれませんが、安易に`throw`してしまうよりはいい事が多いので、
+中々使いどころが多くはないかもしれませんが、安易に `throw` してしまうよりはいい事が多いので、
 覚えておくといいでしょう。
 
 これを利用した具体的な例としては、

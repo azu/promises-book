@@ -5,17 +5,17 @@
 `then` の代わりに使う `done` というメソッドを見たことがあるかもしれません。
 
 それらのライブラリでは `Promise.prototype.done` というような実装が存在し、
-使い方は`then`と同じですが、promiseオブジェクトを返さないようになっています。
+使い方は `then` と同じですが、promiseオブジェクトを返さないようになっています。
 
 `Promise.prototype.done` は、<<es6-promises,ES6 Promises>>や<<promises-aplus,Promises/A+>>の仕様には
 存在していない記述ですが、多くのライブラリが実装しています。
 
-このセクションでは、`Promise.prototype.done`とは何か?
+このセクションでは、`Promise.prototype.done` とは何か?
 また何故このようなメソッドが多くのライブラリで実装されているかについて学んでいきましょう。
 
 === doneを使ったコード例
 
-実際にdoneを使ったコードを見てみると`done`の挙動が分かりやすいと思います。
+実際にdoneを使ったコードを見てみると `done` の挙動が分かりやすいと思います。
 
 [role="executable"]
 [source,javascript]
@@ -26,10 +26,10 @@ include::embed/embed-promise-done-example.js[]
 // => ブラウザの開発ツールのコンソールを開いてみましょう
 ----
 
-最初に述べたように、`Promise.prototype.done`は仕様としては存在しないため、
+最初に述べたように、`Promise.prototype.done` は仕様としては存在しないため、
 利用する際は実装されているライブラリを使うか自分で実装する必要があります。
 
-実装については後で解説しますが、まずは`then`を使った場合と`done`を使ったものを比較してみます。
+実装については後で解説しますが、まずは `then` を使った場合と `done` を使ったものを比較してみます。
 
 [role="executable"]
 [source,javascript]
@@ -47,7 +47,7 @@ promise.then(function () {
 比べて見ると以下のような違いがあることが分かります。
 
 * `done` はpromiseオブジェクトを返さない
-** つまり、doneの後に`catch`等のメソッドチェーンはできない
+** つまり、doneの後に `catch` 等のメソッドチェーンはできない
 * `done` の中で発生したエラーはそのまま外に例外として投げられる
 ** つまり、Promiseによるエラーハンドリングが行われない
 
@@ -77,10 +77,10 @@ Promiseには強力なエラーハンドリング機能がありますが、
 include::embed/embed-json-promise.js[]
 ----
 
-渡された値を`JSON.parse`してpromiseオブジェクトを返す関数ですね。
+渡された値を `JSON.parse` してpromiseオブジェクトを返す関数ですね。
 
-以下のように使うことができ、`JSON.parse`はパースに失敗すると例外を投げるので、
-それを`catch`することが出来ます。
+以下のように使うことができ、`JSON.parse` はパースに失敗すると例外を投げるので、
+それを `catch` することが出来ます。
 
 [role="executable"]
 [source,javascript]
@@ -96,7 +96,7 @@ JSONPromise(string).then(function (object) {
 });
 ----
 
-ちゃんと`catch`していれば何も問題がないのですが、その処理を忘れてしまうというミスを
+ちゃんと `catch` していれば何も問題がないのですが、その処理を忘れてしまうというミスを
 した時にどこでエラーが発生してるのかわからなくなるというヒューマンエラーを助長させる面があります。
 
 [source,javascript]
@@ -109,7 +109,7 @@ JSONPromise(string).then(function (object) {
 ----
 <1> 例外が投げられても何も処理されない
 
-`JSON.parse`のような分かりやすい例の場合はまだ良いですが、
+`JSON.parse` のような分かりやすい例の場合はまだ良いですが、
 メソッドをtypoしたことによるSyntax Errorなどはより深刻な問題となりやすいです。
 
 [source,javascript]
@@ -122,12 +122,12 @@ JSONPromise(string).then(function (object) {
 ----
 <1> conosle というtypoがある
 
-この場合は、`console`を`conosle`とtypoしているため、以下のようなエラーが発生するはずです。
+この場合は、`console` を `conosle` とtypoしているため、以下のようなエラーが発生するはずです。
 
 > ReferenceError: conosle is not defined
 
 しかし、Promiseではtry-catchされるため、エラーが握りつぶされてしまうという現象が発生しやすくなります。
-毎回、正しく`catch`の処理を書くことが出来る場合は何も問題ありませんが、
+毎回、正しく `catch` の処理を書くことが出来る場合は何も問題ありませんが、
 Promiseの実装によってはこのようなミスが検知しにくくなるケースがあることを知っておくべきでしょう。
 
 このようなエラーの握りつぶしは__unhandled rejection__と言われることがあります。
@@ -159,8 +159,8 @@ https://twitter.com/domenic/status/461154989856264192[Firefox] や https://code.
 Promiseにおける `done` は先程のエラーの握りつぶしを避けるにはどうするかという方法論として、
 そもそもエラーハンドリングをしなければいい という豪快な解決方法を提供するメソッドです。
 
-`done`はPromiseの上に実装することが出来るので、
-`Promise.prototype.done`というPromiseのprototype拡張として実装してみましょう。
+`done` はPromiseの上に実装することが出来るので、
+`Promise.prototype.done` というPromiseのprototype拡張として実装してみましょう。
 
 [source,javascript]
 [[promise-prototype-done.js]]
@@ -187,36 +187,36 @@ try{
 
 [NOTE]
 ====
-なぜ非同期の`callback`内での例外をキャッチ出来ないのかは以下が参考になります。
+なぜ非同期の `callback` 内での例外をキャッチ出来ないのかは以下が参考になります。
 
 - http://techblog.yahoo.co.jp/programming/javascript_error/[JavaScriptと非同期のエラー処理 - Yahoo! JAPAN Tech Blog]
 ====
 
-<<promise-prototype-done.js,`Promise.prototype.done`>> をよく見てみると、何も`return`していないこともわかると思います。
-つまり、`done`は「ここでPromise chainは終了して、例外が起きた場合はそのままpromiseの外へ投げ直す」という処理になっています。
+<<promise-prototype-done.js,`Promise.prototype.done`>> をよく見てみると、何も `return` していないこともわかると思います。
+つまり、`done` は「ここでPromise chainは終了して、例外が起きた場合はそのままpromiseの外へ投げ直す」という処理になっています。
 
-実装や環境がしっかり対応していれば、__unhandled rejection__の検知はできるため、必ずしも`done`が必要というわけではなく、
-また今回の<<promise-prototype-done.js,`Promise.prototype.done`>>のように、`done`は既存のPromiseの上に実装することができるため、
+実装や環境がしっかり対応していれば、__unhandled rejection__の検知はできるため、必ずしも `done` が必要というわけではなく、
+また今回の<<promise-prototype-done.js,`Promise.prototype.done`>>のように、`done` は既存のPromiseの上に実装することができるため、
 <<es6-promises,ES6 Promises>>の仕様そのものには入らなかったと言えるかもしれません。
 
 [NOTE]
-今回の`Promise.prototype.done`の実装は https://www.promisejs.org/[promisejs.org] を参考にしています。
+今回の `Promise.prototype.done` の実装は https://www.promisejs.org/[promisejs.org] を参考にしています。
 
 === まとめ
 
 このセクションでは、 https://github.com/kriskowal/q/wiki/API-Reference#promisedoneonfulfilled-onrejected-onprogress[Q] や https://github.com/petkaantonov/bluebird[Bluebird] や https://github.com/cscott/prfun#promisedone--undefined[prfun] 等
-多くのPromiseライブラリで実装されている`done`の基礎的な実装と、`then`とはどのような違いがあるかについて学びました。
+多くのPromiseライブラリで実装されている `done` の基礎的な実装と、`then` とはどのような違いがあるかについて学びました。
 
-`done`には2つの側面があることがわかりました。
+`done` には2つの側面があることがわかりました。
 
-* `done`の中で起きたエラーは外へ例外として投げ直す
+* `done` の中で起きたエラーは外へ例外として投げ直す
 * Promise chain を終了するという宣言
 
 <<then-or-catch,then or catch?>> と同様にPromiseにより沈黙してしまったエラーについては、
 デバッグツールやライブラリの改善等で殆どのケースでは問題ではなくなるかもしれません。
 
-また、`done`は値を返さない事でそれ以上Promise chainを繋げる事ができなくなるため、
-そのような統一感を持たせるという用途で`done`を使うことも出来ます。
+また、`done` は値を返さない事でそれ以上Promise chainを繋げる事ができなくなるため、
+そのような統一感を持たせるという用途で `done` を使うことも出来ます。
 
 <<es6-promises,ES6 Promises>> では根本に用意されてる機能はあまり多くありません。
 そのため、自ら拡張したり、拡張したライブラリ等を利用するケースが多いと思います。

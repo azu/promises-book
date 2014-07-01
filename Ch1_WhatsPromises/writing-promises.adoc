@@ -8,7 +8,7 @@ Promiseの基本的な書き方について解説します。
 promiseオブジェクトを作る流れは以下のようになっています。
 
 . `new Promise(fn)` の返り値がpromiseオブジェクト
-. `fn`には非同期等の何らかの処理を書く
+. `fn` には非同期等の何らかの処理を書く
     * 処理結果が正常なら、`resolve(結果の値)` を呼ぶ
     * 処理結果がエラーなら、`reject(Errorオブジェクト)` を呼ぶ
 
@@ -19,7 +19,7 @@ promiseオブジェクトを作る流れは以下のようになっています�
 
 ==== XHRのpromiseオブジェクトを作る
 
-まずは、XHRをPromiseを使って包んだような`getURL`という関数を作ります。
+まずは、XHRをPromiseを使って包んだような `getURL` という関数を作ります。
 
 [role="executable"]
 [[xhr-promise.js]]
@@ -36,13 +36,13 @@ getURL(URL).then(function onFulfilled(value){
 });
 ----
 
-この`getURL`では、
+この `getURL` では、
 XHRでの取得結果のステータスコードが200の場合のみ `resolve` - つまり取得に成功、
 それ以外はエラーであるとして `reject` しています。
 
 `resolve(req.response)` ではレスポンスの内容を引数に入れています。
 resolveの引数に入れる値には特に決まりはありませんが、コールバックと同様に次の処理へ渡したい値を入れるといいでしょう。
-(この値は`then`メソッドで受け取ることが出来ます)
+(この値は `then` メソッドで受け取ることが出来ます)
 
 Node.jsをやっている人は、コールバックを書く時に `callback(error, response)` と第一引数にエラーオブジェクトを
 入れることがよくあると思いますが、Promiseでは役割がresolve/rejectで分担されているので、
@@ -51,15 +51,15 @@ resolveにはresponseの値のみをいれるだけで問題ありません。
 
 次に、`reject` の方を見て行きましょう。
 
-XHRで`onerror`のイベントが呼ばれた場合はもちろんエラーなので`reject`を呼びます。
-ここで`reject`に渡している値に注目してみてください。
+XHRで `onerror` のイベントが呼ばれた場合はもちろんエラーなので `reject` を呼びます。
+ここで `reject` に渡している値に注目してみてください。
 
 エラーの場合は `reject(new Error(req.statusText));` というように、Errorオブジェクトを作成して渡している事がわかると思います。
 `reject` に渡す値に制限はありませんが、一般的にErrorオブジェクト(またはErrorオブジェクトを継承したもの)を渡すことになっています。
 
 `reject` に渡す値は、rejectする理由を書いたErrorオブジェクトとなっています。
-今回は、ステータスコードが200以外であるならrejectするとしていたため、`reject`にはstatusTextを入れています。
-(この値は`then`メソッドの第二引数 or `catch` メソッドで受け取ることが出来ます)
+今回は、ステータスコードが200以外であるならrejectするとしていたため、`reject` にはstatusTextを入れています。
+(この値は `then` メソッドの第二引数 or `catch` メソッドで受け取ることが出来ます)
 
 === promiseオブジェクトに処理を書く
 
@@ -80,7 +80,7 @@ promiseオブジェクトに登録する処理は以下の2種類が主となり
 .promise value flow
 image::img/promise-onFulfilled_onRejected.png[promise-resolve-flow]
 
-まずは、`getURL`で通信が成功して値が取得出来た場合の処理を書いてみましょう。
+まずは、`getURL` で通信が成功して値が取得出来た場合の処理を書いてみましょう。
 
 この場合の _通信が成功した_ というのは、
 resolveされたことにより_promiseオブジェクトがFulFilledの状態になった_ 時という事ですね。
@@ -97,7 +97,7 @@ getURL(URL).then(function onFulfilled(value){ // <1>
 <1> 分かりやすくするため関数に `onFulfilled` という名前を付けています
 
 <<xhr-promise.js,getURL関数>> 内で `resolve(req.response);` によってpromiseオブジェクトが解決されると、
-値と共に`onFulfilled` 関数が呼ばれます。
+値と共に `onFulfilled` 関数が呼ばれます。
 
 このままでは通信エラーが起きた場合などに何も処理がされないため、
 今度は、`getURL` で何らかの問題があってエラーが起きた場合の処理を書いてみましょう。
@@ -105,7 +105,7 @@ getURL(URL).then(function onFulfilled(value){ // <1>
 この場合の _エラーが起きた_ というのは、
 rejectされたことより_promiseオブジェクトがRejectedの状態になった_時という事ですね。
 
-**reject**された時の処理は、<<promise.then,`.then`の第二引数>> または <<promise.catch,`.catch`>> メソッドに呼ばれたい関数を渡す事で行えます。
+**reject**された時の処理は、<<promise.then,`.then` の第二引数>> または <<promise.catch,`.catch`>> メソッドに呼ばれたい関数を渡す事で行えます。
 
 先ほどのソースにrejectされた場合の処理を追加してみましょう。
 
@@ -122,10 +122,10 @@ getURL(URL).then(function onFulfilled(value){
 <2> 分かりやすくするため関数 `onRejected` という名前を付けています
 
 
-`getURL`の処理中に何らかの理由で例外が起きた場合、または明示的にrejectされた場合に、
+`getURL` の処理中に何らかの理由で例外が起きた場合、または明示的にrejectされた場合に、
 その理由(Errorオブジェクト)と共に <<promise.catch,`.catch`>> の処理が呼ばれます。
 
-<<promise.catch,`.catch`>>は`promise.then(undefined, onRejected)`のエイリアスであるため、
+<<promise.catch,`.catch`>>は `promise.then(undefined, onRejected)` のエイリアスであるため、
 同様の処理は以下のように書くことも出来ます。
 
 [[catch-as-alias]]

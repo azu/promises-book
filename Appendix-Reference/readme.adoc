@@ -85,7 +85,7 @@ function asyncTask(name){
 promiseオブジェクトを受け取った場合::
 受け取ったpromiseオブジェクトをそのまま返す
 thenableなオブジェクトを受け取った場合::
-`then`を持つオブジェクトを新たなpromiseオブジェクトにして返す
+`then` を持つオブジェクトを新たなpromiseオブジェクトにして返す
 その他の値(オブジェクトやnull等も含む)を受け取った場合::
 その値でresolveされる新たなpromiseオブジェクトを作り返す
 
@@ -102,7 +102,7 @@ var failureStub = sinon.stub(xhr, "request").returns(Promise.reject(new Error("b
 
 受け取った値でrejectされた新たなpromiseオブジェクトを返す。
 
-Promise.rejectに渡す値は`Error`オブジェクトとすべきである。
+Promise.rejectに渡す値は `Error` オブジェクトとすべきである。
 
 また、Promise.resolveとは異なり、promiseオブジェクトを渡した場合も常に新たなpromiseオブジェクトを作成する。
 
@@ -139,7 +139,7 @@ Promise.all([p1, p2, p3]).then(function (results) {
 
 どれかの値がrejectされた場合は、その時点で新たなpromiseオブジェクトはrejectされる。
 
-渡された配列の値はそれぞれ`Promise.resolve`にラップされるため、
+渡された配列の値はそれぞれ `Promise.resolve` にラップされるため、
 promiseオブジェクト以外が混在している場合も扱える。
 
 [[Promise.race]]

@@ -4,7 +4,7 @@
 Promises::
     プロミスという仕様そのもの
 promiseオブジェクト::
-    プロミスオブジェクト、`Promise`のインスタンスオブジェクトの事
+    プロミスオブジェクト、`Promise` のインスタンスオブジェクトの事
 [[es6-promises]]
 ES6 Promises::
     http://people.mozilla.org/%7Ejorendorff/es6-draft.html#sec-operations-on-promise-objects[ECMAScript 6th Edition] を明示的に示す場合にprefixとして _ES6_ をつける
@@ -15,8 +15,8 @@ Promises/A+::
 [[Thenable]]
 Thenable::
     Promiseライクなオブジェクトの事。
-    `.then`というメソッドを持つオブジェクト。
+    `.then` というメソッドを持つオブジェクト。
 [[promise-chain]]
 promise chain::
-    promiseオブジェクトを`then`や`catch`のメソッドチェーンでつなげたもの。
+    promiseオブジェクトを `then` や `catch` のメソッドチェーンでつなげたもの。
     この用語は書籍中のものであり、<<es6-promises,ES6 Promises>>で定められた用語ではありません。

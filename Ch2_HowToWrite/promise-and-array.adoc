@@ -30,8 +30,8 @@ main(function(error, results){
 
 このコールバックスタイルでは幾つかの要素が出てきます。
 
-* `JSON.parse` をそのまま使うと例外となるケースがあるためラップした`jsonParse`関数を使う
-* 複数のXHRをそのまま書くとネストが深くなるため、`allRequest`というrequest関数を実行するものを利用する
+* `JSON.parse` をそのまま使うと例外となるケースがあるためラップした `jsonParse` 関数を使う
+* 複数のXHRをそのまま書くとネストが深くなるため、`allRequest` というrequest関数を実行するものを利用する
 * コールバック関数には `callback(error,value)` というNode.jsでよく見られる引数を渡す
 
 `jsonParse` 関数を使うときに `bind` を使うことで、部分適用を使って無名関数を減らすようにしています。
@@ -57,7 +57,7 @@ function bindJSONParse(error, value){
 === Promise#thenのみで複数の非同期処理
 
 先に述べておきますが、`Promise.all` というこのような処理に適切なものがあるため、
-ワザと `.then`の部分をクドく書いています。
+ワザと `.then` の部分をクドく書いています。
 
 <<promise.then,`.then`>> を使った場合は、コールバックスタイルと完全に同等というわけではないですが以下のように書けると思います。
 

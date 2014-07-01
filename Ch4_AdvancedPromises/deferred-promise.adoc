@@ -74,7 +74,7 @@ getURL(URL).then(function onFulfilled(value){
 }).catch(console.error.bind(console));
 ----
 
-2つの`getURL`を見比べて見ると以下のような違いがある事が分かります。
+2つの `getURL` を見比べて見ると以下のような違いがある事が分かります。
 
 * Deferred の場合は全体がPromiseで囲まれていない
 ** 関数で囲んでないため、1段ネストが減っている
@@ -83,14 +83,14 @@ getURL(URL).then(function onFulfilled(value){
 逆に以下の部分は同じ事をやっています。
 
 * 全体的な処理の流れ
-** `resolve`、`reject`を呼ぶタイミング
+** `resolve`、`reject` を呼ぶタイミング
 * 関数はpromiseオブジェクトを返す
 
 このDeferredはPromiseを持っているため、大きな流れは同じですが、
 Deferredには特権的なメソッドを持っていることや自分で流れを制御する裁量が大きいことが分かります。
 
 例えば、Promiseの場合はコンストラクタの中に処理を書くことが通例なので、
-`resolve`、`reject`を呼ぶタイミングが大体みて分かります。
+`resolve`、`reject` を呼ぶタイミングが大体みて分かります。
 
 [source,javascript]
 ----
@@ -100,7 +100,7 @@ new Promise(function (resolve, reject){
 ----
 
 一方Deferredの場合は、関数的なまとまりはないのでdeferredオブジェクトを作ったところから、
-任意のタイミングで`resolve`、`reject`を呼ぶ感じになります。
+任意のタイミングで `resolve`、`reject` を呼ぶ感じになります。
 
 [source,javascript]
 ----

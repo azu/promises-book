@@ -7,7 +7,7 @@ Mochaがサポートしてる"Promiseのテスト"とは何かについて学ん
 
 > Alternately, instead of using the done() callback, you can return a promise. This is useful if the APIs you are testing return promises instead of taking callbacks:
 
-Promiseのテストの場合はコールバックとして`done()`を呼ぶ代わりに、promiseオブジェクトをreturnすることが出来ると書いてあります。
+Promiseのテストの場合はコールバックとして `done()` を呼ぶ代わりに、promiseオブジェクトをreturnすることが出来ると書いてあります。
 
 では、実際にどのように書くかの例を見て行きたいと思います。
 
@@ -19,14 +19,14 @@ Promiseのテストの場合はコールバックとして`done()`を呼ぶ代�
 include::test/mocha-promise-test.js[]
 ----
 
-<<promise-assert-fail-fixed,先ほどの`done`を使った例>>をMochaのPromiseテストの形式に変更しました。
+<<promise-assert-fail-fixed,先ほどの `done` を使った例>>をMochaのPromiseテストの形式に変更しました。
 
 変更点としては以下の2つとなっています。
 
 * `done` そのものを取り除いた
 * promiseオブジェクトを返すようにした
 
-この書き方をした場合、`assert`が失敗した場合はもちろんテストが失敗します。
+この書き方をした場合、`assert` が失敗した場合はもちろんテストが失敗します。
 
 [source,javascript]
 ----
@@ -37,7 +37,7 @@ it("should be fail", function () {
 });
 ----
 
-これにより`.then(done, done);`というような本質的にはテストとは関係ない記述を省くことが出来るようになりました。
+これにより `.then(done, done);` というような本質的にはテストとは関係ない記述を省くことが出来るようになりました。
 
 [NOTE]
 ====
@@ -50,7 +50,7 @@ MochaのPromiseサポートについて書かれています。
 MochaがPromiseのテストをサポートしているため、この書き方で良いと思われるかもしれません。
 しかし、この書き方にも意図しない結果になる例外が存在します。
 
-例えば、以下はある条件だとRejectedなpromiseオブジェクトを返す`mayBeRejected()`のテストコードです。
+例えば、以下はある条件だとRejectedなpromiseオブジェクトを返す `mayBeRejected()` のテストコードです。
 
 [source,javascript]
 [[mocha-rejected-promise-test]]
@@ -70,15 +70,15 @@ it("is bad pattern", function () {
 
 このテストの目的とは以下のようになっています。
 
-`mayBeRejected()`が返すpromiseオブジェクトがFulFilledとなった場合::
+`mayBeRejected()` が返すpromiseオブジェクトがFulFilledとなった場合::
     テストを失敗させる
-`mayBeRejected()`が返すpromiseオブジェクトがRejectedとなった場合::
-    `assert`でErrorオブジェクトをチェックする
+`mayBeRejected()` が返すpromiseオブジェクトがRejectedとなった場合::
+    `assert` でErrorオブジェクトをチェックする
 
 
-上記のテストコードでは、Rejectedとなって`onRejected`に登録された関数が呼ばれるためテストはパスしますね。
+上記のテストコードでは、Rejectedとなって `onRejected` に登録された関数が呼ばれるためテストはパスしますね。
 
-このテストで問題になるのは`mayBeRejected()`で返されたpromiseオブジェクトが
+このテストで問題になるのは `mayBeRejected()` で返されたpromiseオブジェクトが
 **FulFilledとなった場合**に、必ずテストがパスしてしまうという問題が発生します。
 
 [source,javascript]
@@ -94,11 +94,11 @@ it("is bad pattern", function () {
 ----
 <1> 返されるpromiseオブジェクトはFulFilledとなる
 
-この場合、`catch`で登録した`onRejected`の関数はそもそも呼ばれないため、
-`assert`がひとつも呼ばれることなくテストが必ずパスしてしまいます。
+この場合、`catch` で登録した `onRejected` の関数はそもそも呼ばれないため、
+`assert` がひとつも呼ばれることなくテストが必ずパスしてしまいます。
 
-これを解消しようとして、`.catch`の前に`.then`を入れて、
-`.then`が呼ばれたらテストを失敗にしたいと考えるかもしれません。
+これを解消しようとして、`.catch` の前に `.then` を入れて、
+`.then` が呼ばれたらテストを失敗にしたいと考えるかもしれません。
 
 [source,javascript]
 ----
@@ -117,12 +117,12 @@ it("should bad pattern", function () {
 <1> throwすることでテストを失敗にしたい
 
 しかし、この書き方だと<<then-or-catch,then or catch?>>で紹介したように、
-`failTest`で投げられたエラーが`catch`されてしまいます。
+`failTest` で投げられたエラーが `catch` されてしまいます。
 
 .Then Catch flow
 image::../Ch2_HowToWrite/img/then_catch.png[Then Catch flow]
 
-`then` -> `catch` となり、`catch`に渡ってくるErrorオブジェクトは`AssertionError`となり、
+`then` -> `catch` となり、`catch` に渡ってくるErrorオブジェクトは `AssertionError` となり、
 意図したものとは違うものが渡ってきてしまいます。
 
 つまり、onRejectedになること**だけ**を期待して書かれたテストは、onFulfilledの状態になってしまうと
@@ -138,7 +138,7 @@ image::../Ch2_HowToWrite/img/then_catch.png[Then Catch flow]
 FulFilledとなった場合::
     意図した通りテストが失敗する
 Rejectedとなった場合::
-    `assert`でテストを行える
+    `assert` でテストを行える
 
 つまり、Fulfilled、Rejected 両方の状態について、テストがどうなってほしいかを明示する必要があるわけです。
 
@@ -162,22 +162,22 @@ image::img/promise-test.png[Promise onRejected test]
 
 
 <<then-or-catch,then or catch?>>の時は、エラーの見逃しを避けるため、
-`.then(onFulfilled, onRejected)`の第二引数ではなく、`then` -> `catch`と分けることを推奨していました。
+`.then(onFulfilled, onRejected)` の第二引数ではなく、`then` -> `catch` と分けることを推奨していました。
 
 しかし、テストの場合はPromiseの強力なエラーハンドリングが逆にテストの邪魔をしてしまいます。
-そのため`.then(failTest, onRejected)`と書くことで、どちらの状態になるのかを明示してテストを書くことができました。
+そのため `.then(failTest, onRejected)` と書くことで、どちらの状態になるのかを明示してテストを書くことができました。
 
 
 === まとめ
 
 MochaのPromiseサポートについてと意図しない挙動となる場合について紹介しました。
 
-* 通常のコードは`then` -> `catch`と分けた方がよい
+* 通常のコードは `then` -> `catch` と分けた方がよい
 ** エラーハンドリングのため。<<then-or-catch,then or catch?>>を参照
-* テストコードは`then`にまとめた方がよい
+* テストコードは `then` にまとめた方がよい
 ** アサーションエラーがテストフレームワークに届くようにするため。
 
-`.then(onFulfilled, onRejected)`を使うことで、
+`.then(onFulfilled, onRejected)` を使うことで、
 promiseオブジェクトがFulfilled、Rejectedどちらの状態になるかを明示してテストする必要があります。
 
 しかし、Rejectedのテストであることを明示するために、以下のように書くのはあまり直感的ではないと思います。
