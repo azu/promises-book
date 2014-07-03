@@ -7,10 +7,10 @@
 
 *Constructor*
 
-Promiseは`XMLHttpRequest`のように、コンストラクタ関数である`Promise`からインスタンスとなる
+Promiseは `XMLHttpRequest` のように、コンストラクタ関数である `Promise` からインスタンスとなる
 promiseオブジェクトを作成して利用します。
 
-promiseオブジェクトを作成するには、`Promise`コンストラクタを`new`でインスタンス化します。
+promiseオブジェクトを作成するには、`Promise` コンストラクタを `new` でインスタンス化します。
 
 [source,javascript]
 ----
@@ -39,7 +39,7 @@ reject(失敗)した時::
 
 `promise.then` では成功時と失敗時の処理を同時に登録することが出来ます。
 また、エラー処理だけを書きたい場合には `promise.then(undefined, onRejected)` と同じ意味である
-`promise.catch(onRejected)`を使うことが出来ます。
+`promise.catch(onRejected)` を使うことが出来ます。
 
 [source,javascript]
 promise.catch(onRejected)
@@ -63,7 +63,7 @@ promise.catch(onRejected)
 ----
 include::embed/embed-promise-workflow.js[]
 ----
-<1> Promiseコンストラクタを`new`して、promiseオブジェクトを返します
+<1> Promiseコンストラクタを `new` して、promiseオブジェクトを返します
 <2> <1>のpromiseオブジェクトに対して `.then` で値が返ってきた時のコールバックを設定します
 
 `asyncFunction` という関数 は promiseオブジェクトを返していて、
@@ -74,7 +74,7 @@ include::embed/embed-promise-workflow.js[]
 そのタイミングで `then` のコールバックが呼ばれ `'Async Hello world'` と出力されます。
 
 この場合 `catch` のコールバックは呼ばれる事はないですが、
-`setTimout`が存在しない環境などでは、例外が発生し`catch`で登録したコールバック関数が呼ばれると思います。
+`setTimeout` が存在しない環境などでは、例外が発生し `catch` で登録したコールバック関数が呼ばれると思います。
 
 もちろん、`promise.then(onFulfilled, onRejected)` というように、
 `catch` を使わずに `then` を使い、以下のように2つのコールバック関数を設定することでもほぼ同様の動作になります。

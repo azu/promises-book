@@ -3,8 +3,9 @@ azu
 :author:      azu
 :authorinitials: azu
 :keywords:    JavaScript, ECMAScript, Promise, 日本語, 使い方, チュートリアル, リファレンス
-:description: JavaScript Promiseの使い方やテスト、応用について解説したドキュメントです。
+:description: JavaScript Promiseの基本的な使い方やテストを書く方法、応用やアンチパターンについて解説したドキュメントです。
 :revnumber:   {bookversion}
+:homepage:    http://azu.github.io/promises-book/
 :source:      https://github.com/azu/promises-book
 :lang:        ja
 :icons:       font
@@ -59,7 +60,7 @@ icon:rss[2x, link=https://github.com/azu/promises-book/releases.atom] 更新情�
 
 endif::[]
 
-// <<< PAGE BREAK >>>
+// <<< PAGE BREAK PDFのみ
 <<<
 
 // 各章はH1から始めているので、一つ下げる

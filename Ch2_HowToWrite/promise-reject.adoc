@@ -2,7 +2,7 @@
 == Promise.reject
 
 <<Promise.reject, `Promise.reject(error)`>>は
-<<Promise.resolve, `Promise.resolve(value)`>> と同じ静的メソッドで`new Promise()`のショートカットとなるメソッドです。
+<<Promise.resolve, `Promise.resolve(value)`>> と同じ静的メソッドで `new Promise()` のショートカットとなるメソッドです。
 
 
 例えば、 `Promise.reject(new Error("エラー"))` というのは下記のコードのシンタックスシュガーです。
@@ -14,7 +14,7 @@ new Promise(function(resolve,reject){
 });
 ----
 
-返り値のpromiseオブジェクトに対して、thenの`onRejected`に設定された関数にエラーオブジェクトが渡ります。
+返り値のpromiseオブジェクトに対して、thenの `onRejected` に設定された関数にエラーオブジェクトが渡ります。
 
 [role="executable"]
 [source,javascript]

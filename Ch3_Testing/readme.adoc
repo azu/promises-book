@@ -11,4 +11,4 @@ include::basic-tests.adoc[]
 include::mocha-promise.adoc[]
 
 // 意図したテストを書くには
-include::controlable-tests.adoc[]
+include::controllable-tests.adoc[]

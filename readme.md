@@ -1,4 +1,4 @@
-# Promises Book [![Build Status](https://travis-ci.org/azu/promises-book.png)](https://travis-ci.org/azu/promises-book) [![Gitter chat](https://badges.gitter.im/azu/promises-book.png)](https://gitter.im/azu/promises-book)
+# Promises Book [![Build Status](https://travis-ci.org/azu/promises-book.svg)](https://travis-ci.org/azu/promises-book) [![Gitter chat](https://badges.gitter.im/azu/promises-book.png)](https://gitter.im/azu/promises-book)
 
 Promisesについての薄い電子書籍です
 
@@ -8,7 +8,7 @@ Promisesについての薄い電子書籍です
 
 [https://gumroad.com/l/javascript-promise](https://gumroad.com/l/javascript-promise "JavaScript Promiseの本 付録") からおまけのPDFを無料また任意の値段でダウンロードすることが出来ます。
 
-寄付などがしたい方は、[こちら](https://gumroad.com/l/javascript-promise "JavaScript Promiseの本 付録")を代用して下さい。
+寄付などがしたい方は、[こちら](https://gumroad.com/l/javascript-promise "JavaScript Promiseの本 付録")で代用して下さい。
 
 ## Installation
 
@@ -59,7 +59,7 @@ Pull RequestやIssue等お気軽にどうぞ。
 
 [![Gitter chat](https://badges.gitter.im/azu/promises-book.png)](https://gitter.im/azu/promises-book) に書き込むだけでも問題ないです。
 
-Pull Requestする場合は [CONTRIBUTE.md](CONTRIBUTE.md "CONTRIBUTE.md") も参考にして下さい。
+Pull Requestする場合は [CONTRIBUTING.md](CONTRIBUTING.md "CONTRIBUTING.md") も参考にして下さい。
 
 1. Fork it!
 2. Create your feature branch: `git checkout -b my-new-feature`

@@ -4,12 +4,12 @@
 <<Promise.resolve, `Promise.resolve(value)`>> 等を使った場合、
 promiseオブジェクトがすぐにresolveされるので、`.then` に登録した関数も同期的に処理が行われるように錯覚してしまいます。
 
-しかし、実際には`.then`に登録した関数が呼ばれるのは、非同期となります。
+しかし、実際には `.then` で登録した関数が呼ばれるのは、非同期となります。
 
 [role="executable"]
 [source,javascript]
 ----
-var promise = new Promise(function(resolve){
+var promise = new Promise(function (resolve){
     console.log("inner promise");// <1>
     resolve(42);
 });
@@ -19,7 +19,7 @@ promise.then(function(value){
 console.log("outer promise");// <2>
 ----
 
-上記のコードは数値の順に呼ばれるため、出力結果は以下のように非同期で呼ばれていることがわかります。
+上記のコードを実行すると以下の順に呼ばれていることが分かります。
 
 ----
 inner promise
@@ -27,4 +27,128 @@ outer promise
 42
 ----
 
+JavaScriptは上から実行されていくため、まず最初に `<1>` が実行されますね。
+そして次に `resolve(42);` が実行され、この `promise` オブジェクトはこの時点で `42` という値にFulFilledされます。
+
+次に、`promise.then` で `<3>` のコールバック関数を登録しますが、ここがこのコラムの焦点です。
+
+`promise.then` を行う時点でpromiseオブジェクトの状態が決まっているため、
+プログラム的には同期的にコールバック関数に `42` を渡して呼び出す事はできますね。
+
+しかし、Promiseでは `promise.then` で登録する段階でpromiseの状態が決まっていても、
+そこで登録したコールバック関数は非同期で呼び出される仕様になっています。
+
+そのため、`<2>` が先に呼び出されて、最後に `<3>` のコールバック関数が呼ばれています。
+
+何故、同期的に呼び出せるのにわざわざ非同期的に呼び出しているでしょうか?
+
+=== 同期と非同期の混在の問題
+
+これはPromise以外でも適応できるため、もう少し一般的な問題として考えみましょう。
+
+この問題はコールバック関数を受け取る関数が、
+状況によって同期処理になるのか非同期処理になるのかが変わってしまう問題と同じです。
+
+次のような、コールバック関数を受け取り処理する `onReady(fn)` を見てみましょう。
+
+
+[role="executable"]
+[source,javascript]
+[[mixed-onready.js]]
+.mixed-onready.js
+----
+include::embed/embed-mixed-onready.js[]
+----
+
+<<mixed-onready.js>>ではDOMが読み込み済みかどうかで、
+コールバック関数が同期的か非同期的に呼び出されるのかが異なっています。
+
+onReadyを呼ぶ前にDOMが読み込みが完了している::
+    同期的にコールバック関数が呼ばれる
+onReadyを呼ぶ前にDOMが読み込みが完了していない::
+    `DOMContentLoaded` のイベントハンドラとしてコールバック関数を設定する
+
+そのため、このコードは配置する場所によって、
+コンソールに出てくるメッセージの順番が変わってしまいます。
+
+この問題の対処法として常に非同期で呼び出すように統一することです。
+
+[role="executable"]
+[source,javascript]
+[[async-onready.js]]
+.async-onready.js
+----
+include::embed/embed-async-onready.js[]
+----
+
+この問題については、 http://effectivejs.com/[Effective JavaScript] の
+**項目67 非同期コールバックを同期的に呼び出してはいけない** で紹介されています。
+
+[quote, David Herman, Effective JavaScript]
+____
+- 非同期コールバックは（たとえデータが即座に利用できても）決して同期的に使ってはならない。
+- 非同期コールバックを同期的に呼び出すと、処理の期待されたシーケンスが乱され、
+コードの実行順序に予期しない変動が生じるかもしれない。
+- 非同期コールバックを同期的に呼び出すと、スタックオーバーフローや例外処理の間違いが発生するかもしれない。
+- 非同期コールバックを次回に実行されるようスケジューリングするには、`setTimeout` のような非同期APIを使う。
+____
+
+先ほどの `promise.then` も同様のケースであり、この同期と非同期処理の混在の問題が起きないようにするため、
+**Promiseは常に非同期** で処理されるという事が仕様で定められているわけです。
+
+最後に、この `onReady` をPromiseを使って定義すると以下のようになります。
+
+[role="executable"]
+[source,javascript]
+[[onready-as-promise.js]]
+.onready-as-promise.js
+----
+include::embed/embed-onready-as-promise.js[]
+----
+
+Promiseは常に非同期で実行されることが保証されているため、
+`setTimeout` のような明示的に非同期処理にするためのコードが不要となることが分かります。
+
+
+////
+つまり、先ほどのコードは擬似的には以下のように展開出来ます。
+
+[role="executable"]
+[source,javascript]
+----
+var promise = new Promise(function taskA(resolve){
+    console.log("inner promise");// <1>
+    resolve(42);
+});
+promise.then(function(arg){
+    setTimeout(function(value){
+       console.log(value); // <3>
+   }.bind(this, arg), 0);
+});
+console.log("outer promise");// <2>
+----
+
+`promise.then` で登録したコールバック関数は常に非同期的に呼び出されているわけです。
+
+[NOTE]
+====
+実際にはこのような `setTimeout` や `setImmediate` を使ったような明示的な非同期処理は、
+コードとして書く必要はありません。
+仕様的には、`promise.then` はコールバック関数を `EnqueueTask` する、
+つまりキューに入れると表現されています。
+====
+
+仮に、Promiseが同期的にコールバック関数を呼び出す仕様になっているとします。
+
+> `promise.then` の時点でpromiseの状態が決まっていたら、同期的にコールバック関数を呼び出す
+
+その場合、実行結果は以下のようになっているはずですね。
+
+----
+inner promise
+42
+outer promise
+----
+
 つまり、Promiseは常に非同期で処理が行われているという事になります。
+////

@@ -12,9 +12,9 @@ Promise.raceを使ったタイムアウトの実装を学んでいきます。
 
 まずはタイムアウトをPromiseでどう実現するかを見て行きたいと思います。
 
-タイムアウトというのは一定時間経ったら何かするという処理なので、`setTimeout`を使えばいいことが分かりますね。
+タイムアウトというのは一定時間経ったら何かするという処理なので、`setTimeout` を使えばいいことが分かりますね。
 
-まずは単純に`setTimeout`をPromiseでラップした関数を作ってみましょう。
+まずは単純に `setTimeout` をPromiseでラップした関数を作ってみましょう。
 
 [source,javascript]
 [[delayPromise.js]]
@@ -24,7 +24,7 @@ include::embed/embed-delayPromise.js[]
 ----
 
 `delayPromise(ms)` は引数で指定したミリ秒後にonFulfilledを呼ぶpromiseオブジェクトを返すので、
-通常の`setTimeout`を直接使ったものと比較すると以下のように書けるだけの違いです。
+通常の `setTimeout` を直接使ったものと比較すると以下のように書けるだけの違いです。
 
 [source,javascript]
 ----
@@ -41,7 +41,7 @@ delayPromise(100).then(function () {
 
 === Promise.raceでタイムアウト
 
-`Promise.race`について簡単に振り返ると、
+`Promise.race` について簡単に振り返ると、
 以下のようにどれか一つでもpromiseオブジェクトが解決状態になったら次の処理を実行する静的メソッドでした。
 
 [source,javascript]
@@ -50,7 +50,7 @@ include::../Ch2_HowToWrite/embed/embed-promise-race-other.js[]
 ----
 
 先ほどの<<delayPromise.js,delayPromise>>と別のpromiseオブジェクトを、
-`Promise.race`によって競争させることで簡単にタイムアウトが実装出来ます。
+`Promise.race` によって競争させることで簡単にタイムアウトが実装出来ます。
 
 [source,javascript]
 [[simple-timeout-promise.js]]
@@ -60,7 +60,7 @@ include::embed/embed-simple-timeout-promise.js[]
 ----
 
 `timeoutPromise(比較対象のpromise, ms)` はタイムアウト処理を入れたい
-promiseオブジェクトとタイムアウトの時間を受け取り、`Promise.race`により競争させたpromiseオブジェクトを返します。
+promiseオブジェクトとタイムアウトの時間を受け取り、`Promise.race` により競争させたpromiseオブジェクトを返します。
 
 `timeoutPromise` を使うことで以下のようにタイムアウト処理を書くことが出来るようになります。
 
@@ -86,19 +86,19 @@ timeoutPromise(taskPromise, 1000).then(function(value){
 タイムアウトになった場合はエラーが呼ばれるように出来ましたが、
 このままでは__通常のエラー__と__タイムアウトのエラー__の区別がつかなくなってしまいます。
 
-この`Error`オブジェクトの区別をしやすくするため、
-`Error`オブジェクトのサブクラスとして`TimeoutError`を定義したいと思います。
+この `Error` オブジェクトの区別をしやすくするため、
+`Error` オブジェクトのサブクラスとして `TimeoutError` を定義したいと思います。
 
 === カスタムErrorオブジェクト
 
 `Error` オブジェクトはECMAScriptのビルトインオブジェクトです。
 
-ECMAScript5では完璧に`Error`を継承したものを作る事は不可能ですが(スタックトレース周り等)、
-今回は通常のErrorとは区別を付けたいという目的なので、それを満たせる`TimeoutError`オブジェクトを作成します。
+ECMAScript5では完璧に `Error` を継承したものを作る事は不可能ですが(スタックトレース周り等)、
+今回は通常のErrorとは区別を付けたいという目的なので、それを満たせる `TimeoutError` オブジェクトを作成します。
 
 [NOTE]
 ====
-ECMAScript6では`class`構文を使うことで内部的にも正確に継承を行うことが出来ます。
+ECMAScript6では `class` 構文を使うことで内部的にも正確に継承を行うことが出来ます。
 
 [source,javascript]
 ----
@@ -109,7 +109,7 @@ class MyError extends Error{
 ====
 
 
-`error instanceof TimeoutError` というように利用できる`TimeoutError`を定義すると
+`error instanceof TimeoutError` というように利用できる `TimeoutError` を定義すると
 以下のようになります。
 
 [source,javascript]
@@ -119,9 +119,9 @@ class MyError extends Error{
 include::embed/embed-TimeoutError.js[]
 ----
 
-`TimeoutError`というコンストラクタ関数を定義して、このコンストラクタにErrorをprototype継承させています。
+`TimeoutError` というコンストラクタ関数を定義して、このコンストラクタにErrorをprototype継承させています。
 
-使い方は通常の`Error`オブジェクトと同じで以下のように`throw`するなどして利用できます。
+使い方は通常の `Error` オブジェクトと同じで以下のように `throw` するなどして利用できます。
 
 [source,javascript]
 ----
@@ -135,7 +135,7 @@ promise.catch(function(error){
 
 ----
 
-この`TimeoutError`を使えば、タイムアウトによるErrorオブジェクトなのか、他の原因のErrorオブジェクトなのかが容易に判定できるようになります。
+この `TimeoutError` を使えば、タイムアウトによるErrorオブジェクトなのか、他の原因のErrorオブジェクトなのかが容易に判定できるようになります。
 
 [NOTE]
 ====
@@ -148,7 +148,7 @@ http://speakingjs.com/es5/ch28.html[Chapter 28. Subclassing Built-ins] で詳�
 
 ここまでくれば、どのようにPromiseを使ったXHRのキャンセルを実装するか見えてくるかもしれません。
 
-XHRのキャンセル自体は`XMLHttpRequest`オブジェクトの `abort()` メソッドを呼ぶだけなので難しくないですね。
+XHRのキャンセル自体は `XMLHttpRequest` オブジェクトの `abort()` メソッドを呼ぶだけなので難しくないですね。
 
 `abort()` メソッドを外から呼べるようにするために、今までのセクションにもでてきた<<xhr-promise.js,`getURL`>>を少し拡張して、
 XHRを包んだpromiseオブジェクトと共にそのXHRを中止するメソッドを持つオブジェクトを返すようにしています。
@@ -163,13 +163,13 @@ include::embed/embed-delay-race-cancel.js[]
 これで必要な要素は揃ったので後は、Promiseを使った処理のフローに並べていくだけです。
 大まかな流れとしては以下のようになります。
 
-. `cancelableXHR`を使いXHRのpromiseオブジェクトと中止を呼び出すメソッドを取得する
-. `timeoutPromise`を使いXHRのpromiseとタイムアウト用のpromiseを`Promise.race`で競争させる
+. `cancelableXHR` を使いXHRのpromiseオブジェクトと中止を呼び出すメソッドを取得する
+. `timeoutPromise` を使いXHRのpromiseとタイムアウト用のpromiseを `Promise.race` で競争させる
 * XHRが時間内に取得出来た場合
-.. 通常のpromiseと同様に`then`で中身を取得する
+.. 通常のpromiseと同様に `then` で中身を取得する
 * タイムアウトとなった場合は
-.. `throw TimeoutError`されるので`catch`する
-.. catchしたエラーオブジェクトが`TimeoutError`のものだったら`abort`を呼び出してXHRをキャンセルする
+.. `throw TimeoutError` されるので `catch` する
+.. catchしたエラーオブジェクトが `TimeoutError` のものだったら `abort` を呼び出してXHRをキャンセルする
 
 これらの要素を全てまとめると次のように書けます。
 
@@ -192,9 +192,9 @@ include::embed/embed-delay-race-cancel-play.js[]
 一緒になったオブジェクトを返すようにしていたため少し分かりにくかったかもしれません。
 
 一つの関数は一つの値(promiseオブジェクト)を返すほうが見通しがいいと思いますが、
-`cancelableXHR`の中で生成した`req`は外から参照できないので、特定のメソッド(先ほどのケースは`abort`)からは触れるようにする必要があります。
+`cancelableXHR` の中で生成した `req` は外から参照できないので、特定のメソッド(先ほどのケースは `abort`)からは触れるようにする必要があります。
 
-返すpromiseオブジェクト自体を拡張して`abort`出来るようにするという手段もあると思いますが、
+返すpromiseオブジェクト自体を拡張して `abort` 出来るようにするという手段もあると思いますが、
 promiseオブジェクトは値を抽象化したオブジェクトであるため、何でも操作用のメソッドをつけていくと複雑になってしまうかもしれません。
 
 一つの関数で全てやろうとしてるのがそもそも良くないので、
@@ -207,7 +207,7 @@ promiseオブジェクトは値を抽象化したオブジェクトであるた�
 一つの関数がやることも小さくて済むので見通しも良くなると思います。
 
 モジュールの作り方は色々作法(AMD,CommonJS,ES6 module etc..)があるので
-ここでは、先ほどの`cancelableXHR`をNode.jsのモジュールとして作りなおしてみます。
+ここでは、先ほどの `cancelableXHR` をNode.jsのモジュールとして作りなおしてみます。
 
 [source,javascript]
 [[cancelableXHR.js]]
@@ -216,8 +216,8 @@ promiseオブジェクトは値を抽象化したオブジェクトであるた�
 include::lib/cancelableXHR.js[]
 ----
 
-使い方もシンプルに`createXHRPromise`でXHRのpromiseオブジェクトを作成して、
-そのXHRを`abort`したい場合は`abortPromise(promise)`にpromiseオブジェクトを渡すという感じで利用できるようになります。
+使い方もシンプルに `createXHRPromise` でXHRのpromiseオブジェクトを作成して、
+そのXHRを `abort` したい場合は `abortPromise(promise)` にpromiseオブジェクトを渡すという感じで利用できるようになります。
 
 [source,javascript]
 ----

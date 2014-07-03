@@ -1,7 +1,7 @@
 [[resolve-thenable]]
 == Promise.resolveとThenable
 
-<<ch2-promise-resolve,第二章のPromise.resolve>>にて、`Promise.resolve`の大きな特徴の一つとしてthenableなオブジェクトを変換する機能について紹介しました。
+<<ch2-promise-resolve,第二章のPromise.resolve>>にて、`Promise.resolve` の大きな特徴の一つとしてthenableなオブジェクトを変換する機能について紹介しました。
 
 このセクションでは、thenableなオブジェクトからpromiseオブジェクトに変換してどのように利用するかについて学びたいと思います。
 
@@ -15,25 +15,25 @@ Web Notifications APIについて詳しくは以下を参照して下さい。
 * https://developer.mozilla.org/ja/docs/WebAPI/Using_Web_Notifications[Web Notifications の使用 - WebAPI | MDN]
 * http://caniuse.com/notifications[Can I use Web Notifications]
 
-Web Notifications APIについて簡単に解説すると、以下のように`new Notification`をすることで通知メッセージが表示できます。
+Web Notifications APIについて簡単に解説すると、以下のように `new Notification` をすることで通知メッセージが表示できます。
 
 [source,javascript]
 new Notification("Hi!");
 
-しかし、通知を行うためには、`new Notification`をする前にユーザーに許可を取る必要があります。
+しかし、通知を行うためには、`new Notification` をする前にユーザーに許可を取る必要があります。
 
 .Notificationの許可ダイアログ
 image::img/notification-dialog.png[Notificationの許可ダイアログ]
 
-この許可ダイアログで選択した結果は、`Notification.permission`に入りますが、
+この許可ダイアログで選択した結果は、`Notification.permission` に入りますが、
 値は許可("granted")か不許可("denied")の2種類です。
 
 [NOTE]
 Notificationのダイアログの選択肢は、
 Firefoxだと許可、不許可に加えて __永続__ か __セッション限り__ の組み合わせがありますが、値自体は同じです。
 
-許可ダイアログは`Notification.requestPermission()`を実行すると表示され、
-ユーザーが選択した結果がコールバック関数の`status`に渡されます。
+許可ダイアログは `Notification.requestPermission()` を実行すると表示され、
+ユーザーが選択した結果がコールバック関数の `status` に渡されます。
 
 コールバックを受け付けることから分かるように、この許可、不許可は非同期的に行われます。
 
@@ -49,7 +49,7 @@ Notification.requestPermission(function (status) {
 通知を行うまでの流れをまとめると以下のようになります。
 
 * ユーザーに通知の許可を受け付ける非同期処理がある
-* 許可がある場合は`new Notification`で通知を表示できる
+* 許可がある場合は `new Notification` で通知を表示できる
 ** 既に許可済みのケース
 ** その場で許可を貰うケース
 * 許可がない場合は何もしない
@@ -58,7 +58,7 @@ Notification.requestPermission(function (status) {
 いくつかのパターンが出ますが、最終的には許可か不許可になるので、以下の2パターンにまとめることが出来ます。
 
 許可時("granted"):::
-    `new Notification`で通知を作成
+    `new Notification` で通知を作成
 不許可時("denied"):::
     何もしない
 
@@ -83,7 +83,7 @@ Promiseで書けそうな目処が見えた所で、まずはコールバック�
 ----
 include::embed/embed-notification-callback.js[]
 // 実行例
-// 第二引数は`Notification`に渡すオプションオブジェクト
+// 第二引数は `Notification` に渡すオプションオブジェクト
 notifyMessage("Hi!", {}, function (error, notification) {
     if(error){
         return console.error(error);
@@ -92,8 +92,8 @@ notifyMessage("Hi!", {}, function (error, notification) {
 });
 ----
 
-コールバックスタイルでは、許可がない場合は`error`に値が入り、
-許可がある場合は通知が行われて`notification`に値が入ってくるという感じにしました。
+コールバックスタイルでは、許可がない場合は `error` に値が入り、
+許可がある場合は通知が行われて `notification` に値が入ってくるという感じにしました。
 
 [source,javascript]
 .コールバック関数はエラーとnotificationオブジェクトを受け取る
@@ -107,8 +107,8 @@ function callback(error, notification){
 
 === Web Notification as Promise
 
-先ほどのコールバックスタイルの`notifyMessage`とは別に、
-promiseオブジェクトを返す`notifyMessageAsPromise`を定義してみます。
+先ほどのコールバックスタイルの `notifyMessage` とは別に、
+promiseオブジェクトを返す `notifyMessageAsPromise` を定義してみます。
 
 [role="executable"]
 [source,javascript]
@@ -124,10 +124,10 @@ notifyMessageAsPromise("Hi!").then(function (notification) {
 });
 ----
 
-上記の実行例では、許可がある場合`"Hi!"`という通知が表示されます。
+上記の実行例では、許可がある場合 `"Hi!"` という通知が表示されます。
 
-許可されている場合は`.then`が呼ばれ、
-不許可となった場合は`.catch`が呼ばれます。
+許可されている場合は `.then` が呼ばれ、
+不許可となった場合は `.catch` が呼ばれます。
 
 [NOTE]
 ====
@@ -135,13 +135,13 @@ notifyMessageAsPromise("Hi!").then(function (notification) {
 実際には以下の4つのパターンが存在します。
 
 既に許可されている::
-    `.then`が呼ばれる
+    `.then` が呼ばれる
 許可ダイアログがでて許可された::
-    `.then`が呼ばれる
+    `.then` が呼ばれる
 既に不許可となっている::
-    `.catch`が呼ばれる
+    `.catch` が呼ばれる
 許可ダイアログが出て不許可となった::
-    `.catch`が呼ばれる
+    `.catch` が呼ばれる
 
 つまり、Web Notifications APIをそのまま扱うと、4つのパターンについて書かないといけませんが、
 それを2パターンにできるラッパーを書くと扱いやすくなります。
@@ -155,24 +155,24 @@ notifyMessageAsPromise("Hi!").then(function (notification) {
 
 [[promise-library-choice]]
 Promiseが使える環境を前提とする::
-* 利用者に`Promise`があることを保証してもらう
+* 利用者に `Promise` があることを保証してもらう
 * Promiseをサポートしてない環境では動かないことにする
-ライブラリ自体に`Promise`の実装を入れてしまう::
+ライブラリ自体に `Promise` の実装を入れてしまう::
 * ライブラリ自体にPromiseの実装を取り込む
 * 例) https://github.com/mozilla/localForage[localForage]
-コールバックでも`Promise`でも使えるようにする::
+コールバックでも `Promise` でも使えるようにする::
 * 利用者がどちらを使うかを選択出来るようにする
 * Thenableを返せるようにする
 
-<<notification-as-promise.js>>は`Promise`があることを前提としたような書き方です。
+<<notification-as-promise.js>>は `Promise` があることを前提としたような書き方です。
 
-本題に戻り<<Thenable,Thenable>>はここでいう**コールバックでも`Promise`でも使えるようにする**という事を
+本題に戻り<<Thenable,Thenable>>はここでいう**コールバックでも `Promise` でも使えるようにする**という事を
 実現するのに役立つ概念です。
 
 === Web Notifications As Thenable
 
-<<Thenable,thenable>>というのは`.then`というメソッドを持ってるオブジェクトのことを言いましたね。
-次は<<notification-callback.js>>に`thenable`を返すメソッドを追加してみましょう。
+<<Thenable,thenable>>というのは `.then` というメソッドを持ってるオブジェクトのことを言いましたね。
+次は<<notification-callback.js>>に `thenable` を返すメソッドを追加してみましょう。
 
 [role="executable"]
 [source,javascript]
@@ -188,15 +188,15 @@ Promise.resolve(notifyMessageAsThenable("message")).then(function (notification)
 });
 ----
 
-<<notification-thenable.js>> には`notifyMessageAsThenable`というそのままのメソッドを追加してみました。
-返すオブジェクトには`then`というメソッドがあります。
+<<notification-thenable.js>> には `notifyMessageAsThenable` というそのままのメソッドを追加してみました。
+返すオブジェクトには `then` というメソッドがあります。
 
-`then`メソッドの仮引数には`new Promise(function (resolve, reject){})`と同じように、
-解決した時に呼ぶ`resolve`と、棄却した時に呼ぶ`reject`が渡ります。
+`then` メソッドの仮引数には `new Promise(function (resolve, reject){})` と同じように、
+解決した時に呼ぶ `resolve` と、棄却した時に呼ぶ `reject` が渡ります。
 
-`then`メソッドがやっている中身は<<notification-as-promise.js>>の`notifyMessageAsPromise`と同じですね。
+`then` メソッドがやっている中身は<<notification-as-promise.js>>の `notifyMessageAsPromise` と同じですね。
 
-この`thenable`を`Promise.resolve(thenable)`を使いpromiseオブジェクトにしてから、
+この `thenable` を `Promise.resolve(thenable)` を使いpromiseオブジェクトにしてから、
 Promiseとして利用していることが分かりますね。
 
 [source,javascript]
@@ -213,16 +213,16 @@ Thenableを使った<<notification-thenable.js>>とPromiseに依存した<<notif
 
 <<notification-thenable.js>>には<<notification-as-promise.js>>と比べた時に、次のような違いがあります。
 
-* ライブラリ側に`Promise`実装そのものはでてこない
-** 利用者が`Promise.resolve(thenable)`を使い`Promise`の実装を与える
-* Promiseとして使う時に`Promise.resolve(thenable)`と一枚挟む必要がある
+* ライブラリ側に `Promise` 実装そのものはでてこない
+** 利用者が `Promise.resolve(thenable)` を使い `Promise` の実装を与える
+* Promiseとして使う時に `Promise.resolve(thenable)` と一枚挟む必要がある
 
 <<Thenable,Thenable>>オブジェクトを利用することで、
 既存のコールバックスタイルとPromiseスタイルの中間的な実装をすることができました。
 
 === まとめ
 
-このセクションではThenableとは何かやThenableを`Promise.resolve(thenable)`を使って、
+このセクションではThenableとは何かやThenableを `Promise.resolve(thenable)` を使って、
 promiseオブジェクトとして利用する方法について学びました。
 
 Callback -- Thenable -- Promise
@@ -230,10 +230,10 @@ Callback -- Thenable -- Promise
 Thenableスタイルは、コールバックスタイルとPromiseスタイルの中間的な表現で、
 ライブラリが公開するAPIとしては中途半端なためあまり見かけることがないと思います。
 
-Thenable自体は`Promise`という機能に依存してはいませんが、Promise以外からの利用方法は特にないため、
+Thenable自体は `Promise` という機能に依存してはいませんが、Promise以外からの利用方法は特にないため、
 間接的にはPromiseに依存しています。
 
-また、使うためには利用者が`Promise.resolve(thenable)`について理解している必要があるため、
+また、使うためには利用者が `Promise.resolve(thenable)` について理解している必要があるため、
 ライブラリの公開APIとしては難しい部分があります。
 Thenable自体は公開APIより、内部的に使われてるケースが多いでしょう。
 
@@ -256,7 +256,7 @@ promiseオブジェクトを返す関数を公開APIとしても問題ないと�
 
 例えば、 QライブラリのPromiseのインスタンスであるQ promiseオブジェクトは、
 <<es6-promises,ES6 Promises>>のpromiseオブジェクトが持っていないメソッドを持っています。
-Q promiseオブジェクトには `promise.finally(callback)` や `promise.nodeify(callback)`などのメソッドが用意されてます。
+Q promiseオブジェクトには `promise.finally(callback)` や `promise.nodeify(callback)` などのメソッドが用意されてます。
 
 ES6 PromisesのpromiseオブジェクトをQ promiseオブジェクトに変換するときに使われるのが、
 まさにこのThenableです。
@@ -276,12 +276,12 @@ Q(promise).then(function(value){
     console.log("finally");
 });
 ----
-<1> Q promiseオブジェクトとなったため`finally`が利用できる
+<1> Q promiseオブジェクトとなったため `finally` が利用できる
 
-最初に作成したpromiseオブジェクトは`then`というメソッドを持っているので、もちろんThenableです。
+最初に作成したpromiseオブジェクトは `then` というメソッドを持っているので、もちろんThenableです。
 `Q(thenable)` とすることでThenableなオブジェクトをQ promiseオブジェクトへと変換することが出来ます。
 
-これは、`Promise.resolve(thenable)`と同じ仕組みといえるので、もちろん逆も可能です。
+これは、`Promise.resolve(thenable)` と同じ仕組みといえるので、もちろん逆も可能です。
 
 このように、Promiseライブラリはそれぞれ独自に拡張したpromiseオブジェクトを持っていますが、
 Thenableという共通の概念を使うことでライブラリ間(もちろんネイティブPromiseも含めて)で相互にpromiseオブジェクトを変換することが出来ます。

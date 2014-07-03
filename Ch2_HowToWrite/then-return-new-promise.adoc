@@ -1,10 +1,10 @@
 [[then-return-new-promise]]
 == コラム: thenは常に新しいpromiseオブジェクトを返す
 
-`aPromise.then(...).catch(...)` は一見すると、全て最初の`aPromise`オブジェクトに
+`aPromise.then(...).catch(...)` は一見すると、全て最初の `aPromise` オブジェクトに
 メソッドチェーンで処理を書いてるように見えます。
 
-しかし、実際には`then`で新しいpromiseオブジェクト、`catch`でも別の新しいpromiseオブジェクトを作成して返しています。
+しかし、実際には `then` で新しいpromiseオブジェクト、`catch` でも別の新しいpromiseオブジェクトを作成して返しています。
 
 本当に新しいpromiseオブジェクトを返しているのか確認してみましょう。
 
@@ -25,23 +25,20 @@ console.log(thenPromise !== catchPromise);// => true
 ----
 
 `===` 厳密比較演算子によって比較するとそれぞれが別々のオブジェクトなので、
-本当に`then`や`catch`は別のpromiseオブジェクトを返していることが分かりました。
+本当に `then` や `catch` は別のpromiseオブジェクトを返していることが分かりました。
 
 image::img/then_catch.png[Then Catch flow]
-
-この挙動はPromise全般に当てはまるため、`Promise.all`や`Promise.race`も
-引数で受け取ったものとは別のpromiseオブジェクトを作って返しています。
 
 この仕組みはPromiseを拡張する時は意識しないと、いつのまにか触ってるpromiseオブジェクトが
 別のものであったという事が起こりえると思います。
 
-また、`then`は新しいオブジェクトを作って返すということがわかっていれば、
-次の`then`の使い方では意味が異なる事に気づくでしょう。
+また、`then` は新しいオブジェクトを作って返すということがわかっていれば、
+次の `then` の使い方では意味が異なる事に気づくでしょう。
 
 [role="executable"]
 [source,javascript]
 ----
-// 1: それぞれの`then`は同時に呼び出される
+// 1: それぞれの `then` は同時に呼び出される
 var aPromise = new Promise(function (resolve) {
     resolve(100);
 });
@@ -57,7 +54,7 @@ aPromise.then(function (value) {
 
 // vs
 
-// 2: `then`はpromise chain通り順番に呼び出される
+// 2: `then` はpromise chain通り順番に呼び出される
 var bPromise = new Promise(function (resolve) {
     resolve(100);
 });
@@ -71,15 +68,15 @@ bPromise.then(function (value) {
 ----
 
 1のpromiseをメソッドチェーン的に繋げない書き方はあまりすべきではありませんが、
-このような書き方をした場合、それぞれの`then`はほぼ同時に呼ばれ、また`value`に渡る値も全て同じ`100`となります。
+このような書き方をした場合、それぞれの `then` はほぼ同時に呼ばれ、また `value` に渡る値も全て同じ `100` となります。
 
 2はメソッドチェーン的につなげて書くことにより、resolve -> then -> then -> then と書いた順番にキチンと実行され、
-それぞれの`value`に渡る値は、一つ前のpromiseオブジェクトで`return`された値が渡ってくるようになります。
+それぞれの `value` に渡る値は、一つ前のpromiseオブジェクトで `return` された値が渡ってくるようになります。
 
 1の書き方により発生するアンチパターンとしては以下のようなものが有名です。
 
 [source,javascript]
-.✘ `then`の間違った使い方
+.✘ `then` の間違った使い方
 ----
 function anAsyncCall() {
     var promise = Promise.resolve();
@@ -94,11 +91,11 @@ function anAsyncCall() {
 このように書いてしまうと、`promise.then` の中で例外が発生するとその例外を取得する方法がなくなり、
 また、何かの値を返していてもそれを受け取る方法が無くなってしまいます。
 
-これは`promise.then`によって新たに作られたpromiseオブジェクトを返すようにすることで、
+これは `promise.then` によって新たに作られたpromiseオブジェクトを返すようにすることで、
 2のようにpromise chainをつなげるようにするべきなので、次のように修正することが出来ます。
 
 [source,javascript]
-.`then`で作成したオブジェクトを返す
+.`then` で作成したオブジェクトを返す
 ----
 function anAsyncCall() {
     var promise = Promise.resolve();
@@ -111,3 +108,6 @@ function anAsyncCall() {
 
 これらのアンチパターンについて、詳しくは
 http://taoofcode.net/promise-anti-patterns/[Promise Anti-patterns] を参照して下さい。
+
+この挙動はPromise全般に当てはまるため、後に説明する<<ch2-promise-all,Promise.all>>や<<ch2-promise-race,Promise.race>>も
+引数で受け取ったものとは別のpromiseオブジェクトを作って返しています。

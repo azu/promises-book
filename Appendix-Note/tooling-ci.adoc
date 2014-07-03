@@ -17,7 +17,7 @@
 - https://github.com/azu/inlining-node-require[azu/inlining-node-require]
 - https://github.com/azu/remove-use-strict[azu/remove-use-strict]
 
-Browserify等の既存のモジュールビルドツールでは`require`のエミュレートをするコードが入るため、
+Browserify等の既存のモジュールビルドツールでは `require` のエミュレートをするコードが入るため、
 結合したコードがあまりキレイではない。
 
 そこで作成したのが __inlining-node-require__ でCommonJSのコードを見た目そのままに結合をすることができる。
@@ -28,9 +28,9 @@ __inlining-node-require__ は見た目はキレイに結合するが、
 あらゆるパターンに対応することはできないため、ある程度の制限を持った書き方が必要になる。
 ====
 
-サンプルコードは`"use strict"`を使ったコードとなっているが、
+サンプルコードは `"use strict"` を使ったコードとなっているが、
 __inlining-node-require__ で結合した際に重複することや表示用コードではスペース的に余計なものとなる。
-__remove-use-strict__ は不必要な`"use strict"`を取り除くことができるツール。
+__remove-use-strict__ は不必要な `"use strict"` を取り除くことができるツール。
 
 動作の詳細については下記の記事で紹介している。
 
@@ -54,7 +54,7 @@ __codemirror-console__ はCodeMirrorに書かれているコードを実行出�
 コードを実行する時にiframeを作り、その中でコードを実行している。
 
 http://nodejs.org/api/vm.html[Nodeのvmモジュール]と似た考え方を持つ https://github.com/amasad/context-eval/[context-eval]を利用した。
-これにより単純に実行するだけではなく、`cosnole`を独自のものとすり替えて実行することができるようになっている。
+これにより単純に実行するだけではなく、`console` を独自のものとすり替えて実行することができるようになっている。
 
 __codemirror-console-ui__は__codemirror-console__のUIを提供するモジュール。
 
@@ -79,15 +79,15 @@ image::img/javascript-console-editor.png[コンソールエディタの図]
 これはモジュールに関する事のみを解決するため、サンプルコードはどちらの環境でも動く書き方が必要となった。
 
 Node.js上でもブラウザと同様の機能がテスト出来るようにするためのPolyfillやモックが必要となった。
-DOM APIが中心となり、具体的には`XMLHttpRequest`や`Notification`等が該当する。
+DOM APIが中心となり、具体的には `XMLHttpRequest` や `Notification` 等が該当する。
 
 ===== XHR
 
-Node.jsには`XMLHttpRequest`がないため、`XMLHttpRequest`と同じインターフェイスを持った
+Node.jsには `XMLHttpRequest` がないため、`XMLHttpRequest` と同じインターフェイスを持った
 HTTP通信ライブラリが必要となる。
 
 この書籍では w3c-xmlhttprequest を使い、
-Node.jsでも`XMLHttpRequest`と同じインターフェイスで通信をするコードを書くことができた。
+Node.jsでも `XMLHttpRequest` と同じインターフェイスで通信をするコードを書くことができた。
 
 [NOTE]
 ====
@@ -97,11 +97,11 @@ Node.jsでも`XMLHttpRequest`と同じインターフェイスで通信をする
 * https://github.com/driverdan/node-XMLHttpRequest[driverdan/node-XMLHttpRequest]
 * https://github.com/pwnall/node-xhr2[pwnall/node-xhr2]
 
-どのライブラリも`XMLHttpRequest`の全ての機能が使えるわけではないため、
+どのライブラリも `XMLHttpRequest` の全ての機能が使えるわけではないため、
 用途に合わせたものを選ぶ必要がある。
 ====
 
-このライブラリをテスト実行前に、`global`に追加することで、
+このライブラリをテスト実行前に、`global` に追加することで、
 ブラウザとNode.jsで同様のコードを動かせるようにした。
 
 [source,javascript]
@@ -162,12 +162,12 @@ Asciidoctorではリソースが欠損しててもエラーではなくWARNING�
 
 ==== プレビュー
 
-masterへマージされたものは、Travis CIで自動的にビルドして`gh-pages`ブランチにpushする。
+masterへマージされたものは、Travis CIで自動的にビルドして `gh-pages` ブランチにpushする。
 これによりmasterへのコミットやpull-requestsをマージしたら自動的に http://azu.github.io/promises-book/ にて見られるようにしていた。
 
 - https://github.com/azu/promises-book/blob/master/_tools/deploy-gh-pages.sh[promises-book/_tools/deploy-gh-pages.sh at master · azu/promises-book]
 
-pull-requestsのコミットに対しては、そのコミットごとに`preview-html`ブランチに生成済みのHTMLがpushされる。
+pull-requestsのコミットに対しては、そのコミットごとに `preview-html` ブランチに生成済みのHTMLがpushされる。
 
 pushされた一時プレビュー用のURLをGitterに対して通知して、pull-request時のHTMLがプレビュー出来るようになっている。
 

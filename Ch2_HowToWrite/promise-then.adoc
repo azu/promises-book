@@ -1,9 +1,9 @@
 [[ch2-promise.then]]
 == Promise#then
 
-先ほどの章でPromiseの基本となるインスタンスメソッドである`then`と`catch`の使い方を説明しました。
+先ほどの章でPromiseの基本となるインスタンスメソッドである `then` と `catch` の使い方を説明しました。
 
-その中で`.then().catch()`とメソッドチェーンで繋げて書いていたことからもわかるように、
+その中で `.then().catch()` とメソッドチェーンで繋げて書いていたことからもわかるように、
 Promiseではいくらでもメソッドチェーンを繋げて処理を書いていくことが出来ます。
 
 [source,javascript]
@@ -18,7 +18,7 @@ aPromise.then(function taskA(value){
 });
 ----
 
-`then`で登録するコールバック関数をそれぞれtaskというものにした時に、
+`then` で登録するコールバック関数をそれぞれtaskというものにした時に、
 taskA -> task B という流れをPromiseのメソッドチェーンを使って書くことが出来ます。
 
 Promiseのメソッドチェーンだと長いので、今後は<<promise-chain,promise chain>>と呼びます。
@@ -53,7 +53,7 @@ include::src/promise-then-catch-flow.js[]
 .promise-then-catch-flow.jsの図
 image::img/promise-then-catch-flow.png[promise-then-catch-flow]
 
-<<promise-then-catch-flow.js,上記のコード>>では`then`は第二引数(onRejected)を使っていないため、
+<<promise-then-catch-flow.js,上記のコード>>では `then` は第二引数(onRejected)を使っていないため、
 以下のように読み替えても問題ありません。
 
 `then`::
@@ -69,15 +69,15 @@ __Task A__ と __Task B__ それぞれから __onRejected__ への線が出て�
 * 例外が発生した時
 * Rejectedなpromiseオブジェクトがreturnされた時
 
-<<how-to-write-promise,第一章>>でPromiseの処理は常に`try-catch`されているようなものなので、
-例外が起きた場合もキャッチして、`catch`で登録された`onRejected`の処理を呼ぶことは学びましたね。
+<<how-to-write-promise,第一章>>でPromiseの処理は常に `try-catch` されているようなものなので、
+例外が起きた場合もキャッチして、`catch` で登録された `onRejected` の処理を呼ぶことは学びましたね。
 
 もう一つの __Rejectedなpromiseオブジェクトがreturnされた時__ については、
-`throw`を使わずにpromise chain中に`onRejected`を呼ぶ方法です。
+`throw` を使わずにpromise chain中に `onRejected` を呼ぶ方法です。
 
 これについては、ここでは必要ない内容なので詳しくは、 第4章の <<not-throw-use-reject, throwしないで、rejectしよう>> にて解説しています。
 
-また、__onRejected__ と __Final Task__ には`catch`のpromise chainがこれより後ろにありません。
+また、__onRejected__ と __Final Task__ には `catch` のpromise chainがこれより後ろにありません。
 つまり、この処理中に例外が起きた場合はキャッチすることができないことに気をつけましょう。
 
 もう少し具体的に、__Task A__ -> __onRejected__ となる例を見てみます。
@@ -104,7 +104,7 @@ include::src/promise-then-taska-throw.js[]
 
 [NOTE]
 ====
-例では説明のためにtaskAで`throw`して例外を発生させています。
+例では説明のためにtaskAで `throw` して例外を発生させています。
 しかし、実際に明示的にonRejectedを呼びたい場合は、Rejectedなpromiseオブジェクトを返すべきでしょう。
 それぞれの違いについては <<not-throw-use-reject, throwしないで、rejectしよう>> で解説しています。
 ====
@@ -115,7 +115,7 @@ include::src/promise-then-taska-throw.js[]
 
 この時に、Task AがTask Bへ値を渡したい時はどうすれば良いでしょうか?
 
-答えはものすごく単純でTask Aの処理で`return`した値がTask Bが呼ばれるときに引数に設定されます。
+答えはものすごく単純でTask Aの処理で `return` した値がTask Bが呼ばれるときに引数に設定されます。
 
 実際に例を見てみましょう。
 
@@ -127,18 +127,18 @@ include::src/promise-then-taska-throw.js[]
 include::src/promise-then-passing-value.js[]
 ----
 
-スタートは`Promise.resolve(1);`で、この処理は以下のような流れでpromise chainが処理されていきます。
+スタートは `Promise.resolve(1);` で、この処理は以下のような流れでpromise chainが処理されていきます。
 
-. `Promise.resolve(1);` から 1 が `increment`に渡される
-. `increment`では渡された値に+1した値を`return`している
-. この値(2)が次の`doubleUp`に渡される
-. 最後に`output`が出力する
+. `Promise.resolve(1);` から 1 が `increment` に渡される
+. `increment` では渡された値に+1した値を `return` している
+. この値(2)が次の `doubleUp` に渡される
+. 最後に `output` が出力する
 
 .promise-then-passing-value.jsの図
 image::img/promise-then-passing-value.png[promise-then-passing-value]
 
-この`return`する値は数字や文字列だけではなく、
-オブジェクトやpromiseオブジェクトも`return`することが出来ます。
+この `return` する値は数字や文字列だけではなく、
+オブジェクトやpromiseオブジェクトも `return` することが出来ます。
 
 returnした値は `Promise.resolve(returnされた値);` のように処理されるため、
 何をreturnしても最終的には新しいpromiseオブジェクトを返します。

@@ -1,4 +1,4 @@
-[[controlable-tests]]
+[[controllable-tests]]
 == 意図したテストを書くには
 
 ここでいう意図したテストとは以下のような定義で進めます。
@@ -19,7 +19,7 @@
 * Fulfilled or Rejected どちらを期待するか
 * assertionで渡された値のチェック
 
-先ほどの`.then`を使ったコードはRejectedを期待したテストとなっていますね。
+先ほどの `.then` を使ったコードはRejectedを期待したテストとなっていますね。
 
 [source,javascript]
 ----
@@ -34,7 +34,7 @@ promise.then(failTest, function(error){
 意図したテストにするためには、<<promise-states,promiseの状態>>が
 Fulfilled or Rejected どちらの状態になって欲しいかを明示する必要があります。
 
-しかし、`.then`だと引数は省略可能なので、テストが落ちる条件を入れ忘れる可能性もあります。
+しかし、`.then` だと引数は省略可能なので、テストが落ちる条件を入れ忘れる可能性もあります。
 
 そこで、promiseオブジェクトに期待する状態を明示できるヘルパー関数を定義してみましょう。
 
@@ -44,8 +44,8 @@ Fulfilled or Rejected どちらの状態になって欲しいかを明示する�
 今回はその場で簡単に定義して進めます。
 ====
 
-まずは、先ほどの`.then`の例を元にonRejectedを期待してテスト出来る
-`shouldRejected`というヘルパー関数を作ってみたいと思います。
+まずは、先ほどの `.then` の例を元にonRejectedを期待してテスト出来る
+`shouldRejected` というヘルパー関数を作ってみたいと思います。
 
 [[shouldRejected-test.js]]
 .shouldRejected-test.js
@@ -54,18 +54,18 @@ Fulfilled or Rejected どちらの状態になって欲しいかを明示する�
 include::embed/embed-shouldRejected-test.js[]
 ----
 
-`shouldRejected`にpromiseオブジェクトを渡すと、`catch`というメソッドをもつオブジェクトを返します。
+`shouldRejected` にpromiseオブジェクトを渡すと、`catch` というメソッドをもつオブジェクトを返します。
 
-この`catch`にはonRejectedで書くものと全く同じ使い方ができるので、
-`catch`の中にassertionによるテストを書けるようになっています。
+この `catch` にはonRejectedで書くものと全く同じ使い方ができるので、
+`catch` の中にassertionによるテストを書けるようになっています。
 
-`shouldRejected`で囲む以外は、通常のpromiseの処理と似た感じになるので以下のようになります。
+`shouldRejected` で囲む以外は、通常のpromiseの処理と似た感じになるので以下のようになります。
 
 . `shouldRejected` にテスト対象のpromiseオブジェクトを渡す
-. 返ってきたオブジェクトの`catch`メソッドでonRejectedの処理を書く
+. 返ってきたオブジェクトの `catch` メソッドでonRejectedの処理を書く
 . onRejectedにassertionによるテストを書く
 
-`shouldRejected`を使った場合、Fulfilledが呼ばれるとエラーをthrowしてテストが失敗するようになっています。
+`shouldRejected` を使った場合、Fulfilledが呼ばれるとエラーをthrowしてテストが失敗するようになっています。
 
 [source,javascript]
 ----
@@ -78,12 +78,12 @@ shouldRejected(promise).catch(function (error) {
 });
 ----
 
-`shouldRejected`のようなヘルパー関数を使うことで、テストコードが少し直感的になりましたね。
+`shouldRejected` のようなヘルパー関数を使うことで、テストコードが少し直感的になりましたね。
 
 .Promise onRejected test
 image::img/promise-test.png[Promise onRejected test]
 
-同様に、promiseオブジェクトがFulfilledになることを期待する`shouldFulfilled`も書いてみましょう。
+同様に、promiseオブジェクトがFulfilledになることを期待する `shouldFulfilled` も書いてみましょう。
 
 [[shouldFulfilled-test.js]]
 .shouldFulfilled-test.js
@@ -92,7 +92,7 @@ image::img/promise-test.png[Promise onRejected test]
 include::embed/embed-shouldFulfilled-test.js[]
 ----
 
-<<shouldRejected-test.js>>と基本は同じで、返すオブジェクトの`catch`が`then`になって中身が逆転しただけですね。
+<<shouldRejected-test.js>>と基本は同じで、返すオブジェクトの `catch` が `then` になって中身が逆転しただけですね。
 
 === まとめ
 
@@ -100,19 +100,19 @@ Promiseで意図したテストを書くためにはどうするか、またそ�
 
 [NOTE]
 ====
-今回書いた`shouldFulfilled`と`shouldRejected`はライブラリとして利用できるようになっています。
+今回書いた `shouldFulfilled` と `shouldRejected` はライブラリとして利用できるようになっています。
 
 https://github.com/azu/promise-test-helper[azu/promise-test-helper] からダウンロードすることが出来ます。
 ====
 
 また、今回のヘルパー関数は<<mocha-promise,MochaのPromiseサポート>>を前提とした書き方なので、
-<<done-promise-test,`done`を使ったテスト>>は利用しにくいと思います。
+<<done-promise-test,`done` を使ったテスト>>は利用しにくいと思います。
 
-テストフレームワークのPromiseサポートを使うか、`done`のようにコールバックスタイルのテストを使うかは、
+テストフレームワークのPromiseサポートを使うか、`done` のようにコールバックスタイルのテストを使うかは、
 人それぞれのスタイルの問題であるためそこまではっきりした優劣はないと思います。
 
 例えば、 http://coffeescript.org/[CoffeeScript]でテストを書いたりすると、
-CoffeeScriptには暗黙のreturnがあるので、`done`を使ったほうが分かりやすいかもしれません。
+CoffeeScriptには暗黙のreturnがあるので、`done` を使ったほうが分かりやすいかもしれません。
 
 Promiseのテストは普通に非同期関数のテスト以上に落とし穴があるため、
 どのスタイルを取るかは自由ですが、一貫性を持った書き方をすることが大切だと言えます。
