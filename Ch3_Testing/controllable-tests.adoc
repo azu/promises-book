@@ -106,7 +106,7 @@ https://github.com/azu/promise-test-helper[azu/promise-test-helper] からダウ
 ====
 
 また、今回のヘルパー関数は<<mocha-promise,MochaのPromiseサポート>>を前提とした書き方なので、
-<<done-promise-test,`done` を使ったテスト>>は利用しにくいと思います。
+<<done-promise-test,`done` を使ったテスト>>では利用しにくいと思います。
 
 テストフレームワークのPromiseサポートを使うか、`done` のようにコールバックスタイルのテストを使うかは、
 人それぞれのスタイルの問題であるためそこまではっきりした優劣はないと思います。
