@@ -1,17 +1,16 @@
 [[ch2-promise-resolve]]
 == Promise.resolve
 
-一般に `new Promise()` を使う事でpromiseオブジェクトを生成しますが、
-それ以外にもpromiseオブジェクトを生成する方法があります。
+一般情况下我们都会使用 `new Promise()` 来创建promise对象，但是除此之外我们也可以使用其他方法。
 
-ここでは、<<Promise.resolve, `Promise.resolve`>> と <<Promise.reject, `Promise.reject`>> について学びたいと思います。
+在这里，我们将会学习如何使用 <<Promise.resolve, `Promise.resolve`>> 和 <<Promise.reject, `Promise.reject`>>这两个方法。
 
-=== new Promiseのショートカット
+=== new Promise的快捷方式
 
-<<Promise.resolve, `Promise.resolve(value)`>> という静的メソッドは、
-`new Promise()` のショートカットとなるメソッドです。
+静态方法<<Promise.resolve, `Promise.resolve(value)`>> 可以认为是
+`new Promise()` 方法的快捷方式。
 
-例えば、 `Promise.resolve(42);` というのは下記のコードのシンタックスシュガーです。
+比如 `Promise.resolve(42);` 可以认为是以下代码的语法糖。
 
 [source,javascript]
 ----
@@ -20,10 +19,9 @@ new Promise(function(resolve){
 });
 ----
 
-結果的にすぐに `resolve(42);` と解決されて、次のthenの `onFulfilled` に設定された関数に `42` という値を渡します。
+在这段代码中的 `resolve(42);` 会让这个promise对象立即进入确定（即resolved）状态，并将 `42` 传递给后面then里所指定的 `onFulfilled` 函数。
 
-`Promise.resolve(value);` で返ってくる値も同様にpromiseオブジェクトなので、
-以下のように続けて `.then` を使った処理を書くことが出来ます。
+方法 `Promise.resolve(value);` 的返回值也是一个promise对象，所以我们可以像下面那样接着对其返回值进行 `.then` 调用。
 
 [role="executable"]
 [source,javascript]
@@ -33,76 +31,67 @@ Promise.resolve(42).then(function(value){
 });
 ----
 
-<<Promise.resolve,Promise.resolve>>は `new Promise()` のショートカットとして、
-promiseオブジェクトの初期化時やテストコードを書く際にも活用できます。
+<<Promise.resolve,Promise.resolve>>作为 `new Promise()` 的快捷方式，在进行promise对象的初始化或者编写测试代码的生活都非常方便。
 
 === Thenable
 
-もう一つ `Promise.resolve` の大きな特徴として、<<Thenable,thenable>>なオブジェクトをpromiseオブジェクトに変換するという機能があります。
+`Promise.resolve` 方法另一个作用就是将 <<Thenable,thenable>> 对象转换为promise对象。
 
-<<es6-promises,ES6 Promises>>には<<Thenable,Thenable>>という概念があり、簡単にいえばpromiseっぽいオブジェクトの事を言います。
+<<es6-promises,ES6 Promises>>里提到了<<Thenable,Thenable>>这个概念，简单来说它就是一个非常类似promise的东西。
 
-`.length` を持っているが配列ではないものをArray likeというのと同じで、
-thenableの場合は `.then` というメソッドを持ってるオブジェクトを言います。
+就像我们有时称具有 `.length` 方法的非数组对象为Array like一样，thenable指的是一个具有 `.then` 方法的对象。
 
-thenableなオブジェクトが持つ `then` は、Promiseの持つ `then` と同じような挙動を期待していて、
-thenableなオブジェクトが持つ元々の `then` を上手く利用できるようにしpromiseオブジェクトに変換するという仕組みです。
+这种将thenable对象转换为promise对象的机制要求thenable对象所拥有的 `then` 方法应该和Promise所拥有的 `then` 方法具有同样的功能和处理过程，在将thenable对象转换为promise对象的时候，还会巧妙的利用thenable对象原来具有的 `then` 方法。
 
-どういうものがthenableなのかというと、分かりやすい例では
-https://api.jquery.com/jQuery.ajax/[jQuery.ajax()]の返り値もthenableです。
+到底什么样的对象能算是thenable的呢，最简单的例子就是
+https://api.jquery.com/jQuery.ajax/[jQuery.ajax()]，它的返回值就是thenable的。
 
-`jQuery.ajax()` の返り値は http://api.jquery.com/jQuery.ajax/#jqXHR[jqXHR Object] というもので、
-このオブジェクトは `.then` というメソッドを持っているためです。
+因为`jQuery.ajax()` 的返回值是 http://api.jquery.com/jQuery.ajax/#jqXHR[jqXHR Object] 对象，这个对象具有 `.then` 方法。
 
 [source,javascript]
-$.ajax('/json/comment.json');// => `.then` を持つオブジェクト
+$.ajax('/json/comment.json');// => 拥有 `.then` 方法的对象
 
-このthenableなオブジェクトを `Promise.resolve` ではpromiseオブジェクトにすることが出来ます。
+这个thenable的对象可以使用 `Promise.resolve` 来转换为一个promise对象。
 
-promiseオブジェクトにすることができれば、`then` や `catch` といった、
-<<es6-promises,ES6 Promises>>が持つ機能をそのまま利用することが出来るようになります。
+变成了promise对象的话，就能直接使用 `then` 或者 `catch` 等这些在
+<<es6-promises,ES6 Promises>>里定义的方法了。
 
 [source,javascript]
-.thenableをpromiseオブジェクトにする
+.将thenable对象转换promise对象
 ----
-var promise = Promise.resolve($.ajax('/json/comment.json'));// => promiseオブジェクト
+var promise = Promise.resolve($.ajax('/json/comment.json'));// => promise对象
 promise.then(function(value){
    console.log(value);
 });
 ----
 
 [WARNING]
-.jQueryとthenable
+.jQuery和thenable
 ====
-https://api.jquery.com/jQuery.ajax/[jQuery.ajax()]の返り値も `.then` というメソッドを持った http://api.jquery.com/jQuery.ajax/#jqXHR[jqXHR Object]で、
-このオブジェクトは http://api.jquery.com/category/deferred-object/[Deferred Object] のメソッドやプロパティ等を継承しています。
+https://api.jquery.com/jQuery.ajax/[jQuery.ajax()]的返回值是一个具有 `.then` 方法的 http://api.jquery.com/jQuery.ajax/#jqXHR[jqXHR Object]对象，这个对象继承了来自 http://api.jquery.com/category/deferred-object/[Deferred Object] 的方法和属性。
 
-しかし、このDeferred Objectは<<promises-aplus,Promises/A+>>や<<es6-promises,ES6 Promises>>に準拠したものではないため、
-変換できたように見えて一部欠損してしまう情報がでてしまうという問題があります。
+但是Deferred Object并没有遵循<<promises-aplus,Promises/A+>>或<<es6-promises,ES6 Promises>>标准，所以即使看上去这个对象转换成了一个promise对象，但是会出席缺失部分信息的问题。
 
-この問題はjQueryの http://api.jquery.com/category/deferred-object/[Deferred Object] の `then` の挙動が違うために発生します。
+这个问题的根源在于jQuery的 http://api.jquery.com/category/deferred-object/[Deferred Object] 的 `then` 方法机制与promise不同。
 
-そのため、`.then` というメソッドを持っていた場合でも、必ずES6 Promisesとして使えるとは限らない事は知っておくべきでしょう。
+所以我们应该注意，即使一个对象具有 `.then` 方法，也不一定就能作为ES6 Promises对象使用。
 
 * http://www.html5rocks.com/en/tutorials/es6/promises/#toc-lib-compatibility[JavaScript Promises: There and back again - HTML5 Rocks]
 * http://domenic.me/2012/10/14/youre-missing-the-point-of-promises/[You&#39;re Missing the Point of Promises]
 * https://twitter.com/hirano_y_aa/status/398851806383452160[https://twitter.com/hirano_y_aa/status/398851806383452160]
 ====
 
-`Promise.resolve` は共通の挙動である `then` だけを利用して、
-様々なライブラリ間でのpromiseオブジェクトを相互に変換して使える仕組みを持っている事になります。
+`Promise.resolve` 只使用了共通的方法 `then` ，提供了在不同的类库之间进行promise对象互相转换的功能。
 
-このthenableを変換する機能は、以前は `Promise.cast` という名前であった事からもその挙動が想像できるかもしれません。
+这种转换为thenable的功能在之前是通过使用 `Promise.cast` 来完成的，从它的名字我们也不能想象它的功能是什么。
 
-ThenableについてはPromiseを使ったライブラリを書くとき等には知っておくべきですが、
-通常の利用だとそこまで使う機会がないものかもしれません。
+除了在编写使用Promise的类库等软件时需要对Thenable有所了解之外，通常的时候我们可能不会用到此功能。
 
 [NOTE]
 ====
-ThenableとPromise.resolveの具体的な例を交えたものは
-第4章の<<resolve-thenable,Promise.resolveとThenable>>にて詳しく解説しています。
+结合使用了Thenable和Promise.resolve的具体例子我们会在后面第4章的<<resolve-thenable,Promise.resolve和Thenable>>中进行详细的说明。
 ====
 
-`Promise.resolve` を簡単にまとめると、「渡した値でFulfilledされるpromiseオブジェクトを返すメソッド」と考えるのがいいでしょう。
+简单总结一下 `Promise.resolve` 方法的话，可以认为它的作用就是将传递给它的参数填充（Fulfilled）到promise对象后并返回这个promise对象。
 
-また、Promiseの多くの処理は内部的に `Promise.resolve` のアルゴリズムを使って値をpromiseオブジェクトに変換しています。
+此外，Promise的很多处理内部也是使用了 `Promise.resolve` 算法将值转换为promise对象后再进行处理的。

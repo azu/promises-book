@@ -1,8 +1,8 @@
 [[chapter2-how-to-write-promise]]
-= Chapter.2 - Promiseの書き方
+= Chapter.2 - 实战Promise
 :imagesdir: Ch2_HowToWrite
 
-この章では、Promiseのメソッドの使い方、エラーハンドリングについて学びます。
+本章我们将会学习Promise提供的各种方法以及如何进行错误处理。
 
 // Promise.resolve
 include::promise-resolve.adoc[]
@@ -10,7 +10,7 @@ include::promise-resolve.adoc[]
 // Promise.reject
 include::promise-reject.adoc[]
 
-// コラム: Promiseは常に非同期?
+// 专栏: Promise只能用于异步？
 include::column-promise-resolve.adoc[]
 
 // Promise#then
@@ -19,10 +19,10 @@ include::promise-then.adoc[]
 // Promise#catch
 include::promise-catch.adoc[]
 
-// コラム: `then` は常に新しいpromiseオブジェクトを返す
+// 专栏: `then` 方法每次都会返回一个全新的promise对象
 include::then-return-new-promise.adoc[]
 
-// Promise#then と コールバック
+// Promise#then 和 回调(callback)
 include::promise-and-array.adoc[]
 
 // Promise.all
@@ -31,5 +31,5 @@ include::promise-all.adoc[]
 // Promise.race
 include::promise-race.adoc[]
 
-// エラーハンドリング
+// 错误处理
 include::onrejected-or-catch.adoc[]

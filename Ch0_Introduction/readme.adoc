@@ -1,67 +1,61 @@
 [[introduction]]
-= はじめに
+= 前言
 
-== 書籍の目的
+== 写作初衷
 
-この書籍は現在策定中の<<es6-promises,ECMAScript 6 Promises>>という仕様を中心にし、
-JavaScriptにおけるPromiseについて学ぶことを目的とした書籍です。
+本书的目的是以目前还在制定中的<<es6-promises,ECMAScript 6 Promises>>规范为中心，着重向各位读者介绍JavaScript中的Promise相关支持。
 
-この書籍を読むことで学べる事として次の3つを目標としています
+通过阅读本书，我们希望各位读者能在下面三个目标上有所收获。
 
-- Promiseについて学び、パターンやテストを扱えるようになる事
-- Promiseの向き不向きについて学び、何でもPromiseで解決するべきではないと知る事
-- ES6 Promisesを元に基本をよく学び、より発展した形を自分で形成できるようになる事
+- 学习Promise相关内容，能熟练使用Promise模式及进行测试
+- 学习Promise适合什么不适合什么，知道Promise不是万能的，不能什么都想用Promise来解决
+- 以ES6 Promises为基础 を元に基本をよく学び、より発展した形を自分で形成できるようになる事
 
-この書籍では、先程も述べたように<<es6-promises,ES6 Promises>>、
-つまりJavaScriptの標準仕様をベースとしたPromiseについて書かれています。
+像上面所提到的那样，本书主要是以<<es6-promises,ES6 Promises>>，即JavaScript的标准规范为基础的Promise相关只是为主要内容。
 
-そのため、FirefoxやChromeなど先行実装しているブラウザでは、ライブラリを使うこと無く利用できる機能であり、
-またES6 Promisesは元が<<promises-aplus,Promises/A+>>というコミュニティベースの仕様であるため、多くの実装ライブラリがあります。
+Firefox和Chrome这样技术上比较超前的浏览器不需要安装额外的插件就能使用Promise功能，此外ES6 Promises的规范来源于<<promises-aplus,Promises/A+>>社区，它有很多版本的实现。
 
-ブラウザネイティブの機能 または ライブラリを使うことで今すぐ利用できるPromiseについて
-基本的なAPIから学んでいきます。
-その中でPromiseの得意/不得意を知り、Promiseを活用したJavaScriptを書けるようになることを目的としています。
+我们将会从基础API开始介绍可以在浏览器的原生支持或者通过插件支持的Proise功能。
+也希望各位读者能了解这其中Promise适合干什么，不适合干什么，能根据实际需求选择合适的技术实现方案。
 
-== 本書を読むにあたって
+== 开始阅读之前
 
-この書籍ではJavaScriptの基本的な機能について既に学習していることを前提にしています。
+本书阅读对象需要对JavaScript有基本的了解和知识。
 
 - http://www.oreilly.co.jp/books/9784873113913/[JavaScript: The Good Parts]
-- http://www.oreilly.co.jp/books/9784873114880/[JavaScriptパターン]
+- http://www.oreilly.co.jp/books/9784873114880/[JavaScript模式]
 - http://www.oreilly.co.jp/books/9784873115733/[JavaScript 第6版]
-- http://gihyo.jp/book/2011/978-4-7741-4813-7?ard=1400715177[パーフェクトJavaScript]
+- http://gihyo.jp/book/2011/978-4-7741-4813-7?ard=1400715177[Perfect JavaScript]
 - http://books.shoeisha.co.jp/book/b107881.html[Effective JavaScript]
 
-のいずれかの書籍を読んだ事があれば十分読み解くことが出来る内容だと思います。
+如果你读过上面的一本书的话，则应该就能非常容易理解本书的内容了。
 
-または、JavaScriptでウェブアプリケーションを書いたことがある、
-Node.js でコマンドラインアプリやサーバサイドを書いたことがあれば、
-どこかで書いたことがあるような内容が出てくるかもしれません。
+另外如果你有使用JavaScript编写过Web应用程序，或者使用Node.js编写过命令行或服务器程序的话，那么你可能会对本文中的一些内容感到非常熟悉。
 
-一部セクションではNode.js環境での話となるため、Node.jsについて軽くでも知っておくとより理解がしやすいと思います。
+本书的一本分章节将会以Node.js环境为背景进行说明，如果你有Node.js基础的话，那么一定会非常容易这部分内容了。
 
-== 表記法
+== 格式约定
 
-この書籍では短縮するために幾つかの表記を用いています。
+本书为了节约篇幅，用了下面一些格式上的约定。
 
-* Promiseに関する用語は<<promise-glossary,用語集>>を参照する。
-** 大体、初回に出てきた際にはリンクを貼っています。
-* インスタンスメソッドを instance#method という表記で示す。
-** 例えば、`Promise#then` という表記は、Promiseのインスタンスオブジェクトの `then` というメソッドを示しています。
-* オブジェクトメソッドを object.method という表記で示す。
-** これはJavaScriptの意味そのままで、`Promise.all` なら静的メソッドの事を示しています。
+* 关于Promise的术语请参考<<promise-glossary,术语集>>。
+** 一般一个名词第一次出现时都会附带相关链接。
+* 实例方法都用 instance#method 的形式。
+** 比如 `Promise#then` 这种写法表示的是 Promise的实例对象的 `then` 这一方法。
+* 对象方法都采用 object.method 的形式。
+** 这沿用了JavaScript中的使用方式，`Promise.all` 表示的是一个静态方法。
 
 [NOTE]
 この部分には文章についての補足が書かれています。
 
 ifeval::["{backend}" == "html5"]
-== 推奨ブラウザ
+== 推荐浏览器
 
-この書籍を読むにあたっての推奨ブラウザとしてはネイティブでPromiseをサポートしているブラウザとなっています。
+我们推荐使用内置对Promise支持的浏览器来阅读本书。
 
-Firefoxは29から、Chromeは35から<<es6-promises,ES6 Promises>>をサポートしています。
+Firefox > 29、Chrome > 35 的话都支持<<es6-promises,ES6 Promises>>标准。
 
-また、推奨環境ではありませんがiOSなどのモバイル端末でも閲覧は可能です。
+此外，虽然不是推荐的阅读环境，但是读者还是能在iOS等移动终端上阅读本书。
 
 ifeval::["{backend}" == "html5"]
 ++++
@@ -71,12 +65,11 @@ ifeval::["{backend}" == "html5"]
 ++++
 endif::[]
 
-== サンプルコードの実行
+== 运行示例代码
 
-このサイトでは、Promiseの<<promise-polyfill,Polyfillライブラリ>>を読み込んでいるため、
-Promiseをサポートしていないブラウザでもサンプルコードを実行することが出来ます。
+本网站使用了Promise的<<promise-polyfill,Polyfill类库>>，因此即使在不支持Promise的浏览器上也能执行示例代码。
 
-また、以下のように実行出来るサンプルコードには実行ボタンが表示されています。
+此外像下面这样，各位读者可以通过运行按钮来运行可执行的示例代码。
 
 [role="executable"]
 [source,javascript]
@@ -93,43 +86,39 @@ promise.then(function(value){
 
 ++++
 <div class="tutorial-area">
-<button class="mirror-console-button mirror-console-run">実行</button> ボタンを押すことで、
-サンプルコードがエディタとなりコードを実行する事が出来ます。<br />
-<button class="mirror-console-button mirror-console-clear">ログをクリア</button>ボタンでは実行結果の `console.log` の内容をクリア出来ます。
+按下 <button class="mirror-console-button mirror-console-run">运行</button> 按钮之后，代码区会变成编辑区，并开始执行。<br />
+<button class="mirror-console-button mirror-console-clear">清除log</button> 按钮用于清除由 `console.log` 打印出来的log。
 <br />
-<button class="mirror-console-button mirror-console-exit">終了</button>ボタンではエディタモードを終了します。
+<button class="mirror-console-button mirror-console-exit">退出</button>按钮用来退出编辑模式。
 </div>
 ++++
-気になるコードはその場で書き換えて実行することができるため、理解するための補助として使って下さい。
+
+如果你对哪里有疑问的话，都可以现场修改并执行，以加深对该代码的理解。
 
 endif::[]
 
-== 本書のソースコード/ライセンス
+== 本书源代码/License
 
-この書籍に登場するサンプルのソースコード また その文章のソースコードは全てGitHubから取得することができます。
+本书中示例代码都可以在GitHub上找到。
 
-この書籍は http://asciidoctor.org/[AsciiDoc] という形式で書かれています。
+本书以 http://asciidoctor.org/[AsciiDoc] 形式编写。
 
 - https://github.com/azu/promises-book[azu/promises-book] image:https://travis-ci.org/azu/promises-book.svg?branch=master["Build Status", link="https://travis-ci.org/azu/promises-book"]
 
-またリポジトリには書籍中に出てくるサンプルコードのテストも含まれています。
+此外代码仓库中还包含本书示例代码的测试代码。
 
-ソースコードのライセンスはMITライセンスで、文章はCC-BY-NCで利用することができます。
+源代码的许可证为MIT许可证，文章内容可以基于CC-BY-NC使用。
 
-== 意見や疑問点
+== 意见和疑问
 
-意見や疑問点がある場合はGitHubに直接Issueとして立てる事が出来ます。
+如果有意见或者问题的话，可以直接在GitHub上提Issue即可。
 
 * https://github.com/azu/promises-book/issues?state=open[Issues · azu/promises-book]
 
-また、この書籍についての https://gitter.im/azu/promises-book[チャットページ] に書いていくのもいいでしょう。
+此外，你也可以在 https://gitter.im/azu/promises-book[在线聊天] 上留言。
 
 ifeval::["{backend}" == "html5"]
 * image:https://badges.gitter.im/azu/promises-book.png["Gitter", link="https://gitter.im/azu/promises-book"]
 endif::[]
 
-Twitterでのハッシュタグは icon:twitter[2x, link=https://twitter.com/search?q=%23Promise%E6%9C%AC] https://twitter.com/search?q=%23Promise%E6%9C%AC[#Promise本]
-なので、こちらを利用するのもいいでしょう。
-
-この書籍は読める権利と同時に編集する権利があるため、
-GitHubで https://github.com/azu/promises-book/pulls[Pull Requests] も歓迎しています。
+各位读者除了能免费阅读本书，也有编辑本书的权利，可以在GitHub上通过GitHubで https://github.com/azu/promises-book/pulls[Pull Requests] 贡献自己的工作。

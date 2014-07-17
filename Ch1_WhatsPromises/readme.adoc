@@ -1,8 +1,8 @@
 [[chapter1-what-is-promise]]
-= Chapter.1 - Promiseとは何か
+= Chapter.1 - 什么是Promise
 :imagesdir: Ch1_WhatsPromises
 
-この章では、JavaScriptにおけるPromiseについて簡単に紹介していきます。
+本章将主要对JavaScript中的Promise进行简单的介绍。
 
 include::what-is-promise.adoc[]
 
