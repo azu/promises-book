@@ -1,9 +1,9 @@
-= JavaScript Promiseの本
+= JavaScript Promise小书
 azu
 :author:      azu
 :authorinitials: azu
-:keywords:    JavaScript, ECMAScript, Promise, 日本語, 使い方, チュートリアル, リファレンス
-:description: JavaScript Promiseの基本的な使い方やテストを書く方法、応用やアンチパターンについて解説したドキュメントです。
+:keywords:    JavaScript, ECMAScript, Promise, 日语, 中文, 使用方法, 教程, 参考手册
+:description: 关于JavaScript Promise基本使用方法以及测试的编写方法、应用及反模式等内容的文档。
 :revnumber:   {bookversion}
 :homepage:    http://azu.github.io/promises-book/
 :source:      https://github.com/azu/promises-book
@@ -22,54 +22,52 @@ ifeval::["{backend}" == "html5"]
 </div>
 ++++
 
-icon:twitter[2x, link=https://twitter.com/search?q=%23Promise%E6%9C%AC] ハッシュタグは https://twitter.com/search?q=%23Promise%E6%9C%AC[#Promise本]
+icon:twitter[2x, link=https://twitter.com/search?q=%23Promise%E6%9C%AC] Hash tag https://twitter.com/search?q=%23Promise%E6%9C%AC[#Promise本]
 
-icon:rss[2x, link=https://github.com/azu/promises-book/releases.atom] 更新情報は https://github.com/azu/promises-book/releases.atom[RSS] から購読出来ます
+icon:rss[2x, link=https://github.com/azu/promises-book/releases.atom] 可以从这里 https://github.com/azu/promises-book/releases.atom[RSS] 得到更新信息
 
 ++++
 <div class="social-button-wrapper">
 <iframe src="http://ghbtns.com/github-btn.html?user=azu&repo=promises-book&type=watch&count=true"
   allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe>
 
-<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://azu.github.io/promises-book/" data-lang="ja" data-hashtags="Promise本">ツイート</a>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://azu.github.io/promises-book/" data-lang="ja" data-hashtags="Promise本">Tweet</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
-<a href="http://b.hatena.ne.jp/entry/http://azu.github.io/promises-book/" class="hatena-bookmark-button" data-hatena-bookmark-title="JavaScript Promiseの本" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://cdn-ak.b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
 </div>
 ++++
 
-この書籍はCreative Commons Attribution-NonCommercialの https://github.com/azu/promises-book/#license[ライセンス] で公開されています。
-また、PDFとしてレンダリングしたバージョンは以下からダウンロードすることが出来ます。
+本书以Creative Commons Attribution-NonCommercial https://github.com/azu/promises-book/#license[许可证]发布。
+另外你也可以从下面的链接下载PDF版本。
 
 ++++
 <div class="download-area">
-<a class="download-button pdf" id="download-pdf" href="http://azu.github.io/promises-book/javascript-promise-book.pdf" download="javascript-promise-book.pdf">PDF版をダウンロード</a>
-<a class="download-button source-code" href="https://github.com/azu/promises-book/">ソースコードをダウンロード</a>
+<a class="download-button pdf" id="download-pdf" href="http://azu.github.io/promises-book/javascript-promise-book.pdf" download="javascript-promise-book.pdf">下载本书PDF版本</a>
+<a class="download-button source-code" href="https://github.com/azu/promises-book/">下载源代码</a>
 </div>
 ++++
 
-この電子書籍の作り方に興味がある方は、
-以下から https://gumroad.com/l/javascript-promise[おまけ] をダウンロードすることが出来ます。
+关于本电子书的创作过程有兴趣的读者，可以下载这个文档供参考 https://gumroad.com/l/javascript-promise[制作过程]。
 
-- image:./public/img/gumroad-green.svg[おまけをダウンロード, link="https://gumroad.com/l/javascript-promise"] https://gumroad.com/l/javascript-promise[おまけをダウンロード]
-- 書き始めた理由や、どのように書いていったか、どのような仕組みで動いているかなどについて書かれています。
-- Gumroadで購入者が0円から任意の値段を決めてダウンロードすることが出来ます。
-- 寄付などがしたい方はGumroadからおまけの購入で代用して下さい。
+- image:./public/img/gumroad-green.svg[附录下载, link="https://gumroad.com/l/javascript-promise"] https://gumroad.com/l/javascript-promise[附录下载]
+- 本书开始编写的原因，如何编写的，以及编写过程是如何运转的。
+- 可以在Gumroad上以包括0元在内的任何价格购买本附录内容。
+- 如果你想捐赠，也可以使用本附录链接以任意的价格购买本附录即可。
 
 '''
 
 endif::[]
 
-// <<< PAGE BREAK PDFのみ
+// <<< PAGE BREAK 只对PDF有效
 <<<
 
-// 各章はH1から始めているので、一つ下げる
+// 各章内容从H1标记开始，进行一个缩进
 :leveloffset: 1
 
-// はじめに
+// 前言
 include::Ch0_Introduction/readme.adoc[]
 
-// 章のナンバリングは1章から始める
+// 各章序号从1开始
 :numbered:
 
 // 第一章
@@ -85,8 +83,8 @@ include::Ch3_Testing/readme.adoc[]
 include::Ch4_AdvancedPromises/readme.adoc[]
 
 
-// リファレンス
+// 参考
 include::Appendix-Reference/readme.adoc[]
 
-// 用語集
+// 术语集
 include::Appendix-Glossary/readme.adoc[]
