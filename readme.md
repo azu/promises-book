@@ -20,8 +20,8 @@ Promises小书电子版
 ### 编译为HTML
 
 ``` sh
-gem install asciidoctor coderay
-npm install -g gulp
+(sudo) gem install asciidoctor coderay
+(sudo) npm install -g gulp
 npm install
 make html
 open index.html
