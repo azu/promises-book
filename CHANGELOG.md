@@ -1,3 +1,11 @@
+### 1.1.3 (2014-07-31)
+
+
+#### Bug Fixes
+
+* **travis:** quote node/rvm version ([c4ea4532](https://github.com/azu/promises-book/commit/c4ea453203079c0924c3d7e5a061d7128c542b5e))
+
+
 ### 1.1.2 (2014-07-08)
 
 
