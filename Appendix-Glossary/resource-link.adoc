@@ -10,7 +10,7 @@ https://github.com/domenic/promises-unwrapping[domenic/promises-unwrapping]::
 http://people.mozilla.org/~jorendorff/es6-draft.html#sec-promise-objects[ECMAScript Language Specification ECMA-262 6th Edition – DRAFT]::
     ES6 Promisesの仕様書 - 仕様書として参照する場合はこちらを優先した
 
-http://www.html5rocks.com/en/tutorials/es6/promises/?redirect_from_locale=ja[JavaScript Promises: There and back again - HTML5 Rocks]::
+http://www.html5rocks.com/ja/tutorials/es6/promises/[JavaScript Promises: There and back again - HTML5 Rocks]::
     Promisesについての記事 - 完成度がとても高くサンプルコードやリファレンス等を参考にした
 
 http://d.hatena.ne.jp/jovi0608/20140319/1395199285[Node.jsにPromiseが再びやって来た！ - ぼちぼち日記]::
