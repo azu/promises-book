@@ -16,7 +16,10 @@ gulp.task("build-js", function () {
         .pipe(gulp.dest(destDir));
 });
 gulp.task("build-min-js", function () {
-    return browserify(sourceFile)
+    return browserify({
+            debug: true
+        })
+        .add(sourceFile)
         .plugin('minifyify', {
             map: 'app.min.js.map',
             output: destDir + 'app.min.js.map',
