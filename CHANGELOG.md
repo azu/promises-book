@@ -1,3 +1,11 @@
+### 1.2.2 (2014-08-13)
+
+
+#### Bug Fixes
+
+* **gulp:** Run browserify in debug mode to use minifyify ([a8dc4798](https://github.com/azu/promises-book/commit/a8dc4798789a7be8316647cbb244862c31ad2b26))
+
+
 ### 1.2.1 (2014-08-13)
 
 
