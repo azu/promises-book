@@ -1,3 +1,12 @@
+## 1.2.0 (2014-08-13)
+
+
+#### Bug Fixes
+
+* **asciidoc:** Asciidoctor 1.5.0対応の修正 ([8ead14ca](https://github.com/azu/promises-book/commit/8ead14cad7a8051f5d1ea3c252926abd1f1cae3a))
+* **pdf:** Asciidoctor 1.5.0でPDFがビルドできない問題を修正 ([3e57e37f](https://github.com/azu/promises-book/commit/3e57e37f89af50cd01dca4c4ada30afc05c3c5df))
+
+
 ### 1.1.3 (2014-07-31)
 
 
