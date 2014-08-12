@@ -115,8 +115,8 @@ image::img/promise-states.png[promise-states]
 
 [NOTE]
 ====
-http://people.mozilla.org/~jorendorff/es6-draft.html#sec-promise-objects[ECMAScript Language Specification ECMA-262 6th Edition – DRAFT] では `[[PromiseStatus]]` という内部定義によって状態が定められています。
-`[[PromiseStatus]]` にアクセスするユーザーAPIは用意されていないため、基本的には知る方法はありません。
+http://people.mozilla.org/~jorendorff/es6-draft.html#sec-promise-objects[ECMAScript Language Specification ECMA-262 6th Edition – DRAFT] では `+++[[PromiseStatus]]+++` という内部定義によって状態が定められています。
+`+++[[PromiseStatus]]+++` にアクセスするユーザーAPIは用意されていないため、基本的には知る方法はありません。
 ====
 
 3つの状態を見たところで、既にこの章で全ての状態が出てきていることが分かります。
