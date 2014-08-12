@@ -1,3 +1,11 @@
+### 1.2.1 (2014-08-13)
+
+
+#### Bug Fixes
+
+* **package:** handlebarsがないとmake test-allでエラーがでていた ([1142ed50](https://github.com/azu/promises-book/commit/1142ed50e83f90a57aa61fbb09d22bc91a1261be))
+
+
 ## 1.2.0 (2014-08-13)
 
 
