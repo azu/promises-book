@@ -40,7 +40,7 @@ getURL(URL).then(function onFulfilled(value){
 XHRでの取得結果のステータスコードが200の場合のみ `resolve` - つまり取得に成功、
 それ以外はエラーであるとして `reject` しています。
 
-`resolve(req.response)` ではレスポンスの内容を引数に入れています。
+`resolve(req.responseText)` ではレスポンスの内容を引数に入れています。
 resolveの引数に入れる値には特に決まりはありませんが、コールバックと同様に次の処理へ渡したい値を入れるといいでしょう。
 (この値は `then` メソッドで受け取ることが出来ます)
 
@@ -96,7 +96,7 @@ getURL(URL).then(function onFulfilled(value){ // <1>
 ----
 <1> 分かりやすくするため関数に `onFulfilled` という名前を付けています
 
-<<xhr-promise.js,getURL関数>> 内で `resolve(req.response);` によってpromiseオブジェクトが解決されると、
+<<xhr-promise.js,getURL関数>> 内で `resolve(req.responseText);` によってpromiseオブジェクトが解決されると、
 値と共に `onFulfilled` 関数が呼ばれます。
 
 このままでは通信エラーが起きた場合などに何も処理がされないため、
