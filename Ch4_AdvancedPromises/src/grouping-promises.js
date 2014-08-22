@@ -6,7 +6,7 @@ function getXHRTimeout(URL) {
     req.open('GET', URL, true);
     req.onload = function () {
         if (req.status == 200) {
-            deferred.resolve(req.response);
+            deferred.resolve(req.responseText);
         } else {
             deferred.reject(new Error(req.statusText));
         }
