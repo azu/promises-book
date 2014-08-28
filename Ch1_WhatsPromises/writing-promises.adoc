@@ -83,7 +83,7 @@ image::img/promise-onFulfilled_onRejected.png[promise-resolve-flow]
 まずは、`getURL` で通信が成功して値が取得出来た場合の処理を書いてみましょう。
 
 この場合の _通信が成功した_ というのは、
-resolveされたことにより_promiseオブジェクトがFulFilledの状態になった_ 時という事ですね。
+resolveされたことにより _promiseオブジェクトがFulFilledの状態になった_ 時という事ですね。
 
 **resolve**された時の処理は、 <<promise.then,`.then`>> メソッドに呼ばれたい関数を渡すことで行えます。
 
@@ -103,7 +103,7 @@ getURL(URL).then(function onFulfilled(value){ // <1>
 今度は、`getURL` で何らかの問題があってエラーが起きた場合の処理を書いてみましょう。
 
 この場合の _エラーが起きた_ というのは、
-rejectされたことより_promiseオブジェクトがRejectedの状態になった_時という事ですね。
+rejectされたことより _promiseオブジェクトがRejectedの状態になった_ 時という事ですね。
 
 **reject**された時の処理は、<<promise.then,`.then` の第二引数>> または <<promise.catch,`.catch`>> メソッドに呼ばれたい関数を渡す事で行えます。
 
