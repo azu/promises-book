@@ -1,3 +1,11 @@
+### 1.2.4 (2014-08-28)
+
+
+#### Bug Fixes
+
+* **asciidoc:** _がマークアップされずに表示されていたのを修正 ([3405deae](https://github.com/azu/promises-book/commit/3405deae18ac0b2e39adde443fa9f76039c89f97))
+
+
 ### 1.2.3 (2014-08-22)
 
 
