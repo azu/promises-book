@@ -3,7 +3,7 @@ azu
 :author:      azu
 :authorinitials: azu
 :keywords:    JavaScript, ECMAScript, Promise, 日本語, 使い方, チュートリアル, リファレンス
-:description: JavaScript Promiseの基本的な使い方やテストを書く方法、応用やアンチパターンについて解説したドキュメントです。
+:description: JavaScriptのPromiseを使った非同期処理の書き方、テスト、アンチパターンについて解説しています
 :revnumber:   {bookversion}
 :homepage:    http://azu.github.io/promises-book/
 :source:      https://github.com/azu/promises-book
