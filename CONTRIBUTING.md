@@ -1,6 +1,6 @@
 ## 実行環境
 
-PromisesはECMAScriptである事を元に進めるが、現実的に非同期な処理がECMAScriptには少ないのでDOM API等も使う。
+PromisesはECMAScriptである事を元に進めるが、現実的に非同期な処理がECMAScriptには少ないのでDOM APIも使用する。
 
 Promisesが実装されていない環境もあるため、[ypromise](https://github.com/yahoo/ypromise "ypromise")をPolyfillとして利用する。
 
@@ -27,7 +27,8 @@ Promisesが実装されていない環境もあるため、[ypromise](https://gi
 
 ### テスト
 
-サンプルコードは必ずテストコードが必要となる。(読者がコピペして実行するようなコードにはテストを書くべきである)
+サンプルコードは必ずテストコードが必要となる。
+(読者がコピペして実行するようなコードにはテストを書くべきである)
 
 
 ### サンプルコード
@@ -47,10 +48,9 @@ Promisesが実装されていない環境もあるため、[ypromise](https://gi
     * Polyfill : [ykzts/node-xmlhttprequest](https://github.com/ykzts/node-xmlhttprequest "ykzts/node-xmlhttprequest")
 * node の Coreモジュール
 
-=> 案がある場合は [Issues](https://github.com/azu/Promises-book/issues "Issues · azu/Promises-book")へ
 
 実行環境は基本的にNode.jsでテストするようになっているが、
-できるだけブラウザとNode.jsで同じようなコードにする方針
+できるだけブラウザとNode.jsで同じようなコードにする方針とする。
 (固有の箇所は環境を明示すればよい)
 
 `test/test-helper.js` にグローバル空間に `Promise` や XHRが入るようにしている。
@@ -58,9 +58,10 @@ Promisesが実装されていない環境もあるため、[ypromise](https://gi
 
 ## 文章の表現
 
-文章の表現を出来る限り統一したいため、まよいそうな表現については方針を決めている
+文章の表現を出来る限り統一したいため、迷う表現については以下で方針を決めている。
+追加したい表現がある場合は、以下に書き込めば良い。
 
-> [表記の統一 · Issue #41 · azu/promises-book](https://github.com/azu/promises-book/issues/41 "表記の統一 · Issue #41 · azu/promises-book") で議論された
+- [表記の統一 · Issue #41 · azu/promises-book](https://github.com/azu/promises-book/issues/41 "表記の統一 · Issue #41 · azu/promises-book")
 
 ### Promise or Promises?
 
@@ -94,6 +95,12 @@ Promiseという機能について言う時は大文字の単数を使う。
 
 例) `Promise.race`は、promiseオブジェクトがどれか一つでもFulFilled または Rejectedになったら次の処理を実行します。
 
+## Asciidocのシンタックス
+
+Asciidocでこの書籍は書かれているが、[Asciidoctor](http://asciidoctor.org/ "Asciidoctor")に依存した機能や表現を使用してよい。
+シンタックスについては以下を参考にする。
+
+- [Asciidoctor Documentation | Asciidoctor](http://asciidoctor.org/docs/ "Asciidoctor Documentation | Asciidoctor")
 
 ## Gitのコミットメッセージ
 
