@@ -10,21 +10,21 @@ promiseオブジェクトがすぐにresolveされるので、`.then` に登録�
 [source,javascript]
 ----
 var promise = new Promise(function (resolve){
-    console.log("inner promise");// <1>
+    console.log("inner promise");// 1
     resolve(42);
 });
 promise.then(function(value){
-    console.log(value); // <3>
+    console.log(value); // 3
 });
-console.log("outer promise");// <2>
+console.log("outer promise");// 2
 ----
 
 上記のコードを実行すると以下の順に呼ばれていることが分かります。
 
 ----
-inner promise
-outer promise
-42
+inner promise // 1
+outer promise // 2
+42            // 3
 ----
 
 JavaScriptは上から実行されていくため、まず最初に `<1>` が実行されますね。
