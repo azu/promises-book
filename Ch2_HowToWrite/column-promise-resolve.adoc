@@ -10,13 +10,13 @@ promiseオブジェクトがすぐにresolveされるので、`.then` に登録�
 [source,javascript]
 ----
 var promise = new Promise(function (resolve){
-    console.log("inner promise");// 1
+    console.log("inner promise"); // 1
     resolve(42);
 });
 promise.then(function(value){
     console.log(value); // 3
 });
-console.log("outer promise");// 2
+console.log("outer promise"); // 2
 ----
 
 上記のコードを実行すると以下の順に呼ばれていることが分かります。
@@ -117,15 +117,15 @@ Promiseは常に非同期で実行されることが保証されているため�
 [source,javascript]
 ----
 var promise = new Promise(function taskA(resolve){
-    console.log("inner promise");// <1>
+    console.log("inner promise"); // 1
     resolve(42);
 });
 promise.then(function(arg){
     setTimeout(function(value){
-       console.log(value); // <3>
+       console.log(value); // 3
    }.bind(this, arg), 0);
 });
-console.log("outer promise");// <2>
+console.log("outer promise"); // 2
 ----
 
 `promise.then` で登録したコールバック関数は常に非同期的に呼び出されているわけです。
