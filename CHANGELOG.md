@@ -1,3 +1,11 @@
+### 1.2.5 (2014-10-22)
+
+
+#### Bug Fixes
+
+* **pdf:** PDFだとナンバリングが無視された上から順に並んでしまうの問題を修正 ([6ebfd2bd](https://github.com/azu/promises-book/commit/6ebfd2bda077418a3b503fce81471a2b4f25b5b8))
+
+
 ### 1.2.4 (2014-08-28)
 
 
