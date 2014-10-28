@@ -72,12 +72,12 @@ Promiseコンストラクタの中では `reject` という関数そのものが
 var promise = Promise.resolve();
 promise.then(function (value) {
     setTimeout(function () {
-        // 一定時間経って終わらなかったらrejectしたい <2>
+        // 一定時間経って終わらなかったらrejectしたい - 2
     }, 1000);
-    // 時間がかかる処理 <1>
+    // 時間がかかる処理 - 1
     somethingHardWork();
 }).catch(function (error) {
-    // タイムアウトエラー <3>
+    // タイムアウトエラー - 3
 });
 ----
 
