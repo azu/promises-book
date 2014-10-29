@@ -6,7 +6,7 @@
 
 そうした時に、次にどうすればいいのか悩むのがPromiseのテストの書き方です。
 
-ここではまず、 http://visionmedia.github.io/mocha/[Mocha]を使った基本的なPromiseのテストの書き方について学んでいきましょう。
+ここではまず、 http://mochajs.org/[Mocha]を使った基本的なPromiseのテストの書き方について学んでいきましょう。
 
 また、この章でのテストコードはNode.js環境で実行することを前提としています。
 
@@ -16,7 +16,7 @@
 
 === Mochaとは
 
-ここでは、 http://visionmedia.github.io/mocha/[Mocha]自体については詳しく解説しませんが、
+ここでは、 http://mochajs.org/[Mocha]自体については詳しく解説しませんが、
 MochaはNode.js製のテストフレームワークツールです。
 
 MochaはBDD,TDD,exportsのどれかのスタイルを選択でき、テストに使うアサーションメソッドも任意のライブラリと組み合わせて利用します。
