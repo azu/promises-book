@@ -126,12 +126,12 @@ JSONPromise(string).then(function (object) {
 
 > ReferenceError: conosle is not defined
 
-しかし、Promiseではtry-catchされるため、エラーが握りつぶされてしまうという現象が発生しやすくなります。
+しかし、Promiseではtry-catchされるため、エラーが握りつぶされてしまうという現象が起きてしまいます。
 毎回、正しく `catch` の処理を書くことが出来る場合は何も問題ありませんが、
 Promiseの実装によってはこのようなミスが検知しにくくなるケースがあることを知っておくべきでしょう。
 
 このようなエラーの握りつぶしは__unhandled rejection__と言われることがあります。
-Rejectedされた時の処理がないというそのままの意味ですね。
+"Rejectedされた時の処理がない"というそのままの意味ですね。
 
 [NOTE]
 ====
