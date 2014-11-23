@@ -1,3 +1,12 @@
+## 1.3.0 (2014-11-23)
+
+
+#### Bug Fixes
+
+* ** promise-done :** しやすくなる -> 発生する ([779ab5ff](https://github.com/azu/promises-book/commit/779ab5ffd95d0b2e185a69cf4c8e5a28a4a273f8))
+* **asciidoc:** 誤字とリンク先修正 ([a85d7f88](https://github.com/azu/promises-book/commit/a85d7f8817bb00af5014cd0de07d20d5819d5328))
+
+
 ### 1.2.5 (2014-10-22)
 
 
