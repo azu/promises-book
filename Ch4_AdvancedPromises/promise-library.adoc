@@ -63,6 +63,10 @@ https://github.com/jakearchibald/es6-promise[jakearchibald/es6-promise]::
 https://github.com/yahoo/ypromise[yahoo/ypromise]::
     http://yuilibrary.com/[YUI] の一部としても利用されているES6 Promisesと互換性を持ったPolyfillライブラリです。
     この書籍ではこのPolyfillを読み込み、サンプルコードを動かしています。
+https://github.com/getify/native-promise-only/[getify/native-promise-only]::
+    ES6 Promisesのpolyfillとなることを目的としたライブラリです。
+    ES6 Promisesの仕様に厳密に沿うように作られており、仕様にない機能は入れないようになっています。
+    実行環境にネイティブのPromiseがある場合はそちらを優先します。
 
 ==== Promise拡張ライブラリ
 
