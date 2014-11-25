@@ -3,11 +3,11 @@ OUTPUT_FILE=index.html
 
 all: clean html
 
-test-all:
+.PHONY: test
+test:
 	@npm test
 	@make html
 	@gulp lint-html
-
 
 html:
 	@echo "Generate HTML..."
@@ -36,7 +36,8 @@ note-pdf:
 	@./_tools/build_pdf.sh javascript-promise-omake.xml
 	@echo "Done!"
 
-
+deploy:
+	@./_tools/deploy-gh-pages.sh
 
 clean:
 	@rm -f {OUTPUT_FILE}

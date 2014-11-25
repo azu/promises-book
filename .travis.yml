@@ -13,10 +13,10 @@ before_install:
 - npm install -g gulp
 - sudo apt-get install ttf-vlgothic
 script:
-- make test-all
+- make test
 after_success:
 - "./_tools/setup-git.sh"
-- npm run-script deploy
+- make deploy
 env:
   global:
   - GH_REF: github.com/azu/Promises-book.git
