@@ -1,5 +1,9 @@
 ### 1.3.2 (2014-12-22)
 
+* [Ch2: 最後に`catch`を入れたい · Issue #199](https://github.com/azu/promises-book/issues/199)
+* [Ch2: ===に合わせる · Issue #198](https://github.com/azu/promises-book/issues/198)
+* [jQueryとPromise.resolveについて · Issue #197](https://github.com/azu/promises-book/issues/197)
+* [呼ばれたい関数 -> 呼びたい関数 · Issue #196](https://github.com/azu/promises-book/issues/196)
 
 ## 1.3.0 (2014-11-23)
 
