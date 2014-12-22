@@ -78,7 +78,7 @@ https://api.jquery.com/jQuery.ajax/[jQuery.ajax()]の返り値も `.then` とい
 このオブジェクトは http://api.jquery.com/category/deferred-object/[Deferred Object] のメソッドやプロパティ等を継承しています。
 
 しかし、このDeferred Objectは<<promises-aplus,Promises/A+>>や<<es6-promises,ES6 Promises>>に準拠したものではないため、
-変換できたように見えて一部欠損してしまう情報がでてしまうという問題があります。
+変換できたように見えて一部欠損する情報がでてしまうという問題があります。
 
 この問題はjQueryの http://api.jquery.com/category/deferred-object/[Deferred Object] の `then` の挙動が違うために発生します。
 
