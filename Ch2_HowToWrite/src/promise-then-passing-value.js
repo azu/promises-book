@@ -12,4 +12,8 @@ var promise = Promise.resolve(1);
 promise
     .then(increment)
     .then(doubleUp)
-    .then(output);
+    .then(output)
+    .catch(function(error){
+        // promise chain中にエラーが発生した場合に呼ばれる
+        console.error(error);
+    });
