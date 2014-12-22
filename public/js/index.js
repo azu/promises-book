@@ -9,7 +9,7 @@ function windowOnload() {
     require("./bug-report").initilize();
 }
 var readyState = document.readyState;
-if (readyState == "interactive" || readyState === 'complete') {
+if (readyState === "interactive" || readyState === 'complete') {
     windowOnload();
 } else {
     window.addEventListener("DOMContentLoaded", windowOnload);
