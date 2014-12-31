@@ -15,11 +15,10 @@ before_install:
 - gem install asciidoctor
 - gem install coderay
 - npm install -g gulp
-- apt-get install ttf-vlgothic
+- sudo apt-get install ttf-vlgothic
 script:
 - make test
 after_success:
-- cp _tools/VLGothic/VL-Gothic-Regular.ttf ~/.fonts/ && fc-cache -fv ~/.fonts/
 - sh ./_tools/setup-git.sh
 - make deploy
 env:
