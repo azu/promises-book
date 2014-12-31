@@ -5,9 +5,9 @@ rvm:
 node_js:
 - "0.10"
 cache:
-  apt: true
+  apt:true
   directories:
-  - ~/.gradle
+    - ~/.gradle
 before_install:
 - java -version
 - ruby --version
