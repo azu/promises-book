@@ -1,9 +1,13 @@
+sudo: false
 language: node_js
 rvm:
-- "2.0.0"
+- "2.1.2"
 node_js:
 - "0.10"
-cache: apt
+cache:
+  apt:true
+  directories:
+    - ~/.gradle
 before_install:
 - java -version
 - ruby --version
@@ -15,7 +19,7 @@ before_install:
 script:
 - make test
 after_success:
-- "./_tools/setup-git.sh"
+- sh ./_tools/setup-git.sh
 - make deploy
 env:
   global:
