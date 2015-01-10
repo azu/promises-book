@@ -27,7 +27,7 @@ pdf:
 	@./_tools/build_pdf.sh javascript-promise-book.xml
 	@echo "Done!"
 
-note-pdf:
+pdf-note:
 	@echo "Generate PDF..."
 	@gulp embed
 	@echo "Building asciidoc"
