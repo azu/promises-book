@@ -32,7 +32,7 @@ main(function(error, results){
 
 * `JSON.parse` をそのまま使うと例外となるケースがあるためラップした `jsonParse` 関数を使う
 * 複数のXHRをそのまま書くとネストが深くなるため、`allRequest` というrequest関数を実行するものを利用する
-* コールバック関数には `callback(error,value)` というNode.jsでよく見られる引数を渡す
+* コールバック関数には `callback(error,value)` のように第一引数にエラー、第二引数にレスポンスを渡す。
 
 `jsonParse` 関数を使うときに `bind` を使うことで、部分適用を使って無名関数を減らすようにしています。
 (コールバックスタイルでも関数の処理などをちゃんと分離すれば、無名関数の使用も減らせると思います)
