@@ -78,7 +78,7 @@ bPromise.then(function (value) {
 [source,javascript]
 .✘ `then` の間違った使い方
 ----
-function anAsyncCall() {
+function badAsyncCall() {
     var promise = Promise.resolve();
     promise.then(function() {
         // 何かの処理
