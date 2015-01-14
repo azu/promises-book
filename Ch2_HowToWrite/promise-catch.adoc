@@ -37,7 +37,7 @@ promise.catch(function (error) {
 これはどういう事かというと、`catch` という単語はECMAScriptにおける http://mothereff.in/js-properties#catch[予約語] であることが関係します。
 
 ECMAScript 3では予約語はプロパティの名前に使うことが出来ませんでした。
-IE8以下はECMAScript 3の実装であるため、`catch` というプロパティを使う `promise.catch()` という書き方が出来ないため、
+IE8以下はECMAScript 3の実装であるため、`catch` というプロパティを使う `promise.catch()` という書き方が出来ないので、
 **識別子がありません**というエラーを起こしてしまう訳です。
 
 一方、現在のブラウザが実装済みであるECMAScript 5以降では、
