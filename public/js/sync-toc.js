@@ -61,7 +61,7 @@ TOCHighlighter.prototype.findAllChildHeader = function (parent) {
     return [];
 };
 module.exports = TOCHighlighter;
-module.exports.initilize = function initilize() {
+module.exports.initialize = function initialize() {
     var highLightLevel = ["h1", "h2", "h3"];
     var chapters = document.querySelectorAll(".sect1");
     var sections = document.querySelectorAll(".sect2");

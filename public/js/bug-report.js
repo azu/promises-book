@@ -44,7 +44,7 @@ BugReporter.prototype.report = function () {
     window.open(url,"promises-book");
 };
 module.exports = BugReporter;
-module.exports.initilize = function () {
+module.exports.initialize = function () {
     var reportElement = document.createElement("button");
     reportElement.textContent = "バグ報告";
     reportElement.setAttribute("style", "position:fixed; right:0;bottom:0;");
