@@ -40,4 +40,4 @@ deploy:
 	@./_tools/deploy-gh-pages.sh
 
 clean:
-	@rm -f {OUTPUT_FILE}
+	@rm -f {OUTPUT_FILE} javascript-promise-*.pdf javascript-promise-*.xml
