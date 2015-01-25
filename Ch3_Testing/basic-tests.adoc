@@ -52,7 +52,7 @@ Promiseでは `then` で登録した関数が呼ばれるタイミングは常�
 [source,javascript]
 .basic-test.js
 ----
-include::test/basic-test.js[]
+include::embed/embed-basic-test.js[]
 ----
 
 このテストを `basic-test.js` というファイル名で作成した場合は、

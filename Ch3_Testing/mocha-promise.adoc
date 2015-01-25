@@ -16,7 +16,7 @@ Promiseのテストの場合はコールバックとして `done()` を呼ぶ代
 [[mocha-promise-test.js]]
 .mocha-promise-test.js
 ----
-include::test/mocha-promise-test.js[]
+include::embed/embed-mocha-promise-test.js[]
 ----
 
 <<promise-assert-fail-fixed,先ほどの `done` を使った例>>をMochaのPromiseテストの形式に変更しました。
