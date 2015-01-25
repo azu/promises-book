@@ -42,14 +42,11 @@ $ npm install -g mocha
 
 また、アサーション自体はNode.jsに同梱されている `assert` モジュールを使用するので別途インストールは必要ありません。
 
-それでは最初に、コールバックスタイルで非同期処理をテストしてみましょう。
+まずはコールバックスタイルの非同期処理をテストしてみましょう。
 
 === コールバックスタイルのテスト
 
-<<promise-is-always-async,コラム: Promiseは常に非同期?>>で確認したように、
-Promiseでは `then` で登録した関数が呼ばれるタイミングは常に非同期となります。
-
-まずはコールバックスタイルと同じようにPromiseのテストを書いてみましょう。
+コールバックスタイルの非同期処理をテストする場合、Mochaでは以下のように書くことが出来ます。
 
 [source,javascript]
 .basic-test.js
@@ -57,8 +54,8 @@ Promiseでは `then` で登録した関数が呼ばれるタイミングは常�
 include::embed/embed-basic-test.js[]
 ----
 
-このテストを `basic-test.js` というファイル名で作成した場合は、
-先ほどインストールしたMochaでコマンドラインからテストすることができます。
+このテストを `basic-test.js` というファイル名で作成し、
+先ほどインストールしたMochaでコマンドラインからテストを実行することが出来ます。
 
 [source,sh]
 ----
@@ -66,7 +63,7 @@ $ mocha basic-test.js
 ----
 
 Mochaは `it` の仮引数に `done` のように指定してあげると、
-`done()` が呼ばれるまでテストケースの終了を待つことで非同期のテストをサポートしています。
+`done()` が呼ばれるまでテストの終了を待つことで非同期のテストをサポートしています。
 
 Mochaでの非同期テストは以下のような流れで実行されます。
 
@@ -89,14 +86,14 @@ it("should use `done` for test", function (done) {
 [[done-promise-test]]
 === `done` を使ったPromiseのテスト
 
-次に、Promiseのテストの方を見てみましょう。
+次に、同じく `done` を使ったPromiseのテストを書いてみましょう。
 
 [source,javascript]
 ----
 it("should use `done` for test?", function (done) {
-    var promise = Promise.resolve(1);// <1>
+    var promise = Promise.resolve(42);// <1>
     promise.then(function (value) {
-        assert(value === 1);
+        assert(value === 42);
         done();// <2>
     });
 });
@@ -116,7 +113,7 @@ promiseオブジェクトは常に非同期で処理されるため、テスト�
 
 [source,javascript]
 [[promise-assert-fail]]
-.間違ったテストの書き方
+.意図しない結果となるPromiseのテスト
 ----
 it("should use `done` for test?", function (done) {
     var promise = Promise.resolve();
@@ -137,14 +134,14 @@ image::img/promise-test-timeout.png[promise test timeout]
 テストフレームワークがそれをキャッチすることで、テストが失敗したと判断します。
 
 しかし、Promiseの場合は `.then` の中で行われた処理でエラーが発生しても、
-Promiseがそれをキャッチしてしまい、テストフレームワークまでエラーがthrowされません。
+Promiseがそれをキャッチしてしまい、テストフレームワークまでエラーが届きません。
 
-<<promise-assert-fail,`assert` が失敗してる例>>を改善して、
+<<promise-assert-fail, 意図しない結果となるPromiseのテスト>>を改善して、
 `assert` が失敗した場合にちゃんとテストが失敗となるようにしてみましょう。
 
 [source,javascript]
 [[promise-assert-fail-fixed]]
-.ちゃんとテストが失敗する例
+.意図通りにテストが失敗する例
 ----
 it("should use `done` for test?", function (done) {
     var promise = Promise.resolve();
