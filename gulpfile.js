@@ -32,8 +32,10 @@ gulp.task("build-min-js", function () {
         .pipe(gulp.dest(destDir));
 });
 gulp.task("embed", function () {
+    var replacePowerAssert = require("./_tools/gulp/replate-power-assert.js");
     return gulp.src(["./Ch*/src/**/*.js", "./Ch*/lib/*.js", "./Ch3_Testing/test/*.js"], {base: './'})
         .pipe(inlining())
+        .pipe(replacePowerAssert())
         .pipe(removeUseString({
             force: true
         }))
