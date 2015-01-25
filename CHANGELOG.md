@@ -1,3 +1,16 @@
+## 1.4.0 (2015-01-25)
+
+
+#### New and Edit
+
+* **ch3:** mochaのインストールについてを追加 ([0f68fad2](https://github.com/azu/promises-book/commit/0f68fad2d6ccb54366cc0a2b2b565a852e40f5b2))
+
+
+#### Features
+
+* **embed:** power-assertを埋め込みスクリプトに含めないように ([d29992b0](https://github.com/azu/promises-book/commit/d29992b0e36b8b1aa2fb9b68c62d22bc7043fb46))
+
+
 ### 1.3.2 (2014-12-22)
 
 
