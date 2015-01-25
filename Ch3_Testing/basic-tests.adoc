@@ -8,7 +8,8 @@
 
 ここではまず、 http://mochajs.org/[Mocha]を使った基本的なPromiseのテストの書き方について学んでいきましょう。
 
-また、この章でのテストコードはNode.js環境で実行することを前提としています。
+また、この章でのテストコードはNode.js環境で実行することを前提としているため、
+各自Node.js環境を用意してください。
 
 [NOTE]
 この書籍中に出てくるサンプルコードはそれぞれテストも書かれています。
@@ -16,7 +17,9 @@
 
 === Mochaとは
 
-ここでは、 http://mochajs.org/[Mocha]自体については詳しく解説しませんが、
+Mochaの公式サイト: http://mochajs.org/[http://mochajs.org/]
+
+ここでは、 Mocha自体については詳しく解説しませんが、
 MochaはNode.js製のテストフレームワークツールです。
 
 MochaはBDD,TDD,exportsのどれかのスタイルを選択でき、テストに使うアサーションメソッドも任意のライブラリと組み合わせて利用します。
@@ -30,28 +33,39 @@ Mochaを選んだ理由としては、以下の点で選択しました。
 
 最後の _"Promiseのテスト"をサポートしている_ とはどういうことなのかについては後ほど解説します。
 
-また、アサーションライブラリには、 https://github.com/twada/power-assert[power-assert]を利用しますが、
-アサーション自体はNode.jsの `assert` モジュールと全く同じであるため、今回はあまり気にしなくても問題ありません。
+この章ではMochaを利用するため、npmを使いMochaをインストールしておく必要があります。
 
-まずは、コールバック関数のテストと同じような形でテストを書いてみましょう。
+[source,console]
+----
+$ npm install -g mocha
+----
+
+また、アサーション自体はNode.jsに同梱されている `assert` モジュールを使用するので別途インストールは必要ありません。
+
+まずはコールバックスタイルの非同期処理をテストしてみましょう。
 
 === コールバックスタイルのテスト
 
-<<promise-is-always-async,コラム: Promiseは常に非同期?>>で確認したように、
-Promiseでは `then` で登録した関数が呼ばれるタイミングは常に非同期となります。
-
-まずはコールバックスタイルと同じようにPromiseのテストを書いてみましょう。
+コールバックスタイルの非同期処理をテストする場合、Mochaでは以下のように書くことが出来ます。
 
 [source,javascript]
 .basic-test.js
 ----
-include::test/basic-test.js[]
+include::embed/embed-basic-test.js[]
 ----
 
-Mochaは `it` の仮引数に `done` という感じで指定してあげると、
-`done()` が呼ばれるまでテストケースが終了しなくなることで非同期のテストをサポートしています。
+このテストを `basic-test.js` というファイル名で作成し、
+先ほどインストールしたMochaでコマンドラインからテストを実行することが出来ます。
 
-Mochaでの非同期テストは以下のような流れになっています。
+[source,sh]
+----
+$ mocha basic-test.js
+----
+
+Mochaは `it` の仮引数に `done` のように指定してあげると、
+`done()` が呼ばれるまでテストの終了を待つことで非同期のテストをサポートしています。
+
+Mochaでの非同期テストは以下のような流れで実行されます。
 
 [source,javascript]
 [[callback-style-test]]
@@ -64,22 +78,22 @@ it("should use `done` for test", function (done) {
     }, 0);
 });
 ----
-<1> 非同期処理のコールバックを指定
-<2> `done` を呼ぶことでテストの終了を宣言
+<1> コールバックを使う非同期処理
+<2> `done` を呼ぶことでテストが終了する
 
 よく見かける形の書き方ですね。
 
 [[done-promise-test]]
 === `done` を使ったPromiseのテスト
 
-次に、Promiseのテストの方を見てみましょう。
+次に、同じく `done` を使ったPromiseのテストを書いてみましょう。
 
 [source,javascript]
 ----
 it("should use `done` for test?", function (done) {
-    var promise = Promise.resolve(1);// <1>
+    var promise = Promise.resolve(42);// <1>
     promise.then(function (value) {
-        assert(value === 1);
+        assert(value === 42);
         done();// <2>
     });
 });
@@ -99,7 +113,7 @@ promiseオブジェクトは常に非同期で処理されるため、テスト�
 
 [source,javascript]
 [[promise-assert-fail]]
-.間違ったテストの書き方
+.意図しない結果となるPromiseのテスト
 ----
 it("should use `done` for test?", function (done) {
     var promise = Promise.resolve();
@@ -120,14 +134,14 @@ image::img/promise-test-timeout.png[promise test timeout]
 テストフレームワークがそれをキャッチすることで、テストが失敗したと判断します。
 
 しかし、Promiseの場合は `.then` の中で行われた処理でエラーが発生しても、
-Promiseがそれをキャッチしてしまい、テストフレームワークまでエラーがthrowされません。
+Promiseがそれをキャッチしてしまい、テストフレームワークまでエラーが届きません。
 
-<<promise-assert-fail,`assert` が失敗してる例>>を改善して、
+<<promise-assert-fail, 意図しない結果となるPromiseのテスト>>を改善して、
 `assert` が失敗した場合にちゃんとテストが失敗となるようにしてみましょう。
 
 [source,javascript]
 [[promise-assert-fail-fixed]]
-.ちゃんとテストが失敗する例
+.意図通りにテストが失敗する例
 ----
 it("should use `done` for test?", function (done) {
     var promise = Promise.resolve();
