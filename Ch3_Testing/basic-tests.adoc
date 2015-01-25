@@ -17,7 +17,9 @@
 
 === Mochaとは
 
-ここでは、 http://mochajs.org/[Mocha]自体については詳しく解説しませんが、
+Mochaの公式サイト: http://mochajs.org/[http://mochajs.org/]
+
+ここでは、 Mocha自体については詳しく解説しませんが、
 MochaはNode.js製のテストフレームワークツールです。
 
 MochaはBDD,TDD,exportsのどれかのスタイルを選択でき、テストに使うアサーションメソッドも任意のライブラリと組み合わせて利用します。
@@ -56,14 +58,14 @@ include::embed/embed-basic-test.js[]
 ----
 
 このテストを `basic-test.js` というファイル名で作成した場合は、
-先ほどインストールしたMochaをコマンドラインで実行することでテストができます。
+先ほどインストールしたMochaでコマンドラインからテストすることができます。
 
 [source,sh]
 ----
 $ mocha basic-test.js
 ----
 
-Mochaは `it` の仮引数に `done` という感じで指定してあげると、
+Mochaは `it` の仮引数に `done` のように指定してあげると、
 `done()` が呼ばれるまでテストケースの終了を待つことで非同期のテストをサポートしています。
 
 Mochaでの非同期テストは以下のような流れで実行されます。
