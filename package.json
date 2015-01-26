@@ -45,7 +45,7 @@
     "mocha": "^2.0.1",
     "nock": "^0.57.0",
     "power-assert": "^0.10.0",
-    "promise-test-helper": "^0.2.0",
+    "promise-test-helper": "^0.2.1",
     "q": "^1.0.1",
     "q-io": "^1.11.0",
     "rel-to-abs": "^0.1.0",
