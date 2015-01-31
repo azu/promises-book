@@ -1,14 +1,17 @@
 # Promises Book [![Build Status](https://travis-ci.org/azu/promises-book.svg)](https://travis-ci.org/azu/promises-book) [![Gitter chat](https://badges.gitter.im/azu/promises-book.png)](https://gitter.im/azu/promises-book)
 
-Promisesについての薄い電子書籍です
+JavaScript Promiseについての薄い電子書籍です。
 
-[http://azu.github.io/promises-book/](http://azu.github.io/promises-book/ "Promises book") から閲覧することが出来ます。
+- ウェブ版: [http://azu.github.io/promises-book/](http://azu.github.io/promises-book/ "Promises book")
+- PDF版: [http://azu.github.io/promises-book/javascript-promise-book.pdf](http://azu.github.io/promises-book/javascript-promise-book.pdf)
+- おまけ(付録): [https://gumroad.com/l/javascript-promise](https://gumroad.com/l/javascript-promise "JavaScript Promiseの本 付録")
 
-[http://azu.github.io/promises-book/javascript-promise-book.pdf](http://azu.github.io/promises-book/javascript-promise-book.pdf) からPDF版をダウンロードすることが出来ます。
+寄付などがしたい方は、[付録を任意の値段で購入できる](https://gumroad.com/l/javascript-promise "JavaScript Promiseの本 付録")のでこちら代用して下さい。
 
-[https://gumroad.com/l/javascript-promise](https://gumroad.com/l/javascript-promise "JavaScript Promiseの本 付録") からおまけのPDFを無料また任意の値段でダウンロードすることが出来ます。
+This book has been released in :
 
-寄付などがしたい方は、[こちら](https://gumroad.com/l/javascript-promise "JavaScript Promiseの本 付録")で代用して下さい。
+- **Chinese**: [JavaScript Promise迷你书（中文版）](http://liubin.github.io/promises-book/)
+- **Korean**: [[한빛미디어 eBook\] JavaScript Promise（번역서）](http://www.hanbit.co.kr/ebook/look.html?isbn=9788968487293)
 
 ## Installation
 
