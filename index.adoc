@@ -20,6 +20,7 @@ icon:globe[2x] This book has been released in :
 - **Chinese**: http://liubin.github.io/promises-book/[JavaScript Promise迷你书（中文版）]
 - **Korean**: http://www.hanbit.co.kr/ebook/look.html?isbn=9788968487293[[한빛미디어 eBook\] JavaScript Promise（ 번역서）]
 
+'''
 
 ifeval::["{backend}" == "html5"]
 ++++
