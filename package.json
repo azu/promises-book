@@ -1,7 +1,7 @@
 {
   "name": "promises-book",
   "description": "Promises book(japanese).",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "homepage": "https://github.com/azu/promises-book",
   "repository": {
     "type": "git",
