@@ -63,9 +63,9 @@ include::embed/embed-mixed-onready.js[]
 <<mixed-onready.js>>ではDOMが読み込み済みかどうかで、
 コールバック関数が同期的か非同期的に呼び出されるのかが異なっています。
 
-onReadyを呼ぶ前にDOMが読み込みが完了している::
+onReadyを呼ぶ前にDOMの読み込みが完了している::
     同期的にコールバック関数が呼ばれる
-onReadyを呼ぶ前にDOMが読み込みが完了していない::
+onReadyを呼ぶ前にDOMの読み込みが完了していない::
     `DOMContentLoaded` のイベントハンドラとしてコールバック関数を設定する
 
 そのため、このコードは配置する場所によって、
