@@ -23,7 +23,6 @@ This book has been released in :
 
 ``` sh
 gem install asciidoctor coderay
-npm install -g gulp
 npm install
 make html
 open index.html
