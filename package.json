@@ -10,7 +10,7 @@
   "main": "index.js",
   "scripts": {
     "build-js": "gulp build-js",
-    "build-js-min": "gulp build-min-js",
+    "build-js-min": "gulp build-js-min",
     "embed": "gulp embed",
     "lint-html": "gulp lint-html",
     "test": "mocha ./Ch**/test/*.js"

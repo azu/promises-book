@@ -15,7 +15,7 @@ gulp.task("build-js", function () {
         .pipe(source("app.js"))
         .pipe(gulp.dest(destDir));
 });
-gulp.task("build-min-js", function () {
+gulp.task("build-js-min", function () {
     return browserify({
             debug: true
         })
