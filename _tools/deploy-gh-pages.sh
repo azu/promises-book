@@ -24,6 +24,7 @@ lastCommit=$(git log --oneline | head -n 1)
 echo "=COMMIT="
 echo "MESSAGE :" $lastCommit
 
-git add -A -f .
+git add -A .
+git add -f javascript-promise-book.pdf
 git commit -m "Travis build $TRAVIS_BUILD_NUMBER"
 git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" gh-pages > /dev/null
