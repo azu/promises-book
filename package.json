@@ -9,6 +9,10 @@
   },
   "main": "index.js",
   "scripts": {
+    "build-js": "gulp build-js",
+    "build-js-min": "gulp build-min-js",
+    "embed": "gulp embed",
+    "lint-html": "gulp lint-html",
     "test": "mocha ./Ch**/test/*.js"
   },
   "directories": {
@@ -33,7 +37,7 @@
     "esprima": "^2.0.0",
     "esprima-fb": "^4001.1.0-dev-harmony-fb",
     "fs-extra": "^0.16.3",
-    "gulp": "^3.6.2",
+    "gulp": "^3.8.11",
     "gulp-inlining-node-require": "0.0.3",
     "gulp-remove-use-strict": "0.0.2",
     "gulp-rename": "~1.2.0",

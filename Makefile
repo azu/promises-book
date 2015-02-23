@@ -7,19 +7,19 @@ all: clean html
 test:
 	@npm test
 	@make html
-	@gulp lint-html
+	@npm run lint-html
 
 html:
 	@echo "Generate HTML..."
-	@gulp embed
-	@gulp build-js
+	@npm run embed
+	@npm run build-js
 	@echo "Building asciidoc"
 	@./_tools/build.sh
 	@echo "Done! => ${OUTPUT_FILE}"
 
 pdf:
 	@echo "Generate PDF..."
-	@gulp embed
+	@npm run embed
 	@echo "Building asciidoc"
 	@asciidoctor -a lang=en -a bookversion=`node ./_tools/cli-book-version.js` \
 	-a icons=font -a source-highlighter=coderay --backend docbook \
@@ -29,7 +29,7 @@ pdf:
 
 pdf-note:
 	@echo "Generate PDF..."
-	@gulp embed
+	@npm run embed
 	@echo "Building asciidoc"
 	@asciidoctor -a lang=en -a icons=font -a source-highlighter=coderay --backend docbook \
 	-o javascript-promise-omake.xml Appendix-Note/readme.adoc

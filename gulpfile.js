@@ -52,7 +52,7 @@ gulp.task("embed", function () {
         .pipe(gulp.dest("./"));
 });
 gulp.task("lint-html", function (callback) {
-    global.Promise = require("ypromise");
+    require("ypromise");
     var File = require("./Ch4_AdvancedPromises/src/promise-chain/fs-promise-chain");
     var checkHTML = require("./test/html/missing-internal-link").checkInternalLinks;
 
