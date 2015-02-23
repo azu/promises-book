@@ -10,7 +10,6 @@ before_install:
 - gem --version
 - gem install asciidoctor
 - gem install coderay
-- npm install -g gulp
 - sudo apt-get install ttf-vlgothic
 script:
 - make test

@@ -16,7 +16,7 @@ fi
 git checkout -B gh-pages
 
 make html
-gulp build-min-js
+npm run build-min-js
 
 make pdf
 
