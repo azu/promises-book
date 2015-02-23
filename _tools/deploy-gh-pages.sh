@@ -18,7 +18,7 @@ lastCommit=$(git log --oneline | head -n 1)
 echo "=COMMIT="
 echo "MESSAGE :" $lastCommit
 
-git add -A .
+git add -A -f .
 git add -f index.html
 git add -f javascript-promise-book.pdf
 git commit -m "Travis build $TRAVIS_BUILD_NUMBER"
