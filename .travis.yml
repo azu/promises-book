@@ -14,6 +14,7 @@ before_install:
 script:
 - make test
 after_success:
+- rm .gitignore # ignore ignore
 - "./_tools/setup-git.sh"
 - make deploy
 env:
