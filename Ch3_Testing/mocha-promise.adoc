@@ -110,7 +110,7 @@ function mayBeRejected(){
 }
 it("should bad pattern", function () {
     return mayBeRejected().then(failTest).catch(function (error) {
-        assert.deepEqual(error.message === "woo");
+        assert(error.message === "woo");
     });
 });
 ----
