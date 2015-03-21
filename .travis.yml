@@ -6,7 +6,7 @@ node_js:
 - "0.12"
 cache:
   directories:
-    - ~/.gradle
+  - $HOME/.gradle
 before_install:
 - java -version
 - ruby --version

@@ -23,5 +23,5 @@ echo "=COMMIT="
 echo "MESSAGE :" $lastCommit
 
 git add -A .
-git commit -m "Travis build $TRAVIS_BUILD_NUMBER"
+git commit--quiet -m "Travis build $TRAVIS_BUILD_NUMBER"
 git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" gh-pages > /dev/null
