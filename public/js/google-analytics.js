@@ -13,17 +13,17 @@
 ga('create', 'UA-2184335-14', 'azu.github.io');
 ga('send', 'pageview');
 
-window.onload = function () {
-    var downloadButton = document.getElementById("download-pdf");
-    downloadButton.onclick = function (event) {
-        ga('send', 'event', 'button', 'click', '/javascript-promise-book.pdf', {
-            hitCallback: function () {
-                location.href = downloadButton.href;
-            }
-        });
-        event.preventDefault();
-    }
-};
+//window.onload = function () {
+//    var downloadButton = document.getElementById("download-pdf");
+//    downloadButton.onclick = function (event) {
+//        ga('send', 'event', 'button', 'click', '/javascript-promise-book.pdf', {
+//            hitCallback: function () {
+//                location.href = downloadButton.href;
+//            }
+//        });
+//        event.preventDefault();
+//    }
+//};
 window.addEventListener("hashchange", function hashChange() {
     var hash = location.hash;
     var header = document.querySelector(hash);
