@@ -30,12 +30,11 @@ open index.html
 
 ### PDFのビルド
 
-フォントには[VL Gothic Font Family](http://vlgothic.dicey.org/ "VL Gothic Font Family")を使っています。
-[VL Gothic Font Family](http://vlgothic.dicey.org/download.html "VL Gothic Font Family")からダウンロードしてインストールする必要があります。
+フォントには[源真ゴシック (げんしんゴシック) | 自家製フォント工房](http://jikasei.me/font/genshin/ "源真ゴシック (げんしんゴシック) | 自家製フォント工房")を利用しています。
 
 必要なもの
 
-* [VL Gothic Font Family](http://vlgothic.dicey.org/ "VL Gothic Font Family")
+* [源真ゴシック (げんしんゴシック) | 自家製フォント工房](http://jikasei.me/font/genshin/ "源真ゴシック (げんしんゴシック) | 自家製フォント工房")
 * Java
 
 ``` sh
