@@ -1,9 +1,12 @@
+sudo: false
 language: node_js
 rvm:
-- "2.1.2"
+- "2.2.0"
 node_js:
-- "0.10"
-cache: apt
+- "0.12"
+cache:
+  directories:
+    - ~/.gradle
 before_install:
 - java -version
 - ruby --version
@@ -13,8 +16,7 @@ before_install:
 script:
 - make test
 after_success:
-- rm .gitignore # ignore ignore
-- sudo apt-get install ttf-vlgothic # install fonts
+- rm .gitignore # ignore gitignore
 - "./_tools/setup-git.sh"
 - make deploy
 env:
