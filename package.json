@@ -32,7 +32,7 @@
   "devDependencies": {
     "brfs": "^1.2.0",
     "browserify": "^9.0.3",
-    "cheerio": "^0.18.0",
+    "cheerio": "^0.19.0",
     "espower-loader": "^0.10.0",
     "esprima": "^2.0.0",
     "esprima-fb": "^4001.1.0-dev-harmony-fb",
@@ -47,7 +47,7 @@
     "intelli-espower-loader": "^0.6.0",
     "minifyify": "^6.2.2",
     "mocha": "^2.0.1",
-    "nock": "^0.59.1",
+    "nock": "^1.2.1",
     "power-assert": "^0.10.0",
     "promise-test-helper": "^0.2.1",
     "q": "^1.0.1",
