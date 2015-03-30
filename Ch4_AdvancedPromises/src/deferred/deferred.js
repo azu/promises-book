@@ -6,9 +6,9 @@ function Deferred() {
     }.bind(this));
 }
 Deferred.prototype.resolve = function (value) {
-    this._resolve.call(this.promise, value);
+    this._resolve(value);
 };
 Deferred.prototype.reject = function (reason) {
-    this._reject.call(this.promise, reason);
+    this._reject(reason);
 };
 module.exports.Deferred = Deferred;
