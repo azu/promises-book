@@ -214,7 +214,7 @@ include::src/promise-chain/array-promise-chain.js[]
 ----
 
 ネイティブのArrayと `ArrayAsPromise` を使った場合の違いは
-<<array-promise-chain.js,上記のコード>>のテストを見てみるのが分かりやすいでしょう。
+<<array-promise-chain-test.js,下記のコード>>のテストを見てみるのが分かりやすいでしょう。
 
 [source,javascript]
 [[array-promise-chain-test.js]]
