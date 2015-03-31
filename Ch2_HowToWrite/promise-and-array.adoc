@@ -22,7 +22,8 @@ include::embed/embed-multiple-xhr-callback.js[]
 // 実行例
 main(function(error, results){
     if(error){
-        return console.error(error);
+        console.error(error);
+        return;
     }
     console.log(results);
 });

@@ -86,7 +86,8 @@ include::embed/embed-notification-callback.js[]
 // 第二引数は `Notification` に渡すオプションオブジェクト
 notifyMessage("Hi!", {}, function (error, notification) {
     if(error){
-        return console.error(error);
+        console.error(error);
+        return;
     }
     console.log(notification);// 通知のオブジェクト
 });

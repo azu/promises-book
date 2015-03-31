@@ -10,7 +10,8 @@ timeoutPromise(object.promise, 1000)
     catch(function (error) {
         if (error instanceof TimeoutError) {
             object.abort();
-            return console.log(error);
+            console.log(error);
+            return;
         }
         console.log("XHR Error :", error);
     });

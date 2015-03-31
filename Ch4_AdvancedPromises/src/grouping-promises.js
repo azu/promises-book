@@ -43,7 +43,8 @@ timeoutPromise(xhrDeferred.promise, 10)
     catch(function (error) {
         if (error.name === "timeOutError") {
             xhrDeferred.request.abort();
-            return console.log(error);
+            console.log(error);
+            return;
         }
         console.log("XHR Error :", error);
     });
