@@ -126,7 +126,7 @@ include::embed/embed-TimeoutError.js[]
 [source,javascript]
 ----
 var promise = new Promise(function(){
-    throw TimeoutError("timeout");
+    throw new TimeoutError("timeout");
 });
 
 promise.catch(function(error){
@@ -168,7 +168,7 @@ include::embed/embed-delay-race-cancel.js[]
 * XHRが時間内に取得出来た場合
 .. 通常のpromiseと同様に `then` で中身を取得する
 * タイムアウトとなった場合は
-.. `throw TimeoutError` されるので `catch` する
+.. `throw new TimeoutError` されるので `catch` する
 .. catchしたエラーオブジェクトが `TimeoutError` のものだったら `abort` を呼び出してXHRをキャンセルする
 
 これらの要素を全てまとめると次のように書けます。
