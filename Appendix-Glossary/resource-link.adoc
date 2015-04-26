@@ -1,8 +1,9 @@
 [[resouce-link]]
 = 参考サイト
 
-https://github.com/w3ctag/promises-guide[w3ctag/promises-guide]::
+https://github.com/w3ctag/promises-guide[w3ctag/promises-guide] link:http://www.hcn.zaq.ne.jp/___/WEB/promises-guide-ja.html[（日本語訳）]::
     Promisesのガイド - 概念的な説明はここから得たものが多い
+    
 
 https://github.com/domenic/promises-unwrapping[domenic/promises-unwrapping]::
     ES6 Promisesの仕様リポジトリ - issueを検索して得た経緯や情報も多い
