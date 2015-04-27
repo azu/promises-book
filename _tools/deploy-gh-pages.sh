@@ -12,11 +12,11 @@ if [ $TRAVIS_PULL_REQUEST != 'false' ]; then
 fi
 
 git checkout -B gh-pages
-
 make html
 npm run build-js-min
-
 make pdf
+
+${currentDir}/check-to-deploy.sh
 
 lastCommit=$(git log --oneline | head -n 1)
 echo "=COMMIT="

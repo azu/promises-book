@@ -37,7 +37,7 @@ pdf-note:
 	@echo "Done!"
 
 deploy:
-	@./_tools/check-to-deploy.sh && @./_tools/deploy-gh-pages.sh
+	@./_tools/deploy-gh-pages.sh
 
 clean:
 	@rm -f {OUTPUT_FILE} javascript-promise-*.pdf javascript-promise-*.xml
