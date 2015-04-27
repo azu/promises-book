@@ -8,10 +8,6 @@ if [ ! -e "${parentDir}/javascript-promise-book.pdf" ]; then
     echo "Not found javascript-promise-book.pdf"
     exit 1
 fi
-if [ ! -e "${parentDir}/javascript-promise-omake.pdf" ]; then
-    echo "Not found javascript-promise-omake.pdf"
-    exit 1
-fi
 if [ ! -e "${parentDir}/index.html" ]; then
     echo "Fail build index.html"
     exit 1
