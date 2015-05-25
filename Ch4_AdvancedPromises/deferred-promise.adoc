@@ -60,7 +60,7 @@ Promiseの状態を操作する特権的なメソッドというのは、
 promiseオブジェクトの状態をresolve、rejectすることができるメソッドで、
 通常のPromiseだとコンストラクタで渡した関数の中でしか操作する事が出来ません。
 
-Promiseで実装したものと見比べていきたいと思います。
+通常のPromiseで実装したものと見比べていきたいと思います。
 
 [role="executable"]
 [source,javascript]
@@ -78,7 +78,7 @@ getURL(URL).then(function onFulfilled(value){
 
 * Deferred の場合は全体がPromiseで囲まれていない
 ** 関数で囲んでないため、1段ネストが減っている
-** 逆にPromiseでのエラーハンドリングは行われていない
+** Promiseコンストラクタの中で処理が行われていないため、自動的に例外をキャッチしない
 
 逆に以下の部分は同じ事をやっています。
 
