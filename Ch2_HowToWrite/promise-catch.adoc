@@ -45,7 +45,7 @@ IE8以下はECMAScript 3の実装であるため、`catch` というプロパテ
 
 [NOTE]
 ====
-ECMAScript5でも予約語は http://es5.github.io/#x7.6[Identifier] 、つまり変数名、関数名には利用することが出来ません。
+ECMAScript 5でも予約語は http://es5.github.io/#x7.6[Identifier] 、つまり変数名、関数名には利用することが出来ません。
 `for` という変数が定義できてしまうと `for` 文との区別ができなくなってしまいます。
 プロパティの場合は `object.for` と `for` 文の区別はできるので、少し考えてみると自然な動作ですね。
 ====
