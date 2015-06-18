@@ -58,8 +58,6 @@ ifeval::["{backend}" == "html5"]
 
 この書籍を読むにあたっての推奨ブラウザとしてはネイティブでPromiseをサポートしているブラウザとなっています。
 
-FirefoxとChromeなどはPromiseをサポートしています。
-
 また、推奨環境ではありませんがiOSなどのモバイル端末でも閲覧は可能です。
 
 ifeval::["{backend}" == "html5"]
