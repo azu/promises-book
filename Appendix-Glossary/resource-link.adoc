@@ -16,3 +16,6 @@ http://www.html5rocks.com/ja/tutorials/es6/promises/[JavaScript Promises: There 
 
 http://d.hatena.ne.jp/jovi0608/20140319/1395199285[Node.jsにPromiseが再びやって来た！ - ぼちぼち日記]::
     Node.jsとPromiseの記事 - __thenable__について参考にした
+
+http://exploringjs.com/[Exploring ES6: Upgrade to the next version of JavaScript]::
+    ECMAScript 6全般について詳しく書かれている書籍
