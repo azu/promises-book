@@ -3,7 +3,7 @@
 
 == 書籍の目的
 
-この書籍は現在策定中の<<es6-promises,ECMAScript 6 Promises>>という仕様を中心にし、
+この書籍はJavaScript標準仕様の<<es6-promises,ECMAScript 6 Promises>>という仕様を中心にし、
 JavaScriptにおけるPromiseについて学ぶことを目的とした書籍です。
 
 この書籍を読むことで学べる事として次の3つを目標としています
@@ -13,13 +13,12 @@ JavaScriptにおけるPromiseについて学ぶことを目的とした書籍で
 - ES6 Promisesを元に基本をよく学び、より発展した形を自分で形成できるようになる事
 
 この書籍では、先程も述べたように<<es6-promises,ES6 Promises>>、
-つまりJavaScriptの標準仕様をベースとしたPromiseについて書かれています。
+つまりJavaScriptの標準仕様(ECMAScript)をベースとしたPromiseについて書かれています。
 
-そのため、FirefoxやChromeなど先行実装しているブラウザでは、ライブラリを使うこと無く利用できる機能であり、
+そのため、FirefoxやChromeなどモダンなブラウザでは、ライブラリを使うこと無く利用できる機能であり、
 またES6 Promisesは元が<<promises-aplus,Promises/A+>>というコミュニティベースの仕様であるため、多くの実装ライブラリがあります。
 
-ブラウザネイティブの機能 または ライブラリを使うことで今すぐ利用できるPromiseについて
-基本的なAPIから学んでいきます。
+ブラウザネイティブの機能、またはライブラリを使うことで今すぐ利用できるPromiseについて基本的なAPIから学んでいきます。
 その中でPromiseの得意/不得意を知り、Promiseを活用したJavaScriptを書けるようになることを目的としています。
 
 == 本書を読むにあたって
