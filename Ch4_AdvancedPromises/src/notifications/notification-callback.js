@@ -1,9 +1,13 @@
 "use strict";
 function notifyMessage(message, options, callback) {
-    if (Notification && Notification.permission === "granted") {
+    if (typeof Notification === "undefined") {
+        callback(new Error("doesn't support Notification API"));
+        return;
+    }
+    if (Notification.permission === "granted") {
         var notification = new Notification(message, options);
         callback(null, notification);
-    } else if (Notification.requestPermission) {
+    } else {
         Notification.requestPermission(function (status) {
             if (Notification.permission !== status) {
                 Notification.permission = status;
@@ -15,8 +19,6 @@ function notifyMessage(message, options, callback) {
                 callback(new Error("user denied"));
             }
         });
-    } else {
-        callback(new Error("doesn't support Notification API"));
     }
 }
 
