@@ -14,10 +14,10 @@ describe("notification-thenable", function () {
         delete global.Notification;
     });
     context("when already allowed permission", function () {
-        before(function () {
+        beforeEach(function () {
             MockNotification.permission = "granted";
         });
-        after(function () {
+        afterEach(function () {
             delete MockNotification.permission;
         });
         it("should return Notification", function () {
@@ -28,8 +28,8 @@ describe("notification-thenable", function () {
         });
     });
     context("when doesn't support Notification", function () {
-        before(function () {
-            global.Notification = null;
+        beforeEach(function () {
+            global.Notification = undefined;
         });
         it("should catch error", function () {
             var promise = Promise.resolve(notifyMessageAsThenable("message"));
@@ -40,12 +40,12 @@ describe("notification-thenable", function () {
         });
     });
     context("when user allow permission", function () {
-        before(function () {
+        beforeEach(function () {
             MockNotification.requestPermission = function (callback) {
                 callback("granted");
             };
         });
-        after(function () {
+        afterEach(function () {
             delete MockNotification.permission;
             delete MockNotification.requestPermission;
         });
@@ -58,12 +58,12 @@ describe("notification-thenable", function () {
     });
 
     context("when user deny permission", function () {
-        before(function () {
+        beforeEach(function () {
             MockNotification.requestPermission = function (callback) {
                 callback("denied");
             };
         });
-        after(function () {
+        afterEach(function () {
             delete MockNotification.permission;
             delete MockNotification.requestPermission;
         });
