@@ -99,7 +99,7 @@ Fulfilled::
 Rejected::
     reject(失敗)した時。この時 `onRejected`  が呼ばれる
 Pending::
-    resolveまたはrejectではない時。つまりpromiseオブジェクトが作成された初期状態等が該当する
+    FulfilledまたはRejectedではない時。つまりpromiseオブジェクトが作成された初期状態等が該当する
 
 これらの状態は<<es6-promises,ES6 Promises>>の仕様で定められている名前です。
 この状態をプログラムで直接触る方法は用意されていないため、書く際には余り気にしなくても問題ないですが、
