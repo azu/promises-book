@@ -94,20 +94,18 @@ Promiseの処理の流れが少しわかった所で、少しPromiseの状態に
 
 `new Promise` でインスタンス化したpromiseオブジェクトには以下の3つの状態が存在します。
 
-"has-resolution" - Fulfilled::
+Fulfilled::
     resolve(成功)した時。この時 `onFulfilled` が呼ばれる
-"has-rejection"  - Rejected::
+Rejected::
     reject(失敗)した時。この時 `onRejected`  が呼ばれる
-"unresolved" - Pending::
+Pending::
     resolveまたはrejectではない時。つまりpromiseオブジェクトが作成された初期状態等が該当する
 
-読み方ですが、
-左が<<es6-promises,ES6 Promises>>の仕様で定められている名前で、
-右が<<promises-aplus, Promises/A+>>で登場する状態の名前になっています。
+これらの状態は<<es6-promises,ES6 Promises>>の仕様で定められている名前です。
+この状態をプログラムで直接触る方法は用意されていないため、書く際には余り気にしなくても問題ないですが、
+Promiseについて理解するのに役に立ちます。
 
-基本的にこの状態をプログラムで直接触る事はないため、名前自体は余り気にしなくても問題ないです。
-この書籍では、 http://promises-aplus.github.io/promises-spec/[Promises/A+] の __Pending__、__Fulfilled__ 、__Rejected__
-を用いて解説していきます。
+この書籍では、__Pending__、__Fulfilled__ 、__Rejected__ の状態を用いて解説していきます。
 
 .promise states
 image::img/promise-states.png[promise-states]
