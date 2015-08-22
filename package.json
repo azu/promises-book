@@ -44,7 +44,7 @@
     "handlebars": "^3.0.0",
     "http-echo": "0.0.2",
     "inlining-node-require": "^0.1.0",
-    "intelli-espower-loader": "^0.7.0",
+    "intelli-espower-loader": "^1.0.0",
     "minifyify": "^7.0.1",
     "mocha": "^2.0.1",
     "nock": "^2.6.0",
