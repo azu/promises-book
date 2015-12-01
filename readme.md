@@ -50,7 +50,7 @@ open javascript-promise-book.pdf
 
 ``` sh
 gem install specific_install
-gem specific_install -l https://github.com/opendevise/asciidoctor-epub3
+gem specific_install -l https://github.com/asciidoctor/asciidoctor-epub3
 asciidoctor-epub3 -D output index.adoc
 ```
 
