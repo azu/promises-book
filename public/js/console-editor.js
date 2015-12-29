@@ -3,7 +3,7 @@
  * LICENSE : MIT
  */
 "use strict";
-var Promise = require("ypromise");
+var Promise = require("native-promise-only");
 module.exports.initialize = function () {
     var consoleUI = require("codemirror-console-ui");
     consoleUI.setUserContext({
