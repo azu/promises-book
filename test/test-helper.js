@@ -3,10 +3,7 @@
  * LICENSE : MIT
  */
 "use strict";
-if (!global.Promise) {
-    global.Promise = require("ypromise");
-}
-
+global.Promise = require("native-promise-only");
 global.shouldFulfilled = require("promise-test-helper").shouldFulfilled;
 global.shouldRejected = require("promise-test-helper").shouldRejected;
 

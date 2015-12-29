@@ -2,7 +2,7 @@
 
 PromisesはECMAScriptである事を元に進めるが、現実的に非同期な処理がECMAScriptには少ないのでDOM APIも使用する。
 
-Promisesが実装されていない環境もあるため、[ypromise](https://github.com/yahoo/ypromise "ypromise")をPolyfillとして利用する。
+Promisesが実装されていない環境もあるため、[native-promise-only](https://github.com/getify/native-promise-only/ "native-promise-only")をPolyfillとして利用する。
 
 ## プロジェクト構造
 
