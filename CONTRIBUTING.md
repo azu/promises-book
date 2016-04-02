@@ -102,13 +102,59 @@ Asciidocでこの書籍は書かれているが、[Asciidoctor](http://asciidoct
 
 - [Asciidoctor Documentation | Asciidoctor](http://asciidoctor.org/docs/ "Asciidoctor Documentation | Asciidoctor")
 
-## Gitのコミットメッセージ
+## Git コミットメッセージ
 
-コミットメッセージのルールは以下のルールに基本的には従う。
+AngularJSのGit Commit Guidelinesをベースとする。
 
-* [conventional-changelog/CONVENTIONS.md at master · ajoslin/conventional-changelog](https://github.com/ajoslin/conventional-changelog/blob/master/CONVENTIONS.md "conventional-changelog/CONVENTIONS.md at master · ajoslin/conventional-changelog") 
+- [conventional-changelog/angular.md at master · ajoslin/conventional-changelog](https://github.com/ajoslin/conventional-changelog/blob/master/conventions/angular.md "conventional-changelog/angular.md at master · ajoslin/conventional-changelog")
 
-[CHANGELOG.md](CHANGELOG.md) を自動生成するために設けているルールである。
+以下のような形で1行目に概要、3行目から本文、最後に関連するIssue(任意)を書く。
+
+```
+feat(ngInclude): add template url parameter to events
+
+The `src` (i.e. the url of the template to load) is now provided to the
+`$includeContentRequested`, `$includeContentLoaded` and `$includeContentError`
+events.
+
+Closes #8453
+Closes #8454
+```
+
+
+```
+                         scope        commit title
+
+        commit type       /                /      
+                \        |                |
+                 feat(ngInclude): add template url parameter to events
+
+        body ->  The 'src` (i.e. the url of the template to load) is now provided to the
+                 `$includeContentRequested`, `$includeContentLoaded` and `$includeContentError`
+                 events.
+
+ referenced  ->  Closes #8453
+ issues          Closes #8454
+```
+
+commit typeには以下のような種類がある。
+
+- `BREAKING CHANGE:` 破壊的な変更 - メジャーアップデートが必要
+- `feat:` 新しい機能の追加 - マイナーアップデートが必要
+- `fix:` リリースノートに含めるような修正 - パッチアップデートが必要
+- `refactor:` リファクタリング
+- `style:` コードスタイル、スペースの調整など
+- `test:` テストの追加、修正
+- `chore:` その他
+
+1行目の`feat`や`fix`といったcommit typeは、迷ったらとりあえず`chore`と書いて、`scope`も省略して問題ないので、以下のような形でも問題ない。
+
+```
+chore: コミットメッセージ
+```
+
+
+[Releases · azu/promises-book](https://github.com/azu/promises-book/releases "Releases · azu/promises-book") を自動生成するために設けているルールである。
 
 `feat`, `write`, `fix`, `docs` という属性がCHANGELOGの対象になっている。
 
