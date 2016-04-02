@@ -8,7 +8,7 @@
 
 先ほどの例の `getURL` はXHRによる通信を抽象化したpromiseオブジェクトを返しています。
 `Promise.all` に通信を抽象化したpromiseオブジェクトの配列を渡すことで、
-全ての通信が完了(FulFilledまたRejected)した時に、次の `.then` を呼び出すことが出来ます。
+全ての通信が完了(FulFilledまたはRejected)した時に、次の `.then` を呼び出すことが出来ます。
 
 [role="executable"]
 [source,javascript]
