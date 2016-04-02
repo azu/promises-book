@@ -102,7 +102,7 @@ Asciidocでこの書籍は書かれているが、[Asciidoctor](http://asciidoct
 
 - [Asciidoctor Documentation | Asciidoctor](http://asciidoctor.org/docs/ "Asciidoctor Documentation | Asciidoctor")
 
-## Git コミットメッセージ
+## Gitのコミットメッセージ
 
 AngularJSのGit Commit Guidelinesをベースとする。
 
@@ -156,8 +156,8 @@ chore: コミットメッセージ
 
 [Releases · azu/promises-book](https://github.com/azu/promises-book/releases "Releases · azu/promises-book") を自動生成するために設けているルールである。
 
-`feat`, `write`, `fix`, `docs` という属性がCHANGELOGの対象になっている。
+`BREAKING CHANGE`, `feat`, `fix` というcommit typeがCHANGELOGに自動的に含まれる。
 
-pull-requestの場合は、マージ時にコミットメッセージを入れられるため、それぞれのコミットで細かく気にする必要はない。
+Pull Requestの場合は、マージ時にコミットメッセージを入れられるため、それぞれのコミットで細かく気にする必要はない。
 (わからない場合はとりあえず`chore`を使うか、ルール外のコミットメッセージをいれてもよい)
 
