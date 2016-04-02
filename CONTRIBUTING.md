@@ -156,7 +156,7 @@ chore: コミットメッセージ
 
 [Releases · azu/promises-book](https://github.com/azu/promises-book/releases "Releases · azu/promises-book") を自動生成するために設けているルールである。
 
-`BREAKING CHANGE`, `feat`, `fix` というcommit typeがCHANGELOGに自動的に含まれる。
+`BREAKING CHANGE`, `feat`, `fix` というcommit typeがリリースノートに自動的に含まれる。
 
 Pull Requestの場合は、マージ時にコミットメッセージを入れられるため、それぞれのコミットで細かく気にする必要はない。
 (わからない場合はとりあえず`chore`を使うか、ルール外のコミットメッセージをいれてもよい)
