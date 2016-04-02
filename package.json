@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "codemirror": "^5.0.0",
-    "codemirror-console-ui": "^1.0.0",
+    "codemirror-console-ui": "^1.0.1",
     "native-promise-only": "^0.8.1",
     "w3c-xmlhttprequest": "^2.1.0",
     "ypromise": "^0.3.0"
