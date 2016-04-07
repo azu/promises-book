@@ -90,6 +90,8 @@ https://api.jquery.com/jQuery.ajax/[jQuery.ajax()]の返り値も `.then` とい
 
 なお、jQuery 3.0からは、 http://api.jquery.com/category/deferred-object/[Deferred Object]や http://api.jquery.com/jQuery.ajax/#jqXHR[jqXHR Object]が<<promises-aplus,Promises/A+>>準拠になる予定です。
 
+* https://blog.jquery.com/2016/01/14/jquery-3-0-beta-released/[jQuery 3.0 Beta Released | Official jQuery Blog]
+
 ====
 
 `Promise.resolve` は共通の挙動である `then` だけを利用して、
