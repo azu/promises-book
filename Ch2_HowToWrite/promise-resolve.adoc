@@ -87,6 +87,9 @@ https://api.jquery.com/jQuery.ajax/[jQuery.ajax()]の返り値も `.then` とい
 * http://www.html5rocks.com/ja/tutorials/es6/promises/#toc-lib-compatibility[JavaScript Promises: There and back again - HTML5 Rocks]
 * http://domenic.me/2012/10/14/youre-missing-the-point-of-promises/[You&#39;re Missing the Point of Promises]
 * https://twitter.com/hirano_y_aa/status/398851806383452160[https://twitter.com/hirano_y_aa/status/398851806383452160]
+
+なお、jQuery 3.0からは、 http://api.jquery.com/category/deferred-object/[Deferred Object]や http://api.jquery.com/jQuery.ajax/#jqXHR[jqXHR Object]が<<promises-aplus,Promises/A+>>準拠になる予定です。
+
 ====
 
 `Promise.resolve` は共通の挙動である `then` だけを利用して、
