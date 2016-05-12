@@ -2,8 +2,8 @@
 azu
 :author:      azu
 :authorinitials: azu
-:keywords:    JavaScript, ECMAScript, Promise, 日本語, 使い方, チュートリアル, リファレンス
-:description: JavaScriptのPromiseを使った非同期処理の書き方、テスト、アンチパターンについて解説しています
+:keywords:    JavaScript, ECMAScript, Promise, 仕様, 日本語, 使い方, チュートリアル, リファレンス, 無料
+:description: JavaScriptのPromiseを使った非同期処理の書き方、テスト、アンチパターンについて解説した無料の電子書籍
 :revnumber:   {bookversion}
 :homepage:    http://azu.github.io/promises-book/
 :source:      https://github.com/azu/promises-book
