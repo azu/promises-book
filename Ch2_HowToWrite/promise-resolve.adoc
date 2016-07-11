@@ -90,7 +90,7 @@ https://api.jquery.com/jQuery.ajax/[jQuery.ajax()]の返り値も `.then` とい
 なお、jQuery 3.0からは、 http://api.jquery.com/category/deferred-object/[Deferred Object]や http://api.jquery.com/jQuery.ajax/#jqXHR[jqXHR Object]が<<promises-aplus,Promises/A+>>準拠へと変更されています。
 そのため、上記で紹介されている `.then` の挙動が異なる問題は解消されています。
 
-* http://blog.jquery.com/2016/06/09/jquery-3-0-final-released/[jQuery 3.0 Final Released! | Official jQuery Blog]
+* https://blog.jquery.com/2016/06/09/jquery-3-0-final-released/[jQuery 3.0 Final Released! | Official jQuery Blog]
 
 ====
 
