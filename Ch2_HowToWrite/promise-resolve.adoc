@@ -77,8 +77,8 @@ promise.then(function(value){
 https://api.jquery.com/jQuery.ajax/[jQuery.ajax()]の返り値も `.then` というメソッドを持った http://api.jquery.com/jQuery.ajax/#jqXHR[jqXHR Object]で、
 このオブジェクトは http://api.jquery.com/category/deferred-object/[Deferred Object] のメソッドやプロパティ等を継承しています。
 
-しかし、このDeferred Objectは<<promises-aplus,Promises/A+>>や<<es6-promises,ES6 Promises>>に準拠したものではないため、
-変換できたように見えて一部欠損する情報がでてしまうという問題があります。
+しかし、jQuery 2.x以下では、このDeferred Objectは<<promises-aplus,Promises/A+>>や<<es6-promises,ES6 Promises>>に準拠したものではありません。
+そのため、Deferred Objectをpromiseオブジェクトへ変換できたように見えて、一部欠損する情報がでてしまうという問題があります。
 
 この問題はjQueryの http://api.jquery.com/category/deferred-object/[Deferred Object] の `then` の挙動が違うために発生します。
 
@@ -86,11 +86,11 @@ https://api.jquery.com/jQuery.ajax/[jQuery.ajax()]の返り値も `.then` とい
 
 * http://www.html5rocks.com/ja/tutorials/es6/promises/#toc-lib-compatibility[JavaScript Promises: There and back again - HTML5 Rocks]
 * http://domenic.me/2012/10/14/youre-missing-the-point-of-promises/[You&#39;re Missing the Point of Promises]
-* https://twitter.com/hirano_y_aa/status/398851806383452160[https://twitter.com/hirano_y_aa/status/398851806383452160]
 
-なお、jQuery 3.0からは、 http://api.jquery.com/category/deferred-object/[Deferred Object]や http://api.jquery.com/jQuery.ajax/#jqXHR[jqXHR Object]が<<promises-aplus,Promises/A+>>準拠になる予定です。
+なお、jQuery 3.0からは、 http://api.jquery.com/category/deferred-object/[Deferred Object]や http://api.jquery.com/jQuery.ajax/#jqXHR[jqXHR Object]が<<promises-aplus,Promises/A+>>準拠へと変更されています。
+そのため、上記で紹介されている `.then` の挙動が異なる問題は解消されています。
 
-* https://blog.jquery.com/2016/01/14/jquery-3-0-beta-released/[jQuery 3.0 Beta Released | Official jQuery Blog]
+* http://blog.jquery.com/2016/06/09/jquery-3-0-final-released/[jQuery 3.0 Final Released! | Official jQuery Blog]
 
 ====
 
