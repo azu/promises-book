@@ -13,6 +13,8 @@
     "build-js-min": "gulp build-js-min",
     "embed": "gulp embed",
     "lint-html": "gulp lint-html",
+    "textlnt": "textlint -f pretty-error Appendix-*/ Ch*/",
+    "textlnt:fix": "textlint --fix Appendix-*/ Ch*/",
     "test": "mocha ./Ch**/test/*.js"
   },
   "directories": {
@@ -56,6 +58,9 @@
     "rel-to-abs": "^0.1.0",
     "remove-use-strict": "0.0.5",
     "sinon": "^1.9.0",
+    "textlint": "^7.1.0",
+    "textlint-plugin-asciidoc-loose": "^1.0.1",
+    "textlint-rule-prh": "^3.1.1",
     "through2": "^2.0.0",
     "vinyl-source-stream": "^1.0.0",
     "watchify": "^3.2.2"
