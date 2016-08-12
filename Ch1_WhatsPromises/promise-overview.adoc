@@ -84,7 +84,7 @@ include::embed/embed-promise-workflow.js[]
 asyncFunction().then(function (value) {
     console.log(value);
 }, function (error) {
-    console.log(error);
+    console.error(error);
 });
 ----
 

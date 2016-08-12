@@ -20,7 +20,7 @@ include::embed/embed-promise-all-xhr.js[]
 main().then(function (value) {
     console.log(value);
 }).catch(function(error){
-    console.log(error);
+    console.error(error);
 });
 ----
 

@@ -14,7 +14,7 @@ aPromise.then(function taskA(value){
 }).then(function taskB(value){
 // task B
 }).catch(function onRejected(error){
-    console.log(error);
+    console.error(error);
 });
 ----
 
