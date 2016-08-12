@@ -48,7 +48,7 @@ thenableの場合は `.then` というメソッドを持ってるオブジェク
 thenableなオブジェクトがもつ `then` は、Promiseのもつ `then` と同じような挙動を期待していて、
 thenableなオブジェクトがもつ元々の `then` を上手く利用できるようにしpromiseオブジェクトに変換するという仕組みです。
 
-どういうものがthenableなのかというと、分かりやすい例では
+どのようなものがthenableなのかというと、分かりやすい例では
 https://api.jquery.com/jQuery.ajax/[jQuery.ajax()]の返り値もthenableです。
 
 `jQuery.ajax()` の返り値は http://api.jquery.com/jQuery.ajax/#jqXHR[jqXHR Object] というもので、
