@@ -8,6 +8,7 @@ test:
 	@npm test
 	@make html
 	@npm run lint-html
+	@npm run textlint
 
 html:
 	@echo "Generate HTML..."
