@@ -5,7 +5,7 @@
 
 === Deferredとは何か
 
-Deferredという単語はPromiseと同じコンテキストで聞いた事があるかもしれません。
+Deferredという単語はPromiseと同じコンテキストで聞いたことがあるかもしれません。
 有名な所だと http://api.jquery.com/category/deferred-object/[jQuery.Deferred] や http://cho45.stfuawsc.com/jsdeferred/[JSDeferred] 等があげられるでしょう。
 
 DeferredはPromiseと違い、共通の仕様があるわけではなく、各ライブラリがそのような目的の実装をそう呼んでいます。
@@ -58,7 +58,7 @@ getURL(URL).then(function onFulfilled(value){
 
 Promiseの状態を操作する特権的なメソッドというのは、
 promiseオブジェクトの状態をresolve、rejectすることができるメソッドで、
-通常のPromiseだとコンストラクタで渡した関数の中でしか操作する事が出来ません。
+通常のPromiseだとコンストラクタで渡した関数の中でしか操作することができません。
 
 通常のPromiseで実装したものと見比べていきたいと思います。
 
@@ -74,13 +74,13 @@ getURL(URL).then(function onFulfilled(value){
 }).catch(console.error.bind(console));
 ----
 
-2つの `getURL` を見比べて見ると以下のような違いがある事が分かります。
+2つの `getURL` を見比べて見ると以下のような違いがあることが分かります。
 
 * Deferred の場合は全体がPromiseで囲まれていない
 ** 関数で囲んでないため、1段ネストが減っている
 ** Promiseコンストラクタの中で処理が行われていないため、自動的に例外をキャッチしない
 
-逆に以下の部分は同じ事をやっています。
+逆に以下の部分は同じことをやっています。
 
 * 全体的な処理の流れ
 ** `resolve`、`reject` を呼ぶタイミング
@@ -89,7 +89,7 @@ getURL(URL).then(function onFulfilled(value){
 このDeferredはPromiseを持っているため、大きな流れは同じですが、
 Deferredには特権的なメソッドを持っていることや自分で流れを制御する裁量が大きいことが分かります。
 
-例えば、Promiseの場合はコンストラクタの中に処理を書くことが通例なので、
+たとえば、Promiseの場合はコンストラクタの中に処理を書くことが通例なので、
 `resolve`、`reject` を呼ぶタイミングが大体みて分かります。
 
 [source,javascript]
@@ -116,7 +116,7 @@ Deferredはまだ処理が終わってないという状態や操作を抽象化
 
 言い換えると、
 Promiseはこの値は将来的に正常な値(FulFilled)か異常な値(Rejected)が入るというものを予約したオブジェクトなのに対して、
-Deferredはまだ処理が終わってないという事を表すオブジェクトで、
+Deferredはまだ処理が終わってないということを表すオブジェクトで、
 処理が終わった時の結果を取得する機構(Promise)に加えて処理を進める機構をもったものといえるかもしれません。
 
 より詳しくDeferredについて知りたい人は以下を参照するといいでしょう。

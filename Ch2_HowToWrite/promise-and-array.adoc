@@ -1,12 +1,12 @@
 [[ch2-promise-and-array]]
 == Promiseと配列
 
-ここまでで、promiseオブジェクトが FulFilled または Rejected となった時の処理は <<promise.then,`.then`>> と <<promise.catch,`.catch`>> で登録出来る事を学びました。
+ここまでで、promiseオブジェクトが FulFilled または Rejected となった時の処理は <<promise.then,`.then`>> と <<promise.catch,`.catch`>> で登録できることを学びました。
 
-一つのpromiseオブジェクトなら、そのpromiseオブジェクトに対して処理を書けば良いですが、
+一つのpromiseオブジェクトなら、そのpromiseオブジェクトに対して処理を書けばよいですが、
 複数のpromiseオブジェクトが全てFulFilledとなった時の処理を書く場合はどうすればよいでしょうか?
 
-例えば、複数のXHR(非同期処理)が全て終わった後に、何かをしたいという事例を考えてみます。
+たとえば、複数のXHR(非同期処理)が全て終わった後に、何かをしたいという事例を考えてみます。
 
 少しイメージしにくいので、
 まずは、通常のコールバックスタイルを使って複数のXHRを行う以下のようなコードを見てみます。
@@ -53,7 +53,7 @@ function bindJSONParse(error, value){
 * ネストを深くしないために、requestを扱う関数が必要
 * コールバックがたくさんでてくる
 
-次は、`Promise#then` を使って同様の事をしてみたいと思います。
+次は、`Promise#then` を使って同様のことをしてみたいと思います。
 
 === Promise#thenのみで複数の非同期処理
 
@@ -76,7 +76,7 @@ main().then(function (value) {
 });
 ----
 
-<<multiple-xhr-callback.js, コールバックスタイル>>と比較してみると次の事がわかります。
+<<multiple-xhr-callback.js, コールバックスタイル>>と比較してみると次のことがわかります。
 
 * `JSON.parse` をそのまま使っている
 * `main()` はpromiseオブジェクトを返している

@@ -1,9 +1,17 @@
+os:
+- linux
 sudo: false
 language: node_js
 rvm:
 - "2.2.0"
 node_js:
 - "stable"
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - g++-4.8
 cache:
   directories:
   - node_modules
@@ -12,8 +20,11 @@ before_install:
 - java -version
 - ruby --version
 - gem --version
+install:
+- export CXX=g++-4.8
 - gem install asciidoctor
 - gem install coderay
+- npm install
 script:
 - make test
 after_success:

@@ -11,7 +11,7 @@ function asyncFunction() {
 asyncFunction().then(function (value) {
     console.log(value); // => 'Async Hello world'
 }).catch(function (error) {
-    console.log(error);
+    console.error(error);
 });
 
 module.exports = asyncFunction;

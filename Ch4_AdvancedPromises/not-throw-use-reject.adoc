@@ -20,7 +20,7 @@ promise.catch(function(error){
 このように書いても動作的には問題ありませんが、<<promise-states,promiseオブジェクトの状態>>をRejectedにしたい場合は
 `reject` という与えられた関数を呼び出すのが一般的です。
 
-先ほどのコードは以下のように書くことが出来ます。
+先ほどのコードは以下のように書くことができます。
 
 [role="executable"]
 [source,javascript]
@@ -38,11 +38,11 @@ promise.catch(function(error){
 === なぜrejectした方がいいのか
 
 そもそも、promiseオブジェクトの状態をRejectedにしたい場合に、
-何故 `throw` ではなく `reject` した方がいいのでしょうか?
+なぜ `throw` ではなく `reject` した方がいいのでしょうか?
 
 ひとつは `throw` が意図したものか、それとも本当に**例外**なのか区別が難しくなってしまうことにあります。
 
-例えば、Chrome等の開発者ツールには例外が発生した時に、
+たとえば、Chrome等の開発者ツールには例外が発生した時に、
 デバッガーが自動でbreakする機能が用意されています。
 
 .Pause On Caught Exceptions
@@ -90,14 +90,14 @@ Promiseを使ったタイムアウト処理の実装については <<race-delay
 ここで少し `then` の挙動について思い出してみましょう。
 
 `then` に登録するコールバック関数では値を `return` することができます。
-この時returnした値が、次の `then` や `catch` のコールバックに渡されます。
+このときreturnした値が、次の `then` や `catch` のコールバックに渡されます。
 
-また、returnするものはプリミティブな値に限らずオブジェクト、そしてpromiseオブジェクトも返す事が出来ます。
+また、returnするものはプリミティブな値に限らずオブジェクト、そしてpromiseオブジェクトも返すことができます。
 
 // TODO 仕様的な解説 - PromiseReactionTask
 
-この時、returnしたものがpromiseオブジェクトである場合、そのpromiseオブジェクトの状態によって、
-次の `then` に登録されたonFulfilledとonRejectedのうち、どちらが呼ばれるかを決めることが出来ます。
+このとき、returnしたものがpromiseオブジェクトである場合、そのpromiseオブジェクトの状態によって、
+次の `then` に登録されたonFulfilledとonRejectedのうち、どちらが呼ばれるかを決めることができます。
 
 [source,javascript]
 ----
@@ -112,7 +112,7 @@ promise.then(function () {
 <1> 次に呼び出されるthenのコールバックはpromiseオブジェクトの状態によって決定される
 
 つまり、この `retPromise` がRejectedになった場合は、`onRejected` が呼び出されるので、
-`throw` を使わなくても `then` の中でrejectすることが出来ます。
+`throw` を使わなくても `then` の中でrejectすることができます。
 
 [role="executable"]
 [source,javascript]
@@ -127,7 +127,7 @@ promise.then(function () {
 }).catch(onRejected);
 ----
 
-これは、<<Promise.reject>> を使うことでもっと簡潔に書くことが出来ます。
+これは、<<Promise.reject>> を使うことでもっと簡潔に書くことができます。
 
 [role="executable"]
 [source,javascript]
@@ -146,7 +146,7 @@ promise.then(function () {
 * `throw` ではなくて `reject` した方が安全
 * `then` の中でも `reject` する方法
 
-中々使いどころが多くはないかもしれませんが、安易に `throw` してしまうよりはいい事が多いので、
+中々使いどころが多くはないかもしれませんが、安易に `throw` してしまうよりはいいことが多いので、
 覚えておくといいでしょう。
 
 これを利用した具体的な例としては、

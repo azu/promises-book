@@ -6,7 +6,7 @@ function taskB() {
     console.log("Task B");// 呼ばれない
 }
 function onRejected(error) {
-    console.log(error);// => "throw Error @ Task A"
+    console.error(error);// => "throw Error @ Task A"
 }
 function finalTask() {
     console.log("Final Task");

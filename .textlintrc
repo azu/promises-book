@@ -1,0 +1,13 @@
+{
+  "plugins": [
+    "asciidoc-loose"
+  ],
+  "filters": {},
+  "rules": {
+    "prh": {
+      "rulePaths": [
+        "./prh.yml"
+      ]
+    }
+  }
+}

@@ -5,12 +5,12 @@
 Promise.raceを使ったタイムアウトの実装を学んでいきます。
 
 もちろんXHRは https://developer.mozilla.org/ja/docs/XMLHttpRequest/Synchronous_and_Asynchronous_Requests[timeout] プロパティを持っているので、
-これを利用すると簡単に出来ますが、複数のXHRを束ねたタイムアウトや他の機能でも応用が効くため、
+これを利用すると簡単にできますが、複数のXHRを束ねたタイムアウトや他の機能でも応用が効くため、
 分かりやすい非同期処理であるXHRにおけるタイムアウトによるキャンセルを例にしています。
 
 === Promiseで一定時間待つ
 
-まずはタイムアウトをPromiseでどう実現するかを見て行きたいと思います。
+まずはタイムアウトをPromiseでどう実現するかを見ていきたいと思います。
 
 タイムアウトというのは一定時間経ったら何かするという処理なので、`setTimeout` を使えばいいことが分かりますね。
 
@@ -37,7 +37,7 @@ delayPromise(100).then(function () {
 });
 ----
 
-ここでは**promiseオブジェクト**であるという事が重要になってくるので覚えておいて下さい。
+ここでは**promiseオブジェクト**であるということが重要になってくるので覚えておいて下さい。
 
 === Promise.raceでタイムアウト
 
@@ -50,7 +50,7 @@ include::../Ch2_HowToWrite/embed/embed-promise-race-other.js[]
 ----
 
 先ほどの<<delayPromise.js,delayPromise>>と別のpromiseオブジェクトを、
-`Promise.race` によって競争させることで簡単にタイムアウトが実装出来ます。
+`Promise.race` によって競争させることで簡単にタイムアウトが実装できます。
 
 [source,javascript]
 [[simple-timeout-promise.js]]
@@ -62,7 +62,7 @@ include::embed/embed-simple-timeout-promise.js[]
 `timeoutPromise(比較対象のpromise, ms)` はタイムアウト処理を入れたい
 promiseオブジェクトとタイムアウトの時間を受け取り、`Promise.race` により競争させたpromiseオブジェクトを返します。
 
-`timeoutPromise` を使うことで以下のようにタイムアウト処理を書くことが出来るようになります。
+`timeoutPromise` を使うことで以下のようにタイムアウト処理を書くことができるようになります。
 
 [role="executable"]
 [source,javascript]
@@ -83,7 +83,7 @@ timeoutPromise(taskPromise, 1000).then(function(value){
 });
 ----
 
-タイムアウトになった場合はエラーが呼ばれるように出来ましたが、
+タイムアウトになった場合はエラーが呼ばれるようにできましたが、
 このままでは__通常のエラー__と__タイムアウトのエラー__の区別がつかなくなってしまいます。
 
 この `Error` オブジェクトの区別をしやすくするため、
@@ -93,7 +93,7 @@ timeoutPromise(taskPromise, 1000).then(function(value){
 
 `Error` オブジェクトはECMAScriptのビルトインオブジェクトです。
 
-ECMAScript5では完璧に `Error` を継承したものを作る事は不可能ですが(スタックトレース周り等)、
+ECMAScript5では完璧に `Error` を継承したものを作ることは不可能ですが(スタックトレース周り等)、
 今回は通常のErrorとは区別を付けたいという目的なので、それを満たせる `TimeoutError` オブジェクトを作成します。
 
 [NOTE]
@@ -151,7 +151,7 @@ http://speakingjs.com/es5/ch28.html[Chapter 28. Subclassing Built-ins] で詳�
 XHRのキャンセル自体は `XMLHttpRequest` オブジェクトの `abort()` メソッドを呼ぶだけなので難しくないですね。
 
 `abort()` メソッドを外から呼べるようにするために、今までのセクションにもでてきた<<xhr-promise.js,`getURL`>>を少し拡張して、
-XHRを包んだpromiseオブジェクトと共にそのXHRを中止するメソッドを持つオブジェクトを返すようにしています。
+XHRを包んだpromiseオブジェクトと共にそのXHRを中止するメソッドをもつオブジェクトを返すようにしています。
 
 [source,javascript]
 [[delay-race-cancel.js]]
@@ -165,7 +165,7 @@ include::embed/embed-delay-race-cancel.js[]
 
 . `cancelableXHR` を使いXHRのpromiseオブジェクトと中止を呼び出すメソッドを取得する
 . `timeoutPromise` を使いXHRのpromiseとタイムアウト用のpromiseを `Promise.race` で競争させる
-* XHRが時間内に取得出来た場合
+* XHRが時間内に取得できた場合
 .. 通常のpromiseと同様に `then` で中身を取得する
 * タイムアウトとなった場合は
 .. `throw new TimeoutError` されるので `catch` する
@@ -194,11 +194,11 @@ include::embed/embed-delay-race-cancel-play.js[]
 一つの関数は一つの値(promiseオブジェクト)を返すほうが見通しがいいと思いますが、
 `cancelableXHR` の中で生成した `req` は外から参照できないので、特定のメソッド(先ほどのケースは `abort`)からは触れるようにする必要があります。
 
-返すpromiseオブジェクト自体を拡張して `abort` 出来るようにするという手段もあると思いますが、
+返すpromiseオブジェクト自体を拡張して `abort` できるようにするという手段もあると思いますが、
 promiseオブジェクトは値を抽象化したオブジェクトであるため、何でも操作用のメソッドをつけていくと複雑になってしまうかもしれません。
 
 一つの関数で全てやろうとしてるのがそもそも良くないので、
-ひとつの関数で何でもやるのは止めて、以下のように関数に分離していくというのが妥当な気がします。
+以下のように関数に分離していくというのが妥当な気がします。
 
 * XHRを行うpromiseオブジェクトを返す
 * promiseオブジェクトを渡したら該当するXHRを止める
@@ -235,7 +235,7 @@ cancelableXHR.abortPromise(xhrPromise);// <2>
 
 === まとめ
 
-ここでは以下の事について学びました。
+ここでは以下のことについて学びました。
 
 * 一定時間後に解決されるdelayPromise
 * delayPromiseとPromise.raceを使ったタイムアウトの実装
@@ -244,4 +244,4 @@ cancelableXHR.abortPromise(xhrPromise);// <2>
 
 Promiseは処理のフローを制御する力に優れているため、
 それを最大限活かすためには一つの関数でやり過ぎないで処理を小さく分けること等、
-今までのJavaScriptで言われているような事をより意識していいのかもしれません。
+今までのJavaScriptで言われているようなことをより意識していいのかもしれません。

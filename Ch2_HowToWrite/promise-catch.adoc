@@ -1,7 +1,7 @@
 [[ch2-promise-catch]]
 == Promise#catch
 
-<<ch2-promise.then, 先ほどのPromise#then>>についてでも `Promise#catch` は既に使っていましたね。
+<<ch2-promise.then, 先ほどのPromise#then>>についてでも `Promise#catch` はすでに使っていましたね。
 
 改めて説明すると<<promise.catch,Promise#catch>>は `promise.then(undefined, onRejected);` のエイリアスとなるメソッドです。
 つまり、promiseオブジェクトがRejectedとなった時に呼ばれる関数を登録するためのメソッドです。
@@ -34,9 +34,9 @@ promise.catch(function (error) {
 
 このコードをそれぞれのブラウザで実行させると、IE8以下では実行する段階で **識別子がありません** というSyntax Errorになってしまいます。
 
-これはどういう事かというと、`catch` という単語はECMAScriptにおける http://mothereff.in/js-properties#catch[予約語] であることが関係します。
+これはどういうことかというと、`catch` という単語はECMAScriptにおける http://mothereff.in/js-properties#catch[予約語] であることが関係します。
 
-ECMAScript 3では予約語はプロパティの名前に使うことが出来ませんでした。
+ECMAScript 3では予約語はプロパティの名前に使うことができませんでした。
 IE8以下はECMAScript 3の実装であるため、`catch` というプロパティを使う `promise.catch()` という書き方が出来ないので、
 **識別子がありません**というエラーを起こしてしまう訳です。
 
@@ -57,7 +57,7 @@ https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Propert
 https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Property_Accessors#Bracket_notation[ブラケット表記法]
 は有効な識別子ではなくても利用できます。
 
-つまり、先ほどのコードは以下のように書き換えれば、IE8以下でも実行することが出来ます。(もちろんpolyfillは必要です)
+つまり、先ほどのコードは以下のように書き換えれば、IE8以下でも実行することができます。(もちろんpolyfillは必要です)
 
 [role="executable"]
 [source,javascript]
@@ -83,6 +83,6 @@ promise.then(undefined, function (error) {
 
 `catch` という識別子が問題となっているため、ライブラリによっては `caught` 等の名前が違うだけのメソッドを用意しているケースがあります。
 
-また多くの圧縮ツールは `promise.catch` を `promise["catch"]` へと置換する処理が組み込まれているため、知らない間に回避出来ていることも多いかも知れません。
+また多くの圧縮ツールは `promise.catch` を `promise["catch"]` へと置換する処理が組み込まれているため、知らない間に回避できていることも多いかも知れません。
 
 サポートブラウザにIE8以下を含める時は、この `catch` の問題に気をつけるといいでしょう。

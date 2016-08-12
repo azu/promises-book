@@ -18,12 +18,12 @@ http://efcl.info/[Web Scratch] や http://jser.info/[JSer.info] といったサ�
 
 - image:../public/img/gumroad-green.svg[おまけをダウンロード, link="https://gumroad.com/l/javascript-promise"] https://gumroad.com/l/javascript-promise[JavaScript Promiseの本のおまけ]
 
-Gumroadから無料 または 好きな値段でダウンロードすることが出来ます。
+Gumroadから無料 または 好きな値段でダウンロードすることができます。
 
 ダウンロードする際に作者へのメッセージも書けるので、
 メッセージを残すついでにダウンロードして行ってください。
 
-問題の指摘などがありましたら、GitHubやGitterに書いてくださると解決出来ます。
+問題の指摘などがありましたら、GitHubやGitterに書いてくださると解決できます。
 
 * https://github.com/azu/promises-book/issues?state=open[Issues · azu/promises-book]
 * https://gitter.im/azu/promises-book[azu/promises-book - Gitter]

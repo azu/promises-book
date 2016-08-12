@@ -13,6 +13,8 @@
     "build-js-min": "gulp build-js-min",
     "embed": "gulp embed",
     "lint-html": "gulp lint-html",
+    "textlint": "textlint -f pretty-error Appendix-*/ Ch*/",
+    "textlint:fix": "textlint --fix Appendix-*/ Ch*/",
     "test": "mocha ./Ch**/test/*.js"
   },
   "directories": {
@@ -37,7 +39,7 @@
     "espower-loader": "^1.0.0",
     "esprima": "^2.0.0",
     "esprima-fb": "^4001.1.0-dev-harmony-fb",
-    "fs-extra": "^0.26.7",
+    "fs-extra": "^0.30.0",
     "gulp": "^3.8.11",
     "gulp-inlining-node-require": "0.0.3",
     "gulp-remove-use-strict": "0.0.2",
@@ -47,8 +49,8 @@
     "inlining-node-require": "^0.1.0",
     "intelli-espower-loader": "^1.0.0",
     "minifyify": "^7.0.1",
-    "mocha": "^2.0.1",
-    "nock": "^7.7.2",
+    "mocha": "^3.0.2",
+    "nock": "^8.0.0",
     "power-assert": "^1.1.0",
     "promise-test-helper": "^0.2.1",
     "q": "^1.0.1",
@@ -56,6 +58,9 @@
     "rel-to-abs": "^0.1.0",
     "remove-use-strict": "0.0.5",
     "sinon": "^1.9.0",
+    "textlint": "^7.1.0",
+    "textlint-plugin-asciidoc-loose": "^1.0.1",
+    "textlint-rule-prh": "^3.1.1",
     "through2": "^2.0.0",
     "vinyl-source-stream": "^1.0.0",
     "watchify": "^3.2.2"

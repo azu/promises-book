@@ -49,7 +49,7 @@ promise.then(function (value) {
 });
 ----
 
-`promise.then(undefined, onRejected)` と同等の意味を持つシンタックスシュガー。
+`promise.then(undefined, onRejected)` と同等の意味をもつシンタックスシュガー。
 
 [[Promise.resolve]]
 == Promise.resolve
@@ -85,7 +85,7 @@ function asyncTask(name){
 promiseオブジェクトを受け取った場合::
 受け取ったpromiseオブジェクトをそのまま返す
 thenableなオブジェクトを受け取った場合::
-`then` を持つオブジェクトを新たなpromiseオブジェクトにして返す
+`then` をもつオブジェクトを新たなpromiseオブジェクトにして返す
 その他の値(オブジェクトやnull等も含む)を受け取った場合::
 その値でresolveされる新たなpromiseオブジェクトを作り返す
 

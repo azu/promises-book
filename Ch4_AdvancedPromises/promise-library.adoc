@@ -28,8 +28,8 @@ Promises/A+互換と書かれていた場合は `then` についての動作は�
 しかし、Promises/A+は `Promise#then` についてのみの仕様となっているため、
 他の機能は実装されていても名前が異なる場合があります。
 
-また、`then` というメソッドに互換性があるという事は、<<Thenable,Thenable>>であるということなので、
-<<Promise.resolve,Promise.resolve>>を使い、ES6のPromiseで定められたpromiseオブジェクトに変換することが出来ます。
+また、`then` というメソッドに互換性があるということは、<<Thenable,Thenable>>であるということなので、
+<<Promise.resolve,Promise.resolve>>を使い、ES6のPromiseで定められたpromiseオブジェクトに変換することができます。
 
 [NOTE]
 ====
@@ -50,11 +50,11 @@ Promiseのライブラリは星の数ほどあるので、ここで紹介する�
 [[promise-polyfill]]
 ==== Polyfill
 
-Polyfillライブラリは読み込む事で、IE10等まだPromiseが実装されていないブラウザ等でも、
+Polyfillライブラリは読み込むことで、IE10等まだPromiseが実装されていないブラウザ等でも、
 Promiseと同等の機能を同じメソッド名で提供してくれるライブラリのことです。
 
 つまり、Polyfillを読みこめばこの書籍で紹介しているコードは、
-Promiseがサポートされてない環境でも実行出来るようになります。
+Promiseがサポートされてない環境でも実行できるようになります。
 
 https://github.com/jakearchibald/es6-promise[jakearchibald/es6-promise]::
     ES6 Promisesと互換性を持ったPolyfillライブラリです。
@@ -80,14 +80,14 @@ https://github.com/kriskowal/q[kriskowal/q]::
     2009年から開発されており、Node.js向けのファイルIOのAPIを提供する https://github.com/kriskowal/q-io[Q-IO] 等、
     多くの状況で使える機能が用意されているライブラリです。
 https://github.com/petkaantonov/bluebird[petkaantonov/bluebird]::
-    Promise互換に加えて、キャンセル出来るPromiseや進行度を取得出来るPromise、エラーハンドリングの拡張検出等、
+    Promise互換に加えて、キャンセルできるPromiseや進行度を取得できるPromise、エラーハンドリングの拡張検出等、
     多くの拡張を持っており、またパフォーマンスにも気を配った実装がされているライブラリです。
 
 Q と Bluebird どちらのライブラリもブラウザでも動作する他、APIリファレンスが充実しているのも特徴的です。
 
 * https://github.com/kriskowal/q/wiki/API-Reference[API Reference · kriskowal/q Wiki]
 
-QのドキュメントにはjQueryが持つDeferredの仕組みとどのように違うのか、移行する場合の対応メソッドについても
+QのドキュメントにはjQueryがもつDeferredの仕組みとどのように違うのか、移行する場合の対応メソッドについても
 https://github.com/kriskowal/q/wiki/Coming-from-jQuery[Coming from jQuery] にまとめられています。
 
 * https://github.com/petkaantonov/bluebird/blob/master/API.md[bluebird/API.md at master · petkaantonov/bluebird]
@@ -95,7 +95,7 @@ https://github.com/kriskowal/q/wiki/Coming-from-jQuery[Coming from jQuery] に�
 BluebirdではPromiseを使った豊富な実装例に加えて、エラーが起きた時の対処法や
 https://github.com/petkaantonov/bluebird/wiki/Promise-anti-patterns[Promiseのアンチパターン] について書かれています。
 
-どちらのドキュメントも優れているため、このライブラリを使ってない場合でも読んでおくと参考になる事が多いと思います。
+どちらのドキュメントも優れているため、このライブラリを使ってない場合でも読んでおくと参考になることが多いと思います。
 
 === まとめ
 

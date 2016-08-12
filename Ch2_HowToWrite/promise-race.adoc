@@ -8,7 +8,7 @@
 `Promise.all` は、渡した全てのpromiseがFulFilled または Rejectedになるまで次の処理を待ちましたが、
 `Promise.race` は、どれか一つでもpromiseがFulFilled または Rejectedになったら次の処理を実行します。
 
-Promise.allの時と同じく、タイマーを使った `Promise.race` の例を見てみましょう
+Promise.allのときと同じく、タイマーを使った `Promise.race` の例を見てみましょう
 
 [role="executable"]
 [source,javascript]
@@ -35,13 +35,13 @@ include::embed/embed-promise-race-other.js[]
 
 先ほどのコードに `console.log` をそれぞれ追加しただけの内容となっています。
 
-実行してみると、winnter/loser どちらも `setTimeout` の中身が実行されて `console.log` がそれぞれ出力されている事がわかります。
+実行してみると、winnter/loser どちらも `setTimeout` の中身が実行されて `console.log` がそれぞれ出力されていることがわかります。
 
 つまり、<<Promise.race, `Promise.race`>>では、
-一番最初のpromiseオブジェクトがFulfilledとなっても、他のpromiseがキャンセルされるわけでは無いという事がわかります。
+一番最初のpromiseオブジェクトがFulfilledとなっても、他のpromiseがキャンセルされるわけでは無いということがわかります。
 
 [NOTE]
 <<es6-promises,ES6 Promises>>の仕様には、キャンセルという概念はありません。
 必ず、resolve or rejectによる状態の解決が起こることが前提となっています。
-つまり、<<promise-states,状態>>が固定されてしまうかもしれない処理には不向きであると言えます。
+つまり、<<promise-states,状態>>が固定されてしまうかもしれない処理には不向きであるといえます。
 ライブラリによってはキャンセルを行う仕組みが用意されている場合があります。

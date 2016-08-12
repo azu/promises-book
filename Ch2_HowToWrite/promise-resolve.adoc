@@ -1,7 +1,7 @@
 [[ch2-promise-resolve]]
 == Promise.resolve
 
-一般に `new Promise()` を使う事でpromiseオブジェクトを生成しますが、
+一般に `new Promise()` を使うことでpromiseオブジェクトを生成しますが、
 それ以外にもpromiseオブジェクトを生成する方法があります。
 
 ここでは、<<Promise.resolve, `Promise.resolve`>> と <<Promise.reject, `Promise.reject`>> について学びたいと思います。
@@ -11,7 +11,7 @@
 <<Promise.resolve, `Promise.resolve(value)`>> という静的メソッドは、
 `new Promise()` のショートカットとなるメソッドです。
 
-例えば、 `Promise.resolve(42);` というのは下記のコードのシンタックスシュガーです。
+たとえば、 `Promise.resolve(42);` というのは下記のコードのシンタックスシュガーです。
 
 [source,javascript]
 ----
@@ -23,7 +23,7 @@ new Promise(function(resolve){
 結果的にすぐに `resolve(42);` と解決されて、次のthenの `onFulfilled` に設定された関数に `42` という値を渡します。
 
 `Promise.resolve(value);` で返ってくる値も同様にpromiseオブジェクトなので、
-以下のように続けて `.then` を使った処理を書くことが出来ます。
+以下のように続けて `.then` を使った処理を書くことができます。
 
 [role="executable"]
 [source,javascript]
@@ -40,13 +40,13 @@ promiseオブジェクトの初期化時やテストコードを書く際にも�
 
 もう一つ `Promise.resolve` の大きな特徴として、<<Thenable,thenable>>なオブジェクトをpromiseオブジェクトに変換するという機能があります。
 
-<<es6-promises,ES6 Promises>>には<<Thenable,Thenable>>という概念があり、簡単にいえばpromiseっぽいオブジェクトの事を言います。
+<<es6-promises,ES6 Promises>>には<<Thenable,Thenable>>という概念があり、簡単にいえばpromiseっぽいオブジェクトのことを言います。
 
 `.length` を持っているが配列ではないものをArray likeというのと同じで、
 thenableの場合は `.then` というメソッドを持ってるオブジェクトを言います。
 
-thenableなオブジェクトが持つ `then` は、Promiseの持つ `then` と同じような挙動を期待していて、
-thenableなオブジェクトが持つ元々の `then` を上手く利用できるようにしpromiseオブジェクトに変換するという仕組みです。
+thenableなオブジェクトがもつ `then` は、Promiseのもつ `then` と同じような挙動を期待していて、
+thenableなオブジェクトがもつ元々の `then` を上手く利用できるようにしpromiseオブジェクトに変換するという仕組みです。
 
 どういうものがthenableなのかというと、分かりやすい例では
 https://api.jquery.com/jQuery.ajax/[jQuery.ajax()]の返り値もthenableです。
@@ -55,12 +55,12 @@ https://api.jquery.com/jQuery.ajax/[jQuery.ajax()]の返り値もthenableです�
 このオブジェクトは `.then` というメソッドを持っているためです。
 
 [source,javascript]
-$.ajax('/json/comment.json');// => `.then` を持つオブジェクト
+$.ajax('/json/comment.json');// => `.then` をもつオブジェクト
 
-このthenableなオブジェクトを `Promise.resolve` ではpromiseオブジェクトにすることが出来ます。
+このthenableなオブジェクトを `Promise.resolve` ではpromiseオブジェクトにすることができます。
 
 promiseオブジェクトにすることができれば、`then` や `catch` といった、
-<<es6-promises,ES6 Promises>>が持つ機能をそのまま利用することが出来るようになります。
+<<es6-promises,ES6 Promises>>がもつ機能をそのまま利用することができるようになります。
 
 [source,javascript]
 .thenableをpromiseオブジェクトにする
@@ -95,9 +95,9 @@ https://api.jquery.com/jQuery.ajax/[jQuery.ajax()]の返り値も `.then` とい
 ====
 
 `Promise.resolve` は共通の挙動である `then` だけを利用して、
-様々なライブラリ間でのpromiseオブジェクトを相互に変換して使える仕組みを持っている事になります。
+さまざまなライブラリ間でのpromiseオブジェクトを相互に変換して使える仕組みを持っていることになります。
 
-このthenableを変換する機能は、以前は `Promise.cast` という名前であった事からもその挙動が想像できるかもしれません。
+このthenableを変換する機能は、以前は `Promise.cast` という名前であったことからもその挙動が想像できるかもしれません。
 
 ThenableについてはPromiseを使ったライブラリを書くとき等には知っておくべきですが、
 通常の利用だとそこまで使う機会がないものかもしれません。

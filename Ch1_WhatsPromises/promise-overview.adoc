@@ -37,9 +37,9 @@ reject(失敗)した時::
 
 `onFulfilled`、`onRejected` どちらもオプショナルな引数となっています。
 
-`promise.then` では成功時と失敗時の処理を同時に登録することが出来ます。
+`promise.then` では成功時と失敗時の処理を同時に登録することができます。
 また、エラー処理だけを書きたい場合には `promise.then(undefined, onRejected)` と同じ意味である
-`promise.catch(onRejected)` を使うことが出来ます。
+`promise.catch(onRejected)` を使うことができます。
 
 [source,javascript]
 promise.catch(onRejected)
@@ -73,7 +73,7 @@ include::embed/embed-promise-workflow.js[]
 このpromiseオブジェクトはsetTimeoutで16ms後にresolveされるので、
 そのタイミングで `then` のコールバックが呼ばれ `'Async Hello world'` と出力されます。
 
-この場合 `catch` のコールバックは呼ばれる事はないですが、
+この場合 `catch` のコールバックは呼ばれることはないですが、
 `setTimeout` が存在しない環境などでは、例外が発生し `catch` で登録したコールバック関数が呼ばれると思います。
 
 もちろん、`promise.then(onFulfilled, onRejected)` というように、
@@ -84,20 +84,20 @@ include::embed/embed-promise-workflow.js[]
 asyncFunction().then(function (value) {
     console.log(value);
 }, function (error) {
-    console.log(error);
+    console.error(error);
 });
 ----
 
 === Promiseの状態 [[promise-states]]
 
-Promiseの処理の流れが少しわかった所で、少しPromiseの状態について整理したいと思います。
+Promiseの処理の流れが少しわかった所で、Promiseの状態について整理したいと思います。
 
 `new Promise` でインスタンス化したpromiseオブジェクトには以下の3つの状態が存在します。
 
 Fulfilled::
-    resolve(成功)した時。この時 `onFulfilled` が呼ばれる
+    resolve(成功)した時。このとき `onFulfilled` が呼ばれる
 Rejected::
-    reject(失敗)した時。この時 `onRejected`  が呼ばれる
+    reject(失敗)した時。このとき `onRejected`  が呼ばれる
 Pending::
     FulfilledまたはRejectedではない時。つまりpromiseオブジェクトが作成された初期状態等が該当する
 
@@ -117,19 +117,19 @@ image::img/promise-states.png[promise-states]
 `+++[[PromiseStatus]]+++` にアクセスするユーザーAPIは用意されていないため、基本的には知る方法はありません。
 ====
 
-3つの状態を見たところで、既にこの章で全ての状態が出てきていることが分かります。
+3つの状態を見たところで、すでにこの章で全ての状態が出てきていることが分かります。
 
 promiseオブジェクトの状態は、一度__Pending__から__Fulfilled__や__Rejected__になると、
 そのpromiseオブジェクトの状態はそれ以降変化することはなくなります。
 
-つまり、PromiseはEvent等とは違い、`.then` で登録した関数が呼ばれるのは1回限りという事が明確になっています。
+つまり、PromiseはEvent等とは違い、`.then` で登録した関数が呼ばれるのは1回限りということが明確になっています。
 
 また、__Fulfilled__と__Rejected__のどちらかの状態であることを**Settled**(不変の)と表現することがあります。
 
 Settled::
     resolve(成功) または reject(失敗) した時。
 
-__Pending__と__Settled__が対となる関係であると考えると、Promiseの状態の種類/遷移がシンプルであることがわかると思います。
+__Pending__と__Settled__が対となる関係であると考えると、Promiseの状態の種類/遷移がシンプルであることが分かると思います。
 
 このpromiseオブジェクトの状態が変化した時に、一度だけ呼ばれる関数を登録するのが `.then` といったメソッドとなるわけです。
 

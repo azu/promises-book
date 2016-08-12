@@ -6,11 +6,11 @@
 この書籍はJavaScript標準仕様の<<es6-promises,ECMAScript 6 Promises>>という仕様を中心にし、
 JavaScriptにおけるPromiseについて学ぶことを目的とした書籍です。
 
-この書籍を読むことで学べる事として次の3つを目標としています
+この書籍を読むことで学べることとして次の3つを目標としています
 
-- Promiseについて学び、パターンやテストを扱えるようになる事
-- Promiseの向き不向きについて学び、何でもPromiseで解決するべきではないと知る事
-- ES6 Promisesを元に基本をよく学び、より発展した形を自分で形成できるようになる事
+- Promiseについて学び、パターンやテストを扱えるようになること
+- Promiseの向き不向きについて学び、何でもPromiseで解決するべきではないと知ること
+- ES6 Promisesを元に基本をよく学び、より発展した形を自分で形成できるようになること
 
 この書籍では、先程も述べたように<<es6-promises,ES6 Promises>>、
 つまりJavaScriptの標準仕様(ECMAScript)をベースとしたPromiseについて書かれています。
@@ -23,7 +23,7 @@ JavaScriptにおけるPromiseについて学ぶことを目的とした書籍で
 
 == 本書を読むにあたって
 
-この書籍ではJavaScriptの基本的な機能について既に学習していることを前提にしています。
+この書籍ではJavaScriptの基本的な機能についてすでに学習していることを前提にしています。
 
 - http://www.oreilly.co.jp/books/9784873113913/[JavaScript: The Good Parts]
 - http://www.oreilly.co.jp/books/9784873114880/[JavaScriptパターン]
@@ -31,7 +31,7 @@ JavaScriptにおけるPromiseについて学ぶことを目的とした書籍で
 - http://gihyo.jp/book/2011/978-4-7741-4813-7[パーフェクトJavaScript]
 - http://www.shoeisha.co.jp/book/detail/9784798131115[Effective JavaScript]
 
-のいずれかの書籍を読んだ事があれば十分読み解くことが出来る内容だと思います。
+のいずれかの書籍を読んだことがあれば十分読み解くことができる内容だと思います。
 
 または、JavaScriptでウェブアプリケーションを書いたことがある、
 Node.js でコマンドラインアプリやサーバサイドを書いたことがあれば、
@@ -46,9 +46,9 @@ Node.js でコマンドラインアプリやサーバサイドを書いたこと
 * Promiseに関する用語は<<promise-glossary,用語集>>を参照する。
 ** 大体、初回に出てきた際にはリンクを貼っています。
 * インスタンスメソッドを instance#method という表記で示す。
-** 例えば、`Promise#then` という表記は、Promiseのインスタンスオブジェクトの `then` というメソッドを示しています。
+** たとえば、`Promise#then` という表記は、Promiseのインスタンスオブジェクトの `then` というメソッドを示しています。
 * オブジェクトメソッドを object.method という表記で示す。
-** これはJavaScriptの意味そのままで、`Promise.all` なら静的メソッドの事を示しています。
+** これはJavaScriptの意味そのままで、`Promise.all` なら静的メソッドのことを示しています。
 
 [NOTE]
 この部分には文章についての補足が書かれています。
@@ -71,9 +71,9 @@ endif::[]
 == サンプルコードの実行
 
 このサイトでは、Promiseの<<promise-polyfill,Polyfillライブラリ>>を読み込んでいるため、
-Promiseをサポートしていないブラウザでもサンプルコードを実行することが出来ます。
+Promiseをサポートしていないブラウザでもサンプルコードを実行することができます。
 
-また、以下のように実行出来るサンプルコードには実行ボタンが表示されています。
+また、以下のように実行できるサンプルコードには実行ボタンが表示されています。
 
 [role="executable"]
 [source,javascript]
@@ -115,7 +115,7 @@ endif::[]
 
 == 意見や疑問点
 
-意見や疑問点がある場合はGitHubに直接Issueとして立てる事が出来ます。
+意見や疑問点がある場合はGitHubに直接Issueとして立てることができます。
 
 * https://github.com/azu/promises-book/issues?state=open[Issues · azu/promises-book]
 

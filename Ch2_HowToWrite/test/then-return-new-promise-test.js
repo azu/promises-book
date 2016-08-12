@@ -9,7 +9,7 @@ describe("promise.then ", function () {
             console.log(value);
         });
         var catchPromise = thenPromise.catch(function (error) {
-            console.log(error);
+            console.error(error);
         });
         assert(aPromise !== thenPromise);
         assert(thenPromise !== catchPromise);
