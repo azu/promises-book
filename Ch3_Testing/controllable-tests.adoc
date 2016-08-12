@@ -12,7 +12,7 @@
 ** Fulfilledとなった場合は**Fail**
 ** assertionの結果が一致しなかった場合は**Fail**
 
-上記のケース(Fail)に該当しなければテストがパスするという事ですね。
+上記のケース(Fail)に該当しなければテストがパスするということですね。
 
 つまり、ひとつのテストケースにおいて以下のことを書く必要があります。
 
@@ -44,7 +44,7 @@ Fulfilled or Rejected どちらの状態になって欲しいかを明示する�
 今回はその場で簡単に定義して進めます。
 ====
 
-まずは、先ほどの `.then` の例を元にonRejectedを期待してテスト出来る
+まずは、先ほどの `.then` の例を元にonRejectedを期待してテストできる
 `shouldRejected` というヘルパー関数を作ってみたいと思います。
 
 [[shouldRejected-test.js]]
@@ -111,8 +111,8 @@ https://github.com/azu/promise-test-helper[azu/promise-test-helper] からダウ
 テストフレームワークのPromiseサポートを使うか、`done` のようにコールバックスタイルのテストを使うかは、
 人それぞれのスタイルの問題であるためそこまではっきりした優劣はないと思います。
 
-例えば、 http://coffeescript.org/[CoffeeScript]でテストを書いたりすると、
+たとえば、 http://coffeescript.org/[CoffeeScript]でテストを書いたりすると、
 CoffeeScriptには暗黙のreturnがあるので、`done` を使ったほうが分かりやすいかもしれません。
 
 Promiseのテストは普通に非同期関数のテスト以上に落とし穴があるため、
-どのスタイルを取るかは自由ですが、一貫性を持った書き方をすることが大切だと言えます。
+どのスタイルを取るかは自由ですが、一貫性を持った書き方をすることが大切だといえます。

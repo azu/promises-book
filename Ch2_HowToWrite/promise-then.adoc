@@ -3,8 +3,8 @@
 
 先ほどの章でPromiseの基本となるインスタンスメソッドである `then` と `catch` の使い方を説明しました。
 
-その中で `.then().catch()` とメソッドチェーンで繋げて書いていたことからもわかるように、
-Promiseではいくらでもメソッドチェーンを繋げて処理を書いていくことが出来ます。
+その中で `.then().catch()` とメソッドチェーンで繋げて書いていたことからも分かるように、
+Promiseではいくらでもメソッドチェーンを繋げて処理を書いていくことができます。
 
 [source,javascript]
 .promiseはメソッドチェーンで繋げて書ける
@@ -19,7 +19,7 @@ aPromise.then(function taskA(value){
 ----
 
 `then` で登録するコールバック関数をそれぞれtaskというものにした時に、
-taskA -> task B という流れをPromiseのメソッドチェーンを使って書くことが出来ます。
+taskA -> task B という流れをPromiseのメソッドチェーンを使って書くことができます。
 
 Promiseのメソッドチェーンだと長いので、今後は<<promise-chain,promise chain>>と呼びます。
 このpromise chainがPromiseが非同期処理の流れを書きやすい理由の一つといえるかもしれません。
@@ -30,10 +30,10 @@ Promiseのメソッドチェーンだと長いので、今後は<<promise-chain,
 
 第一章の例だと、<<promise-chain,promise chain>>は
 then -> catch というシンプルな例でしたが、このpromise chainをもっとつなげた場合に、
-それぞれのpromiseオブジェクトに登録された onFulfilledとonRejectedがどのように呼ばれるかを見て行きましょう。
+それぞれのpromiseオブジェクトに登録された onFulfilledとonRejectedがどのように呼ばれるかを見ていきましょう。
 
 [NOTE]
-promise chain - すなわちメソッドチェーンが短い事は良いことです。
+promise chain - すなわちメソッドチェーンが短いことはよいことです。
 この例では説明のために長いメソッドチェーンを用います。
 
 次のようなpromise chainを見てみましょう。
@@ -64,7 +64,7 @@ image::img/promise-then-catch-flow.png[promise-then-catch-flow]
 <<promise-then-catch-flow.png,図>>の方に注目してもらうと、
 __Task A__ と __Task B__ それぞれから __onRejected__ への線が出ていることが分かります。
 
-これは、__Task A__ または __Task B__ の処理にて、次のような場合に __onRejected__ が呼ばれるという事を示しています。
+これは、__Task A__ または __Task B__ の処理にて、次のような場合に __onRejected__ が呼ばれるということを示しています。
 
 * 例外が発生した時
 * Rejectedなpromiseオブジェクトがreturnされた時
@@ -100,7 +100,7 @@ image::img/promise-taska-rejected-flow.png[]
 include::src/promise-then-taska-throw.js[]
 ----
 
-実行してみると、__Task B__ が呼ばれていない事がわかるでしょう。
+実行してみると、__Task B__ が呼ばれていないことが分かるでしょう。
 
 [NOTE]
 ====
@@ -113,7 +113,7 @@ include::src/promise-then-taska-throw.js[]
 
 先ほどの例ではそれぞれのTaskが独立していて、ただ呼ばれているだけでした。
 
-この時に、Task AがTask Bへ値を渡したい時はどうすれば良いでしょうか?
+このときに、Task AがTask Bへ値を渡したい時はどうすればよいでしょうか?
 
 答えはものすごく単純でTask Aの処理で `return` した値がTask Bが呼ばれるときに引数に設定されます。
 
@@ -138,7 +138,7 @@ include::src/promise-then-passing-value.js[]
 image::img/promise-then-passing-value.png[promise-then-passing-value]
 
 この `return` する値は数字や文字列だけではなく、
-オブジェクトやpromiseオブジェクトも `return` することが出来ます。
+オブジェクトやpromiseオブジェクトも `return` することができます。
 
 returnした値は `Promise.resolve(returnされた値);` のように処理されるため、
 何をreturnしても最終的には新しいpromiseオブジェクトを返します。

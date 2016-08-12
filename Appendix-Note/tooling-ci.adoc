@@ -49,11 +49,11 @@ CodeMirrorをベースにコードの実行機能を付加するモジュール�
 - https://github.com/azu/codemirror-console[azu/codemirror-console]
 - https://github.com/azu/codemirror-console-ui[azu/codemirror-console-ui]
 
-__codemirror-console__ はCodeMirrorに書かれているコードを実行出来るモジュール。
+__codemirror-console__ はCodeMirrorに書かれているコードを実行できるモジュール。
 単純にコードをevalするだけでは、グロールスコープを汚染してしまうため、
 コードを実行する時にiframeを作り、その中でコードを実行している。
 
-http://nodejs.org/api/vm.html[Nodeのvmモジュール]と似た考え方を持つ https://github.com/amasad/context-eval/[context-eval]を利用した。
+http://nodejs.org/api/vm.html[Nodeのvmモジュール]と似た考え方をもつ https://github.com/amasad/context-eval/[context-eval]を利用した。
 これにより単純に実行するだけではなく、`console` を独自のものとすり替えて実行することができるようになっている。
 
 __codemirror-console-ui__は__codemirror-console__のUIを提供するモジュール。
@@ -76,9 +76,9 @@ image::img/javascript-console-editor.png[コンソールエディタの図]
 
 しかし一部を除いて、表示用コードはブラウザでの表示と実行を前提としている。
 サンプルコードから表示用コードを自動的に生成しているが、
-これはモジュールに関する事のみを解決するため、サンプルコードはどちらの環境でも動く書き方が必要となった。
+これはモジュールに関することのみを解決するため、サンプルコードはどちらの環境でも動く書き方が必要となった。
 
-Node.js上でもブラウザと同様の機能がテスト出来るようにするためのPolyfillやモックが必要となった。
+Node.js上でもブラウザと同様の機能がテストできるようにするためのPolyfillやモックが必要となった。
 DOM APIが中心となり、具体的には `XMLHttpRequest` や `Notification` 等が該当する。
 
 ===== XHR
@@ -118,7 +118,7 @@ global.XMLHttpRequest = require('w3c-xmlhttprequest').XMLHttpRequest;
 
 ===== Web Notifications API
 
-テスト出来るようにすることが目的であるため、機能まで持ってくる必要性はなかった。
+テストできるようにすることが目的であるため、機能まで持ってくる必要性はなかった。
 そのため、Web Notifications APIではNoticationのモックオブジェクトを作成し、テストを行った。
 
 - https://github.com/azu/promises-book/blob/master/Ch4_AdvancedPromises/test/mock/mock-notification.js[mock-notification.js]
@@ -143,7 +143,7 @@ Asciidocでは `<<id>>` という記法で内部リンクを貼ることがで�
 インラインコードは直接書くため実行して確認せず間違ったコードを書いてしまいがちだった。
 
 そのため、Asciidocのファイルをパースして、インラインコードを抽出し、
-そのコードが http://esprima.org/[Esprima]といったJavaScriptパーサでパース出来るかを検証できるようにした。
+そのコードが http://esprima.org/[Esprima]といったJavaScriptパーサでパースできるかを検証できるようにした。
 
 これによりJavaScriptの文法として間違っているものはパースエラーとなるため、
 インラインに書いたコードのミスを検出するのに役立った。
@@ -169,7 +169,7 @@ masterへマージされたものは、Travis CIで自動的にビルドして `
 
 pull-requestsのコミットに対しては、そのコミットごとに `preview-html` ブランチに生成済みのHTMLがpushされる。
 
-pushされた一時プレビュー用のURLをGitterに対して通知して、pull-request時のHTMLがプレビュー出来るようになっている。
+pushされた一時プレビュー用のURLをGitterに対して通知して、pull-request時のHTMLがプレビューできるようになっている。
 
 image::img/preview-html.png[preview-html.png]
 
@@ -179,7 +179,7 @@ image::img/preview-html.png[preview-html.png]
 
 - https://github.com/azu/visualize-promises-book[azu/visualize-promises-book]
 
-セクション毎にテーマを分けてる事が多いが、それを俯瞰的にどうやってみるかを模索するために、
+セクション毎にテーマを分けてることが多いが、それを俯瞰的にどうやってみるかを模索するために、
 セクション同士の依存関係を可視化するものを作成した。
 
 === Lint

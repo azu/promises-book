@@ -50,12 +50,12 @@ Notification.requestPermission(function (status) {
 
 * ユーザーに通知の許可を受け付ける非同期処理がある
 * 許可がある場合は `new Notification` で通知を表示できる
-** 既に許可済みのケース
+** すでに許可済みのケース
 ** その場で許可を貰うケース
 * 許可がない場合は何もしない
 
 
-いくつかのパターンが出ますが、最終的には許可か不許可になるので、以下の2パターンにまとめることが出来ます。
+いくつかのパターンが出ますが、最終的には許可か不許可になるので、以下の2パターンにまとめることができます。
 
 許可時("granted"):::
     `new Notification` で通知を作成
@@ -74,7 +74,7 @@ Promiseで書けそうな目処が見えた所で、まずはコールバック�
 
 === Web Notification ラッパー
 
-まずは先ほどのWeb Notification APIのラッパー関数をコールバックスタイルで書くと次のように書くことが出来ます。
+まずは先ほどのWeb Notification APIのラッパー関数をコールバックスタイルで書くと次のように書くことができます。
 
 [role="executable"]
 [source,javascript]
@@ -162,12 +162,12 @@ Promiseが使える環境を前提とする::
 * ライブラリ自体にPromiseの実装を取り込む
 * 例) https://github.com/mozilla/localForage[localForage]
 コールバックでも `Promise` でも使えるようにする::
-* 利用者がどちらを使うかを選択出来るようにする
+* 利用者がどちらを使うかを選択できるようにする
 * Thenableを返せるようにする
 
 <<notification-as-promise.js>>は `Promise` があることを前提としたような書き方です。
 
-本題に戻り<<Thenable,Thenable>>はここでいう**コールバックでも `Promise` でも使えるようにする**という事を
+本題に戻り<<Thenable,Thenable>>はここでいう**コールバックでも `Promise` でも使えるようにする**ということを
 実現するのに役立つ概念です。
 
 === Web Notifications As Thenable
@@ -255,7 +255,7 @@ promiseオブジェクトを返す関数を公開APIとしても問題ないと�
 
 恐らく、一番多く使われている所は<<promise-library,Promiseのライブラリ>>間での相互変換でしょう。
 
-例えば、 QライブラリのPromiseのインスタンスであるQ promiseオブジェクトは、
+たとえば、 QライブラリのPromiseのインスタンスであるQ promiseオブジェクトは、
 <<es6-promises,ES6 Promises>>のpromiseオブジェクトが持っていないメソッドを持っています。
 Q promiseオブジェクトには `promise.finally(callback)` や `promise.nodeify(callback)` などのメソッドが用意されてます。
 
@@ -280,12 +280,12 @@ Q(promise).then(function(value){
 <1> Q promiseオブジェクトとなったため `finally` が利用できる
 
 最初に作成したpromiseオブジェクトは `then` というメソッドを持っているので、もちろんThenableです。
-`Q(thenable)` とすることでThenableなオブジェクトをQ promiseオブジェクトへと変換することが出来ます。
+`Q(thenable)` とすることでThenableなオブジェクトをQ promiseオブジェクトへと変換することができます。
 
 これは、`Promise.resolve(thenable)` と同じ仕組みといえるので、もちろん逆も可能です。
 
 このように、Promiseライブラリはそれぞれ独自に拡張したpromiseオブジェクトを持っていますが、
-Thenableという共通の概念を使うことでライブラリ間(もちろんネイティブPromiseも含めて)で相互にpromiseオブジェクトを変換することが出来ます。
+Thenableという共通の概念を使うことでライブラリ間(もちろんネイティブPromiseも含めて)で相互にpromiseオブジェクトを変換することができます。
 
 このようにThenableが使われる所の多くはライブラリ内部の実装であるため、あまり目にする機会はないかもしれません。
 しかしこのThenableはPromiseでも大事な概念であるため知っておくとよいでしょう。

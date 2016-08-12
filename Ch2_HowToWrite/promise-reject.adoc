@@ -5,7 +5,7 @@
 <<Promise.resolve, `Promise.resolve(value)`>> と同じ静的メソッドで `new Promise()` のショートカットとなるメソッドです。
 
 
-例えば、 `Promise.reject(new Error("エラー"))` というのは下記のコードのシンタックスシュガーです。
+たとえば、 `Promise.reject(new Error("エラー"))` というのは下記のコードのシンタックスシュガーです。
 
 [source,javascript]
 ----

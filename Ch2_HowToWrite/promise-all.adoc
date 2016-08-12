@@ -8,7 +8,7 @@
 
 先ほどの例の `getURL` はXHRによる通信を抽象化したpromiseオブジェクトを返しています。
 `Promise.all` に通信を抽象化したpromiseオブジェクトの配列を渡すことで、
-全ての通信が完了(FulFilledまたはRejected)した時に、次の `.then` を呼び出すことが出来ます。
+全ての通信が完了(FulFilledまたはRejected)した時に、次の `.then` を呼び出すことができます。
 
 [role="executable"]
 [source,javascript]
@@ -74,10 +74,10 @@ var promises = [
 この場合は、1, 32, 64, 128 ミリ秒後にそれぞれ `resolve` されます。
 
 つまり、このpromiseオブジェクトの配列がすべてresolveされるには、最低でも128msかかることがわかります。
-実際に<<Promise.all, `Promise.all`>> で処理してみると 約128msかかる事がわかります。
+実際に<<Promise.all, `Promise.all`>> で処理してみると 約128msかかることがわかります。
 
-この事から、<<Promise.all, `Promise.all`>> が一つづつ順番にやるわけではなく、
-渡されたpromiseオブジェクトの配列を並列に実行してるという事がわかります。
+このことから、<<Promise.all, `Promise.all`>> が一つづつ順番にやるわけではなく、
+渡されたpromiseオブジェクトの配列を並列に実行してるということがわかります。
 
 [NOTE]
 ====

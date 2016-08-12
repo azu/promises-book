@@ -30,10 +30,10 @@ console.log(thenPromise !== catchPromise);// => true
 image::img/then_catch.png[Then Catch flow]
 
 この仕組みはPromiseを拡張する時は意識しないと、いつのまにか触ってるpromiseオブジェクトが
-別のものであったという事が起こりえると思います。
+別のものであったということが起こりえると思います。
 
 また、`then` は新しいオブジェクトを作って返すということがわかっていれば、
-次の `then` の使い方では意味が異なる事に気づくでしょう。
+次の `then` の使い方では意味が異なることに気づくでしょう。
 
 [role="executable"]
 [source,javascript]
@@ -92,7 +92,7 @@ function badAsyncCall() {
 また、何かの値を返していてもそれを受け取る方法が無くなってしまいます。
 
 これは `promise.then` によって新たに作られたpromiseオブジェクトを返すようにすることで、
-2のようにpromise chainをつなげるようにするべきなので、次のように修正することが出来ます。
+2のようにpromise chainをつなげるようにするべきなので、次のように修正することができます。
 
 [source,javascript]
 .`then` で作成したオブジェクトを返す
