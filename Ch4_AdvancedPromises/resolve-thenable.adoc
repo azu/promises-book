@@ -35,7 +35,7 @@ Firefoxだと許可、不許可に加えて __永続__ か __セッション限�
 許可ダイアログは `Notification.requestPermission()` を実行すると表示され、
 ユーザーが選択した結果がコールバック関数の `status` に渡されます。
 
-コールバックを受け付けることから分かるように、この許可、不許可は非同期的に行われます。
+コールバック関数を受け付けることから分かるように、この許可、不許可は非同期的に行われます。
 
 [role="executable"]
 [source,javascript]
@@ -105,6 +105,17 @@ function callback(error, notification){
 ----
 
 次に、このコールバックスタイルの関数をPromiseとして使える関数を書いてみたいと思います。
+
+[NOTE]
+====
+https://notifications.spec.whatwg.org/[Notifications API]の最新仕様では、
+コールバック関数を渡さなかった場合にpromiseオブジェクトを返すようになっています。
+そのため、ここから先の話は最新の仕様ではもっとシンプルに書ける可能性があります。
+
+しかし、古いNotification APIの仕様では、コールバック関数のみしか扱う方法がありませんでした。
+ここではコールバック関数のみしか扱えるNotification APIを前提にしています。
+====
+
 
 === Web Notification as Promise
 
