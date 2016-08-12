@@ -90,7 +90,7 @@ asyncFunction().then(function (value) {
 
 === Promiseの状態 [[promise-states]]
 
-Promiseの処理の流れが少しわかった所で、少しPromiseの状態について整理したいと思います。
+Promiseの処理の流れが少しわかった所で、Promiseの状態について整理したいと思います。
 
 `new Promise` でインスタンス化したpromiseオブジェクトには以下の3つの状態が存在します。
 
