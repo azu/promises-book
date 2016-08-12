@@ -7,28 +7,20 @@
     font-size: 16px;
 }
 
-.mirror-console-attach-button-wrapper{
-    margin-bottom: 0.5em;
-}
-.executable {
-    margin-bottom: 0;
-}
-
 .mirror-console-command {
     margin-left: 15px;
 }
 
 .mirror-console-wrapper {
     background-color: #f7f7f7;
-    outline: #000000 solid 1px;
+    outline: #000 solid 1px;
 }
 
 .mirror-console-button {
-    font-size: 1.1em;
     display: inline-block;
     margin: 0.75em 0.25em;
     font-size: 0.9em;
-    border: 0px none;
+    border: 0 none;
     border-radius: 3px;
     padding: 0.25em 1em;
     color: white;
@@ -59,11 +51,12 @@
 }
 
 .mirror-console-log-error::before {
+    margin: 0 2px;
     content: "✘";
 }
 
 .mirror-console-log-info::before {
-    content: "ℹ";
+    content: "▶";
 }
 
 .mirror-console-log-warn::before {
