@@ -16,7 +16,7 @@
 ====
 ブラウザにおけるXHRのリソース取得には、CORS(https://developer.mozilla.org/ja/docs/Web/HTTP/HTTP_access_control[Cross-Origin Resource Sharing])というセキュリティ上の制約が存在します。
 
-このCORSの制約により、ブラウザでは同一ドメインではないリソースを許可なく取得することはできません。そのため、一般には別サイトのリソースは許可なくXHRでアクセスすることができません。
+このCORSの制約により、ブラウザでは同一ドメインではないリソースを許可なく取得することはできません。そのため、一般的には別サイトのリソースは許可なくXHRでアクセスすることができません。
 
 次のサンプルでは `http://azu.github.io/promises-book/json/comment.json` という `azu.github.io` ドメイン以下にあるリソースを取得する例が登場します。
 
