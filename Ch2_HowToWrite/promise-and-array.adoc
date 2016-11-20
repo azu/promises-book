@@ -12,7 +12,7 @@
 まずは、通常のコールバックスタイルを使って複数のXHRを行う以下のようなコードを見てみます。
 
 [WARNING]
-.CROSについて
+.CORSについて
 ====
 ブラウザにおけるXHRのリソース取得には、CORS(https://developer.mozilla.org/ja/docs/Web/HTTP/HTTP_access_control[Cross-Origin Resource Sharing])というセキュリティ上の制約が存在します。
 
