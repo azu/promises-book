@@ -11,6 +11,19 @@
 少しイメージしにくいので、
 まずは、通常のコールバックスタイルを使って複数のXHRを行う以下のようなコードを見てみます。
 
+[WARNING]
+.CROSについて
+====
+ブラウザにおけるXHRのリソース取得には、CORS(https://developer.mozilla.org/ja/docs/Web/HTTP/HTTP_access_control[Cross-Origin Resource Sharing])というセキュリティ上の制約が存在します。
+
+次からのサンプルでは `http://azu.github.io/promises-book/json/comment.json` という `azu.github.io` ドメイン以下にあるリソースを取得する例が登場します。
+
+ブラウザでは、同一ドメインではないリソースを許可なく取得することはできません。そのため、 次のサンプルコードは http://azu.github.io/promises-book/[http://azu.github.io/promises-book/]上でないと動作しないことに注意してください。
+
+また、 http://httpbin.org/[httpbin.org] というドメインがリソース取得の例として登場します。
+こちらは、同一ドメインでなくてもリソースの取得が許可されています。
+====
+
 === コールバックで複数の非同期処理
 
 [role="executable"]
