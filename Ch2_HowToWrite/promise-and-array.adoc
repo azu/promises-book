@@ -18,9 +18,9 @@
 
 次からのサンプルでは `http://azu.github.io/promises-book/json/comment.json` という `azu.github.io` ドメイン以下にあるリソースを取得する例が登場します。
 
-ブラウザでは、同一ドメインではないリソースを許可なく取得することはできません。そのため、 次のサンプルコードは http://azu.github.io/promises-book/[http://azu.github.io/promises-book/]上でないと動作しないことに注意してください。
+ブラウザでは、同一ドメインではないリソースを許可なく取得することはできません。そのため、 次のサンプルコードは http://azu.github.io/promises-book/[http://azu.github.io/promises-book/] 上でないと動作しないことに注意してください。
 
-また、 http://httpbin.org/[httpbin.org] というドメインがリソース取得の例として登場します。
+一方、 http://httpbin.org/[httpbin.org] というドメインがリソース取得の例として登場します。
 こちらは、同一ドメインでなくてもリソースの取得が許可されています。
 ====
 

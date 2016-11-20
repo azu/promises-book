@@ -13,7 +13,7 @@ test:
 html:
 	@echo "Generate HTML..."
 	@npm run embed
-	@npm run build-js
+	@npm run build
 	@echo "Building asciidoc"
 	@./_tools/build.sh
 	@echo "Done! => ${OUTPUT_FILE}"
