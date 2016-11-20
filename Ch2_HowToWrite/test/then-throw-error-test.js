@@ -3,7 +3,9 @@ var assert = require("power-assert");
 describe("#badMain", function () {
     it("can't handling error", function (done) {
         require("../src/then-throw-error").badMain(function (value) {
-            assert.fail("doesn't call");
+            assert.fail("doesn't call"); // 呼ばれないはず
+        }).catch(function(error) { // 代わりに catch できる
+            assert(error instanceof Error)
         });
         setTimeout(function () {
             done();

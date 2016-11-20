@@ -26,7 +26,7 @@ describe("promise-race-other", function () {
             });
 
         Promise.race([winnerPromise, loserPromise]).then(function () {
-            assert(count === [winnerPromise, loserPromise].length);
+            assert(count !== [winnerPromise, loserPromise].length);
         });
     });
 });
