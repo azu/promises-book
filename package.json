@@ -15,7 +15,7 @@
     "lint-html": "gulp lint-html",
     "textlint": "textlint -f pretty-error Appendix-*/ Ch*/",
     "textlint:fix": "textlint --fix Appendix-*/ Ch*/",
-    "test": "mocha ./Ch**/test/*.js"
+    "test": "mocha ./Ch**/test/*.js && npm run textlint"
   },
   "directories": {
     "test": "Ch*/test/"
