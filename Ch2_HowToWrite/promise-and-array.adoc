@@ -16,12 +16,14 @@
 ====
 ブラウザにおけるXHRのリソース取得には、CORS(https://developer.mozilla.org/ja/docs/Web/HTTP/HTTP_access_control[Cross-Origin Resource Sharing])というセキュリティ上の制約が存在します。
 
-次からのサンプルでは `http://azu.github.io/promises-book/json/comment.json` という `azu.github.io` ドメイン以下にあるリソースを取得する例が登場します。
+このCORSの制約により、ブラウザでは同一ドメインではないリソースを許可なく取得することはできません。そのため、一般には別サイトのリソースは許可なくXHRでアクセスすることができません。
 
-ブラウザでは、同一ドメインではないリソースを許可なく取得することはできません。そのため、 次のサンプルコードは http://azu.github.io/promises-book/[http://azu.github.io/promises-book/] 上でないと動作しないことに注意してください。
+次のサンプルでは `http://azu.github.io/promises-book/json/comment.json` という `azu.github.io` ドメイン以下にあるリソースを取得する例が登場します。
 
-一方、 http://httpbin.org/[httpbin.org] というドメインがリソース取得の例として登場します。
-こちらは、同一ドメインでなくてもリソースの取得が許可されています。
+`azu.github.io` ドメイン以下のJSONには、別ドメインからの取得が許可する設定がされています。
+
+また、 http://httpbin.org/[httpbin.org] というドメインがリソース取得の例として登場します。
+こちらも、同一ドメインでなくてもリソースの取得が許可されています。
 ====
 
 === コールバックで複数の非同期処理
