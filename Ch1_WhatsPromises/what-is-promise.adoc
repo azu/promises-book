@@ -6,7 +6,7 @@
 Promiseは非同期処理を抽象化したオブジェクトとそれを操作する仕組みのことをいいます。
 詳しくはこれから学んでいくとして、PromiseはJavaScriptで発見された概念ではありません。
 
-最初に発見されたのは http://erights.org/elib/distrib/pipeline.html[E言語]におけるもので、
+最初に発見されたのは https://web.archive.org/web/20161029030824/http://erights.org/elib/distrib/pipeline.html[E言語]におけるもので、
 並列/並行処理におけるプログラミング言語のデザインの一種です。
 
 このデザインをJavaScriptに持ってきたものが、この書籍で学ぶJavaScript Promiseです。
