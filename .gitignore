@@ -3,7 +3,8 @@
 /javascript-promise-book.pdf
 /javascript-promise-book.xml
 /javascript-promise-omake.pdf
-/javascript-promise-omake.xml### https://raw.github.com/github/gitignore/608690d6b9a78c2a003affc792e49a84905b3118/ruby.gitignore
+/javascript-promise-omake.xml
+### https://raw.github.com/github/gitignore/608690d6b9a78c2a003affc792e49a84905b3118/ruby.gitignore
 # Node
 node_modules/
 embed/
