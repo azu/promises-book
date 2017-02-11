@@ -22,7 +22,7 @@ pdf:
 	@echo "Generate PDF..."
 	@npm run embed
 	@echo "Building asciidoc"
-	@asciidoctor -a lang=en -a bookversion=`node ./_tools/cli-book-version.js` \
+	@bundle exec asciidoctor -a lang=en -a bookversion=`node ./_tools/cli-book-version.js` \
 	-a icons=font -a source-highlighter=coderay --backend docbook \
 	-o javascript-promise-book.xml ${SRC_FILE}
 	@./_tools/build_pdf.sh javascript-promise-book.xml
@@ -32,7 +32,7 @@ pdf-note:
 	@echo "Generate PDF..."
 	@npm run embed
 	@echo "Building asciidoc"
-	@asciidoctor -a lang=en -a icons=font -a source-highlighter=coderay --backend docbook \
+	@bundle exec asciidoctor -a lang=en -a icons=font -a source-highlighter=coderay --backend docbook \
 	-o javascript-promise-omake.xml Appendix-Note/readme.adoc
 	@./_tools/build_pdf.sh javascript-promise-omake.xml
 	@echo "Done!"

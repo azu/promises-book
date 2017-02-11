@@ -1,0 +1,15 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    asciidoctor (1.5.5)
+    coderay (1.1.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  asciidoctor
+  coderay
+
+BUNDLED WITH
+   1.13.6

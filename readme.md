@@ -22,7 +22,7 @@ This book has been released in :
 ### HTMLのビルド
 
 ``` sh
-gem install asciidoctor coderay
+bundle install --path vendor/bundle
 npm install
 make html
 open index.html
