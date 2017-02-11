@@ -28,7 +28,7 @@ script:
 - make test
 - make html
 - make pdf
-- sh ./_tools/check-to-deploy.sh
+- ./_tools/check-to-deploy.sh
 after_success:
 - rm .gitignore # ignore gitignore
 - "./_tools/setup-git.sh"
