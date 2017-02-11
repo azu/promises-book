@@ -16,7 +16,7 @@ http://efcl.info/[Web Scratch] や http://jser.info/[JSer.info] といったサ�
 以下の https://gumroad.com/l/javascript-promise[おまけ.pdf] では、
 この書籍を書き始めた理由や、どのように書いていったか、テストなどについて書かれています。
 
-- image:../public/img/gumroad-green.svg[おまけをダウンロード, link="https://gumroad.com/l/javascript-promise"] https://gumroad.com/l/javascript-promise[JavaScript Promiseの本のおまけ]
+- https://gumroad.com/l/javascript-promise[JavaScript Promiseの本のおまけ]
 
 Gumroadから無料 または 好きな値段でダウンロードすることができます。
 
