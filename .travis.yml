@@ -22,14 +22,17 @@ before_install:
 - gem --version
 install:
 - export CXX=g++-4.8
-- gem install asciidoctor
-- gem install coderay
+- bundle install --path vendor/bundle
 - npm install
 script:
 - make test
+- make html
+- make pdf
+- sh ./_tools/check-to-deploy.sh
 after_success:
 - rm .gitignore # ignore gitignore
 - "./_tools/setup-git.sh"
+- npm run build-js-min
 - make deploy
 env:
   global:
