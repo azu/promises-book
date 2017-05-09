@@ -3,9 +3,9 @@ os:
 sudo: false
 language: node_js
 rvm:
-- "2.2.0"
+- 2.2.0
 node_js:
-- "stable"
+- stable
 addons:
   apt:
     sources:
@@ -15,8 +15,10 @@ addons:
 cache:
   directories:
   - node_modules
-  - $HOME/.gradle
+  - "$HOME/.gradle"
 before_install:
+- openssl aes-256-cbc -K $encrypted_7b11bfc5945b_key -iv $encrypted_7b11bfc5945b_iv
+  -in github_deploy_key.enc -out github_deploy_key -d
 - java -version
 - ruby --version
 - gem --version
@@ -28,10 +30,10 @@ script:
 - make test
 - make html
 - make pdf
-- ./_tools/check-to-deploy.sh
+- "./_tools/check-to-deploy.sh"
 after_success:
-- rm .gitignore # ignore gitignore
 - "./_tools/setup-git.sh"
+- $(npm bin)/set-up-ssh --key "$encrypted_7b11bfc5945b_key" --iv "$encrypted_7b11bfc5945b_iv" --path-encrypted-key ".travis/github_deploy_key.enc"
 - npm run build-js-min
 - make deploy
 env:
@@ -41,7 +43,7 @@ env:
   - secure: Ne82o6v7wWwNQzd/2rKacyDgFgxLP822KPxxSZe/7/8gklbGMXOtDAhyW+5PgixOs7s3Vzknqw6dSTOPMY2c436F1ZJb6lMGcL6BPVSGmIXSYGm6C5SZIDTrp7QDarTAGCNiHlHFGySEhbz9R5CjPWF24kQfT/QdszZr7OokJYA=
 branches:
   except:
-    - preview-html
+  - preview-html
 notifications:
   webhooks:
     urls:
