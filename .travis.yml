@@ -31,6 +31,7 @@ script:
 - "./_tools/check-to-deploy.sh"
 after_success:
 - "./_tools/setup-git.sh"
+- git config --global url.ssh://git@github.com/.insteadOf https://github.com/
 - $(npm bin)/set-up-ssh --key "$encrypted_7b11bfc5945b_key" --iv "$encrypted_7b11bfc5945b_iv" --path-encrypted-key ".travis/github_deploy_key.enc"
 - npm run build-js-min
 - make deploy
