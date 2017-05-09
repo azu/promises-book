@@ -17,8 +17,6 @@ cache:
   - node_modules
   - "$HOME/.gradle"
 before_install:
-- openssl aes-256-cbc -K $encrypted_7b11bfc5945b_key -iv $encrypted_7b11bfc5945b_iv
-  -in github_deploy_key.enc -out github_deploy_key -d
 - java -version
 - ruby --version
 - gem --version
