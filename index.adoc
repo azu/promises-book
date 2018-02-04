@@ -31,7 +31,7 @@ ifeval::["{backend}" == "html5"]
 
 icon:twitter[2x, link=https://twitter.com/search?q=%23Promise%E6%9C%AC] ハッシュタグは https://twitter.com/search?q=%23Promise%E6%9C%AC[#Promise本]
 
-icon:rss[2x, link=https://github.com/azu/promises-book/releases.atom] 更新情報は https://github.com/azu/promises-book/releases.atom[RSS] から購読出来ます
+icon:rss[2x, link=https://github.com/azu/promises-book/releases.atom] 更新情報は https://github.com/azu/promises-book/releases.atom[RSS] から購読できます
 
 ++++
 <div class="social-button-wrapper">
@@ -46,7 +46,7 @@ icon:rss[2x, link=https://github.com/azu/promises-book/releases.atom] 更新情�
 ++++
 
 この書籍はCreative Commons Attribution-NonCommercialの https://github.com/azu/promises-book/#license[ライセンス] で公開されています。
-また、PDFとしてレンダリングしたバージョンは以下からダウンロードすることが出来ます。
+また、PDFとしてレンダリングしたバージョンは以下からダウンロードすることができます。
 
 ++++
 <div class="download-area">
@@ -56,11 +56,11 @@ icon:rss[2x, link=https://github.com/azu/promises-book/releases.atom] 更新情�
 ++++
 
 この電子書籍の作り方に興味がある方は、
-以下から https://gumroad.com/l/javascript-promise[おまけ] をダウンロードすることが出来ます。
+以下から https://gumroad.com/l/javascript-promise[おまけ] をダウンロードすることができます。
 
 - image:./public/img/gumroad-green.svg[おまけをダウンロード, link="https://gumroad.com/l/javascript-promise"] https://gumroad.com/l/javascript-promise[おまけをダウンロード]
 - 書き始めた理由や、どのように書いていったか、どのような仕組みで動いているかなどについて書かれています。
-- Gumroadで購入者が0円から任意の値段を決めてダウンロードすることが出来ます。
+- Gumroadで購入者が0円から任意の値段を決めてダウンロードすることができます。
 - 寄付などがしたい方はGumroadからおまけの購入で代用して下さい。
 
 '''

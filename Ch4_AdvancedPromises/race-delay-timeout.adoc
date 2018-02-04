@@ -98,7 +98,7 @@ ECMAScript5では完璧に `Error` を継承したものを作ることは不可
 
 [NOTE]
 ====
-ECMAScript 6では `class` 構文を使うことで内部的にも正確に継承を行うことが出来ます。
+ECMAScript 6では `class` 構文を使うことで内部的にも正確に継承を行うことができます。
 
 [source,javascript]
 ----

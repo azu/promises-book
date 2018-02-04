@@ -102,7 +102,7 @@ Promiseで意図したテストを書くためにはどうするか、またそ�
 ====
 今回書いた `shouldFulfilled` と `shouldRejected` はライブラリとして利用できるようになっています。
 
-https://github.com/azu/promise-test-helper[azu/promise-test-helper] からダウンロードすることが出来ます。
+https://github.com/azu/promise-test-helper[azu/promise-test-helper] からダウンロードすることができます。
 ====
 
 また、今回のヘルパー関数は<<mocha-promise,MochaのPromiseサポート>>を前提とした書き方なので、

@@ -17,7 +17,7 @@ This book has been released in :
 
 この書籍はAsciidocフォーマットで書かれています。
 
-[Asciidoctor](http://asciidoctor.org/ "Asciidoctor")でビルドすることが出来ます。
+[Asciidoctor](http://asciidoctor.org/ "Asciidoctor")でビルドすることができます。
 
 ### HTMLのビルド
 
