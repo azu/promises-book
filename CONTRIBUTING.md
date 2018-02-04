@@ -1,6 +1,6 @@
 ## 実行環境
 
-PromisesはECMAScriptである事を元に進めるが、現実的に非同期な処理がECMAScriptには少ないのでDOM APIも使用する。
+PromisesはECMAScriptであることを元に進めるが、現実的に非同期な処理がECMAScriptには少ないのでDOM APIも使用する。
 
 Promisesが実装されていない環境もあるため、[native-promise-only](https://github.com/getify/native-promise-only/ "native-promise-only")をPolyfillとして利用する。
 
@@ -58,8 +58,8 @@ Promisesが実装されていない環境もあるため、[native-promise-only]
 
 ## 文章の表現
 
-文章の表現を出来る限り統一したいため、迷う表現については以下で方針を決めている。
-追加したい表現がある場合は、以下に書き込めば良い。
+文章の表現をできる限り統一したいため、迷う表現については以下で方針を決めている。
+追加したい表現がある場合は、以下に書き込めばよい。
 
 - [表記の統一 · Issue #41 · azu/promises-book](https://github.com/azu/promises-book/issues/41 "表記の統一 · Issue #41 · azu/promises-book")
 
@@ -67,7 +67,7 @@ Promisesが実装されていない環境もあるため、[native-promise-only]
 
 :negative_squared_cross_mark: Promises
 
-Promiseという機能について言う時は大文字の単数を使う。
+Promiseという機能についていう時は大文字の単数を使う。
 
 例外としてES6 PromisesやPromises/A+の仕様について言及する際はsをつけてもよい。
 
@@ -88,7 +88,7 @@ Promiseという機能について言う時は大文字の単数を使う。
 #### resolve,reject / FulFilled,Rejected の使い分け
 
 * "処理が成功した時" or "処理が失敗した時" という表現を使う場合、曖昧さが残らないように気をつける
-    * 例えば、"処理が成功した場合は`onFulfilled`が呼ばれますが" というようにその結果についても触れる
+    * たとえば、"処理が成功した場合は`onFulfilled`が呼ばれますが" というようにその結果についても触れる
 * `new Promise` の処理について述べるなら、"resolveした時" と書いてもよい。
     * "resolveされた時" とは書かない
 * `then`でのメソッドチェーン等、`new Promise`と直接関係ないケースの場合にはFulFilled,Rejectedを使う

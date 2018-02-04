@@ -1,6 +1,6 @@
 {
   "plugins": [
-    "asciidoc-loose"
+    "asciidoctor"
   ],
   "filters": {},
   "rules": {

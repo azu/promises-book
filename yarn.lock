@@ -176,6 +176,12 @@ arrify@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/arrify/-/arrify-1.0.1.tgz#898508da2226f380df904728456849c1501a4b0d"
 
+asciidoctor.js@^1.5.6-preview.4:
+  version "1.5.6-preview.5"
+  resolved "https://registry.yarnpkg.com/asciidoctor.js/-/asciidoctor.js-1.5.6-preview.5.tgz#e8459d531e3cbfaf5857207b0f8edfff8fbfeefc"
+  dependencies:
+    opal-runtime "0.11.0-integration8"
+
 asn1.js@^4.0.0:
   version "4.9.1"
   resolved "https://registry.yarnpkg.com/asn1.js/-/asn1.js-4.9.1.tgz#48ba240b45a9280e94748990ba597d216617fd40"
@@ -1682,6 +1688,16 @@ glob2base@^0.0.12:
   dependencies:
     find-index "^0.1.1"
 
+glob@6.0.4:
+  version "6.0.4"
+  resolved "https://registry.yarnpkg.com/glob/-/glob-6.0.4.tgz#0f08860f6a155127b2fadd4f9ce24b1aab6e4d22"
+  dependencies:
+    inflight "^1.0.4"
+    inherits "2"
+    minimatch "2 || 3"
+    once "^1.3.0"
+    path-is-absolute "^1.0.0"
+
 glob@7.1.1, glob@^7.0.0, glob@^7.0.3, glob@^7.0.5, glob@^7.1.0, glob@^7.1.1:
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.1.tgz#805211df04faaf1c63a3600306cdf5ade50b2ec8"
@@ -2854,17 +2870,17 @@ minimalistic-crypto-utils@^1.0.0, minimalistic-crypto-utils@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/minimalistic-crypto-utils/-/minimalistic-crypto-utils-1.0.1.tgz#f6c00c1c0b082246e5c4d99dfb8c7c083b2b582a"
 
+"minimatch@2 || 3", minimatch@^3.0.0, minimatch@^3.0.2:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-3.0.4.tgz#5166e286457f03306064be5497e8dbb0c3d32083"
+  dependencies:
+    brace-expansion "^1.1.7"
+
 minimatch@^2.0.1:
   version "2.0.10"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-2.0.10.tgz#8d087c39c6b38c001b97fca7ce6d0e1e80afbac7"
   dependencies:
     brace-expansion "^1.0.0"
-
-minimatch@^3.0.0, minimatch@^3.0.2:
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-3.0.4.tgz#5166e286457f03306064be5497e8dbb0c3d32083"
-  dependencies:
-    brace-expansion "^1.1.7"
 
 minimatch@~0.2.11:
   version "0.2.14"
@@ -2952,7 +2968,7 @@ multipipe@^0.1.0, multipipe@^0.1.2:
   dependencies:
     duplexer2 "0.0.2"
 
-nan@^2.0.9, nan@^2.3.0:
+nan@^2.3.0:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.6.2.tgz#e4ff34e6c95fdfb5aecc08de6596f43605a7db45"
 
@@ -3075,11 +3091,11 @@ once@~1.3.0:
   dependencies:
     wrappy "1"
 
-oniguruma@^6.0.1:
-  version "6.2.1"
-  resolved "https://registry.yarnpkg.com/oniguruma/-/oniguruma-6.2.1.tgz#a50ee69642844ad1d252685aab187171b06ece04"
+opal-runtime@0.11.0-integration8:
+  version "0.11.0-integration8"
+  resolved "https://registry.yarnpkg.com/opal-runtime/-/opal-runtime-0.11.0-integration8.tgz#8442ddc8c66279c6cd004bf7a730a78646202db2"
   dependencies:
-    nan "^2.0.9"
+    glob "6.0.4"
 
 optimist@^0.6.1:
   version "0.6.1"
@@ -3757,10 +3773,6 @@ samsam@1.1.2, samsam@~1.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/samsam/-/samsam-1.1.2.tgz#bec11fdc83a9fda063401210e40176c3024d1567"
 
-sax@^1.1.1:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.2.tgz#fd8631a23bc7826bef5d871bdb87378c95647828"
-
 "semver@2 || 3 || 4 || 5", semver@^4.1.0:
   version "4.3.6"
   resolved "https://registry.yarnpkg.com/semver/-/semver-4.3.6.tgz#300bc6e0e86374f7ba61068b5b1ecd57fc6532da"
@@ -4145,12 +4157,11 @@ textlint-formatter@^1.7.3:
     try-resolve "^1.0.1"
     xml-escape "^1.0.0"
 
-textlint-plugin-asciidoc-loose@^1.0.1:
+textlint-plugin-asciidoctor@^1.0.1:
   version "1.0.1"
-  resolved "https://registry.yarnpkg.com/textlint-plugin-asciidoc-loose/-/textlint-plugin-asciidoc-loose-1.0.1.tgz#b1a47150b307b04826c562563f3624aa8c7b48f3"
+  resolved "https://registry.yarnpkg.com/textlint-plugin-asciidoctor/-/textlint-plugin-asciidoctor-1.0.1.tgz#81e5ca84a2d98ef05c782fcab8e0db4c28d45bfc"
   dependencies:
-    structured-source "^3.0.2"
-    vscode-textmate "^1.0.11"
+    asciidoctor.js "^1.5.6-preview.4"
 
 textlint-plugin-markdown@^2.0.1:
   version "2.0.1"
@@ -4568,13 +4579,6 @@ vm-browserify@~0.0.1:
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-0.0.4.tgz#5d7ea45bbef9e4a6ff65f95438e0a87c357d5a73"
   dependencies:
     indexof "0.0.1"
-
-vscode-textmate@^1.0.11:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/vscode-textmate/-/vscode-textmate-1.2.0.tgz#85d05ce368f0a901569be08f34c12badb01cd2db"
-  dependencies:
-    oniguruma "^6.0.1"
-    sax "^1.1.1"
 
 w3c-xmlhttprequest@^2.1.0:
   version "2.1.2"

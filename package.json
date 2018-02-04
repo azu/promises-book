@@ -61,7 +61,7 @@
     "remove-use-strict": "0.0.5",
     "sinon": "^1.9.0",
     "textlint": "^8.0.0",
-    "textlint-plugin-asciidoc-loose": "^1.0.1",
+    "textlint-plugin-asciidoctor": "^1.0.1",
     "textlint-rule-prh": "^3.1.1",
     "through2": "^2.0.0",
     "vinyl-source-stream": "^1.0.0",
