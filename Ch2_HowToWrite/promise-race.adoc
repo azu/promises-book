@@ -35,7 +35,7 @@ include::embed/embed-promise-race-other.js[]
 
 先ほどのコードに `console.log` をそれぞれ追加しただけの内容となっています。
 
-実行してみると、winnter/loser どちらも `setTimeout` の中身が実行されて `console.log` がそれぞれ出力されていることがわかります。
+実行してみると、winter/loser どちらも `setTimeout` の中身が実行されて `console.log` がそれぞれ出力されていることがわかります。
 
 つまり、<<Promise.race, `Promise.race`>>では、
 一番最初のpromiseオブジェクトがFulfilledとなっても、他のpromiseがキャンセルされるわけでは無いということがわかります。
