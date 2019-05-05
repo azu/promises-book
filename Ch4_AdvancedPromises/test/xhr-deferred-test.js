@@ -1,9 +1,15 @@
 "use strict";
 var assert = require('power-assert');
 var getURL = require("../src/deferred/xhr-deferred").getURL;
+var echoServer = require("../../test/echo-server");
 
-require("http-echo");
 describe('#cancelableXHR', function () {
+    beforeEach(() => {
+        return echoServer.start();
+    });
+    afterEach(() => {
+        return echoServer.stop();
+    });
     describe("when get data", function () {
         it("should resolve with value", function () {
             var URL = "http://localhost:3000/?status=200&body=text";
