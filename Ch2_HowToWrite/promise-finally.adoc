@@ -32,13 +32,13 @@ function onFinally() {
 }
 
 // `Promise#finally` は新しいpromiseオブジェクトを返す
-Promise.resolve(42).finally(function(){
-    onFinally()
-}).then(function(value) {
-    // 呼び出し元のpromiseオブジェクトの状態をそのまま引き継ぐ
-    // 呼び出し元のpromiseオブジェクトは `42` で resolveされている
-    console.log(value); // 42
-})
+Promise.resolve(42)
+    .finally(onFinally)
+    .then(function(value) {
+        // 呼び出し元のpromiseオブジェクトの状態をそのまま引き継ぐ
+        // 呼び出し元のpromiseオブジェクトは `42` で resolveされている
+        console.log(value); // 42
+    });
 ----
 
 `Promise#finally` メソッドと同等の表現を `Promise#then` メソッドで書くと次のように書けます。
