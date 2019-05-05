@@ -135,7 +135,7 @@ Promiseの実装によってはこのようなミスが検知しにくくなる�
 
 [NOTE]
 ====
-このunhandled rejectionが検知しにくい問題はPromiseの実装に依存します。
+このunhandled rejectionが検知しにくい問題はPromiseの実装と実行環境に依存します。
 たとえば、 https://github.com/yahoo/ypromise[ypromise] はunhandled rejectionがある場合は、そのことをコンソールに表示します。
 
 > Promise rejected but no error handlers were registered to it
@@ -145,11 +145,10 @@ Promiseの実装によってはこのようなミスが検知しにくくなる�
 
 > "Possibly unhandled ReferenceError. conosle is not defined
 
-ネイティブのPromiseの場合も同様にこの問題への対処としてGC-based unhandled rejection trackingというものが
-搭載されつつあります。
+また、このunhandled rejectionに関する仕組みが https://github.com/tc39/ecma262/releases/tag/es2016-draft-20151201[ECMAScript 2016] で仕様に追加されています。そのためネイティブPromiseでは、この仕様を活用したGC-based unhandled rejection trackingというものが搭載されているケースが増えています。
 
 これはpromiseオブジェクトがガーベッジコレクションによって回収されるときに、
-それがunhandled rejectionであるなら、エラー表示をするという仕組みがベースとなっているようです。
+それがunhandled rejectionであるなら、エラー表示をするという仕組みがベースになっています。
 
 https://twitter.com/domenic/status/461154989856264192[Firefox] や https://code.google.com/p/v8/issues/detail?id=3093[Chrome] のネイティブPromiseでは一部実装されています。
 ====
@@ -195,7 +194,7 @@ try{
 <<promise-prototype-done.js,`Promise.prototype.done`>> をよく見てみると、何も `return` していないことも分かると思います。
 つまり、`done` は「ここでPromise chainは終了して、例外が起きた場合はそのままpromiseの外へ投げ直す」という処理になっています。
 
-実装や環境がしっかり対応していれば、__unhandled rejection__の検知はできるため、必ずしも `done` が必要というわけではなく、
+現在では多くの実行環境で、__unhandled rejection__の検知してコンソールに警告を表示するため、`done` が必要な場合は少なくなっています。
 また今回の<<promise-prototype-done.js,`Promise.prototype.done`>>のように、`done` は既存のPromiseの上に実装することができるため、
 <<es6-promises,ES6 Promises>>の仕様そのものには入らなかったといえるかもしれません。
 
@@ -213,7 +212,7 @@ try{
 * Promise chain を終了するという宣言
 
 <<then-or-catch,then or catch?>> と同様にPromiseにより沈黙してしまったエラーについては、
-デバッグツールやライブラリの改善等で殆どのケースでは問題ではなくなるかもしれません。
+デバッグツールやライブラリの改善で問題となるケースは少なくなっています。
 
 また、`done` は値を返さないことでそれ以上Promise chainを繋げることができなくなるため、
 そのような統一感を持たせるという用途で `done` を使うこともできます。
