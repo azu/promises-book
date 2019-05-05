@@ -3,7 +3,7 @@
  * LICENSE : MIT
  */
 "use strict";
-var Promise = require("core-js-pure/features/promise'");
+var Promise = require("core-js-pure/features/promise");
 var consoleUI = require("codemirror-console-ui");
 module.exports.initialize = function () {
     var attachToElement = consoleUI.attachToElement;
