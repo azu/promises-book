@@ -70,10 +70,10 @@ promise.then(function(result) {
 .finallyのユースケース
 ----
 // リソースを取得中かどうかのフラグ
-var isLoading = false
+var isLoading = false;
 function getResource(URL) {
     // リソース取得中フラグをONに
-    isLoading = false
+    isLoading = true;
     return new Promise(function (resolve, reject) {
         var req = new XMLHttpRequest();
         req.open('GET', URL, true);
