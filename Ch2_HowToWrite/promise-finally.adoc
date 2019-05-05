@@ -1,7 +1,101 @@
 [[ch2-promise-finally]]
 == Promise#finally
 
-- Promise#finnalyの使い方
-- ユースケース
-- Promiseを返す、promiseチェーンの状態を維持する
-    - 割り込めるけど、名前通り最後にしたほうがいい
+ECMAScript 2018からpromise chainの最後に処理を実行する `Promise#finally` メソッド追加されました。
+
+`Promise#finally` メソッドは成功時、失敗時どちらの場合でも呼び出すコールバック関数を登録できます。
+`try...catch...finally` 構文の `finally` 節と同様の役割をもつメソッドです。
+
+次のコードのように、 `Promise#finally` メソッドで登録したコールバック関数は、promiseオブジェクトが *resolve*(成功) / *reject*(失敗) どちらの場合でも呼ばれます。
+
+[role="executable"]
+[source,javascript]
+.finallyのコード例
+----
+Promise.resolve("成功").finally(function(){
+    console.log("成功時に実行される");
+});
+Promise.reject(new Error("失敗")).finally(function(){
+    console.log("失敗時に実行される");
+});
+----
+
+`finally` メソッドのコールバック関数は引数を受け取らず、どのような値を返してもpromise chainには影響を与えません。
+また、 `finally` メソッドも新しいpromiseオブジェクトを返し、新しいpromiseオブジェクトは呼び出し元のpromiseオブジェクトの状態をそのまま引き継ぎます。
+
+`Promise#finally(onFinally)` は、`Promise#then` メソッドで書くと次のように書けます。
+
+[role="executable"]
+[source,javascript]
+.finallyをthenで表現
+----
+function onFinally() {
+    // 成功、失敗どちらでも実行したい処理
+}
+
+// `Promise#finally` は新しいpromiseオブジェクトを返す
+Promise.resolve(42).finally(function(){
+    onFinally()
+}).then(function(value) {
+    // 呼び出し元のpromiseオブジェクトの状態をそのまま引き継ぐ
+    // 呼び出し元のpromiseオブジェクトは `42` で resolveされている
+    console.log(value); // 42
+})
+
+// Promise#thenでの同等の表現
+promise.then(function(result) {
+    onFinally();
+    return result;
+}, function(error) {
+    onFinally();
+    throw error;
+});
+----
+
+
+`Promise#finally` メソッドを使うことで、promise chainで必ず実行したい処理を簡単に書けるようになっています。
+
+次のコードでは、リソースを取得中かどうかを判定するためのフラグを `isLoading` という変数で管理しています。
+`Promise#finally` メソッドを使い成功失敗どちらにもかかわらず、取得が終わったら `isLoading` は `false` にしています。
+
+[role="executable"]
+[source,javascript]
+.finallyのユースケース
+----
+// リソースを取得中かどうかのフラグ
+var isLoading = false
+function getResource(URL) {
+    // リソース取得中フラグをON
+    isLoading = false
+    return new Promise(function (resolve, reject) {
+        var req = new XMLHttpRequest();
+        req.open('GET', URL, true);
+        req.onload = function () {
+            if (req.status === 200) {
+                resolve(req.responseText);
+            } else {
+                reject(new Error(req.statusText));
+            }
+        };
+        req.onerror = function () {
+            reject(new Error(req.statusText));
+        };
+        req.send();
+    }).finally(function(){
+        // リソース取得に成功/失敗どちらの場合も取得中フラグをOFF
+        isLoading = false;
+    });
+}
+
+console.log("リソースロード開始", isLoading);
+getResource("https://httpbin.org/get").then(function(value) {
+    console.log("リソース成功", isLoading);
+    console.log(value);
+}).catch(function(error) {
+    console.log("リソース失敗", isLoading);
+    console.error(error);
+});
+console.log("リソースロード中", isLoading);
+----
+
+`then` と `catch` メソッドでも実現できますが、 `Promise#finally` メソッドを使うことで `isLoading` の代入を一箇所にまとめられます。
