@@ -72,7 +72,7 @@ promise.then(function(result) {
 // リソースを取得中かどうかのフラグ
 var isLoading = false
 function getResource(URL) {
-    // リソース取得中フラグをON
+    // リソース取得中フラグをONに
     isLoading = false
     return new Promise(function (resolve, reject) {
         var req = new XMLHttpRequest();
@@ -89,7 +89,7 @@ function getResource(URL) {
         };
         req.send();
     }).finally(function(){
-        // リソース取得に成功/失敗どちらの場合も取得中フラグをOFF
+        // リソース取得に成功/失敗どちらの場合も取得中フラグをOFFに
         isLoading = false;
     });
 }
