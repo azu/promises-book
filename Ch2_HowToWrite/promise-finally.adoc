@@ -1,0 +1,7 @@
+[[ch2-promise-finally]]
+== Promise#finally
+
+- Promise#finnalyの使い方
+- ユースケース
+- Promiseを返す、promiseチェーンの状態を維持する
+    - 割り込めるけど、名前通り最後にしたほうがいい
