@@ -13,9 +13,9 @@
     "build-js-min": "gulp build-js-min",
     "embed": "gulp embed",
     "lint-html": "gulp lint-html",
-    "textlint": "textlint -f pretty-error Appendix-*/ Ch*/",
-    "textlint:fix": "textlint --fix Appendix-*/ Ch*/",
-    "test": "mocha ./Ch**/test/*.js && npm run textlint"
+    "textlint": "textlint \"Appendix-*/*/**.adoc\" \"Ch*/*/**.adoc\"",
+    "textlint:fix": "textlint --fix \"Appendix-*/*/**.adoc\" \"Ch*/*/**.adoc\"",
+    "test": "mocha \"./Ch**/test/*.js\""
   },
   "directories": {
     "test": "Ch*/test/"
@@ -29,7 +29,7 @@
     "codemirror": "^5.46.0",
     "codemirror-console-ui": "^2.0.5",
     "native-promise-only": "^0.8.1",
-    "w3c-xmlhttprequest": "^2.1.0",
+    "w3c-xmlhttprequest": "^2.1.3",
     "ypromise": "^0.3.0"
   },
   "devDependencies": {
@@ -47,7 +47,6 @@
     "gulp-remove-use-strict": "0.0.2",
     "gulp-rename": "~1.4.0",
     "handlebars": "^4.1.2",
-    "http-echo": "0.0.2",
     "inlining-node-require": "^0.1.0",
     "intelli-espower-loader": "^1.0.0",
     "minifyify": "^7.0.1",

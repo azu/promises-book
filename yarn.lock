@@ -2519,10 +2519,6 @@ htmlparser2@^3.9.1:
     inherits "^2.0.1"
     readable-stream "^2.0.2"
 
-http-echo@0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/http-echo/-/http-echo-0.0.2.tgz#42f4d4b785ae5ec83e9ccad8128163f8561af05d"
-
 https-browserify@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-1.0.0.tgz#ec06c10e0a34c0f2faf199f7fd7fc78fffd03c73"
@@ -5798,9 +5794,10 @@ vm-browserify@^1.0.0:
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.0.tgz#bd76d6a23323e2ca8ffa12028dc04559c75f9019"
   integrity sha512-iq+S7vZJE60yejDYM0ek6zg308+UZsdtPExWP9VZoCFCz1zkJoXFnAX7aZfd/ZwrkidzdUZL0C/ryW+JwAiIGw==
 
-w3c-xmlhttprequest@^2.1.0:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/w3c-xmlhttprequest/-/w3c-xmlhttprequest-2.1.2.tgz#f0bc8937562828e2c2b9b40366486a1351fe41a0"
+w3c-xmlhttprequest@^2.1.3:
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/w3c-xmlhttprequest/-/w3c-xmlhttprequest-2.1.3.tgz#b0aa5e060577ab874295529e4e2d037312874122"
+  integrity sha512-NOCpSoUIcGQl/D3tMLUizhytW9J0mLUqw/nf1lzOpub7X5wgg6+T5jxnLz9foineWGs8baLt+Ldxf8DDyuQHjg==
 
 watchify@^3.11.1:
   version "3.11.1"
