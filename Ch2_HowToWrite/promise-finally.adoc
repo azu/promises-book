@@ -21,13 +21,11 @@ Promise.reject(new Error("失敗")).finally(function(){
 ----
 
 `finally` メソッドのコールバック関数は引数を受け取らず、どのような値を返してもpromise chainには影響を与えません。
-また、 `finally` メソッドも新しいpromiseオブジェクトを返し、新しいpromiseオブジェクトは呼び出し元のpromiseオブジェクトの状態をそのまま引き継ぎます。
-
-`Promise#finally(onFinally)` は、`Promise#then` メソッドで書くと次のように書けます。
+また、 `finally` メソッドは新しいpromiseオブジェクトを返し、新しいpromiseオブジェクトは呼び出し元のpromiseオブジェクトの状態をそのまま引き継ぎます。
 
 [role="executable"]
 [source,javascript]
-.finallyをthenで表現
+.finallyとpromise chain
 ----
 function onFinally() {
     // 成功、失敗どちらでも実行したい処理
@@ -41,8 +39,18 @@ Promise.resolve(42).finally(function(){
     // 呼び出し元のpromiseオブジェクトは `42` で resolveされている
     console.log(value); // 42
 })
+----
 
-// Promise#thenでの同等の表現
+`Promise#finally` メソッドと同等の表現を `Promise#then` メソッドで書くと次のように書けます。
+
+[source,javascript]
+.finallyをthenで表現
+----
+function onFinally() {
+    // 成功、失敗どちらでも実行したい処理
+}
+
+// Promise#finally(onFinally) と同等の表現
 promise.then(function(result) {
     onFinally();
     return result;
@@ -51,7 +59,6 @@ promise.then(function(result) {
     throw error;
 });
 ----
-
 
 `Promise#finally` メソッドを使うことで、promise chainで必ず実行したい処理を簡単に書けるようになっています。
 
