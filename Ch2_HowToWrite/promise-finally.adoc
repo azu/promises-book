@@ -96,10 +96,10 @@ function getResource(URL) {
 
 console.log("リソースロード開始", isLoading);
 getResource("https://httpbin.org/get").then(function(value) {
-    console.log("リソース成功", isLoading);
+    console.log("リソース取得に成功", isLoading);
     console.log(value);
 }).catch(function(error) {
-    console.log("リソース失敗", isLoading);
+    console.log("リソース取得に失敗", isLoading);
     console.error(error);
 });
 console.log("リソースロード中", isLoading);

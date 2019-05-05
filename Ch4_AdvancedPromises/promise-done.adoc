@@ -207,7 +207,7 @@ try{
 このセクションでは、 https://github.com/kriskowal/q/wiki/API-Reference#promisedoneonfulfilled-onrejected-onprogress[Q] や https://github.com/petkaantonov/bluebird[Bluebird] や https://github.com/cscott/prfun#promisedone--undefined[prfun] 等
 多くのPromiseライブラリで実装されている `done` の基礎的な実装と、`then` とはどのような違いがあるかについて学びました。
 
-`done` には2つの側面があることがわかりました。
+`done` には次の2つの側面があることがわかりました。
 
 * `done` の中で起きたエラーは外へ例外として投げ直す
 * Promise chain を終了するという宣言
