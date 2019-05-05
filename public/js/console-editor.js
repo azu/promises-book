@@ -4,9 +4,12 @@
  */
 "use strict";
 var Promise = require("native-promise-only");
+var consoleUI = require("codemirror-console-ui");
+console.log(consoleUI)
 module.exports.initialize = function () {
-    var consoleUI = require("codemirror-console-ui");
-    consoleUI.setUserContext({
+    var attachToElement = consoleUI.attachToElement;
+    var setUserContext = consoleUI.setUserContext;
+    setUserContext({
         Promise: Promise
     });
     var codeBlocks = document.querySelectorAll(".executable");
@@ -16,6 +19,6 @@ module.exports.initialize = function () {
         if (!code) {
             continue
         }
-        consoleUI(codeBlock, code.textContent);
+        attachToElement(codeBlock, code.textContent);
     }
 };
