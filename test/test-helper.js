@@ -3,7 +3,7 @@
  * LICENSE : MIT
  */
 "use strict";
-global.Promise = require("native-promise-only");
+global.Promise = require("core-js-pure/features/promise");
 global.shouldFulfilled = require("promise-test-helper").shouldFulfilled;
 global.shouldRejected = require("promise-test-helper").shouldRejected;
 

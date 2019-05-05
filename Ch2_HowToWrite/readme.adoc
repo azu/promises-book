@@ -19,6 +19,9 @@ include::promise-then.adoc[]
 // Promise#catch
 include::promise-catch.adoc[]
 
+// Promise#finally
+include::promise-finally.adoc[]
+
 // コラム: `then` は常に新しいpromiseオブジェクトを返す
 include::then-return-new-promise.adoc[]
 
