@@ -5,7 +5,6 @@
 "use strict";
 var Promise = require("native-promise-only");
 var consoleUI = require("codemirror-console-ui");
-console.log(consoleUI)
 module.exports.initialize = function () {
     var attachToElement = consoleUI.attachToElement;
     var setUserContext = consoleUI.setUserContext;
