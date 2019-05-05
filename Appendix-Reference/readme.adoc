@@ -80,7 +80,7 @@ fetch("https://httpbin.org/get").then(function(response) {
   });
 ----
 
-Promise chainが成功、失敗どちらでも最後に呼ばれるハンドラを登録し、新しいpromiseオブジェクトを作成して返す。
+Promise chainが成功、失敗どちらの場合でも呼ばれるハンドラを登録し、新しいpromiseオブジェクトを作成して返す。
 返したpromiseオブジェクトは、finallyの呼び出し元となったpromiseオブジェクトの状態を引き継ぐ。
 
 [[Promise.resolve]]
