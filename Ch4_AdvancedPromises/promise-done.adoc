@@ -136,12 +136,9 @@ Promiseの実装によってはこのようなミスが検知しにくくなる�
 [NOTE]
 ====
 このunhandled rejectionが検知しにくい問題はPromiseの実装と実行環境に依存します。
-たとえば、 https://github.com/yahoo/ypromise[ypromise] はunhandled rejectionがある場合は、そのことをコンソールに表示します。
 
-> Promise rejected but no error handlers were registered to it
-
-また、 https://github.com/petkaantonov/bluebird[Bluebird] の場合も、
-明らかに人間のミスにみえるReferenceErrorの場合などはそのままコンソールにエラーを表示してくれます。
+たとえば、 https://github.com/petkaantonov/bluebird[Bluebird] では、
+明らかに人間のミスにみえるReferenceErrorの場合などをコンソールにエラーとして表示してくれます。
 
 > "Possibly unhandled ReferenceError. conosle is not defined
 

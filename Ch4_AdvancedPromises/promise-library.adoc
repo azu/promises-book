@@ -56,18 +56,17 @@ Promiseと同等の機能を同じメソッド名で提供してくれるライ�
 つまり、Polyfillを読みこめばこの書籍で紹介しているコードは、
 Promiseがサポートされてない環境でも実行できるようになります。
 
+https://github.com/zloirock/core-js[core-js]::
+    ECMAScriptやウェブ標準で定義されている仕様を実装したPolyfillライブラリです。
+    多種多様な機能のPolyfillが含まれており、その一つとしてPromiseのPolyfillが実装されています。
+    Babel[https://babeljs.io/]のプリセットにも組み込まれています。
 https://github.com/jakearchibald/es6-promise[jakearchibald/es6-promise]::
     ES6 Promisesと互換性を持ったPolyfillライブラリです。
     https://github.com/tildeio/rsvp.js[RSVP.js] という Promises/A+互換ライブラリがベースとなっており、
     これのサブセットとしてES6 PromisesのAPIだけが実装されているライブラリです。
-https://github.com/getify/native-promise-only/[getify/native-promise-only]::
+https://github.com/taylorhakes/promise-polyfill[taylorhakes/promise-polyfill]::
     ES6 Promisesのpolyfillとなることを目的としたライブラリです。
-    ES6 Promisesの仕様に厳密に沿うように作られており、仕様にない機能は入れないようになっています。
-    実行環境にネイティブのPromiseがある場合はそちらを優先します。
-    この書籍ではこのPolyfillを読み込み、サンプルコードを動かしています
-https://github.com/yahoo/ypromise[yahoo/ypromise]::
-    http://yuilibrary.com/[YUI] の一部としても利用されているES6 Promisesと互換性を持ったPolyfillライブラリです。
-
+    実行環境にネイティブのPromiseがある場合はそちらを優先し、上書きしないようにしています。
 
 ==== Promise拡張ライブラリ
 
@@ -92,7 +91,7 @@ https://github.com/kriskowal/q/wiki/Coming-from-jQuery[Coming from jQuery] に�
 
 * https://github.com/petkaantonov/bluebird/blob/master/API.md[bluebird/API.md at master · petkaantonov/bluebird]
 
-BluebirdではPromiseを使った豊富な実装例に加えて、エラーが起きた時の対処法や
+BluebirdではPromiseを使った豊富な機能に加えて、エラーが起きた時の対処法や
 https://github.com/petkaantonov/bluebird/wiki/Promise-anti-patterns[Promiseのアンチパターン] について書かれています。
 
 どちらのドキュメントも優れているため、このライブラリを使ってない場合でも読んでおくと参考になることが多いと思います。
