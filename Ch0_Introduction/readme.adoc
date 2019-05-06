@@ -23,19 +23,25 @@ JavaScriptにおけるPromiseについて学ぶことを目的とした書籍で
 
 == 本書を読むにあたって
 
-この書籍ではJavaScriptの基本的な機能についてすでに学習していることを前提にしています。
+この書籍ではJavaScriptの基本的な文法や機能をすでに学習していることを前提にしています。
 
-- http://www.oreilly.co.jp/books/9784873113913/[JavaScript: The Good Parts]
-- http://www.oreilly.co.jp/books/9784873114880/[JavaScriptパターン]
-- http://www.oreilly.co.jp/books/9784873115733/[JavaScript 第6版]
-- http://gihyo.jp/book/2011/978-4-7741-4813-7[パーフェクトJavaScript]
-- http://www.shoeisha.co.jp/book/detail/9784798131115[Effective JavaScript]
+次のいずれかの書籍を読んだことがあれば、十分読み解くことができる内容だと思います。
 
-のいずれかの書籍を読んだことがあれば十分読み解くことができる内容だと思います。
+- https://www.oreilly.co.jp/books/9784873113913/[JavaScript: The Good Parts]
+- https://www.oreilly.co.jp/books/9784873114880/[JavaScriptパターン]
+- https://www.oreilly.co.jp/books/9784873117836/[初めてのJavaScript 第3版]
+- https://www.oreilly.co.jp/books/9784873115733/[JavaScript 第6版]
+- https://gihyo.jp/book/2011/978-4-7741-4813-7[パーフェクトJavaScript]
+- https://gihyo.jp/book/2016/978-4-7741-8411-1[改訂新版JavaScript本格入門]
 
-または、JavaScriptでウェブアプリケーションを書いたことがある、
-Node.js でコマンドラインアプリやサーバサイドを書いたことがあれば、
-どこかで書いたことがあるような内容が出てくるかもしれません。
+JavaScriptの基本的な文法や機能に不安がある方は、次の書籍を参照してください。
+JavaScriptの文法といった基本的なことを一から学べる書籍になっています。
+この書籍と同一の著者によって書かれており、ウェブでも公開されています。
+
+- https://jsprimer.net[JavaScriptの入門書 #jsprimer]
+
+または、JavaScriptでウェブアプリケーションを書いた経験やNode.js でコマンドラインアプリやサーバサイドを書いたことがあれば、
+どこかで見たことがあるような内容が出てくるかもしれません。
 
 一部セクションではNode.js環境での話となるため、Node.jsについて軽くでも知っておくとより理解がしやすいと思います。
 
