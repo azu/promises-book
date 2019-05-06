@@ -95,10 +95,8 @@ asyncMain().catch(error => {
 
 次のコードでは、``await``式で発生した例外を``try...catch``構文でキャッチしています。
 
-{{book.console}}
-// doctest:async:16
-
-[source,js]
+[role="executable"]
+[source,javascript]
 ----
 async function asyncMain() {
     // await式のエラーはtry...catchできる

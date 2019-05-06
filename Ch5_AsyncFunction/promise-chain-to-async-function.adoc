@@ -33,7 +33,7 @@ function fetchResources(resources) {
 }
 const resources = ["/resource/A", "/resource/B"];
 // リソースを取得して出力する
-fetchResources().then((results) => {
+fetchResources(resources).then((results) => {
     console.log(results); // => ["Response body of /resource/A", "Response body of /resource/B"]
 });
 ----
