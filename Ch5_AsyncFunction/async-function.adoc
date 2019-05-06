@@ -1,0 +1,105 @@
+[[async-function]]
+== Async Functionとは
+
+Async Functionとは非同期処理を行う関数を定義する構文です。
+Async Functionは通常の関数とは異なり、必ず``Promise``インスタンスを返す関数を定義する構文です。
+
+Async Functionは次のように関数の前に``async``をつけることで定義できます。
+この``doAsync``関数は常に``Promise``インスタンスを返します。
+
+[role="executable"]
+[source,javascript]
+----
+async function doAsync() {
+    return "値";
+}
+// doAsync関数はPromiseを返す
+doAsync().then(value => {
+    console.log(value); // => "値"
+});
+----
+
+Async Functionでは``return``した値の代わりに、``Promise.resolve(返り値)``のように返り値をラップした``Promise``インスタンスを返します。
+そのため、このAsync Functionは次のように書いた場合と同じ意味になります。
+
+[role="executable"]
+[source,javascript]
+----
+// 通常の関数でPromiseインスタンスを返している
+function doAsync() {
+    return Promise.resolve("値");
+}
+doAsync().then(value => {
+    console.log(value); // => "値"
+});
+----
+
+またAsync Function内では``await``式というPromiseの非同期処理が完了するまで待つ構文が利用できます。
+``await``式を使うことで非同期処理を同期処理のように扱えるため、Promiseチェーンで実現していた処理の流れを読みやすくかけます。
+
+まずは、Async Functionと``await``式を使った場合はどのように書けるかを簡単に見ていきます。
+
+次の例ではFetch APIで``/json/book.json``を取得して、``title``を取り出す``getBookTitle``関数の実行結果をコンソールに出力しています。
+取得``book.json``は次のような内容になっています。
+
+[[book.json]]
+./json/book.json
+[source,json]
+----
+include::../json/book.json[]
+----
+
+次のコードでは、Promiseのみを使って`getBookTitle``関数で取得したタイトルをコンソールに出力しています。
+
+[role="executable"]
+[source,javascript]
+----
+function getBookTitle(){
+    return fetch("/json/book.json").then(function(res){
+        return res.json(); // レスポンスをJSON形式としてパースする
+    }).then(json => {
+        return json.title; // JSONからtitleプロパティを取り出す
+    });
+}
+
+function main(){
+    getBookTitle().then(function(title) => {
+        console.log(title); // => "JavaScript Promiseの本"
+    });
+}
+
+main();
+----
+
+次のコードでは、Async Functionと``await``式を使って`getBookTitle``関数で取得したタイトルをコンソールに出力しています。
+
+[role="executable"]
+[source,javascript]
+----
+function getBookTitle(){
+    return fetch("/json/book.json").then(function(res){
+        return res.json(); // レスポンスをJSON形式としてパースする
+    }).then(json => {
+        return json.title; // JSONからtitleプロパティを取り出す
+    });
+}
+
+// `async`をつけてAsync Functionを定義
+async function main(){
+    // `await`式で`getBookTitle`の非同期処理が完了するまで待つ
+    // `getBookTitle`がresolveした値が返り値になる
+    const title = await getBookTitle();
+    console.log(title); // => "JavaScript Promiseの本"
+}
+
+main();
+----
+
+Async Functionでは非同期処理が完了するまで待つ``await``式を使うことができます。
+これにより、Promiseでは結果を``then``メソッドのコールバック関数で取得していたのが、``await``式によって同期的な関数のように結果を受け取れます。
+このように、Async Functionと``await``式を使うことで非同期処理をまるで同期処理のように書けます。
+
+この章では、Async Functionと``await``式について見ていきます。
+
+重要なこととしてAsync FunctionはPromiseの上に作られた構文です。
+そのためAsync Functionを理解するには、Promiseを理解する必要があることに注意してください。

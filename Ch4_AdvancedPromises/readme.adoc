@@ -7,7 +7,6 @@
 // promiseとレビュー
 include::promise-library.adoc[]
 
-
 // Promise.resolveとthenable
 include::resolve-thenable.adoc[]
 

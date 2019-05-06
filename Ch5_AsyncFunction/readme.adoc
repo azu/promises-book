@@ -1,0 +1,19 @@
+[[chapter5-async-function]]
+= Chapter.5 - Async Function
+:imagesdir: Ch5_AsyncFunction
+
+この章では、ECMAScript 2017で導入されたAsync Function(`async`/`await`)について学んでいきます。
+
+// Async Functionとは
+include::async-function.adoc[]
+
+// Async Function Overview
+include::async-function-syntax.adoc[]
+
+// `await`式
+include::async-function-await.adoc[]
+
+// Promise Chainと await式
+include::promise-chain-to-async-function.adoc[]
+
+// Async Generatorによる逐次処理
