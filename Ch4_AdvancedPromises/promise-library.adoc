@@ -56,10 +56,10 @@ Promiseと同等の機能を同じメソッド名で提供してくれるライ�
 つまり、Polyfillを読みこめばこの書籍で紹介しているコードは、
 Promiseがサポートされてない環境でも実行できるようになります。
 
-https://github.com/zloirock/core-js[core-js]::
+https://github.com/zloirock/core-js[zloirock/core-js]::
     ECMAScriptやウェブ標準で定義されている仕様を実装したPolyfillライブラリです。
     多種多様な機能のPolyfillが含まれており、その一つとしてPromiseのPolyfillが実装されています。
-    Babel[https://babeljs.io/]のプリセットにも組み込まれています。
+    https://babeljs.io/[Babel]のプリセットにも組み込まれています。
 https://github.com/jakearchibald/es6-promise[jakearchibald/es6-promise]::
     ES6 Promisesと互換性を持ったPolyfillライブラリです。
     https://github.com/tildeio/rsvp.js[RSVP.js] という Promises/A+互換ライブラリがベースとなっており、
