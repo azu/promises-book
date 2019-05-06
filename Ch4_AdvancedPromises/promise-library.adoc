@@ -50,7 +50,7 @@ Promiseのライブラリは星の数ほどあるので、ここで紹介する�
 [[promise-polyfill]]
 ==== Polyfill
 
-Polyfillライブラリは読み込むことで、IE10等まだPromiseが実装されていないブラウザ等でも、
+Polyfillライブラリは読み込むことで、IEといったPromiseが実装されていないブラウザ等でも、
 Promiseと同等の機能を同じメソッド名で提供してくれるライブラリのことです。
 
 つまり、Polyfillを読みこめばこの書籍で紹介しているコードは、
