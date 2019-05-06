@@ -21,7 +21,7 @@ const object = { async method() {} };
 これらのAsync Functionは、必ずPromiseを返すことや関数中では``await``式が利用できること以外は、通常の関数と同じ性質を持ちます。
 
 [#async-function-return-promise]
-== Async FunctionはPromiseを返す
+=== Async FunctionはPromiseを返す
 
 Async Functionとして定義した関数は必ず``Promise``インスタンスを返します。
 具体的にはAsync Functionが返す値は次の3つのケースが考えられます。
