@@ -40,7 +40,7 @@ doAsync().then(value => {
 まずは、Async Functionと``await``式を使った場合はどのように書けるかを簡単に見ていきます。
 
 次の例ではFetch APIで``/json/book.json``を取得して、``title``を取り出す``getBookTitle``関数の実行結果をコンソールに出力しています。
-取得``book.json``は次のような内容になっています。
+取得できる``book.json``は次のような内容になっています。
 
 [[book.json]]
 ./json/book.json
@@ -63,7 +63,7 @@ function getBookTitle(){
 }
 
 function main(){
-    getBookTitle().then(function(title) => {
+    getBookTitle().then(function(title){
         console.log(title); // => "JavaScript Promiseの本"
     });
 }
