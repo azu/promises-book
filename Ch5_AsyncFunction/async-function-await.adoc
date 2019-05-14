@@ -1,10 +1,10 @@
 [async-function-await]
 == ``await``式
 
-Async Functionのことは一般的にasync/awaitとも呼ばれることがあります。
-この呼ばれ方からもわかるようにAsync Functionにおける``await``式は重要な役割を持っています。
+Async Functionはasync/awaitとも呼ばれることがあります。
+この呼ばれ方からもわかるように、Async Functionと``await``式はほとんどの場合一緒に利用します。
 
-``await``式はAsync Functionの関数内でのみ利用できます。
+``await``式はAsync Function内でのみ利用できます。
 ``await``式は右辺の``Promise``インスタンスが**Fulfilled**または**Rejected**になるまでその場で非同期処理の完了を待ちます。
 そして``Promise``インスタンスの状態が変わると、処理を再開します。
 
@@ -70,11 +70,11 @@ asyncMain(); // Promiseインスタンスを返す
 ----
 
 ``await``式の右辺のPromiseが**Rejected**となった場合は、その場でエラーを``throw``します。
-またAsync Function内で発生した例外は自動的にキャッチされます。
+また「Async Functionの構文」で紹介したように、Async Function内で発生した例外は自動的にキャッチされます。
 そのため``await``式でPromiseが**Rejected**となった場合は、そのAsync Functionが**Rejected**なPromiseを返すことになります。
 
 次のコードでは、``await``式の右辺にある``Promise``インスタンスが**Rejected**の状態になっています。
-そのため``await``式は``エラー``を``throw``するため、``asyncMain``関数は**Rejected**なPromiseを返します。
+そのため``await``式は``エラー``を``throw``します。そのエラーを自動的にキャッチするため、``asyncMain``関数は**Rejected**なPromiseを返します。
 
 [role="executable"]
 [source,javascript]
