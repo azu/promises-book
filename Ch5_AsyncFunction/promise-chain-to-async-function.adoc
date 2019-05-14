@@ -4,9 +4,52 @@
 
 <<ch2-promise-and-array,Promiseと配列>>のように、配列を元にした複数の非同期処理を扱う場合のAsync Functionについて見ていきます。
 
-たとえば、次のような複数のリソースを順番に取得する処理をPromiseで書いてみます。
+例として、複数のリソースを順番に取得する処理をPromiseで書いていきます。
+
+まずは、リソースを擬似的に取得する`dummyFetch`という関数を実装していきます。
+`dummyFetch`関数は擬似的にデータ取得する関数で、1000ミリ秒未満のランダムなタイミングでレスポンスを返す非同期的な処理です。
+第一引数の`path`にデータがある場合、成功として**Resolved**状態のPromiseオブジェクトを返します。
+一方で、指定した`path`にデータがない場合、失敗として**Rejected**状態のPromiseオブジェクトを返します。
+
+[role="executable"]
+[source,javascript]
+----
+/**
+ * 1000ミリ秒未満のランダムなタイミングでレスポンスを擬似的にデータ取得する関数
+ * 指定した`path`にデータがある場合、成功として**Resolved**状態のPromiseオブジェクトを返す
+ * 指定した`path`にデータがない場合、失敗として**Rejected**状態のPromiseオブジェクトを返す
+ */
+function dummyFetch(path) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (path.startsWith("/success")) {
+                resolve({ body: `Response body of ${path}` });
+            } else {
+                reject(new Error("NOT FOUND"));
+            }
+        }, 1000 * Math.random());
+    });
+}
+// `then`メソッドで成功時と失敗時に呼ばれるコールバック関数を登録
+// /success/data のリソースは存在するので成功しonFulfilledが呼ばれる
+dummyFetch("/success/data").then(function onFulfilled(response) {
+    console.log(response); // => { body: "Response body of /success/data" }
+}, function onRejected(error) {
+    // この行は実行されません
+});
+// /failure/data のリソースは存在しないのでonRejectedが呼ばれる
+dummyFetch("/failure/data").then(function onFulfilled(response) {
+    // この行は実行されません
+}, function onRejected(error) {
+    console.log(error.message); // => "NOT FOUND"
+});
+----
+
+
+この``dymmyFetch``関数を使い、複数のリソースを順番に取得する``fetchResources``関数を実装していきます。
+``fetchResources``関数は、配列で複数のリソースへのパスを受け取り、それらのリソースの中身(`body`)を配列として返します。
 ``fetchResources``関数では、``Array#reduce``メソッドを使った逐次処理を実装することで、複数の非同期処理を順番に実行できます。
-（<<promise-sequence,Promiseによる逐次処理>>を参照）
+（詳細は<<promise-sequence,Promiseによる逐次処理>>を参照）
 
 [role="executable"]
 [source,javascript]
@@ -38,7 +81,7 @@ fetchResources(resources).then((results) => {
 });
 ----
 
-このコードと同じ処理をAsync Functionと``await``式で書いてみます。
+この``fetchResources``関数と同じ処理をAsync Functionと``await``式で書いてみます。
 Async Functionとして定義した``fetchResources``関数では、forループの中で`await`式を使うことで順番にリソースを取得する非同期処理を実行できます。
 
 [role="executable"]
