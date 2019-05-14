@@ -71,7 +71,7 @@ function main(){
 main();
 ----
 
-次のコードでは、Async Functionと``await``式を使って`getBookTitle``関数で取得したタイトルをコンソールに出力しています。
+次のコードでは、Async Functionと``await``式を使って``getBookTitle``関数で取得したタイトルをコンソールに出力しています。
 
 [role="executable"]
 [source,javascript]
