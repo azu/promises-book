@@ -71,7 +71,8 @@ function main(){
 main();
 ----
 
-次のコードでは、Async Functionと``await``式を使って``getBookTitle``関数で取得したタイトルをコンソールに出力しています。
+次のコードでは、同様の処理をAsync Functionと``await``式で書いています。
+``getBookTitle``関数の実装は全く同じですが、``getBookTitle``関数の結果の受け取り方が変わっています。
 
 [role="executable"]
 [source,javascript]
@@ -95,11 +96,11 @@ async function main(){
 main();
 ----
 
-Async Functionでは非同期処理が完了するまで待つ``await``式を使うことができます。
-これにより、Promiseでは結果を``then``メソッドのコールバック関数で取得していたのが、``await``式によって同期的な関数のように結果を受け取れます。
+Async FunctionではPromiseの状態が変化するまで待つ``await``式を使うことができます。
+これにより、Promiseでは結果を``then``メソッドのコールバック関数で取得していたのが、``await``式によって同期的な関数と同じように結果を受けとます。
 このように、Async Functionと``await``式を使うことで非同期処理をまるで同期処理のように書けます。
 
-この章では、Async Functionと``await``式について見ていきます。
+この章では、このAsync Functionと``await``式について詳しく見ていきます。
 
 重要なこととしてAsync FunctionはPromiseの上に作られた構文です。
 そのためAsync Functionを理解するには、Promiseを理解する必要があることに注意してください。
