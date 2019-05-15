@@ -20,8 +20,8 @@
  * 指定した`path`にデータがない場合、失敗として**Rejected**状態のPromiseオブジェクトを返す
  */
 function dummyFetch(path) {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
+    return new Promise(function(resolve, reject){
+        setTimeout(function(){
             if (path.startsWith("/success")) {
                 resolve({ body: `Response body of ${path}` });
             } else {
@@ -55,8 +55,8 @@ dummyFetch("/failure/data").then(function onFulfilled(response) {
 [source,javascript]
 ----
 function dummyFetch(path) {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
+    return new Promise(function(resolve, reject){
+        setTimeout(function(){
             if (path.startsWith("/resource")) {
                 resolve({ body: `Response body of ${path}` });
             } else {
@@ -76,7 +76,7 @@ function fetchResources(resources) {
 }
 const resources = ["/resource/A", "/resource/B"];
 // リソースを取得して出力する
-fetchResources(resources).then((results) => {
+fetchResources(resources).then(function(results){
     console.log(results); // => ["Response body of /resource/A", "Response body of /resource/B"]
 });
 ----
@@ -88,8 +88,8 @@ Async Functionとして定義した``fetchResources``関数では、forループ
 [source,javascript]
 ----
 function dummyFetch(path) {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
+    return new Promise(function(resolve, reject){
+        setTimeout(function(){
             if (path.startsWith("/resource")) {
                 resolve({ body: `Response body of ${path}` });
             } else {
@@ -110,7 +110,7 @@ async function fetchResources(resources) {
 }
 const resources = ["/resource/A", "/resource/B"];
 // リソースを取得して出力する
-fetchResources(resources).then((results) => {
+fetchResources(resources).then(function(results){
     console.log(results); // => ["Response body of /resource/A", "Response body of /resource/B"]
 });
 ----
@@ -165,13 +165,13 @@ function main(){
 ----
 async function asyncMain() {
     // 中でawaitしても、Async Functionの外側の処理まで止まるわけではない
-    await new Promise((resolve) => {
+    await new Promise(function(resolve){
         setTimeout(resolve, 16);
     });
 };
 console.log("1. asyncMain関数を呼び出します");
 // Async Functionは外から見れば単なるPromiseを返す関数
-asyncMain().then(() => {
+asyncMain().then(function(){
     console.log("3. asyncMain関数が完了しました");
 });
 // Async Functionの外側の処理はそのまま進む
@@ -193,8 +193,8 @@ Async Function外の処理も停止できてしまうと、JavaScriptでは基�
 [source,javascript]
 ----
 function dummyFetch(path) {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
+    return new Promise(function(resolve, reject){
+        setTimeout(function(){
             if (path.startsWith("/resource")) {
                 resolve({ body: `Response body of ${path}` });
             } else {
@@ -214,7 +214,7 @@ async function fetchResources(resources) {
 }
 const resources = ["/resource/A", "/resource/B"];
 // リソースを取得して出力する
-fetchResources(resources).then((results) => {
+fetchResources(resources).then(function(results){
     // resultsは空になってしまう
     console.log(results); // => []
 });
@@ -233,8 +233,8 @@ Async Functionの中で``await``式を利用して非同期処理の完了を待
 [source,javascript]
 ----
 function dummyFetch(path) {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
+    return new Promise(function(resolve, reject){
+        setTimeout(function(){
             if (path.startsWith("/resource")) {
                 resolve({ body: `Response body of ${path}` });
             } else {
@@ -258,7 +258,7 @@ async function fetchResources(resources) {
 }
 const resources = ["/resource/A", "/resource/B"];
 // リソースを取得して出力する
-fetchResources(resources).then((results) => {
+fetchResources(resources).then(function(results){
     console.log(results); // => []
 });
 ----
@@ -286,8 +286,8 @@ Promiseチェーンでは``Promise.all``メソッドを使い、リソースAと
 [source,javascript]
 ----
 function dummyFetch(path) {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
+    return new Promise(function(resolve, reject){
+        setTimeout(function(){
             if (path.startsWith("/resource")) {
                 resolve({ body: `Response body of ${path}` });
             } else {
@@ -303,12 +303,12 @@ async function fetchResources() {
         dummyFetch("/resource/A"),
         dummyFetch("/resource/B")
     ]);
-    return responses.map(response => {
+    return responses.map(function(response){
         return response.body;
     });
 }
 // リソースを取得して出力する
-fetchResources().then((results) => {
+fetchResources().then(function(results){
     console.log(results); // => ["Response body of /resource/A", "Response body of /resource/B"]
 });
 ----
