@@ -252,9 +252,9 @@ async function fetchResources(resources) {
     const results = [];
     console.log("1. fetchResourcesを開始");
     resources.forEach(async function(resource) {
-        console.log(`2. ${resource}を取得開始`);
+        console.log(`2. ${resource}の取得開始`);
         const response = await dummyFetch(resource);
-        console.log(`3. ${resource}を取得完了`)
+        console.log(`3. ${resource}の取得完了`)
         results.push(response.body);
     });
     console.log("4. fetchResourcesを終了");
