@@ -6,10 +6,10 @@
 
 例として、複数のリソースを順番に取得する処理をPromiseで書いていきます。
 
-まずは、リソースを擬似的に取得する`dummyFetch`という関数を実装していきます。
-`dummyFetch`関数は擬似的にデータ取得する関数で、1000ミリ秒未満のランダムなタイミングでレスポンスを返す非同期的な処理です。
-第一引数の`path`にデータがある場合、成功として**Resolved**状態のPromiseオブジェクトを返します。
-一方で、指定した`path`にデータがない場合、失敗として**Rejected**状態のPromiseオブジェクトを返します。
+まずは、リソースを擬似的に取得する``dummyFetch``という関数を実装していきます。
+``dummyFetch``関数は擬似的にデータ取得する関数で、1000ミリ秒未満のランダムなタイミングでレスポンスを返す非同期的な処理です。
+第一引数の``path``にデータがある場合、成功として**Resolved**状態のPromiseオブジェクトを返します。
+一方で、指定した``path``にデータがない場合、失敗として**Rejected**状態のPromiseオブジェクトを返します。
 
 [role="executable"]
 [source,javascript]
@@ -82,7 +82,7 @@ fetchResources(resources).then((results) => {
 ----
 
 この``fetchResources``関数と同じ処理をAsync Functionと``await``式で書いてみます。
-Async Functionとして定義した``fetchResources``関数では、forループの中で`await`式を使うことで順番にリソースを取得する非同期処理を実行できます。
+Async Functionとして定義した``fetchResources``関数では、forループの中で``await``式を使うことで順番にリソースを取得する非同期処理を実行できます。
 
 [role="executable"]
 [source,javascript]
@@ -122,7 +122,7 @@ Promiseチェーンで``fetchResources``関数書いた場合は、コールバ�
 === ``await``式はAsync Functionの中でのみ利用可能
 
 先ほどの``fetchResources``関数ではforループを利用していました。
-この時、配列の反復処理に``Array#forEach```メソッドを利用したくなるかもしれません。
+この時、配列の反復処理に``Array#forEach``メソッドを利用したくなるかもしれません。
 
 しかし、次のようにforループを``Array#forEach``に変更するだけでは、構文エラー（Syntax Error）となってしまいます。
 
