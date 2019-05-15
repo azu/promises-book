@@ -2,7 +2,7 @@
 == ``await``式
 
 Async Functionはasync/awaitとも呼ばれることがあります。
-この呼ばれ方からもわかるように、Async Functionと``await``式はほとんどの場合一緒に利用します。
+この呼ばれ方からもわかるように、Async Functionと``await``式は共に利用します。
 
 ``await``式はAsync Function内でのみ利用できます。
 ``await``式は右辺の``Promise``インスタンスが**Fulfilled**または**Rejected**になるまでその場で非同期処理の完了を待ちます。
