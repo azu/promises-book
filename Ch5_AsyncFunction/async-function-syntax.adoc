@@ -49,14 +49,14 @@ Async Functionとして定義した関数は必ず``Promise``インスタンス�
 async function resolveUndefined() {
     // 何も値を返さない場合は`undefined`を返すのと同じ
 }
-resolveUndefined().then(value => {
+resolveUndefined().then(function(value){
     console.log(value); // => undefined
 });
 // `Promise.resolve("値")`を返したのと同じ
 async function resolveFn() {
     return "値";
 }
-resolveFn().then(value => {
+resolveFn().then(function(value){
     console.log(value); // => "値"
 });
 ----
@@ -70,9 +70,9 @@ resolveFn().then(value => {
 // resolveFnは**Fulfilled**なPromiseインスタンスを返している
 // Async Functionは自動的にPromiseを返すので、単に値を返しても同じ
 async function resolveFn() {
-    return Promise.resolve("値"));
+    return Promise.resolve("値");
 }
-resolveFn().then(value => {
+resolveFn().then(function(value){
     console.log(value); // => "値"
 });
 
@@ -80,7 +80,7 @@ resolveFn().then(value => {
 async function rejectFn() {
     return Promise.reject(new Error("エラーメッセージ"));
 }
-rejectFn().catch(error => {
+rejectFn().catch(function(error){
     console.log(error.message); // => "エラーメッセージ"
 });
 ----
@@ -98,7 +98,7 @@ async function exceptionFn() {
 }
 
 // Async Functionで例外が発生するとRejectedなPromiseが返される
-exceptionFn().catch(error => {
+exceptionFn().catch(function(error){
     console.log(error.message); // => "例外が発生しました"
 });
 ----
