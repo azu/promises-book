@@ -324,4 +324,5 @@ fetchResources(resources).then(function(results){
 ----
 
 このようにAsync Functionや``await``式は既存のPromiseと組み合わせて利用できます。
-Async Functionも内部的にPromiseの仕組みを利用しているため、両者は対立関係ではなく共存関係です。
+Async Functionも内部的にPromiseの仕組みを利用しています。
+そのまた、Async FunctionとPromiseのAPIを組み合わせて考えることは重要です。
