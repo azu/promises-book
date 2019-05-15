@@ -65,7 +65,7 @@ function dummyFetch(path) {
         }, 1000 * Math.random());
     });
 }
-// リソースAとリソースBを順番に取得する
+// 複数のリソースを取得し、レスポンスボディの配列を返す
 function fetchResources(resources) {
     const results = [];
     return resources.reduce(function (promise, resource) {
@@ -98,7 +98,7 @@ function dummyFetch(path) {
         }, 1000 * Math.random());
     });
 }
-// リソースAとリソースBを順番に取得する
+// 複数のリソースを取得し、レスポンスボディの配列を返す
 async function fetchResources(resources) {
     const results = [];
     for (let i = 0; i < resources.length; i++) {
@@ -129,7 +129,6 @@ Promiseチェーンで``fetchResources``関数書いた場合は、コールバ�
 [role="executable"]
 [source,javascript]
 ----
-// リソースAとリソースBを順番に取得する
 async function fetchResources(resources) {
     const results = [];
     // Syntax Errorとなる例
@@ -298,8 +297,9 @@ function dummyFetch(path) {
     });
 }
 
+// 複数のリソースを取得しレスポンスボディの配列を返す
 async function fetchResources(resources) {
-    // リソースをまとめて取得するfix
+    // リソースをまとめて取得する
     const promises = resources.map(function(resource){
         return dummyFetch(resource);
     });
