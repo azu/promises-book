@@ -22,7 +22,7 @@
 function dummyFetch(path) {
     return new Promise(function(resolve, reject){
         setTimeout(function(){
-            if (path.startsWith("/success")) {
+            if (path.startsWith("/resource")) {
                 resolve({ body: `Response body of ${path}` });
             } else {
                 reject(new Error("NOT FOUND"));
@@ -31,14 +31,14 @@ function dummyFetch(path) {
     });
 }
 // `then`メソッドで成功時と失敗時に呼ばれるコールバック関数を登録
-// /success/data のリソースは存在するので成功しonFulfilledが呼ばれる
-dummyFetch("/success/data").then(function onFulfilled(response) {
-    console.log(response); // => { body: "Response body of /success/data" }
+// /resource/A のリソースは存在するので成功しonFulfilledが呼ばれる
+dummyFetch("/resource/A").then(function onFulfilled(response) {
+    console.log(response); // => { body: "Response body of /resource/A" }
 }, function onRejected(error) {
     // この行は実行されません
 });
-// /failure/data のリソースは存在しないのでonRejectedが呼ばれる
-dummyFetch("/failure/data").then(function onFulfilled(response) {
+// /not_found のリソースは存在しないのでonRejectedが呼ばれる
+dummyFetch("/not_found").then(function onFulfilled(response) {
     // この行は実行されません
 }, function onRejected(error) {
     console.log(error.message); // => "NOT FOUND"
@@ -68,9 +68,13 @@ function dummyFetch(path) {
 // 複数のリソースを取得し、レスポンスボディの配列を返す
 function fetchResources(resources) {
     const results = [];
+    // 配列をpromise chainにして順番に処理する
     return resources.reduce(function (promise, resource) {
-        return dummyFetch(resource).then(function(response) {
-            results.push(response.body);
+        return promise.then(function(){
+            return dummyFetch(resource).then(function(response) {
+                results.push(response.body);
+                return results;
+            });
         });
     }, Promise.resolve());
 }
