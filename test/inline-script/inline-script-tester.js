@@ -1,11 +1,12 @@
 "use strict";
 var Q = require("q");
 var FS = require("q-io/fs");
-var esprima = require("esprima-fb");
+var esprima = require("esprima");
 var pather = require("path");
 // http://www.regexr.com/38t47
 var inlineCodeReg = /\[source.*?javascript\]\n[\s\S]*?----([\s\S]*?)----/gm;
 var includeCodeReg = /include::/;
+var skipContentPattern = /Syntax Error/;
 function trimIncludeCode(code) {
     var replaceRegExp = /include::.*/g;
     var trimedCode = code.replace(replaceRegExp, "");
@@ -28,6 +29,10 @@ function pickupContent(content) {
     return results;
 }
 function parseContents(content, filePath) {
+    // skip
+    if (skipContentPattern.test(content)){
+        return;
+    }
     try {
         esprima.parse(content);
     } catch (error) {
