@@ -14,7 +14,7 @@ async function doAsync() {
     return "値";
 }
 // doAsync関数はPromiseを返す
-doAsync().then(value => {
+doAsync().then(function(value){
     console.log(value); // => "値"
 });
 ----
@@ -29,7 +29,7 @@ Async Functionでは``return``した値の代わりに、``Promise.resolve(返�
 function doAsync() {
     return Promise.resolve("値");
 }
-doAsync().then(value => {
+doAsync().then(function(value){
     console.log(value); // => "値"
 });
 ----
@@ -39,7 +39,7 @@ doAsync().then(value => {
 
 まずは、Async Functionと``await``式を使った場合はどのように書けるかを簡単に見ていきます。
 
-次の例ではFetch APIで``/json/book.json``を取得して、``title``を取り出す``getBookTitle``関数の実行結果をコンソールに出力しています。
+次の例では https://developer.mozilla.org/ja/docs/Web/API/Fetch_API[Fetch API] で``/json/book.json``を取得して、``title``を取り出す``getBookTitle``関数の実行結果をコンソールに出力しています。
 取得できる``book.json``は次のような内容になっています。
 
 [[book.json]]
@@ -55,6 +55,7 @@ include::../json/book.json[]
 [source,javascript]
 ----
 function getBookTitle(){
+    // Fetch APIは指定URLのリソースを取得しPromiseを返す関数
     return fetch("/json/book.json").then(function(res){
         return res.json(); // レスポンスをJSON形式としてパースする
     }).then(json => {
@@ -80,7 +81,7 @@ main();
 function getBookTitle(){
     return fetch("/json/book.json").then(function(res){
         return res.json(); // レスポンスをJSON形式としてパースする
-    }).then(json => {
+    }).then(function(json){
         return json.title; // JSONからtitleプロパティを取り出す
     });
 }
