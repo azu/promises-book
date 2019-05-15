@@ -267,7 +267,7 @@ fetchResources(resources).then(function(results){
 });
 ----
 
-この問題を解決する方法として、先ほどのようにコールバック関数を使わなくても済むforループを使う方法があります。
+この問題を解決する方法として、先ほどのようにコールバック関数を使わずにforループを使う方法があります。
 また、リソースを順番が重要ではない場合は、``Promise.all``メソッドを使う方法があります。
 
 [relationship-promise-async-function]
