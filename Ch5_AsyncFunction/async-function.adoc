@@ -40,7 +40,9 @@ doAsync().then(function(value){
 まずは、Async Functionと``await``式を使った場合はどのように書けるかを簡単に見ていきます。
 
 次の例では https://developer.mozilla.org/ja/docs/Web/API/Fetch_API[Fetch API] で``/json/book.json``を取得して、``title``を取り出す``getBookTitle``関数の実行結果をコンソールに出力しています。
-取得できる``book.json``は次のような内容になっています。
+Fetch APIはURLのリソースを取得し、Promiseを返す関数です。
+
+この時、取得できる``/json/book.json``は次のような内容になっています。
 
 [[book.json]]
 ./json/book.json
@@ -49,12 +51,12 @@ doAsync().then(function(value){
 include::../json/book.json[]
 ----
 
-次のコードでは、Promiseのみを使って`getBookTitle``関数で取得したタイトルをコンソールに出力しています。
+まずは、Promise APIを使って``fetchBookTitle``関数で取得したタイトルをコンソールに出力してみます。
 
 [role="executable"]
 [source,javascript]
 ----
-function getBookTitle(){
+function fetchBookTitle(){
     // Fetch APIは指定URLのリソースを取得しPromiseを返す関数
     return fetch("/json/book.json").then(function(res){
         return res.json(); // レスポンスをJSON形式としてパースする
@@ -64,7 +66,7 @@ function getBookTitle(){
 }
 
 function main(){
-    getBookTitle().then(function(title){
+    fetchBookTitle().then(function(title){
         console.log(title); // => "JavaScript Promiseの本"
     });
 }
@@ -72,34 +74,35 @@ function main(){
 main();
 ----
 
-次のコードでは、同様の処理をAsync Functionと``await``式で書いています。
-``getBookTitle``関数の実装は全く同じですが、``getBookTitle``関数の結果の受け取り方が変わっています。
+次は同様の処理をAsync Functionと``await``式で書いています。
+Promise APIを使っていた場合に比べて、コールバック関数がなくなっていることが分かります。
 
 [role="executable"]
 [source,javascript]
 ----
-function getBookTitle(){
-    return fetch("/json/book.json").then(function(res){
-        return res.json(); // レスポンスをJSON形式としてパースする
-    }).then(function(json){
-        return json.title; // JSONからtitleプロパティを取り出す
-    });
+function fetchBookTitle(){
+    // リクエストしてリソースを取得する
+    const res = await fetch("/json/book.json");
+    // レスポンスをJSON形式としてパースする
+    const json = await res.json();
+    // JSONからtitleプロパティを取り出す
+    return json.title;
 }
 
 // `async`をつけてAsync Functionを定義
 async function main(){
-    // `await`式で`getBookTitle`の非同期処理が完了するまで待つ
-    // `getBookTitle`がresolveした値が返り値になる
-    const title = await getBookTitle();
+    // `await`式で`fetchBookTitle`の非同期処理が完了するまで待つ
+    // `fetchBookTitle`がresolveした値が返り値になる
+    const title = await fetchBookTitle();
     console.log(title); // => "JavaScript Promiseの本"
 }
 
 main();
 ----
 
-Async FunctionではPromiseの状態が変化するまで待つ``await``式を使うことができます。
-これにより、Promiseでは結果を``then``メソッドのコールバック関数で取得していたのが、``await``式によって同期的な関数と同じように結果を受けとます。
-このように、Async Functionと``await``式を使うことで非同期処理をまるで同期処理のように書けます。
+Async FunctionではPromiseの状態が変化するまで待つ``await``式という機能を利用できます。
+Promiseでは結果を``then``メソッドのコールバック関数で取得していたのが、``await``式によって同期的な関数と同じように結果を受けとれます。
+そのため、Async Functionと``await``式を使うことで非同期処理をまるで同期処理のように書けます。
 
 この章では、このAsync Functionと``await``式について詳しく見ていきます。
 
