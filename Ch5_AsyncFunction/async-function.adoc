@@ -80,7 +80,8 @@ Promise APIを使っていた場合に比べて、コールバック関数がな
 [role="executable"]
 [source,javascript]
 ----
-function fetchBookTitle(){
+// `async`をつけて`fetchBookTitle`関数をAsync Functionとして定義
+async function fetchBookTitle(){
     // リクエストしてリソースを取得する
     const res = await fetch("/json/book.json");
     // レスポンスをJSON形式としてパースする
@@ -89,7 +90,7 @@ function fetchBookTitle(){
     return json.title;
 }
 
-// `async`をつけてAsync Functionを定義
+// `async`をつけて`main`関数をAsync Functionとして定義
 async function main(){
     // `await`式で`fetchBookTitle`の非同期処理が完了するまで待つ
     // `fetchBookTitle`がresolveした値が返り値になる
