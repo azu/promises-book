@@ -102,8 +102,7 @@ main();
 ----
 
 Async FunctionではPromiseの状態が変化するまで待つ``await``式という機能を利用できます。
-Promiseでは結果を``then``メソッドのコールバック関数で取得していたのが、``await``式によって同期的な関数と同じように結果を受けとれます。
-そのため、Async Functionと``await``式を使うことで非同期処理をまるで同期処理のように書けます。
+Promiseでは結果を``then``メソッドのコールバック関数で取得していたのが、``await``式の右辺にあるPromiseのresolveされた値が左辺の変数へと代入されます。そのため、Async Functionと``await``式を使うことで非同期処理をまるで同期処理のように書けます。
 
 この章では、このAsync Functionと``await``式について詳しく見ていきます。
 
