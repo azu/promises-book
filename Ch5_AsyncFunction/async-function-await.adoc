@@ -1,0 +1,118 @@
+[async-function-await]
+== ``await``式
+
+Async Functionはasync/awaitとも呼ばれることがあります。
+この呼ばれ方からもわかるように、Async Functionと``await``式は共に利用します。
+
+``await``式はAsync Function内でのみ利用できます。
+``await``式は右辺の``Promise``インスタンスが**Fulfilled**または**Rejected**になるまで、その行（文）で非同期処理の完了を待ちます。
+そして``Promise``インスタンスの状態が変わると、次の行（文）から処理を再開します。
+
+[source,js]
+----
+async function asyncMain() {
+    // PromiseがFulfilledまたはRejectedとなるまで待つ
+    await Promiseインスタンス;
+    // Promiseインスタンスの状態が変わったら処理を再開する
+}
+----
+
+通常の処理の流れでは、非同期処理を実行した場合にその非同期処理の完了を待つことなく、次の行（次の文）を実行します。
+しかし``await``式では非同期処理を実行し完了するまで、次の行（次の文）を実行しません。
+そのため``await``式を使うことで非同期処理が同期処理のように上から下へと順番に実行するような流れで書けます。
+
+[role="executable"]
+[source,js]
+----
+// async functionは必ずPromiseを返す
+async function doAsync() {
+    // 非同期処理
+}
+async function asyncMain() {
+    // doAsyncの非同期処理が完了するまでまつ
+    await doAsync();
+    // 次の行はdoAsyncの非同期処理が完了されるまで実行されない
+    console.log("この行は非同期処理が完了後に実行される");
+}
+----
+
+``await``式は**式**であるため右辺（``Promise``インスタンス）の評価結果を値として返します。
+この``await``式の評価方法は評価するPromiseの状態（**Fulfilled**または**Rejected**）によって異なります。
+
+``await``式の右辺のPromiseが**Fulfilled**となった場合は、resolveされた値が``await``式の返り値となります。
+
+次のコードでは、``await``式の右辺にある``Promise``インスタンスは``42``という値でresolveされています。
+そのため``await``式の返り値は``42``となり、``value``変数にもその値が入ります。
+
+[role="executable"]
+[source,javascript]
+----
+async function asyncMain() {
+    const value = await Promise.resolve(42);
+    console.log(value); // => 42
+}
+asyncMain(); // Promiseインスタンスを返す
+----
+
+これはPromiseを使って書くと次のコードと同様の意味となります。
+``await``式を使うことでコールバック関数を使わずに非同期処理の流れを表現できていることがわかります。
+
+[role="executable"]
+[source,javascript]
+----
+function asyncMain() {
+    return Promise.resolve(42).then(function(value){
+        console.log(value); // => 42
+    });
+}
+asyncMain(); // Promiseインスタンスを返す
+----
+
+``await``式の右辺のPromiseが**Rejected**となった場合は、その場でエラーを``throw``します。
+また「<<Async Functionの構文,async-function-syntax>>」で紹介したように、Async Function内で発生した例外は自動的にキャッチされます。
+そのため``await``式でPromiseが**Rejected**となった場合は、そのAsync Functionが**Rejected**なPromiseを返すことになります。
+
+次のコードでは、``await``式の右辺にある``Promise``インスタンスが**Rejected**の状態になっています。
+そのため``await``式は``エラー``を``throw``します。そのエラーを自動的にキャッチするため、``asyncMain``関数は**Rejected**なPromiseを返します。
+
+[role="executable"]
+[source,javascript]
+----
+async function asyncMain() {
+    const value = await Promise.reject(new Error("エラーメッセージ"));
+    // await式で例外が発生したため、この行は実行されません
+}
+// Async Functionは自動的に例外をキャッチできる
+asyncMain().catch(function(error){
+    console.log(error.message); // => "エラーメッセージ"
+});
+----
+
+``await``式がエラーを``throw``するということは、そのエラーは``try...catch``構文でキャッチできます。
+通常の非同期処理では完了する前に次の行が実行されてしまうため``try...catch``構文ではエラーをキャッチできませんでした。
+そのためPromiseでは``catch``メソッドを使いPromise内で発生したエラーをキャッチしていました。（<<promise-done,Promise.prototype.done とは何か?>>を参照）
+
+次のコードでは、``await``式で発生した例外を``try...catch``構文でキャッチしています。
+
+[role="executable"]
+[source,javascript]
+----
+async function asyncMain() {
+    // await式のエラーはtry...catchできる
+    try {
+        // `await`式で評価した右辺のPromiseがRejectedとなったため、例外がthrowされる
+        const value = await Promise.reject(new Error("エラーメッセージ"));
+        // await式で例外が発生したため、この行は実行されません
+    } catch (error) {
+        console.log(error.message); // => "エラーメッセージ"
+    }
+}
+asyncMain().then(function onFulfilled(){
+    console.log("この行は実行されます"); 
+}, function onRejected(error){
+    // すでにtry...catchされているため、この行は実行されません
+});
+----
+
+このように``await``式を使うことで、``try...catch``構文のように非同期処理を同期処理と同じ構文を使って扱えます。
+またコードの見た目も同期処理と同じように、その行（その文）の処理が完了するまで次の行を評価しないという分かりやすい形になるのは大きな利点です。

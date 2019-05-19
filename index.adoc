@@ -91,6 +91,8 @@ include::Ch3_Testing/readme.adoc[]
 // 第四章
 include::Ch4_AdvancedPromises/readme.adoc[]
 
+// 第五章
+include::Ch5_AsyncFunction/readme.adoc[]
 
 // リファレンス
 include::Appendix-Reference/readme.adoc[]

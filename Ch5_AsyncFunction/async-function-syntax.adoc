@@ -1,0 +1,107 @@
+[async-function-syntax]
+== Async Functionの構文
+
+Async Functionは関数の定義に``async``キーワードをつけることで定義できます。
+JavaScriptの関数定義には関数宣言や関数式、Arrow Function、メソッドの短縮記法などがあります。
+どの定義方法でも``async``キーワードを前につけるだけでAsync Functionとして定義できます。
+
+[role="executable"]
+[source,javascript]
+----
+// 関数宣言のAsync Function版
+async function fn1(){}
+// 関数式のAsync Function版
+const fn2 = async function(){};
+// Arrow FunctionのAsync Function版
+const fn3 = async() => {};
+// メソッドの短縮記法のAsync Function版
+const object = { 
+    async method(){}
+};
+----
+
+これらのAsync Functionは、次の事以外は通常の関数と同じ性質を持ちます。
+
+- Async Functionは必ずPromiseを返す
+- Async Function内では``await``式が利用できる
+
+[#async-function-return-promise]
+=== Async FunctionはPromiseを返す
+
+Async Functionとして定義した関数は必ず``Promise``インスタンスを返します。
+返される`Promise`インスタンスの状態は関数の返り値によって異なり、次の3つのケースが考えられます。
+
+1. Async FunctionはPromise以外の値をreturnした場合、その返り値をもつ**Fulfilled**なPromiseを返す
+2. Async FunctionがPromiseをreturnした場合、その返り値のPromiseをそのまま返す
+3. Async Function内で例外が発生した場合は、そのエラーをもつ**Rejected**なPromiseを返す
+
+これらの挙動は``Promise#then``メソッドの返り値とそのコールバック関数が返す値の関係とほぼ同じです。
+
+具体的な例を順番に見ていきます。
+
+まず、Async FunctionはPromise以外の値をreturnした場合、その返り値で解決される**Fulfilled**なPromiseを返します。
+これは、返した値が``Promise.resolve``されているのとほとんど感覚です。
+
+[role="executable"]
+[source,javascript]
+----
+// `Promise.resolve(undefined)`を返したのと同じ
+async function resolveUndefined() {
+    // 何も値を返さない場合は`undefined`を返すのと同じ
+}
+resolveUndefined().then(function(value){
+    console.log(value); // => undefined
+});
+// `Promise.resolve("値")`を返したのと同じ
+async function resolveFn() {
+    return "値";
+}
+resolveFn().then(function(value){
+    console.log(value); // => "値"
+});
+----
+
+次に、 Async FunctionがPromiseをreturnした場合、その返り値のPromiseをそのまま返します。
+これは、``Promise#then``メソッドで**Rejected**なPromiseを返すことで、``throw``文を使わずにPromiseをrejectする方法と同じです。
+
+[role="executable"]
+[source,javascript]
+----
+// resolveFnは**Fulfilled**なPromiseインスタンスを返している
+// Async Functionは自動的にPromiseを返すので、単に値を返しても同じ
+async function resolveFn() {
+    return Promise.resolve("値");
+}
+resolveFn().then(function(value){
+    console.log(value); // => "値"
+});
+
+// rejectFnは**Rejected**なPromiseインスタンスを返している
+async function rejectFn() {
+    return Promise.reject(new Error("エラーメッセージ"));
+}
+rejectFn().catch(function(error){
+    console.log(error.message); // => "エラーメッセージ"
+});
+----
+
+最後に、Async Function内で例外が発生した場合は、そのエラーをもつ**Rejected**なPromiseを返します。
+これは、Promise内での処理が自動的に``try...catch``されているのと同じで、Async Functionでも例外が発生した場合は自動的にキャッチされます。
+
+[role="executable"]
+[source,javascript]
+----
+// exceptionFnは例外を投げている
+async function exceptionFn() {
+    throw new Error("例外が発生しました");
+    // 例外が発生したため、この行は実行されません
+}
+
+// Async Functionで例外が発生するとRejectedなPromiseが返される
+exceptionFn().catch(function(error){
+    console.log(error.message); // => "例外が発生しました"
+});
+----
+
+どの場合でも、Async Functionは必ずPromiseを返すことがわかります。
+このようにAsync Functionを呼び出す側から見れば、Async FunctionはPromiseを返すただの関数と何も変わりません。
