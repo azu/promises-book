@@ -6,7 +6,7 @@
 
 例として、複数のリソースを順番に取得する処理をPromiseで書いていきます。
 
-まずは、リソースを擬似的に取得する``dummyFetch``という関数を実装していきます。
+まずは、Promiseを使った非同期処理を行う関数として、リソースを擬似的に取得する``dummyFetch``という関数を実装していきます。
 ``dummyFetch``関数は擬似的にデータ取得する関数で、1000ミリ秒未満のランダムなタイミングでレスポンスを返す非同期的な処理です。
 第一引数の``path``にデータがある場合、成功として**Resolved**状態のPromiseオブジェクトを返します。
 一方で、指定した``path``にデータがない場合、失敗として**Rejected**状態のPromiseオブジェクトを返します。
@@ -47,8 +47,10 @@ dummyFetch("/not_found").then(function onFulfilled(response) {
 
 
 この``dymmyFetch``関数を使い、複数のリソースを順番に取得する``fetchResources``関数を実装していきます。
-``fetchResources``関数は、配列で複数のリソースへのパスを受け取り、それらのリソースの中身(`body`)を配列として返します。
-``fetchResources``関数では、``Array#reduce``メソッドを使った逐次処理を実装することで、複数の非同期処理を順番に実行できます。
+``fetchResources``関数は、配列で複数のリソースへのパスを受け取り、取得したリソースの中身(`body`)を配列として返すことにします。
+
+まずは、Promise APIのみを使って``fetchResources``関数を実装してみましょう。
+Promise APIでは、``Array#reduce``メソッドを使った逐次処理を実装することで、複数の非同期処理を順番に実行できます。
 （詳細は<<promise-sequence,Promiseによる逐次処理>>を参照）
 
 [role="executable"]
@@ -85,8 +87,12 @@ fetchResources(resources).then(function(results){
 });
 ----
 
-この``fetchResources``関数と同じ処理をAsync Functionと``await``式で書いてみます。
-Async Functionとして定義した``fetchResources``関数では、forループの中で``await``式を使うことで順番にリソースを取得する非同期処理を実行できます。
+次に、先ほどと同じ処理をする``fetchResources``をAsync Functionと``await``式で書いてみます。
+Async Functionとして定義した``fetchResources``関数では、forループの中で``await``式を使うことで複数の非同期処理を順番に実行できます。
+
+次のコードでは、リソースのパスをforループで順番に、``dummyFetch``関数を使ってリソースの中身を取得しています。
+forループによる反復処理も``await``式で``dummyFetch``関数の完了を待っているため、その非同期処理が終ってから次の反復処理を行います。
+すべてのforループの処理が終わると、``fetchResources``関数が返したPromiseオブジェクトが変数``results``が参照する値でresolveされます。
 
 [role="executable"]
 [source,javascript]
@@ -119,8 +125,8 @@ fetchResources(resources).then(function(results){
 });
 ----
 
-Promiseチェーンで``fetchResources``関数書いた場合は、コールバックの中で処理するためややこしい見た目になりがちです。
-一方、Async Functionと``await``式で書いた場合は、取得と追加を順番に行うだけとなりネストがなく見た目はシンプルです。
+Promise APIのみで``fetchResources``関数書いた場合は、コールバックの中で処理するためややこしい見た目になりがちです。
+一方で、Async Functionと``await``式を使った場合は、非同期処理での取得と追加を順番に行うだけとなりネストがなく見た目はシンプルです。
 
 [await-in-async-function]
 === ``await``式はAsync Functionの中でのみ利用可能
@@ -146,10 +152,10 @@ async function fetchResources(resources) {
 }
 ----
 
-これは、``await``式はAsync Functionの直下でのみで利用可能であるからです。
+これは、``await``式はAsync Functionの直下でのみで利用できないためです。
 
 Async Functionではない通常の関数で``await``式を使うとSyntax Errorとなります。
-これは、間違った``await``式の使い方を防止するための仕様です。
+これは間違った``await``式の使い方を防止するための仕様です。
 
 [role="executable"]
 [source,javascript]
@@ -160,7 +166,7 @@ function main(){
 }
 ----
 
-次に、Async Function内で``await``式を使って処理を待っている間も、関数の外側では通常通り処理が進みます。
+Async Function内で``await``式を使って処理を待っている間も、関数の外側では通常通り処理が進みます。
 次のコードを実行してみると、Async Function内で``await``しても、Async Function外の処理は停止していないことがわかります。
 
 [role="executable"]
@@ -183,7 +189,7 @@ console.log("2. asyncMain関数外では、次の行が同期的に呼び出さ�
 
 このように``await``式を非同期処理を一時停止しても、Async Function外の処理が停止するわけではありません。
 Async Function外の処理も停止できてしまうと、JavaScriptでは基本的にメインスレッドで多くの処理をするためのUIを含めた他の処理が止まってしまいます。
-これが``await``式がAsync Functionの範囲外で利用できない理由の一つです。
+これが``await``式がAsync Functionの外で利用できない理由の一つです。
 
 
 ``await``式はAsync Functionの中でのみ利用可能なため、コールバック関数もAsync Functionとして定義しないと``await``式が利用できないことに注意してください。
@@ -192,7 +198,8 @@ Async Function外の処理も停止できてしまうと、JavaScriptでは基�
 この場合は、コールバック関数がAsync Functionとなるため、コールバック関数内で``await``式が利用できます。
 しかし、コールバック関数をAsync Functionに修正するだけでは、``fetchResources``関数が意図した結果を返しません。
 
-次のコードを実行してみると、``results``が空の配列となりリソースの中身が取得できていないことがわかります。
+次のように``Array#forEach``メソッドのコールバック関数をAsync Functionにしてみます。
+このコードを実行してみると、``fetchResources``関数の返したPromiseの結果は空の配列となり、意図した結果にならないことが分かります。
 
 [role="executable"]
 [source,javascript]
@@ -227,11 +234,11 @@ fetchResources(resources).then(function(results){
 
 ``forEach``メソッドのコールバック関数としてAsync Functionを渡し、コールバック関数中で``await``式を利用して非同期処理の完了を待っています。
 しかし、この非同期処理の完了を待つのはコールバック関数Async Functionの中だけで、外側では``fetchResources``関数の処理が進んでいます。
-そのため、コールバック関数で``results``に結果を追加する前に、``fetchResources``関数は空の``results``を返してしまいます。
+そのため、コールバック関数で``results``に結果を追加する前に、``fetchResources``関数はその時点の変数``results``の値でresolveしてしまいます。
 
 次のように``fetchResources``関数にコンソール出力を入れてみると動作が分かりやすいでしょう。
 ``forEach``メソッドのコールバック関数が完了するのは、``fetchResources``関数の呼び出しがすべて終わった後になります。
-そのため``await``式で``dummyFetch``関数の完了を待ったつもりでも、``fetchResources``関数は先に空の``results``を返してしまいます。
+そのため``fetchResources``関数はその時点の変数``results``の値である空の配列でresolveします。
 
 [role="executable"]
 [source,javascript]
@@ -268,7 +275,7 @@ fetchResources(resources).then(function(results){
 ----
 
 この問題を解決する方法として、先ほどのようにコールバック関数を使わずにforループを使う方法があります。
-また、リソースを順番が重要ではない場合は、``Promise.all``メソッドを使う方法があります。
+また、リソースを順番が重要ではない場合は、``Promise.all``メソッドを使い、複数の非同期処理を1つのPromiseとしてまとめる方法があります。
 
 [relationship-promise-async-function]
 === PromiseとAsync Functionを組み合わせる
@@ -278,9 +285,9 @@ Async Functionと``await``式でも非同期処理を同期処理のような見
 その際に、forループと``await``式で書くと複数の非同期処理を順番に行ってしまい無駄な待ち時間を作ってしまうコードになってしまいます。
 
 先ほど``fetchResources``関数ではリソースAを取得し終わってから、リソースBを取得していました。
-このとき、取得順が変わっても問題無い場合は、リソースAとリソースBを同時に取得する方がより短時間が取得ができます。
+このとき、取得順が変わっても問題無い場合は、リソースAとリソースBを同時に取得する方が効率的です。
 
-Promiseチェーンでは``Promise.all``メソッドを使い、リソースAとリソースBを取得する非同期処理を1つの``Promise``インスタンスにまとめることで同時に取得していました。
+``Promise.all``メソッドを使い、リソースAとリソースBを取得する非同期処理を1つの``Promise``インスタンスにまとめることができます。
 ``await``式が評価するのは``Promise``インスタンスであるため、``await``式は``Promise.all``メソッドなど``Promise``インスタンスを返す処理と組み合わせて利用できます。
 
 そのため、先ほど``fetchResources``関数でリソースを同時に取得する場合は、次のように書けます。
@@ -323,6 +330,6 @@ fetchResources(resources).then(function(results){
 });
 ----
 
-このようにAsync Functionや``await``式は既存のPromiseと組み合わせて利用できます。
-Async Functionも内部的にPromiseの仕組みを利用しています。
-そのまた、Async FunctionとPromiseのAPIを組み合わせて考えることは重要です。
+このようにAsync Functionや``await``式は既存のPromise APIと組み合わせて利用できます。
+Async Functionも内部的にPromiseの仕組みを利用した構文です。
+そのため、Async FunctionとPromiseのAPIを組み合わせて考えることは重要です。

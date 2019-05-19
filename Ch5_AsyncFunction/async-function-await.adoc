@@ -100,13 +100,16 @@ asyncMain().catch(function(error){
 async function asyncMain() {
     // await式のエラーはtry...catchできる
     try {
+        // `await`式で評価した右辺のPromiseがRejectedとなったため、例外がthrowされる
         const value = await Promise.reject(new Error("エラーメッセージ"));
         // await式で例外が発生したため、この行は実行されません
     } catch (error) {
         console.log(error.message); // => "エラーメッセージ"
     }
 }
-asyncMain().catch(function(error){
+asyncMain().then(function onFulfilled(){
+    console.log("この行は実行されます"); 
+}, function onRejected(error){
     // すでにtry...catchされているため、この行は実行されません
 });
 ----
