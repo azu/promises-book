@@ -60,7 +60,7 @@ function fetchBookTitle(){
     // Fetch APIは指定URLのリソースを取得しPromiseを返す関数
     return fetch("/json/book.json").then(function(res){
         return res.json(); // レスポンスをJSON形式としてパースする
-    }).then(json => {
+    }).then(function(json){
         return json.title; // JSONからtitleプロパティを取り出す
     });
 }
