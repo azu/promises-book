@@ -86,7 +86,7 @@ rejectFn().catch(function(error){
 ----
 
 最後に、Async Function内で例外が発生した場合は、そのエラーをもつ**Rejected**なPromiseを返します。
-これは、Promise内での処理が自動的に`try...catch`されているのと同じで、Async Functionでも例外が発生した場合は自動的にキャッチされます。
+これは、Promise内での処理が自動的に``try...catch``されているのと同じで、Async Functionでも例外が発生した場合は自動的にキャッチされます。
 
 [role="executable"]
 [source,javascript]

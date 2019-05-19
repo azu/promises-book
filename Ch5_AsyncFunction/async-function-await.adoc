@@ -5,9 +5,8 @@ Async Functionはasync/awaitとも呼ばれることがあります。
 この呼ばれ方からもわかるように、Async Functionと``await``式は共に利用します。
 
 ``await``式はAsync Function内でのみ利用できます。
-``await``式は右辺の``Promise``インスタンスが**Fulfilled**または**Rejected**になるまでその場で非同期処理の完了を待ちます。
-そして``Promise``インスタンスの状態が変わると、処理を再開します。
-
+``await``式は右辺の``Promise``インスタンスが**Fulfilled**または**Rejected**になるまで、その行（文）で非同期処理の完了を待ちます。
+そして``Promise``インスタンスの状態が変わると、次の行（文）から処理を再開します。
 
 [source,js]
 ----
@@ -18,7 +17,7 @@ async function asyncMain() {
 }
 ----
 
-普通の処理の流れでは、非同期処理を実行した場合にその非同期処理の完了を待つことなく、次の行（次の文）を実行します。
+通常の処理の流れでは、非同期処理を実行した場合にその非同期処理の完了を待つことなく、次の行（次の文）を実行します。
 しかし``await``式では非同期処理を実行し完了するまで、次の行（次の文）を実行しません。
 そのため``await``式を使うことで非同期処理が同期処理のように上から下へと順番に実行するような流れで書けます。
 
@@ -70,7 +69,7 @@ asyncMain(); // Promiseインスタンスを返す
 ----
 
 ``await``式の右辺のPromiseが**Rejected**となった場合は、その場でエラーを``throw``します。
-また「Async Functionの構文」で紹介したように、Async Function内で発生した例外は自動的にキャッチされます。
+また「<<Async Functionの構文,async-function-syntax>>」で紹介したように、Async Function内で発生した例外は自動的にキャッチされます。
 そのため``await``式でPromiseが**Rejected**となった場合は、そのAsync Functionが**Rejected**なPromiseを返すことになります。
 
 次のコードでは、``await``式の右辺にある``Promise``インスタンスが**Rejected**の状態になっています。
