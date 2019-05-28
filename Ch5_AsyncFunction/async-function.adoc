@@ -58,7 +58,7 @@ include::../json/book.json[]
 ----
 function fetchBookTitle(){
     // Fetch APIは指定URLのリソースを取得しPromiseを返す関数
-    return fetch("json/book.json").then(function(res){
+    return fetch("http://azu.github.io/promises-book/json/book.json").then(function(res){
         return res.json(); // レスポンスをJSON形式としてパースする
     }).then(function(json){
         return json.title; // JSONからtitleプロパティを取り出す
@@ -83,7 +83,7 @@ Promise APIを使っていた場合に比べて、コールバック関数がな
 // `async`をつけて`fetchBookTitle`関数をAsync Functionとして定義
 async function fetchBookTitle(){
     // リクエストしてリソースを取得する
-    const res = await fetch("json/book.json");
+    const res = await fetch("http://azu.github.io/promises-book/json/book.json");
     // レスポンスをJSON形式としてパースする
     const json = await res.json();
     // JSONからtitleプロパティを取り出す
