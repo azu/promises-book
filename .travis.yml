@@ -6,7 +6,6 @@ rvm:
   - 2.2.0
 node_js:
   - stable
-jdk: oraclejdk10
 addons:
   apt:
     sources:
@@ -22,8 +21,6 @@ before_install:
 cache:
   yarn: true
 install:
-  - export JAVA_HOME=$HOME/openjdk12
-  - $TRAVIS_BUILD_DIR/install-jdk.sh --install openjdk12 --target $JAVA_HOME
   - export CXX=g++-4.8
   - bundle install --path vendor/bundle
   - yarn install
