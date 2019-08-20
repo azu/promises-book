@@ -69,7 +69,7 @@ ifeval::["{backend}" == "html5"]
 ifeval::["{backend}" == "html5"]
 ++++
 <div class="iframe-wrapper" style="width: 100%; height: 350px; overflow: auto; -webkit-overflow-scrolling: touch;">
-<iframe src="http://caniuse.com/promises/embed/agents=desktop" width="100%" height="350px"></iframe>
+<iframe src="https://caniuse.com/promises/embed/agents=desktop" width="100%" height="350px"></iframe>
 </div>
 ++++
 endif::[]

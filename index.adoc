@@ -5,7 +5,7 @@ azu
 :keywords:    JavaScript, ECMAScript, Promise, 仕様, 日本語, 使い方, チュートリアル, リファレンス, 無料
 :description: JavaScriptのPromiseを使った非同期処理の書き方、テスト、アンチパターンについて解説した無料の電子書籍
 :revnumber:   {bookversion}
-:homepage:    http://azu.github.io/promises-book/
+:homepage:    https://azu.github.io/promises-book/
 :source:      https://github.com/azu/promises-book
 :lang:        ja
 :icons:       font
@@ -35,13 +35,13 @@ icon:rss[2x, link=https://github.com/azu/promises-book/releases.atom] 更新情�
 
 ++++
 <div class="social-button-wrapper">
-<iframe src="http://ghbtns.com/github-btn.html?user=azu&repo=promises-book&type=watch&count=true"
+<iframe src="https://ghbtns.com/github-btn.html?user=azu&repo=promises-book&type=watch&count=true"
   allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe>
 
-<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://azu.github.io/promises-book/" data-lang="ja" data-hashtags="Promise本">ツイート</a>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="https://azu.github.io/promises-book/" data-lang="ja" data-hashtags="Promise本">ツイート</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
-<a href="http://b.hatena.ne.jp/entry/http://azu.github.io/promises-book/" class="hatena-bookmark-button" data-hatena-bookmark-title="JavaScript Promiseの本" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://cdn-ak.b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+<a href="http://b.hatena.ne.jp/entry/https://azu.github.io/promises-book/" class="hatena-bookmark-button" data-hatena-bookmark-title="JavaScript Promiseの本" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only.gif" alt="" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="https://cdn-ak.b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
 </div>
 ++++
 
@@ -50,7 +50,7 @@ icon:rss[2x, link=https://github.com/azu/promises-book/releases.atom] 更新情�
 
 ++++
 <div class="download-area">
-<a class="download-button pdf" id="download-pdf" href="http://azu.github.io/promises-book/javascript-promise-book.pdf" download="javascript-promise-book.pdf">PDF版をダウンロード</a>
+<a class="download-button pdf" id="download-pdf" href="https://azu.github.io/promises-book/javascript-promise-book.pdf" download="javascript-promise-book.pdf">PDF版をダウンロード</a>
 <a class="download-button source-code" href="https://github.com/azu/promises-book/">ソースコードをダウンロード</a>
 </div>
 ++++

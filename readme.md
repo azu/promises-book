@@ -2,8 +2,8 @@
 
 JavaScript Promiseについての薄い電子書籍です。
 
-- ウェブ版: [http://azu.github.io/promises-book/](http://azu.github.io/promises-book/ "Promises book")
-- PDF版: [http://azu.github.io/promises-book/javascript-promise-book.pdf](http://azu.github.io/promises-book/javascript-promise-book.pdf)
+- ウェブ版: [https://azu.github.io/promises-book/](https://azu.github.io/promises-book/ "Promises book")
+- PDF版: [https://azu.github.io/promises-book/javascript-promise-book.pdf](https://azu.github.io/promises-book/javascript-promise-book.pdf)
 - おまけ(付録): [https://gumroad.com/l/javascript-promise](https://gumroad.com/l/javascript-promise "JavaScript Promiseの本 付録")
 
 寄付などがしたい方は、[付録を任意の値段で購入できる](https://gumroad.com/l/javascript-promise "JavaScript Promiseの本 付録")のでこちらを代用して下さい。
@@ -46,7 +46,7 @@ open javascript-promise-book.pdf
 ### Epubのビルド
 
 まだ完成度が高くないため品質はよくありません。
-[HTML版](http://azu.github.io/promises-book/)はスマートフォン等画面が小さくても見られるようになっているためそちらの利用を推奨します。
+[HTML版](https://azu.github.io/promises-book/)はスマートフォン等画面が小さくても見られるようになっているためそちらの利用を推奨します。
 
 ``` sh
 gem install specific_install
