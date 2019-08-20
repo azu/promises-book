@@ -22,7 +22,8 @@ before_install:
 cache:
   yarn: true
 install:
-  - export CXX=g++-4.8
+  - export JAVA_HOME=$HOME/openjdk12
+  - $TRAVIS_BUILD_DIR/install-jdk.sh --install openjdk12 --target $JAVA_HOME  - export CXX=g++-4.8
   - bundle install --path vendor/bundle
   - yarn install
 script:
