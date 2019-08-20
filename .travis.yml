@@ -6,8 +6,7 @@ rvm:
   - 2.2.0
 node_js:
   - stable
-jdk:
-  - oraclejdk10
+jdk: oraclejdk10
 addons:
   apt:
     sources:
