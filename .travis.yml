@@ -7,7 +7,7 @@ rvm:
 node_js:
 - stable
 jdk:
-  - openjdk12
+  - openjdk10
 addons:
   apt:
     sources:
