@@ -91,7 +91,7 @@ forループの場合と同じように<<promise-chain, Promise chain>>を繋げ
 `Array.prototype.reduce` については詳しくは以下を参照して下さい。
 
 * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce[Array.prototype.reduce() - JavaScript | MDN]
-* http://azu.github.io/slide/JSGohan/reduce.html[Array.prototype.reduce Dance]
+* https://azu.github.io/slide/JSGohan/reduce.html[Array.prototype.reduce Dance]
 =====
 
 forループと異なる点は、一時変数としての `promise` が不要になることに伴い、

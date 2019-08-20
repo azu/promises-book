@@ -113,7 +113,7 @@ global.XMLHttpRequest = require('w3c-xmlhttprequest').XMLHttpRequest;
 ====
 詳細は以下で紹介されている
 
-* http://azu.github.io/slide/hasakurajs/[Test Runner Tips]
+* https://azu.github.io/slide/hasakurajs/[Test Runner Tips]
 ====
 
 ===== Web Notifications API
@@ -163,7 +163,7 @@ Asciidoctorではリソースが欠損しててもエラーではなくWARNING�
 ==== プレビュー
 
 masterへマージされたものは、Travis CIで自動的にビルドして `gh-pages` ブランチにpushする。
-これによりmasterへのコミットやpull-requestsをマージしたら自動的に http://azu.github.io/promises-book/ にて見られるようにしていた。
+これによりmasterへのコミットやpull-requestsをマージしたら自動的に https://azu.github.io/promises-book/ にて見られるようにしていた。
 
 - https://github.com/azu/promises-book/blob/master/_tools/deploy-gh-pages.sh[promises-book/_tools/deploy-gh-pages.sh at master · azu/promises-book]
 

@@ -114,7 +114,7 @@ The little book of Buster.JS を書いた時からサンプルコードにテス
 
 [NOTE]
 GitHub Issueを使った執筆のワークフローについては
-http://azu.github.io/slide/udonjs/github-issue.html[一人で使えるGithub Issue] にまとめています。
+https://azu.github.io/slide/udonjs/github-issue.html[一人で使えるGithub Issue] にまとめています。
 
 == 文章のレビュー
 

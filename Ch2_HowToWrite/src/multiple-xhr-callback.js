@@ -30,10 +30,10 @@ function jsonParse(callback, error, value) {
 // <2> XHRを叩いてリクエスト
 var request = {
     comment: function getComment(callback) {
-        return getURLCallback('http://azu.github.io/promises-book/json/comment.json', jsonParse.bind(null, callback));
+        return getURLCallback('https://azu.github.io/promises-book/json/comment.json', jsonParse.bind(null, callback));
     },
     people: function getPeople(callback) {
-        return getURLCallback('http://azu.github.io/promises-book/json/people.json', jsonParse.bind(null, callback));
+        return getURLCallback('https://azu.github.io/promises-book/json/people.json', jsonParse.bind(null, callback));
     }
 };
 // <3> 複数のXHRリクエストを行い、全部終わったらcallbackを呼ぶ
