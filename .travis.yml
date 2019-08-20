@@ -1,19 +1,19 @@
 os:
-- linux
+  - linux
 sudo: false
 language: node_js
 rvm:
-- 2.2.0
+  - 2.2.0
 node_js:
-- stable
+  - stable
 jdk:
   - openjdk10
 addons:
   apt:
     sources:
-    - ubuntu-toolchain-r-test
+      - ubuntu-toolchain-r-test
     packages:
-    - g++-4.8
+      - g++-4.8
 before_install:
   - java -version
   - ruby --version
@@ -23,22 +23,22 @@ before_install:
 cache:
   yarn: true
 install:
-- export CXX=g++-4.8
-- bundle install --path vendor/bundle
-- yarn install
+  - export CXX=g++-4.8
+  - bundle install --path vendor/bundle
+  - yarn install
 script:
-- make test
-- make html
-- make pdf
-- "./_tools/check-to-deploy.sh"
+  - make test
+  - make html
+  - make pdf
+  - "./_tools/check-to-deploy.sh"
 after_success:
-- "./_tools/setup-git.sh"
-- git config --global url.ssh://git@github.com/.insteadOf https://github.com/
-- $(npm bin)/set-up-ssh --key "$encrypted_7b11bfc5945b_key" --iv "$encrypted_7b11bfc5945b_iv" --path-encrypted-key ".travis/github_deploy_key.enc"
-- yarn run build-js-min
-- make deploy
+  - "./_tools/setup-git.sh"
+  - git config --global url.ssh://git@github.com/.insteadOf https://github.com/
+  - $(npm bin)/set-up-ssh --key "$encrypted_7b11bfc5945b_key" --iv "$encrypted_7b11bfc5945b_iv" --path-encrypted-key ".travis/github_deploy_key.enc"
+  - yarn run build-js-min
+  - make deploy
 env:
   global:
-  - GH_REF: github.com/azu/promises-book.git
-  - secure: pNtiVeWTe/kPWmERJURFoCVfzDVOc19IPbr9rK9CDJHo9aFtBPXkRwYzXfjlIwnzzkrAnfowxNNerHxYXuiNK7z+xNT9H79pmYtd1Qap9fNZCFNIFkdaArAXoq635VWmGRdArGiQGNM4Am+bZdsgG4dJR4DEsjx6dcisfyb8yso=
-  - secure: Ne82o6v7wWwNQzd/2rKacyDgFgxLP822KPxxSZe/7/8gklbGMXOtDAhyW+5PgixOs7s3Vzknqw6dSTOPMY2c436F1ZJb6lMGcL6BPVSGmIXSYGm6C5SZIDTrp7QDarTAGCNiHlHFGySEhbz9R5CjPWF24kQfT/QdszZr7OokJYA=
+    - GH_REF: github.com/azu/promises-book.git
+    - secure: pNtiVeWTe/kPWmERJURFoCVfzDVOc19IPbr9rK9CDJHo9aFtBPXkRwYzXfjlIwnzzkrAnfowxNNerHxYXuiNK7z+xNT9H79pmYtd1Qap9fNZCFNIFkdaArAXoq635VWmGRdArGiQGNM4Am+bZdsgG4dJR4DEsjx6dcisfyb8yso=
+    - secure: Ne82o6v7wWwNQzd/2rKacyDgFgxLP822KPxxSZe/7/8gklbGMXOtDAhyW+5PgixOs7s3Vzknqw6dSTOPMY2c436F1ZJb6lMGcL6BPVSGmIXSYGm6C5SZIDTrp7QDarTAGCNiHlHFGySEhbz9R5CjPWF24kQfT/QdszZr7OokJYA=

@@ -13,7 +13,7 @@ https://developer.mozilla.org/ja/docs/Web/API/notification[Web Notifications]と
 Web Notifications APIについて詳しくは以下を参照して下さい。
 
 * https://developer.mozilla.org/ja/docs/WebAPI/Using_Web_Notifications[Web Notifications の使用 - WebAPI | MDN]
-* http://caniuse.com/notifications[Can I use Web Notifications]
+* https://caniuse.com/notifications[Can I use Web Notifications]
 
 Web Notifications APIについて簡単に解説すると、以下のように `new Notification` をすることで通知メッセージが表示できます。
 
