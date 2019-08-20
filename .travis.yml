@@ -7,7 +7,7 @@ rvm:
 node_js:
   - stable
 jdk:
-  - openjdk10
+  - oraclejdk10
 addons:
   apt:
     sources:
@@ -27,6 +27,7 @@ install:
   - bundle install --path vendor/bundle
   - yarn install
 script:
+  - jdk_switcher use oraclejdk10
   - make test
   - make html
   - make pdf
