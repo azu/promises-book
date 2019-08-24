@@ -66,7 +66,7 @@ XHRで `onerror` のイベントが呼ばれた場合はもちろんエラーな
 先ほどの作成したpromiseオブジェクトを返す関数を実際に使ってみましょう
 
 [source,javascript]
-fetchURL("http://example.com/"); // => promiseオブジェクトが返ってくる
+fetchURL("https://httpbin.org/get"); // => promiseオブジェクトが返ってくる
 
 <<promises-overview,Promises Overview>> でも簡単に紹介したようにpromiseオブジェクトは幾つかインスタンスメソッドを持っており、
 これを使いpromiseオブジェクトの状態に応じて一度だけ呼ばれるコールバックとなる関数を登録します。
