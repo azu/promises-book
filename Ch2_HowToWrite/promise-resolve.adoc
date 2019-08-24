@@ -40,7 +40,7 @@ promiseオブジェクトの初期化時やテストコードを書く際にも�
 
 もう一つ `Promise.resolve` の大きな特徴として、<<Thenable,thenable>>なオブジェクトをpromiseオブジェクトに変換するという機能があります。
 
-<<es6-promises,ES6 Promises>>には<<Thenable,Thenable>>という概念があり、簡単にいえばpromiseっぽいオブジェクトのことを言います。
+<<es-promises,ES Promises>>には<<Thenable,Thenable>>という概念があり、簡単にいえばpromiseっぽいオブジェクトのことを言います。
 
 `.length` を持っているが配列ではないものをArray likeというのと同じで、
 thenableの場合は `.then` というメソッドを持ってるオブジェクトを言います。
@@ -61,7 +61,7 @@ $.ajax('https://httpbin.org/get');// => `.then` をもつオブジェクト
 このthenableなオブジェクトを `Promise.resolve` ではpromiseオブジェクトにすることができます。
 
 promiseオブジェクトにすることができれば、`then` や `catch` といった、
-<<es6-promises,ES6 Promises>>がもつ機能をそのまま利用することができるようになります。
+<<es-promises,ES Promises>>がもつ機能をそのまま利用することができるようになります。
 
 [source,javascript]
 .thenableをpromiseオブジェクトにする
@@ -79,12 +79,12 @@ promise.then(function(value){
 https://api.jquery.com/jQuery.ajax/[jQuery.ajax()]の返り値も `.then` というメソッドを持った http://api.jquery.com/jQuery.ajax/#jqXHR[jqXHR Object]で、
 このオブジェクトは http://api.jquery.com/category/deferred-object/[Deferred Object] のメソッドやプロパティ等を継承しています。
 
-しかし、jQuery 2.x以下では、このDeferred Objectは<<promises-aplus,Promises/A+>>や<<es6-promises,ES6 Promises>>に準拠したものではありません。
+しかし、jQuery 2.x以下では、このDeferred Objectは<<promises-aplus,Promises/A+>>や<<es-promises,ES Promises>>に準拠したものではありません。
 そのため、Deferred Objectをpromiseオブジェクトへ変換できたように見えて、一部欠損する情報がでてしまうという問題があります。
 
 この問題はjQueryの http://api.jquery.com/category/deferred-object/[Deferred Object] の `then` の挙動が違うために発生します。
 
-そのため、`.then` というメソッドを持っていた場合でも、必ずES6 Promisesとして使えるとは限らないことは知っておくべきでしょう。
+そのため、`.then` というメソッドを持っていた場合でも、必ずES Promisesとして使えるとは限らないことは知っておくべきでしょう。
 
 * http://www.html5rocks.com/ja/tutorials/es6/promises/#toc-lib-compatibility[JavaScript Promises: There and back again - HTML5 Rocks]
 * http://domenic.me/2012/10/14/youre-missing-the-point-of-promises/[You&#39;re Missing the Point of Promises]

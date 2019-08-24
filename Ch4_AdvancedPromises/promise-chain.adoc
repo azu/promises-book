@@ -181,7 +181,7 @@ JavaScriptでは動的にメソッドを定義することもできるため、
 自動的にPromise版を生成できないかということを考えると思います。
 (もちろん静的に定義する方が扱いやすいですが)
 
-そのような仕組みは<<es6-promises,ES6 Promises>>にはありませんが、
+そのような仕組みは<<es-promises,ES Promises>>にはありませんが、
 著名なサードパーティのPromise実装である https://github.com/petkaantonov/bluebird/[bluebird] などには
 https://github.com/petkaantonov/bluebird/blob/master/API.md#promisification[Promisification] という機能が用意されています。
 
@@ -248,7 +248,7 @@ Node.jsのCoreモジュールの非同期処理には `function(error,result){}`
 * Promisification
 * 統一的なインターフェースの再利用
 
-<<es6-promises,ES6 Promises>>はCoreとなる機能しか用意されていません。
+<<es-promises,ES Promises>>はCoreとなる機能しか用意されていません。
 そのため、自分でPromiseを使った既存の機能のラッパー的な実装をすることがあるかもしれません。
 
 しかし、何度もコールバックを呼ぶEventのような処理がPromiseには不向きなように、
