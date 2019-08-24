@@ -111,7 +111,7 @@ rejectされたことより _promiseオブジェクトがRejectedの状態にな
 
 [source,javascript]
 ----
-var URL = "http://httpbin.org/status/500"; // <1>
+var URL = "https://httpbin.org/status/500"; // <1>
 fetchURL(URL).then(function onFulfilled(value){
     console.log(value);
 }).catch(function onRejected(error){ // <2>

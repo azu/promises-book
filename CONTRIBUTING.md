@@ -97,7 +97,7 @@ Promiseという機能についていう時は大文字の単数を使う。
 
 ## Asciidocのシンタックス
 
-Asciidocでこの書籍は書かれているが、[Asciidoctor](http://asciidoctor.org/ "Asciidoctor")に依存した機能や表現を使用してよい。
+Asciidocでこの書籍は書かれているが、[Asciidoctor](https://asciidoctor.org/ "Asciidoctor")に依存した機能や表現を使用してよい。
 シンタックスについては以下を参考にする。
 
 - [Asciidoctor Documentation | Asciidoctor](http://asciidoctor.org/docs/ "Asciidoctor Documentation | Asciidoctor")
