@@ -1,9 +1,9 @@
 "use strict";
-function getURLCallback(URL, callback) {
+function fetchURLCallback(URL, callback) {
     var req = new XMLHttpRequest();
     req.open('GET', URL, true);
     req.onload = function () {
-        if (req.status === 200) {
+        if (200 <= req.status && req.status < 300) {
             callback(null, req.responseText);
         } else {
             callback(new Error(req.statusText), req.response);
@@ -28,11 +28,11 @@ function parse(callback, error, value) {
     }
 }
 var request = {
-    comment: function getComment(callback) {
-        return getURLCallback('https://azu.github.io/promises-book/json/comment.json', parse.bind(null, callback));
+    comment: function fetchComment(callback) {
+        return fetchURLCallback('https://azu.github.io/promises-book/json/comment.json', parse.bind(null, callback));
     },
-    people: function getPeople(callback) {
-        return getURLCallback('https://azu.github.io/promises-book/json/people.json', parse.bind(null, callback));
+    people: function fetchPeople(callback) {
+        return fetchURLCallback('https://azu.github.io/promises-book/json/people.json', parse.bind(null, callback));
     }
 };
 function main(callback) {

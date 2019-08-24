@@ -8,7 +8,7 @@ image:img/simple320_320.png[azu,32,32]
 
 目的を手段にしてしまうことを得意としている(この書籍もその結果できた)。
 
-http://efcl.info/[Web Scratch] や http://jser.info/[JSer.info] といったサイトを運営している。
+https://efcl.info/[Web Scratch] や https://jser.info/[JSer.info] といったサイトを運営している。
 
 [[omake-message]]
 == 著者へのメッセージ/おまけ

@@ -1,9 +1,9 @@
 "use strict";
-function getURLCallback(URL, callback) {
+function fetchURLCallback(URL, callback) {
     var req = new XMLHttpRequest();
     req.open('GET', URL, true);
     req.onload = function () {
-        if (req.status === 200) {
+        if (200 <= req.status && req.status < 300) {
             callback(null, req.responseText);
         } else {
             callback(new Error(req.statusText), req.response);
@@ -29,11 +29,11 @@ function jsonParse(callback, error, value) {
 }
 // <2> XHRを叩いてリクエスト
 var request = {
-    comment: function getComment(callback) {
-        return getURLCallback('https://azu.github.io/promises-book/json/comment.json', jsonParse.bind(null, callback));
+    comment: function fetchComment(callback) {
+        return fetchURLCallback('https://azu.github.io/promises-book/json/comment.json', jsonParse.bind(null, callback));
     },
-    people: function getPeople(callback) {
-        return getURLCallback('https://azu.github.io/promises-book/json/people.json', jsonParse.bind(null, callback));
+    people: function fetchPeople(callback) {
+        return fetchURLCallback('https://azu.github.io/promises-book/json/people.json', jsonParse.bind(null, callback));
     }
 };
 // <3> 複数のXHRリクエストを行い、全部終わったらcallbackを呼ぶ

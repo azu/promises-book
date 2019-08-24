@@ -2876,7 +2876,7 @@ Promiseについて理解するのに役に立ちます。</p>
     });
 }
 <span class="comment">// 実行例</span>
-<span class="keyword">var</span> URL = <span class="string"><span class="delimiter">&quot;</span><span class="content">http://httpbin.org/get</span><span class="delimiter">&quot;</span></span>;
+<span class="keyword">var</span> URL = <span class="string"><span class="delimiter">&quot;</span><span class="content">https://httpbin.org/get</span><span class="delimiter">&quot;</span></span>;
 getURL(URL).then(<span class="keyword">function</span> <span class="function">onFulfilled</span>(value){
     console.log(value);
 }).<span class="keyword">catch</span>(<span class="keyword">function</span> <span class="function">onRejected</span>(error){
@@ -2962,7 +2962,7 @@ resolveされたことにより <em>promiseオブジェクトがFulFilledの状�
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> URL = <span class="string"><span class="delimiter">&quot;</span><span class="content">http://httpbin.org/get</span><span class="delimiter">&quot;</span></span>;
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> URL = <span class="string"><span class="delimiter">&quot;</span><span class="content">https://httpbin.org/get</span><span class="delimiter">&quot;</span></span>;
 getURL(URL).then(<span class="keyword">function</span> <span class="function">onFulfilled</span>(value){ <i class="conum" data-value="1"></i><b>(1)</b>
     console.log(value);
 });</code></pre>
@@ -2996,7 +2996,7 @@ rejectされたことより <em>promiseオブジェクトがRejectedの状態に
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> URL = <span class="string"><span class="delimiter">&quot;</span><span class="content">http://httpbin.org/status/500</span><span class="delimiter">&quot;</span></span>; <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> URL = <span class="string"><span class="delimiter">&quot;</span><span class="content">https://httpbin.org/status/500</span><span class="delimiter">&quot;</span></span>; <i class="conum" data-value="1"></i><b>(1)</b>
 getURL(URL).then(<span class="keyword">function</span> <span class="function">onFulfilled</span>(value){
     console.log(value);
 }).<span class="keyword">catch</span>(<span class="keyword">function</span> <span class="function">onRejected</span>(error){ <i class="conum" data-value="2"></i><b>(2)</b>
@@ -3145,7 +3145,7 @@ thenableなオブジェクトがもつ元々の <code>then</code> を上手く�
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript"><span class="predefined">$</span>.ajax(<span class="string"><span class="delimiter">'</span><span class="content">http://httpbin.org/get</span><span class="delimiter">'</span></span>);<span class="comment">// =&gt; `.then` をもつオブジェクト</span></code></pre>
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="predefined">$</span>.ajax(<span class="string"><span class="delimiter">'</span><span class="content">https://httpbin.org/get</span><span class="delimiter">'</span></span>);<span class="comment">// =&gt; `.then` をもつオブジェクト</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3159,7 +3159,7 @@ thenableなオブジェクトがもつ元々の <code>then</code> を上手く�
 <div class="title">thenableをpromiseオブジェクトにする</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="javascript"><span class="comment">// このサンプルコードはjQueryをロードしている場所でないと動きません</span>
-<span class="keyword">var</span> promise = Promise.resolve(<span class="predefined">$</span>.ajax(<span class="string"><span class="delimiter">'</span><span class="content">http://httpbin.org/get</span><span class="delimiter">'</span></span>));<span class="comment">// =&gt; promiseオブジェクト</span>
+<span class="keyword">var</span> promise = Promise.resolve(<span class="predefined">$</span>.ajax(<span class="string"><span class="delimiter">'</span><span class="content">https://httpbin.org/get</span><span class="delimiter">'</span></span>));<span class="comment">// =&gt; promiseオブジェクト</span>
 promise.then(<span class="keyword">function</span>(value){
    console.log(value);
 });</code></pre>
@@ -4044,7 +4044,7 @@ bPromise.then(<span class="keyword">function</span> (value) {
 <p><code>azu.github.io</code> ドメイン以下のJSONには、別ドメインからの取得が許可する設定がされています。</p>
 </div>
 <div class="paragraph">
-<p>また、 <a href="http://httpbin.org/">httpbin.org</a> というドメインがリソース取得の例として登場します。
+<p>また、 <a href="https://httpbin.org/">httpbin.org</a> というドメインがリソース取得の例として登場します。
 こちらも、同一ドメインでなくてもリソースの取得が許可されています。</p>
 </div>
 </td>
@@ -4666,7 +4666,7 @@ Promiseではchainする度に異なるpromiseオブジェクトに対して処�
 <p>そうした時に、次にどうすればいいのか悩むのがPromiseのテストの書き方です。</p>
 </div>
 <div class="paragraph">
-<p>ここではまず、 <a href="http://mochajs.org/">Mocha</a>を使った基本的なPromiseのテストの書き方について学んでいきましょう。</p>
+<p>ここではまず、 <a href="https://mochajs.org/">Mocha</a>を使った基本的なPromiseのテストの書き方について学んでいきましょう。</p>
 </div>
 <div class="paragraph">
 <p>また、この章でのテストコードはNode.js環境で実行することを前提としているため、
@@ -4688,7 +4688,7 @@ Promiseではchainする度に異なるpromiseオブジェクトに対して処�
 <div class="sect3">
 <h4 id="_mochaとは">3.1.1. Mochaとは</h4>
 <div class="paragraph">
-<p>Mochaの公式サイト: <a href="http://mochajs.org/">http://mochajs.org/</a></p>
+<p>Mochaの公式サイト: <a href="https://mochajs.org/">https://mochajs.org/</a></p>
 </div>
 <div class="paragraph">
 <p>ここでは、 Mocha自体については詳しく解説しませんが、
@@ -4902,7 +4902,7 @@ Promiseのテストを書くときにつけ忘れてしまうと終わらない�
 <p>Mochaがサポートしてる"Promiseのテスト"とは何かについて学んでいきましょう。</p>
 </div>
 <div class="paragraph">
-<p>公式サイトの <a href="http://mochajs.org/#asynchronous-code">Asynchronous code</a>にもその概要が書かれています。</p>
+<p>公式サイトの <a href="https://mochajs.org/#asynchronous-code">Asynchronous code</a>にもその概要が書かれています。</p>
 </div>
 <div class="quoteblock">
 <blockquote>
@@ -6513,7 +6513,7 @@ Deferred.prototype.<span class="function">reject</span> = <span class="keyword">
     <span class="keyword">return</span> deferred.promise;
 }
 <span class="comment">// 実行例</span>
-<span class="keyword">var</span> URL = <span class="string"><span class="delimiter">&quot;</span><span class="content">http://httpbin.org/get</span><span class="delimiter">&quot;</span></span>;
+<span class="keyword">var</span> URL = <span class="string"><span class="delimiter">&quot;</span><span class="content">https://httpbin.org/get</span><span class="delimiter">&quot;</span></span>;
 getURL(URL).then(<span class="keyword">function</span> <span class="function">onFulfilled</span>(value){
     console.log(value);
 }).<span class="keyword">catch</span>(console.error.bind(console));</code></pre>
@@ -6548,7 +6548,7 @@ promiseオブジェクトの状態をresolve、rejectすることができるメ
     });
 }
 <span class="comment">// 実行例</span>
-<span class="keyword">var</span> URL = <span class="string"><span class="delimiter">&quot;</span><span class="content">http://httpbin.org/get</span><span class="delimiter">&quot;</span></span>;
+<span class="keyword">var</span> URL = <span class="string"><span class="delimiter">&quot;</span><span class="content">https://httpbin.org/get</span><span class="delimiter">&quot;</span></span>;
 getURL(URL).then(<span class="keyword">function</span> <span class="function">onFulfilled</span>(value){
     console.log(value);
 }).<span class="keyword">catch</span>(console.error.bind(console));</code></pre>
@@ -7047,7 +7047,7 @@ TimeoutError.prototype.constructor = TimeoutError;
         <span class="key">abort</span>: abort
     };
 }
-<span class="keyword">var</span> object = cancelableXHR(<span class="string"><span class="delimiter">'</span><span class="content">http://httpbin.org/get</span><span class="delimiter">'</span></span>);
+<span class="keyword">var</span> object = cancelableXHR(<span class="string"><span class="delimiter">'</span><span class="content">https://httpbin.org/get</span><span class="delimiter">'</span></span>);
 <span class="comment">// main</span>
 timeoutPromise(object.promise, <span class="integer">1000</span>).then(<span class="keyword">function</span> (contents) {
     console.log(<span class="string"><span class="delimiter">'</span><span class="content">Contents</span><span class="delimiter">'</span></span>, contents);
@@ -7176,7 +7176,7 @@ module.exports.abortPromise = abortPromise;</code></pre>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> cancelableXHR = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">./cancelableXHR</span><span class="delimiter">&quot;</span></span>);
 
-<span class="keyword">var</span> xhrPromise = cancelableXHR.createXHRPromise(<span class="string"><span class="delimiter">'</span><span class="content">http://httpbin.org/get</span><span class="delimiter">'</span></span>);<i class="conum" data-value="1"></i><b>(1)</b>
+<span class="keyword">var</span> xhrPromise = cancelableXHR.createXHRPromise(<span class="string"><span class="delimiter">'</span><span class="content">https://httpbin.org/get</span><span class="delimiter">'</span></span>);<i class="conum" data-value="1"></i><b>(1)</b>
 xhrPromise.<span class="keyword">catch</span>(<span class="keyword">function</span> (error) {
     <span class="comment">// abort されたエラーが呼ばれる</span>
 });

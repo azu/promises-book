@@ -3,7 +3,7 @@
 
 Mochaがサポートしてる"Promiseのテスト"とは何かについて学んでいきましょう。
 
-公式サイトの http://mochajs.org/#asynchronous-code[Asynchronous code]にもその概要が書かれています。
+公式サイトの https://mochajs.org/#asynchronous-code[Asynchronous code]にもその概要が書かれています。
 
 > Alternately, instead of using the done() callback, you can return a promise. This is useful if the APIs you are testing return promises instead of taking callbacks:
 

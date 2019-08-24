@@ -6,7 +6,7 @@
 
 先ほどの複数のXHRの結果をまとめて取得する処理は、 <<Promise.all, `Promise.all`>> を使うとシンプルに書くことができます。
 
-先ほどの例の `getURL` はXHRによる通信を抽象化したpromiseオブジェクトを返しています。
+先ほどの例の `fetchURL` はXHRによる通信を抽象化したpromiseオブジェクトを返しています。
 `Promise.all` に通信を抽象化したpromiseオブジェクトの配列を渡すことで、
 全ての通信が完了(FulFilledまたはRejected)した時に、次の `.then` を呼び出すことができます。
 

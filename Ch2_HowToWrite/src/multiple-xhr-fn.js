@@ -1,11 +1,11 @@
 "use strict";
-var getURL = require("../../Ch1_WhatsPromises/src/xhr-promise").getURL;
+var fetchURL = require("../../Ch1_WhatsPromises/src/xhr-promise").fetchURL;
 var request = {
-    comment: function getComment() {
-        return getURL("https://azu.github.io/promises-book/json/comment.json");
+    comment: function fetchComment() {
+        return fetchURL("https://azu.github.io/promises-book/json/comment.json");
     },
-    people: function getPeople() {
-        return getURL("https://azu.github.io/promises-book/json/people.json");
+    people: function fetchPeople() {
+        return fetchURL("https://azu.github.io/promises-book/json/people.json");
     }
 };
 

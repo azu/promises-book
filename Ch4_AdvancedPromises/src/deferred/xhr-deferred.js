@@ -1,11 +1,11 @@
 "use strict";
 var Deferred = require("./deferred").Deferred;
-function getURL(URL) {
+function fetchURL(URL) {
     var deferred = new Deferred();
     var req = new XMLHttpRequest();
     req.open('GET', URL, true);
     req.onload = function () {
-        if (req.status === 200) {
+        if (200 <= req.status && req.status < 300) {
             deferred.resolve(req.responseText);
         } else {
             deferred.reject(new Error(req.statusText));
@@ -17,4 +17,4 @@ function getURL(URL) {
     req.send();
     return deferred.promise;
 }
-module.exports.getURL = getURL;
+module.exports.fetchURL = fetchURL;

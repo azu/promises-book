@@ -1,6 +1,6 @@
 "use strict";
 var assert = require('power-assert');
-var getURL = require("../src/deferred/xhr-deferred").getURL;
+var fetchURL = require("../src/deferred/xhr-deferred").fetchURL;
 var echoServer = require("../../test/echo-server");
 
 describe('#cancelableXHR', function () {
@@ -13,7 +13,7 @@ describe('#cancelableXHR', function () {
     describe("when get data", function () {
         it("should resolve with value", function () {
             var URL = "http://localhost:3000/?status=200&body=text";
-            return shouldFulfilled(getURL(URL)).then(function (value) {
+            return shouldFulfilled(fetchURL(URL)).then(function (value) {
                 assert.equal(value, "text");
             });
         });
@@ -21,7 +21,7 @@ describe('#cancelableXHR', function () {
     describe("when get fail", function () {
         it("should reject with error", function () {
             var URL = "http://localhost:3000/?status=500";
-            return shouldRejected(getURL(URL)).catch(function (error) {
+            return shouldRejected(fetchURL(URL)).catch(function (error) {
                 assert(error instanceof Error);
             });
         });

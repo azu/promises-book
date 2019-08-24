@@ -10,7 +10,7 @@ function createXHRPromise(URL) {
             }
         };
         req.onload = function () {
-            if (req.status === 200) {
+            if (200 <= req.status && req.status < 300) {
                 resolve(req.responseText);
             } else {
                 reject(new Error(req.statusText));
