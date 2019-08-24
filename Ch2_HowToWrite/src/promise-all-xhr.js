@@ -1,10 +1,10 @@
 "use strict";
 var fetchURL = require("../../Ch1_WhatsPromises/src/xhr-promise").fetchURL;
 var request = {
-    comment: function getComment() {
+    comment: function fetchComment() {
         return fetchURL('https://azu.github.io/promises-book/json/comment.json').then(JSON.parse);
     },
-    people: function getPeople() {
+    people: function fetchPeople() {
         return fetchURL('https://azu.github.io/promises-book/json/people.json').then(JSON.parse);
     }
 };

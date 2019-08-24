@@ -29,10 +29,10 @@ function jsonParse(callback, error, value) {
 }
 // <2> XHRを叩いてリクエスト
 var request = {
-    comment: function getComment(callback) {
+    comment: function fetchComment(callback) {
         return fetchURLCallback('https://azu.github.io/promises-book/json/comment.json', jsonParse.bind(null, callback));
     },
-    people: function getPeople(callback) {
+    people: function fetchPeople(callback) {
         return fetchURLCallback('https://azu.github.io/promises-book/json/people.json', jsonParse.bind(null, callback));
     }
 };
