@@ -3,7 +3,7 @@
 
 == 書籍の目的
 
-この書籍はJavaScript標準仕様の<<es-promises,ECMAScript 6 Promises>>という仕様を中心にし、
+この書籍はJavaScript標準仕様の<<es-promises,ECMAScript Promises>>という仕様を中心にし、
 JavaScriptにおけるPromiseについて学ぶことを目的とした書籍です。
 
 この書籍を読むことで学べることとして次の3つを目標としています
