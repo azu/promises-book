@@ -7,7 +7,7 @@ promiseオブジェクト::
     プロミスオブジェクト、`Promise` のインスタンスオブジェクトのこと
 [[es-promises]]
 ES Promises::
-    http://www.ecma-international.org/ecma-262/6.0/index.html[ECMAScript 6th Edition(ECMAScript 2015)] を明示的に示す場合にprefixとして _ES_ をつける
+    https://tc39.es/ecma262/[ECMAScriptの仕様] を明示的に示す場合にprefixとして _ES_ をつける
 [[promises-aplus]]
 Promises/A+::
     http://promises-aplus.github.io/promises-spec/[Promises/A+]のこと。
