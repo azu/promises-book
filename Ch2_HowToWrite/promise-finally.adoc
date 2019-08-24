@@ -71,7 +71,7 @@ promise.then(function(result) {
 ----
 // リソースを取得中かどうかのフラグ
 var isLoading = false;
-function getResource(URL) {
+function fetchResource(URL) {
     // リソース取得中フラグをONに
     isLoading = true;
     return new Promise(function (resolve, reject) {
@@ -95,7 +95,7 @@ function getResource(URL) {
 }
 
 console.log("リソースロード開始", isLoading);
-getResource("https://httpbin.org/get").then(function(value) {
+fetchResource("https://httpbin.org/get").then(function(value) {
     console.log("リソース取得に成功", isLoading);
     console.log(value);
 }).catch(function(error) {
