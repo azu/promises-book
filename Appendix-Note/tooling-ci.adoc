@@ -71,7 +71,7 @@ image::img/javascript-console-editor.png[コンソールエディタの図]
 
 サンプルコードはNode.js上で動くものとして作り、Node.jsで動くテストを書いた。
 
-<<es6-promises,ES6 Promises>>はDOMではなくECMAScriptの仕様であるため、
+<<es-promises,ES6 Promises>>はDOMではなくECMAScriptの仕様であるため、
 ブラウザが実行環境ではなくてもよいという考えと、実行の手軽さからNode.js上で動くものとして書いていった。
 
 しかし一部を除いて、表示用コードはブラウザでの表示と実行を前提としている。

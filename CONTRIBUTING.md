@@ -69,7 +69,7 @@ Promisesが実装されていない環境もあるため、[core-js](https://git
 
 Promiseという機能についていう時は大文字の単数を使う。
 
-例外としてES6 PromisesやPromises/A+の仕様について言及する際はsをつけてもよい。
+例外としてES PromisesやPromises/A+の仕様について言及する際はsをつけてもよい。
 
 小文字で始まるpromiseはpromiseオブジェクトのみにする。
 

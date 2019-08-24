@@ -267,17 +267,17 @@ promiseオブジェクトを返す関数を公開APIとしても問題ないと�
 恐らく、一番多く使われている所は<<promise-library,Promiseのライブラリ>>間での相互変換でしょう。
 
 たとえば、 QライブラリのPromiseのインスタンスであるQ promiseオブジェクトは、
-<<es6-promises,ES6 Promises>>のpromiseオブジェクトが持っていないメソッドを持っています。
+<<es-promises,ES Promises>>のpromiseオブジェクトが持っていないメソッドを持っています。
 Q promiseオブジェクトには `promise.finally(callback)` や `promise.nodeify(callback)` などのメソッドが用意されてます。
 
-ES6 PromisesのpromiseオブジェクトをQ promiseオブジェクトに変換するときに使われるのが、
+ES PromisesのpromiseオブジェクトをQ promiseオブジェクトに変換するときに使われるのが、
 まさにこのThenableです。
 
 [source,javascript]
 .thenableを使ってQ promiseオブジェクトにする
 ----
 var Q = require("Q");
-// このpromiseオブジェクトはES6のもの
+// このpromiseオブジェクトはESのもの
 var promise = new Promise(function(resolve){
     resolve(1);
 });

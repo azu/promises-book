@@ -5,13 +5,13 @@ Promises::
     プロミスという仕様そのもの
 promiseオブジェクト::
     プロミスオブジェクト、`Promise` のインスタンスオブジェクトのこと
-[[es6-promises]]
-ES6 Promises::
-    http://www.ecma-international.org/ecma-262/6.0/index.html[ECMAScript 6th Edition(ECMAScript 2015)] を明示的に示す場合にprefixとして _ES6_ をつける
+[[es-promises]]
+ES Promises::
+    https://tc39.es/ecma262/[ECMAScriptの仕様] を明示的に示す場合にprefixとして _ES_ をつける
 [[promises-aplus]]
 Promises/A+::
     http://promises-aplus.github.io/promises-spec/[Promises/A+]のこと。
-    ES6 Promisesの前身となったコミュニティベースの仕様であり、ES6 Promisesとは多くの部分が共通している。
+    ES Promisesの前身となったコミュニティベースの仕様であり、ES Promisesとは多くの部分が共通している。
 [[Thenable]]
 Thenable::
     Promiseライクなオブジェクトのこと。
@@ -19,4 +19,4 @@ Thenable::
 [[promise-chain]]
 promise chain::
     promiseオブジェクトを `then` や `catch` のメソッドチェーンでつなげたもの。
-    この用語は書籍中のものであり、<<es6-promises,ES6 Promises>>で定められた用語ではありません。
+    この用語は書籍中のものであり、<<es-promises,ES6 Promises>>で定められた用語ではありません。

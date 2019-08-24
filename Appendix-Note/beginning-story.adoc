@@ -4,7 +4,7 @@
 この書籍を書くことにしたのは、私自身が運営する JSer.info にて、
 http://jser.info/post/77696682011/es6-promises[あなたが読むべきJavaScript Promises | JSer.info] という記事を書いたことが始まりです。
 
-この記事を書く際にECMAScript 6 Promisesについて色々調べながら書いていましたが、
+この記事を書く際にECMAScript Promisesについて色々調べながら書いていましたが、
 最終的に扱いきれてない情報もありました。
 
 - https://github.com/azu/jser.info/pull/17[あなたが読むべきPromises by azu · Pull Request #17 · azu/jser.info]
@@ -31,7 +31,7 @@ The little book of Buster.JS を書いた時からサンプルコードにテス
 また、Asciidocのモダンな処理エンジンとして http://asciidoctor.org/[Asciidoctor] という実装があることを知り、
 これを使ってみようと思いました。
 
-まとめると、主目的は電子書籍を書いてみたいという欲求で、サブ目的がES6 Promisesについて扱いきれなかったものを書く
+まとめると、主目的は電子書籍を書いてみたいという欲求で、サブ目的がES Promisesについて扱いきれなかったものを書く
 というのがこの書籍を書き始めた理由です。
 
 == 書き始めのワークフロー

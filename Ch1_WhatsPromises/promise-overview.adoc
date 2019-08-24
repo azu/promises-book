@@ -1,7 +1,7 @@
 [[promises-overview]]
 == Promise Overview
 
-<<es6-promises,ES6 Promises>>の仕様で定義されているAPIはそこまで多くはありません。
+<<es-promises,ES Promises>>の仕様で定義されているAPIはそこまで多くはありません。
 
 大きく分けて以下の3種類になります。
 
@@ -101,7 +101,7 @@ Rejected::
 Pending::
     FulfilledまたはRejectedではない時。つまりpromiseオブジェクトが作成された初期状態等が該当する
 
-これらの状態は<<es6-promises,ES6 Promises>>の仕様で定められている名前です。
+これらの状態は<<es-promises,ES Promises>>の仕様で定められている名前です。
 この状態をプログラムで直接触る方法は用意されていないため、書く際には余り気にしなくても問題ないですが、
 Promiseについて理解するのに役に立ちます。
 
@@ -113,7 +113,7 @@ image::img/promise-states.png[promise-states]
 
 [NOTE]
 ====
-<<es6-promises,ES6 Promisesの仕様>> では `+++[[PromiseStatus]]+++` という内部定義によって状態が定められています。
+<<es-promises,ES Promisesの仕様>> では `+++[[PromiseStatus]]+++` という内部定義によって状態が定められています。
 `+++[[PromiseStatus]]+++` にアクセスするユーザーAPIは用意されていないため、基本的には知る方法はありません。
 ====
 

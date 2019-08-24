@@ -98,7 +98,7 @@ ECMAScript5では完璧に `Error` を継承したものを作ることは不可
 
 [NOTE]
 ====
-ECMAScript 6では `class` 構文を使うことで内部的にも正確に継承を行うことができます。
+ECMAScript 2015から `class` 構文を使うことで内部的にも正確に継承を行うことができます。
 
 [source,javascript]
 ----
@@ -206,7 +206,7 @@ promiseオブジェクトは値を抽象化したオブジェクトであるた�
 これらの処理をまとめたモジュールを作れば今後の拡張がしやすいですし、
 一つの関数がやることも小さくて済むので見通しも良くなると思います。
 
-モジュールの作り方は色々作法(AMD,CommonJS,ES6 module etc..)があるので
+モジュールの作り方は色々作法(AMD,CommonJS,ES module etc..)があるので
 ここでは、先ほどの `cancelableXHR` をNode.jsのモジュールとして作りなおしてみます。
 
 [source,javascript]
