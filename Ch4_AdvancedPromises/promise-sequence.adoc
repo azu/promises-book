@@ -155,6 +155,8 @@ main().then(function (value) {
 * <<promise-reduce-xhr.js, reduceを使った書き方>>
 * <<promise-sequence.js, 逐次処理する関数を分けた書き方>>
 
+さらに、ここではまだ紹介していませんが、<<chapter5-async-function, Async Function>>を使う方法もあります。
+
 しかし、これはJavaScriptで配列を扱うのにforループや `forEach` 等、色々やり方があるのと本質的には違いはありません。
 そのため、Promiseを扱う場合も処理をまとめられるところは小さく関数に分けて、実装していくのがいいといえるでしょう。
 
