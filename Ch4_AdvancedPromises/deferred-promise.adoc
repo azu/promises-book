@@ -41,7 +41,7 @@ Promiseの上にDeferredを実装した例です。
 include::embed/embed-deferred.js[]
 ----
 
-以前Promiseを使って実装した<<xhr-promise.js,`getURL`>>をこのDeferredで実装しなおしてみます。
+以前Promiseを使って実装した<<xhr-promise.js,`fetchURL`>>をこのDeferredで実装しなおしてみます。
 
 [role="executable"]
 [source,javascript]
@@ -51,7 +51,7 @@ include::embed/embed-deferred.js[]
 include::embed/embed-xhr-deferred.js[]
 // 実行例
 var URL = "http://httpbin.org/get";
-getURL(URL).then(function onFulfilled(value){
+fetchURL(URL).then(function onFulfilled(value){
     console.log(value);
 }).catch(console.error.bind(console));
 ----
@@ -69,12 +69,12 @@ promiseオブジェクトの状態をresolve、rejectすることができるメ
 include::../Ch1_WhatsPromises/embed/embed-xhr-promise.js[]
 // 実行例
 var URL = "http://httpbin.org/get";
-getURL(URL).then(function onFulfilled(value){
+fetchURL(URL).then(function onFulfilled(value){
     console.log(value);
 }).catch(console.error.bind(console));
 ----
 
-2つの `getURL` を見比べて見ると以下のような違いがあることが分かります。
+2つの `fetchURL` を見比べて見ると以下のような違いがあることが分かります。
 
 * Deferred の場合は全体がPromiseで囲まれていない
 ** 関数で囲んでないため、1段ネストが減っている

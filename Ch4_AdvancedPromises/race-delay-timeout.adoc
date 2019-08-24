@@ -150,7 +150,7 @@ http://speakingjs.com/es5/ch28.html[Chapter 28. Subclassing Built-ins] で詳�
 
 XHRのキャンセル自体は `XMLHttpRequest` オブジェクトの `abort()` メソッドを呼ぶだけなので難しくないですね。
 
-`abort()` メソッドを外から呼べるようにするために、今までのセクションにもでてきた<<xhr-promise.js,`getURL`>>を少し拡張して、
+`abort()` メソッドを外から呼べるようにするために、今までのセクションにもでてきた<<xhr-promise.js,`fetchURL`>>を少し拡張して、
 XHRを包んだpromiseオブジェクトと共にそのXHRを中止するメソッドをもつオブジェクトを返すようにしています。
 
 [source,javascript]
