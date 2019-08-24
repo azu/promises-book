@@ -1,7 +1,7 @@
 "use strict";
 var timeoutPromise = require("../../lib/timeoutPromise").timeoutPromise;
 var cancelableXHR = require("./delay-race-cancel").cancelableXHR;
-var object = cancelableXHR('http://httpbin.org/get');
+var object = cancelableXHR('https://httpbin.org/get');
 // main
 timeoutPromise(object.promise, 1000)
     .then(function (contents) {

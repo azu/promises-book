@@ -56,7 +56,7 @@ https://api.jquery.com/jQuery.ajax/[jQuery.ajax()]の返り値もthenableです�
 
 [source,javascript]
 // このサンプルコードはjQueryをロードしている場所でないと動きません
-$.ajax('http://httpbin.org/get');// => `.then` をもつオブジェクト
+$.ajax('https://httpbin.org/get');// => `.then` をもつオブジェクト
 
 このthenableなオブジェクトを `Promise.resolve` ではpromiseオブジェクトにすることができます。
 
@@ -67,7 +67,7 @@ promiseオブジェクトにすることができれば、`then` や `catch` と
 .thenableをpromiseオブジェクトにする
 ----
 // このサンプルコードはjQueryをロードしている場所でないと動きません
-var promise = Promise.resolve($.ajax('http://httpbin.org/get'));// => promiseオブジェクト
+var promise = Promise.resolve($.ajax('https://httpbin.org/get'));// => promiseオブジェクト
 promise.then(function(value){
    console.log(value);
 });

@@ -28,7 +28,7 @@ promiseオブジェクトを作る流れは以下のようになっています�
 ----
 include::embed/embed-xhr-promise.js[]
 // 実行例
-var URL = "http://httpbin.org/get";
+var URL = "https://httpbin.org/get";
 fetchURL(URL).then(function onFulfilled(value){
     console.log(value);
 }).catch(function onRejected(error){
@@ -89,7 +89,7 @@ resolveされたことにより _promiseオブジェクトがFulFilledの状態�
 
 [source,javascript]
 ----
-var URL = "http://httpbin.org/get";
+var URL = "https://httpbin.org/get";
 fetchURL(URL).then(function onFulfilled(value){ // <1>
     console.log(value);
 });

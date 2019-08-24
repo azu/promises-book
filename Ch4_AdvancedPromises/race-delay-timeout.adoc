@@ -223,7 +223,7 @@ include::lib/cancelableXHR.js[]
 ----
 var cancelableXHR = require("./cancelableXHR");
 
-var xhrPromise = cancelableXHR.createXHRPromise('http://httpbin.org/get');// <1>
+var xhrPromise = cancelableXHR.createXHRPromise('https://httpbin.org/get');// <1>
 xhrPromise.catch(function (error) {
     // abort されたエラーが呼ばれる
 });
