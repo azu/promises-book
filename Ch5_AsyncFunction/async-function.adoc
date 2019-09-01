@@ -54,6 +54,7 @@ include::../json/book.json[]
 まずは、Promise APIを使って``fetchBookTitle``関数で取得したタイトルをコンソールに出力してみます。
 
 [role="executable"]
+[doctest-state="disabled"]
 [source,javascript]
 ----
 function fetchBookTitle(){
@@ -78,6 +79,7 @@ main();
 Promise APIを使っていた場合に比べて、コールバック関数がなくなっていることが分かります。
 
 [role="executable"]
+[doctest-state="disabled"]
 [source,javascript]
 ----
 // `async`をつけて`fetchBookTitle`関数をAsync Functionとして定義
