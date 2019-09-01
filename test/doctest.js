@@ -26,7 +26,6 @@ describe("doctest:adoc", function () {
                 filePath,
                 content: replaceDummyHeader(content)
             });
-            console.log("parsedCodes", parsedCodes);
             // try to eval
             const dirName = path.dirname(filePath).split(path.sep).pop();
             parsedCodes.forEach((parsedCode, index) => {
