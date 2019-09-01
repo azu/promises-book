@@ -169,37 +169,57 @@
     "@nodelib/fs.scandir" "2.1.2"
     fastq "^1.6.0"
 
-"@power-doctest/asciidoctor@^4.1.1":
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/@power-doctest/asciidoctor/-/asciidoctor-4.1.1.tgz#a63b633d4019bfa8c7dff472961378d650afea03"
-  integrity sha512-9Uj4T+iAQlSbrDgip5+Q2tpwc9372L0pOJVw8lG900ezZ8DUeR8aZwvaydbgqZDLJUB+MzpxqFqb/LdtdWWOzQ==
+"@power-doctest/asciidoctor@^5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@power-doctest/asciidoctor/-/asciidoctor-5.0.1.tgz#7f853f876b9fa3bb7d4184f20820baec9e06c076"
+  integrity sha512-m967HybSXfEXRXyKdF75lGQl/b3aUBE9mEF+kev/K/1oOeOJi00s5iSoD+1pvXPzhevMx0CMkbgOhxSGaobcCA==
   dependencies:
-    "@power-doctest/types" "^4.0.0"
+    "@power-doctest/types" "^5.0.1"
     asciidoctor "^2.0.3"
     structured-source "^3.0.2"
 
-"@power-doctest/javascript@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@power-doctest/javascript/-/javascript-4.0.0.tgz#acccba66181618d3084b50cbf2f0ce61131a6788"
-  integrity sha512-Thxb22lJzYk2SfEGm/hbPd3ypYH5lz3/RFya1fqChtOPFohX12qG+DJec5JkQQ9TFPE1G+OiyrEXEX8Xme/kJg==
+"@power-doctest/core@^5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@power-doctest/core/-/core-5.0.1.tgz#64caff5e7bdd534c584d165a679dacae955765ea"
+  integrity sha512-LvEgPxQzPNHkYguM8es13wor/7AdYAR8T7lTl4mqFJYHFO9KrHhSkP8UWW/aXiK9n5d4mpPBHCDIrwqtLCg7yg==
   dependencies:
-    "@power-doctest/types" "^4.0.0"
+    "@babel/core" "^7.5.5"
+    "@babel/parser" "^7.5.5"
+    "@babel/template" "^7.4.4"
+    "@babel/traverse" "^7.5.5"
+    "@babel/types" "^7.5.5"
+    ast-source "^3.0.0"
+    babel-plugin-espower "^3.0.1"
+    comment-to-assert "^5.0.1"
+    escodegen "^1.12.0"
+    espower "^2.1.2"
+    espree "^6.1.1"
+    esprima "^4.0.1"
+    estraverse "^4.3.0"
+    power-assert "^1.6.1"
+
+"@power-doctest/javascript@^5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@power-doctest/javascript/-/javascript-5.0.1.tgz#dcc417f948f2f7ef2015ee3efb5c73df013d0fe2"
+  integrity sha512-KDGOHMvxiHUk6SZnCqKll7UpN/i/XQji2tGz1+2nbQpWFe30yULOqPhaFbfHb+6hPi2fXIkWjrmXZrqN0M5v9A==
+  dependencies:
+    "@power-doctest/types" "^5.0.1"
     "@types/structured-source" "^3.0.0"
     structured-source "^3.0.2"
 
-"@power-doctest/tester@^4.1.0":
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/@power-doctest/tester/-/tester-4.1.0.tgz#b8bbae265234bf94b2e13c2c88e3041ccd861e52"
-  integrity sha512-8vyYUTN6uiF9FFsHtt+27E0GNT+5Gw+HODSxbzaV20UWlGclpioiAh6xfvcyxTjEb68F+wUAOMt4Eg/tyAYsqA==
+"@power-doctest/tester@^5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@power-doctest/tester/-/tester-5.0.1.tgz#2f7cbddea7968419c09cb58a560c1c6c18998cc8"
+  integrity sha512-hWwp4qPwKxZPiICGDYsgJnddnMRbp7ugl2mC0qj+Hfkvt7EDAqpbInEJVpn6ucEW/XWPrfdC7/qNApb3E1nMNw==
   dependencies:
-    "@power-doctest/types" "^4.0.0"
-    power-doctest "^4.0.0"
+    "@power-doctest/core" "^5.0.1"
+    "@power-doctest/types" "^5.0.1"
     vm2 "^3.8.3"
 
-"@power-doctest/types@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@power-doctest/types/-/types-4.0.0.tgz#e297ab22eef4fb64b223a413ef80659adf13303e"
-  integrity sha512-hR6umdZiIUqhDwBC0liGUmM4UsjoKilAzkD7xkEdypT3V97bYfSNhgVze3KIwHOcX6CunubYylNrLFtamhtnew==
+"@power-doctest/types@^5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@power-doctest/types/-/types-5.0.1.tgz#00aa7f4aebb1cfecd10a71262f1bb051c44e9b30"
+  integrity sha512-vKVfQenAB1InzQzVZWbCMZU6zjXOjoTT75fSgIRgFCEwDyBVAySb22y3RTMAdqoK49av+ZHvzyA+s4CBWTQqQA==
 
 "@textlint/ast-node-types@^4.2.2":
   version "4.2.2"
@@ -1350,10 +1370,10 @@ commandpost@^1.2.1:
   resolved "https://registry.yarnpkg.com/commandpost/-/commandpost-1.4.0.tgz#89218012089dfc9b67a337ba162f15c88e0f1048"
   integrity sha512-aE2Y4MTFJ870NuB/+2z1cXBhSBBzRydVVjzhFC4gtenEhpnj15yu0qptWGJsO9YGrcPZ3ezX8AWb1VA391MKpQ==
 
-comment-to-assert@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/comment-to-assert/-/comment-to-assert-4.0.0.tgz#0e034ea1f46a572e4aba36ca469ddc65156de1c6"
-  integrity sha512-dmAag9dvWKNm38E9w9zgiDOA8mZDlCl30wSzKxAwBhqxiaGSGltTVWI4HxI/m4PALXH1Az9v7Mm3SZNennL8fg==
+comment-to-assert@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/comment-to-assert/-/comment-to-assert-5.0.1.tgz#cb045420829cd42a240a9ad2c4368fd4c1a710cd"
+  integrity sha512-NBSn2EtnVnKIeiy8g6eGhKCwR4lDO95AL7TmqhY9CrwWcMkdZMTXxzS0JsNGeFiMrEEZ8FYHyeU6TtAjeDXSYw==
   dependencies:
     "@babel/core" "^7.5.5"
     "@babel/parser" "^7.5.5"
@@ -4715,26 +4735,6 @@ power-assert@^1.6.1:
     power-assert-formatter "^1.4.1"
     universal-deep-strict-equal "^1.2.1"
     xtend "^4.0.0"
-
-power-doctest@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/power-doctest/-/power-doctest-4.0.0.tgz#47a9cac36a8dbdf1afa465ec4b305388591833ce"
-  integrity sha512-NaRGWPb+TFTDoWhOFvCaOgZiqxeJVxzGQcijKfS9Lxps+o3ZI/NQtqX9pM8pIEPE7d+dgjWst3Al4EfzXbIEPw==
-  dependencies:
-    "@babel/core" "^7.5.5"
-    "@babel/parser" "^7.5.5"
-    "@babel/template" "^7.4.4"
-    "@babel/traverse" "^7.5.5"
-    "@babel/types" "^7.5.5"
-    ast-source "^3.0.0"
-    babel-plugin-espower "^3.0.1"
-    comment-to-assert "^4.0.0"
-    escodegen "^1.12.0"
-    espower "^2.1.2"
-    espree "^6.1.1"
-    esprima "^4.0.1"
-    estraverse "^4.3.0"
-    power-assert "^1.6.1"
 
 prelude-ls@~1.1.2:
   version "1.1.2"

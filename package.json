@@ -15,7 +15,7 @@
     "lint-html": "gulp lint-html",
     "textlint": "textlint \"Appendix-*/*/**.adoc\" \"Ch*/*/**.adoc\"",
     "textlint:fix": "textlint --fix \"Appendix-*/*/**.adoc\" \"Ch*/*/**.adoc\"",
-    "test": "mocha \"./Ch**/test/*.js\""
+    "test": "mocha \"./Ch**/test/*.js\" \"test/doctest.js\""
   },
   "directories": {
     "test": "Ch*/test/"
@@ -34,9 +34,9 @@
   },
   "devDependencies": {
     "@alrra/travis-scripts": "^3.0.1",
-    "@power-doctest/asciidoctor": "^4.1.1",
-    "@power-doctest/javascript": "^4.0.0",
-    "@power-doctest/tester": "^4.1.0",
+    "@power-doctest/asciidoctor": "^5.0.1",
+    "@power-doctest/javascript": "^5.0.1",
+    "@power-doctest/tester": "^5.0.1",
     "brfs": "^2.0.2",
     "browserify": "^16.2.3",
     "cheerio": "^0.22.0",
