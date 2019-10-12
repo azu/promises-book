@@ -30,7 +30,7 @@ const promise = new Promise(((resolve, reject) => {
 }));
 promise.catch((error) => {
     console.error(error);// => "message"
-})
+});
 ----
 
 `throw` が `reject` に変わったと考えれば、`reject` にはErrorオブジェクトを渡すべきであるということが分かりやすいかもしれません。

@@ -64,7 +64,7 @@ let isLoading = true;
 
 fetch("https://httpbin.org/get").then((response) => {
     if (response.ok) {
-        return response.json()
+        return response.json();
     }
     throw new TypeError("正しくデータを取得できなかった");
   })
@@ -96,7 +96,7 @@ Promise.resolve(object);
 [source,javascript]
 .Promise.resolveのコード例
 ----
-const taskName = "task 1"
+const taskName = "task 1";
 asyncTask(taskName).then((value) => {
     console.log(value);
 }).catch((error) => {
@@ -124,7 +124,7 @@ thenableなオブジェクトを受け取った場合::
 [[Promise.reject]]
 == Promise.reject
 [source,javascript]
-Promise.reject(object)
+Promise.reject(object);
 
 [source,javascript]
 .Promise.rejectのコード例
