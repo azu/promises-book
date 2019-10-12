@@ -2,10 +2,10 @@
 const sequenceTasks = require("../../lib/promise-sequence").sequenceTasks;
 const fetchURL = require("../../../Ch1_WhatsPromises/src/xhr-promise").fetchURL;
 const request = {
-    comment: function fetchComment() {
+    comment() {
         return fetchURL("https://azu.github.io/promises-book/json/comment.json").then(JSON.parse);
     },
-    people: function fetchPeople() {
+    people() {
         return fetchURL("https://azu.github.io/promises-book/json/people.json").then(JSON.parse);
     }
 };

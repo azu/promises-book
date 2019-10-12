@@ -9,14 +9,14 @@ function createXHRPromise(URL) {
                 delete requestMap[URL];
             }
         };
-        req.onload = function() {
+        req.onload = () => {
             if (200 <= req.status && req.status < 300) {
                 resolve(req.responseText);
             } else {
                 reject(new Error(req.statusText));
             }
         };
-        req.onerror = function() {
+        req.onerror = () => {
             reject(new Error(req.statusText));
         };
         req.onabort = function() {
