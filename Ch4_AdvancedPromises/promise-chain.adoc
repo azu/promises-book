@@ -85,20 +85,20 @@ File.read(inputFilePath)
 
 [source,javascript]
 ----
-var File = require("./fs-promise-chain");
+const File = require("./fs-promise-chain");
 File.read(inputFilePath)
-    .transform(function (content) {
+    .transform((content) => {
         return ">>" + content;
     })
     .write(outputFilePath);
 // => 擬似的に以下のような流れに展開できる
-promise.then(function read(){
-        return fs.readFileSync(filePath, "utf-8");
-    }).then(function transform(content) {
-         return ">>" + content;
-    }).then(function write(){
-        return fs.writeFileSync(filePath, data);
-    });
+promise.then(() => {
+    return fs.readFileSync(filePath, "utf-8");
+}).then((content) => {
+    return ">>" + content;
+}).then(() => {
+    return fs.writeFileSync(filePath, data);
+});
 ----
 
 `promise = promise.then(...)` という書き方は一見すると、上書きしているようにみえるため、

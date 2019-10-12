@@ -28,11 +28,11 @@ include::embed/embed-delayPromise.js[]
 
 [source,javascript]
 ----
-setTimeout(function () {
+setTimeout(() => {
     alert("100ms 経ったよ!");
 }, 100);
 // == ほぼ同様の動作
-delayPromise(100).then(function () {
+delayPromise(100).then(() => {
     alert("100ms 経ったよ!");
 });
 ----

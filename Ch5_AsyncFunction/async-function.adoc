@@ -14,7 +14,7 @@ async function doAsync() {
     return "値";
 }
 // doAsync関数はPromiseを返す
-doAsync().then(function(value){
+doAsync().then((value) => {
     console.log(value); // => "値"
 });
 ----
@@ -29,7 +29,7 @@ Async Functionでは``return``した値の代わりに、``Promise.resolve(返�
 function doAsync() {
     return Promise.resolve("値");
 }
-doAsync().then(function(value){
+doAsync().then((value) => {
     console.log(value); // => "値"
 });
 ----
@@ -83,7 +83,7 @@ Promise APIを使っていた場合に比べて、コールバック関数がな
 [source,javascript]
 ----
 // `async`をつけて`fetchBookTitle`関数をAsync Functionとして定義
-async function fetchBookTitle(){
+async function fetchBookTitle() {
     // リクエストしてリソースを取得する
     const res = await fetch("https://azu.github.io/promises-book/json/book.json");
     // レスポンスをJSON形式としてパースする
@@ -93,7 +93,7 @@ async function fetchBookTitle(){
 }
 
 // `async`をつけて`main`関数をAsync Functionとして定義
-async function main(){
+async function main() {
     // `await`式で`fetchBookTitle`の非同期処理が完了するまで待つ
     // `fetchBookTitle`がresolveした値が返り値になる
     const title = await fetchBookTitle();

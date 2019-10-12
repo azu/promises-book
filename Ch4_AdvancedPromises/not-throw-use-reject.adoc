@@ -121,7 +121,7 @@ const onRejected = console.error.bind(console);
 const promise = Promise.resolve();
 promise.then(() => {
     const retPromise = new Promise(((resolve, reject) => {
-       reject(new Error("this promise is rejected"));
+        reject(new Error("this promise is rejected"));
     }));
     return retPromise;
 }).catch(onRejected);

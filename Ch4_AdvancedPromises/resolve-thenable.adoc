@@ -276,15 +276,15 @@ ES PromisesのpromiseオブジェクトをQ promiseオブジェクトに変換�
 [source,javascript]
 .thenableを使ってQ promiseオブジェクトにする
 ----
-var Q = require("Q");
+const Q = require("Q");
 // このpromiseオブジェクトはESのもの
-var promise = new Promise(function(resolve){
+const promise = new Promise(((resolve) => {
     resolve(1);
-});
+}));
 // Q promiseオブジェクトに変換する
-Q(promise).then(function(value){
+Q(promise).then((value) => {
     console.log(value);
-}).finally(function(){ // <1>
+}).finally(() => { // <1>
     console.log("finally");
 });
 ----

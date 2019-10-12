@@ -104,7 +104,7 @@ new Promise(((resolve, reject) => {
 
 [source,javascript]
 ----
-var deferred = new Deferred();
+const deferred = new Deferred();
 
 // どこかのタイミングでdeferred.resolve or deferred.rejectを呼ぶ
 ----

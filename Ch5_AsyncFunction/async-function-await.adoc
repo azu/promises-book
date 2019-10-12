@@ -83,7 +83,7 @@ async function asyncMain() {
     // await式で例外が発生したため、この行は実行されません
 }
 // Async Functionは自動的に例外をキャッチできる
-asyncMain().catch(function(error){
+asyncMain().catch((error) => {
     console.log(error.message); // => "エラーメッセージ"
 });
 ----
