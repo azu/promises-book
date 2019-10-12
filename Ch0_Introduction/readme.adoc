@@ -34,8 +34,8 @@ JavaScriptにおけるPromiseについて学ぶことを目的とした書籍で
 - https://gihyo.jp/book/2011/978-4-7741-4813-7[パーフェクトJavaScript]
 - https://gihyo.jp/book/2016/978-4-7741-8411-1[改訂新版JavaScript本格入門]
 
-JavaScriptの基本的な文法や機能に不安がある方は、次の書籍を参照してください。
-JavaScriptの文法といった基本的なことを一から学べる書籍になっています。
+この書籍ではECMAScript 2015(ES2015)で追加された構文を利用するため、JavaScriptの基本的な文法や機能に不安がある方は、次の書籍を参照してください。
+ES2015以降をベースに、JavaScriptの基本的なことを一から学べる書籍になっています。
 この書籍と同一の著者によって書かれており、ウェブでも公開されています。
 
 - https://jsprimer.net[JavaScript Primer #jsprimer]
