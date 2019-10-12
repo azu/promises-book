@@ -15,6 +15,7 @@ module.exports = {
     },
 
     "rules": {
+        "one-var": ["error", "never"],
         "indent": [
             "error", 4, {
                 "SwitchCase": 1

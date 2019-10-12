@@ -37,8 +37,8 @@ include::src/promise-chain/fs-method-chain.js[]
 [source,javascript]
 ----
 const File = require("./fs-method-chain");
-const inputFilePath = "input.txt",
-    outputFilePath = "output.txt";
+const inputFilePath = "input.txt";
+const outputFilePath = "output.txt";
 File.read(inputFilePath)
     .transform((content) => {
         return ">>" + content;
@@ -69,8 +69,8 @@ include::src/promise-chain/fs-promise-chain.js[]
 [source,javascript]
 ----
 const File = require("./fs-promise-chain");
-const inputFilePath = "input.txt",
-    outputFilePath = "output.txt";
+const inputFilePath = "input.txt";
+const outputFilePath = "output.txt";
 File.read(inputFilePath)
     .transform((content) => {
         return ">>" + content;
