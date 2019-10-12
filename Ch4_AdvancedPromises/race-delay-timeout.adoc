@@ -254,6 +254,8 @@ XHRの現代的なバージョンである https://developer.mozilla.org/ja/docs
 
 Fetch APIでは、次のようにリクエストをキャンセルできます。
 
+
+[role="executable"]
 [source,javascript]
 .AbortControllerでのFetchのキャンセル
 ----
