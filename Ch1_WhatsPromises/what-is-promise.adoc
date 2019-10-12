@@ -61,3 +61,44 @@ promise.then((result) => {
 Promiseを使う理由の一つであるといえるでしょう。
 
 それでは、実際にJavaScriptでのPromiseについて学んでいきましょう。
+
+[NOTE]
+====
+この書籍のサンプルコードはArrow FunctionなどECMAScript 2015で導入された構文を利用します。
+
+Arrow Functionは、矢印のような `=>` （イコールと大なり記号）を使い、匿名関数を定義する構文です。
+関数式と定義方法や使い方は同じです。
+
+[source,javascript]
+----
+// 関数式の定義と実行
+const fn = function (arg) {
+    console.log("通常の関数定義, 引数:" + arg)
+}
+fn("引数");
+
+// Arrow Functionの定義と実行
+const arrowFunction = (arg) => {
+    console.log("Arrow Functionでの関数定義, 引数:" + arg);
+}
+arrowFunction("引数");
+----
+
+通常の関数式と`=>`という記法を使う以外にも次のような特徴があります。
+
+Arrow Functionには次のような特徴があります。
+
+- 名前を付けることができない（常に匿名関数）
+- `this` が静的に決定できる
+- `function` キーワードに比べて短く書くことができる
+- `new` できない（コンストラクタ関数ではない）
+- `arguments` 変数を参照できない(Rest Parametersを代わりに利用する)
+
+Arrow Functionを使うことで、コールバック関数を関数式に比べて短く簡潔に書くことができます。
+そのため、この書籍ではArrow Functionをメインに利用しています。
+
+Arrow Functionの詳細は https://jsprimer.net[JavaScript Primer] を参照してください。
+
+- https://jsprimer.net/basic/function-declaration/#arrow-function[関数と宣言 · JavaScript Primer #jsprimer]
+
+====

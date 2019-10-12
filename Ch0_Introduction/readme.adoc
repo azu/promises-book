@@ -38,7 +38,7 @@ JavaScriptの基本的な文法や機能に不安がある方は、次の書籍�
 JavaScriptの文法といった基本的なことを一から学べる書籍になっています。
 この書籍と同一の著者によって書かれており、ウェブでも公開されています。
 
-- https://jsprimer.net[JavaScriptの入門書 #jsprimer]
+- https://jsprimer.net[JavaScript Primer #jsprimer]
 
 または、JavaScriptでウェブアプリケーションを書いた経験やNode.js でコマンドラインアプリやサーバサイドを書いたことがあれば、
 どこかで見たことがあるような内容が出てくるかもしれません。
