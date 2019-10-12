@@ -23,7 +23,7 @@
 
 [source,javascript]
 ----
-promise.then(failTest, function(error){
+promise.then(failTest, (error) => {
     // assertでerrorをテストする
     assert(error instanceof Error);
 });

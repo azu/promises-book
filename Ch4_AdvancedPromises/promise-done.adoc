@@ -35,10 +35,10 @@ include::embed/embed-promise-done-example.js[]
 [source,javascript]
 .thenを使った場合
 ----
-var promise = Promise.resolve();
-promise.then(function () {
+const promise = Promise.resolve();
+promise.then(() => {
     JSON.parse("this is not json");
-}).catch(function (error) {
+}).catch((error) => {
     console.error(error);// => "SyntaxError: JSON.parse"
 });
 ----
@@ -102,8 +102,8 @@ JSONPromise(string).then(function (object) {
 [source,javascript]
 .catchによるエラーハンドリングを忘れてしまった場合
 ----
-var string = "jsonではない文字列";
-JSONPromise(string).then(function (object) {
+const string = "jsonではない文字列";
+JSONPromise(string).then((object) => {
     console.log(object);
 }); // <1>
 ----
@@ -115,8 +115,8 @@ JSONPromise(string).then(function (object) {
 [source,javascript]
 .typoによるエラー
 ----
-var string = "{}";
-JSONPromise(string).then(function (object) {
+const string = "{}";
+JSONPromise(string).then((object) => {
     conosle.log(object);// <1>
 });
 ----
@@ -171,11 +171,11 @@ setTimeoutの中でthrowをすることで、外へそのまま例外を投げ�
 [source,javascript]
 .setTimeoutのコールバック内での例外
 ----
-try{
-    setTimeout(function callback() {
+try {
+    setTimeout(() => {
         throw new Error("error");// <1>
     }, 0);
-}catch(error){
+} catch (error) {
     console.error(error);
 }
 ----

@@ -8,6 +8,9 @@
       "rulePaths": [
         "./prh.yml"
       ]
+    },
+    "eslint": {
+      "configFile": "./markdown.eslintrc.js"
     }
   }
 }

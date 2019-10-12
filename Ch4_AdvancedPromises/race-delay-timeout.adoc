@@ -102,7 +102,7 @@ ECMAScript 2015から `class` 構文を使うことで内部的にも正確に�
 
 [source,javascript]
 ----
-class MyError extends Error{
+class MyError extends Error {
     // Errorを継承したオブジェクト
 }
 ----
@@ -125,11 +125,11 @@ include::embed/embed-TimeoutError.js[]
 
 [source,javascript]
 ----
-var promise = new Promise(function(){
+const promise = new Promise((() => {
     throw new TimeoutError("timeout");
-});
+}));
 
-promise.catch(function(error){
+promise.catch((error) => {
     console.log(error instanceof TimeoutError);// true
 });
 
@@ -221,10 +221,10 @@ include::lib/cancelableXHR.js[]
 
 [source,javascript]
 ----
-var cancelableXHR = require("./cancelableXHR");
+const cancelableXHR = require("./cancelableXHR");
 
-var xhrPromise = cancelableXHR.createXHRPromise('https://httpbin.org/get');// <1>
-xhrPromise.catch(function (error) {
+const xhrPromise = cancelableXHR.createXHRPromise("https://httpbin.org/get");// <1>
+xhrPromise.catch((error) => {
     // abort されたエラーが呼ばれる
 });
 cancelableXHR.abortPromise(xhrPromise);// <2>

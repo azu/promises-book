@@ -70,9 +70,9 @@ Mochaでの非同期テストは以下のような流れで実行されます。
 [source,javascript]
 [[callback-style-test]]
 ----
-it("should use `done` for test", function (done) {
+it("should use `done` for test", (done) => {
     // <1>
-    setTimeout(function () {
+    setTimeout(() => {
         assert(true);
         done();// <2>
     }, 0);
@@ -90,9 +90,9 @@ it("should use `done` for test", function (done) {
 
 [source,javascript]
 ----
-it("should use `done` for test?", function (done) {
-    var promise = Promise.resolve(42);// <1>
-    promise.then(function (value) {
+it("should use `done` for test?", (done) => {
+    const promise = Promise.resolve(42);// <1>
+    promise.then((value) => {
         assert(value === 42);
         done();// <2>
     });
@@ -115,9 +115,9 @@ promiseオブジェクトは常に非同期で処理されるため、テスト�
 [[promise-assert-fail]]
 .意図しない結果となるPromiseのテスト
 ----
-it("should use `done` for test?", function (done) {
-    var promise = Promise.resolve();
-    promise.then(function (value) {
+it("should use `done` for test?", (done) => {
+    const promise = Promise.resolve();
+    promise.then((value) => {
         assert(false);// => throw AssertionError
         done();
     });
@@ -143,9 +143,9 @@ Promiseがそれをキャッチしてしまい、テストフレームワーク�
 [[promise-assert-fail-fixed]]
 .意図通りにテストが失敗する例
 ----
-it("should use `done` for test?", function (done) {
-    var promise = Promise.resolve();
-    promise.then(function (value) {
+it("should use `done` for test?", (done) => {
+    const promise = Promise.resolve();
+    promise.then((value) => {
         assert(false);
     }).then(done, done);
 });

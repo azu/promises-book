@@ -14,10 +14,10 @@ promiseオブジェクトを作成するには、`Promise` コンストラクタ
 
 [source,javascript]
 ----
-var promise = new Promise(function(resolve, reject) {
+const promise = new Promise(((resolve, reject) => {
     // 非同期の処理
     // 処理が終わったら、resolve または rejectを呼ぶ
-});
+}));
 ----
 
 *Instance Method*
@@ -81,9 +81,9 @@ include::embed/embed-promise-workflow.js[]
 
 [source,javascript]
 ----
-asyncFunction().then(function (value) {
+asyncFunction().then((value) => {
     console.log(value);
-}, function (error) {
+}, (error) => {
     console.error(error);
 });
 ----

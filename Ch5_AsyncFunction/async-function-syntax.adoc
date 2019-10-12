@@ -20,7 +20,7 @@ const object = {
 };
 ----
 
-これらのAsync Functionは、次の事以外は通常の関数と同じ性質を持ちます。
+これらのAsync Functionは、次のこと以外は通常の関数と同じ性質を持ちます。
 
 - Async Functionは必ずPromiseを返す
 - Async Function内では``await``式が利用できる

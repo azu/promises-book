@@ -40,7 +40,7 @@ Firefoxだと許可、不許可に加えて __永続__ か __セッション限�
 [role="executable"]
 [source,javascript]
 ----
-Notification.requestPermission(function (status) {
+Notification.requestPermission((status) => {
     // statusに"granted" or "denied"が入る
     console.log(status);
 });
@@ -99,7 +99,7 @@ notifyMessage("Hi!", {}, function (error, notification) {
 [source,javascript]
 .コールバック関数はエラーとnotificationオブジェクトを受け取る
 ----
-function callback(error, notification){
+function callback(error, notification) {
 
 }
 ----
@@ -213,9 +213,9 @@ Promiseとして利用していることが分かりますね。
 
 [source,javascript]
 ----
-Promise.resolve(notifyMessageAsThenable("message")).then(function (notification) {
+Promise.resolve(notifyMessageAsThenable("message")).then((notification) => {
     console.log(notification);// 通知のオブジェクト
-}).catch(function(error){
+}).catch((error) => {
     console.error(error);
 });
 ----

@@ -15,9 +15,9 @@
 
 [source,javascript]
 ----
-new Promise(function(resolve){
+new Promise(((resolve) => {
     resolve(42);
-});
+}));
 ----
 
 結果的にすぐに `resolve(42);` と解決されて、次のthenの `onFulfilled` に設定された関数に `42` という値を渡します。
@@ -28,7 +28,7 @@ new Promise(function(resolve){
 [role="executable"]
 [source,javascript]
 ----
-Promise.resolve(42).then(function(value){
+Promise.resolve(42).then((value) => {
     console.log(value);
 });
 ----
@@ -56,7 +56,7 @@ https://api.jquery.com/jQuery.ajax/[jQuery.ajax()]の返り値もthenableです�
 
 [source,javascript]
 // このサンプルコードはjQueryをロードしている場所でないと動きません
-$.ajax('https://httpbin.org/get');// => `.then` をもつオブジェクト
+$.ajax("https://httpbin.org/get");// => `.then` をもつオブジェクト
 
 このthenableなオブジェクトを `Promise.resolve` ではpromiseオブジェクトにすることができます。
 

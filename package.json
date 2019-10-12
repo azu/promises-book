@@ -15,8 +15,8 @@
     "lint-html": "gulp lint-html",
     "eslint": "eslint \"Ch*/{lib,src}/**/*.js\"",
     "eslint:fix": "eslint \"Ch*/{lib,src}/**/*.js\" --fix",
-    "textlint": "textlint \"Appendix-*/*/**.adoc\" \"Ch*/*/**.adoc\"",
-    "textlint:fix": "textlint --fix \"Appendix-*/*/**.adoc\" \"Ch*/*/**.adoc\"",
+    "textlint": "textlint \"Appendix-*/**/*.adoc\" \"Ch*/**/*.adoc\"",
+    "textlint:fix": "textlint --fix \"Appendix-*/**/*.adoc\" \"Ch*/**/*.adoc\"",
     "test": "mocha \"./Ch**/test/*.js\" \"test/doctest.js\""
   },
   "directories": {
@@ -30,7 +30,7 @@
   "dependencies": {
     "codemirror": "^5.46.0",
     "codemirror-console-ui": "^2.0.5",
-    "core-js-pure": "^3.0.1",
+    "core-js-pure": "^3.2.1",
     "w3c-xmlhttprequest": "^2.1.3",
     "ypromise": "^0.3.0"
   },
@@ -65,10 +65,10 @@
     "rel-to-abs": "^0.1.0",
     "remove-use-strict": "0.0.5",
     "sinon": "^1.9.0",
-    "textlint": "^11.2.5",
-    "textlint-plugin-asciidoctor": "^1.0.3",
-    "textlint-rule-eslint": "^3.2.0",
-    "textlint-rule-prh": "^5.2.0",
+    "textlint": "^11.3.1",
+    "textlint-plugin-asciidoctor": "/Users/azu/.ghq/github.com/seikichi/textlint-plugin-asciidoctor",
+    "textlint-rule-eslint": "3.2.1",
+    "textlint-rule-prh": "^5.2.1",
     "through2": "^3.0.1",
     "vinyl-source-stream": "^2.0.0",
     "watchify": "^3.11.1"
