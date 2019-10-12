@@ -107,7 +107,7 @@ forループと異なる点は、一時変数としての `promise` が不要に
 
 [source,javascript]
 ----
-var tasks = [request.comment, request.people];
+const tasks = [request.comment, request.people];
 sequenceTasks(tasks);
 ----
 

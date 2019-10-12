@@ -1,19 +1,19 @@
 "use strict";
-var assert = require("power-assert");
-var sequence = require("../lib/promise-sequence").sequenceTasks;
-describe("promise-sequence", function () {
-    it("should sequence tasks", function () {
-        var promisedIdentity = [1, 2, 4, 8, 16, 32].map(function (value) {
+const assert = require("power-assert");
+const sequence = require("../lib/promise-sequence").sequenceTasks;
+describe("promise-sequence", () => {
+    it("should sequence tasks", () => {
+        const promisedIdentity = [1, 2, 4, 8, 16, 32].map((value) => {
             return function identify() {
-                return new Promise(function (resolve) {
-                    setTimeout(function () {
+                return new Promise((resolve) => {
+                    setTimeout(() => {
                         resolve(value);
                     }, value);
-                })
-            }
+                });
+            };
         });
-        var startDate = Date.now();
-        return sequence(promisedIdentity).then(function (values) {
+        const startDate = Date.now();
+        return sequence(promisedIdentity).then((values) => {
             console.log(Date.now() - startDate + "ms");// 約64ms
             assert.deepEqual(values, [1, 2, 4, 8, 16, 32]);
         });

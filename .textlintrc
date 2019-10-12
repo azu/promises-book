@@ -8,6 +8,10 @@
       "rulePaths": [
         "./prh.yml"
       ]
+    },
+    "eslint": {
+      "severity" : "warning",
+      "configFile": "./markdown.eslintrc.js"
     }
   }
 }

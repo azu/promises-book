@@ -5,15 +5,15 @@ function notifyMessage(message, options, callback) {
         return;
     }
     if (Notification.permission === "granted") {
-        var notification = new Notification(message, options);
+        const notification = new Notification(message, options);
         callback(null, notification);
     } else {
-        Notification.requestPermission(function (status) {
+        Notification.requestPermission((status) => {
             if (Notification.permission !== status) {
                 Notification.permission = status;
             }
             if (status === "granted") {
-                var notification = new Notification(message, options);
+                const notification = new Notification(message, options);
                 callback(null, notification);
             } else {
                 callback(new Error("user denied"));

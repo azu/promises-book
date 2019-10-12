@@ -9,10 +9,10 @@ Promiseの中で `throw` による例外が発生した場合は自動的に `tr
 [role="executable"]
 [source,javascript]
 ----
-var promise = new Promise(function(resolve, reject){
+const promise = new Promise((resolve, reject) => {
     throw new Error("message");
 });
-promise.catch(function(error){
+promise.catch((error) => {
     console.error(error);// => "message"
 });
 ----
@@ -25,12 +25,12 @@ promise.catch(function(error){
 [role="executable"]
 [source,javascript]
 ----
-var promise = new Promise(function(resolve, reject){
+const promise = new Promise((resolve, reject) => {
     reject(new Error("message"));
 });
-promise.catch(function(error){
+promise.catch((error) => {
     console.error(error);// => "message"
-})
+});
 ----
 
 `throw` が `reject` に変わったと考えれば、`reject` にはErrorオブジェクトを渡すべきであるということが分かりやすいかもしれません。
@@ -52,7 +52,7 @@ image::img/chrome_on_caught_exception.png[Pause On Caught Exceptions]
 
 [source,javascript]
 ----
-var promise = new Promise(function(resolve, reject){
+const promise = new Promise((resolve, reject) => {
     throw new Error("message");
 });
 ----
@@ -69,14 +69,14 @@ Promiseコンストラクタの中では `reject` という関数そのものが
 
 [source,javascript]
 ----
-var promise = Promise.resolve();
-promise.then(function (value) {
-    setTimeout(function () {
+const promise = Promise.resolve();
+promise.then((value) => {
+    setTimeout(() => {
         // 一定時間経って終わらなかったらrejectしたい - 2
     }, 1000);
     // 時間がかかる処理 - 1
     somethingHardWork();
-}).catch(function (error) {
+}).catch((error) => {
     // タイムアウトエラー - 3
 });
 ----
@@ -101,9 +101,9 @@ Promiseを使ったタイムアウト処理の実装については <<race-delay
 
 [source,javascript]
 ----
-var promise = Promise.resolve();
-promise.then(function () {
-    var retPromise = new Promise(function (resolve, reject) {
+const promise = Promise.resolve();
+promise.then(() => {
+    const retPromise = new Promise((resolve, reject) => {
         // resolve or reject で onFulfilled or onRejected どちらを呼ぶか決まる
     });
     return retPromise;// <1>
@@ -117,11 +117,11 @@ promise.then(function () {
 [role="executable"]
 [source,javascript]
 ----
-var onRejected = console.error.bind(console);
-var promise = Promise.resolve();
-promise.then(function () {
-    var retPromise = new Promise(function (resolve, reject) {
-       reject(new Error("this promise is rejected"));
+const onRejected = console.error.bind(console);
+const promise = Promise.resolve();
+promise.then(() => {
+    const retPromise = new Promise((resolve, reject) => {
+        reject(new Error("this promise is rejected"));
     });
     return retPromise;
 }).catch(onRejected);
@@ -132,9 +132,9 @@ promise.then(function () {
 [role="executable"]
 [source,javascript]
 ----
-var onRejected = console.error.bind(console);
-var promise = Promise.resolve();
-promise.then(function () {
+const onRejected = console.error.bind(console);
+const promise = Promise.resolve();
+promise.then(() => {
     return Promise.reject(new Error("this promise is rejected"));
 }).catch(onRejected);
 ----

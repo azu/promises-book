@@ -12,12 +12,12 @@ promise.then(onFulfilled, onRejected);
 [source,javascript]
 .thenコード例
 ----
-var promise = new Promise(function(resolve, reject){
+const promise = new Promise((resolve, reject) => {
     resolve("thenに渡す値");
 });
-promise.then(function (value) {
+promise.then((value) => {
     console.log(value);
-}, function (error) {
+}, (error) => {
     console.error(error);
 });
 ----
@@ -39,12 +39,12 @@ promise.catch(onRejected);
 [source,javascript]
 .catchのコード例
 ----
-var promise = new Promise(function(resolve, reject){
+const promise = new Promise((resolve, reject) => {
     resolve("thenに渡す値");
 });
-promise.then(function (value) {
+promise.then((value) => {
     console.log(value);
-}).catch(function (error) {
+}).catch((error) => {
     console.error(error);
 });
 ----
@@ -62,19 +62,19 @@ promise.finally(onFinally);
 ----
 let isLoading = true;
 
-fetch("https://httpbin.org/get").then(function(response) {
-    if(response.ok){
-        return response.json()
+fetch("https://httpbin.org/get").then((response) => {
+    if (response.ok) {
+        return response.json();
     }
     throw new TypeError("正しくデータを取得できなかった");
   })
-  .then(function(json) {
+  .then((json) => {
       console.log("リクエストが成功した", json);
    })
-  .catch(function(error) {
+  .catch((error) => {
       console.error("リクエストが失敗した", error);
    })
-  .finally(function() {
+  .finally(() => {
       // 成功、失敗どちらの場合も必ず呼ばれる処理
       isLoading = false;
   });
@@ -96,15 +96,15 @@ Promise.resolve(object);
 [source,javascript]
 .Promise.resolveのコード例
 ----
-var taskName = "task 1"
-asyncTask(taskName).then(function (value) {
+const taskName = "task 1";
+asyncTask(taskName).then((value) => {
     console.log(value);
-}).catch(function (error) {
+}).catch((error) => {
     console.error(error);
 });
-function asyncTask(name){
-    return Promise.resolve(name).then(function(value){
-        return "Done! "+ value;
+function asyncTask(name) {
+    return Promise.resolve(name).then((value) => {
+        return "Done! " + value;
     });
 }
 ----
@@ -124,12 +124,12 @@ thenableなオブジェクトを受け取った場合::
 [[Promise.reject]]
 == Promise.reject
 [source,javascript]
-Promise.reject(object)
+Promise.reject(object);
 
 [source,javascript]
 .Promise.rejectのコード例
 ----
-var failureStub = sinon.stub(xhr, "request").returns(Promise.reject(new Error("bad!")));
+const failureStub = sinon.stub(xhr, "request").returns(Promise.reject(new Error("bad!")));
 ----
 
 受け取った値でrejectされた新たなpromiseオブジェクトを返す。
@@ -141,7 +141,7 @@ Promise.rejectに渡す値は `Error` オブジェクトとすべきである。
 [role="executable"]
 [source,javascript]
 ----
-var r = Promise.reject(new Error("error"));
+const r = Promise.reject(new Error("error"));
 console.log(r === Promise.reject(r));// false
 ----
 
@@ -155,10 +155,10 @@ Promise.all(promiseArray);
 [source,javascript]
 .Promise.allのコード例
 ----
-var p1 = Promise.resolve(1),
-    p2 = Promise.resolve(2),
-    p3 = Promise.resolve(3);
-Promise.all([p1, p2, p3]).then(function (results) {
+const p1 = Promise.resolve(1);
+const p2 = Promise.resolve(2);
+const p3 = Promise.resolve(3);
+Promise.all([p1, p2, p3]).then((results) => {
     console.log(results);  // [1, 2, 3]
 });
 ----
@@ -183,10 +183,10 @@ Promise.race(promiseArray);
 [source,javascript]
 .Promise.raceのコード例
 ----
-var p1 = Promise.resolve(1),
-    p2 = Promise.resolve(2),
-    p3 = Promise.resolve(3);
-Promise.race([p1, p2, p3]).then(function (value) {
+const p1 = Promise.resolve(1);
+const p2 = Promise.resolve(2);
+const p3 = Promise.resolve(3);
+Promise.race([p1, p2, p3]).then((value) => {
     console.log(value);  // 1
 });
 ----

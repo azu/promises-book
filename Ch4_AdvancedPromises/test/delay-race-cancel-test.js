@@ -1,27 +1,26 @@
 "use strict";
-var assert = require("power-assert");
-var cancelableXHR = require("../src/race-delay-timeout/delay-race-cancel").cancelableXHR;
-var TimeoutError = require("../lib/TimeoutError").TimeoutError;
-var timeoutPromise = require("../lib/timeoutPromise").timeoutPromise;
-var delayPromise = require("../lib/delayPromise").delayPromise;
-describe("delay-race-cancel", function () {
-    context("When promise is fulfilled", function () {
-        it("should Fulfilled", function () {
-            var promise = Promise.resolve("value");
-            var rancePromise = timeoutPromise(promise, 10);
-            return shouldFulfilled(rancePromise).then(function (content) {
+const assert = require("power-assert");
+const TimeoutError = require("../lib/TimeoutError").TimeoutError;
+const timeoutPromise = require("../lib/timeoutPromise").timeoutPromise;
+const delayPromise = require("../lib/delayPromise").delayPromise;
+describe("delay-race-cancel", () => {
+    context("When promise is fulfilled", () => {
+        it("should Fulfilled", () => {
+            const promise = Promise.resolve("value");
+            const rancePromise = timeoutPromise(promise, 10);
+            return shouldFulfilled(rancePromise).then((content) => {
                 assert(content === "value");
-            })
+            });
         });
     });
-    context("When race winner is timeout promise", function () {
-        it("should Rejected", function () {
+    context("When race winner is timeout promise", () => {
+        it("should Rejected", () => {
             // 10ms => timeout => 1000ms
-            var promise = delayPromise(1000);
-            var rancePromise = timeoutPromise(promise, 10);
-            return shouldRejected(rancePromise).catch(function (error) {
+            const promise = delayPromise(1000);
+            const rancePromise = timeoutPromise(promise, 10);
+            return shouldRejected(rancePromise).catch((error) => {
                 assert(error instanceof TimeoutError);
-            })
+            });
         });
     });
 });

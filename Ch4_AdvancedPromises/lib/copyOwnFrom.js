@@ -1,6 +1,6 @@
 "use strict";
 function copyOwnFrom(target, source) {
-    Object.getOwnPropertyNames(source).forEach(function (propName) {
+    Object.getOwnPropertyNames(source).forEach((propName) => {
         Object.defineProperty(target, propName,
             Object.getOwnPropertyDescriptor(source, propName));
     });

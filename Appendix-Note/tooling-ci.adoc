@@ -106,7 +106,7 @@ Node.jsでも `XMLHttpRequest` と同じインターフェイスで通信をす�
 
 [source,javascript]
 ----
-global.XMLHttpRequest = require('w3c-xmlhttprequest').XMLHttpRequest;
+global.XMLHttpRequest = require("w3c-xmlhttprequest").XMLHttpRequest;
 ----
 
 [NOTE]

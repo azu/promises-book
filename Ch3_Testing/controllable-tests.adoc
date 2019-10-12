@@ -23,7 +23,7 @@
 
 [source,javascript]
 ----
-promise.then(failTest, function(error){
+promise.then(failTest, (error) => {
     // assertでerrorをテストする
     assert(error instanceof Error);
 });
@@ -69,12 +69,12 @@ include::embed/embed-shouldRejected-test.js[]
 
 [source,javascript]
 ----
-promise.then(failTest, function(error){
-    assert(error.message === 'human error');
+promise.then(failTest, (error) => {
+    assert(error.message === "human error");
 });
 // == ほぼ同様の意味
-shouldRejected(promise).catch(function (error) {
-    assert(error.message === 'human error');
+shouldRejected(promise).catch((error) => {
+    assert(error.message === "human error");
 });
 ----
 

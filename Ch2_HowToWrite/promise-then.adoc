@@ -9,11 +9,11 @@ Promiseではいくらでもメソッドチェーンを繋げて処理を書い�
 [source,javascript]
 .promiseはメソッドチェーンで繋げて書ける
 ----
-aPromise.then(function taskA(value){
+aPromise.then((value) => {
 // task A
-}).then(function taskB(value){
+}).then((value) => {
 // task B
-}).catch(function onRejected(error){
+}).catch((error) => {
     console.error(error);
 });
 ----

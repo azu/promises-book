@@ -14,7 +14,7 @@ promiseオブジェクトを作成するには、`Promise` コンストラクタ
 
 [source,javascript]
 ----
-var promise = new Promise(function(resolve, reject) {
+const promise = new Promise((resolve, reject) => {
     // 非同期の処理
     // 処理が終わったら、resolve または rejectを呼ぶ
 });
@@ -27,7 +27,7 @@ newによって生成されたpromiseオブジェクトにはpromiseの値を *r
 
 [source,javascript]
 ----
-promise.then(onFulfilled, onRejected)
+promise.then(onFulfilled, onRejected);
 ----
 
 resolve(成功)した時::
@@ -42,7 +42,7 @@ reject(失敗)した時::
 `promise.catch(onRejected)` を使うことができます。
 
 [source,javascript]
-promise.catch(onRejected)
+promise.catch(onRejected);
 
 
 *Static Method*
@@ -81,9 +81,9 @@ include::embed/embed-promise-workflow.js[]
 
 [source,javascript]
 ----
-asyncFunction().then(function (value) {
+asyncFunction().then((value) => {
     console.log(value);
-}, function (error) {
+}, (error) => {
     console.error(error);
 });
 ----

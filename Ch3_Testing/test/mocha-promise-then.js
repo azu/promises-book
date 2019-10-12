@@ -3,7 +3,7 @@
  * LICENSE : MIT
  */
 "use strict";
-var assert = require("power-assert");
+const assert = require("power-assert");
 function failTest(value) {
     throw new Error(value);
 }
@@ -12,8 +12,8 @@ function mayBeRejected() {
     return Promise.reject(new Error("woo"));
 }
 
-it("should then pattern", function () {
-    return mayBeRejected().then(failTest, function (error) {
+it("should then pattern", () => {
+    return mayBeRejected().then(failTest, (error) => {
         assert(error.message === "woo");
     });
 });

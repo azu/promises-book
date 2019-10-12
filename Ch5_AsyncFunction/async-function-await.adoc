@@ -2,7 +2,7 @@
 == ``await``式
 
 Async Functionはasync/awaitとも呼ばれることがあります。
-この呼ばれ方からもわかるように、Async Functionと``await``式は共に利用します。
+この呼ばれ方からも分かるように、Async Functionと``await``式は共に利用します。
 
 ``await``式はAsync Function内でのみ利用できます。
 ``await``式は右辺の``Promise``インスタンスが**Fulfilled**または**Rejected**になるまで、その行（文）で非同期処理の完了を待ちます。
@@ -61,7 +61,7 @@ asyncMain(); // Promiseインスタンスを返す
 [source,javascript]
 ----
 function asyncMain() {
-    return Promise.resolve(42).then(function(value){
+    return Promise.resolve(42).then((value) => {
         console.log(value); // => 42
     });
 }
@@ -83,7 +83,7 @@ async function asyncMain() {
     // await式で例外が発生したため、この行は実行されません
 }
 // Async Functionは自動的に例外をキャッチできる
-asyncMain().catch(function(error){
+asyncMain().catch((error) => {
     console.log(error.message); // => "エラーメッセージ"
 });
 ----
@@ -107,9 +107,9 @@ async function asyncMain() {
         console.log(error.message); // => "エラーメッセージ"
     }
 }
-asyncMain().then(function onFulfilled(){
-    console.log("この行は実行されます"); 
-}, function onRejected(error){
+asyncMain().then(() => {
+    console.log("この行は実行されます");
+}, (error) => {
     // すでにtry...catchされているため、この行は実行されません
 });
 ----

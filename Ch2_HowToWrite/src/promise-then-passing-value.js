@@ -8,12 +8,12 @@ function output(value) {
     console.log(value);// => (1 + 1) * 2
 }
 
-var promise = Promise.resolve(1);
+const promise = Promise.resolve(1);
 promise
     .then(increment)
     .then(doubleUp)
     .then(output)
-    .catch(function(error){
+    .catch((error) => {
         // promise chain中にエラーが発生した場合に呼ばれる
         console.error(error);
     });

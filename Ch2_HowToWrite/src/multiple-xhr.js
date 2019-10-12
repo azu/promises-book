@@ -1,11 +1,11 @@
 "use strict";
-var fetchURL = require("../../Ch1_WhatsPromises/src/xhr-promise").fetchURL;
-var request = {
+const fetchURL = require("../../Ch1_WhatsPromises/src/xhr-promise").fetchURL;
+const request = {
     comment: function fetchComment() {
-        return fetchURL('https://azu.github.io/promises-book/json/comment.json').then(JSON.parse);
+        return fetchURL("https://azu.github.io/promises-book/json/comment.json").then(JSON.parse);
     },
     people: function fetchPeople() {
-        return fetchURL('https://azu.github.io/promises-book/json/people.json').then(JSON.parse);
+        return fetchURL("https://azu.github.io/promises-book/json/people.json").then(JSON.parse);
     }
 };
 function main() {
@@ -14,7 +14,7 @@ function main() {
         return results;
     }
     // [] は記録する初期値を部分適用している
-    var pushValue = recordValue.bind(null, []);
+    const pushValue = recordValue.bind(null, []);
     return request.comment()
         .then(pushValue)
         .then(request.people)

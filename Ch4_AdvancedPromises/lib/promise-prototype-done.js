@@ -1,8 +1,8 @@
 "use strict";
 if (typeof Promise.prototype.done === "undefined") {
-    Promise.prototype.done = function (onFulfilled, onRejected) {
-        this.then(onFulfilled, onRejected).catch(function (error) {
-            setTimeout(function () {
+    Promise.prototype.done = function(onFulfilled, onRejected) {
+        this.then(onFulfilled, onRejected).catch((error) => {
+            setTimeout(() => {
                 throw error;
             }, 0);
         });

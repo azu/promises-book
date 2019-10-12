@@ -12,10 +12,10 @@ ECMAScript 2018からpromise chainの最後に処理を実行する `Promise#fin
 [source,javascript]
 .finallyのコード例
 ----
-Promise.resolve("成功").finally(function(){
+Promise.resolve("成功").finally(() => {
     console.log("成功時に実行される");
 });
-Promise.reject(new Error("失敗")).finally(function(){
+Promise.reject(new Error("失敗")).finally(() => {
     console.log("失敗時に実行される");
 });
 ----
@@ -34,7 +34,7 @@ function onFinally() {
 // `Promise#finally` は新しいpromiseオブジェクトを返す
 Promise.resolve(42)
     .finally(onFinally)
-    .then(function(value) {
+    .then((value) => {
         // 呼び出し元のpromiseオブジェクトの状態をそのまま引き継ぐ
         // 呼び出し元のpromiseオブジェクトは `42` で resolveされている
         console.log(value); // 42
@@ -51,10 +51,10 @@ function onFinally() {
 }
 
 // Promise#finally(onFinally) と同等の表現
-promise.then(function(result) {
+promise.then((result) => {
     onFinally();
     return result;
-}, function(error) {
+}, (error) => {
     onFinally();
     throw error;
 });
@@ -70,35 +70,35 @@ promise.then(function(result) {
 .finallyのユースケース
 ----
 // リソースを取得中かどうかのフラグ
-var isLoading = false;
+let isLoading = false;
 function fetchResource(URL) {
     // リソース取得中フラグをONに
     isLoading = true;
-    return new Promise(function (resolve, reject) {
-        var req = new XMLHttpRequest();
-        req.open('GET', URL, true);
-        req.onload = function () {
+    return new Promise((resolve, reject) => {
+        const req = new XMLHttpRequest();
+        req.open("GET", URL, true);
+        req.onload = function() {
             if (200 <= req.status && req.status < 300) {
                 resolve(req.responseText);
             } else {
                 reject(new Error(req.statusText));
             }
         };
-        req.onerror = function () {
+        req.onerror = function() {
             reject(new Error(req.statusText));
         };
         req.send();
-    }).finally(function(){
+    }).finally(() => {
         // リソース取得に成功/失敗どちらの場合も取得中フラグをOFFに
         isLoading = false;
     });
 }
 
 console.log("リソースロード開始", isLoading);
-fetchResource("https://httpbin.org/get").then(function(value) {
+fetchResource("https://httpbin.org/get").then((value) => {
     console.log("リソース取得に成功", isLoading);
     console.log(value);
-}).catch(function(error) {
+}).catch((error) => {
     console.log("リソース取得に失敗", isLoading);
     console.error(error);
 });

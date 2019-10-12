@@ -9,7 +9,7 @@
 
 [source,javascript]
 ----
-new Promise(function(resolve,reject){
+new Promise((resolve, reject) => {
     reject(new Error("エラー"));
 });
 ----
@@ -19,7 +19,7 @@ new Promise(function(resolve,reject){
 [role="executable"]
 [source,javascript]
 ----
-Promise.reject(new Error("BOOM!")).catch(function(error){
+Promise.reject(new Error("BOOM!")).catch((error) => {
     console.error(error);
 });
 ----

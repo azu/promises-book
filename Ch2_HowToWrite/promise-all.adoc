@@ -40,7 +40,7 @@ Promise.all([request.comment(), request.people()]);
 
 [source,javascript]
 ----
-main().then(function (results) {
+main().then((results) => {
     console.log(results); // [comment, people]の順番
 });
 ----
@@ -63,7 +63,7 @@ promiseオブジェクトを返してくれます。
 
 [source,javascript]
 ----
-var promises = [
+const promises = [
     timerPromisefy(1),
     timerPromisefy(32),
     timerPromisefy(64),

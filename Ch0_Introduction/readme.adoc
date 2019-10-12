@@ -84,12 +84,12 @@ Promiseをサポートしていないブラウザでもサンプルコードを�
 [role="executable"]
 [source,javascript]
 ----
-var promise = new Promise(function(resolve){
+const promise = new Promise((resolve) => {
     resolve(42);
 });
-promise.then(function(value){
+promise.then((value) => {
     console.log(value);
-}).catch(function(error){
+}).catch((error) => {
     console.error(error);
 });
 ----

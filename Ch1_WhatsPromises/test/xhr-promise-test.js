@@ -1,25 +1,25 @@
-var assert = require('power-assert');
-var fetchURL = require("../src/xhr-promise").fetchURL;
-var echoServer = require("../../test/echo-server");
-describe('#fetchURL', function () {
+const assert = require("power-assert");
+const fetchURL = require("../src/xhr-promise").fetchURL;
+const echoServer = require("../../test/echo-server");
+describe("#fetchURL", () => {
     beforeEach(() => {
         return echoServer.start();
     });
     afterEach(() => {
         return echoServer.stop();
     });
-    describe("when get data", function () {
-        it("should resolve with value", function () {
-            var URL = "http://localhost:3000/?status=200&body=text";
-            return shouldFulfilled(fetchURL(URL)).then(function (value) {
+    describe("when get data", () => {
+        it("should resolve with value", () => {
+            const URL = "http://localhost:3000/?status=200&body=text";
+            return shouldFulfilled(fetchURL(URL)).then((value) => {
                 assert.equal(value, "text");
             });
         });
     });
-    describe("when get fail", function () {
-        it("should reject with error", function () {
-            var URL = "http://localhost:3000/?status=500";
-            return shouldRejected(fetchURL(URL)).catch(function (error) {
+    describe("when get fail", () => {
+        it("should reject with error", () => {
+            const URL = "http://localhost:3000/?status=500";
+            return shouldRejected(fetchURL(URL)).catch((error) => {
                 assert(error instanceof Error);
             });
         });

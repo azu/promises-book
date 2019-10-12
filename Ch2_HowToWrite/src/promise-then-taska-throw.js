@@ -12,7 +12,7 @@ function finalTask() {
     console.log("Final Task");
 }
 
-var promise = Promise.resolve();
+const promise = Promise.resolve();
 promise
     .then(taskA)
     .then(taskB)

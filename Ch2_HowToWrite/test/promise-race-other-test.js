@@ -3,29 +3,27 @@
  * LICENSE : MIT
  */
 "use strict";
-var assert = require("power-assert");
-var sinon = require("sinon");
-var racer = require("../src/promise-race-other");
-describe("promise-race-other", function () {
-    it("should call both promise", function (done) {
-        var count = 0;
-        var winnerPromise = new Promise(function (resolve) {
-            setTimeout(function () {
+const assert = require("power-assert");
+describe("promise-race-other", () => {
+    it("should call both promise", (done) => {
+        let count = 0;
+        const winnerPromise = new Promise((resolve) => {
+            setTimeout(() => {
                 count++;
                 resolve("this is winner");
             }, 4);
         });
-        var loserPromise = new Promise(function (resolve) {
-            setTimeout(function () {
+        const loserPromise = new Promise((resolve) => {
+            setTimeout(() => {
                 count++;
                 resolve("this is loser");
             }, 64);
-        }).then(function () {
-                assert(count === [winnerPromise, loserPromise].length);
-                done();
-            });
+        }).then(() => {
+            assert(count === [winnerPromise, loserPromise].length);
+            done();
+        });
 
-        Promise.race([winnerPromise, loserPromise]).then(function () {
+        Promise.race([winnerPromise, loserPromise]).then(() => {
             assert(count !== [winnerPromise, loserPromise].length);
         });
     });

@@ -9,11 +9,11 @@ promiseオブジェクトがすぐにresolveされるので、`.then` に登録�
 [role="executable"]
 [source,javascript]
 ----
-var promise = new Promise(function (resolve){
+const promise = new Promise((resolve) => {
     console.log("inner promise"); // 1
     resolve(42);
 });
-promise.then(function(value){
+promise.then((value) => {
     console.log(value); // 3
 });
 console.log("outer promise"); // 2

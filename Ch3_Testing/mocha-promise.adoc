@@ -30,8 +30,8 @@ include::embed/embed-mocha-promise-test.js[]
 
 [source,javascript]
 ----
-it("should be fail", function () {
-    return Promise.resolve().then(function () {
+it("should be fail", () => {
+    return Promise.resolve().then(() => {
         assert(false);// => テストが失敗する
     });
 });
@@ -56,11 +56,11 @@ MochaがPromiseのテストをサポートしているため、この書き方�
 [[mocha-rejected-promise-test]]
 .エラーオブジェクトをテストしたい
 ----
-function mayBeRejected(){ // <1>
+function mayBeRejected() { // <1>
     return Promise.reject(new Error("woo"));
 }
-it("is bad pattern", function () {
-    return mayBeRejected().catch(function (error) {
+it("is bad pattern", () => {
+    return mayBeRejected().catch((error) => {
         assert(error.message === "woo");
     });
 });
@@ -83,11 +83,11 @@ it("is bad pattern", function () {
 
 [source,javascript]
 ----
-function mayBeRejected(){ // <1>
+function mayBeRejected() { // <1>
     return Promise.resolve();
 }
-it("is bad pattern", function () {
-    return mayBeRejected().catch(function (error) {
+it("is bad pattern", () => {
+    return mayBeRejected().catch((error) => {
         assert(error.message === "woo");
     });
 });
@@ -105,11 +105,11 @@ it("is bad pattern", function () {
 function failTest() { // <1>
     throw new Error("Expected promise to be rejected but it was fulfilled");
 }
-function mayBeRejected(){
+function mayBeRejected() {
     return Promise.resolve();
 }
-it("should bad pattern", function () {
-    return mayBeRejected().then(failTest).catch(function (error) {
+it("should bad pattern", () => {
+    return mayBeRejected().then(failTest).catch((error) => {
         assert(error.message === "woo");
     });
 });
@@ -147,9 +147,9 @@ Rejectedとなった場合::
 function mayBeRejected() {
     return Promise.resolve();
 }
-it("catch -> then", function () {
+it("catch -> then", () => {
     // FulFilledとなった場合はテストは失敗する
-    return mayBeRejected().then(failTest, function (error) {
+    return mayBeRejected().then(failTest, (error) => {
         assert(error.message === "woo");
     });
 });
@@ -184,7 +184,7 @@ promiseオブジェクトがFulfilled、Rejectedどちらの状態になるか�
 
 [source,javascript]
 ----
-promise.then(failTest, function(error){
+promise.then(failTest, (error) => {
     // assertでerrorをテストする
 });
 ----

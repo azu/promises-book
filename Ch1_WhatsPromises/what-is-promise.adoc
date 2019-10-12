@@ -16,8 +16,8 @@ Promiseは非同期処理を抽象化したオブジェクトとそれを操作�
 [source,javascript]
 .コールバックを使った非同期処理の一例
 ----
-getAsync("fileA.txt", function(error, result){// <1>
-    if(error){// 取得失敗時の処理
+getAsync("fileA.txt", (error, result) => { // <1>
+    if (error) { // 取得失敗時の処理
         throw error;
     }
     // 取得成功の処理
@@ -36,10 +36,10 @@ Promiseでは、このような非同期に対するオブジェクトとルー�
 [source,javascript]
 .Promiseを使った非同期処理の一例
 ----
-var promise = getAsyncPromise("fileA.txt"); // <1>
-promise.then(function(result){
+const promise = getAsyncPromise("fileA.txt"); // <1>
+promise.then((result) => {
     // 取得成功の処理
-}).catch(function(error){
+}).catch((error) => {
     // 取得失敗時の処理
 });
 ----

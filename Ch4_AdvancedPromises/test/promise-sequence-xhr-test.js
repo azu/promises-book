@@ -1,36 +1,36 @@
 "use strict";
-var assert = require("power-assert");
-var sinon = require("sinon");
-var xhr = require("../src/sequence/promise-sequence-xhr");
-describe("promise-sequence-xhr", function () {
-    beforeEach(function () {
-        var lock = true;
-        sinon.stub(xhr.request, "comment", function () {
-            return new Promise(function (resolve) {
-                setTimeout(function () {
+const assert = require("power-assert");
+const sinon = require("sinon");
+const xhr = require("../src/sequence/promise-sequence-xhr");
+describe("promise-sequence-xhr", () => {
+    beforeEach(() => {
+        let lock = true;
+        sinon.stub(xhr.request, "comment", () => {
+            return new Promise((resolve) => {
+                setTimeout(() => {
                     lock = false;
                     resolve(1);
                 }, 50);
             });
         });
-        sinon.stub(xhr.request, "people", function () {
-            return new Promise(function (resolve, reject) {
+        sinon.stub(xhr.request, "people", () => {
+            return new Promise((resolve, reject) => {
                 if (!lock) {
                     resolve(2);
                 } else {
-                    reject(new Error("promise is locked"))
+                    reject(new Error("promise is locked"));
                 }
             });
         });
     });
-    afterEach(function (done) {
+    afterEach((done) => {
         xhr.request.comment.restore();
         xhr.request.people.restore();
         done();
     });
-    it("should passing result of request callback", function () {
-        return shouldFulfilled(xhr.main()).then(function (value) {
+    it("should passing result of request callback", () => {
+        return shouldFulfilled(xhr.main()).then((value) => {
             assert.deepEqual(value, [1, 2]);
-        })
+        });
     });
 });

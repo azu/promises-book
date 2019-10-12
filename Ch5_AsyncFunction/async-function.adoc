@@ -14,7 +14,7 @@ async function doAsync() {
     return "値";
 }
 // doAsync関数はPromiseを返す
-doAsync().then(function(value){
+doAsync().then((value) => {
     console.log(value); // => "値"
 });
 ----
@@ -29,7 +29,7 @@ Async Functionでは``return``した値の代わりに、``Promise.resolve(返�
 function doAsync() {
     return Promise.resolve("値");
 }
-doAsync().then(function(value){
+doAsync().then((value) => {
     console.log(value); // => "値"
 });
 ----
@@ -42,7 +42,7 @@ doAsync().then(function(value){
 次の例では https://developer.mozilla.org/ja/docs/Web/API/Fetch_API[Fetch API] で``/json/book.json``を取得して、``title``を取り出す``getBookTitle``関数の実行結果をコンソールに出力しています。
 Fetch APIはURLのリソースを取得し、Promiseを返す関数です。
 
-この時、取得できる``/json/book.json``は次のような内容になっています。
+このとき、取得できる``/json/book.json``は次のような内容になっています。
 
 [[book.json]]
 ./json/book.json
@@ -57,17 +57,17 @@ include::../json/book.json[]
 [doctest-state="disabled"]
 [source,javascript]
 ----
-function fetchBookTitle(){
+function fetchBookTitle() {
     // Fetch APIは指定URLのリソースを取得しPromiseを返す関数
-    return fetch("https://azu.github.io/promises-book/json/book.json").then(function(res){
+    return fetch("https://azu.github.io/promises-book/json/book.json").then((res) => {
         return res.json(); // レスポンスをJSON形式としてパースする
-    }).then(function(json){
+    }).then((json) => {
         return json.title; // JSONからtitleプロパティを取り出す
     });
 }
 
-function main(){
-    fetchBookTitle().then(function(title){
+function main() {
+    fetchBookTitle().then((title) => {
         console.log(title); // => "JavaScript Promiseの本"
     });
 }
@@ -83,7 +83,7 @@ Promise APIを使っていた場合に比べて、コールバック関数がな
 [source,javascript]
 ----
 // `async`をつけて`fetchBookTitle`関数をAsync Functionとして定義
-async function fetchBookTitle(){
+async function fetchBookTitle() {
     // リクエストしてリソースを取得する
     const res = await fetch("https://azu.github.io/promises-book/json/book.json");
     // レスポンスをJSON形式としてパースする
@@ -93,7 +93,7 @@ async function fetchBookTitle(){
 }
 
 // `async`をつけて`main`関数をAsync Functionとして定義
-async function main(){
+async function main() {
     // `await`式で`fetchBookTitle`の非同期処理が完了するまで待つ
     // `fetchBookTitle`がresolveした値が返り値になる
     const title = await fetchBookTitle();

@@ -26,8 +26,8 @@ polyfillとはその機能が実装されていないブラウザでも、その
 [source,javascript]
 .Promise#catchの実行結果
 ----
-var promise = Promise.reject(new Error("message"));
-promise.catch(function (error) {
+const promise = Promise.reject(new Error("message"));
+promise.catch((error) => {
     console.error(error);
 });
 ----
@@ -63,8 +63,8 @@ https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Propert
 [source,javascript]
 .Promise#catchの識別子エラーの回避
 ----
-var promise = Promise.reject(new Error("message"));
-promise["catch"](function (error) {
+const promise = Promise.reject(new Error("message"));
+promise["catch"]((error) => {
     console.error(error);
 });
 ----
@@ -75,8 +75,8 @@ promise["catch"](function (error) {
 [source,javascript]
 .Promise#catchではなくPromise#thenを使う
 ----
-var promise = Promise.reject(new Error("message"));
-promise.then(undefined, function (error) {
+const promise = Promise.reject(new Error("message"));
+promise.then(undefined, (error) => {
     console.error(error);
 });
 ----
