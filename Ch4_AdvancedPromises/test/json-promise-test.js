@@ -1,19 +1,19 @@
 "use strict";
-var assert = require("power-assert");
-var JSONPromise = require("../lib/json-promise").JSONPromise;
-describe("json-promise", function () {
-    context("When json string", function () {
-        it("should return object", function () {
-            return shouldFulfilled(JSONPromise("{}")).then(function (object) {
+const assert = require("power-assert");
+const JSONPromise = require("../lib/json-promise").JSONPromise;
+describe("json-promise", () => {
+    context("When json string", () => {
+        it("should return object", () => {
+            return shouldFulfilled(JSONPromise("{}")).then((object) => {
                 assert(typeof object === "object");
-            })
+            });
         });
     });
-    context("When non-json string", function () {
-        it("should rejected", function () {
-            return shouldRejected(JSONPromise("this is not json")).catch(function (error) {
+    context("When non-json string", () => {
+        it("should rejected", () => {
+            return shouldRejected(JSONPromise("this is not json")).catch((error) => {
                 assert(error instanceof SyntaxError);
-            })
+            });
         });
     });
 });

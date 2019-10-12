@@ -2,12 +2,15 @@ module.exports = {
     "env": {
         "browser": true,
         "es6": true,
-        "node": true
+        "node": true,
+        "mocha": true
     },
     "extends": "eslint:recommended",
     "globals": {
         "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
+        "SharedArrayBuffer": "readonly",
+        "shouldFulfilled": "readonly",
+        "shouldRejected": "readonly"
     },
     "parserOptions": {
         "ecmaVersion": 2018,

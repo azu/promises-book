@@ -3,7 +3,7 @@
  * LICENSE : MIT
  */
 "use strict";
-function MockNotification(title, options) {
+function MockNotification(title) {
     this.title = title;
     this.mEvents = {};
 }

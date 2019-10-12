@@ -1,9 +1,9 @@
 "use strict";
-var assert = require("power-assert");
-var shouldFulfilled = require("../lib/shouldFulfilled").shouldFulfilled;
-it("should be fulfilled", function () {
-    var promise = Promise.resolve("value");
-    return shouldFulfilled(promise).then(function (value) {
+const assert = require("power-assert");
+const shouldFulfilled = require("../lib/shouldFulfilled").shouldFulfilled;
+it("should be fulfilled", () => {
+    const promise = Promise.resolve("value");
+    return shouldFulfilled(promise).then((value) => {
         assert(value === "value");
     });
 });

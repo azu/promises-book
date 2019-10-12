@@ -1,25 +1,25 @@
 "use strict";
-var assert = require("power-assert");
-var timerPromisefy = require("../lib/timer-promisefy").timerPromisefy;
+const assert = require("power-assert");
+const timerPromisefy = require("../lib/timer-promisefy").timerPromisefy;
 
 function isPromise(obj) {
-    return obj && typeof obj.then === 'function';
+    return obj && typeof obj.then === "function";
 }
-describe("timer-promisefy", function () {
-    it("should return promise obejct", function () {
+describe("timer-promisefy", () => {
+    it("should return promise obejct", () => {
         assert(isPromise(timerPromisefy(1)));
     });
-    it("resolve with arged value", function () {
-        var time = 2;
-        return shouldFulfilled(timerPromisefy(time)).then(function (value) {
+    it("resolve with arged value", () => {
+        const time = 2;
+        return shouldFulfilled(timerPromisefy(time)).then((value) => {
             assert(value === time);
         });
     });
-    it("resolve after arg ms", function () {
-        var time = 2;
-        var limit = time + 100;
-        var now = Date.now();
-        return shouldFulfilled(timerPromisefy(time)).then(function (value) {
+    it("resolve after arg ms", () => {
+        const time = 2;
+        const limit = time + 100;
+        const now = Date.now();
+        return shouldFulfilled(timerPromisefy(time)).then(() => {
             assert(Date.now() - now < limit);
         });
     });
