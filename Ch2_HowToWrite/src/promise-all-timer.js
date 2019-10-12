@@ -7,7 +7,7 @@ Promise.all([
     timerPromisefy(32),
     timerPromisefy(64),
     timerPromisefy(128)
-]).then(function(values) {
+]).then((values) => {
     console.log(Date.now() - startDate + "ms");// 約128ms
     console.log(values); // [1,32,64,128]
 });

@@ -42,7 +42,7 @@ function allRequest(requests, callback, results) {
         return callback(null, results);
     }
     const req = requests.shift();
-    req(function(error, value) {
+    req((error, value) => {
         if (error) {
             callback(error, value);
         } else {

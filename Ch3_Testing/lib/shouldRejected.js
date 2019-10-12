@@ -2,9 +2,9 @@
 function shouldRejected(promise) {
     return {
         "catch": function(fn) {
-            return promise.then(function() {
+            return promise.then(() => {
                 throw new Error("Expected promise to be rejected but it was fulfilled");
-            }, function(reason) {
+            }, (reason) => {
                 fn.call(promise, reason);
             }
             );

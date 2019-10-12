@@ -20,14 +20,14 @@ function getXHRTimeout(URL) {
 }
 function promiseDelay(ms) {
     const now = Date.now();
-    return new Promise(function(resolve) {
-        setTimeout(function() {
+    return new Promise(((resolve) => {
+        setTimeout(() => {
             resolve(Date.now() - now);
         }, ms);
-    });
+    }));
 }
 function timeoutPromise(promise, ms) {
-    const timeout = promiseDelay(ms).then(function() {
+    const timeout = promiseDelay(ms).then(() => {
         const timeOutError = new Error("Operation timed out after " + ms + " ms");
         timeOutError.name = "timeOutError";
         throw new timeOutError;
@@ -37,10 +37,10 @@ function timeoutPromise(promise, ms) {
 
 const xhrDeferred = getXHRTimeout("https://api.myjson.com/bins/5r4r");
 timeoutPromise(xhrDeferred.promise, 10)
-    .then(function(contents) {
+    .then((contents) => {
         console.log("Here are the contents", contents);
     }).
-    catch(function(error) {
+    catch((error) => {
         if (error.name === "timeOutError") {
             xhrDeferred.request.abort();
             console.error(error);

@@ -13,7 +13,7 @@ promise
     .then(increment)
     .then(doubleUp)
     .then(output)
-    .catch(function(error) {
+    .catch((error) => {
         // promise chain中にエラーが発生した場合に呼ばれる
         console.error(error);
     });

@@ -2,7 +2,7 @@
 const requestMap = {};
 function createXHRPromise(URL) {
     const req = new XMLHttpRequest();
-    const promise = new Promise(function(resolve, reject) {
+    const promise = new Promise(((resolve, reject) => {
         req.open("GET", URL, true);
         req.onreadystatechange = function() {
             if (req.readyState === XMLHttpRequest.DONE) {
@@ -23,7 +23,7 @@ function createXHRPromise(URL) {
             reject(new Error("abort this req"));
         };
         req.send();
-    });
+    }));
     requestMap[URL] = {
         promise: promise,
         request: req
@@ -36,7 +36,7 @@ function abortPromise(promise) {
         return;
     }
     let request;
-    Object.keys(requestMap).some(function(URL) {
+    Object.keys(requestMap).some((URL) => {
         if (requestMap[URL].promise === promise) {
             request = requestMap[URL].request;
             return true;

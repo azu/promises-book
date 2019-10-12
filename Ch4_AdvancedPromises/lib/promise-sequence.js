@@ -6,7 +6,7 @@ function sequenceTasks(tasks) {
     }
 
     const pushValue = recordValue.bind(null, []);
-    return tasks.reduce(function(promise, task) {
+    return tasks.reduce((promise, task) => {
         return promise.then(task).then(pushValue);
     }, Promise.resolve());
 }

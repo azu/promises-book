@@ -2,9 +2,9 @@
 function shouldFulfilled(promise) {
     return {
         "then": function(fn) {
-            return promise.then(function(value) {
+            return promise.then((value) => {
                 fn.call(promise, value);
-            }, function(reason) {
+            }, (reason) => {
                 throw reason;
             }
             );

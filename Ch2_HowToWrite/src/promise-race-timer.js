@@ -6,7 +6,7 @@ Promise.race([
     timerPromisefy(32),
     timerPromisefy(64),
     timerPromisefy(128)
-]).then(function(value) {
+]).then((value) => {
     console.log(value); // => 1
 });
 

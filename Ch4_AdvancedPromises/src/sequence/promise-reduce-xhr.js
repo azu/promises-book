@@ -1,11 +1,11 @@
 "use strict";
-var fetchURL = require("../../../Ch1_WhatsPromises/src/xhr-promise").fetchURL;
-var request = {
+const fetchURL = require("../../../Ch1_WhatsPromises/src/xhr-promise").fetchURL;
+const request = {
     comment: function fetchComment() {
-        return fetchURL('https://azu.github.io/promises-book/json/comment.json').then(JSON.parse);
+        return fetchURL("https://azu.github.io/promises-book/json/comment.json").then(JSON.parse);
     },
     people: function fetchPeople() {
-        return fetchURL('https://azu.github.io/promises-book/json/people.json').then(JSON.parse);
+        return fetchURL("https://azu.github.io/promises-book/json/people.json").then(JSON.parse);
     }
 };
 function main() {
@@ -14,9 +14,9 @@ function main() {
         return results;
     }
 
-    var pushValue = recordValue.bind(null, []);
-    var tasks = [request.comment, request.people];
-    return tasks.reduce(function (promise, task) {
+    const pushValue = recordValue.bind(null, []);
+    const tasks = [request.comment, request.people];
+    return tasks.reduce((promise, task) => {
         return promise.then(task).then(pushValue);
     }, Promise.resolve());
 }
