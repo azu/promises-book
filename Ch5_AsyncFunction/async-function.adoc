@@ -37,12 +37,13 @@ doAsync().then((value) => {
 またAsync Function内では``await``式というPromiseの非同期処理が完了するまで待つ構文が利用できます。
 ``await``式を使うことで非同期処理を同期処理のように扱えるため、Promiseチェーンで実現していた処理の流れを読みやすくかけます。
 
-まずは、Async Functionと``await``式を使った場合はどのように書けるかを簡単に見ていきます。
+Async Functionと``await``式の大まかな動きをイメージするために、まずはPromise APIで書いたものと比較してみます。
 
-次の例では https://developer.mozilla.org/ja/docs/Web/API/Fetch_API[Fetch API] で``/json/book.json``を取得して、``title``を取り出す``getBookTitle``関数の実行結果をコンソールに出力しています。
-Fetch APIはURLのリソースを取得し、Promiseを返す関数です。
+ここでは、XHRの現代的なバージョンである https://developer.mozilla.org/ja/docs/Web/API/Fetch_API[Fetch API] を使います。Fetch APIは指定したURLのリソースを読み書きでき、デフォルトでES Promisesに対応しています。
 
-このとき、取得できる``/json/book.json``は次のような内容になっています。
+次のサンプルコードでは、``https://azu.github.io/promises-book/json/book.json``というURLからJSONデータを取得して、``title``プロパティを取り出す``getBookTitle``関数を実装していきます。
+
+取得する``https://azu.github.io/promises-book/json/book.json``は次のような内容になっています。
 
 [[book.json]]
 ./json/book.json
@@ -51,7 +52,12 @@ Fetch APIはURLのリソースを取得し、Promiseを返す関数です。
 include::../json/book.json[]
 ----
 
-まずは、Promise APIを使って``fetchBookTitle``関数で取得したタイトルをコンソールに出力してみます。
+まずは、Fetch APIを使って``fetchBookTitle``関数で取得したタイトルをコンソールに出力してみます。
+
+``fetch``メソッドはPromiseを返します。このPromiseインスタンスはリクエストのレスポンスを表す``Response``オブジェクトでresolveされます。
+``Response#json``メソッドもPromiseを返します。このPromiseインスタンスは取得したリソースをJSONとしてパースしたオブジェクトでresolveされます。
+
+``fetchBookTitle``関数は、次のように``fetch``メソッドで取得したJSONの``title``プロパティでreoslveされるPromiseインスタンスを返します。
 
 [role="executable"]
 [doctest-state="disabled"]
@@ -67,6 +73,7 @@ function fetchBookTitle() {
 }
 
 function main() {
+    // `fetchBookTitle`関数は、取得したJSONの`title`プロパティでresolveされる
     fetchBookTitle().then((title) => {
         console.log(title); // => "JavaScript Promiseの本"
     });
@@ -75,8 +82,9 @@ function main() {
 main();
 ----
 
-次は同様の処理をAsync Functionと``await``式で書いています。
-Promise APIを使っていた場合に比べて、コールバック関数がなくなっていることが分かります。
+次は、同様の処理をAsync Functionと``await``式で実装してみます。
+ここではまだ挙動を理解しなくても問題ありませんが、
+Promise APIを使っていた場合に比べて、``then``メソッドやコールバック関数がなくなっていることが分かります。
 
 [role="executable"]
 [doctest-state="disabled"]

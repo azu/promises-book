@@ -19,7 +19,7 @@ function createXHRPromise(URL) {
         req.onerror = () => {
             reject(new Error(req.statusText));
         };
-        req.onabort = function() {
+        req.onabort = () => {
             reject(new Error("abort this req"));
         };
         req.send();
