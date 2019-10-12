@@ -67,7 +67,7 @@ promiseオブジェクトにすることができれば、`then` や `catch` と
 .thenableをpromiseオブジェクトにする
 ----
 // このサンプルコードはjQueryをロードしている場所でないと動きません
-var promise = Promise.resolve($.ajax('https://httpbin.org/get'));// => promiseオブジェクト
+const promise = Promise.resolve($.ajax('https://httpbin.org/get'));// => promiseオブジェクト
 promise.then(function(value){
    console.log(value);
 });

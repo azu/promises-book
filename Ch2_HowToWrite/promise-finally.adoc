@@ -70,7 +70,7 @@ promise.then(function(result) {
 .finallyのユースケース
 ----
 // リソースを取得中かどうかのフラグ
-var isLoading = false;
+let isLoading = false;
 function fetchResource(URL) {
     // リソース取得中フラグをONに
     isLoading = true;

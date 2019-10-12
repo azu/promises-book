@@ -1,4 +1,3 @@
-
 [promise-chain-to-async-function]
 == Async Functionと配列
 
