@@ -50,7 +50,7 @@ include::embed/embed-deferred.js[]
 ----
 include::embed/embed-xhr-deferred.js[]
 // 実行例
-var URL = "https://httpbin.org/get";
+const URL = "https://httpbin.org/get";
 fetchURL(URL).then(function onFulfilled(value){
     console.log(value);
 }).catch(console.error.bind(console));
@@ -68,7 +68,7 @@ promiseオブジェクトの状態をresolve、rejectすることができるメ
 ----
 include::../Ch1_WhatsPromises/embed/embed-xhr-promise.js[]
 // 実行例
-var URL = "https://httpbin.org/get";
+const URL = "https://httpbin.org/get";
 fetchURL(URL).then(function onFulfilled(value){
     console.log(value);
 }).catch(console.error.bind(console));
