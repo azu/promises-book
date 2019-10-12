@@ -14,10 +14,10 @@ promiseオブジェクトを作成するには、`Promise` コンストラクタ
 
 [source,javascript]
 ----
-const promise = new Promise(((resolve, reject) => {
+const promise = new Promise((resolve, reject) => {
     // 非同期の処理
     // 処理が終わったら、resolve または rejectを呼ぶ
-}));
+});
 ----
 
 *Instance Method*

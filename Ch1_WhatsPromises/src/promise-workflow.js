@@ -1,11 +1,11 @@
 "use strict";
 function asyncFunction() {
     // <1>
-    return new Promise(((resolve) => {
+    return new Promise((resolve) => {
         setTimeout(() => {
             resolve("Async Hello world");
         }, 16);
-    }));
+    });
 }
 // <2>
 asyncFunction().then((value) => {

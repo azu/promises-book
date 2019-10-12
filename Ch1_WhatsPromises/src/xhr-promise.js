@@ -1,6 +1,6 @@
 "use strict";
 function fetchURL(URL) {
-    return new Promise(((resolve, reject) => {
+    return new Promise((resolve, reject) => {
         const req = new XMLHttpRequest();
         req.open("GET", URL, true);
         req.onload = function() {
@@ -14,6 +14,6 @@ function fetchURL(URL) {
             reject(new Error(req.statusText));
         };
         req.send();
-    }));
+    });
 }
 module.exports.fetchURL = fetchURL;
