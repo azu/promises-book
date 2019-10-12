@@ -4,7 +4,6 @@ var path = require("path");
 var concat = require('gulp-concat');
 var rename = require("gulp-rename");
 var inlining = require("gulp-inlining-node-require");
-var removeUseString = require("gulp-remove-use-strict");
 var browserify = require('browserify');
 var minifyify = require("minifyify");
 var source = require('vinyl-source-stream');
@@ -43,13 +42,10 @@ gulp.task("build-js-min", function() {
         .pipe(gulp.dest(destJSDir));
 });
 gulp.task("embed", function() {
-    var replacePowerAssert = require("./_tools/gulp/replate-power-assert.js");
+    const formatCode = require("./_tools/gulp/format-code");
     return gulp.src(["./Ch*/src/**/*.js", "./Ch*/lib/*.js", "./Ch3_Testing/test/*.js"], { base: './' })
         .pipe(inlining())
-        .pipe(replacePowerAssert())
-        .pipe(removeUseString({
-            force: true
-        }))
+        .pipe(formatCode())
         .pipe(rename(function(filePath) {
             var filePathBySplit = filePath.dirname.split(path.sep);
             filePathBySplit.pop();
