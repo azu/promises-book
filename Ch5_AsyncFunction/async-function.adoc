@@ -37,7 +37,7 @@ doAsync().then((value) => {
 またAsync Function内では``await``式というPromiseの非同期処理が完了するまで待つ構文が利用できます。
 ``await``式を使うことで非同期処理を同期処理のように扱えるため、Promiseチェーンで実現していた処理の流れを読みやすくかけます。
 
-Async Functionと``await`式の大まかな動きをイメージするために、まずはPromise APIで書いたものと比較してみます。
+Async Functionと``await``式の大まかな動きをイメージするために、まずはPromise APIで書いたものと比較してみます。
 
 ここでは、XHRの現代的なバージョンである https://developer.mozilla.org/ja/docs/Web/API/Fetch_API[Fetch API] を使います。Fetch APIは指定したURLのリソースを読み書きでき、デフォルトでES Promisesに対応しています。
 
