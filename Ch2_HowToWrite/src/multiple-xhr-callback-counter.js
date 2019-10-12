@@ -2,14 +2,14 @@
 function fetchURLCallback(URL, callback) {
     const req = new XMLHttpRequest();
     req.open("GET", URL, true);
-    req.onload = function() {
+    req.onload = () => {
         if (200 <= req.status && req.status < 300) {
             callback(null, req.responseText);
         } else {
             callback(new Error(req.statusText), req.response);
         }
     };
-    req.onerror = function() {
+    req.onerror = () => {
         callback(new Error(req.statusText));
     };
     req.send();

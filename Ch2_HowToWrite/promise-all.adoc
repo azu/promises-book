@@ -17,9 +17,9 @@
 ----
 include::embed/embed-promise-all-xhr.js[]
 // 実行例
-main().then(function (value) {
+main().then((value) => {
     console.log(value);
-}).catch(function(error){
+}).catch((error) => {
     console.error(error);
 });
 ----

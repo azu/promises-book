@@ -2,14 +2,14 @@
 function fetchURLCallback(URL, callback) {
     const req = new XMLHttpRequest();
     req.open("GET", URL, true);
-    req.onload = function() {
+    req.onload = () => {
         if (200 <= req.status && req.status < 300) {
             callback(null, req.responseText);
         } else {
             callback(new Error(req.statusText), req.response);
         }
     };
-    req.onerror = function() {
+    req.onerror = () => {
         callback(new Error(req.statusText));
     };
     req.send();
@@ -29,10 +29,10 @@ function jsonParse(callback, error, value) {
 }
 // <2> XHRを叩いてリクエスト
 const request = {
-    comment: function fetchComment(callback) {
+    comment(callback) {
         return fetchURLCallback("https://azu.github.io/promises-book/json/comment.json", jsonParse.bind(null, callback));
     },
-    people: function fetchPeople(callback) {
+    people(callback) {
         return fetchURLCallback("https://azu.github.io/promises-book/json/people.json", jsonParse.bind(null, callback));
     }
 };
