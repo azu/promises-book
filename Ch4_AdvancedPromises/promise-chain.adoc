@@ -184,14 +184,18 @@ JavaScriptでは動的にメソッドを定義することもできるため、
 そのような仕組みは<<es-promises,ES Promises>>にはありませんが、
 著名なサードパーティのPromise実装である https://github.com/petkaantonov/bluebird/[bluebird] などには
 https://github.com/petkaantonov/bluebird/blob/master/API.md#promisification[Promisification] という機能が用意されています。
+また、Node.jsのコアモジュールである``util``モジュールには、 https://nodejs.org/api/util.html#util_util_promisify_original[util.promisify] というAPIが用意されています。
 
-これを利用すると以下のように、その場でpromise版のメソッドを追加して利用できるようになります。
+これを利用すると以下のように、その場でPromise版のメソッドを作成して利用できるようになります。
 
 [source,javascript]
 ----
-const fs = Promise.promisifyAll(require("fs"));
+const fs = require("fs");
+const util = require("util");
+// コールバック版のAPIからPromise版を作成する
+const readFile = util.promisify(fs.readFile);
 
-fs.readFileAsync("myfile.js", "utf8").then((contents) => {
+readFile("myfile.js", "utf8").then((contents) => {
     console.log(contents);
 }).catch((e) => {
     console.error(e.stack);
@@ -200,7 +204,7 @@ fs.readFileAsync("myfile.js", "utf8").then((contents) => {
 
 ==== ArrayのPromiseラッパー
 
-先ほどの https://github.com/petkaantonov/bluebird/blob/master/API.md#promisification[Promisification] が何をやっているのか少しイメージしにくいので、
+先ほどの``util.promisify``が何をやっているのか少しイメージしにくいので、
 次のようなネイティブ `Array` のPromise版となるメソッドを動的に定義する例を考えてみましょう。
 
 JavaScriptにはネイティブにもDOMやString等メソッドチェーンが行える機能が多くあります。
@@ -234,9 +238,10 @@ include::test/array-promise-chain-test.js[]
 
 [NOTE]
 ====
-先ほどの https://github.com/petkaantonov/bluebird/blob/master/API.md#promisification[Promisification] は
-Node.jsのCoreモジュールの非同期処理には `function(error,result){}` というように第一引数に `error` が来るというルールを利用して、
-自動的にPromiseでラップしたメソッドを生成しています
+先ほどの  https://nodejs.org/api/util.html#util_util_promisify_original[util.promisify] は、
+Node.jsのCoreモジュールの非同期処理には `function(error, result){}` というように第一引数に `error` が来るというルール（エラーファーストコールバック）を利用して、自動的にPromiseでラップしたメソッドを生成しています。
+
+また、Node.js 10からは ``fs`` モジュールに https://nodejs.org/api/fs.html#fs_fs_promises_api[Promise版のAPI] が追加されています。
 ====
 
 === まとめ

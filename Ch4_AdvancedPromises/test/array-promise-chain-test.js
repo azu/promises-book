@@ -1,5 +1,4 @@
-"use strict";
-const assert = require("power-assert");
+const assert = require("assert");
 const ArrayAsPromise = require("../src/promise-chain/array-promise-chain");
 describe("array-promise-chain", () => {
     function isEven(value) {
