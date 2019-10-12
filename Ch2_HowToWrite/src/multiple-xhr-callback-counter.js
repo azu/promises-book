@@ -1,15 +1,15 @@
 "use strict";
 function fetchURLCallback(URL, callback) {
-    var req = new XMLHttpRequest();
-    req.open('GET', URL, true);
-    req.onload = function () {
+    const req = new XMLHttpRequest();
+    req.open("GET", URL, true);
+    req.onload = function() {
         if (200 <= req.status && req.status < 300) {
             callback(null, req.responseText);
         } else {
             callback(new Error(req.statusText), req.response);
         }
     };
-    req.onerror = function () {
+    req.onerror = function() {
         callback(new Error(req.statusText));
     };
     req.send();
@@ -20,25 +20,25 @@ function parse(callback, error, value) {
         callback(error, value);
     } else {
         try {
-            var result = JSON.parse(value);
+            const result = JSON.parse(value);
             callback(null, result);
         } catch (e) {
             callback(e, value);
         }
     }
 }
-var request = {
+const request = {
     comment: function fetchComment(callback) {
-        return fetchURLCallback('https://azu.github.io/promises-book/json/comment.json', parse.bind(null, callback));
+        return fetchURLCallback("https://azu.github.io/promises-book/json/comment.json", parse.bind(null, callback));
     },
     people: function fetchPeople(callback) {
-        return fetchURLCallback('https://azu.github.io/promises-book/json/people.json', parse.bind(null, callback));
+        return fetchURLCallback("https://azu.github.io/promises-book/json/people.json", parse.bind(null, callback));
     }
 };
 function main(callback) {
     function requester(requests, callback) {
-        var results = [];
-        var requestLength = results.length;
+        const results = [];
+        const requestLength = results.length;
 
         function handler(error, value) {
             if (error) {
@@ -50,8 +50,8 @@ function main(callback) {
             }
         }
 
-        for (var i = 0; i < requests.length; i++) {
-            var req = requests[i];
+        for (let i = 0; i < requests.length; i++) {
+            const req = requests[i];
             req(handler);
         }
     }

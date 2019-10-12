@@ -1,7 +1,7 @@
 "use strict";
-var copyOwnFrom = require("./copyOwnFrom").copyOwnFrom;
+const copyOwnFrom = require("./copyOwnFrom").copyOwnFrom;
 function TimeoutError() {
-    var superInstance = Error.apply(null, arguments);
+    const superInstance = Error.apply(null, arguments);
     copyOwnFrom(this, superInstance);
 }
 TimeoutError.prototype = Object.create(Error.prototype);
