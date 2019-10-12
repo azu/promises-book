@@ -245,3 +245,43 @@ cancelableXHR.abortPromise(xhrPromise);// <2>
 Promiseは処理のフローを制御する力に優れているため、
 それを最大限活かすためには一つの関数でやり過ぎないで処理を小さく分けること等、
 今までのJavaScriptで言われているようなことをより意識していいのかもしれません。
+
+[NOTE]
+.Fetch APIでのキャンセル
+====
+
+XHRの現代的なバージョンである https://developer.mozilla.org/ja/docs/Web/API/Fetch_API[Fetch API] では、 https://developer.mozilla.org/en-US/docs/Web/API/AbortController[AbortController] というAPIによってリクエストをキャンセルを実現できます。
+
+Fetch APIでは、次のようにリクエストをキャンセルできます。
+
+
+[role="executable"]
+[source,javascript]
+.AbortControllerでのFetchのキャンセル
+----
+// AbortControllerのインスタンスの作成
+const controller = new AbortController()
+// キャンセルを通知するための siganl を取得する
+const signal = controller.signal
+// signal をfetchメソッドの第二引数に渡す
+fetch("https://httpbin.org/get", { signal })
+.then((result) => {
+    // 結果の正常処理
+    console.log(result);
+})
+.catch((error) => {
+    if (error.name == "AbortError") {
+        // 中断の場合の処理
+        console.error("Fetchが中断されました", error);
+        return;
+    }
+    // 中断以外のエラー
+    console.error(err);
+})
+// Fetchをキャンセルする
+controller.abort();
+----
+
+``AbortController``という今回実装したものと似たような操作メソッドをもつオブジェクトを利用することがわかります。
+
+====
