@@ -204,7 +204,7 @@ readFile("myfile.js", "utf8").then((contents) => {
 
 ==== ArrayのPromiseラッパー
 
-先ほどの https://github.com/petkaantonov/bluebird/blob/master/API.md#promisification[Promisification] が何をやっているのか少しイメージしにくいので、
+先ほどの``util.promisify``が何をやっているのか少しイメージしにくいので、
 次のようなネイティブ `Array` のPromise版となるメソッドを動的に定義する例を考えてみましょう。
 
 JavaScriptにはネイティブにもDOMやString等メソッドチェーンが行える機能が多くあります。
