@@ -280,6 +280,6 @@ fetch("https://httpbin.org/get", { signal })
 controller.abort();
 ----
 
-``AbortController``という今回実装したものと似たような操作メソッドを持つオブジェクトを利用することがわかります。
+``AbortController``という今回実装したものと似たような操作メソッドをもつオブジェクトを利用することがわかります。
 
 ====
