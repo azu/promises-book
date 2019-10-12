@@ -1,14 +1,23 @@
 "use strict";
-function Deferred() {
-    this.promise = new Promise((resolve, reject) => {
-        this._resolve = resolve;
-        this._reject = reject;
-    });
+
+class Deferred {
+    constructor() {
+        this.promise = new Promise((resolve, reject) => {
+            // Arrow Functionを利用しているため、`this`がDeferredのインスタンスを参照する
+            this._resolve = resolve;
+            this._reject = reject;
+        });
+    }
+
+    // Deferred#resolveメソッドは、`value`でPromiseインスタンスをresolveする
+    resolve(value) {
+        this._resolve(value);
+    }
+
+    // Deferred#rejectメソッドは、`reason`でPromiseインスタンスをrejectする
+    reject(reason) {
+        this._reject(reason);
+    }
 }
-Deferred.prototype.resolve = function(value) {
-    this._resolve(value);
-};
-Deferred.prototype.reject = function(reason) {
-    this._reject(reason);
-};
+
 module.exports.Deferred = Deferred;

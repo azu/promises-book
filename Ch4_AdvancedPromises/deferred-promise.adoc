@@ -26,13 +26,22 @@ image::img/deferred-and-promise.png[DeferredとPromise]
 DeferredがPromiseを内蔵しているような関係になっていることが分かります。
 
 [NOTE]
-jQuery.Deferredの構造を簡略化したものです。もちろんPromiseを持たないDeferredの実装もあります。
+jQuery.Deferredの構造を簡略化したものです。Promiseを使わないDeferredの実装もあります。
 
-図だけだと分かりにくいので、実際にPromiseを使ってDeferredを実装してみましょう。
+図だけだと分かりにくいので、実際にPromiseを使ってDeferredクラスを実装してみましょう。
+
+[NOTE]
+====
+ECMAScript 2015ではクラスを定義する `class` 構文が導入されています。
+`class` 構文を使ったクラス定義については、次のページを参照してください。
+
+- https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Classes[クラス - JavaScript | MDN]
+- https://jsprimer.net/basic/class/[クラス · JavaScript Primer #jsprimer]
+====
 
 === Deferred top on Promise
 
-Promiseの上にDeferredを実装した例です。
+Promiseの上にDeferredクラスを実装した例です。
 
 [source,javascript]
 [[deferred.js]]
