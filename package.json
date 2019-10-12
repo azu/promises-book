@@ -66,7 +66,7 @@
     "remove-use-strict": "0.0.5",
     "sinon": "^1.9.0",
     "textlint": "^11.3.1",
-    "textlint-plugin-asciidoctor": "/Users/azu/.ghq/github.com/seikichi/textlint-plugin-asciidoctor",
+    "textlint-plugin-asciidoctor": "^1.0.3",
     "textlint-rule-eslint": "3.2.1",
     "textlint-rule-prh": "^5.2.1",
     "through2": "^3.0.1",
