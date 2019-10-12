@@ -90,7 +90,7 @@ include::embed/embed-json-promise.js[]
 var string = "jsonではない文字列";
 JSONPromise(string).then(function (object) {
     console.log(object);
-}).catch(function(error){
+}).catch((error) => {
     // => JSON.parseで例外が発生した時
     console.error(error);
 });

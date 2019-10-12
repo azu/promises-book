@@ -3,9 +3,9 @@
  * LICENSE : MIT
  */
 "use strict";
-var checkInlineScript = require("./inline-script-tester").checkInlineScript;
-checkInlineScript("../../").catch(function (error) {
-    if(error) {
+const checkInlineScript = require("./inline-script-tester").checkInlineScript;
+checkInlineScript("../../").catch((error) => {
+    if (error) {
         console.error(error);
     }
 });

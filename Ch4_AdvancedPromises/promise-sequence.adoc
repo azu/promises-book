@@ -21,9 +21,9 @@ Aの処理 が終わったら Bの処理 というような逐次的な処理を
 ----
 include::../Ch2_HowToWrite/embed/embed-multiple-xhr.js[]
 // 実行例
-main().then(function (value) {
+main().then((value) => {
     console.log(value);
-}).catch(function(error){
+}).catch((error) => {
     console.error(error);
 });
 ----
@@ -40,9 +40,9 @@ main().then(function (value) {
 ----
 include::embed/embed-promise-foreach-xhr.js[]
 // 実行例
-main().then(function (value) {
+main().then((value) => {
     console.log(value);
-}).catch(function(error){
+}).catch((error) => {
     console.error(error);
 });
 ----
@@ -69,9 +69,9 @@ forループで書く場合、<<then-return-new-promise,コラム: thenは常に
 ----
 include::embed/embed-promise-reduce-xhr.js[]
 // 実行例
-main().then(function (value) {
+main().then((value) => {
     console.log(value);
-}).catch(function(error){
+}).catch((error) => {
     console.error(error);
 });
 ----
@@ -139,9 +139,9 @@ promiseオブジェクトを作った段階ですでにXHRが実行されてい�
 ----
 include::embed/embed-promise-sequence-xhr.js[]
 // 実行例
-main().then(function (value) {
+main().then((value) => {
     console.log(value);
-}).catch(function(error){
+}).catch((error) => {
     console.error(error);
 });
 ----

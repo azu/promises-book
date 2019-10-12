@@ -78,7 +78,7 @@ var taskPromise = new Promise(function(resolve){
 });
 timeoutPromise(taskPromise, 1000).then(function(value){
     console.log("taskPromiseが時間内に終わった : " + value);
-}).catch(function(error){
+}).catch((error) => {
     console.log("タイムアウトになってしまった", error);
 });
 ----
