@@ -8,6 +8,10 @@ JavaScript Promiseについての薄い電子書籍です。
 
 寄付などがしたい方は、[付録を任意の値段で購入できる](https://gumroad.com/l/javascript-promise "JavaScript Promiseの本 付録")のでこちらを代用して下さい。
 
+過去のバージョンについては次のページから参照できます。
+
+- [JavaScript Promiseの本(v1)](https://azu.github.io/promises-book/archives/v1/)
+
 This book has been released in :
 
 - **Chinese**: [JavaScript Promise迷你书（中文版）](http://liubin.github.io/promises-book/)

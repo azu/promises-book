@@ -20,6 +20,10 @@ icon:globe[2x] This book has been released in :
 - **Chinese**: http://liubin.github.io/promises-book/[JavaScript Promise迷你书（中文版）]
 - **Korean**: http://www.hanbit.co.kr/ebook/look.html?isbn=9788968487293[한빛미디어 eBook JavaScript Promise（번역서）]
 
+These translated is based on Promise Book ver 1.
+
+- https://azu.github.io/promises-book/archives/v1/[JavaScript Promiseの本(v1)]
+
 '''
 
 ifeval::["{backend}" == "html5"]
@@ -62,6 +66,10 @@ icon:rss[2x, link=https://github.com/azu/promises-book/releases.atom] 更新情�
 - 書き始めた理由や、どのように書いていったか、どのような仕組みで動いているかなどについて書かれています。
 - Gumroadで購入者が0円から任意の値段を決めてダウンロードすることができます。
 - 寄付などがしたい方はGumroadからおまけの購入で代用して下さい。
+
+過去のバージョンについては、次のページから参照できます。
+
+- https://azu.github.io/promises-book/archives/v1/[JavaScript Promiseの本(v1)]
 
 '''
 
