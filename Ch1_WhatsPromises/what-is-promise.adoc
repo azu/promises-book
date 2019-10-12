@@ -63,7 +63,7 @@ Promiseを使う理由の一つであるといえるでしょう。
 
 それでは、実際にJavaScriptでのPromiseについて学んでいきましょう。
 
-[IMPORTANT] 
+[NOTE] 
 .Arrow Function `=>`
 ====
 
