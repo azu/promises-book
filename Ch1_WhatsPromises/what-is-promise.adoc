@@ -10,6 +10,7 @@ Promiseは非同期処理を抽象化したオブジェクトとそれを操作�
 並列/並行処理におけるプログラミング言語のデザインの一種です。
 
 このデザインをJavaScriptに持ってきたものが、この書籍で学ぶJavaScript Promiseです。
+Promiseは、JavaScriptの仕様を決めるECMAScript 2015で導入され動作が定義されています。
 
 一方、JavaScriptにおける非同期処理といえば、コールバックを利用する場合が多いと思います。
 
@@ -62,8 +63,10 @@ Promiseを使う理由の一つであるといえるでしょう。
 
 それでは、実際にJavaScriptでのPromiseについて学んでいきましょう。
 
-[NOTE]
+[IMPORTANT] 
+.Arrow Function `=>`
 ====
+
 この書籍のサンプルコードはArrow FunctionなどECMAScript 2015で導入された構文を利用します。
 
 Arrow Functionは、矢印のような `=>` （イコールと大なり記号）を使い、匿名関数を定義する構文です。
