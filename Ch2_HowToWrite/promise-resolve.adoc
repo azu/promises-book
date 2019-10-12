@@ -15,9 +15,9 @@
 
 [source,javascript]
 ----
-new Promise(((resolve) => {
+new Promise((resolve) => {
     resolve(42);
-}));
+});
 ----
 
 結果的にすぐに `resolve(42);` と解決されて、次のthenの `onFulfilled` に設定された関数に `42` という値を渡します。

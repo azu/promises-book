@@ -2,7 +2,7 @@
 
 function cancelableXHR(URL) {
     const req = new XMLHttpRequest();
-    const promise = new Promise(((resolve, reject) => {
+    const promise = new Promise((resolve, reject) => {
         req.open("GET", URL, true);
         req.onload = function() {
             if (200 <= req.status && req.status < 300) {
@@ -18,7 +18,7 @@ function cancelableXHR(URL) {
             reject(new Error("abort this request"));
         };
         req.send();
-    }));
+    });
     const abort = function() {
         // 既にrequestが止まってなければabortする
         // https://developer.mozilla.org/en/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest

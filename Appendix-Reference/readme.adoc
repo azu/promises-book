@@ -12,9 +12,9 @@ promise.then(onFulfilled, onRejected);
 [source,javascript]
 .thenコード例
 ----
-const promise = new Promise(((resolve, reject) => {
+const promise = new Promise((resolve, reject) => {
     resolve("thenに渡す値");
-}));
+});
 promise.then((value) => {
     console.log(value);
 }, (error) => {
@@ -39,9 +39,9 @@ promise.catch(onRejected);
 [source,javascript]
 .catchのコード例
 ----
-const promise = new Promise(((resolve, reject) => {
+const promise = new Promise((resolve, reject) => {
     resolve("thenに渡す値");
-}));
+});
 promise.then((value) => {
     console.log(value);
 }).catch((error) => {

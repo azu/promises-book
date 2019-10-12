@@ -11,9 +11,9 @@
 [role="executable"]
 [source,javascript]
 ----
-const aPromise = new Promise(((resolve) => {
+const aPromise = new Promise((resolve) => {
     resolve(100);
-}));
+});
 const thenPromise = aPromise.then((value) => {
     console.log(value);
 });

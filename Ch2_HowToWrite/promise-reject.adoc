@@ -9,9 +9,9 @@
 
 [source,javascript]
 ----
-new Promise(((resolve, reject) => {
+new Promise((resolve, reject) => {
     reject(new Error("エラー"));
-}));
+});
 ----
 
 返り値のpromiseオブジェクトに対して、thenの `onRejected` に設定された関数にエラーオブジェクトが渡ります。

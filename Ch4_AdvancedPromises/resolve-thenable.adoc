@@ -278,9 +278,9 @@ ES PromisesのpromiseオブジェクトをQ promiseオブジェクトに変換�
 ----
 const Q = require("Q");
 // このpromiseオブジェクトはESのもの
-const promise = new Promise(((resolve) => {
+const promise = new Promise((resolve) => {
     resolve(1);
-}));
+});
 // Q promiseオブジェクトに変換する
 Q(promise).then((value) => {
     console.log(value);

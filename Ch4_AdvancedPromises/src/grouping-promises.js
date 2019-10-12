@@ -20,11 +20,11 @@ function getXHRTimeout(URL) {
 }
 function promiseDelay(ms) {
     const now = Date.now();
-    return new Promise(((resolve) => {
+    return new Promise((resolve) => {
         setTimeout(() => {
             resolve(Date.now() - now);
         }, ms);
-    }));
+    });
 }
 function timeoutPromise(promise, ms) {
     const timeout = promiseDelay(ms).then(() => {

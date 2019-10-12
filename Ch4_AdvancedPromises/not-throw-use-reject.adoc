@@ -9,9 +9,9 @@ Promiseの中で `throw` による例外が発生した場合は自動的に `tr
 [role="executable"]
 [source,javascript]
 ----
-const promise = new Promise(((resolve, reject) => {
+const promise = new Promise((resolve, reject) => {
     throw new Error("message");
-}));
+});
 promise.catch((error) => {
     console.error(error);// => "message"
 });
@@ -25,9 +25,9 @@ promise.catch((error) => {
 [role="executable"]
 [source,javascript]
 ----
-const promise = new Promise(((resolve, reject) => {
+const promise = new Promise((resolve, reject) => {
     reject(new Error("message"));
-}));
+});
 promise.catch((error) => {
     console.error(error);// => "message"
 });
@@ -52,9 +52,9 @@ image::img/chrome_on_caught_exception.png[Pause On Caught Exceptions]
 
 [source,javascript]
 ----
-const promise = new Promise(((resolve, reject) => {
+const promise = new Promise((resolve, reject) => {
     throw new Error("message");
-}));
+});
 ----
 
 本来デバッグとは関係ない場所でbreakしてしまうため、
@@ -103,9 +103,9 @@ Promiseを使ったタイムアウト処理の実装については <<race-delay
 ----
 const promise = Promise.resolve();
 promise.then(() => {
-    const retPromise = new Promise(((resolve, reject) => {
+    const retPromise = new Promise((resolve, reject) => {
         // resolve or reject で onFulfilled or onRejected どちらを呼ぶか決まる
-    }));
+    });
     return retPromise;// <1>
 }).then(onFulfilled, onRejected);
 ----
@@ -120,9 +120,9 @@ promise.then(() => {
 const onRejected = console.error.bind(console);
 const promise = Promise.resolve();
 promise.then(() => {
-    const retPromise = new Promise(((resolve, reject) => {
+    const retPromise = new Promise((resolve, reject) => {
         reject(new Error("this promise is rejected"));
-    }));
+    });
     return retPromise;
 }).catch(onRejected);
 ----

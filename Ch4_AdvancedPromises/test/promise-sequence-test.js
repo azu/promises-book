@@ -5,11 +5,11 @@ describe("promise-sequence", () => {
     it("should sequence tasks", () => {
         const promisedIdentity = [1, 2, 4, 8, 16, 32].map((value) => {
             return function identify() {
-                return new Promise(((resolve) => {
+                return new Promise((resolve) => {
                     setTimeout(() => {
                         resolve(value);
                     }, value);
-                }));
+                });
             };
         });
         const startDate = Date.now();

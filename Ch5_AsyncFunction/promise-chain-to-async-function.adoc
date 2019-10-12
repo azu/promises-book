@@ -19,7 +19,7 @@
  * 指定した`path`にデータがない場合、失敗として**Rejected**状態のPromiseオブジェクトを返す
  */
 function dummyFetch(path) {
-    return new Promise(((resolve, reject) => {
+    return new Promise((resolve, reject) => {
         setTimeout(() => {
             if (path.startsWith("/resource")) {
                 resolve({ body: `Response body of ${path}` });
@@ -27,7 +27,7 @@ function dummyFetch(path) {
                 reject(new Error("NOT FOUND"));
             }
         }, 1000 * Math.random());
-    }));
+    });
 }
 // `then`メソッドで成功時と失敗時に呼ばれるコールバック関数を登録
 // /resource/A のリソースは存在するので成功しonFulfilledが呼ばれる
@@ -56,7 +56,7 @@ Promise APIでは、``Array#reduce``メソッドを使った逐次処理を実�
 [source,javascript]
 ----
 function dummyFetch(path) {
-    return new Promise(((resolve, reject) => {
+    return new Promise((resolve, reject) => {
         setTimeout(() => {
             if (path.startsWith("/resource")) {
                 resolve({ body: `Response body of ${path}` });
@@ -64,7 +64,7 @@ function dummyFetch(path) {
                 reject(new Error("NOT FOUND"));
             }
         }, 1000 * Math.random());
-    }));
+    });
 }
 // 複数のリソースを取得し、レスポンスボディの配列を返す
 function fetchResources(resources) {
@@ -97,7 +97,7 @@ forループによる反復処理も``await``式で``dummyFetch``関数の完了
 [source,javascript]
 ----
 function dummyFetch(path) {
-    return new Promise(((resolve, reject) => {
+    return new Promise((resolve, reject) => {
         setTimeout(() => {
             if (path.startsWith("/resource")) {
                 resolve({ body: `Response body of ${path}` });
@@ -105,7 +105,7 @@ function dummyFetch(path) {
                 reject(new Error("NOT FOUND"));
             }
         }, 1000 * Math.random());
-    }));
+    });
 }
 // 複数のリソースを取得し、レスポンスボディの配列を返す
 async function fetchResources(resources) {
@@ -175,9 +175,9 @@ Async Function内で``await``式を使って処理を待っている間も、関
 ----
 async function asyncMain() {
     // 中でawaitしても、Async Functionの外側の処理まで止まるわけではない
-    await new Promise(((resolve) => {
+    await new Promise((resolve) => {
         setTimeout(resolve, 16);
-    }));
+    });
 }
 console.log("1. asyncMain関数を呼び出します");
 // Async Functionは外から見れば単なるPromiseを返す関数
@@ -206,7 +206,7 @@ Async Function外の処理も停止できてしまうと、JavaScriptでは基�
 [source,javascript]
 ----
 function dummyFetch(path) {
-    return new Promise(((resolve, reject) => {
+    return new Promise((resolve, reject) => {
         setTimeout(() => {
             if (path.startsWith("/resource")) {
                 resolve({ body: `Response body of ${path}` });
@@ -214,7 +214,7 @@ function dummyFetch(path) {
                 reject(new Error("NOT FOUND"));
             }
         }, 1000 * Math.random());
-    }));
+    });
 }
 // リソースを順番に取得する
 async function fetchResources(resources) {
@@ -245,7 +245,7 @@ fetchResources(resources).then((results) => {
 [source,javascript]
 ----
 function dummyFetch(path) {
-    return new Promise(((resolve, reject) => {
+    return new Promise((resolve, reject) => {
         setTimeout(() => {
             if (path.startsWith("/resource")) {
                 resolve({ body: `Response body of ${path}` });
@@ -253,7 +253,7 @@ function dummyFetch(path) {
                 reject(new Error("NOT FOUND"));
             }
         }, 1000 * Math.random());
-    }));
+    });
 }
 // リソースを順番に取得する
 async function fetchResources(resources) {
@@ -299,7 +299,7 @@ Async Functionと``await``式でも非同期処理を同期処理のような見
 [source,javascript]
 ----
 function dummyFetch(path) {
-    return new Promise(((resolve, reject) => {
+    return new Promise((resolve, reject) => {
         setTimeout(() => {
             if (path.startsWith("/resource")) {
                 resolve({ body: `Response body of ${path}` });
@@ -307,7 +307,7 @@ function dummyFetch(path) {
                 reject(new Error("NOT FOUND"));
             }
         }, 1000 * Math.random());
-    }));
+    });
 }
 
 // 複数のリソースを取得しレスポンスボディの配列を返す

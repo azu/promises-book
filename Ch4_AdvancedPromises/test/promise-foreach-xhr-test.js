@@ -6,21 +6,21 @@ describe("promise-reduce-chain", () => {
     beforeEach(() => {
         let lock = true;
         sinon.stub(xhr.request, "comment", () => {
-            return new Promise(((resolve) => {
+            return new Promise((resolve) => {
                 setTimeout(() => {
                     lock = false;
                     resolve(1);
                 }, 50);
-            }));
+            });
         });
         sinon.stub(xhr.request, "people", () => {
-            return new Promise(((resolve, reject) => {
+            return new Promise((resolve, reject) => {
                 if (!lock) {
                     resolve(2);
                 } else {
                     reject(new Error("promise is locked"));
                 }
-            }));
+            });
         });
     });
     afterEach((done) => {

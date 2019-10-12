@@ -84,9 +84,9 @@ Promiseをサポートしていないブラウザでもサンプルコードを�
 [role="executable"]
 [source,javascript]
 ----
-const promise = new Promise(((resolve) => {
+const promise = new Promise((resolve) => {
     resolve(42);
-}));
+});
 promise.then((value) => {
     console.log(value);
 }).catch((error) => {
