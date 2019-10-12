@@ -15,7 +15,7 @@ function cancelableXHR(URL) {
             reject(new Error(req.statusText));
         };
         req.onabort = function() {
-            reject(new Error("abort this request"));
+            reject(new Error("this request is aborted"));
         };
         req.send();
     });
