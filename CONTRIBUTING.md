@@ -25,7 +25,7 @@ Promisesが実装されていない環境もあるため、[core-js](https://git
 
 各ディレクトリにはその章の序文と各節を`include`するREADME.adocファイルが置かれる。
 
-### テスト
+## テスト
 
 サンプルコードは必ずテストコードが必要となる。
 読者がコピペして実行するようなコードにはテストを書くべきである。
@@ -76,7 +76,7 @@ console.log(str); // => "string"
 - [MarkdownやAsciidoc中に書いたJavaScriptのサンプルコードをdoctestするツールを作った | Web Scratch](https://github.com/efcl/efcl.github.io/edit/develop/_posts/2019/2019-09-02-power-doctest-markdown-asciidoc.md)
 
 
-### サンプルコード
+## サンプルコード
 
 サンプルコードはできるだけ最小限で具体的かつ知名度の高いAPIを利用する。
 
@@ -84,7 +84,7 @@ console.log(str); // => "string"
 
 できうる限り、インラインで直接書かないで、外部ファイルとして置いたものを読み込んで使用する。
 
-#### 非同期API
+### 非同期API
 
 非同期APIとしては下記を中心的に利用する
 
