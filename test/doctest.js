@@ -12,15 +12,15 @@ const replaceDummyHeader = (content) => {
         });
     }).join("\n");
 };
-describe("doctest:adoc", function () {
-    const sourceDir = path.join(__dirname, "..", "Ch5_AsyncFunction");
+describe("doctest:adoc", () => {
+    const projectDir = path.join(__dirname, "..");
     const files = globby.sync([
-        `${sourceDir}/**/*.adoc`,
+        `${path.join(projectDir, "Ch5_AsyncFunction")}/**/*.adoc`,
         `!**/node_modules{,/**}`,
     ]);
     files.forEach(filePath => {
-        const normalizeFilePath = filePath.replace(sourceDir, "");
-        describe(`${normalizeFilePath}`, function () {
+        const normalizeFilePath = filePath.replace(projectDir, "");
+        describe(`${normalizeFilePath}`, () => {
             const content = fs.readFileSync(filePath, "utf-8");
             const parsedCodes = parse({
                 filePath,
@@ -28,10 +28,10 @@ describe("doctest:adoc", function () {
             });
             // try to eval
             const dirName = path.dirname(filePath).split(path.sep).pop();
-            parsedCodes.forEach((parsedCode, index) => {
+            parsedCodes.forEach((parsedCode) => {
                 const codeValue = parsedCode.code;
                 const testCaseName = codeValue.slice(0, 32).replace(/[\r\n]/g, "_");
-                it(dirName + ": " + testCaseName, function () {
+                it(dirName + ": " + testCaseName, () => {
                     return test(parsedCode).catch(error => {
                         const filePathLineColumn = `${error.fileName}:${error.lineNumber}:${error.columnNumber}`;
                         console.error(`Asciidoc Doctest is failed

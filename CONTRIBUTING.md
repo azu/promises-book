@@ -28,7 +28,52 @@ Promisesが実装されていない環境もあるため、[core-js](https://git
 ### テスト
 
 サンプルコードは必ずテストコードが必要となる。
-(読者がコピペして実行するようなコードにはテストを書くべきである)
+読者がコピペして実行するようなコードにはテストを書くべきである。
+
+テストは大きく分けて2種類の実装があるため、どちらかの方法でサンプルコードに対してテストを実装する必要がある
+
+- UnitTest
+- DocTest
+
+### UnitTest
+
+この書籍では、サンプルコードのソースコード(`lib/`)と表示用のコード(`embed/`)を分けている。
+
+基本的には`lib/`から`embed/`がビルド時に生成され、書籍には`embed/`のコードが埋め込まれる。。
+
+`lib/`のコードはCommonJSのコードとして書かれていて、モジュールとしてテストしたい機能を`module.exports`している。
+そのため、UnitTestは通常のNode.jsのコードとしてテストコードを`test/`に実装している。
+
+`lib/`から`embed/`に生成するコードは、[inlining-node-require](https://github.com/azu/inlining-node-require)を使って`require`で読み込んでいるファイルをインライン化している。(一部制約がある)
+
+仕組みについては、次のページも参照してください。
+
+- <https://github.com/azu/promises-book/blob/master/Appendix-Note/tooling-ci.adoc>
+
+### DocTest
+
+一部の章では、インラインコードに対して[power-doctest](https://github.com/azu/power-doctest)を使ったDocTestが実装されている。
+実際に有効になってる章(ディレクトリ)は次のテストファイルで定義されている。
+
+- <https://github.com/azu/promises-book/blob/master/test/doctest.js>
+
+Asciidoc中のインラインコードブロックに、次のような`[source,javascript]`の言語が指定されたCodeBlockに対してpodtestが行われる。
+
+```asciidoc
+[source,javascript]
+----
+const str = "string";
+console.log(str); // => "string"
+----
+```
+
+次のように`// => 値`というコメントを書いた部分が、`assert`関数に変換されテストされる。
+これにより、サンプルコードのコメントに書いた評価結果と実際の出力が一致するかをテストされている。
+
+詳しい実装は次のドキュメントを参照してください。
+
+- [@power-doctest/asciidoctor](https://github.com/azu/power-doctest/tree/master/packages/%40power-doctest/asciidoctor)
+- [MarkdownやAsciidoc中に書いたJavaScriptのサンプルコードをdoctestするツールを作った | Web Scratch](https://github.com/efcl/efcl.github.io/edit/develop/_posts/2019/2019-09-02-power-doctest-markdown-asciidoc.md)
 
 
 ### サンプルコード
