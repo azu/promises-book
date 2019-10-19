@@ -105,7 +105,7 @@ Promiseで意図したテストを書くためにはどうするか、またそ�
 https://github.com/azu/promise-test-helper[azu/promise-test-helper] からダウンロードすることができます。
 
 また、Node.js 10.0.0から ``assert.rejects`` と ``assert.doesNotReject`` というよく似た趣旨のassertionが提供されています。
-詳細は、https://nodejs.org/api/assert.html[Node.jsのAPIドキュメント]を参照してください。
+詳細は、 https://nodejs.org/api/assert.html[Node.jsのAPIドキュメント]を参照してください。
 ====
 
 また、今回のヘルパー関数は<<mocha-promise,MochaのPromiseサポート>>を前提とした書き方なので、
