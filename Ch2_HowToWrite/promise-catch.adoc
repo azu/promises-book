@@ -6,6 +6,20 @@
 改めて説明すると<<promise.catch,Promise#catch>>は `promise.then(undefined, onRejected);` のエイリアスとなるメソッドです。
 つまり、promiseオブジェクトがRejectedとなった時に呼ばれる関数を登録するためのメソッドです。
 
+
+[role="executable"]
+[source,javascript]
+.Promise#catchの識別子エラーの回避
+----
+Promise.reject(new Error("message")).catch((error) => {
+    // エラーハンドリング
+});
+// Promise#catchは次のPromise#thenと同じ意味
+Promise.reject(new Error("message")).then(undefined, (error) => {
+    // エラーハンドリング
+});
+----
+
 [NOTE]
 <<promise.then,Promise#then>>と<<promise.catch,Promise#catch>>の使い分けについては、
 <<then-or-catch,then or catch?>>で紹介しています。
