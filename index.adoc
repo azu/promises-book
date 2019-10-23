@@ -59,7 +59,7 @@ icon:rss[2x, link=https://github.com/azu/promises-book/releases.atom] 更新情�
 </div>
 ++++
 
-作者に対して寄付がしたい人は https://github.com/sponsors/azu[GitHub Sponsors] からサポートできます。
+作者に対して寄付がしたい人は https://github.com/sponsors/azu[GitHub Sponsors] でサポートできます。
 
 - https://github.com/sponsors/azu[Sponsor @azu on GitHub Sponsors]
 
