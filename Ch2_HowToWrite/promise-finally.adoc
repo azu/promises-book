@@ -56,7 +56,7 @@ promise.then((result) => {
     return result;
 }, (error) => {
     onFinally();
-    throw error;
+    return Promise.reject(error);
 });
 ----
 
