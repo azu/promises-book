@@ -113,7 +113,7 @@ https://notifications.spec.whatwg.org/[Notifications API]の最新仕様では�
 そのため、ここから先の話は最新の仕様ではもっとシンプルに書ける可能性があります。
 
 しかし、古いNotification APIの仕様では、コールバック関数のみしか扱う方法がありませんでした。
-ここではコールバック関数のみしか扱えるNotification APIを前提にしています。
+ここではコールバック関数のみしか扱えないNotification APIを前提にしています。
 ====
 
 
