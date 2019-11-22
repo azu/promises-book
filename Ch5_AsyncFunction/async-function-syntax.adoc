@@ -29,7 +29,7 @@ const object = {
 === Async FunctionはPromiseを返す
 
 Async Functionとして定義した関数は必ず``Promise``インスタンスを返します。
-返される`Promise`インスタンスの状態は関数の返り値によって異なり、次の3つのケースが考えられます。
+返される``Promise``インスタンスの状態は関数の返り値によって異なり、次の3つのケースが考えられます。
 
 1. Async FunctionはPromise以外の値をreturnした場合、その返り値をもつ**Fulfilled**なPromiseを返す
 2. Async FunctionがPromiseをreturnした場合、その返り値のPromiseをそのまま返す
