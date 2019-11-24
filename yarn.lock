@@ -221,6 +221,14 @@
   resolved "https://registry.yarnpkg.com/@power-doctest/types/-/types-5.0.1.tgz#00aa7f4aebb1cfecd10a71262f1bb051c44e9b30"
   integrity sha512-vKVfQenAB1InzQzVZWbCMZU6zjXOjoTT75fSgIRgFCEwDyBVAySb22y3RTMAdqoK49av+ZHvzyA+s4CBWTQqQA==
 
+"@textlint-ja/textlint-rule-no-synonyms@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@textlint-ja/textlint-rule-no-synonyms/-/textlint-rule-no-synonyms-1.0.1.tgz#ff8bb2b3da2bcd5880c014f0bf3e7a5d5976f199"
+  integrity sha512-xg9gISEy7JL4SAAeBD3OBS0KhEiiozUNgyAWaQhoTsRErA0o9pfbEqLsyPHs/4pybWM7GauvLZeRWVYR8IBhBQ==
+  dependencies:
+    textlint-rule-helper "^2.1.1"
+    tiny-segmenter "^0.2.0"
+
 "@textlint/ast-node-types@^4.2.1", "@textlint/ast-node-types@^4.2.4":
   version "4.2.4"
   resolved "https://registry.yarnpkg.com/@textlint/ast-node-types/-/ast-node-types-4.2.4.tgz#ae569bd76364040939044d057d5a56284563a7af"
@@ -5979,6 +5987,11 @@ subarg@^1.0.0:
   dependencies:
     minimist "^1.1.0"
 
+sudachi-synonyms-dictionary@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/sudachi-synonyms-dictionary/-/sudachi-synonyms-dictionary-4.1.0.tgz#6cf23a20c83a372ce65c161da187162457f6fef8"
+  integrity sha512-Ru05gJVwjvMLAV6+LVlwQchYY22lQqTifQuGCkY8eyz5xyrzUJ1nIXCi2gyOCTW5CRDVm+1bFRRB/riJg1Azww==
+
 supports-color@6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-6.0.0.tgz#76cfe742cf1f41bb9b1c29ad03068c05b4c0e40a"
@@ -6162,6 +6175,11 @@ timers-browserify@^1.0.1:
   resolved "https://registry.yarnpkg.com/timers-browserify/-/timers-browserify-1.4.2.tgz#c9c58b575be8407375cb5e2462dacee74359f41d"
   dependencies:
     process "~0.11.0"
+
+tiny-segmenter@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/tiny-segmenter/-/tiny-segmenter-0.2.0.tgz#4f91115efaa90d1f98b481623b0dcc830a9e1a69"
+  integrity sha1-T5ERXvqpDR+YtIFiOw3MgwqeGmk=
 
 tmp@0.0.28:
   version "0.0.28"

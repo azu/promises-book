@@ -4,6 +4,7 @@
   ],
   "filters": {},
   "rules": {
+    "@textlint-ja/no-synonyms": true,
     "prh": {
       "rulePaths": [
         "./prh.yml"
