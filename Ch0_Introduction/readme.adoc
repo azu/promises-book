@@ -3,14 +3,14 @@
 
 == 書籍の目的
 
-この書籍はJavaScript標準仕様の<<es-promises,ECMAScript Promises>>という仕様を中心にし、
-JavaScriptにおけるPromiseについて学ぶことを目的とした書籍です。
+この書籍はJavaScript標準仕様の<<es-promises,ECMAScript Promises>>を中心にし、
+JavaScriptにおけるPromiseについて学ぶことが目的です。
 
-この書籍を読むことで学べることとして次の3つを目標としています
+この書籍では、次の3つを目標としています。
 
-- Promiseについて学び、パターンやテストを扱えるようになること
+- Promiseについて学び、パターンやテストを扱えること
 - Promiseの向き不向きについて学び、何でもPromiseで解決するべきではないと知ること
-- ES Promisesを元に基本をよく学び、より発展した形を自分で形成できるようになること
+- ES Promisesを元に基本をよく学び、より発展した形を自分で形成できること
 
 この書籍では、先程も述べたように<<es-promises,ES Promises>>、
 つまりJavaScriptの標準仕様(ECMAScript)をベースとしたPromiseについて書かれています。
@@ -19,13 +19,13 @@ JavaScriptにおけるPromiseについて学ぶことを目的とした書籍で
 またES Promisesは元が<<promises-aplus,Promises/A+>>というコミュニティベースの仕様であるため、多くの実装ライブラリがあります。
 
 ブラウザネイティブの機能、またはライブラリを使うことで今すぐ利用できるPromiseについて基本的なAPIから学んでいきます。
-その中でPromiseの得意/不得意を知り、Promiseを活用したJavaScriptを書けるようになることを目的としています。
+その中でPromiseの得意/不得意を知り、Promiseを活用したJavaScriptを書けることを目的としています。
 
 == 本書を読むにあたって
 
-この書籍ではJavaScriptの基本的な文法や機能をすでに学習していることを前提にしています。
+この書籍では、JavaScriptの基本的な文法や機能をすでに学習している前提です。
 
-次のいずれかの書籍を読んだことがあれば、十分読み解くことができる内容だと思います。
+次のいずれかの書籍を読んでいれば、十分読み解ける内容だと思います。
 
 - https://www.oreilly.co.jp/books/9784873113913/[JavaScript: The Good Parts]
 - https://www.oreilly.co.jp/books/9784873114880/[JavaScriptパターン]
@@ -35,13 +35,13 @@ JavaScriptにおけるPromiseについて学ぶことを目的とした書籍で
 - https://gihyo.jp/book/2016/978-4-7741-8411-1[改訂新版JavaScript本格入門]
 
 この書籍ではECMAScript 2015(ES2015)で追加された構文を利用するため、JavaScriptの基本的な文法や機能に不安がある方は、次の書籍を参照してください。
-ES2015以降をベースに、JavaScriptの基本的なことを一から学べる書籍になっています。
+ES2015以降をベースに、JavaScriptの基礎を一から学べる書籍です。
 この書籍と同一の著者によって書かれており、ウェブでも公開されています。
 
 - https://jsprimer.net[JavaScript Primer #jsprimer]
 
 または、JavaScriptでウェブアプリケーションを書いた経験やNode.js でコマンドラインアプリやサーバサイドを書いたことがあれば、
-どこかで見たことがあるような内容が出てくるかもしれません。
+どこかで見たことがある内容が出てくるかもしれません。
 
 一部セクションではNode.js環境での話となるため、Node.jsについて軽くでも知っておくとより理解がしやすいと思います。
 
@@ -52,9 +52,9 @@ ES2015以降をベースに、JavaScriptの基本的なことを一から学べ�
 * Promiseに関する用語は<<promise-glossary,用語集>>を参照する。
 ** 大体、初回に出てきた際にはリンクを貼っています。
 * インスタンスメソッドを instance#method という表記で示す。
-** たとえば、`Promise#then` という表記は、Promiseのインスタンスオブジェクトの `then` というメソッドを示しています。
+** たとえば、`Promise#then` という表記は、Promiseのインスタンスオブジェクトの `then` メソッドを示しています。
 * オブジェクトメソッドを object.method という表記で示す。
-** これはJavaScriptの意味そのままで、`Promise.all` なら静的メソッドのことを示しています。
+** これはJavaScriptの意味そのままで、`Promise.all` なら静的メソッドを示しています。
 
 [NOTE]
 この部分には文章についての補足が書かれています。
@@ -62,10 +62,10 @@ ES2015以降をベースに、JavaScriptの基本的なことを一から学べ�
 ifeval::["{backend}" == "html5"]
 == 推奨ブラウザ
 
-この書籍を読むにあたっての推奨ブラウザとしては、ECMAScript 2015(ES2015)以降をサポートしているブラウザとなっています。
-Promiseは、ES2015で導入されたこととサンプルコードにES2015の文法を利用しているためです。
+この書籍を読むにあたっての推奨ブラウザとしては、ECMAScript 2015(ES2015)以降をサポートしているブラウザです。
+Promiseは、ES2015で導入されたサンプルコードにES2015の文法を利用しているためです。
 
-また、推奨環境ではありませんがiOSやAndroidなどのモバイル端末でも閲覧は可能です。
+また、推奨環境ではありませんがiOSやAndroidなどのモバイル端末でも閲覧はできます。
 
 ifeval::["{backend}" == "html5"]
 ++++
@@ -78,7 +78,7 @@ endif::[]
 == サンプルコードの実行
 
 このサイトでは、Promiseの<<promise-polyfill,Polyfillライブラリ>>を読み込んでいるため、
-Promiseをサポートしていないブラウザでもサンプルコードを実行することができます。
+Promiseをサポートしていないブラウザでもサンプルコードを実行できます。
 
 また、以下のように実行できるサンプルコードには実行ボタンが表示されています。
 
@@ -98,31 +98,31 @@ promise.then((value) => {
 ++++
 <div class="tutorial-area">
 <button class="mirror-console-button mirror-console-run">実行</button> ボタンを押すことで、
-サンプルコードがエディタとなりコードを実行する事が出来ます。<br />
-<button class="mirror-console-button mirror-console-clear">ログをクリア</button>ボタンでは実行結果の console.log で出力した内容を消すことができます。
+サンプルコードがエディタとなりコードを実行できます。<br />
+<button class="mirror-console-button mirror-console-clear">ログをクリア</button>ボタンでは実行結果の console.log で出力した内容を消せます。
 <br />
 <button class="mirror-console-button mirror-console-exit">終了</button>ボタンではエディタモードを終了します。
 </div>
 ++++
-気になるコードはその場で書き換えて実行することができるため、理解するための補助として使って下さい。
+気になるコードはその場で書き換えて実行できるため、理解するための補助として使って下さい。
 
 endif::[]
 
 == 本書のソースコード/ライセンス
 
-この書籍に登場するサンプルのソースコード また その文章のソースコードは全てGitHubから取得することができます。
+この書籍に登場するサンプルのソースコード また その文章のソースコードは全てGitHubから取得できます。
 
 この書籍は http://asciidoctor.org/[AsciiDoc] という形式で書かれています。
 
 - https://github.com/azu/promises-book[azu/promises-book] image:https://travis-ci.org/azu/promises-book.svg?branch=master["Build Status", link="https://travis-ci.org/azu/promises-book"]
 
-またリポジトリには書籍中に出てくるサンプルコードのテストも含まれています。
+また、リポジトリには書籍中に出てくるサンプルコードのテストも含まれています。
 
-ソースコードのライセンスはMITライセンスで、文章はCC-BY-NCで利用することができます。
+ソースコードのライセンスはMITライセンスで、文章はCC-BY-NCで利用できます。
 
 == 意見や疑問点
 
-意見や疑問点がある場合はGitHubに直接Issueとして立てることができます。
+意見や疑問点がある場合はGitHubに直接Issueを作成できます。
 
 * https://github.com/azu/promises-book/issues?state=open[Issues · azu/promises-book]
 
