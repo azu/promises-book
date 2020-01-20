@@ -90,7 +90,7 @@ resolveされたことにより _promiseオブジェクトがFulFilledの状態�
 [source,javascript]
 ----
 const URL = "https://httpbin.org/get";
-fetchURL(URL).then((value) => { // <1>
+fetchURL(URL).then(function onFulfilled(value){ // <1>
     console.log(value);
 });
 ----
@@ -112,9 +112,9 @@ rejectされたことより _promiseオブジェクトがRejectedの状態にな
 [source,javascript]
 ----
 const URL = "https://httpbin.org/status/500"; // <1>
-fetchURL(URL).then((value) => {
+fetchURL(URL).then(function onFulfilled(value){
     console.log(value);
-}).catch((error) => { // <2>
+}).catch(function onRejected(error){ // <2>
     console.error(error);
 });
 ----
