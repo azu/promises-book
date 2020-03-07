@@ -57,7 +57,7 @@ include::../json/book.json[]
 ``fetch``メソッドはPromiseを返します。このPromiseインスタンスはリクエストのレスポンスを表す``Response``オブジェクトでresolveされます。
 ``Response#json``メソッドもPromiseを返します。このPromiseインスタンスは取得したリソースをJSONとしてパースしたオブジェクトでresolveされます。
 
-``fetchBookTitle``関数は、次のように``fetch``メソッドで取得したJSONの``title``プロパティでreoslveされるPromiseインスタンスを返します。
+``fetchBookTitle``関数は、次のように``fetch``メソッドで取得したJSONの``title``プロパティでresolveされるPromiseインスタンスを返します。
 
 [role="executable"]
 [doctest-state="disabled"]
