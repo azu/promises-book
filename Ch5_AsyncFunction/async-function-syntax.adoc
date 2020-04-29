@@ -40,7 +40,7 @@ Async Functionとして定義した関数は必ず``Promise``インスタンス�
 具体的な例を順番に見ていきます。
 
 まず、Async FunctionはPromise以外の値をreturnした場合、その返り値で解決される**Fulfilled**なPromiseを返します。
-これは、返した値が``Promise.resolve``されているのとほとんど感覚です。
+これは、返した値が``Promise.resolve``されているのとほとんど同じ感覚です。
 
 [role="executable"]
 [source,javascript]

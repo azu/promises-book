@@ -63,7 +63,7 @@ XHRで `onerror` のイベントが呼ばれた場合はもちろんエラーな
 
 === promiseオブジェクトに処理を書く
 
-先ほどの作成したpromiseオブジェクトを返す関数を実際に使ってみましょう
+先ほどの作成したpromiseオブジェクトを返す関数を実際に使ってみましょう。
 
 [source,javascript]
 fetchURL("https://httpbin.org/get"); // => promiseオブジェクトが返ってくる
@@ -71,7 +71,7 @@ fetchURL("https://httpbin.org/get"); // => promiseオブジェクトが返って
 <<promises-overview,Promises Overview>> でも簡単に紹介したようにpromiseオブジェクトは幾つかインスタンスメソッドを持っており、
 これを使いpromiseオブジェクトの状態に応じて一度だけ呼ばれるコールバックとなる関数を登録します。
 
-promiseオブジェクトに登録する処理は以下の2種類が主となります
+promiseオブジェクトに登録する処理は以下の2種類が主となります。
 
 * promiseオブジェクトが **resolve** された時の処理(onFulfilled)
 * promiseオブジェクトが **reject** された時の処理(onRejected)

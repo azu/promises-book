@@ -8,7 +8,7 @@
 `Promise.all` は、渡した全てのpromiseがFulFilled または Rejectedになるまで次の処理を待ちましたが、
 `Promise.race` は、どれか一つでもpromiseがFulFilled または Rejectedになったら次の処理を実行します。
 
-Promise.allのときと同じく、タイマーを使った `Promise.race` の例を見てみましょう
+Promise.allのときと同じく、タイマーを使った `Promise.race` の例を見てみましょう。
 
 [role="executable"]
 [source,javascript]
