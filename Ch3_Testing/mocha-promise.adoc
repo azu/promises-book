@@ -70,7 +70,7 @@ it("is bad pattern", () => {
 
 このテストの目的とは以下のようになっています。
 
-`mayBeRejected()` が返すpromiseオブジェクトがFulFilledとなった場合::
+`mayBeRejected()` が返すpromiseオブジェクトがFulfilledとなった場合::
     テストを失敗させる
 `mayBeRejected()` が返すpromiseオブジェクトがRejectedとなった場合::
     `assert` でErrorオブジェクトをチェックする
@@ -79,7 +79,7 @@ it("is bad pattern", () => {
 上記のテストコードでは、Rejectedとなって `onRejected` に登録された関数が呼ばれるためテストはパスしますね。
 
 このテストで問題になるのは `mayBeRejected()` で返されたpromiseオブジェクトが
-**FulFilledとなった場合**に、必ずテストがパスしてしまうという問題が発生します。
+**Fulfilledとなった場合**に、必ずテストがパスしてしまうという問題が発生します。
 
 [source,javascript]
 ----
@@ -92,7 +92,7 @@ it("is bad pattern", () => {
     });
 });
 ----
-<1> 返されるpromiseオブジェクトはFulFilledとなる
+<1> 返されるpromiseオブジェクトはFulfilledとなる
 
 この場合、`catch` で登録した `onRejected` の関数はそもそも呼ばれないため、
 `assert` がひとつも呼ばれることなくテストが必ずパスしてしまいます。
@@ -135,7 +135,7 @@ image::../Ch2_HowToWrite/img/then_catch.png[Then Catch flow]
 
 一番単純な方法としては、以下のようにそれぞれの状態の場合にどうなるのかをテストコードに書く方法です。
 
-FulFilledとなった場合::
+Fulfilledとなった場合::
     意図したとおりテストが失敗する
 Rejectedとなった場合::
     `assert` でテストを行える
@@ -148,14 +148,14 @@ function mayBeRejected() {
     return Promise.resolve();
 }
 it("catch -> then", () => {
-    // FulFilledとなった場合はテストは失敗する
+    // Fulfilledとなった場合はテストは失敗する
     return mayBeRejected().then(failTest, (error) => {
         assert(error.message === "woo");
     });
 });
 ----
 
-このように書くことで、FulFilledとなった場合は失敗するテストコードを書くことができます。
+このように書くことで、Fulfilledとなった場合は失敗するテストコードを書くことができます。
 
 .Promise onRejected test
 image::img/promise-test.png[Promise onRejected test]

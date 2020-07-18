@@ -103,7 +103,7 @@ it("should use `done` for test?", (done) => {
 
 
 <<Promise.resolve, `Promise.resolve`>> はpromiseオブジェクトを返しますが、
-そのpromiseオブジェクトはFulFilledの状態になります。
+そのpromiseオブジェクトはFulfilledの状態になります。
 その結果として `.then` で登録したコールバック関数が呼び出されます。
 
 <<promise-is-always-async,コラム: Promiseは常に非同期?>> でも出てきたように、

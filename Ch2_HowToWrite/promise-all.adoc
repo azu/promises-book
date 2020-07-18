@@ -8,7 +8,7 @@
 
 先ほどの例の `fetchURL` はXHRによる通信を抽象化したpromiseオブジェクトを返しています。
 `Promise.all` に通信を抽象化したpromiseオブジェクトの配列を渡すことで、
-全ての通信が完了(FulFilledまたはRejected)した時に、次の `.then` を呼び出すことができます。
+全ての通信が完了(FulfilledまたはRejected)した時に、次の `.then` を呼び出すことができます。
 
 [role="executable"]
 [source,javascript]
@@ -56,7 +56,7 @@ main().then((results) => {
 include::embed/embed-promise-all-timer.js[]
 ----
 
-`timerPromisefy` は引数で指定したミリ秒後に、その指定した値でFulFilledとなる
+`timerPromisefy` は引数で指定したミリ秒後に、その指定した値でFulfilledとなる
 promiseオブジェクトを返してくれます。
 
 `Promise.all` に渡してるのは、それを複数作り配列にしたものですね。

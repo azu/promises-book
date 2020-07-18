@@ -118,7 +118,7 @@ Promiseという機能についていう時は大文字の単数を使う。
 
 小文字で始まるpromiseはpromiseオブジェクトのみにする。
 
-### resolve,reject / FulFilled,Rejected の表現
+### resolve,reject / Fulfilled,Rejected の表現
 
 #### resolve と reject の注釈
 
@@ -127,18 +127,18 @@ Promiseという機能についていう時は大文字の単数を使う。
 
 #### promiseオブジェクトが主語の場合
 
-* "promiseオブジェクトがFulFilled または Rejectedとなった時" と表記する
-* 必ず大文字で **FulFilled** とする
+* "promiseオブジェクトがFulfilled または Rejectedとなった時" と表記する
+* 必ず大文字で **Fulfilled** とする
 
-#### resolve,reject / FulFilled,Rejected の使い分け
+#### resolve,reject / Fulfilled,Rejected の使い分け
 
 * "処理が成功した時" or "処理が失敗した時" という表現を使う場合、曖昧さが残らないように気をつける
     * たとえば、"処理が成功した場合は`onFulfilled`が呼ばれますが" というようにその結果についても触れる
 * `new Promise` の処理について述べるなら、"resolveした時" と書いてもよい。
     * "resolveされた時" とは書かない
-* `then`でのメソッドチェーン等、`new Promise`と直接関係ないケースの場合にはFulFilled,Rejectedを使う
+* `then`でのメソッドチェーン等、`new Promise`と直接関係ないケースの場合にはFulfilled,Rejectedを使う
 
-例) `Promise.race`は、promiseオブジェクトがどれか一つでもFulFilled または Rejectedになったら次の処理を実行します。
+例) `Promise.race`は、promiseオブジェクトがどれか一つでもFulfilled または Rejectedになったら次の処理を実行します。
 
 ## Asciidocのシンタックス
 

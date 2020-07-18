@@ -83,7 +83,7 @@ image::img/promise-onFulfilled_onRejected.png[promise-resolve-flow]
 まずは、`fetchURL` で通信が成功して値が取得できた場合の処理を書いてみましょう。
 
 この場合の _通信が成功した_ というのは、
-resolveされたことにより _promiseオブジェクトがFulFilledの状態になった_ 時ということですね。
+resolveされたことにより _promiseオブジェクトがFulfilledの状態になった_ 時ということですね。
 
 **resolve**された時の処理は、 <<promise.then,`.then`>> メソッドに呼びたい関数を渡すことで行えます。
 
