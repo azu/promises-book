@@ -2955,7 +2955,7 @@ resolveにはresponseの値のみをいれるだけで問題ありません。</
 </div>
 <div class="paragraph">
 <p>この場合の <em>通信が成功した</em> というのは、
-resolveされたことにより <em>promiseオブジェクトがFulFilledの状態になった</em> 時ということですね。</p>
+resolveされたことにより <em>promiseオブジェクトがFulfilledの状態になった</em> 時ということですね。</p>
 </div>
 <div class="paragraph">
 <p><strong>resolve</strong>された時の処理は、 <a href="#promise.then"><code>.then</code></a> メソッドに呼びたい関数を渡すことで行えます。</p>
@@ -3310,7 +3310,7 @@ outer promise // 2
 </div>
 <div class="paragraph">
 <p>JavaScriptは上から実行されていくため、まず最初に <code>&lt;1&gt;</code> が実行されますね。
-そして次に <code>resolve(42);</code> が実行され、この <code>promise</code> オブジェクトはこの時点で <code>42</code> という値にFulFilledされます。</p>
+そして次に <code>resolve(42);</code> が実行され、この <code>promise</code> オブジェクトはこの時点で <code>42</code> という値にFulfilledされます。</p>
 </div>
 <div class="paragraph">
 <p>次に、<code>promise.then</code> で <code>&lt;3&gt;</code> のコールバック関数を登録しますが、ここがこのコラムの焦点です。</p>
@@ -4010,11 +4010,11 @@ bPromise.then(<span class="keyword">function</span> (value) {
 <div class="sect2">
 <h3 id="ch2-promise-and-array">2.7. Promiseと配列</h3>
 <div class="paragraph">
-<p>ここまでで、promiseオブジェクトが FulFilled または Rejected となった時の処理は <a href="#promise.then"><code>.then</code></a> と <a href="#promise.catch"><code>.catch</code></a> で登録できることを学びました。</p>
+<p>ここまでで、promiseオブジェクトが Fulfilled または Rejected となった時の処理は <a href="#promise.then"><code>.then</code></a> と <a href="#promise.catch"><code>.catch</code></a> で登録できることを学びました。</p>
 </div>
 <div class="paragraph">
 <p>一つのpromiseオブジェクトなら、そのpromiseオブジェクトに対して処理を書けばよいですが、
-複数のpromiseオブジェクトが全てFulFilledとなった時の処理を書く場合はどうすればよいでしょうか?</p>
+複数のpromiseオブジェクトが全てFulfilledとなった時の処理を書く場合はどうすればよいでしょうか?</p>
 </div>
 <div class="paragraph">
 <p>たとえば、複数のXHR(非同期処理)が全て終わった後に、何かをしたいという事例を考えてみます。</p>
@@ -4263,7 +4263,7 @@ main().then(<span class="keyword">function</span> (value) {
 <div class="paragraph">
 <p>先ほどの例の <code>getURL</code> はXHRによる通信を抽象化したpromiseオブジェクトを返しています。
 <code>Promise.all</code> に通信を抽象化したpromiseオブジェクトの配列を渡すことで、
-全ての通信が完了(FulFilledまたはRejected)した時に、次の <code>.then</code> を呼び出すことができます。</p>
+全ての通信が完了(FulfilledまたはRejected)した時に、次の <code>.then</code> を呼び出すことができます。</p>
 </div>
 <div id="promise-all-xhr.js" class="listingblock executable">
 <div class="title">promise-all-xhr.js</div>
@@ -4367,7 +4367,7 @@ Promise.all([
 </div>
 </div>
 <div class="paragraph">
-<p><code>timerPromisefy</code> は引数で指定したミリ秒後に、その指定した値でFulFilledとなる
+<p><code>timerPromisefy</code> は引数で指定したミリ秒後に、その指定した値でFulfilledとなる
 promiseオブジェクトを返してくれます。</p>
 </div>
 <div class="paragraph">
@@ -4423,8 +4423,8 @@ promiseオブジェクトを返してくれます。</p>
 <p>使い方はPromise.allと同様で、promiseオブジェクトの配列を引数に渡します。</p>
 </div>
 <div class="paragraph">
-<p><code>Promise.all</code> は、渡した全てのpromiseがFulFilled または Rejectedになるまで次の処理を待ちましたが、
-<code>Promise.race</code> は、どれか一つでもpromiseがFulFilled または Rejectedになったら次の処理を実行します。</p>
+<p><code>Promise.all</code> は、渡した全てのpromiseがFulfilled または Rejectedになるまで次の処理を待ちましたが、
+<code>Promise.race</code> は、どれか一つでもpromiseがFulfilled または Rejectedになったら次の処理を実行します。</p>
 </div>
 <div class="paragraph">
 <p>Promise.allのときと同じく、タイマーを使った <code>Promise.race</code> の例を見てみましょう</p>
@@ -4452,12 +4452,12 @@ Promise.race([
 </div>
 </div>
 <div class="paragraph">
-<p>上記のコードだと、1ms後、32ms後、64ms後、128ms後にそれぞれpromiseオブジェクトがFulFilledとなりますが、
-一番最初に1msのものがFulFilledとなった時点で、<code>.then</code> が呼ばれます。
+<p>上記のコードだと、1ms後、32ms後、64ms後、128ms後にそれぞれpromiseオブジェクトがFulfilledとなりますが、
+一番最初に1msのものがFulfilledとなった時点で、<code>.then</code> が呼ばれます。
 また、<code>resolve(1)</code> が呼ばれるため <code>value</code> に渡される値も1となります。</p>
 </div>
 <div class="paragraph">
-<p>最初にFulFilledとなったpromiseオブジェクト以外は、その後呼ばれているのかを見てみましょう。</p>
+<p>最初にFulfilledとなったpromiseオブジェクト以外は、その後呼ばれているのかを見てみましょう。</p>
 </div>
 <div id="promise-race-other.js" class="listingblock executable">
 <div class="title">promise-race-other.js</div>
@@ -4822,7 +4822,7 @@ it(<span class="string"><span class="delimiter">'</span><span class="content">sh
 </div>
 <div class="paragraph">
 <p><a href="#Promise.resolve"><code>Promise.resolve</code></a> はpromiseオブジェクトを返しますが、
-そのpromiseオブジェクトはFulFilledの状態になります。
+そのpromiseオブジェクトはFulfilledの状態になります。
 その結果として <code>.then</code> で登録したコールバック関数が呼び出されます。</p>
 </div>
 <div class="paragraph">
@@ -5012,7 +5012,7 @@ it(<span class="string"><span class="delimiter">&quot;</span><span class="conten
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><code>mayBeRejected()</code> が返すpromiseオブジェクトがFulFilledとなった場合</dt>
+<dt class="hdlist1"><code>mayBeRejected()</code> が返すpromiseオブジェクトがFulfilledとなった場合</dt>
 <dd>
 <p>テストを失敗させる</p>
 </dd>
@@ -5027,7 +5027,7 @@ it(<span class="string"><span class="delimiter">&quot;</span><span class="conten
 </div>
 <div class="paragraph">
 <p>このテストで問題になるのは <code>mayBeRejected()</code> で返されたpromiseオブジェクトが
-<strong>FulFilledとなった場合</strong>に、必ずテストがパスしてしまうという問題が発生します。</p>
+<strong>Fulfilledとなった場合</strong>に、必ずテストがパスしてしまうという問題が発生します。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5045,7 +5045,7 @@ it(<span class="string"><span class="delimiter">&quot;</span><span class="conten
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>返されるpromiseオブジェクトはFulFilledとなる</td>
+<td>返されるpromiseオブジェクトはFulfilledとなる</td>
 </tr>
 </table>
 </div>
@@ -5110,7 +5110,7 @@ it(<span class="string"><span class="delimiter">&quot;</span><span class="conten
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">FulFilledとなった場合</dt>
+<dt class="hdlist1">Fulfilledとなった場合</dt>
 <dd>
 <p>意図したとおりテストが失敗する</p>
 </dd>
@@ -5129,7 +5129,7 @@ it(<span class="string"><span class="delimiter">&quot;</span><span class="conten
     <span class="keyword">return</span> Promise.resolve();
 }
 it(<span class="string"><span class="delimiter">&quot;</span><span class="content">catch -&gt; then</span><span class="delimiter">&quot;</span></span>, <span class="keyword">function</span> () {
-    <span class="comment">// FulFilledとなった場合はテストは失敗する</span>
+    <span class="comment">// Fulfilledとなった場合はテストは失敗する</span>
     <span class="keyword">return</span> mayBeRejected().then(failTest, <span class="keyword">function</span> (error) {
         assert(error.message === <span class="string"><span class="delimiter">&quot;</span><span class="content">woo</span><span class="delimiter">&quot;</span></span>);
     });
@@ -5137,7 +5137,7 @@ it(<span class="string"><span class="delimiter">&quot;</span><span class="conten
 </div>
 </div>
 <div class="paragraph">
-<p>このように書くことで、FulFilledとなった場合は失敗するテストコードを書くことができます。</p>
+<p>このように書くことで、Fulfilledとなった場合は失敗するテストコードを書くことができます。</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -6629,7 +6629,7 @@ Deferredはまだ処理が終わってないという状態や操作を抽象化
 </div>
 <div class="paragraph">
 <p>言い換えると、
-Promiseはこの値は将来的に正常な値(FulFilled)か異常な値(Rejected)が入るというものを予約したオブジェクトなのに対して、
+Promiseはこの値は将来的に正常な値(Fulfilled)か異常な値(Rejected)が入るというものを予約したオブジェクトなのに対して、
 Deferredはまだ処理が終わってないということを表すオブジェクトで、
 処理が終わった時の結果を取得する機構(Promise)に加えて処理を進める機構をもったものといえるかもしれません。</p>
 </div>
