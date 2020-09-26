@@ -8,7 +8,6 @@
 
 次のコードのように ``Promise#catch`` は ``Promise#then`` でのエラーハンドリングだけを簡潔に書くためのメソッドです。
 
-[role="executable"]
 [source,javascript]
 .Promise#catchとPromise#then
 ----
