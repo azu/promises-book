@@ -21,7 +21,6 @@ async function asyncMain() {
 しかし``await``式では非同期処理を実行し完了するまで、次の行（次の文）を実行しません。
 そのため``await``式を使うことで非同期処理が同期処理のように上から下へと順番に実行するような流れで書けます。
 
-[role="executable"]
 [source,js]
 ----
 // async functionは必ずPromiseを返す

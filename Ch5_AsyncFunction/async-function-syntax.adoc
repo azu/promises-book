@@ -5,7 +5,6 @@ Async Functionは関数の定義に``async``キーワードをつけることで
 JavaScriptの関数定義には関数宣言や関数式、Arrow Function、メソッドの短縮記法などがあります。
 どの定義方法でも``async``キーワードを前につけるだけでAsync Functionとして定義できます。
 
-[role="executable"]
 [source,javascript]
 ----
 // 関数宣言のAsync Function版
