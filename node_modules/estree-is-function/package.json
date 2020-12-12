@@ -1,0 +1,33 @@
+{
+  "name": "estree-is-function",
+  "description": "check if an AST node is a function of some sort",
+  "version": "1.0.0",
+  "author": "Renée Kooi <renee@kooi.me>",
+  "bugs": {
+    "url": "https://github.com/goto-bus-stop/estree-is-function/issues"
+  },
+  "devDependencies": {
+    "acorn": "^5.2.1",
+    "standard": "^10.0.3",
+    "tape": "^4.8.0"
+  },
+  "homepage": "https://github.com/goto-bus-stop/estree-is-function",
+  "keywords": [
+    "arrow-function",
+    "check",
+    "detect",
+    "estree",
+    "function",
+    "functiondeclaration",
+    "functionexpression"
+  ],
+  "license": "Apache-2.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/goto-bus-stop/estree-is-function.git"
+  },
+  "scripts": {
+    "test": "standard && node test.js"
+  }
+}

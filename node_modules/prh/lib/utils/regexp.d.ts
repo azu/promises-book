@@ -1,0 +1,14 @@
+export declare const supportRegExpUnicodeFlag: boolean;
+export declare const jpHira: RegExp;
+export declare const jpKana: RegExp;
+export declare const jpKanji: RegExp;
+export declare const jpChar: RegExp;
+export declare function concat(args: (string | RegExp)[], flags?: string): RegExp;
+export declare function combine(args: (string | RegExp)[], flags?: string): RegExp;
+export declare function addBoundary(arg: string | RegExp): RegExp;
+export declare function parseRegExpString(str: string): RegExp | null;
+export declare function spreadAlphaNum(str: string): RegExp;
+export declare function addDefaultFlags(regexp: RegExp): RegExp;
+export declare function escapeSpecialChars(str: string): string;
+export declare function collectAll(regexp: RegExp, src: string): RegExpExecArray[];
+export declare function equals(a: RegExp, b: RegExp): boolean;

@@ -1,0 +1,21 @@
+# Rules for Re:VIEW
+meta:
+  reviewer:
+    - vvakame
+    - mhidaka
+  related: https://github.com/kmuto/review/ 
+  rules:   https://github.com/prh/rules
+
+version: 1
+rules:
+  - expected: "@<$1>{$2}" # 先頭 @ はyaml的にアレなのでダブルクォートで囲む
+    pattern:  /@([^{<>]+)\{([^}]+)\}/
+    specs:
+      - from: "@list{foo}"
+        to:   "@<list>{foo}"
+      - from: "@<list>{foo}"
+        to:   "@<list>{foo}"
+    prh: Re:VIEW記法の書き方を間違えていませんか？
+  - expected: ""
+    pattern:  /[\x00-\x08\x0E-\x1F\x7F]+/
+    prh: 不可視の制御コードが混入しています

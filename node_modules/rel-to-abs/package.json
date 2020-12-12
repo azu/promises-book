@@ -1,0 +1,29 @@
+{
+  "name": "rel-to-abs",
+  "version": "0.1.0",
+  "description": "Convert relative URLs to absolute URLs given an HTML source",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -R spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/auth0/rel-to-abs"
+  },
+  "keywords": [
+    "html",
+    "relative",
+    "absolute",
+    "links",
+    "img",
+    "html"
+  ],
+  "devDependencies": {
+    "mocha": "*"
+  },
+  "author": "Rob W",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/auth0/rel-to-abs/issues"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "name": "espurify",
+  "description": "Clone new AST without extra properties",
+  "version": "1.7.0",
+  "author": {
+    "name": "Takuto Wada",
+    "email": "takuto.wada@gmail.com",
+    "url": "https://github.com/twada"
+  },
+  "bugs": "https://github.com/estools/espurify/issues",
+  "dependencies": {
+    "core-js": "^2.0.0"
+  },
+  "devDependencies": {
+    "acorn": "^4.0.11",
+    "babel-types": "^6.3.20",
+    "babylon": "^6.3.20",
+    "browserify": "^13.0.0",
+    "derequire": "^2.0.2",
+    "dereserve": "^1.0.0",
+    "esprima": "^2.6.0",
+    "estraverse": "^4.1.0",
+    "jshint": "^2.8.0",
+    "licensify": "^3.1.0",
+    "mocha": "^2.3.2"
+  },
+  "files": [
+    "CHANGELOG.md",
+    "MIT-LICENSE.txt",
+    "README.md",
+    "index.js",
+    "lib",
+    "build/espurify.js",
+    "package.json"
+  ],
+  "homepage": "https://github.com/estools/espurify",
+  "keywords": [
+    "ast",
+    "estree",
+    "ecmascript",
+    "es6"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/estools/espurify.git"
+  },
+  "scripts": {
+    "preversion": "npm test",
+    "version": "npm run dist && git add -A build",
+    "dist": "browserify index.js --plugin licensify --standalone espurify | dereserve | derequire > ./build/espurify.js",
+    "lint": "jshint index.js",
+    "test": "npm run lint && mocha test"
+  }
+}

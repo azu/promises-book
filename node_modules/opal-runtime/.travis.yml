@@ -1,0 +1,11 @@
+sudo: false
+dist: trusty
+
+language: node_js
+
+node_js:
+- 'lts/*'
+
+script:
+- npm run lint
+- npm run test
