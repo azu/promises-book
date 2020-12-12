@@ -151,7 +151,7 @@ Asciidocでこの書籍は書かれているが、[Asciidoctor](https://asciidoc
 
 AngularJSのGit Commit Guidelinesをベースとする。
 
-- [conventional-changelog/angular.md at master · ajoslin/conventional-changelog](https://github.com/ajoslin/conventional-changelog/blob/master/conventions/angular.md "conventional-changelog/angular.md at master · ajoslin/conventional-changelog")
+- [conventional-changelog/angular.md at master · ajoslin/conventional-changelog](https://github.com/ajoslin/conventional-changelog/blob/410cf5dfed2494874d3ed2f9acb6ad6bd51cdc1c/conventions/angular.md "conventional-changelog/angular.md at master · ajoslin/conventional-changelog")
 
 以下のような形で1行目に概要、3行目から本文、最後に関連するIssue(任意)を書く。
 
