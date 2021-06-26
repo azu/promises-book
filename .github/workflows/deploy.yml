@@ -1,6 +1,7 @@
 name: deploy
 on: [push, pull_request]
-permissions: read-all
+permissions:
+  contents: write
 jobs:
   deploy:
     name: "Build and Deploy"
