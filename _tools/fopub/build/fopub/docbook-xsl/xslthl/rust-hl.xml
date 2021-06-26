@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+Syntax highlighting definition for Rust
+
+xslthl - XSLT Syntax Highlighting
+http://sourceforge.net/projects/xslthl/
+Copyright (C) 2005-2008 Michal Molhanec, Jirka Kosek, Michiel Hendriks
+
+This software is provided 'as-is', without any express or implied
+warranty.  In no event will the authors be held liable for any damages
+arising from the use of this software.
+
+Permission is granted to anyone to use this software for any purpose,
+including commercial applications, and to alter it and redistribute it
+freely, subject to the following restrictions:
+
+1. The origin of this software must not be misrepresented; you must not
+   claim that you wrote the original software. If you use this software
+   in a product, an acknowledgment in the product documentation would be
+   appreciated but is not required.
+2. Altered source versions must be plainly marked as such, and must not be
+   misrepresented as being the original software.
+3. This notice may not be removed or altered from any source distribution.
+
+Michal Molhanec <mol1111 at users.sourceforge.net>
+Jirka Kosek <kosek at users.sourceforge.net>
+Michiel Hendriks <elmuerte at users.sourceforge.net>
+Jens Getreu <getreu at web.de>
+-->
+<highlighters>
+	<highlighter type="multiline-comment">
+		<start>/**</start>
+		<end>*/</end>
+		<style>doccomment</style>
+	</highlighter>
+	<highlighter type="oneline-comment">
+		<start><![CDATA[/// ]]></start>
+		<style>doccomment</style>
+	</highlighter>
+	<highlighter type="multiline-comment">
+		<start>/*</start>
+		<end>*/</end>
+	</highlighter>
+	<highlighter type="oneline-comment">//</highlighter>
+	<highlighter type="oneline-comment">
+		<!-- use the online-comment highlighter to detect directives -->
+		<start>#</start>
+		<lineBreakEscape>\</lineBreakEscape>
+		<style>directive</style>
+		<solitary/>
+	</highlighter>
+	<highlighter type="string">
+		<string>"</string>
+		<escape>\</escape>
+        <spanNewLines/>
+	</highlighter>
+	<highlighter type="string">
+		<string>'</string>
+		<escape>\</escape>
+	</highlighter>
+	<highlighter type="string">
+		<string>r##"</string>
+		<endString>"##</endString>
+	</highlighter>
+	<highlighter type="string">
+		<string>r###"</string>
+		<endString>"###</endString>
+	</highlighter>
+	<highlighter type="string">
+		<string>r#"</string>
+		<endString>"#</endString>
+	</highlighter>
+	<highlighter type="hexnumber">
+		<prefix>0x</prefix>
+		<thousands>_</thousands>
+		<suffix>u8</suffix>
+		<suffix>i8</suffix>
+		<suffix>u16</suffix>
+		<suffix>i16</suffix>
+		<suffix>u32</suffix>
+		<suffix>i32</suffix>
+		<suffix>u64</suffix>
+		<suffix>i64</suffix>
+		<suffix>isize</suffix>
+		<suffix>usize</suffix>
+	</highlighter>
+	<highlighter type="hexnumber">
+		<prefix>0o</prefix>
+		<thousands>_</thousands>
+		<suffix>u8</suffix>
+		<suffix>i8</suffix>
+		<suffix>u16</suffix>
+		<suffix>i16</suffix>
+		<suffix>u32</suffix>
+		<suffix>i32</suffix>
+		<suffix>u64</suffix>
+		<suffix>i64</suffix>
+		<suffix>isize</suffix>
+		<suffix>usize</suffix>
+	</highlighter>
+	<highlighter type="hexnumber">
+		<prefix>0b</prefix>
+		<thousands>_</thousands>
+		<suffix>u8</suffix>
+		<suffix>i8</suffix>
+		<suffix>u16</suffix>
+		<suffix>i16</suffix>
+		<suffix>u32</suffix>
+		<suffix>i32</suffix>
+		<suffix>u64</suffix>
+		<suffix>i64</suffix>
+		<suffix>isize</suffix>
+		<suffix>usize</suffix>
+	</highlighter>
+	<highlighter type="number">
+		<point>.</point>
+		<thousands>_</thousands>
+		<suffix>u8</suffix>
+		<suffix>i8</suffix>
+		<suffix>u16</suffix>
+		<suffix>i16</suffix>
+		<suffix>u32</suffix>
+		<suffix>i32</suffix>
+		<suffix>u64</suffix>
+		<suffix>i64</suffix>
+		<suffix>isize</suffix>
+		<suffix>usize</suffix>
+		<exponent>E</exponent>
+		<suffix>f32</suffix>
+		<suffix>f64</suffix>
+		<suffix>_f32</suffix>
+		<suffix>_f64</suffix>
+	</highlighter>
+	<highlighter type="keywords">
+		<!-- Rust keywords -->
+		<keyword>match</keyword>
+		<keyword>if</keyword>
+		<keyword>else</keyword>
+		<keyword>for</keyword>
+		<keyword>loop</keyword>
+		<keyword>while</keyword>
+		<keyword>type</keyword>
+		<keyword>struct</keyword>
+		<keyword>enum</keyword>
+		<keyword>union</keyword>
+		<keyword>as</keyword>
+		<keyword>break</keyword>
+		<keyword>box</keyword>
+		<keyword>continue</keyword>
+		<keyword>extern</keyword>
+		<keyword>fn</keyword>
+		<keyword>in</keyword>
+		<keyword>impl</keyword>
+		<keyword>let</keyword>
+		<keyword>pub</keyword>
+		<keyword>return</keyword>
+		<keyword>super</keyword>
+		<keyword>unsafe</keyword>
+		<keyword>where</keyword>
+		<keyword>mod</keyword>
+		<keyword>trait</keyword>
+		<keyword>move</keyword>
+		<keyword>mut</keyword>
+		<keyword>ref</keyword>
+		<keyword>static</keyword>
+		<keyword>const</keyword>
+		<keyword>crate</keyword>
+		<keyword>isize</keyword>
+		<keyword>usize</keyword>
+		<keyword>char</keyword>
+		<keyword>bool</keyword>
+		<keyword>u8</keyword>
+		<keyword>u16</keyword>
+		<keyword>u32</keyword>
+		<keyword>u64</keyword>
+		<keyword>f32</keyword>
+		<keyword>f64</keyword>
+		<keyword>i8</keyword>
+		<keyword>i32</keyword>
+		<keyword>i64</keyword>
+		<keyword>str</keyword>
+		<keyword>Self</keyword>
+		<keyword>Copy</keyword>
+		<keyword>Send</keyword>
+		<keyword>Sized</keyword>
+		<keyword>Sync</keyword>
+		<keyword>Drop</keyword>
+		<keyword>Fn</keyword>
+		<keyword>FnMut</keyword>
+		<keyword>FnOnce</keyword>
+		<keyword>Box</keyword>
+		<keyword>ToOwned</keyword>
+		<keyword>Clone</keyword>
+		<keyword>PartialEq</keyword>
+		<keyword>PartialOrd</keyword>
+		<keyword>Eq</keyword>
+		<keyword>Ord</keyword>
+		<keyword>AsRef</keyword>
+		<keyword>AsMut</keyword>
+		<keyword>Into</keyword>
+		<keyword>From</keyword>
+		<keyword>Default</keyword>
+		<keyword>Iterator</keyword>
+		<keyword>Extend</keyword>
+		<keyword>IntoIterator</keyword>
+		<keyword>DoubleEndedIterator</keyword>
+		<keyword>ExactSizeIterator</keyword>
+		<keyword>Option</keyword>
+		<keyword>Some</keyword>
+		<keyword>None</keyword>
+		<keyword>Result</keyword>
+		<keyword>Ok</keyword>
+		<keyword>Err</keyword>
+		<keyword>SliceConcatExt</keyword>
+		<keyword>String</keyword>
+		<keyword>ToString</keyword>
+		<keyword>Vec</keyword>
+		<keyword>self</keyword>
+		<keyword>true</keyword>
+		<keyword>false</keyword>
+		
+		<!-- reserved, but not implemented yet -->
+		<keyword>alignof</keyword>
+		<keyword>become</keyword>
+		<keyword>offsetof</keyword>
+		<keyword>priv</keyword>
+		<keyword>pure</keyword>
+		<keyword>sizeof</keyword>
+		<keyword>typeof</keyword>
+		<keyword>unsized</keyword>
+		<keyword>yield</keyword>
+		<keyword>abstract</keyword>
+		<keyword>virtual</keyword>
+		<keyword>final</keyword>
+		<keyword>override</keyword>
+		<keyword>macro</keyword>
+	</highlighter>
+</highlighters>
