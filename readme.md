@@ -6,7 +6,10 @@ JavaScript Promiseについての薄い電子書籍です。
 - PDF版: [https://azu.github.io/promises-book/javascript-promise-book.pdf](https://azu.github.io/promises-book/javascript-promise-book.pdf)
 - おまけ(付録): [https://gumroad.com/l/javascript-promise](https://gumroad.com/l/javascript-promise "JavaScript Promiseの本 付録")
 
-寄付などがしたい方は、[付録を任意の値段で購入できる](https://gumroad.com/l/javascript-promise "JavaScript Promiseの本 付録")のでこちらを代用して下さい。
+作者をサポートしたい場合は、次の手段が利用できます。
+
+- GitHub Sponsorsで[作者に対してmonthly/onetimeで支援](https://github.com/sponsors/azu)できます
+- Gumroadで[付録を任意の値段で購入](https://gumroad.com/l/javascript-promise "JavaScript Promiseの本 付録")できます。
 
 過去のバージョンについては次のページから参照できます。
 
