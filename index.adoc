@@ -59,9 +59,10 @@ icon:rss[2x, link=https://github.com/azu/promises-book/releases.atom] 更新情�
 </div>
 ++++
 
-作者に対して寄付がしたい人は https://github.com/sponsors/azu[GitHub Sponsors] でサポートできます。
+作者を金銭的に支援がしたい人は https://github.com/sponsors/azu[GitHub Sponsors] でサポートできます。
 
 - https://github.com/sponsors/azu[Sponsor @azu on GitHub Sponsors]
+    - Monthly または Onetimeでの支援ができます
 
 この電子書籍の作り方に興味がある方は、
 以下から https://gumroad.com/l/javascript-promise[おまけ] をダウンロードすることができます。
