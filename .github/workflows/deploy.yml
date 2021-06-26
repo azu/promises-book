@@ -21,7 +21,6 @@ jobs:
         run: yarn install && bundle install --path vendor/bundle
       - name: Build
         run: |
-          make test
           make html
           make pdf
           "./_tools/check-to-deploy.sh"
