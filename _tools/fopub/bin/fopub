@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+parent_dir = File.dirname(File.absolute_path(File.dirname(__FILE__)))
+if /cygwin|mswin|mingw|bccwin|wince|emx/ =~ RUBY_PLATFORM
+  # TODO: test this code on Windows
+  command = 'cmd.exe'
+  args = ['/c', File.join(parent_dir, 'fopub.bat')].concat(ARGV)
+else
+  command = File.join(parent_dir, 'fopub')
+  args = ARGV
+end
+exec command, *args
