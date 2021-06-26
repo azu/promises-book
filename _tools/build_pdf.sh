@@ -4,7 +4,8 @@ set -e
 
 declare parentDir=$(cd $(dirname $(cd $(dirname $0);pwd));pwd)
 declare currentDir=$(cd $(dirname $0);pwd)
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+declare projectDir=$(git rev-parse --show-toplevel);
+declare SCRIPT_DIR="${projectDir}/_tools"
 SRC_FILE=${parentDir}/$1
 
 # CHANGE Working directory
