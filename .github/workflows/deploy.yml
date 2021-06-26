@@ -33,4 +33,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./
-          exclude_assets: '.github,**/.gitignore,node_modules'
+          exclude_assets: '.github,**/.gitignore,node_modules,.bundle,.netlify,_tools' # .gitignoreを無視する
