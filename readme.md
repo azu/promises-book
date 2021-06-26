@@ -1,4 +1,4 @@
-# Promises Book [![Build Status](https://travis-ci.org/azu/promises-book.svg)](https://travis-ci.org/azu/promises-book) [![Gitter chat](https://badges.gitter.im/azu/promises-book.png)](https://gitter.im/azu/promises-book)
+# Promises Book [![test](https://github.com/azu/promises-book/actions/workflows/test.yml/badge.svg)](https://github.com/azu/promises-book/actions/workflows/test.yml) [![Gitter chat](https://badges.gitter.im/azu/promises-book.png)](https://gitter.im/azu/promises-book)
 
 JavaScript Promiseについての薄い電子書籍です。
 
