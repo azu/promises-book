@@ -1,0 +1,35 @@
+name: deploy
+on: [push, pull_request]
+permissions:
+  contents: write
+jobs:
+  deploy:
+    name: "Build and Deploy"
+    runs-on: ubuntu-18.04
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive # for _tools/fopub/
+      - name: setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - name: setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.6
+      - uses: reitzig/actions-asciidoctor@v2.0.0
+      - name: Install
+        run: yarn install && bundle install --path vendor/bundle
+      - name: Build
+        run: |
+          make html
+          make pdf
+          "./_tools/check-to-deploy.sh"
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/master'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
