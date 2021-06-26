@@ -1,5 +1,0 @@
-<!ENTITY % sgml.features "IGNORE">
-<!ENTITY % xml.features "INCLUDE">
-<!ENTITY euro "&#x20AC;">
-<!ENTITY % dbcent PUBLIC "-//OASIS//ENTITIES DocBook Character Entities V4.5//EN" "dbcentx.mod">
-%dbcent;
