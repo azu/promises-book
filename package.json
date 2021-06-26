@@ -67,7 +67,7 @@
     "rel-to-abs": "^0.1.0",
     "sinon": "^1.9.0",
     "sudachi-synonyms-dictionary": "^4.1.0",
-    "textlint": "^11.3.1",
+    "textlint": "^12.0.0",
     "textlint-plugin-asciidoctor": "^1.0.3",
     "textlint-rule-eslint": "3.2.1",
     "textlint-rule-prh": "^5.2.1",
