@@ -3,7 +3,7 @@ on: [push, pull_request]
 permissions: read-all
 jobs:
   deploy:
-    name: "Deploy WebSite"
+    name: "Build and Deploy"
     runs-on: ubuntu-18.04
     steps:
       - name: checkout
@@ -25,4 +25,9 @@ jobs:
           make html
           make pdf
           "./_tools/check-to-deploy.sh"
-
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/master'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
