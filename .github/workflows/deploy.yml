@@ -1,0 +1,28 @@
+name: deploy
+on: [push, pull_request]
+permissions: read-all
+jobs:
+  deploy:
+    name: "Deploy WebSite"
+    runs-on: ubuntu-18.04
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - name: setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.6
+      - uses: reitzig/actions-asciidoctor@v2.0.0
+      - name: Install
+        run: yarn install && bundle install --path vendor/bundle
+      - name: Build
+        run: |
+          make test
+          make html
+          make pdf
+          "./_tools/check-to-deploy.sh"
+
