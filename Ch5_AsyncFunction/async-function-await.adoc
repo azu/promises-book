@@ -1,4 +1,4 @@
-[async-function-await]
+[[async-function-await]]
 == ``await``式
 
 Async Functionはasync/awaitとも呼ばれることがあります。

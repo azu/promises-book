@@ -1,4 +1,4 @@
-[async-function-syntax]
+[[async-function-syntax]]
 == Async Functionの構文
 
 Async Functionは関数の定義に``async``キーワードをつけることで定義できます。
