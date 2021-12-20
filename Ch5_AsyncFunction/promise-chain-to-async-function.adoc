@@ -127,7 +127,7 @@ fetchResources(resources).then((results) => {
 Promise APIのみで``fetchResources``関数書いた場合は、コールバックの中で処理するためややこしい見た目になりがちです。
 一方で、Async Functionと``await``式を使った場合は、非同期処理での取得と追加を順番に行うだけとなりネストがなく見た目はシンプルです。
 
-[await-in-async-function]
+[[await-in-async-function]]
 === ``await``式はAsync Functionの中でのみ利用可能
 
 先ほどの``fetchResources``関数ではforループを利用していました。
