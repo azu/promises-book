@@ -4925,7 +4925,7 @@ fetchResources(resources).then((results) =&gt; {
 });</programlisting>
 <simpara>Promise APIのみで<literal>fetchResources</literal>関数書いた場合は、コールバックの中で処理するためややこしい見た目になりがちです。
 一方で、Async Functionと<literal>await</literal>式を使った場合は、非同期処理での取得と追加を順番に行うだけとなりネストがなく見た目はシンプルです。</simpara>
-<await-in-async-function xml:id="__literal_await_literal_式はasync_functionの中でのみ利用可能">
+<section xml:id="await-in-async-function">
 <title><literal>await</literal>式はAsync Functionの中でのみ利用可能</title>
 <simpara>先ほどの<literal>fetchResources</literal>関数ではforループを利用していました。
 このとき、配列の反復処理に<literal>Array#forEach</literal>メソッドを利用したくなるかもしれません。</simpara>
@@ -5035,7 +5035,7 @@ fetchResources(resources).then((results) =&gt; {
 });</programlisting>
 <simpara>この問題を解決する方法として、先ほどのようにコールバック関数を使わずにforループを使う方法があります。
 また、リソースを順番が重要ではない場合は、<literal>Promise.all</literal>メソッドを使い、複数の非同期処理を1つのPromiseとしてまとめる方法があります。</simpara>
-</await-in-async-function>
+</section>
 <relationship-promise-async-function xml:id="_promiseとasync_functionを組み合わせる">
 <title>PromiseとAsync Functionを組み合わせる</title>
 <simpara>Async Functionと<literal>await</literal>式でも非同期処理を同期処理のような見た目で書けます。

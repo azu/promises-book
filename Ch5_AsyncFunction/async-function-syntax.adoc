@@ -24,7 +24,7 @@ const object = {
 - Async Functionは必ずPromiseを返す
 - Async Function内では``await``式が利用できる
 
-[#async-function-return-promise]
+[[async-function-return-promise]]
 === Async FunctionはPromiseを返す
 
 Async Functionとして定義した関数は必ず``Promise``インスタンスを返します。
