@@ -4,7 +4,7 @@
 <article xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="en">
 <info>
 <title>JavaScript Promiseの本</title>
-<date>2021-06-26</date>
+<date>2021-12-20</date>
 <author>
 <personname>
 <firstname>azu</firstname>
@@ -4652,7 +4652,7 @@ Promiseでは結果を<literal>then</literal>メソッドのコールバック�
 <simpara>重要なこととしてAsync FunctionはPromiseの上に作られた構文です。
 そのためAsync Functionを理解するには、Promiseを理解する必要があることに注意してください。</simpara>
 </section>
-<async-function-syntax xml:id="_async_functionの構文">
+<section xml:id="async-function-syntax">
 <title>Async Functionの構文</title>
 <simpara>Async Functionは関数の定義に<literal>async</literal>キーワードをつけることで定義できます。
 JavaScriptの関数定義には関数宣言や関数式、Arrow Function、メソッドの短縮記法などがあります。
@@ -4742,8 +4742,8 @@ exceptionFn().catch((error) =&gt; {
 <simpara>どの場合でも、Async Functionは必ずPromiseを返すことがわかります。
 このようにAsync Functionを呼び出す側から見れば、Async FunctionはPromiseを返すただの関数と何も変わりません。</simpara>
 </section>
-</async-function-syntax>
-<async-function-await xml:id="__literal_await_literal_式">
+</section>
+<section xml:id="async-function-await">
 <title><literal>await</literal>式</title>
 <simpara>Async Functionはasync/awaitとも呼ばれることがあります。
 この呼ばれ方からも分かるように、Async Functionと<literal>await</literal>式は共に利用します。</simpara>
@@ -4787,7 +4787,7 @@ asyncMain(); // Promiseインスタンスを返す</programlisting>
 }
 asyncMain(); // Promiseインスタンスを返す</programlisting>
 <simpara><literal>await</literal>式の右辺のPromiseが<emphasis role="strong">Rejected</emphasis>となった場合は、その場でエラーを<literal>throw</literal>します。
-また「<link linkend="_async_functionの構文">async-function-syntax</link>」で紹介したように、Async Function内で発生した例外は自動的にキャッチされます。
+また「<link linkend="async-function-syntax">async-function-syntax</link>」で紹介したように、Async Function内で発生した例外は自動的にキャッチされます。
 そのため<literal>await</literal>式でPromiseが<emphasis role="strong">Rejected</emphasis>となった場合は、そのAsync Functionが<emphasis role="strong">Rejected</emphasis>なPromiseを返すことになります。</simpara>
 <simpara>次のコードでは、<literal>await</literal>式の右辺にある<literal>Promise</literal>インスタンスが<emphasis role="strong">Rejected</emphasis>の状態になっています。
 そのため<literal>await</literal>式は<literal>エラー</literal>を<literal>throw</literal>します。そのエラーを自動的にキャッチするため、<literal>asyncMain</literal>関数は<emphasis role="strong">Rejected</emphasis>なPromiseを返します。</simpara>
@@ -4820,8 +4820,8 @@ asyncMain().then(() =&gt; {
 });</programlisting>
 <simpara>このように<literal>await</literal>式を使うことで、<literal>try&#8230;&#8203;catch</literal>構文のように非同期処理を同期処理と同じ構文を使って扱えます。
 またコードの見た目も同期処理と同じように、その行（その文）の処理が完了するまで次の行を評価しないという分かりやすい形になるのは大きな利点です。</simpara>
-</async-function-await>
-<promise-chain-to-async-function xml:id="_async_functionと配列">
+</section>
+<section xml:id="promise-chain-to-async-function">
 <title>Async Functionと配列</title>
 <simpara><link linkend="ch2-promise-and-array">Promiseと配列</link>のように、配列を元にした複数の非同期処理を扱う場合のAsync Functionについて見ていきます。</simpara>
 <simpara>例として、複数のリソースを順番に取得する処理をPromiseで書いていきます。</simpara>
@@ -5083,7 +5083,7 @@ fetchResources(resources).then((results) =&gt; {
 Async Functionも内部的にPromiseの仕組みを利用した構文です。
 そのため、Async FunctionとPromiseのAPIを組み合わせて考えることは重要です。</simpara>
 </relationship-promise-async-function>
-</promise-chain-to-async-function>
+</section>
 </section>
 <section xml:id="promise-api-reference">
 <title>Promises API Reference</title>

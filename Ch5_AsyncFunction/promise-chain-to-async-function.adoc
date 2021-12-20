@@ -1,4 +1,4 @@
-[promise-chain-to-async-function]
+[[promise-chain-to-async-function]]
 == Async Functionと配列
 
 <<ch2-promise-and-array,Promiseと配列>>のように、配列を元にした複数の非同期処理を扱う場合のAsync Functionについて見ていきます。

@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    asciidoctor (2.0.15)
+    asciidoctor (2.0.16)
 
 PLATFORMS
   ruby
