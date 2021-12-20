@@ -5036,7 +5036,7 @@ fetchResources(resources).then((results) =&gt; {
 <simpara>この問題を解決する方法として、先ほどのようにコールバック関数を使わずにforループを使う方法があります。
 また、リソースを順番が重要ではない場合は、<literal>Promise.all</literal>メソッドを使い、複数の非同期処理を1つのPromiseとしてまとめる方法があります。</simpara>
 </section>
-<relationship-promise-async-function xml:id="_promiseとasync_functionを組み合わせる">
+<section xml:id="relationship-promise-async-function">
 <title>PromiseとAsync Functionを組み合わせる</title>
 <simpara>Async Functionと<literal>await</literal>式でも非同期処理を同期処理のような見た目で書けます。
 しかし、非同期処理は必ずしも順番に処理することが重要ではない場合があります。
@@ -5082,7 +5082,7 @@ fetchResources(resources).then((results) =&gt; {
 <simpara>このようにAsync Functionや<literal>await</literal>式は既存のPromise APIと組み合わせて利用できます。
 Async Functionも内部的にPromiseの仕組みを利用した構文です。
 そのため、Async FunctionとPromiseのAPIを組み合わせて考えることは重要です。</simpara>
-</relationship-promise-async-function>
+</section>
 </section>
 </section>
 <section xml:id="promise-api-reference">

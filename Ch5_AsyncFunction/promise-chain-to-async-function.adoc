@@ -278,7 +278,7 @@ fetchResources(resources).then((results) => {
 この問題を解決する方法として、先ほどのようにコールバック関数を使わずにforループを使う方法があります。
 また、リソースを順番が重要ではない場合は、``Promise.all``メソッドを使い、複数の非同期処理を1つのPromiseとしてまとめる方法があります。
 
-[relationship-promise-async-function]
+[[relationship-promise-async-function]]
 === PromiseとAsync Functionを組み合わせる
 
 Async Functionと``await``式でも非同期処理を同期処理のような見た目で書けます。
