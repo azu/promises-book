@@ -107,7 +107,7 @@ function anAsyncCall() {
 ----
 
 これらのアンチパターンについて、詳しくは
-http://taoofcode.net/promise-anti-patterns/[Promise Anti-patterns] を参照して下さい。
+https://web.archive.org/web/20211219034053/http://taoofcode.net/promise-anti-patterns/[Promise Anti-patterns] を参照して下さい。
 
 この挙動はPromise全般に当てはまるため、後に説明する<<ch2-promise-all,Promise.all>>や<<ch2-promise-race,Promise.race>>も
 引数で受け取ったものとは別のpromiseオブジェクトを作って返しています。

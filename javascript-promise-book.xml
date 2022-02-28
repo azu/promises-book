@@ -4,7 +4,7 @@
 <article xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="en">
 <info>
 <title>JavaScript Promiseの本</title>
-<date>2021-12-20</date>
+<date>2022-02-28</date>
 <author>
 <personname>
 <firstname>azu</firstname>
@@ -1311,7 +1311,7 @@ bPromise.then((value) =&gt; {
 </para>
 </formalpara>
 <simpara>これらのアンチパターンについて、詳しくは
-<link xl:href="http://taoofcode.net/promise-anti-patterns/">Promise Anti-patterns</link> を参照して下さい。</simpara>
+<link xl:href="https://web.archive.org/web/20211219034053/http://taoofcode.net/promise-anti-patterns/">Promise Anti-patterns</link> を参照して下さい。</simpara>
 <simpara>この挙動はPromise全般に当てはまるため、後に説明する<link linkend="ch2-promise-all">Promise.all</link>や<link linkend="ch2-promise-race">Promise.race</link>も
 引数で受け取ったものとは別のpromiseオブジェクトを作って返しています。</simpara>
 </section>
