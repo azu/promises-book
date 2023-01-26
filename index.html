@@ -2662,15 +2662,15 @@ Promiseを使う理由の一つであるといえるでしょう。</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="javascript"><span class="comment">// 関数式の定義と実行</span>
-const <span class="function">fn</span> = <span class="keyword">function</span> (arg) {
-    console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">通常の関数定義, 引数:</span><span class="delimiter">&quot;</span></span> + arg)
-}
+const <span class="function">fn</span> = <span class="keyword">function</span>(arg) {
+    console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">通常の関数定義, 引数:</span><span class="delimiter">&quot;</span></span> + arg);
+};
 fn(<span class="string"><span class="delimiter">&quot;</span><span class="content">引数</span><span class="delimiter">&quot;</span></span>);
 
 <span class="comment">// Arrow Functionの定義と実行</span>
 const arrowFunction = (arg) =&gt; {
     console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">Arrow Functionでの関数定義, 引数:</span><span class="delimiter">&quot;</span></span> + arg);
-}
+};
 arrowFunction(<span class="string"><span class="delimiter">&quot;</span><span class="content">引数</span><span class="delimiter">&quot;</span></span>);</code></pre>
 </div>
 </div>
@@ -3100,7 +3100,7 @@ resolveされたことにより <em>promiseオブジェクトがFulfilledの状�
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="javascript">const URL = <span class="string"><span class="delimiter">&quot;</span><span class="content">https://httpbin.org/get</span><span class="delimiter">&quot;</span></span>;
-fetchURL(URL).then(<span class="keyword">function</span> <span class="function">onFulfilled</span>(value){ <i class="conum" data-value="1"></i><b>(1)</b>
+fetchURL(URL).then((value) =&gt; { <i class="conum" data-value="1"></i><b>(1)</b>
     console.log(value);
 });</code></pre>
 </div>
@@ -3134,9 +3134,9 @@ rejectされたことより <em>promiseオブジェクトがRejectedの状態に
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="javascript">const URL = <span class="string"><span class="delimiter">&quot;</span><span class="content">https://httpbin.org/status/500</span><span class="delimiter">&quot;</span></span>; <i class="conum" data-value="1"></i><b>(1)</b>
-fetchURL(URL).then(<span class="keyword">function</span> <span class="function">onFulfilled</span>(value){
+fetchURL(URL).then((value) =&gt; {
     console.log(value);
-}).<span class="keyword">catch</span>(<span class="keyword">function</span> <span class="function">onRejected</span>(error){ <i class="conum" data-value="2"></i><b>(2)</b>
+}).<span class="keyword">catch</span>((error) =&gt; { <i class="conum" data-value="2"></i><b>(2)</b>
     console.error(error);
 });</code></pre>
 </div>
@@ -7577,9 +7577,9 @@ cancelableXHR.abortPromise(xhrPromise); <i class="conum" data-value="2"></i><b>(
 <div class="title">AbortControllerでのFetchのキャンセル</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="javascript"><span class="comment">// AbortControllerのインスタンスの作成</span>
-const controller = <span class="keyword">new</span> AbortController()
+const controller = <span class="keyword">new</span> AbortController();
 <span class="comment">// キャンセルを通知するための siganl を取得する</span>
-const signal = controller.signal
+const signal = controller.signal;
 <span class="comment">// signal をfetchメソッドの第二引数に渡す</span>
 fetch(<span class="string"><span class="delimiter">&quot;</span><span class="content">https://httpbin.org/get</span><span class="delimiter">&quot;</span></span>, { signal })
 .then((result) =&gt; {
@@ -7594,7 +7594,7 @@ fetch(<span class="string"><span class="delimiter">&quot;</span><span class="con
     }
     <span class="comment">// 中断以外のエラー</span>
     console.error(err);
-})
+});
 <span class="comment">// Fetchをキャンセルする</span>
 controller.abort();</code></pre>
 </div>
@@ -10034,7 +10034,7 @@ ES Promisesの前身となったコミュニティベースの仕様であり、
 <div id="footer">
 <div id="footer-text">
 Version 2.0.0<br>
-Last updated 2022-08-23 13:39:56 UTC
+Last updated 2023-01-26 10:46:59 UTC
 </div>
 </div>
 </body>

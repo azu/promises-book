@@ -4,7 +4,7 @@
 <article xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="en">
 <info>
 <title>JavaScript Promiseの本</title>
-<date>2022-08-23</date>
+<date>2023-01-26</date>
 <author>
 <personname>
 <firstname>azu</firstname>
@@ -232,15 +232,15 @@ Promiseを使う理由の一つであるといえるでしょう。</simpara>
 <simpara>Arrow Functionは、矢印のような <literal>&#8658;</literal> （イコールと大なり記号）を使い、匿名関数を定義する構文です。
 関数式と定義方法や使い方は同じです。</simpara>
 <programlisting language="javascript" linenumbering="unnumbered">// 関数式の定義と実行
-const fn = function (arg) {
-    console.log("通常の関数定義, 引数:" + arg)
-}
+const fn = function(arg) {
+    console.log("通常の関数定義, 引数:" + arg);
+};
 fn("引数");
 
 // Arrow Functionの定義と実行
 const arrowFunction = (arg) =&gt; {
     console.log("Arrow Functionでの関数定義, 引数:" + arg);
-}
+};
 arrowFunction("引数");</programlisting>
 <simpara>通常の関数式と`&#8658;`という記法を使う以外にも次のような特徴があります。</simpara>
 <simpara>Arrow Functionには次のような特徴があります。</simpara>
@@ -521,7 +521,7 @@ resolveにはresponseの値のみをいれるだけで問題ありません。</
 resolveされたことにより <emphasis>promiseオブジェクトがFulfilledの状態になった</emphasis> 時ということですね。</simpara>
 <simpara><emphasis role="strong">resolve</emphasis>された時の処理は、 <link linkend="promise.then"><literal>.then</literal></link> メソッドに呼びたい関数を渡すことで行えます。</simpara>
 <programlisting language="javascript" linenumbering="unnumbered">const URL = "https://httpbin.org/get";
-fetchURL(URL).then(function onFulfilled(value){ <co xml:id="CO4-1"/>
+fetchURL(URL).then((value) =&gt; { <co xml:id="CO4-1"/>
     console.log(value);
 });</programlisting>
 <calloutlist>
@@ -538,9 +538,9 @@ rejectされたことより <emphasis>promiseオブジェクトがRejectedの状
 <simpara><emphasis role="strong">reject</emphasis>された時の処理は、<link linkend="promise.then"><literal>.then</literal> の第二引数</link> または <link linkend="promise.catch"><literal>.catch</literal></link> メソッドに呼びたい関数を渡すことで行えます。</simpara>
 <simpara>先ほどのソースにrejectされた場合の処理を追加してみましょう。</simpara>
 <programlisting language="javascript" linenumbering="unnumbered">const URL = "https://httpbin.org/status/500"; <co xml:id="CO5-1"/>
-fetchURL(URL).then(function onFulfilled(value){
+fetchURL(URL).then((value) =&gt; {
     console.log(value);
-}).catch(function onRejected(error){ <co xml:id="CO5-2"/>
+}).catch((error) =&gt; { <co xml:id="CO5-2"/>
     console.error(error);
 });</programlisting>
 <calloutlist>
@@ -3618,9 +3618,9 @@ cancelableXHR.abortPromise(xhrPromise);<co xml:id="CO14-2"/></programlisting>
 <title>AbortControllerでのFetchのキャンセル</title>
 <para>
 <programlisting language="javascript" linenumbering="unnumbered">// AbortControllerのインスタンスの作成
-const controller = new AbortController()
+const controller = new AbortController();
 // キャンセルを通知するための siganl を取得する
-const signal = controller.signal
+const signal = controller.signal;
 // signal をfetchメソッドの第二引数に渡す
 fetch("https://httpbin.org/get", { signal })
 .then((result) =&gt; {
@@ -3635,7 +3635,7 @@ fetch("https://httpbin.org/get", { signal })
     }
     // 中断以外のエラー
     console.error(err);
-})
+});
 // Fetchをキャンセルする
 controller.abort();</programlisting>
 </para>
