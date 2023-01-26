@@ -75,15 +75,15 @@ Arrow Functionは、矢印のような `=>` （イコールと大なり記号）
 [source,javascript]
 ----
 // 関数式の定義と実行
-const fn = function (arg) {
-    console.log("通常の関数定義, 引数:" + arg)
-}
+const fn = function(arg) {
+    console.log("通常の関数定義, 引数:" + arg);
+};
 fn("引数");
 
 // Arrow Functionの定義と実行
 const arrowFunction = (arg) => {
     console.log("Arrow Functionでの関数定義, 引数:" + arg);
-}
+};
 arrowFunction("引数");
 ----
 

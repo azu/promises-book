@@ -260,9 +260,9 @@ Fetch APIでは、次のようにリクエストをキャンセルできます�
 .AbortControllerでのFetchのキャンセル
 ----
 // AbortControllerのインスタンスの作成
-const controller = new AbortController()
+const controller = new AbortController();
 // キャンセルを通知するための siganl を取得する
-const signal = controller.signal
+const signal = controller.signal;
 // signal をfetchメソッドの第二引数に渡す
 fetch("https://httpbin.org/get", { signal })
 .then((result) => {
@@ -277,7 +277,7 @@ fetch("https://httpbin.org/get", { signal })
     }
     // 中断以外のエラー
     console.error(err);
-})
+});
 // Fetchをキャンセルする
 controller.abort();
 ----
