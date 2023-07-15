@@ -37,7 +37,6 @@
     "ypromise": "^0.3.0"
   },
   "devDependencies": {
-    "@alrra/travis-scripts": "^3.0.1",
     "@power-doctest/asciidoctor": "^5.3.3",
     "@power-doctest/javascript": "^5.3.3",
     "@power-doctest/tester": "^5.3.3",

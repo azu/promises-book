@@ -2,11 +2,6 @@
 # yarn lockfile v1
 
 
-"@alrra/travis-scripts@^3.0.1":
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/@alrra/travis-scripts/-/travis-scripts-3.0.2.tgz#1dfa98c828a69830466746f9e7e1b5f3c7287ecb"
-  integrity sha512-OIloEm8r7ZEcq0um9C9ZvrMfdC5aRFcBKaHwHJ5MCh3U0BTKQQz9uD1rVuuyz6qKkYO/ez3/auUK5eWNDFZMqA==
-
 "@ampproject/remapping@^2.1.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@ampproject/remapping/-/remapping-2.2.0.tgz#56c133824780de3174aed5ab6834f3026790154d"
