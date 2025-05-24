@@ -39,7 +39,7 @@ Promisesが実装されていない環境もあるため、[core-js](https://git
 
 この書籍では、サンプルコードのソースコード(`lib/`)と表示用のコード(`embed/`)を分けている。
 
-基本的には`lib/`から`embed/`がビルド時に生成され、書籍には`embed/`のコードが埋め込まれる。。
+基本的には`lib/`から`embed/`がビルド時に生成され、書籍には`embed/`のコードが埋め込まれる。
 
 `lib/`のコードはCommonJSのコードとして書かれていて、モジュールとしてテストしたい機能を`module.exports`している。
 そのため、UnitTestは通常のNode.jsのコードとしてテストコードを`test/`に実装している。
@@ -53,7 +53,7 @@ Promisesが実装されていない環境もあるため、[core-js](https://git
 ### DocTest
 
 一部の章では、インラインコードに対して[power-doctest](https://github.com/azu/power-doctest)を使ったDocTestが実装されている。
-実際に有効になってる章(ディレクトリ)は次のテストファイルで定義されている。
+実際に有効になっている章(ディレクトリ)は次のテストファイルで定義されている。
 
 - <https://github.com/azu/promises-book/blob/master/test/doctest.js>
 

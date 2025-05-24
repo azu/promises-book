@@ -18,7 +18,7 @@ JavaScript Promiseについての薄い電子書籍です。
 This book has been released in :
 
 - **Chinese**: [JavaScript Promise迷你书（中文版）](http://liubin.github.io/promises-book/)
-- **Korean**: [\[한빛미디어 eBook\] JavaScript Promise（번역서）](http://www.hanbit.co.kr/ebook/look.html?isbn=9788968487293)
+- **Korean**: [\[한빛미디어 eBook\] JavaScript Promise（번역서）](https://www.hanbit.co.kr/store/books/look.php?p_code=E5027975256)
 
 ## Installation
 
