@@ -19,6 +19,11 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.6
+      - name: setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '11'
       - uses: reitzig/actions-asciidoctor@v2.0.0
       - name: Install
         run: yarn install && bundle install --path vendor/bundle
