@@ -6,7 +6,7 @@ function isPromise(obj) {
     return obj && typeof obj.then === "function";
 }
 describe("timer-promisefy", () => {
-    it("should return promise obejct", () => {
+    it("should return promise object", () => {
         assert(isPromise(timerPromisefy(1)));
     });
     it("resolve with arged value", () => {
