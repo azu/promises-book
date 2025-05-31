@@ -19,7 +19,7 @@ asciidoctor + fopubのラッパ
 
 ## cli-book-version.js
 
-- pacakge.jsonのバージョンを文字列で取るだけ
+- package.jsonのバージョンを文字列で取るだけ
 - asciidoctorの変数で渡してhtmlやpdfにバージョンを埋め込んでる
 
 ## deploy-gh-pages.sh

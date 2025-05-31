@@ -261,7 +261,7 @@ Fetch APIでは、次のようにリクエストをキャンセルできます�
 ----
 // AbortControllerのインスタンスの作成
 const controller = new AbortController();
-// キャンセルを通知するための siganl を取得する
+// キャンセルを通知するための signal を取得する
 const signal = controller.signal;
 // signal をfetchメソッドの第二引数に渡す
 fetch("https://httpbin.org/get", { signal })

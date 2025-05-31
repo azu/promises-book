@@ -21,10 +21,10 @@ Room.prototype.open = function () {
     var that = this;
     this.promise = this.promise.then(function () {
         return new Promise(function (resolve, reject) {
-            if (that.state === "wating") {
+            if (that.state === "waiting") {
                 return reject(that.state);
             }
-            that.state = "wating";
+            that.state = "waiting";
             setTimeout(function () {
                 that.state = "open";
                 console.log(that.state);
@@ -46,7 +46,7 @@ Room.prototype.close = function () {
     var that = this;
     this.promise = this.promise.then(function () {
         return new Promise(function (resolve, reject) {
-            if (that.state === "wating") {
+            if (that.state === "waiting") {
                 return reject(that.state);
             }
             setTimeout(function () {
