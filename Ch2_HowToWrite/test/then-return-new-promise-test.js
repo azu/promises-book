@@ -14,7 +14,7 @@ describe("promise.then ", () => {
         assert(aPromise !== thenPromise);
         assert(thenPromise !== catchPromise);
     });
-    it("diferrence then then", (done) => {
+    it("difference then then", (done) => {
         const aPromise = new Promise((resolve) => {
             resolve(100);
         });

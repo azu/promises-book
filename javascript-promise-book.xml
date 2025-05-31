@@ -3619,7 +3619,7 @@ cancelableXHR.abortPromise(xhrPromise);<co xml:id="CO14-2"/></programlisting>
 <para>
 <programlisting language="javascript" linenumbering="unnumbered">// AbortControllerのインスタンスの作成
 const controller = new AbortController();
-// キャンセルを通知するための siganl を取得する
+// キャンセルを通知するための signal を取得する
 const signal = controller.signal;
 // signal をfetchメソッドの第二引数に渡す
 fetch("https://httpbin.org/get", { signal })
