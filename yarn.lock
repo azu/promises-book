@@ -7426,10 +7426,10 @@ void-elements@^2.0.1:
   resolved "https://registry.yarnpkg.com/void-elements/-/void-elements-2.0.1.tgz#c066afb582bb1cb4128d60ea92392e94d5e9dbec"
   integrity sha512-qZKX4RnBzH2ugr8Lxa7x+0V6XD9Sb/ouARtiasEQCHB1EVU4NXtmHsDDrx1dO4ne5fc3J6EW05BP1Dl0z0iung==
 
-w3c-xmlhttprequest@^2.1.3:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/w3c-xmlhttprequest/-/w3c-xmlhttprequest-2.2.0.tgz#65a2d219de8aca8f59e591d6f2458a4a7f0eddfe"
-  integrity sha512-qvy1XB53jM13+dRZrr277u4BgW7j5k87L7E98hbSXOG8eolXgqMT2glZ91NHLVmqO6Hb8gw4z28LahHVbhsr2Q==
+w3c-xmlhttprequest@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/w3c-xmlhttprequest/-/w3c-xmlhttprequest-3.0.4.tgz#1a2885c3a75bf9fdc14a94dbfb7abdb5f799cb11"
+  integrity sha512-GOR3PNrFVioJtxb+VR1kp80+UM89ga85akLRYVZX7fmaQTn/kkj9Q18MhNoGtvRJ2ez5i77EpQ0hNBB7+e/RBg==
 
 watchify@^3.11.1:
   version "3.11.1"
