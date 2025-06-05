@@ -5,7 +5,6 @@ const concat = require("gulp-concat");
 const rename = require("gulp-rename");
 const inlining = require("gulp-inlining-node-require");
 const browserify = require("browserify");
-const minifyify = require("minifyify");
 const source = require("vinyl-source-stream");
 const sourceFile = "./public/js/index.js";
 const destCSSDir = "./public/css/build/";

@@ -30,7 +30,7 @@ This book has been released in :
 
 ``` sh
 bundle install --path vendor/bundle
-npm install
+yarn install
 make html
 open index.html
 ```
