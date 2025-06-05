@@ -10,16 +10,16 @@ jobs:
         node-version: [ 16, 18 ]
     steps:
       - name: checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2.7.0
       - name: setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@7c12f8017d5436eb855f1ed4399f037a36fbd9e8 # v2.5.2
         with:
           node-version: ${{ matrix.node-version }}
       - name: setup Ruby
-        uses: ruby/setup-ruby@v1
+        uses: ruby/setup-ruby@13e7a03dc3ac6c3798f4570bfead2aed4d96abfb # v1.244.0
         with:
           ruby-version: 2.6
-      - uses: reitzig/actions-asciidoctor@v2.0.0
+      - uses: reitzig/actions-asciidoctor@7570212ae20b63653481675fb1ff62d1073632b0 # v2.0.0
       - name: Install
         run: yarn install && bundle install --path vendor/bundle
       - name: Test
