@@ -58,7 +58,7 @@
     "minifyify": "^7.0.1",
     "mocha": "^6.2.1",
     "nock": "^11.4.0",
-    "npm-run-all2": "6.2.6",
+    "npm-run-all2": "^8.0.4",
     "power-assert": "^1.6.1",
     "promise-test-helper": "^0.2.1",
     "q": "^1.5.1",
