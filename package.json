@@ -46,7 +46,6 @@
     "eslint": "^8.32.0",
     "espower-loader": "^1.0.0",
     "esprima": "^4.0.1",
-    "fs-extra": "^8.1.0",
     "globby": "^10.0.1",
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
