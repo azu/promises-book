@@ -1,15 +1,16 @@
 "use strict";
 const assert = require("power-assert");
-const fs = require("fs-extra");
+const fs = require("node:fs");
 const File = require("../src/promise-chain/fs-promise-chain");
 describe("File-Promised", () => {
     const fixtureDir = __dirname + "/__fixtures";
     const inputFilePath = fixtureDir + "/input.txt";
     beforeEach(() => {
-        fs.copySync(__dirname + "/fixtures", fixtureDir);
+        fs.mkdirSync(fixtureDir);
+        fs.copyFileSync(__dirname + "/fixtures/input.txt", inputFilePath);
     });
     afterEach(() => {
-        fs.removeSync(fixtureDir);
+        fs.rmSync(fixtureDir, { recursive: true, force: true });
     });
     describe("read", () => {
         context("when not found", () => {
