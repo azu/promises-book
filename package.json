@@ -68,7 +68,6 @@
     "textlint-plugin-asciidoctor": "^1.0.3",
     "textlint-rule-eslint": "4.0.1",
     "textlint-rule-prh": "^5.2.1",
-    "through2": "^3.0.1",
     "vinyl-source-stream": "^2.0.0"
   }
 }
