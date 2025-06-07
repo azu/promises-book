@@ -47,7 +47,7 @@
     "espower-loader": "^1.0.0",
     "esprima": "^4.0.1",
     "globby": "^10.0.1",
-    "gulp": "^4.0.2",
+    "gulp": "^5.0.1",
     "gulp-concat": "^2.6.1",
     "gulp-inlining-node-require": "0.1.1",
     "gulp-rename": "~1.4.0",
