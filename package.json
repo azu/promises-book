@@ -42,7 +42,7 @@
     "@textlint-ja/textlint-rule-no-synonyms": "^1.3.0",
     "brfs": "^2.0.2",
     "browserify": "^16.5.0",
-    "cheerio": "^0.22.0",
+    "cheerio": "^1.0.0",
     "eslint": "^8.32.0",
     "espower-loader": "^1.0.0",
     "esprima": "^4.0.1",
