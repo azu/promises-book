@@ -1,8 +1,8 @@
-const { test } = require("@power-doctest/tester");
-const { parse } = require("@power-doctest/asciidoctor");
-const globby = require("globby");
-const fs = require("fs");
-const path = require("path");
+import { test } from "@power-doctest/tester";
+import { parse } from "@power-doctest/asciidoctor";
+import { globbySync } from "globby";
+import { readFileSync } from "fs";
+import { join, dirname, sep } from "path";
 // = の段落が順番でないため do not support nested sections が発生する問題を回避する
 // ダミー文字列に書き換える
 const replaceDummyHeader = (content) => {
@@ -13,21 +13,21 @@ const replaceDummyHeader = (content) => {
     }).join("\n");
 };
 describe("doctest:adoc", () => {
-    const projectDir = path.join(__dirname, "..");
-    const files = globby.sync([
-        `${path.join(projectDir, "Ch5_AsyncFunction")}/**/*.adoc`,
+    const projectDir = join(import.meta.dirname, "..");
+    const files = globbySync([
+        `${join(projectDir, "Ch5_AsyncFunction")}/**/*.adoc`,
         `!**/node_modules{,/**}`,
     ]);
     files.forEach(filePath => {
         const normalizeFilePath = filePath.replace(projectDir, "");
         describe(`${normalizeFilePath}`, () => {
-            const content = fs.readFileSync(filePath, "utf-8");
+            const content = readFileSync(filePath, "utf-8");
             const parsedCodes = parse({
                 filePath,
                 content: replaceDummyHeader(content)
             });
             // try to eval
-            const dirName = path.dirname(filePath).split(path.sep).pop();
+            const dirName = dirname(filePath).split(sep).pop();
             parsedCodes.forEach((parsedCode) => {
                 const codeValue = parsedCode.code;
                 const testCaseName = codeValue.slice(0, 32).replace(/[\r\n]/g, "_");

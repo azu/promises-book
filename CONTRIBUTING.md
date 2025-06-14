@@ -55,7 +55,7 @@ Promisesが実装されていない環境もあるため、[core-js](https://git
 一部の章では、インラインコードに対して[power-doctest](https://github.com/azu/power-doctest)を使ったDocTestが実装されている。
 実際に有効になっている章(ディレクトリ)は次のテストファイルで定義されている。
 
-- <https://github.com/azu/promises-book/blob/master/test/doctest.js>
+- <https://github.com/azu/promises-book/blob/master/test/doctest.mjs>
 
 Asciidoc中のインラインコードブロックに、次のような`[source,javascript]`の言語が指定されたCodeBlockに対してpodtestが行われる。
 
