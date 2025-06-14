@@ -4,5 +4,5 @@
  */
 "use strict";
 if (!global.XMLHttpRequest) {
-    global.XMLHttpRequest = require('w3c-xmlhttprequest').XMLHttpRequest;
+    global.XMLHttpRequest = require("w3c-xmlhttprequest").XMLHttpRequest;
 }
