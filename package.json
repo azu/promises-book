@@ -18,7 +18,7 @@
     "textlint": "textlint \"Appendix-*/**/*.adoc\" \"Ch*/**/*.adoc\"",
     "textlint:fix": "textlint --fix \"Appendix-*/**/*.adoc\" \"Ch*/**/*.adoc\"",
     "test": "npm-run-all -p unittest eslint textlint",
-    "unittest": "mocha \"./Ch**/test/*.js\" \"test/doctest.js\""
+    "unittest": "mocha \"./Ch**/test/*.js\" \"test/doctest.mjs\""
   },
   "directories": {
     "test": "Ch*/test/"
@@ -46,7 +46,7 @@
     "eslint": "^8.32.0",
     "espower-loader": "^1.0.0",
     "esprima": "^4.0.1",
-    "globby": "^10.0.1",
+    "globby": "^14.1.0",
     "gulp": "^5.0.1",
     "gulp-concat": "^2.6.1",
     "gulp-inlining-node-require": "0.1.1",
