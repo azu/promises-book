@@ -1,0 +1,7 @@
+{
+  "require": [
+    "intelli-espower-loader",
+    "test/node-helper.js",
+    "test/test-helper.js"
+  ]
+}

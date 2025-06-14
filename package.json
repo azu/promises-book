@@ -55,7 +55,7 @@
     "inlining-node-require": "^0.2.0",
     "intelli-espower-loader": "^1.0.0",
     "minifyify": "^7.0.1",
-    "mocha": "^6.2.1",
+    "mocha": "^11.6.0",
     "npm-run-all2": "^8.0.4",
     "power-assert": "^1.6.1",
     "promise-test-helper": "^0.2.1",

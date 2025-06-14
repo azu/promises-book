@@ -1,13 +1,13 @@
 "use strict";
-var cheerio = require('cheerio');
+const cheerio = require("cheerio");
 function checkInternalLinks(source) {
-    var $ = cheerio.load(source, {
+    const $ = cheerio.load(source, {
         normalizeWhitespace: false,
         xmlMode: false,
         decodeEntities: true
     });
-    var $links = $("a");
-    var $internalLinks = $links.filter(function (idx, a) {
+    const $links = $("a");
+    const $internalLinks = $links.filter(function(idx, a) {
         return /^#/.test($(this).attr("href"));
     });
 
@@ -16,10 +16,10 @@ function checkInternalLinks(source) {
     }
 
     function checkLinks($links) {
-        var errors = [];
-        $links.each(function (idx, a) {
-            var hash = $(this).attr("href");
-            var source = $(escapeSelector(hash));
+        const errors = [];
+        $links.each(function(idx, a) {
+            const hash = $(this).attr("href");
+            const source = $(escapeSelector(hash));
             if (source.length === 0) {
                 errors.push(new Error("[Error] Not Found:" + hash + " | " + $(this).parent().text()));
             }

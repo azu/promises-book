@@ -1,17 +1,17 @@
-var http = require("http");
-var url = require("url");
-var querystring = require("querystring");
-var server = null;
-var port = process.env.PORT || 3000;
+const http = require("http");
+const url = require("url");
+const querystring = require("querystring");
+let server = null;
+const port = process.env.PORT || 3000;
 function start() {
     server = http.createServer();
-    server.on("request", function (request, response) {
-        var uri = url.parse(request.url);
-        var qs = uri.query ? querystring.parse(uri.query) : {};
+    server.on("request", (request, response) => {
+        const uri = url.parse(request.url);
+        const qs = uri.query ? querystring.parse(uri.query) : {};
 
-        var status = qs.status || 200;
-        var contentType = qs.contentType || "text/plain";
-        var body = qs.body || "hello there!";
+        const status = qs.status || 200;
+        const contentType = qs.contentType || "text/plain";
+        const body = qs.body || "hello there!";
 
         response.writeHead(status, {
             "Content-Type": contentType,
@@ -24,7 +24,7 @@ function start() {
     });
 
     return new Promise((resolve, reject) => {
-        server.listen(port, function (error) {
+        server.listen(port, (error) => {
             if (error) {
                 return reject(error);
             }

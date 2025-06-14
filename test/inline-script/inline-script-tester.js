@@ -1,24 +1,24 @@
 "use strict";
-var Q = require("q");
-var FS = require("q-io/fs");
-var esprima = require("esprima");
-var pather = require("path");
+const Q = require("q");
+const FS = require("q-io/fs");
+const esprima = require("esprima");
+const pather = require("path");
 // http://www.regexr.com/38t47
-var inlineCodeReg = /\[source.*?javascript\]\n[\s\S]*?----([\s\S]*?)----/gm;
-var includeCodeReg = /include::/;
-var skipContentPattern = /Syntax Error/;
+const inlineCodeReg = /\[source.*?javascript\]\n[\s\S]*?----([\s\S]*?)----/gm;
+const includeCodeReg = /include::/;
+const skipContentPattern = /Syntax Error/;
 function trimIncludeCode(code) {
-    var replaceRegExp = /include::.*/g;
-    var trimedCode = code.replace(replaceRegExp, "");
+    const replaceRegExp = /include::.*/g;
+    const trimedCode = code.replace(replaceRegExp, "");
     return trimedCode.trim();
 }
 function pickupContent(content) {
-    var results = [];
-    var matches;
+    const results = [];
+    let matches;
     while ((matches = inlineCodeReg.exec(content)) !== null) {
-        var code = matches[1];
+        const code = matches[1];
         if (includeCodeReg.test(code)) {
-            var trimedCode = trimIncludeCode(code);
+            const trimedCode = trimIncludeCode(code);
             if (trimedCode.length > 0) {
                 results.push(trimedCode);
             }
@@ -30,7 +30,7 @@ function pickupContent(content) {
 }
 function parseContents(content, filePath) {
     // skip
-    if (skipContentPattern.test(content)){
+    if (skipContentPattern.test(content)) {
         return;
     }
     try {
@@ -43,39 +43,39 @@ function parseContents(content, filePath) {
 }
 
 function printResults(results) {
-    results.forEach(function (errors) {
-        errors.forEach(function (error) {
+    results.forEach((errors) => {
+        errors.forEach((error) => {
             console.error(">> filePath : " + pather.resolve(error.filePath) + "\n"
                     + "----\n" + error.fileContent.trim() + "\n----\n",
-                error,
-                "\n\n"
+            error,
+            "\n\n"
             );
         });
     });
 }
 
 module.exports.checkInlineScript = function checkInlineScript(rootPath) {
-    var asciidocPromises = FS.listTree(rootPath, function isAsciiDoc(filePath, stat) {
+    const asciidocPromises = FS.listTree(rootPath, (filePath, stat) => {
         if (stat.isDirectory()) {
             return false;
         }
         return pather.extname(filePath) === ".adoc";
     });
 
-    return asciidocPromises.then(function (filePathList) {
-        var promises = filePathList.map(function (filePath) {
+    return asciidocPromises.then((filePathList) => {
+        const promises = filePathList.map((filePath) => {
             return FS.read(filePath)
                 .then(pickupContent)
-                .then(function (contents) {
-                    return contents.map(function (content) {
+                .then((contents) => {
+                    return contents.map((content) => {
                         return parseContents(content, filePath);
-                    }).filter(function hasError(error) {
+                    }).filter((error) => {
                         return error != null && error instanceof Error;
                     });
                 });
         });
-        return Q.all(promises).then(function (results) {
-            var filteredResults = results.filter(function (errors) {
+        return Q.all(promises).then((results) => {
+            const filteredResults = results.filter((errors) => {
                 return Array.isArray(errors) && errors.length > 0;
             });
 
