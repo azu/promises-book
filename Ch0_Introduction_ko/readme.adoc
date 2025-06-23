@@ -1,0 +1,142 @@
+[[introduction]]
+= 소개
+
+== 책의 목적
+
+이 책은 JavaScript의 표준 사양 <<es-promises,ECMAScript Promises>>를 중심으로,
+JavaScript에서의 Promise에 대해 배우는 것을 목적으로 합니다.
+
+이 책은 다음의 세 가지 목표를 가지고 있습니다.
+
+- Promise를 배우고, 패턴 및 테스트를 다룰 수 있게 되는 것
+- Promise의 적합/부적합 상황을 이해하고, 모든 것을 Promise로 해결하려 하지 않도록 배우는 것
+- ES Promises를 바탕으로 기초를 잘 익히고, 더 발전된 형태를 스스로 만들 수 있게 되는 것
+
+이 책은 앞서 언급했듯이 <<es-promises,ES Promises>>,
+즉 JavaScript 표준 사양(ECMAScript)을 기반으로 한 Promise에 대해 다룹니다.
+
+따라서 Firefox나 Chrome과 같은 최신 브라우저에서는 라이브러리를 사용하지 않고도 기능을 사용할 수 있으며,
+또한 ES Promises는 <<promises-aplus,Promises/A+>>라는 커뮤니티 기반의 사양이 출발점이기 때문에, 다양한 구현 라이브러리가 존재합니다.
+
+브라우저의 네이티브 기능이나 라이브러리를 통해 지금 바로 사용할 수 있는 Promise의 기본 API부터 배우게 되며,
+Promise의 강점과 약점을 이해하고, Promise를 활용한 JavaScript를 작성할 수 있도록 하는 것이 목표입니다.
+
+== 이 책을 읽기 전에
+
+이 책은 JavaScript의 기본적인 문법과 기능을 이미 학습한 독자를 대상으로 합니다.
+
+다음 책들 중 하나라도 읽었다면 충분히 이해할 수 있는 내용입니다.
+
+- [JavaScript: The Good Parts](https://www.oreilly.co.jp/books/9784873113913/)
+- [JavaScript 패턴](https://www.oreilly.co.jp/books/9784873114880/)
+- [처음 배우는 JavaScript 제3판](https://www.oreilly.co.jp/books/9784873117836/)
+- [JavaScript 제6판](https://www.oreilly.co.jp/books/9784873115733/)
+- [퍼펙트 JavaScript](https://gihyo.jp/book/2011/978-4-7741-4813-7)
+- [개정판 JavaScript 본격 입문](https://gihyo.jp/book/2016/978-4-7741-8411-1)
+
+이 책에서는 ECMAScript 2015(ES2015)에서 추가된 문법을 사용하므로, JavaScript의 기본 문법이나 기능에 불안함이 있는 경우에는 다음 책을 참고해 주세요.
+ES2015 이후를 기반으로 JavaScript 기초부터 학습할 수 있는 책이며, 
+이 책의 저자와 동일한 저자가 썼고 웹에서도 공개되어 있습니다.
+
+- https://jsprimer.net[JavaScript Primer #jsprimer]
+
+또한 JavaScript로 웹 애플리케이션을 작성해본 경험이나 Node.js로 커맨드라인 앱이나 서버를 작성해본 경험이 있다면,
+익숙한 내용이 나올 수도 있습니다.
+
+일부 섹션에서는 Node.js 환경에서의 설명도 포함되어 있으므로, Node.js에 대해 어느 정도 알고 있다면 이해하기 더 쉬울 것입니다.
+
+== 표기법
+
+이 책에서는 간결함을 위해 몇 가지 표기법을 사용합니다.
+
+* Promise 관련 용어는 <<promise-glossary,용어집>>을 참고하세요.
+** 대부분 처음 등장할 때는 링크를 붙여두었습니다.
+* 인스턴스 메서드는 `instance#method` 형식으로 표기합니다.
+** 예: `Promise#then` 은 Promise 인스턴스의 `then` 메서드를 의미합니다.
+* 객체 메서드는 `object.method` 형식으로 표기
+** 이것은 JavaScript의 의미 그대로이며, `Promise.all`은 정적(static) 메서드를 나타냅니다.
+
+[NOTE]
+이 부분에는 문장에 대한 보충 설명이 작성됩니다.
+
+ifeval::["{backend}" == "html5"]
+== 권장 브라우저
+
+이 책을 읽을 때 권장하는 브라우저는 ECMAScript 2015(ES2015) 이후를 지원하는 브라우저입니다.  
+Promise는 ES2015에서 도입되었고, 샘플 코드에도 ES2015 문법이 사용되고 있기 때문입니다.
+
+또한 권장 환경은 아니지만, iOS나 Android 등의 모바일 기기에서도 열람이 가능합니다.
+
+ifeval::["{backend}" == "html5"]
+++++
+<div class=\"iframe-wrapper\" style=\"width: 100%; height: 350px; overflow: auto; -webkit-overflow-scrolling: touch;\">
+<iframe src=\"https://caniuse.com/promises/embed/agents=desktop\" width=\"100%\" height=\"350px\"></iframe>
+</div>
+++++
+endif::[]
+
+== 샘플 코드 실행
+
+이 사이트는 Promise의 <<promise-polyfill,폴리필 라이브러리>>를 불러오기 때문에,  
+Promise를 지원하지 않는 브라우저에서도 샘플 코드를 실행할 수 있습니다.
+
+또한, 아래와 같이 실행 가능한 샘플 코드에는 실행 버튼이 표시됩니다.
+
+[role=\"executable\"]
+[source,javascript]
+----
+const promise = new Promise((resolve) => {
+    resolve(42);
+});
+promise.then((value) => {
+    console.log(value);
+}).catch((error) => {
+    console.error(error);
+});
+----
+
+++++
+<div class="tutorial-area">
+<button class="mirror-console-button mirror-console-run">실행</button> 버튼을 누르면,  
+샘플 코드가 에디터로 바뀌어 코드를 실행할 수 있습니다.<br />
+<button class="mirror-console-button mirror-console-clear">로그 지우기</button> 버튼은  
+`console.log`로 출력된 실행 결과를 지울 수 있습니다.<br />
+<button class="mirror-console-button mirror-console-exit">종료</button> 버튼은 에디터 모드를 종료합니다.
+</div>
+++++
+관심 있는 코드는 바로 수정해가며 실행할 수 있으므로, 이해를 돕기 위한 보조 수단으로 활용해 주세요.
+
+endif::[]
+
+== 본문의 소스코드 / 라이선스
+
+이 책에 등장하는 샘플 코드 및 해당 문서의 원문은 모두 GitHub에서 확인할 수 있습니다.
+
+이 책은 [AsciiDoc](http://asciidoctor.org/) 형식으로 작성되었습니다.
+
+- [azu/promises-book GitHub 저장소](https://github.com/azu/promises-book)  
+  ![Build Status](https://travis-ci.org/azu/promises-book.svg?branch=master)
+
+또한, 리포지토리에는 책에 등장하는 샘플 코드에 대한 테스트도 포함되어 있습니다.
+
+소스코드는 MIT 라이선스, 문서 본문은 CC-BY-NC 라이선스로 이용할 수 있습니다.
+
+== 의견 및 질문
+
+의견이나 궁금한 점이 있을 경우, GitHub에서 직접 Issue를 생성할 수 있습니다.
+
+- [Issues · azu/promises-book](https://github.com/azu/promises-book/issues?state=open)
+
+또는 이 책에 대한 의견은 [Gitter 채팅 페이지](https://gitter.im/azu/promises-book)에 남길 수도 있습니다.
+
+ifeval::["{backend}" == "html5"]
+* ![Gitter](https://badges.gitter.im/azu/promises-book.png)
+endif::[]
+
+Twitter에서는  
+[icon:twitter](https://twitter.com/search?q=%23Promise%E6%9C%AC)  
+해시태그 [#Promise本](https://twitter.com/search?q=%23Promise%E6%9C%AC)을 사용하면 관련 내용을 공유할 수 있습니다.
+
+이 책은 단순히 열람할 수 있는 권한뿐만 아니라, **편집할 권리**도 주어지므로  
+GitHub를 통한 [Pull Request](https://github.com/azu/promises-book/pulls)도 환영합니다.
+
