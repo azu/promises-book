@@ -50,7 +50,7 @@ CodeMirrorをベースにコードの実行機能を付加するモジュール�
 - https://github.com/azu/codemirror-console-ui[azu/codemirror-console-ui]
 
 __codemirror-console__ はCodeMirrorに書かれているコードを実行できるモジュール。
-単純にコードをevalするだけでは、グロールスコープを汚染してしまうため、
+単純にコードをevalするだけでは、グローバルスコープを汚染してしまうため、
 コードを実行する時にiframeを作り、その中でコードを実行している。
 
 http://nodejs.org/api/vm.html[Nodeのvmモジュール]と似た考え方をもつ https://github.com/amasad/context-eval/[context-eval]を利用した。
@@ -119,7 +119,7 @@ global.XMLHttpRequest = require("w3c-xmlhttprequest").XMLHttpRequest;
 ===== Web Notifications API
 
 テストできるようにすることが目的であるため、機能まで持ってくる必要性はなかった。
-そのため、Web Notifications APIではNoticationのモックオブジェクトを作成し、テストを行った。
+そのため、Web Notifications APIではNotificationのモックオブジェクトを作成し、テストを行った。
 
 - https://github.com/azu/promises-book/blob/master/Ch4_AdvancedPromises/test/mock/mock-notification.js[mock-notification.js]
 
