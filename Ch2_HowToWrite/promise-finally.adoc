@@ -1,7 +1,7 @@
 [[ch2-promise-finally]]
 == Promise#finally
 
-ECMAScript 2018からpromise chainの最後に処理を実行する `Promise#finally` メソッド追加されました。
+ECMAScript 2018からpromise chainの最後に処理を実行する `Promise#finally` メソッドが追加されました。
 
 `Promise#finally` メソッドは成功時、失敗時どちらの場合でも呼び出すコールバック関数を登録できます。
 `try...catch...finally` 構文の `finally` 節と同様の役割をもつメソッドです。
